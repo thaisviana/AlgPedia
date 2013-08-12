@@ -17,8 +17,8 @@ DATABASES = {
 	'NAME': 'AlgPedia',
 	'USER': 'root',
 	'PASSWORD': '',
-	'HOST': '127.0.0.1', # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-	'PORT': '3306', # Set to empty string for default.
+	'HOST': '127.0.0.1',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+	'PORT': '3306',  # Set to empty string for default.
 	}
 }
 
@@ -135,10 +135,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 	'algorithm',
 	'extractor',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
 )
 
 EMAIL_USE_TLS = True
