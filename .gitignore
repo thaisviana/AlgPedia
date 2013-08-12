@@ -1,0 +1,8 @@
+*.py[co]
+settings/local.py
+env
+media
+.env
+.project
+.pydevproject
+.settings
