@@ -1,4 +1,4 @@
-﻿distribute
+distribute
 Django==1.5.2
 MySQL-python==1.2.3
 South==0.7.6
