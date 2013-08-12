@@ -1,11 +1,9 @@
-﻿MySQL-python==1.2.3
-PIL==1.1.7
-
-Django==1.5.1
+﻿distribute
+Django==1.5.2
+MySQL-python==1.2.3
 South==0.7.6
-unidecode==0.04.12
 dj-database-url==0.2.1
 gunicorn==0.17.2
+django-social-auth==0.7.7
 django-inoa==0.2.3
-requests==1.2.2
 djrill==0.5
