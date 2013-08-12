@@ -23,7 +23,7 @@ DETOUR_EMAIL_ADDRESS = 'Pablo Abdelhay <pabdelhay@inoa.com.br>'  # Developer ins
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-        'LOCATION': 'orama_web'
+        'LOCATION': 'algpedia'
     }
 }
 
