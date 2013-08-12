@@ -1,0 +1,64 @@
+/*---------------------RESET (Thanks Eric Meyer!)------------------ */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+body{
+	overflow:hidden;
+	background:
+		url(http://localhost:8000/site_media/images/stars_bg_1.png) repeat 120%,
+		url(http://localhost:8000/site_media/images/stars_bg_2.png) repeat -80%,
+		url(http://localhost:8000/site_media/images/radial_bg.png) no-repeat 60%;
+	background-color:#11041c;
+	font-size:12px;
+	font-family:Arial,sans-serif;
+}
+
+/*-----------------TYPOGRAPHY----------------*/
+h1{font-family:'league-gothic-1','league-gothic-2', sans-serif; color:rgba(255, 255, 255, 1); font-size:1000%; text-shadow:2px 2px 1px #222; font-weight:bold; text-transform:uppercase;}
+h2{font-family:'league-gothic-1','league-gothic-2', sans-serif; color:rgba(255, 255, 255, 1); font-style:italic; font-size:600%; text-shadow:2px 2px 1px #222; font-weight:bold; text-transform:uppercase; -webkit-transition:all .2s;}
+h3{font-family:'league-gothic-1','league-gothic-2', sans-serif;}
+
+/*-----------------BUTTONS----------------*/
+.button{padding:0; background:rgba(255,255,255,.2); border-radius:5px; color:#fff; font-size:200%; cursor:pointer; text-align:center; border:1px solid rgba(255,255,255,.3); -webkit-transition:all .2s;}
+.button a{display:block; padding:10px 20px;}
+.button:hover{background:rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);}
+
+/*-----------------404 PAGE----------------*/
+#error-ship{background: url(http://localhost:8000/site_media/images/space-ship-big.png) no-repeat; height:300px; width:274px; margin:50px auto 0px auto;}
+#error-wrapper h1{text-align:center; font-size:500%; font-style:italic; text-shadow:3px 3px 1px rgba(0,0,0, .2); margin-bottom:20px;}
+#error-wrapper h2{text-align:center; font-size:200%; margin-bottom:10px;}
+#error-wrapper #back{width:220px; font-size:120%; margin:0 auto; display:block;}
+#error-wrapper .button a{text-decoration:none; color:#fff; display:block;}

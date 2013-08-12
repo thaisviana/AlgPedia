@@ -1,0 +1,35 @@
+
+/*
+ * Correções para o layout
+ */
+
+.tabs-right {
+	float:right !important;
+}
+
+.accordion-heading-container {
+	display:inline-block;
+	width:auto;
+}
+.accordion-heading {
+	overflow:auto;
+}
+
+.add_evaluation-container {
+	float:right;
+}
+.add_evaluation {
+	display:inline-block;
+	cursor:pointer;
+}
+
+.label-correction {
+	display: inline;
+	position: relative;
+	top: 4px;
+	padding-right: 5px;
+}
+
+#top5-list {
+	padding:20px 0px;
+}

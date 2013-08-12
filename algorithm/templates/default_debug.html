@@ -1,0 +1,41 @@
+{% extends "main_template.html" %}
+{% block content %}
+
+<!--<div>
+
+<img src="http://localhost:8000/site_media/images/algpedia.jpg"  style="border-style:solid;" height="70%" alt="" />
+</div>-->
+<div class="span1"></div>
+<div class="row">
+  <div class="span9">
+  <!--<img src="http://localhost:8000/site_media/images/logo_new.png"  style="border-style:solid;" alt="" />-->
+ 	  <h5 class="text-info text-center">
+		AlgPedia is a <strong>free collaborative </strong>encyclopedia constructed to provide an RDF-based algorithms that can be accessed via this website or through Open Linked Data applications that process structured data.</h5>
+	<div class="row" id="top5-list">
+     <!--Below, the algorithms which have, at least, one of the top 5 implementations:-->
+     Below, the top 5 algorithms:
+      <table class="table table-bordered" id="algorithms_uri">									
+			{% for alg in top5_algorithms %}	
+			<tr>
+				<td>
+					<a href="{{alg.link}}"> {{ alg.name }} </a>
+				</td>
+			</tr>
+				{% empty %}
+				<p> We have no votes yet for the algorithms. <a href="/accounts/login">Be the first to vote!</a> You just need to be logged in. </p>
+			{% endfor %}
+		</table>
+    </div>
+	<div class="row">
+      &nbsp;&nbsp;&nbsp;
+    </div>
+    <div class="row">
+	<div class="span4">&nbsp;</div>
+      <div class="span3"><img src="http://localhost:8000/site_media/images/im_logo.jpg" class="img-rounded" style="border-style:solid;" alt="IM" /></div>
+	  <div class="span3"><img src="http://localhost:8000/site_media/images/logo_ufrj.jpg" class="img-rounded" style="border-style:solid;" alt="UFRJ" /></div>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}
+			

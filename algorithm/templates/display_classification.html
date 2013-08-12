@@ -1,0 +1,36 @@
+{% extends "main_template.html" %}
+{% block content %}
+	<label class="control-label"><strong>{{ classif.name }} </strong><a id="add_algorithm" href="http://localhost:8000/add/cat/id/{{classif.id}}"><img src="http://localhost:8000/site_media/images/add-button.png" height="100%" alt="Add algorithm" />	</a>
+	<div id="classification">
+		&nbsp;&nbsp;&nbsp;<a href="{{ classif.uri }}" target="_blank"> [More Information] </a></td>
+			<!-- table containing algorithms with such classification -->
+		<form id="add_algorithm" >
+			<input type="hidden" name="classification_id" value="{{classif.id}}"/>
+			<!--<input type="button" id="add_algorithm" value="Add Algorithm" /></br></br>	-->			
+			<br />
+			<p>Below, the top 5 algorithms for this classification:</p>
+			<table class="table table-bordered">									
+				{% for alg in top5_algorithms %}	
+				<tr>
+					<td><a href="{{alg.link}}"> {{ alg.name }} </td>
+				</tr>
+					{% empty %}
+					<p> We have no votes yet for the algorithms. <a href="/accounts/login">Be the first to vote!</a> You just need to be logged in. </p>
+				{% endfor %}
+			</table>
+		
+			<table id="algorithms" class="table table-striped info">
+				<tr>
+					<td>Other Algorithms </td>
+				</tr>
+				{% for alg in algorithms %}
+					<tr>
+						<td><a href="{{alg.link}}"> {{ alg.name }} </td>
+					</tr>
+					{% empty %}
+						<p> There are no Algorithms with this Classification. </p>
+				{% endfor %}
+			</table>
+		</form>
+	</div>
+{% endblock %}

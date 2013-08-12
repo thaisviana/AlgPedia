@@ -1,0 +1,16 @@
+{% extends "main_template.html" %}
+{% block content %}
+<div class="span1"></div>
+	<div id="classifications" class="span10">
+		<table id="classifications_uri" class="table table-bordered">				
+			{% for algorithm in algorithms %}	
+				<tr>
+					<td><a href="{{algorithm.link}}"> {{ algorithm.name }} </td>
+				</tr>
+				{% empty %}
+				<p> There are no algorithms available. </p>
+			{% endfor %}		
+		</table>
+	</div>
+<div class="span1"></div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "main_template.html" %}
+{% block content %}
+	<h4>{{ algorithm.name }}</h4>
+	&nbsp;&nbsp;&nbsp;
+	<form class="form-horizontal" method="POST">
+	{% csrf_token %}
+		<input type="hidden" name="algorithm_id" value="{{algorithm.id}}" />
+		<div class="control-group">
+			<label class="control-label" for="inputName">Language: <label>
+			<div class="controls">								
+				<select name= "programming_languages" id="programming_languages">
+					{% for p_lang in programming_languages %}
+						<option value="{{p_lang.id}}">{{p_lang.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		&nbsp;&nbsp;&nbsp;
+		<div class="control-group">
+			<label class="control-label" for="inputAlgorithm">Implementation: </label>			
+				<div class="controls">
+					<textarea name="algorithm_code" id="algorithm_code" class="textarea" style="width: 810px; height: 200px"></textarea>
+				</div>
+		</div>
+		<button class="btn btn-large btn-block btn-info" type="submit" id="add_imp">Add Implementation</button>
+	</form>
+
+{% endblock %}

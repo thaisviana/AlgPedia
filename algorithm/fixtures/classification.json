@@ -1,0 +1,18 @@
+[
+  {
+    "model": "algorithm.Classification",
+    "pk": 1,
+    "fields": {
+      "name": "John",
+      "uri": "http://www.google.com/?q=john"
+    }
+  },
+  {
+    "model": "algorithm.Classification",
+    "pk": 2,
+    "fields": {
+      "name": "Lenon",
+      "uri": "http://www.google.com/?q=lenon"
+    }
+  }
+]

@@ -1,0 +1,236 @@
+{% extends "main_template.html" %}
+
+{% block content %}
+	<h3><a href="{{ classification_algp_url }}"	target="_blank">{{algorithm_classification }}</a></h3>
+	
+	<form id="add_algorithm_form">
+		<input type="hidden" id="algorithm_id" value="{{algorithm_id}}" />	
+		<h4><span id="algorithm-name">{{algorithm_name}}</span> &nbsp;<a href="http://localhost:8000/site_media/{{rdf_path}}" target="_blank"> <img style="width: 20px; height:20px" src="http://localhost:8000/site_media/images/rdf.jpeg" id="rdf"/> </a></h4>
+		<table class="table table-condensed info">
+			 <tr>
+				<td> <label class="control-label" for="inputName"> About:</label> </td>
+				<td id="algorithm_about" >&nbsp;{{algorithm_about}}&nbsp;<a href="{{ classification_dbp_url }}" target="_blank"> [More Information] </a></td>
+			 </tr>
+		</table >
+		
+		<label class="control-label" for="inputName"><strong>Implementations :</strong><a id="add_implementation" href="http://localhost:8000/add/alg/id/{{algorithm_id}}"><img src="http://localhost:8000/site_media/images/add-button.png" height="100%" alt="Add implementation" />	</a>
+		<!--<input type="button" value="Add Implementation" id="add_implementation" ></input><i class="icon-plus"></i>-->
+		</label>
+		<div>
+		{% for implementation in implementations %}
+			<div class="accordion" id="implementation-{{implementation.id}}">
+				<div class="accordion-group">
+					<div class="accordion-heading inline">
+						<div class="accordion-heading-container">
+							<a class="accordion-toggle"  data-toggle="collapse" data-parent="#implementation{{implementation.id}}" href="#collapse{{implementation.id}}">
+								{{ implementation.programming_language }}
+							</a>
+						</div>
+						<div class="add_evaluation-container">
+							<a class="add_evaluation" id="evaluate-{{implementation.id}}">
+								<img src="http://localhost:8000/site_media/images/evaluation-icon.jpeg" height="100%" alt="" />
+							</a>
+						</div>
+					</div>
+					
+					<div id="collapse{{implementation.id}}" class="accordion-body collapse in">
+						<div class="span2"></div>
+						<div class="accordion-inner align-center">
+							<textarea id="alg_implementation_{{implementation.id}}" name="alg_implementation_{{implementation.id}}" style="width: 810px; height: 200px" >
+								
+										{{ implementation.code }}
+								
+							</textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% empty %}
+						<div> There are no implementations available for this algorithm yet. </div>
+			{% endfor %}	
+			</div>
+		</div>
+			
+	</form>
+	
+	<!-- Modal for add evaluation -->
+	<div id="evaluation-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<!--<form class="form-horizontal" method="post" id="add_evaluation_form">{% csrf_token %}-->
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="evaluation-modal-impl-plang"></h3>
+		</div>
+		<div class="modal-body">
+			{% csrf_token %}
+			<input type="hidden" name="evaluation-modal-impl-id" value="" id="evaluation-modal-impl-id" />
+			<table class="table table-bordered">
+				{% for iq in impl_question_answers %}
+				<tr>
+					<td>{{iq.i_q.text}}?</td>
+					<td>
+						<div class="evaluation-modal-radiogroup" id="evaluation-modal-question-{{iq.i_q.id}}">
+							<input type="hidden" class="impl-question" value="{{iq.i_q.id}}" />
+						{% for iqa in iq.i_q_a %}
+							<input type="radio" name="evaluation-modal-{{iq.i_q.id}}" id="evaluation-modal-{{iqa.id}}" value="{{iqa.value}}" />
+							<label for="evaluation-modal-{{iqa.id}}" class="label-correction">{{iqa.text}}</label>
+						{% endfor %}
+						</div>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<div class="modal-footer">
+			<button id="evaluation-modal-close" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			<button id="evaluation-modal-save" class="btn btn-primary">Save changes</button>
+		</div>
+		<!--</form>-->
+	</div>
+	
+	<div id="user-votes">
+		{% for uv in user_votes %}
+		<div class="user-vote" id="uv-impl-{{uv.iq}}">
+			{% for iqa in uv.iqa %}
+			<input type="hidden" id="uv-iq-{{iqa.implementation_question_id}}" value="{{iqa.question_answer_id}}" />
+			{% endfor %}
+		</div>
+		{% endfor %}
+	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#evaluation-modal").on('show', modalShowHandler);
+			$("#evaluation-modal").on('hidden', modalHiddenHandler);
+			
+			$(".add_evaluation").click(function(){
+				if($('#logged').val()== 'false'){
+					bootbox.alert("You have to login first");
+				}
+				else {
+					var implementationId = $(this).attr('id').split('-').pop();
+					var implementationPLanguage = $("#implementation-" + implementationId).find(".accordion-toggle").html().trim();
+					var algorithmName = $("#algorithm-name").html();
+					
+					$("#evaluation-modal-impl-id").val(implementationId);
+					$("#evaluation-modal-impl-plang").html(algorithmName + "in " + implementationPLanguage);
+					
+					$("#evaluation-modal").modal();
+				}
+			});
+			
+			// Save the vote for the implementation
+			$("#evaluation-modal-save").click(function() {
+				// Implementation ID, answers and token are needed 
+				var implId = $("#evaluation-modal-impl-id").val();
+				var radiogroups = $(".evaluation-modal-radiogroup");
+				var token = $("input[name=csrfmiddlewaretoken]").val();
+				
+				var questions = new Array();
+				var validated = true;
+				
+				for (var i = 0; i < radiogroups.length; i++) {
+					var id = $(radiogroups[i]).find(".impl-question").val();
+					var answerId = $(radiogroups[i]).find("input[type=radio]:checked");
+					
+					if (answerId.size() == 0) {
+						validated = false;
+						break;
+					}
+					
+					answerId = answerId.attr('id').split("-").pop();
+					
+					questions.push(new questionAnswer(id, answerId));
+				}
+				
+				if (token != null && token != undefined && token != "" && validated) {
+					// JS Object with a JSON of question anwsers
+					window.userVote = new implementationVote(token, implId, JSON.stringify(questions));
+					var url = "./" + $("#algorithm_id").val();
+					
+					//console.log(params);
+					
+					$.post(url, window.userVote, function(status) {
+						//console.log(status);
+						if (status == "success") {
+							bootbox.alert("Evaluation saved successfully!");
+							updateVotesDiv();
+						}
+						else if (status == "error") {
+							bootbox.alert("There was and error when saving your evaluation...");
+						}
+					});
+					
+					$("#evaluation-modal").modal('hide');
+				}
+				else {
+					alert("Please, fill the fields correctly!");
+				}
+			});
+		});
+		
+		function questionAnswer(id, answerId) {
+			this.id = id;
+			this.answerId = answerId;
+		}
+		
+		function implementationVote(token, implId, questions) {
+			this.csrfmiddlewaretoken = token;
+			this.implId = implId;
+			this.questions = questions;
+		}
+		
+		function modalShowHandler() {
+			var implId = $("#evaluation-modal-impl-id").val();
+			var answers = $("#uv-impl-" + implId);
+			var radios = $(".evaluation-modal-radiogroup");
+			var questionVal = null;
+			var question = null;
+			var answer = null;
+			var answerVal = null;
+			//console.log(answers.size());
+			if (answers.size() != 0) {
+				$("#evaluation-modal-save").prop("disabled", true);
+				answers = answers.find("input[type=hidden]");
+				
+				for (var i = 0; i < answers.size(); i++) {
+					//console.log($(answers[i]));
+					answer = $(answers[i]);
+					questionVal = answer.attr('id').split('-').pop();
+					answerVal = answer.val();
+					question = $("#evaluation-modal-question-" + questionVal);
+					
+					$("#evaluation-modal-" + answerVal).prop("checked", true);
+				}
+			}
+			else {
+				$("#evaluation-modal-save").prop("disabled", false);
+			}
+		}
+		
+		function modalHiddenHandler() {
+			$("#evaluation-modal-impl-id").val(-1);
+			$(".evaluation-modal-radiogroup").find("input[type=radio]").each(function() {
+				$(this).removeAttr("checked");
+			});
+		}
+    
+    function updateVotesDiv() {
+			var implId = window.userVote.implId;
+			var questions = JSON.parse(window.userVote.questions);
+			var recentVote = '<div class="user-vote" id="uv-impl-' + implId + '">';
+			var qi = null;
+			var qa = null;
+			
+			for (var i = 0; i < questions.length; i++) {
+				qi = questions[i].id;
+				qa = questions[i].answerId;
+				recentVote += '<input type="hidden" id="uv-iq-' + qi + '" value="' + qa + '" />';
+			}
+			
+			recentVote += '</div>';
+			
+			$("#user-votes").append(recentVote);
+			window.userVote = null;
+		}
+	</script>
+{% endblock %}

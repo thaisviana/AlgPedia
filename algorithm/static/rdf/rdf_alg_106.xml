@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<rdf:RDF
+
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+
+	xmlns:dbpedia-owl="http://dbpedia.org/ontology/"
+
+	xmlns:algpedia-owl="localhost:8080/ontology"
+
+	>
+
+  <rdf:Description rdf:about="http://localhost:8000/show/alg/id/106">
+
+    <rdfs:label xml:lang="en">AthaisAlgorithm</rdfs:label>
+
+    <rdfs:comment xml:lang="en">Randomized Algorithms</rdfs:comment>
+
+    <algpedia-owl:classification rdf:resource="Randomized Algorithms" />
+
+	<owl:sameAs rdf:resource=""/>
+
+  </rdf:Description>
+
+</rdf:RDF>

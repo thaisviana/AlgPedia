@@ -1,0 +1,42 @@
+{% extends "main_template.html" %}
+{% block content %}
+<div class="span4">&nbsp;&nbsp;&nbsp;</div>
+<div class="span8">
+<p> It would be great hear from you </p>
+
+	<form action="/contact/" method="post">{% csrf_token %}
+		{% if form.subject.errors %}
+			<ol>
+			{% for error in form.subject.errors %}
+				<li><strong>{{ error|escape }}</strong></li>
+			{% endfor %}
+			</ol>
+		{% endif %}
+		
+		<div class="control-group">
+			<label class="control-label" for="inputName"> Subject :</label>
+			<div class="controls">
+				{{form.subject}}
+			</div>
+		</div>	
+		<div class="control-group">
+			<label class="control-label" for="inputName"> Sender :</label>
+			<div class="controls">
+				{{form.sender}}
+			</div>
+		</div>	
+		<!--<div class="control-group">
+			<label class="control-label" for="inputName"> CC to myself :</label>
+				{{form.cc_myself}}
+			</div>	-->
+		<div class="control-group">
+			<label class="control-label" for="inputName"> Message :</label>
+			<div class="controls">
+				{{form.message}}
+			</div>
+		</div>				
+		
+		<input type="submit" value="Submit" />
+	</form>
+	</div>
+{% endblock  %}
