@@ -1,6 +1,4 @@
-﻿distribute-0.6.36
-
-MySQL-python==1.2.3
+﻿MySQL-python==1.2.3
 PIL==1.1.7
 
 Django==1.5.1
