@@ -2,6 +2,7 @@
 settings/local.py
 env
 media
+*.pyc
 .env
 .project
 .pydevproject
