@@ -4,6 +4,7 @@ import os
 import dj_database_url
 
 DEBUG = True
+LOCAL = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (

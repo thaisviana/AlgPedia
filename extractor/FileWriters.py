@@ -8,6 +8,7 @@ Created on 26/02/2013
 
 import os
 from bs4 import BeautifulSoup
+from django.conf import settings
 
 class FileWriter():
     def __init__(self,params):
@@ -157,8 +158,10 @@ class RDFWriter(FileWriter):
 		return alg_rdf_text
 		
 	def replace_vars_in_template(self, variables):
-		template_path = os.path.join(os.path.dirname(__file__), '/algorithm/static/rdf/rdf_modelo.xml').replace('/', '\\')
-		
+		if settings.LOCAL:
+			template_path = os.path.join(os.path.dirname(__file__), '../algorithm/static/rdf/rdf_modelo.xml').replace('/', '\\')
+		else:
+			template_path = os.path.join(os.path.dirname(__file__), '/algorithm/static/rdf/rdf_modelo.xml')
 		rdf_template = open(template_path)
 		lines = rdf_template.readlines()
 		rdf_template.close()
