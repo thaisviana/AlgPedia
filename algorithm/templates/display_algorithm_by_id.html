@@ -5,7 +5,7 @@
 	
 	<form id="add_algorithm_form">
 		<input type="hidden" id="algorithm_id" value="{{algorithm_id}}" />	
-		<h4><span id="algorithm-name">{{algorithm_name}}</span> &nbsp;<a href="http://localhost:8000/site_media/{{rdf_path}}" target="_blank"> <img style="width: 20px; height:20px" src="http://localhost:8000/site_media/images/rdf.jpeg" id="rdf"/> </a></h4>
+		<h4><span id="algorithm-name">{{algorithm_name}}</span> &nbsp;<a href="{{ STATIC_URL }}{{rdf_path}}" target="_blank"> <img style="width: 20px; height:20px" src="{{ STATIC_URL }}images/rdf.jpeg" id="rdf"/> </a></h4>
 		<table class="table table-condensed info">
 			 <tr>
 				<td> <label class="control-label" for="inputName"> About:</label> </td>
@@ -13,7 +13,7 @@
 			 </tr>
 		</table >
 		
-		<label class="control-label" for="inputName"><strong>Implementations :</strong><a id="add_implementation" href="http://localhost:8000/add/alg/id/{{algorithm_id}}"><img src="http://localhost:8000/site_media/images/add-button.png" height="100%" alt="Add implementation" />	</a>
+		<label class="control-label" for="inputName"><strong>Implementations :</strong><a id="add_implementation" href="/add/alg/id/{{algorithm_id}}"><img src="{{ STATIC_URL }}images/add-button.png" height="100%" alt="Add implementation" />	</a>
 		<!--<input type="button" value="Add Implementation" id="add_implementation" ></input><i class="icon-plus"></i>-->
 		</label>
 		<div>
@@ -28,7 +28,7 @@
 						</div>
 						<div class="add_evaluation-container">
 							<a class="add_evaluation" id="evaluate-{{implementation.id}}">
-								<img src="http://localhost:8000/site_media/images/evaluation-icon.jpeg" height="100%" alt="" />
+								<img src="{{ STATIC_URL }}images/evaluation-icon.jpeg" height="100%" alt="" />
 							</a>
 						</div>
 					</div>
