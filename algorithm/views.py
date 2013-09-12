@@ -58,15 +58,16 @@ def signin(request):
 		form = UserCreateForm(request.POST)
 		if form.is_valid():
 			new_user = form.save()
-			return HttpResponse(get_template('default_debug.html').render(Context({'logged':  request.user.is_authenticated()})))
+			ctx = {'logged':  request.user.is_authenticated()}
+			return render(request, 'default_debug.html', ctx)
 		else:
 			c = {'logged':  request.user.is_authenticated(), 'form' : form}
 			c.update(csrf(request))
-			return render_to_response("accounts/signin.html", c)
+			return render(request, 'accounts/signin.html', c)
 	else:
 		c = {'logged':  request.user.is_authenticated(), 'form' : UserCreateForm()}
 		c.update(csrf(request))
-		return render_to_response("accounts/signin.html", c)
+		return render(request, "accounts/signin.html", c)
 
 def logout(request):
 	auth.logout(request)
