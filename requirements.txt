@@ -1,11 +1,7 @@
 -r requirements-bin.txt
 
-distribute
 Django==1.5.1
 South==0.7.6
 dj-database-url==0.2.1
-gunicorn==0.17.2
-django-social-auth==0.7.7
 django-inoa==0.2.3
-djrill==0.5
 beautifulsoup4
