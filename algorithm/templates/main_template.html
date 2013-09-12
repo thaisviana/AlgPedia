@@ -3,32 +3,32 @@
 <html>
 	<head>
 		<!--<link rel="stylesheet"	href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />-->
-		<link rel="stylesheet"	href="/site_media/css/bootstrap.css" />
-		<link rel="stylesheet"	href="/site_media/css/algpedia.css" />
+		<link rel="stylesheet"	href="{{ STATIC_URL }}css/bootstrap.css" />
+		<link rel="stylesheet"	href="{{ STATIC_URL }}css/algpedia.css" />
 		<!--<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"	type="text/javascript"></script>-->
+		<script type="text/javascript">var STATIC_URL = '{{ STATIC_URL }}';</script>
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 		<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-		<script	src="/site_media/js/bootbox.js"	type="text/javascript"></script>
-		<link rel="stylesheet"	href="/site_media/css/bootstrap-wysihtml5.css" />
-		<script	src="/site_media/js/wysihtml5.js"	type="text/javascript"></script>
-		<script	src="/site_media/js/bootstrap-wysihtml5.js"	type="text/javascript"></script>
-		<script type="text/javascript" src="/site_media/tiny_mce/tiny_mce.js"></script>
-		<script type="text/javascript" src="/site_media/js/algpedia.js"></script>
-		<script type="text/javascript" src="/site_media/js/bootstrap.js"></script>
-		<script type="text/javascript" src="/site_media/js/overlib.js"></script>
+		<script	src="{{ STATIC_URL }}js/bootbox.js"	type="text/javascript"></script>
+		<link rel="stylesheet"	href="{{ STATIC_URL }}css/bootstrap-wysihtml5.css" />
+		<script	src="{{ STATIC_URL }}js/wysihtml5.js" type="text/javascript"></script>
+		<script	src="{{ STATIC_URL }}js/bootstrap-wysihtml5.js"	type="text/javascript"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/algpedia.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/overlib.js"></script>
 		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>AlgPedia</title>
-		<img src="/site_media/images/header_binario.png" height="100%" alt="" />	
+		<img src="{{ STATIC_URL }}images/header_binario.png" height="100%" alt="" />	
 		<!--<div class="alert alert-info ">
-			<h1><img src="http://localhost:8000/site_media/images/logo.png" width="100" height="100" alt="" />AlgPedia</h1>
+			<h1><img src="{{ STATIC_URL }}images/logo.png" width="100" height="100" alt="" />AlgPedia</h1>
 		</div>-->
 		{% block extra-head %}
 		{% endblock %}
 	</head>
 	<body>
-	
 		<ul class="nav nav-tabs">
 			<li ><a href="/">Home</a></li>
 			<!--<li ><a href="http://localhost:8000/admin">Admin Page</a></li>-->

@@ -12,13 +12,12 @@ LOCAL = False
 # URL settings (optional).
 HOST_NAME = 'algpedia.herokuapp.com'  # Only if your instance uses a hostname different than 'localhost'.
 MEDIA_URL = '/media/'
-STATIC_URL = '/static/'
+STATIC_URL = '/algorithm/static/'
 
 DATABASES = {'default': dj_database_url.config(default=os.environ['CLEARDB_DATABASE_URL'])}
 
 # Email settings.
-EMAIL_FROM_ADDRESS = 'Arranjei <contato@ensaiolegal.com.br>'  # All instances (except production) should set a custom sender name to it easier to distinguish where test email came from.
-DETOUR_EMAIL_ADDRESS = 'Pablo Abdelhay <pabdelhay@inoa.com.br>'  # Developer instances should set the catch-all address to avoid having mail sent to the whole development team.
+EMAIL_FROM_ADDRESS = 'AlgPedia <contato@algpedia.com.br>'  # All instances (except production) should set a custom sender name to it easier to distinguish where test email came from.
 
 CACHES = {
     'default': {

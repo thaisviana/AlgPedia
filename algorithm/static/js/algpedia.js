@@ -30,7 +30,7 @@ $(function() {
 		}else{			
 			var form = document.forms[0];
 			var alg_id = form['algorithm_id'].value;			
-			window.location = "http://localhost:8000/add/alg/id/"+alg_id;
+			window.location = "/add/alg/id/"+alg_id;
 		}
 	});
 	$('.textarea').wysihtml5();
@@ -43,7 +43,7 @@ $(function() {
 			var form = document.forms[0];
 			var classification_id = form['classification_id'].value;
 			
-			window.location = "http://localhost:8000/add/cat/id/"+classification_id;
+			window.location = "/add/cat/id/"+classification_id;
 		}		
 	});
 	$("#add_algorithm").mouseover(function () {

@@ -29,7 +29,7 @@ class Bootstrapper():
 		
 		# always 0-based, baby
 		#self.insertClassifications(filename, 0)
-		
+
 		# second parameter is a list of columns that will be used create the classification object
 		#self.insert_classifications(filename, [0])
 		self.populate_database(filename, [0,1,2])

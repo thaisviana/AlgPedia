@@ -138,9 +138,14 @@ EMAIL_HOST_USER = 'me@gmail.com'
 EMAIL_HOST_PASSWORD = 'password'
 
 TEMPLATE_CONTEXT_PROCESSOR = (
- 'django.contrib.auth.context_processors.auth',
- 'django.core.context_processors.media',
- 'django.core.context_processors.csrf',
+    'django.core.context_processors.csrf',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
 )
 
 LOGIN_URL = '/accounts/login/'
