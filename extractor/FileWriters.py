@@ -157,7 +157,7 @@ class RDFWriter(FileWriter):
 		return alg_rdf_text
 		
 	def replace_vars_in_template(self, variables):
-		template_path = os.path.join(os.path.dirname(__file__), '../algorithm/static/rdf/rdf_modelo.xml').replace('/','\\')
+		template_path = os.path.join(os.path.dirname(__file__), '/algorithm/static/rdf/rdf_modelo.xml').replace('/', '\\')
 		
 		rdf_template = open(template_path)
 		lines = rdf_template.readlines()
