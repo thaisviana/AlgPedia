@@ -1,7 +1,7 @@
 {% extends "main_template.html" %}
 
 {% block extra-head %}
-	<link rel="stylesheet" href="/site_media/js/plugins/chosen/chosen.min.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}js/plugins/chosen/chosen.min.css">
 {% endblock %}
 
 {% block content %}
@@ -86,7 +86,7 @@
 		</table>
 		<input type="submit" value="Save" />
 	</form>
-	<script src="/site_media/js/plugins/chosen/chosen.jquery.min.js" type="text/javascript"></script>
+	<script src="{{ STATIC_URL }}js/plugins/chosen/chosen.jquery.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var cfg = {width: '100%'};
