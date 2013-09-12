@@ -161,7 +161,7 @@ class RDFWriter(FileWriter):
 		if settings.LOCAL:
 			template_path = os.path.join(os.path.dirname(__file__), '../algorithm/static/rdf/rdf_modelo.xml').replace('/', '\\')
 		else:
-			template_path = os.path.join(os.path.dirname(__file__), '/algorithm/static/rdf/rdf_modelo.xml')
+			template_path = os.path.join(os.path.dirname(__file__), '../algorithm/static/rdf/rdf_modelo.xml')
 		rdf_template = open(template_path)
 		lines = rdf_template.readlines()
 		rdf_template.close()
