@@ -12,7 +12,7 @@ class Classification(models.Model):
 	uri = models.URLField()
 	
 	def get_show_url(self):
-		return "http://localhost:8000/show/cat/id/%i" % self.id 
+		return "/show/cat/id/%i" % self.id
 	
 	def __unicode__(self):
 		return u'%s' % self.name
@@ -26,7 +26,7 @@ class Algorithm(models.Model):
 	reputation = models.FloatField()
 	
 	def get_show_url(self):
-		return "http://localhost:8000/show/alg/id/%i" % self.id
+		return "/show/alg/id/%i" % self.id
 	
 	def __unicode__(self):
 		return u'%s' % self.name.lower().title()
@@ -43,7 +43,7 @@ class Implementation(models.Model):
 		return u'%s' % self.code
 	
 	def get_show_url(self):
-		return "http://localhost:8000/show/imp/id/%i" % self.id
+		return "/show/imp/id/%i" % self.id
 
 ###################
 

@@ -33,8 +33,8 @@ def get_user_interested_classifications(username=None):
 	
 	for interest in user_interests:
 		names.append(interest.classification.name)
-		links.append("http://localhost:8000/show/cat/id/" + str(interest.classification.id))
-		#collection[classification.name] = "http://localhost:8000/show/cat/id/" + str(classification.id)
+		links.append("/show/cat/id/" + str(interest.classification.id))
+		# collection[classification.name] = "/show/cat/id/" + str(classification.id)
 	
 	classif = [{'name' : t[0], 'link' : t[1]} for t in zip(names, links)]
 	
@@ -52,9 +52,9 @@ def get_all_classifications_name_link():
 	
 	for classification in classifications:
 		names.append(classification.name)
-		links.append("http://localhost:8000/show/cat/id/" + str(classification.id))
+		links.append("/show/cat/id/" + str(classification.id))
 		ids.append(classification.id)
-		#collection[classification.name] = "http://localhost:8000/show/cat/id/" + str(classification.id)
+		# collection[classification.name] = "/show/cat/id/" + str(classification.id)
 	
 	classif = [{'name' : t[0], 'link' : t[1], 'id': t[2]} for t in zip(names, links, ids)]
 	
@@ -420,7 +420,7 @@ def make_algorithm_link(a_id):
 	return ''
 
 def get_classification_display_url():
-	return "http://localhost:8000/show/cat/id/#"
+	return "/show/cat/id/#"
 	
 def get_algorithm_display_url():
-	return "http://localhost:8000/show/alg/id/#"
+	return "/show/alg/id/#"
