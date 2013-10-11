@@ -2,8 +2,10 @@
 settings/local.py
 env
 media
+rdf
 *.pyc
 .env
 .project
 .pydevproject
 .settings
+.metadata
