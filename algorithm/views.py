@@ -234,15 +234,21 @@ def show_algorithm_by_id(request, id):
 	if request.method == "POST":
 		username = request.user.username
 		impl_id = int(request.POST['implId'])
+		implementation = Implementation.objects.get(id=impl_id)
 
 		# Parsing JSON with questions ids and answers
 		questions = json.loads(request.POST['questions'])
 
+		reputation = 0
 		for iq in questions:
 			question_id = int(iq[u'id'])
 			question_answer = int(iq[u'answerId'])
 
-			insert_user_impl_question_answer(username, impl_id, question_id, question_answer)
+			reputation += insert_user_impl_question_answer(username, impl_id, question_id, question_answer)
+
+		reputation = reputation / 12
+
+		implementation.save_reputation(reputation)
 
 		return HttpResponse('success')
 
@@ -275,7 +281,7 @@ def display_add_implementation(request, id):
 	if request.method == 'POST':
 		algorithm = get_algorithm_by_id(int(request.POST['algorithm_id']))
 		p_lang = get_programming_language_by_id(int(request.POST['programming_languages']))
-		implementation = insert_implementation_alg_p_lang(algorithm, p_lang, request.POST['algorithm_code'], False)
+		implementation = insert_implementation_alg_p_lang(algorithm, p_lang, request.POST['algorithm_code'], False, request.user)
 		return HttpResponseRedirect(algorithm.get_show_url())
 	else:
 		c = {'logged':  request.user.is_authenticated(), 'programming_languages' : get_all_programming_languages(), 'algorithm' : get_algorithm_by_id(int(id))}
@@ -289,8 +295,8 @@ def show_classification_by_id(request, id):
 	algs_reputations = map(lambda alg: alg.reputation, algs)
 
 	algs = [
-		{'name' : t[0], 'link' : t[1]} for t in 
-			zip(algs_names, 
+		{'name' : t[0], 'link' : t[1]} for t in
+			zip(algs_names,
 					[
 						get_algorithm_display_url().replace('#', str(id)) for id in map(lambda alg: alg.id, algs)
 					],
@@ -315,7 +321,7 @@ def display_add_algorithm(request, id):
 
 	if request.method == 'POST':
 		form = AlgorithmForm(request.POST)
-		algorithm = insert_algorithm(request.POST['name'], request.POST['description'], get_classification_by_id(int(request.POST['classification'])), False)
+		algorithm = insert_algorithm(request.POST['name'], request.POST['description'], get_classification_by_id(int(request.POST['classification'])), False, request.user)
 		return HttpResponseRedirect(algorithm.get_show_url())
 	else:
 		c = {'form' : AlgorithmForm(),
