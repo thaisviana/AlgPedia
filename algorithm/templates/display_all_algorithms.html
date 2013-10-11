@@ -5,7 +5,7 @@
 		<table id="classifications_uri" class="table table-bordered">				
 			{% for algorithm in algorithms %}	
 				<tr>
-					<td><a href="{{algorithm.link}}"> {{ algorithm.name }} </td>
+					<td><a href="{{algorithm.link}}"> {{ algorithm.name }} - Reputation:  {{ algorithm.reputation }}</td>
 				</tr>
 				{% empty %}
 				<p> There are no algorithms available. </p>

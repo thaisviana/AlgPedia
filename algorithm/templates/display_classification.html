@@ -12,7 +12,7 @@
 			<table class="table table-bordered">									
 				{% for alg in top5_algorithms %}	
 				<tr>
-					<td><a href="{{alg.link}}"> {{ alg.name }} </td>
+					<td><a href="{{alg.link}}"> {{ alg.name }} - Reputation: {{ alg.reputation }}</td>
 				</tr>
 					{% empty %}
 					<p> We have no votes yet for the algorithms. <a href="/accounts/login">Be the first to vote!</a> You just need to be logged in. </p>
@@ -25,7 +25,7 @@
 				</tr>
 				{% for alg in algorithms %}
 					<tr>
-						<td><a href="{{alg.link}}"> {{ alg.name }} </td>
+						<td><a href="{{alg.link}}"> {{ alg.name }}- Reputation: {{ alg.reputation }} </td>
 					</tr>
 					{% empty %}
 						<p> There are no Algorithms with this Classification. </p>

@@ -204,8 +204,8 @@ def show_all_classifications(request):
 def show_all_algorithms(request):
 	algorithms = get_all_algorithms()
 	ctx_variables = {}
-	algs = [ (alg.get_show_url(), alg.name) for alg in algorithms]
-	algorithms = [{'link' : a[0], 'name' : a[1]} for a in algs]
+	algs = [ (alg.get_show_url(), alg.name, alg.reputation) for alg in algorithms]
+	algorithms = [{'link' : a[0], 'name' : a[1], 'reputation': a[2]} for a in algs]
 	ctx_variables['algorithms'] = algorithms
 	ctx_variables['logged'] = request.user.is_authenticated()
 	return render(request, 'display_all_algorithms.html', ctx_variables)
@@ -286,8 +286,17 @@ def show_classification_by_id(request, id):
 	classification = get_classification_by_id(int(id))
 	algs = get_algorithms_by_classification(classification)
 	algs_names = map(lambda alg: alg.name, algs)
+	algs_reputations = map(lambda alg: alg.reputation, algs)
 
-	algs = [{'name' : t[0], 'link' : t[1]} for t in zip(algs_names, [get_algorithm_display_url().replace('#', str(id)) for id in map(lambda alg: alg.id, algs)])]
+	algs = [
+		{'name' : t[0], 'link' : t[1]} for t in 
+			zip(algs_names, 
+					[
+						get_algorithm_display_url().replace('#', str(id)) for id in map(lambda alg: alg.id, algs)
+					],
+				algs_reputations
+			)
+	]
 
 	top5_algs = get_top5_algorithms_by_classification(classification)
 

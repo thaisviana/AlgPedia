@@ -25,6 +25,8 @@ class Algorithm(models.Model):
 	visible = models.BooleanField()
 	reputation = models.FloatField()
 	
+	user = models.ForeignKey(User, null=True, blank=True, verbose_name=u"Creator")
+	
 	def get_show_url(self):
 		return "/show/alg/id/%i" % self.id
 	
@@ -38,6 +40,8 @@ class Implementation(models.Model):
 	programming_language = models.ForeignKey(ProgrammingLanguage)
 	visible = models.BooleanField()
 	reputation = models.FloatField()
+	
+	user = models.ForeignKey(User, null=True, blank=True, verbose_name=u"Creator")
 	
 	def __unicode__(self):
 		return u'%s' % self.code
