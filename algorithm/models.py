@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -39,7 +40,9 @@ class Implementation(models.Model):
 	code = models.TextField()
 	programming_language = models.ForeignKey(ProgrammingLanguage)
 	visible = models.BooleanField()
+
 	reputation = models.FloatField(default=0)
+	evaluation_count = models.IntegerField(default=0)
 
 	user = models.ForeignKey(User, null=True, blank=True, verbose_name=u"Creator")
 
@@ -48,9 +51,9 @@ class Implementation(models.Model):
 
 	def get_show_url(self):
 		return "/show/imp/id/%i" % self.id
-	
+
 	def save_reputation(self, reputation):
-		# TODO: Fazer média de reputation
+		# TODO: Fazer media de reputation
 		pass
 
 
@@ -78,7 +81,7 @@ class Question(models.Model):
 	priority = models.IntegerField()
 
 # Respostas validas para as perguntas
-class QuestionAnswer(models.Model):
+class QuestionOption(models.Model):
 	question = models.ForeignKey(Question)
 	value = models.IntegerField()
 	text = models.TextField()
@@ -87,21 +90,23 @@ class QuestionAnswer(models.Model):
 class UserQuestion(Question):
 	pass
 
+# Resposta do usuário a uma pergunta sobre seu perfil
 class UserQuestionAnswer(models.Model):
 	user = models.ForeignKey(User)
 	user_question = models.ForeignKey(UserQuestion)
-	question_answer = models.ForeignKey(QuestionAnswer)
+	question_option = models.ForeignKey(QuestionOption)
 
 # Pergunta em relacao a uma implementacao
 class ImplementationQuestion(Question):
 	pass
+
 
 # Resposta de um usuario a uma determinada pergunta sobre uma determinada implementacao
 class ImplementationQuestionAnswer(models.Model):
 	user = models.ForeignKey(User)
 	implementation = models.ForeignKey(Implementation)
 	implementation_question = models.ForeignKey(ImplementationQuestion)
-	question_answer = models.ForeignKey(QuestionAnswer)
+	question_option = models.ForeignKey(QuestionOption)
 
 	def save(self, *args, **kwargs):
 		super(ImplementationQuestionAnswer, self).save(*args, **kwargs)
@@ -112,9 +117,9 @@ class ImplementationQuestionAnswer(models.Model):
 
 		classification_weight = 1 if self.implementation.algorithm.classification.id in classifications_proeficiency else 0.5
 		language_weight = 1 if self.implementation.programming_language.id in programminglanguage_proeficiency else 0.5
-		user_profile_weight = self.user.userquestionanswer_set.get(question_answer__question_id=1).question_answer.value / 10
+		user_profile_weight = self.user.userquestionanswer_set.get(question_option__question_id=1).question_option.value / 10
 		question_weight = self.implementation_question.priority
-		answer = self.question_answer.value / 5
+		answer = self.question_option.value / 5
 
 		# this value must be (0-1) * [3,4,5]
 		reputation = (answer * user_profile_weight * language_weight * classification_weight) * question_weight
