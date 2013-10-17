@@ -243,7 +243,6 @@ def show_algorithm_by_id(request, id):
 		for iq in questions:
 			question_id = int(iq[u'id'])
 			question_answer = int(iq[u'answerId'])
-
 			reputation += insert_user_impl_question_answer(username, impl_id, question_id, question_answer)
 
 		reputation = reputation / 12
@@ -276,7 +275,7 @@ def show_algorithm_by_id(request, id):
 	return render(request, 'display_algorithm_by_id.html', ctx_variables)
 
 @login_required
-def display_add_implementation(request, id):
+def insert_implementation(request, id):
 
 	if request.method == 'POST':
 		algorithm = get_algorithm_by_id(int(request.POST['algorithm_id']))
@@ -317,7 +316,7 @@ def show_classification_by_id(request, id):
 
 
 @login_required
-def display_add_algorithm(request, id):
+def insert_algorithm(request, id):
 
 	if request.method == 'POST':
 		form = AlgorithmForm(request.POST)

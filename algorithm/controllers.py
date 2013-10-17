@@ -1,8 +1,9 @@
 import os
-from algorithm.models import Classification, Implementation, Algorithm, ProgrammingLanguage, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, ClassificationProeficiencyScale, Question, QuestionAnswer, UserQuestion, ImplementationQuestion, ImplementationQuestionAnswer, UserQuestionAnswer
+from algorithm.models import Classification, Implementation, Algorithm, ProgrammingLanguage, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, ClassificationProeficiencyScale, Question, QuestionOption, UserQuestion, ImplementationQuestion, ImplementationQuestionAnswer, UserQuestionAnswer
 from extractor.FileWriters import RDFWriter
 from django.contrib.auth.models import User
 from django.db import connection
+from django.shortcuts import get_object_or_404
 
 def is_database_empty():
 	empty = 0
@@ -82,9 +83,9 @@ def get_classification_by_id(c_id):
 # returns a	user question answer by question
 def get_questionaswer_by_question_id(question_id):
 	try:
-		questionaswer = QuestionAnswer.objects.filter(question__id=question_id)
+		questionaswer = QuestionOption.objects.filter(question__id=question_id)
 		return questionaswer
-	except QuestionAnswer.DoesNotExist:
+	except QuestionOption.DoesNotExist:
 		return []
 
 def get_userquestionanswer_by_question_id_and_user(username, question_id):
@@ -155,12 +156,12 @@ def insert_user_question_answer(username, question_id, question_answer_id):
 		existing_question_answer = UserQuestionAnswer.objects.get(user=user, user_question=question)
 
 		if question_answer_id and existing_question_answer.question_answer.id != question_answer_id:
-				question_answer = QuestionAnswer.objects.get(id=question_answer_id)
+				question_answer = QuestionOption.objects.get(id=question_answer_id)
 				existing_question_answer.question_answer = question_answer
 				existing_question_answer.save()
 	except UserQuestionAnswer.DoesNotExist:
-		question_answer = QuestionAnswer.objects.get(id=question_answer_id)
-		UserQuestionAnswer.objects.create(user=user, user_question=question, question_answer=question_answer)
+		question_answer = QuestionOption.objects.get(id=question_answer_id)
+		UserQuestionAnswer.objects.create(user=user, user_question=question, question_option=question_answer)
 
 def delete_user_question_answer(username, question_id):
 	try:
@@ -183,14 +184,14 @@ def insert_user_impl_question_answer(username, impl_id, question_id, question_an
 		existing_question_answer = ImplementationQuestionAnswer.objects.get(user=user, implementation__id=impl_id, implementation_question=question)
 
 		if question_answer_id and existing_question_answer.question_answer.id != question_answer_id:
-				question_answer = QuestionAnswer.objects.get(id=question_answer_id)
-				existing_question_answer.question_answer = question_answer
+				question_option = QuestionOption.objects.get(id=question_answer_id)
+				existing_question_answer.question_option = question_option
 				existing_question_answer.save()
 	except ImplementationQuestionAnswer.DoesNotExist:
 		implementation = Implementation.objects.get(id=impl_id)
-		question_answer = QuestionAnswer.objects.get(id=question_answer_id)
+		question_option = QuestionOption.objects.get(id=question_answer_id)
 
-		existing_question_answer = ImplementationQuestionAnswer.objects.create(user=user, implementation=implementation, implementation_question=question, question_answer=question_answer)
+		existing_question_answer = ImplementationQuestionAnswer.objects.create(user=user, implementation=implementation, implementation_question=question, question_option = question_option)
 
 		return existing_question_answer.calculate_reputation()
 
@@ -325,11 +326,8 @@ def get_all_implementationquestions():
 	return ImplementationQuestion.objects.order_by("text")
 
 def get_algorithm_by_id(a_id):
-	try:
-		alg = Algorithm.objects.get(id=a_id)
-		return alg
-	except Algorithm.DoesNotExist:
-		return None
+	alg = get_object_or_404(Algorithm, id=a_id)
+	return alg
 
 def get_all_programming_languages():
 	return ProgrammingLanguage.objects.order_by("name")

@@ -8,6 +8,7 @@
 from base import *  # @UnusedWildImport
 
 LOCAL = False
+DEBUG = False
 
 # URL settings (optional).
 HOST_NAME = 'algpedia.herokuapp.com'  # Only if your instance uses a hostname different than 'localhost'.

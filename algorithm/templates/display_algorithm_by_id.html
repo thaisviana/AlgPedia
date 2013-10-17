@@ -157,6 +157,7 @@
 						if (status == "success") {
 							bootbox.alert("Evaluation saved successfully!");
 							updateVotesDiv();
+							window.location.reload();
 						}
 						else if (status == "error") {
 							bootbox.alert("There was and error when saving your evaluation...");

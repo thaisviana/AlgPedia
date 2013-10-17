@@ -53,9 +53,10 @@ class Implementation(models.Model):
 		return "/show/imp/id/%i" % self.id
 
 	def save_reputation(self, reputation):
-		# TODO: Fazer media de reputation
-		pass
-
+		self.reputation = ((self.reputation*self.evaluation_count) + reputation) / (self.evaluation_count + 1)
+		self.evaluation_count = self.evaluation_count + 1
+		self.save()
+		return True
 
 ###################
 
@@ -117,10 +118,14 @@ class ImplementationQuestionAnswer(models.Model):
 
 		classification_weight = 1 if self.implementation.algorithm.classification.id in classifications_proeficiency else 0.5
 		language_weight = 1 if self.implementation.programming_language.id in programminglanguage_proeficiency else 0.5
-		user_profile_weight = self.user.userquestionanswer_set.get(question_option__question_id=1).question_option.value / 10
+		try:
+			user_profile_weight = self.user.userquestionanswer_set.get(question_option__question_id=1).question_option.value / float(10)
+		except: # does not exists
+			user_profile_weight = 0.1
 		question_weight = self.implementation_question.priority
-		answer = self.question_option.value / 5
+		answer = self.question_option.value / float(5)
 
 		# this value must be (0-1) * [3,4,5]
 		reputation = (answer * user_profile_weight * language_weight * classification_weight) * question_weight
+		
 		return reputation

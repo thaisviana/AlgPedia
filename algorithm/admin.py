@@ -1,5 +1,5 @@
 from django.contrib import admin
-from algorithm.models import ProgrammingLanguage, Classification, Algorithm, Implementation, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, ClassificationProeficiencyScale, Question,QuestionAnswer,UserQuestion,ImplementationQuestion,ImplementationQuestionAnswer,UserQuestionAnswer
+from algorithm.models import ProgrammingLanguage, Classification, Algorithm, Implementation, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, ClassificationProeficiencyScale, Question,QuestionOption,UserQuestion,ImplementationQuestion,ImplementationQuestionAnswer,UserQuestionAnswer
 
 class ClassificationAdmin(admin.ModelAdmin):
 	list_display = ('name', 'uri')
@@ -27,7 +27,7 @@ admin.site.register(ProeficiencyScale)
 admin.site.register(ProgrammingLanguageProeficiencyScale)
 admin.site.register(ClassificationProeficiencyScale)
 admin.site.register(Question)
-admin.site.register(QuestionAnswer)
+admin.site.register(QuestionOption)
 admin.site.register(UserQuestion)
 admin.site.register(ImplementationQuestion)
 admin.site.register(ImplementationQuestionAnswer)
