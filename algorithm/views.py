@@ -13,13 +13,11 @@ from django.template import RequestContext
 from algorithm.UserCreateForm import UserCreateForm
 from algorithm.ContactForm import ContactForm
 from algorithm.algorithmForm import AlgorithmForm
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.context_processors import csrf
-from django.shortcuts import render_to_response, render
-from django.core.mail import send_mail
-
+from django.shortcuts import render
 import json
+import htmlentitydefs, re
 
 def show_main_page(request):
 	ctx = {'logged':  request.user.is_authenticated(), 'message' : 'Welcome to AlgPedia - the free encyclopedia that anyone can edit.', 'top5_algorithms' : get_top5_algorithms()}
@@ -86,10 +84,10 @@ def contact(request):
 		print(request.POST['message'])
 		print(request.POST['sender'])
 		print(recipients)
-		try:
-			send_mail(request.POST['subject'], request.POST['message'], request.POST['sender'], recipients, fail_silently=False)
-		except BadHeaderError:
-			return render(request, 'about.html', {'logged':  request.user.is_authenticated()})
+		#try:
+		#	send_mail(request.POST['subject'], request.POST['message'], request.POST['sender'], recipients, fail_silently=False)
+		#except BadHeaderError:
+		#	return render(request, 'about.html', {'logged':  request.user.is_authenticated()})
 		return render(request, 'default_debug.html', {'logged':  request.user.is_authenticated()})
 	else:
 		c = {'logged':  request.user.is_authenticated(), 'form' : ContactForm()}
@@ -213,7 +211,11 @@ def show_all_algorithms(request):
 
 def show_algorithm_by_id(request, id):
 	alg = get_algorithm_by_id(int(id))
-
+	imps = get_implementations_by_alg_id(int(id))
+	for imp in imps:
+		imp.code = re.sub( '<[^>]*>', '', imp.code)
+		imp.code = re.sub('&([^;]+);', lambda m: unichr(htmlentitydefs.name2codepoint[m.group(1)]), imp.code)
+	
 	impl_question_answers = []
 
 	implementationquestions = get_all_implementationquestions()
@@ -256,7 +258,7 @@ def show_algorithm_by_id(request, id):
 	rdf_path = try_create_algorithm_rdf(int(id))
 
 	ctx_variables = {}
-
+	
 	ctx_variables['algorithm_name'] = alg.name
 	ctx_variables['algorithm_id'] = alg.id
 	ctx_variables['algorithm_classification'] = classification.name
@@ -265,7 +267,7 @@ def show_algorithm_by_id(request, id):
 	# make_classification_link(classification.id)
 	ctx_variables['classification_dbp_url'] = classification.uri
 	ctx_variables['rdf_path'] = rdf_path
-	ctx_variables['implementations'] = get_implementations_by_alg_id(int(id))
+	ctx_variables['implementations'] = imps
 	ctx_variables['logged'] = request.user.is_authenticated()
 	ctx_variables['impl_question_answers'] = impl_question_answers
 	ctx_variables['user_votes'] = user_votes
