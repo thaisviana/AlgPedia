@@ -339,9 +339,18 @@ def insert_algorithm(request, id):
 def moderator_dashboard(request):
 	ctx = {}
 	user = request.user
+	classifications = {}
 	user_programming_languages_ids = get_user_programming_languages_proeficiencies_ids(user.username)
 	implementations = Implementation.objects.filter(programming_language__in=user_programming_languages_ids, visible=False)
+	for implementation in  implementations:
+		
+		try :
+			classifications[implementation.algorithm.classification.name].append(implementation) 
+		except :
+			classifications[implementation.algorithm.classification.name] = []
+			classifications[implementation.algorithm.classification.name].append(implementation) 
 	
-	ctx['implementations'] = implementations
+	print(classifications)
+	ctx['classifications'] = classifications
 	return render(request, 'moderator_dashboard.html', ctx)
 	

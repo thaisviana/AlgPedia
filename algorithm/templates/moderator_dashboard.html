@@ -1,4 +1,59 @@
 {% extends "main_template.html" %}
+
 {% block content %}
-ALOWQ!!!
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.actions a').click(function(){
+		var $imp = $(this).parents('.implementation-wrapper');
+		var imp_id = $imp.data('implementation_id');
+		var action;
+		if($(this).hasClass('js-accept')){
+			action = 'accept';
+		} else if($(this).hasClass('js-refuse')) {
+			action = 'refuse';
+		}
+		var data = {'implementation_id': imp_id, 'action': action}; 
+		$.post('{% url "moderator_action" %}', data, function(response){
+			if(action == 'accept'){
+				alert("Implementation accepted!");
+			} else if(action == 'refuse'){
+				alert("Implementation refused!");
+			}
+			window.location.reload();
+		});
+	});
+});
+</script>
+
+{% if classifications %}
+	{% for class,implementations in classifications.items %}
+	<div class="accordion" id="implementation-{{implementation.id}}">
+		<div class="accordion-group classification-wrapper">
+			<div class="accordion-heading inline">
+				<div class="accordion-heading-container">
+					<a class="accordion-toggle"  data-toggle="collapse" data-parent="#implementation{{implementation.id}}" href="#collapse{{implementation.id}}">
+						{{ class }}
+					</a>
+				</div>
+			</div>
+			
+			{% for imp in implementations %}
+			<div id="collapse{{ imp.id }}" class="accordion-body collapse in implementation-wrapper" data-implementation_id="{{ imp.id }}">
+				<div class="actions">
+					<a class="js-accept">Accept</a>&nbsp;&nbsp;<a class="js-refuse">Refuse</a>
+				</div>
+				<div class="span2"></div>
+				<div class="accordion-inner align-center" style="overflow:auto; max-height:275px;">
+					<pre  class="prettyprint lang-{{ imp.programming_language }}">{{ imp.code|safe }}</pre>
+				</div>
+			</div>
+			{% endfor %}
+			
+		</div>
+	</div>
+	{% endfor %}
+{% else %}
+	<div>No pending implementations!</div>
+{% endif %}
 {% endblock %}

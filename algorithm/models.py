@@ -12,6 +12,9 @@ class CustomUser(User):
 			return True
 		else:
 			return False
+		
+	def programming_languages(self):
+		return ProgrammingLanguageProeficiencyScale.objects.filter(user=self).only("programming_language")
 
 class ProgrammingLanguage(models.Model):
 	name = models.CharField(max_length=10)
