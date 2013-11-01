@@ -1,23 +1,24 @@
 # Create your views here.
-from django.contrib import auth
-from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import Context
-from django.template.loader import get_template
-
-from algorithm.models import Classification, Implementation, Algorithm, ProgrammingLanguage
-from algorithm.controllers import *
-# get_all_classifications_name_link, wipe_database, is_database_empty, get_classification_by_id
-from extractor.Bootstrapping import Bootstrapper
-from django.template import RequestContext
-from algorithm.UserCreateForm import UserCreateForm
 from algorithm.ContactForm import ContactForm
+from algorithm.UserCreateForm import UserCreateForm
 from algorithm.algorithmForm import AlgorithmForm
-from django.contrib.auth.decorators import login_required
+from algorithm.controllers import *
+from algorithm.models import Classification, Implementation, Algorithm, \
+	ProgrammingLanguage
+from django.contrib import auth
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.context_processors import csrf
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.template import Context, RequestContext
+from django.template.loader import get_template
+from django.views.decorators.csrf import csrf_exempt
+from extractor.Bootstrapping import Bootstrapper
+import htmlentitydefs
+import re
 import json
-import htmlentitydefs, re
+
+# get_all_classifications_name_link, wipe_database, is_database_empty, get_classification_by_id
 
 def show_main_page(request):
 	ctx = {'logged':  request.user.is_authenticated(), 'message' : 'Welcome to AlgPedia - the free encyclopedia that anyone can edit.', 'top5_algorithms' : get_top5_algorithms()}
@@ -331,3 +332,16 @@ def insert_algorithm(request, id):
 		'logged':  request.user.is_authenticated()}
 		c.update(csrf(request))
 		return render(request, "add_algorithm.html", c)
+
+
+@login_required
+@user_passes_test(lambda u: u.is_moderator(), login_url='/access_denied/')
+def moderator_dashboard(request):
+	ctx = {}
+	user = request.user
+	user_programming_languages_ids = get_user_programming_languages_proeficiencies_ids(user.username)
+	implementations = Implementation.objects.filter(programming_language__in=user_programming_languages_ids, visible=False)
+	
+	ctx['implementations'] = implementations
+	return render(request, 'moderator_dashboard.html', ctx)
+	

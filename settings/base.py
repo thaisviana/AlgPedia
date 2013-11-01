@@ -107,6 +107,8 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = ['algorithm.user_backend.ProxiedUserBackend',]
+
 ROOT_URLCONF = 'AlgPedia.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -148,8 +150,9 @@ TEMPLATE_CONTEXT_PROCESSOR = (
     'django.core.context_processors.media',
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
-    'django.contrib.auth.context_processors.auth',
+    #'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.request',
+    'algorithm.context_processors.auth',
 )
 
 LOGIN_URL = '/accounts/login/'

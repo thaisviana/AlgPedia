@@ -40,6 +40,10 @@
 			<li ><a href="/rules">Rules</a></li>
 			<li ><a href="/contact" id="contact">Contact</a></li>
 			
+			{% if user.is_moderator %}
+				<li ><a href="{% url 'moderator_dashboard' %}">Moderation</a></li>
+			{% endif %}
+			
 			{% if logged %}
 				<li class="tabs-right"><a id="logout" href="/accounts/logout">Logout</a></li>
 				<input type="hidden" id="logged" name="logged" value="true" />	

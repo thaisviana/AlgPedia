@@ -2,6 +2,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+class CustomUser(User):
+	class Meta:
+		proxy=True
+	def is_moderator(self):
+		count = self.groups.filter(name='Moderator').count()
+		if count:
+			return True
+		else:
+			return False
+
 class ProgrammingLanguage(models.Model):
 	name = models.CharField(max_length=10)
 

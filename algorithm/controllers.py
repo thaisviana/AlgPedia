@@ -155,7 +155,7 @@ def insert_user_question_answer(username, question_id, question_answer_id):
 		question = UserQuestion.objects.get(id=question_id)
 		existing_question_answer = UserQuestionAnswer.objects.get(user=user, user_question=question)
 
-		if question_answer_id and existing_question_answer.question_answer.id != question_answer_id:
+		if question_answer_id and existing_question_answer.question_option.id != question_answer_id:
 				question_answer = QuestionOption.objects.get(id=question_answer_id)
 				existing_question_answer.question_answer = question_answer
 				existing_question_answer.save()
@@ -217,6 +217,10 @@ def get_user_votes_by_algorithm(username, algorithm_id):
 
 	except ImplementationQuestionAnswer.DoesNotExist:
 		return []
+
+def get_user_programming_languages_proeficiencies(user):
+	return ProgrammingLanguageProeficiencyScale.objects.filter(user=user)
+	
 
 def get_user_programming_languages_proeficiencies_ids(username):
 	try:

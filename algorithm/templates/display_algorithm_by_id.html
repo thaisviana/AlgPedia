@@ -35,12 +35,15 @@
 					
 					<div id="collapse{{implementation.id}}" class="accordion-body collapse in">
 						<div class="span2"></div>
-						<div class="accordion-inner align-center" style="overflow:scroll; height:275px;">
+						<div class="accordion-inner align-center" style="overflow:auto; max-height:275px;">
 							<pre  class="prettyprint lang-{{implementation.programming_language}}">{{ implementation.code }}</pre>
 						</div>
-						<span class="impl-reputation">
+						<span class="impl-reputation" >
 							Reputation: {{ implementation.reputation }}
 						</span>
+						{% if not implementation.user %}
+						<img src="{{ STATIC_URL }}images/wikipedia.png" alt="" style="float: right;" />	
+						{% endif %}
 					</div>
 				</div>
 			</div>
