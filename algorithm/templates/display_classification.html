@@ -1,6 +1,6 @@
 {% extends "main_template.html" %}
 {% block content %}
-	<label class="control-label"><strong>{{ classif.name }} </strong><a id="add_algorithm" href="/add/cat/id/{{classif.id}}"><img src="{{ STATIC_URL }}images/add-button.png" height="100%" alt="Add algorithm" />	</a>
+	<label class="control-label"><strong>{{ classif.name }} &nbsp;&nbsp;&nbsp;</strong><a id="add_algorithm" href="/add/cat/id/{{classif.id}}"><img src="{{ STATIC_URL }}images/glyphicons/glyphicons_432_plus.png" height="100%" alt="Add algorithm" />	</a>
 	<div id="classification">
 		&nbsp;&nbsp;&nbsp;<a href="{{ classif.uri }}" target="_blank"> [More Information] </a></td>
 			<!-- table containing algorithms with such classification -->
@@ -19,7 +19,7 @@
 				{% endfor %}
 			</table>
 		
-			<table id="algorithms" class="table table-striped info">
+			<table id="algorithms" class="table table-bordered">
 				<tr>
 					<td>Other Algorithms </td>
 				</tr>

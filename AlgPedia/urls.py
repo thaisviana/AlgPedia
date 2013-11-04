@@ -32,8 +32,11 @@ urlpatterns = patterns('',
     url(r'^add/alg/id/(\d+)$', insert_implementation),
     url(r'^moderator/$', moderator_dashboard, name='moderator_dashboard'),
     
+    
+    #ajax
     url(r'^ajax/moderator_action/$', moderator_action, name='moderator_action'),
-
+    url(r'^ajax/moderator_add/$', moderator_add, name='moderator_add'),
+    
     # serving static files in development
     # (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root' : './algorithm/static/'}),
 

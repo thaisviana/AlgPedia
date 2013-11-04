@@ -74,4 +74,16 @@ $(function() {
 	$("#rdf").mouseout(function () {
 		return nd();
 	});
+	$(".js-accept").mouseover(function () {
+		return overlib("Accept Implementation", ABOVE);
+	});
+	$(".js-accept").mouseout(function () {
+		return nd();
+	});
+	$(".js-refuse").mouseover(function () {
+		return overlib("Refuse Implementation", ABOVE);
+	});
+	$(".js-refuse").mouseout(function () {
+		return nd();
+	});
 });

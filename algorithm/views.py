@@ -207,6 +207,7 @@ def show_all_algorithms(request):
 	algorithms = [{'link' : a[0], 'name' : a[1], 'reputation': a[2]} for a in algs]
 	ctx_variables['algorithms'] = algorithms
 	ctx_variables['logged'] = request.user.is_authenticated()
+	ctx_variables['logged'] = request.user.is_authenticated()
 	return render(request, 'display_all_algorithms.html', ctx_variables)
 
 
@@ -350,7 +351,7 @@ def moderator_dashboard(request):
 			classifications[implementation.algorithm.classification.name] = []
 			classifications[implementation.algorithm.classification.name].append(implementation) 
 	
-	print(classifications)
 	ctx['classifications'] = classifications
+	ctx['logged'] = request.user.is_authenticated()
 	return render(request, 'moderator_dashboard.html', ctx)
 	
