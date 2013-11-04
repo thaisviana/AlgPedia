@@ -18,35 +18,37 @@
 		</label>
 		<div>
 		{% for implementation in implementations %}
-			<div class="accordion" id="implementation-{{implementation.id}}">
-				<div class="accordion-group">
-					<div class="accordion-heading inline">
-						<div class="accordion-heading-container">
-							<a class="accordion-toggle"  data-toggle="collapse" data-parent="#implementation{{implementation.id}}" href="#collapse{{implementation.id}}">
-								{{ implementation.programming_language }}
-							</a>
+			{% if implementation.visible %}
+				<div class="accordion" id="implementation-{{implementation.id}}">
+					<div class="accordion-group">
+						<div class="accordion-heading inline">
+							<div class="accordion-heading-container">
+								<a class="accordion-toggle"  data-toggle="collapse" data-parent="#implementation{{implementation.id}}" href="#collapse{{implementation.id}}">
+									{{ implementation.programming_language }}
+								</a>
+							</div>
+							<div class="add_evaluation-container">
+								<a class="add_evaluation" id="evaluate-{{implementation.id}}">
+									<img src="{{ STATIC_URL }}images/evaluation-icon.jpeg" height="100%" alt="" />
+								</a>
+							</div>
 						</div>
-						<div class="add_evaluation-container">
-							<a class="add_evaluation" id="evaluate-{{implementation.id}}">
-								<img src="{{ STATIC_URL }}images/evaluation-icon.jpeg" height="100%" alt="" />
-							</a>
+						
+						<div id="collapse{{implementation.id}}" class="accordion-body collapse in">
+							<div class="span2"></div>
+							<div class="accordion-inner align-center" style="overflow:auto; max-height:275px;">
+								<pre  class="prettyprint lang-{{implementation.programming_language}}">{{ implementation.code }}</pre>
+							</div>
+							<span class="impl-reputation" data-reputation_value="#{{ implementation.reputation }}">
+								Reputation: {{ implementation.reputation }}
+							</span>
+							{% if not implementation.user %}
+							<img src="{{ STATIC_URL }}images/wikipedia.png" alt="" width="32" height="32" style="float: right;" />	
+							{% endif %}
 						</div>
-					</div>
-					
-					<div id="collapse{{implementation.id}}" class="accordion-body collapse in">
-						<div class="span2"></div>
-						<div class="accordion-inner align-center" style="overflow:auto; max-height:275px;">
-							<pre  class="prettyprint lang-{{implementation.programming_language}}">{{ implementation.code }}</pre>
-						</div>
-						<span class="impl-reputation" >
-							Reputation: {{ implementation.reputation }}
-						</span>
-						{% if not implementation.user %}
-						<img src="{{ STATIC_URL }}images/wikipedia.png" alt="" width="32" height="32" style="float: right;" />	
-						{% endif %}
 					</div>
 				</div>
-			</div>
+				{% endif %}
 			{% empty %}
 						<div> There are no implementations available for this algorithm yet. </div>
 			{% endfor %}	
