@@ -3,6 +3,7 @@
 
 from base import *  # @UnusedWildImport
 from django.core.servers import basehttp
+import dj_database_url
 
 USE_DJANGO_DEBUG_TOOLBAR = False
 # Enable Django Debug Toolbar if the USE_DJANGO_DEBUG_TOOLBAR environment variable is set.

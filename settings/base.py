@@ -1,7 +1,6 @@
 # Django settings for AlgPedia project.
 
 import os
-import dj_database_url
 
 DEBUG = True
 LOCAL = True
@@ -107,7 +106,7 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-AUTHENTICATION_BACKENDS = ['algorithm.user_backend.ProxiedUserBackend',]
+AUTHENTICATION_BACKENDS = ['algorithm.user_backend.ProxiedUserBackend', ]
 
 ROOT_URLCONF = 'AlgPedia.urls'
 
@@ -150,7 +149,7 @@ TEMPLATE_CONTEXT_PROCESSOR = (
     'django.core.context_processors.media',
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
-    #'django.contrib.auth.context_processors.auth',
+    # 'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.request',
     'algorithm.context_processors.auth',
 )
