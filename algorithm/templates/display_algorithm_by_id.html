@@ -39,7 +39,7 @@
 							<div class="accordion-inner align-center" style="overflow:auto; max-height:275px;">
 								<pre  class="prettyprint lang-{{implementation.programming_language}}">{{ implementation.code }}</pre>
 							</div>
-							<span class="impl-reputation" data-reputation_value="#{{ implementation.reputation }}">
+							<span class="impl-reputation" id="impl-reputation-{{ implementation.reputation }}" data-reputation_value="#{{ implementation.reputation }}">
 								Reputation: {{ implementation.reputation }}
 							</span>
 							{% if not implementation.user %}
@@ -103,6 +103,7 @@
 	
 	<script type="text/javascript">
 		$(document).ready(function() {
+			
 			$("#evaluation-modal").on('show', modalShowHandler);
 			$("#evaluation-modal").on('hidden', modalHiddenHandler);
 			

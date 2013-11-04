@@ -7,6 +7,7 @@ $(document).ready(function(){
 	$('.actions a').click(function(){
 		var $imp = $(this).parents('.implementation-wrapper');
 		var imp_id = $imp.data('implementation_id');
+		
 		var action;
 		if($(this).hasClass('js-accept')){
 			action = 'accept';
