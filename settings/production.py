@@ -15,7 +15,17 @@ HOST_NAME = 'algpedia.herokuapp.com'  # Only if your instance uses a hostname di
 MEDIA_URL = '/media/'
 STATIC_URL = '/algorithm/static/'
 
-DATABASES = {'default': dj_database_url.config(default=os.environ['CLEARDB_DATABASE_URL'])}
+# DATABASES = {'default': dj_database_url.config(default=os.environ['CLEARDB_DATABASE_URL'])}
+DATABASES['default'] = {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'algpedia',
+    'USER': 'root',
+    'PASSWORD': 'root',
+    'HOST': '',
+    'PORT': '',
+    'OPTIONS': {'init_command': 'SET storage_engine=INNODB', }
+}
+
 
 # Email settings.
 EMAIL_FROM_ADDRESS = 'AlgPedia <contato@algpedia.com.br>'  # All instances (except production) should set a custom sender name to it easier to distinguish where test email came from.
