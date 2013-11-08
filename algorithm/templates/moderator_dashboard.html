@@ -7,6 +7,7 @@ $(document).ready(function(){
 	$('.actions a').click(function(){
 		var $imp = $(this).parents('.implementation-wrapper');
 		var imp_id = $imp.data('implementation_id');
+		
 		var action;
 		if($(this).hasClass('js-accept')){
 			action = 'accept';
@@ -28,20 +29,24 @@ $(document).ready(function(){
 
 {% if classifications %}
 	{% for class,implementations in classifications.items %}
+	<div><a>{{ class }}</a></div>
+	<hr />
+	{% for imp in implementations %}
 	<div class="accordion" id="implementation-{{implementation.id}}">
 		<div class="accordion-group classification-wrapper">
 			<div class="accordion-heading inline">
 				<div class="accordion-heading-container">
-					<a class="accordion-toggle"  data-toggle="collapse" data-parent="#implementation{{implementation.id}}" href="#collapse{{implementation.id}}">
-						{{ class }}
+					<a class="accordion-toggle"  data-toggle="collapse" data-parent="#implementation{{imp.id}}" href="#collapse{{imp.id}}">
+							{{ imp.programming_language }}
 					</a>
 				</div>
 			</div>
-			
-			{% for imp in implementations %}
 			<div id="collapse{{ imp.id }}" class="accordion-body collapse in implementation-wrapper" data-implementation_id="{{ imp.id }}">
 				<div class="actions">
-					<a class="js-accept">Accept</a>&nbsp;&nbsp;<a class="js-refuse">Refuse</a>
+					<a class="js-refuse"><img src="{{ STATIC_URL }}images/glyphicons/glyphicons_207_remove_2.png" alt="Refuse" style="float: right;"/></a>
+					 &nbsp; &nbsp; &nbsp;
+					<a class="js-accept"><img src="{{ STATIC_URL }}images/glyphicons/glyphicons_206_ok_2.png" alt="Accept" style="float: right;"/></a>
+					
 				</div>
 				<div class="span2"></div>
 				<div class="accordion-inner align-center" style="overflow:auto; max-height:275px;">

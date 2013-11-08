@@ -1,6 +1,35 @@
 $(function() {	
-	prettyPrint()
-	
+	prettyPrint();
+		$('.impl-reputation').each(function() {
+			$rep = $(this).data('reputation_value');
+			if($rep != null){$rep = $rep.substring(1, 7);}
+			$(this).mouseover(function () {
+				return overlib($(this).data('reputation_value').substring(1, 7), ABOVE);
+			});
+			$(this).mouseout(function () {
+				return nd();
+			});	
+				//var star_0 = "<img src='/algorithm/static/images/glyphicons/glyphicons_048_dislikes.png' alt='"+$rep+"'  width='22' height='22'/>";
+				//var star_1 = "<img src='/algorithm/static/images/glyphicons/glyphicons_049_star.png' alt='"+$rep+"' width='22' height='22' />";
+			var star_0 = "";
+			var star_1 = "<img src='/algorithm/static/images/glyphicons/star.png' alt='"+$rep+"' width='22' height='22'/>";
+				
+			if($rep == 0.0){
+				$(this).html('Reputation : 0.0 '+ star_0 + star_0 + star_0 + star_0+ star_0);
+			}else if($rep <= 0.2){
+				$(this).html('Reputation : '+ star_1 + star_0 + star_0 + star_0+ star_0);
+			}else if(0.2 <= $rep < 0.4){
+				$(this).html('Reputation : '+ star_1 + star_1 + star_0 + star_0+ star_0);
+			}else if(0.4 <= $rep < 0.6){
+				$(this).html('Reputation : '+star_1 + star_1 + star_1 + star_0+ star_0);
+			}else if(0.6 <= $rep < 0.8){
+				$(this).html('Reputation : '+ star_1 + star_1 + star_1 + star_1+ star_0);
+			}else if(0.8 <= $rep < 1.0){
+				$(this).html('Reputation : '+ star_1 + star_1 + star_1 + star_1+ star_1);
+			}
+			
+	});
+			
 	tinyMCE.init({
 		// General options
 		mode : "textareas",
@@ -19,12 +48,6 @@ $(function() {
 		
 	});	
 		
-		
-	//$("#add_implementation").css( "padding-left", "+=900" );
-	
-	//$("#add_evaluation").css( "padding-left", "+=990" );
-		
-	//$("#add_evaluation").click(function(){
 	
 	$("#add_implementation").click(function(){
 		if($('#logged').val()== 'false'){
@@ -35,8 +58,10 @@ $(function() {
 			window.location = "/add/alg/id/"+alg_id;
 		}
 	});
+	
 	$('.textarea').wysihtml5();
-	//$("#add_algorithm").css( "padding-left", "+=800" );
+	
+	
 	$("#add_algorithm").click(function() {
 		event.preventDefault();
 		if($('#logged').val()== 'false'){
@@ -72,6 +97,18 @@ $(function() {
 		return overlib("This content is available in RDF", ABOVE);
 	});
 	$("#rdf").mouseout(function () {
+		return nd();
+	});
+	$(".js-accept").mouseover(function () {
+		return overlib("Accept Implementation", ABOVE);
+	});
+	$(".js-accept").mouseout(function () {
+		return nd();
+	});
+	$(".js-refuse").mouseover(function () {
+		return overlib("Refuse Implementation", ABOVE);
+	});
+	$(".js-refuse").mouseout(function () {
 		return nd();
 	});
 });

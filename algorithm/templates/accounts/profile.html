@@ -5,6 +5,27 @@
 {% endblock %}
 
 {% block content %}
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('.moderator-add').click(function(){
+		var action = 'moderator_add';
+		var data = {'action': action}; 
+		$.post('{% url "moderator_add" %}', data, function(response){
+			alert("Thanks for become an AlgPedia moderator!");
+			window.location.reload();
+		});
+	});
+});
+</script>
+
+
+    {% if not user.is_moderator %}
+    <div class="alert alert-info">
+    	<a class="moderator-add"><img src="{{ STATIC_URL }}images/glyphicons/glyphicons_003_user.png" /> &nbsp;&nbsp;&nbsp; Become an AlgPedia moderator.</a>
+    </div>
+	{% endif %}
 	<p>Welcome, {{ name }}. Thanks for logging in.</p>
 	<form class="form-horizontal" action="." method="post" id="form_profile">{% csrf_token %}
 	{{form}}
@@ -86,8 +107,8 @@
 		</table>
 		<input type="submit" value="Save" />
 	</form>
-	<script src="{{ STATIC_URL }}js/plugins/chosen/chosen.jquery.min.js" type="text/javascript"></script>
-	<script type="text/javascript">
+<script src="{{ STATIC_URL }}js/plugins/chosen/chosen.jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
 		$(document).ready(function(){
 			var cfg = {width: '100%'};
 			
