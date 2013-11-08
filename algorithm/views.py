@@ -247,11 +247,13 @@ def show_algorithm_by_id(request, id):
 		for iq in questions:
 			question_id = int(iq[u'id'])
 			question_answer = int(iq[u'answerId'])
-			reputation += insert_user_impl_question_answer(username, impl_id, question_id, question_answer)
+			result_set = insert_user_impl_question_answer(username, impl_id, question_id, question_answer)
+			reputation += result_set[0]
+			user_weight = result_set[1]
 
 		reputation = reputation / 12
 
-		implementation.save_reputation(reputation)
+		implementation.save_reputation(reputation, user_weight)
 		implementation.algorithm.calculate_reputation()
 
 		return HttpResponse('success')

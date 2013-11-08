@@ -192,8 +192,9 @@ def insert_user_impl_question_answer(username, impl_id, question_id, question_an
 		question_option = QuestionOption.objects.get(id=question_answer_id)
 
 		existing_question_answer = ImplementationQuestionAnswer.objects.create(user=user, implementation=implementation, implementation_question=question, question_option = question_option)
-
-		return existing_question_answer.calculate_reputation()
+		#returns a list with user weight and reputation
+		result = [existing_question_answer.calculate_reputation(), existing_question_answer.calculate_user_weight()]
+		return result
 
 def get_user_votes_by_algorithm(username, algorithm_id):
 	user = User.objects.get(username=username)
