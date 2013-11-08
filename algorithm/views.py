@@ -113,12 +113,12 @@ def profile(request):
 		# Insere as respostas para as perguntas
 		for q in user_questions:
 			q_data = request.POST["profile_" + str(q.id)]
-
 			if q_data:
 				if q_data.isdigit():
 					int_q_answer_id = int(q_data)
 					insert_user_question_answer(username, q.id, int_q_answer_id)
 			else:
+				print 'aaa'
 				delete_user_question_answer(username, q.id)
 
 		data = request.POST.getlist("classifications_interest")
@@ -156,7 +156,7 @@ def profile(request):
 		update_programming_languages_proeficiencies(username, ids)
 		# insert_programming_languages_proeficiencies(username, ids)
 
-	if "ajax-request" in request.POST:
+	if request.is_ajax():
 		return HttpResponse()
 
 	# Recupero todas as classificacoes e linguagens de programacao que o usuario e proeficiente
@@ -252,6 +252,7 @@ def show_algorithm_by_id(request, id):
 		reputation = reputation / 12
 
 		implementation.save_reputation(reputation)
+		implementation.algorithm.calculate_reputation()
 
 		return HttpResponse('success')
 

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+from django.db.models.aggregates import Avg
 
 
 class CustomUser(User):
@@ -47,10 +48,16 @@ class Algorithm(models.Model):
 
 	def __unicode__(self):
 		return u'%s' % self.name.lower().title()
+	
+	def calculate_reputation(self):
+		reputation = self.implementation_set.aggregate(average=Avg('reputation'))['average'] or None
+		self.reputation = reputation
+		self.save()
+	
 
 class Implementation(models.Model):
 	# an algorithm can have many implementations
-	algorithm = models.ForeignKey(Algorithm)
+	algorithm = models.ForeignKey(Algorithm, related_name='implementation_set')
 	code = models.TextField()
 	programming_language = models.ForeignKey(ProgrammingLanguage)
 	visible = models.BooleanField()

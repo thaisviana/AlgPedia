@@ -91,7 +91,7 @@ def get_questionaswer_by_question_id(question_id):
 def get_userquestionanswer_by_question_id_and_user(username, question_id):
 	try:
 		user_question_answer = UserQuestionAnswer.objects.get(user__username=username, user_question__id=question_id)
-		return user_question_answer.question_answer
+		return user_question_answer.question_option
 	except:
 		return []
 
@@ -154,11 +154,11 @@ def insert_user_question_answer(username, question_id, question_answer_id):
 	try:
 		question = UserQuestion.objects.get(id=question_id)
 		existing_question_answer = UserQuestionAnswer.objects.get(user=user, user_question=question)
-
+		
 		if question_answer_id and existing_question_answer.question_option.id != question_answer_id:
-				question_answer = QuestionOption.objects.get(id=question_answer_id)
-				existing_question_answer.question_answer = question_answer
-				existing_question_answer.save()
+			question_option = QuestionOption.objects.get(id=question_answer_id)
+			existing_question_answer.question_option = question_option
+			existing_question_answer.save()
 	except UserQuestionAnswer.DoesNotExist:
 		question_answer = QuestionOption.objects.get(id=question_answer_id)
 		UserQuestionAnswer.objects.create(user=user, user_question=question, question_option=question_answer)
