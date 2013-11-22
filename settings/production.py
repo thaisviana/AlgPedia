@@ -19,9 +19,9 @@ STATIC_URL = '/algorithm/static/'
 DATABASES['default'] = {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': 'algpedia',
-    'USER': 'root',
-    'PASSWORD': 'root',
-    'HOST': '',
+    'USER': 'algpedia',
+    'PASSWORD': 'algpedia.123',
+    'HOST': 'localhost',
     'PORT': '',
     'OPTIONS': {'init_command': 'SET storage_engine=INNODB', }
 }
