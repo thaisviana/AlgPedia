@@ -13,18 +13,18 @@ $(function() {
 				//var star_1 = "<img src='/algorithm/static/images/glyphicons/glyphicons_049_star.png' alt='"+$rep+"' width='22' height='22' />";
 			var star_0 = "";
 			var star_1 = "<img src='/algorithm/static/images/glyphicons/star.png' alt='"+$rep+"' width='22' height='22'/>";
-				
+			$rep = parseFloat($rep);
 			if($rep == 0.0){
 				$(this).html('Reputation : 0.0 '+ star_0 + star_0 + star_0 + star_0+ star_0);
-			}else if($rep <= 0.2){
+			}else if($rep < 0.2){
 				$(this).html('Reputation : '+ star_1 + star_0 + star_0 + star_0+ star_0);
-			}else if(0.2 <= $rep < 0.4){
+			}else if(0.2 <= $rep && $rep < 0.4){
 				$(this).html('Reputation : '+ star_1 + star_1 + star_0 + star_0+ star_0);
-			}else if(0.4 <= $rep < 0.6){
+			}else if(0.4 <= $rep && $rep < 0.6){
 				$(this).html('Reputation : '+star_1 + star_1 + star_1 + star_0+ star_0);
-			}else if(0.6 <= $rep < 0.8){
+			}else if(0.6 <= $rep && $rep < 0.8){
 				$(this).html('Reputation : '+ star_1 + star_1 + star_1 + star_1+ star_0);
-			}else if(0.8 <= $rep < 1.0){
+			}else if(0.8 <= $rep){
 				$(this).html('Reputation : '+ star_1 + star_1 + star_1 + star_1+ star_1);
 			}
 			
