@@ -142,8 +142,14 @@ def insert_implementation_db(i_alg, i_language_id, i_code, i_visible):
 
 	return implementation
 
-def get_all_algorithms():
-	return Algorithm.objects.order_by("name")
+def get_all_algorithms(search=None, classification_id=None):
+	filters = {}
+	if search:
+		filters['name__icontains'] = search
+	if classification_id:
+		filters['classification_id'] = classification_id
+	qs = Algorithm.objects.filter(**filters).order_by('name')
+	return qs
 
 def get_all_userquestions():
 	return UserQuestion.objects.order_by("text")
@@ -154,7 +160,7 @@ def insert_user_question_answer(username, question_id, question_answer_id):
 	try:
 		question = UserQuestion.objects.get(id=question_id)
 		existing_question_answer = UserQuestionAnswer.objects.get(user=user, user_question=question)
-		
+
 		if question_answer_id and existing_question_answer.question_option.id != question_answer_id:
 			question_option = QuestionOption.objects.get(id=question_answer_id)
 			existing_question_answer.question_option = question_option
@@ -191,8 +197,8 @@ def insert_user_impl_question_answer(username, impl_id, question_id, question_an
 		implementation = Implementation.objects.get(id=impl_id)
 		question_option = QuestionOption.objects.get(id=question_answer_id)
 
-		existing_question_answer = ImplementationQuestionAnswer.objects.create(user=user, implementation=implementation, implementation_question=question, question_option = question_option)
-		#returns a list with user weight and reputation
+		existing_question_answer = ImplementationQuestionAnswer.objects.create(user=user, implementation=implementation, implementation_question=question, question_option=question_option)
+		# returns a list with user weight and reputation
 		result = [existing_question_answer.calculate_reputation(), existing_question_answer.calculate_user_weight()]
 		return result
 
@@ -221,7 +227,7 @@ def get_user_votes_by_algorithm(username, algorithm_id):
 
 def get_user_programming_languages_proeficiencies(user):
 	return ProgrammingLanguageProeficiencyScale.objects.filter(user=user)
-	
+
 
 def get_user_programming_languages_proeficiencies_ids(username):
 	try:

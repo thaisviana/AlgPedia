@@ -202,13 +202,18 @@ def show_all_classifications(request):
 
 
 def show_all_algorithms(request):
-	algorithms = get_all_algorithms()
+
+	search = request.GET.get('search', None)
+	classification_id = request.GET.get('classification', None)
+
+	algorithms = get_all_algorithms(search, classification_id)
+
 	ctx_variables = {}
 	algs = [ (alg.get_show_url(), alg.name, alg.reputation) for alg in algorithms]
 	algorithms = [{'link' : a[0], 'name' : a[1], 'reputation': a[2]} for a in algs]
 	ctx_variables['algorithms'] = algorithms
 	ctx_variables['logged'] = request.user.is_authenticated()
-	ctx_variables['filters'] = FiltersAlgorithm()
+	ctx_variables['filters'] = FiltersAlgorithm(request.GET)
 	return render(request, 'display_all_algorithms.html', ctx_variables)
 
 

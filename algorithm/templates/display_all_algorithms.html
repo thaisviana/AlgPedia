@@ -1,17 +1,29 @@
 {% extends "main_template.html" %}
 
+{% block extra-head %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_classification').change(function(ev){
+		$(this).closest('form').trigger('submit');
+	});
+});
+</script>
+{% endblock %}
+
 {% block content %}
 {% load endless %}
 
 <div class="span1"></div>
 	<div id="classifications" class="span10">
 		<div class="filters">
+			<form action="" method="GET">
 			<div class="pull-left">
 				Search for: {{ filters.search }}
 			</div>
 			<div class="pull-right">
-				Classifications: {{ filters.classifications }}
+				Classifications: {{ filters.classification }}
 			</div>
+			</form>
 		</div>
 		<table id="classifications_uri" class="table table-bordered">
 			{% paginate algorithms %}
@@ -21,7 +33,7 @@
 				</tr>
 				{% empty %}
 				<p> There are no algorithms available. </p>
-			{% endfor %}		
+			{% endfor %}
 		</table>
 		{% show_pages %}
 	</div>
