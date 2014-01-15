@@ -6,14 +6,14 @@ from django.db.models.aggregates import Avg, Max
 
 class CustomUser(User):
 	class Meta:
-		proxy=True
+		proxy = True
 	def is_moderator(self):
 		count = self.groups.filter(name='Moderator').count()
 		if count:
 			return True
 		else:
 			return False
-		
+
 	def programming_languages(self):
 		return ProgrammingLanguageProeficiencyScale.objects.filter(user=self).only("programming_language")
 
@@ -33,6 +33,10 @@ class Classification(models.Model):
 	def __unicode__(self):
 		return u'%s' % self.name
 
+	class Meta:
+		ordering = ['name']
+
+
 class Algorithm(models.Model):
 	name = models.CharField(max_length=30)
 	description = models.TextField()
@@ -48,12 +52,12 @@ class Algorithm(models.Model):
 
 	def __unicode__(self):
 		return u'%s' % self.name.lower().title()
-	
+
 	def calculate_reputation(self):
 		reputation = self.implementation_set.aggregate(average=Avg('reputation'))['average'] or None
 		self.reputation = reputation
 		self.save()
-	
+
 
 class Implementation(models.Model):
 	# an algorithm can have many implementations
@@ -74,8 +78,8 @@ class Implementation(models.Model):
 		return "/show/imp/id/%i" % self.id
 
 	def save_reputation(self, reputation, user_weight):
-		#change evaluation_count to accumulated weight
-		self.reputation = ((self.reputation*self.evaluation_count) + reputation*user_weight) / float(self.evaluation_count + user_weight)
+		# change evaluation_count to accumulated weight
+		self.reputation = ((self.reputation * self.evaluation_count) + reputation * user_weight) / float(self.evaluation_count + user_weight)
 		self.evaluation_count = self.evaluation_count + user_weight
 		self.save()
 		return True
@@ -133,7 +137,7 @@ class ImplementationQuestionAnswer(models.Model):
 
 	def save(self, *args, **kwargs):
 		super(ImplementationQuestionAnswer, self).save(*args, **kwargs)
-		
+
 	def calculate_user_weight(self):
 		classifications_proeficiency = ClassificationProeficiencyScale.objects.filter(user=self.user).values_list('classification_id', flat=True)
 		programminglanguage_proeficiency = ProgrammingLanguageProeficiencyScale.objects.filter(user=self.user).values_list('programming_language_id', flat=True)
@@ -141,20 +145,20 @@ class ImplementationQuestionAnswer(models.Model):
 		classification_weight = 1 if self.implementation.algorithm.classification.id in classifications_proeficiency else 0.5
 		language_weight = 1 if self.implementation.programming_language.id in programminglanguage_proeficiency else 0.5
 		try:
-			user_profile_weight = self.user.userquestionanswer_set.get(question_option__question_id=1).question_option.value / float(10) # user_profile_weight vary from 0 to 10
-		except: # does not exists
+			user_profile_weight = self.user.userquestionanswer_set.get(question_option__question_id=1).question_option.value / float(10)  # user_profile_weight vary from 0 to 10
+		except:  # does not exists
 			user_profile_weight = 0.1
 		user_weight = user_profile_weight * language_weight * classification_weight
-		return user_weight		
+		return user_weight
 
 	def calculate_reputation(self):
-		
+
 		question_weight = self.implementation_question.priority
-		
-		max_options_value = float(self.implementation_question.questionoption_set.aggregate(max=Max('value'))['max']) # answer vary from 0 to questionoption_set max value
+
+		max_options_value = float(self.implementation_question.questionoption_set.aggregate(max=Max('value'))['max'])  # answer vary from 0 to questionoption_set max value
 		answer = self.question_option.value / max_options_value
 
 		# this value must be (0-1) * [3,4,5]
-		reputation = answer* question_weight
-		
+		reputation = answer * question_weight
+
 		return reputation

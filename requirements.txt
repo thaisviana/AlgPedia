@@ -4,4 +4,5 @@ Django==1.5.1
 South==0.7.6
 dj-database-url==0.2.1
 django-inoa==0.2.3
+django-endless-pagination==2.0
 beautifulsoup4

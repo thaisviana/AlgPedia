@@ -1,8 +1,20 @@
 {% extends "main_template.html" %}
+
 {% block content %}
+{% load endless %}
+
 <div class="span1"></div>
 	<div id="classifications" class="span10">
-		<table id="classifications_uri" class="table table-bordered">				
+		<div class="filters">
+			<div class="pull-left">
+				Search for: {{ filters.search }}
+			</div>
+			<div class="pull-right">
+				Classifications: {{ filters.classifications }}
+			</div>
+		</div>
+		<table id="classifications_uri" class="table table-bordered">
+			{% paginate algorithms %}
 			{% for algorithm in algorithms %}	
 				<tr>
 					<td><a href="{{algorithm.link}}"> {{ algorithm.name }} - Reputation:  {{ algorithm.reputation }}</td>
@@ -11,6 +23,7 @@
 				<p> There are no algorithms available. </p>
 			{% endfor %}		
 		</table>
+		{% show_pages %}
 	</div>
 <div class="span1"></div>
 {% endblock %}

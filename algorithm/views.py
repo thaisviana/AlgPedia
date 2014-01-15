@@ -3,20 +3,21 @@ from algorithm.ContactForm import ContactForm
 from algorithm.UserCreateForm import UserCreateForm
 from algorithm.algorithmForm import AlgorithmForm
 from algorithm.controllers import *
+from algorithm.forms import FiltersAlgorithm
 from algorithm.models import Classification, Implementation, Algorithm, \
 	ProgrammingLanguage
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.context_processors import csrf
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.template import Context, RequestContext
 from django.template.loader import get_template
 from django.views.decorators.csrf import csrf_exempt
 from extractor.Bootstrapping import Bootstrapper
 import htmlentitydefs
-import re
 import json
+import re
 
 # get_all_classifications_name_link, wipe_database, is_database_empty, get_classification_by_id
 
@@ -85,10 +86,10 @@ def contact(request):
 		print(request.POST['message'])
 		print(request.POST['sender'])
 		print(recipients)
-		#try:
-		#	send_mail(request.POST['subject'], request.POST['message'], request.POST['sender'], recipients, fail_silently=False)
-		#except BadHeaderError:
-		#	return render(request, 'about.html', {'logged':  request.user.is_authenticated()})
+		# try:
+		# 	send_mail(request.POST['subject'], request.POST['message'], request.POST['sender'], recipients, fail_silently=False)
+		# except BadHeaderError:
+		# 	return render(request, 'about.html', {'logged':  request.user.is_authenticated()})
 		return render(request, 'default_debug.html', {'logged':  request.user.is_authenticated()})
 	else:
 		c = {'logged':  request.user.is_authenticated(), 'form' : ContactForm()}
@@ -207,7 +208,7 @@ def show_all_algorithms(request):
 	algorithms = [{'link' : a[0], 'name' : a[1], 'reputation': a[2]} for a in algs]
 	ctx_variables['algorithms'] = algorithms
 	ctx_variables['logged'] = request.user.is_authenticated()
-	ctx_variables['logged'] = request.user.is_authenticated()
+	ctx_variables['filters'] = FiltersAlgorithm()
 	return render(request, 'display_all_algorithms.html', ctx_variables)
 
 
@@ -215,9 +216,9 @@ def show_algorithm_by_id(request, id):
 	alg = get_algorithm_by_id(int(id))
 	imps = get_implementations_by_alg_id(int(id))
 	for imp in imps:
-		imp.code = re.sub( '<[^>]*>', '', imp.code)
+		imp.code = re.sub('<[^>]*>', '', imp.code)
 		imp.code = re.sub('&([^;]+);', lambda m: unichr(htmlentitydefs.name2codepoint[m.group(1)]), imp.code)
-	
+
 	impl_question_answers = []
 
 	implementationquestions = get_all_implementationquestions()
@@ -263,7 +264,7 @@ def show_algorithm_by_id(request, id):
 	rdf_path = try_create_algorithm_rdf(int(id))
 
 	ctx_variables = {}
-	
+
 	ctx_variables['algorithm_name'] = alg.name
 	ctx_variables['algorithm_id'] = alg.id
 	ctx_variables['algorithm_classification'] = classification.name
@@ -347,14 +348,13 @@ def moderator_dashboard(request):
 	user_programming_languages_ids = get_user_programming_languages_proeficiencies_ids(user.username)
 	implementations = Implementation.objects.filter(programming_language__in=user_programming_languages_ids, visible=False)
 	for implementation in  implementations:
-		
+
 		try :
-			classifications[implementation.algorithm.classification.name].append(implementation) 
+			classifications[implementation.algorithm.classification.name].append(implementation)
 		except :
 			classifications[implementation.algorithm.classification.name] = []
-			classifications[implementation.algorithm.classification.name].append(implementation) 
-	
+			classifications[implementation.algorithm.classification.name].append(implementation)
+
 	ctx['classifications'] = classifications
 	ctx['logged'] = request.user.is_authenticated()
 	return render(request, 'moderator_dashboard.html', ctx)
-	

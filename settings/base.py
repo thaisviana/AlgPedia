@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'south',
+    'endless_pagination',
 
     'algorithm',
     'extractor',
@@ -150,8 +151,12 @@ TEMPLATE_CONTEXT_PROCESSOR = (
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
     # 'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.request',
     'algorithm.context_processors.auth',
+)
+
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'django.core.context_processors.request',
 )
 
 LOGIN_URL = '/accounts/login/'
