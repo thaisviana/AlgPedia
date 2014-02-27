@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -8,7 +7,9 @@
 		<link href="{{ STATIC_URL }}css/prettify.css" type="text/css" rel="stylesheet" />
 
 		<!--<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"	type="text/javascript"></script>-->
-		<script type="text/javascript">var STATIC_URL = '{{ STATIC_URL }}';</script>
+		<script type="text/javascript">
+			var STATIC_URL = '{{ STATIC_URL }}';
+		</script>
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.csrf-token.js"></script>
 		<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
@@ -24,45 +25,60 @@
 
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>AlgPedia</title>
-		<img src="{{ STATIC_URL }}images/header_binario.png" height="100%" alt="" />	
-		<!--<div class="alert alert-info ">
-			<h1><img src="{{ STATIC_URL }}images/logo.png" width="100" height="100" alt="" />AlgPedia</h1>
-		</div>-->
+
 		{% block extra-head %}
 		{% endblock %}
 	</head>
 	<body>
-		<ul class="nav nav-tabs">
-			<li ><a href="/">Home</a></li>
+		<ul class="nav nav-pills">
+			<li >
+				<a href="/">Home</a>
+			</li>
 			<!--<li ><a href="/admin">Admin Page</a></li>-->
-			<li ><a href="/show/cat/all">Classifications</a></li>
-			<li ><a href="/show/alg/all">Algorithms</a></li>
-			<li ><a href="/about">About Us</a></li>
-			<li ><a href="/rules">Rules</a></li>
-			<li ><a href="/contact" id="contact">Contact</a></li>
-			
+			<li >
+				<a href="/show/cat/all">Classifications</a>
+			</li>
+			<li >
+				<a href="/show/alg/all">Algorithms</a>
+			</li>
+			<li >
+				<a href="/about">About Us</a>
+			</li>
+			<li >
+				<a href="/rules">Rules</a>
+			</li>
+			<li >
+				<a href="/contact" id="contact">Contact</a>
+			</li>
+
 			{% if user.is_moderator %}
-				<li ><a href="{% url 'moderator_dashboard' %}">Moderation</a></li>
+			<li >
+				<a href="{% url 'moderator_dashboard' %}">Moderation</a>
+			</li>
 			{% endif %}
-			
+
 			{% if logged %}
-				<li class="tabs-right"><a id="logout" href="/accounts/logout">Logout</a></li>
-				<input type="hidden" id="logged" name="logged" value="true" />	
-				<li class="tabs-right"><a id="profile" href="/accounts/profile">Profile</a></li>
-				<input type="hidden" id="logged" name="logged" value="true" />	
+			<li class="tabs-right">
+				<a id="logout" href="/accounts/logout">Logout</a>
+			</li>
+			<input type="hidden" id="logged" name="logged" value="true" />
+			<li class="tabs-right">
+				<a id="profile" href="/accounts/profile">Profile</a>
+			</li>
+			<input type="hidden" id="logged" name="logged" value="true" />
 			{% else %}
-				<li class="tabs-right"><a href="/accounts/login">Login</a></li>
-				<input type="hidden" id="logged" name="logged" value="false" />	
+			<li class="tabs-right">
+				<a href="/accounts/login">Login</a>
+			</li>
+			<input type="hidden" id="logged" name="logged" value="false" />
 			{% endif %}
 		</ul>
-		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span1">	</div>
-				<div class="span10">
-					{% block content %}
-					{% endblock %}
-				</div>
-				<div class="span1"></div>
-			</div>
+		<div>
+
+			{% block content %}
+			{% endblock %}
+
+		</div>
+
 	</body>
 </html>

@@ -1,41 +1,77 @@
 {% extends "main_template.html" %}
 {% block content %}
 
-<!--<div>
+<div class="main container-fluid">
+	<div class="row-fluid">
+		<div class="span5"></div>
+		<div class="span2">
+			<div class="space2"></div>
+			<img class="img-responsive" src="{{ STATIC_URL }}images/a.png" alt="" />
+		</div>
+		<div class="span5"></div>
+	</div>
 
-<img src="{{ STATIC_URL }}images/algpedia.jpg"  style="border-style:solid;" height="70%" alt="" />
-</div>-->
-<div class="span1"></div>
-<div class="row">
-  <div class="span9">
-  <!--<img src="{{ STATIC_URL }}images/logo_new.png"  style="border-style:solid;" alt="" />-->
- 	  <h5 class="text-info text-center">
-		AlgPedia is a <strong>free collaborative </strong>encyclopedia constructed to provide an RDF-based algorithms that can be accessed via this website or through Open Linked Data applications that process structured data.</h5>
-	<div class="row" id="top5-list">
-     <!--Below, the algorithms which have, at least, one of the top 5 implementations:-->
-     Below, the top 5 algorithms:
-      <table class="table table-bordered" id="algorithms_uri">									
-			{% for alg in top5_algorithms %}	
-			<tr>
-				<td>
-					<a href="{{alg.link}}"> {{ alg.name }} </a>
-				</td>
-			</tr>
-				{% empty %}
-				<p> We have no votes yet for the algorithms. <a href="/accounts/login">Be the first to vote!</a> You just need to be logged in. </p>
-			{% endfor %}
-		</table>
-    </div>
-	<div class="row">
-      &nbsp;&nbsp;&nbsp;
-    </div>
-    <div class="row">
-	<div class="span4">&nbsp;</div>
-      <div class="span3"><img src="{{ STATIC_URL }}images/im_logo.jpg" class="img-rounded" style="border-style:solid;" alt="IM" /></div>
-	  <div class="span3"><img src="{{ STATIC_URL }}images/logo_ufrj.jpg" class="img-rounded" style="border-style:solid;" alt="UFRJ" /></div>
-      
-    </div>
-  </div>
+	<div class="space"></div>
+
+	<h3 class="text-center">AlgPedia is a <strong>free collaborative </strong>encyclopedia constructed to provide an RDF-based algorithms that can be accessed via this website or through Open Linked Data applications that process structured data. </h3>
 </div>
+<div class="space3">
+	&nbsp;
+</div>
+
+
+
+<div class="container-fluid thumbnails">
+	&nbsp;&nbsp;&nbsp;&nbsp;Below, the top 3 algorithms:
+	<div class="row-fluid">		
+		
+		<div class="span3">
+			&nbsp;
+		</div>
+	{% for alg in top5_algorithms %}
+	{% if forloop.first %}
+		<div class="span2 text-center"><img class="thumbnail img-center" src="{{ STATIC_URL }}images/Metal-gold.png" alt="{{alg.link}}" />
+			<a href="{{alg.link}}"> {{ alg.name }} </a>
+		</div>
+	{% endif %}	
+	{% if forloop.counter0 == 1 %}
+		<div class="span2 text-center"><img class="thumbnail img-center" src="{{ STATIC_URL }}images/Metal-silver.png" alt="{{alg.link}}" />
+			<a href="{{alg.link}}"> {{ alg.name }} </a>
+		</div>
+	{% endif %}	
+	{% if forloop.counter0 == 2 %}
+		<div class="span2 text-center"><img class="thumbnail img-center" src="{{ STATIC_URL }}images/Metal-bronze.png" alt="{{alg.link}}" />
+			<a href="{{alg.link}}"> {{ alg.name }} </a>
+		</div>
+	{% endif %}	
+	{% empty %}
+		<p>
+			We have no votes yet for the algorithms. <a href="/accounts/login">Be the first to vote!</a> You just need to be logged in.
+		</p>
+	{% endfor %}
+	<div class="span3">
+			&nbsp;
+		</div>
+	</div>
+</div>			
+
+<div >
+	&nbsp;&nbsp;&nbsp;
+</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span5">
+			&nbsp;
+		</div>
+		<div class="span1"><img src="{{ STATIC_URL }}images/im_logo.jpg" class="img-rounded" style="border-style:solid;" alt="IM" />
+		</div>
+		<div class="span1"><img src="{{ STATIC_URL }}images/logo_ufrj.jpg" class="img-rounded" style="border-style:solid;" alt="UFRJ" />
+		</div>
+		<div class="span5">
+			&nbsp;
+		</div>
+	</div>
+</div>
+
 {% endblock %}
-			

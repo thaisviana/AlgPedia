@@ -15,6 +15,34 @@
 	overflow:auto;
 }
 
+.img-center{
+	position:relative;
+	left:40%;
+	top:50%;
+}
+.main {
+	background-color:#33CCFF;
+	height: 550px;
+	color:#FFFFFF;
+}
+
+.main-little {
+	background-color:#33CCFF;
+	height: 100px;
+	float: right;
+	color:#FFFFFF;
+}
+.space {
+	height: 120px;
+}
+.space2 {
+	height: 200px;
+}
+
+.space3 {
+	height: 30px;
+}
+
 .add_evaluation-container {
 	float:right;
 }

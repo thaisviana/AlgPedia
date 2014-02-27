@@ -4091,10 +4091,8 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav-pills > li > a {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  padding-top: 10px;
+  margin-top: 4px;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
@@ -4151,11 +4149,11 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav-pills.nav-stacked > li > a {
-  margin-bottom: 3px;
+  margin-bottom: 0px;
 }
 
 .nav-pills.nav-stacked > li:last-child > a {
-  margin-bottom: 1px;
+  margin-bottom: 0px;
 }
 
 .nav-tabs .dropdown-menu {

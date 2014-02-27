@@ -13,9 +13,15 @@ $(document).ready(function(){
 {% block content %}
 {% load endless %}
 
-<div class="span1"></div>
-	<div id="classifications" class="span10">
-		<div class="filters cf">
+<div >&nbsp;</div>
+<div class="container-fluid">
+
+	<div class="row-fluid">
+		<div class="span2">
+			&nbsp;
+		</div>
+		<div class="span8">
+				<div class="filters cf">
 			<form action="" method="GET">
 			<div class="pull-left">
 				Search for: {{ filters.search }}
@@ -29,13 +35,20 @@ $(document).ready(function(){
 			{% paginate algorithms %}
 			{% for algorithm in algorithms %}	
 				<tr>
-					<td><a href="{{algorithm.link}}"> {{ algorithm.name }} - Reputation:  {{ algorithm.reputation }}</td>
+					<td><a href="{{algorithm.link}}"> {{ algorithm.name }} &nbsp;&nbsp;&nbsp;-<span class="impl-reputation" id="impl-reputation-{{ algorithm.reputation }}" data-reputation_value="#{{ algorithm.reputation }}">
+								
+							</span></td>
 				</tr>
 				{% empty %}
 				<p> There are no algorithms available. </p>
 			{% endfor %}
 		</table>
 		{% show_pages %}
+		</div>
+		<div class="span2">
+			&nbsp;
+		</div>
 	</div>
-<div class="span1"></div>
+</div>
 {% endblock %}
+

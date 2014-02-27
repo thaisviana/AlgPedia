@@ -1,30 +1,61 @@
 {% extends "main_template.html" %}
 {% block content %}
-<div class="span1"></div>
-	<div id="classifications" class="span10">
-	
-	<table class="table table-bordered" id="classifications_uri">									
-			{% for class in user_interested_classifications %}	
-			<tr>
-				<td><a href="{{class.link}}"> {{ class.name }} </td>
-			</tr>
-				{% empty %}
-				<p> You have not indicated any interest in classification algorithm </p>
-			{% endfor %}
-		</table>
-	
-		<table class="table table-bordered" id="classifications_uri">	
-			<tr>
-				<td>Other Algorithms </td>
-			</tr>
-			{% for class in classifications %}	
-			<tr>
-				<td><a href="{{class.link}}"> {{ class.name }} </td>
-			</tr>
-				{% empty %}
-				<p> There are no classifications available. </p>
-			{% endfor %}
-		</table>
+<div id="classifications">
+
+	<div >&nbsp;</div>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2">
+			&nbsp;
+		</div>
+		<div class="span8">
+			<table class="table table-bordered" id="classifications_uri">
+		{% for class in user_interested_classifications %}
+		<tr>
+			<td><a href="{{class.link}}"> {{ class.name }} </td>
+		</tr>
+		{% empty %}
+		<p>
+			You have not indicated any interest in classification algorithm
+		</p>
+		{% endfor %}
+	</table>
+		</div>
+		<div class="span2">
+			&nbsp;
+		</div>
 	</div>
-<div class="span1"></div>
+</div>
+	<div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2">
+			&nbsp;
+		</div>
+		<div class="span8">
+			<table class="table table-bordered" id="classifications_uri">
+		<tr>
+			<td>Other Algorithms </td>
+		</tr>
+		{% for class in classifications %}
+		<tr>
+			<td><a href="{{class.link}}"> {{ class.name }} </td>
+		</tr>
+		{% empty %}
+		<p>
+			There are no classifications available.
+		</p>
+		{% endfor %}
+	</table>
+		</div>
+		<div class="span2">
+			&nbsp;
+		</div>
+	</div>
+</div>
+
+	
+</div>
 {% endblock %}
