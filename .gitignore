@@ -1,6 +1,7 @@
 *.py[co]
 settings/local.py
 env
+==1.10.1
 media
 rdf
 *.pyc
