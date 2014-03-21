@@ -18,31 +18,61 @@
 					&nbsp;&nbsp;&nbsp;<a href="{{ classif.uri }}" target="_blank"> [More Information] </a></td>
 					<!-- table containing algorithms with such classification -->
 					<form id="add_algorithm" >
-						<input type="hidden" name="classification_id" value="{{classif.id}}"/>
-						<!--<input type="button" id="add_algorithm" value="Add Algorithm" /></br></br>	-->
+						<input type="hidden" name="classification_id" value="{{classif.id}}"/>	
 						<br />
-						<p>
-							Below, the top 5 algorithms for this classification:
-						</p>
-						<table class="table table-bordered">
-							{% for alg in top5_algorithms %}
-							<tr>
-								<td><a href="{{alg.link}}"> {{ alg.name }} <!--- Reputation: {{ alg.reputation }}--> <span class="impl-reputation" id="imp-reputation-{{ alg.reputation }}" data-reputation_value="#{{ alg.reputation }}"> Reputation: {{ alg.reputation }}</span></td>
-							</tr>
-							{% empty %}
-							<p>
-								We have no votes yet for the algorithms. <a href="/accounts/login">Be the first to vote!</a> You just need to be logged in.
-							</p>
-							{% endfor %}
-						</table>
+					</form>
+				</div> 
+				<div class="container-fluid">
 
-						<table id="algorithms" class="table table-bordered">
+	<div class="row-fluid">
+		<div class="span2">
+			&nbsp;
+		</div>
+		<div class="span8 text-center">
+			
+			<h5>Below, the top 3 algorithms:</h5>
+			<div class="row-fluid">		
+				
+				
+			{% for alg in top5_algorithms %}
+			{% if forloop.first %}
+				<div class="span4 text-center"><img class="thumbnail img-center" src="{{ STATIC_URL }}images/star_gold.png" alt="{{alg.link}}" />
+					<a href="{{alg.link}}"> {{ alg.name }} </a>
+				</div>
+			{% endif %}	
+			{% if forloop.counter0 == 1 %}
+				<div class="span4 text-center"><img class="thumbnail img-center" src="{{ STATIC_URL }}images/star_silver.png" alt="{{alg.link}}" />
+					<a href="{{alg.link}}"> {{ alg.name }} </a>
+				</div>
+			{% endif %}	
+			{% if forloop.counter0 == 2 %}
+				<div class="span4 text-center"><img class="thumbnail img-center" src="{{ STATIC_URL }}images/star_bronze.png" alt="{{alg.link}}" />
+					<a href="{{alg.link}}"> {{ alg.name }} </a>
+				</div>
+			{% endif %}	
+			{% empty %}
+				<p>
+					We have no votes yet for the algorithms. <a href="/accounts/login">Be the first to vote!</a> You just need to be logged in.
+				</p>
+			{% endfor %}
+			
+		</div>
+		<div class="span2">
+			&nbsp;
+		</div>
+	</div>
+</div>		
+				<table id="algorithms" class="table table-bordered">
 							<tr>
 								<td>Other Algorithms </td>
 							</tr>
 							{% for alg in algorithms %}
 							<tr>
-								<td><a href="{{alg.link}}"> {{ alg.name }}- Reputation: {{ alg.reputation }} </td>
+								<td><a href="{{alg.link}}"> {{ alg.name }}- <!-- Reputation: {{ alg.reputation }} -->
+									<span class="impl-reputation" id="impl-reputation-{{ alg.reputation }}" data-reputation_value="#{{ alg.reputation }}">
+							</span>
+									
+								</td>
 							</tr>
 							{% empty %}
 							<p>
@@ -50,8 +80,7 @@
 							</p>
 							{% endfor %}
 						</table>
-					</form>
-				</div> <!--Página-->
+				<!--Página-->
 		</div>
 		<div class="span2">
 			&nbsp;

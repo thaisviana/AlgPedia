@@ -375,7 +375,7 @@ def get_top5_algorithms():
 
 def get_top5_algorithms_by_classification(a_classification):
 	try:
-		algorithms = Algorithm.objects.filter(classification=a_classification, reputation__isnull=False).order_by("-reputation")[0:5]
+		algorithms = Algorithm.objects.filter(classification=a_classification, reputation__isnull=False).order_by("-reputation")[0:3]
 		# algorithms = Algorithm.objects.filter(classification=a_classification).order_by("-reputation")[0:5]
 		algs = [ (alg.get_show_url(), alg.name, alg.reputation) for alg in algorithms]
 		algorithms = [{'link' : a[0], 'name' : a[1], 'reputation': a[2]} for a in algs]

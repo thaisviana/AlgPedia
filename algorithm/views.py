@@ -307,7 +307,7 @@ def show_classification_by_id(request, id):
 	algs_reputations = map(lambda alg: alg.reputation, algs)
 
 	algs = [
-		{'name' : t[0], 'link' : t[1]} for t in
+		{'name' : t[0], 'link' : t[1], 'reputation':t[2]} for t in
 			zip(algs_names,
 					[
 						get_algorithm_display_url().replace('#', str(id)) for id in map(lambda alg: alg.id, algs)
@@ -317,7 +317,6 @@ def show_classification_by_id(request, id):
 	]
 
 	top5_algs = get_top5_algorithms_by_classification(classification)
-
 	ctx = {
 		'classif' : classification,
 		'top5_algorithms' : top5_algs,
