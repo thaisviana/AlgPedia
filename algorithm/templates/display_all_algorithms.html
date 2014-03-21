@@ -13,46 +13,53 @@ $(document).ready(function(){
 {% block content %}
 {% load endless %}
 
-<div class="row">
-	<div class="span1"></div>
-	<div class="span10">
-		<a href="/algorithm/add/" class="pull-right">
-			<img src="{{ STATIC_URL }}images/glyphicons/glyphicons_432_plus.png" height="100%" alt="Add algorithm" /> Add algorithm
-		</a>
-		<h2>Algorithms</h2>
+<div id="algorithms">
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2"></div>
+		<div class="span8">
+			<a href="/algorithm/add/" class="pull-right">
+				<img src="{{ STATIC_URL }}images/glyphicons/glyphicons_432_plus.png" height="100%" alt="Add algorithm" /> Add algorithm
+			</a>
+			<h2>Algorithms</h2>
+		</div>
+		<div class="span2"></div>
 	</div>
-	<div class="span1"></div>
 </div>
 
-<div class="row">
-	<div class="span1"></div>
+<div class="container-fluid">
+	<div class="row-fluid">
 	
-	
-	<div id="classifications" class="span10">
-		<div class="filters cf">
-			<form action="" method="GET">
-			<div class="pull-left">
-				Search for: {{ filters.search }}
+		<div class="span2"></div>
+		<div class="span8">
+			<div class="filters cf">
+				<form action="" method="GET">
+				<div class="pull-left">
+					Search for: {{ filters.search }}
+				</div>
+				<div class="pull-right">
+					Classifications: {{ filters.classification }}
+				</div>
+				</form>
 			</div>
-			<div class="pull-right">
-				Classifications: {{ filters.classification }}
-			</div>
-			</form>
+			<table id="classifications_uri" class="table table-bordered">
+				{% paginate algorithms %}
+				{% for algorithm in algorithms %}	
+					<tr>
+						<td><a href="{{algorithm.link}}"> {{ algorithm.name }} &nbsp;&nbsp;&nbsp;- <span class="impl-reputation" id="impl-reputation-{{ algorithm.reputation }}" data-reputation_value="#{{ algorithm.reputation }}">
+									Reputation: {{ algorithm.reputation }}
+								</span></td>
+					</tr>
+					{% empty %}
+					<p> There are no algorithms available. </p>
+				{% endfor %}
+			</table>
+			{% show_pages %}
 		</div>
-		<table id="classifications_uri" class="table table-bordered">
-			{% paginate algorithms %}
-			{% for algorithm in algorithms %}	
-				<tr>
-					<td><a href="{{algorithm.link}}"> {{ algorithm.name }} &nbsp;&nbsp;&nbsp;- <span class="impl-reputation" id="impl-reputation-{{ algorithm.reputation }}" data-reputation_value="#{{ algorithm.reputation }}">
-								Reputation: {{ algorithm.reputation }}
-							</span></td>
-				</tr>
-				{% empty %}
-				<p> There are no algorithms available. </p>
-			{% endfor %}
-		</table>
-		{% show_pages %}
+		<div class="span2"></div>
 	</div>
-<div class="span1"></div>
+</div>
+
 </div>
 {% endblock %}

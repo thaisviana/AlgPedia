@@ -23,7 +23,7 @@ import re
 
 def show_main_page(request):
 	ctx = {'logged':  request.user.is_authenticated(), 'message' : 'Welcome to AlgPedia - the free encyclopedia that anyone can edit.', 'top5_algorithms' : get_top5_algorithms()}
-	return render(request, 'default_debug.html', ctx)
+	return render(request, 'index.html', ctx)
 
 def sync_database(request):
 	sync_message = ''

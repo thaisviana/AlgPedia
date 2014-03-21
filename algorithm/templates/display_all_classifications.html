@@ -2,7 +2,17 @@
 {% block content %}
 <div id="classifications">
 
-	<div >&nbsp;</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2"></div>
+		<div class="span8">
+			<h2>Classifications</h2>
+		</div>
+		<div class="span2"></div>
+	</div>
+</div>
+
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="span2">
@@ -26,9 +36,9 @@
 		</div>
 	</div>
 </div>
-	<div>
-			&nbsp;&nbsp;&nbsp;&nbsp;
-		</div>
+<div>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="span2">
@@ -36,19 +46,19 @@
 		</div>
 		<div class="span8">
 			<table class="table table-bordered" id="classifications_uri">
-		<tr>
-			<td>Other Algorithms </td>
-		</tr>
-		{% for class in classifications %}
-		<tr>
-			<td><a href="{{class.link}}"> {{ class.name }} </td>
-		</tr>
-		{% empty %}
-		<p>
-			There are no classifications available.
-		</p>
-		{% endfor %}
-	</table>
+				<tr>
+					<td>Other Algorithms </td>
+				</tr>
+				{% for class in classifications %}
+				<tr>
+					<td><a href="{{class.link}}"> {{ class.name }} </td>
+				</tr>
+				{% empty %}
+				<p>
+					There are no classifications available.
+				</p>
+				{% endfor %}
+			</table>
 		</div>
 		<div class="span2">
 			&nbsp;
