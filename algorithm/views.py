@@ -329,18 +329,27 @@ def show_classification_by_id(request, id):
 
 
 @login_required
-def insert_algorithm(request, id):
-
+def insert_algorithm(request, id=None):
+	print 'as'
+	c = {}
 	if request.method == 'POST':
-		form = AlgorithmForm(request.POST)
-		algorithm = insert_algorithm(request.POST['name'], request.POST['description'], get_classification_by_id(int(request.POST['classification'])), False, request.user)
+		instance = Algorithm(visible=False, user=request.user)
+		form = AlgorithmForm(request.POST, instance=instance)
+		if form.is_valid():
+			algorithm = form.save()
+		else:
+			c['form'] = form
+			return render(request, "add_algorithm.html", c)
+
 		return HttpResponseRedirect(algorithm.get_show_url())
 	else:
-		c = {'form' : AlgorithmForm(),
-		'classif' : get_classification_by_id(int(id)),
-		'programming_languages' : get_all_programming_languages(),
-		'logged':  request.user.is_authenticated()}
+		c = {
+			'form' : AlgorithmForm({'classification': id}),
+			'programming_languages' : get_all_programming_languages(),
+			'logged':  request.user.is_authenticated()
+		}
 		c.update(csrf(request))
+
 		return render(request, "add_algorithm.html", c)
 
 

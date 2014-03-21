@@ -37,6 +37,13 @@ class Classification(models.Model):
 		ordering = ['name']
 
 
+class Tag(models.Model):
+	name = models.CharField(max_length=50)
+
+	def __unicode__(self):
+		return u'%s' % self.name.lower().title()
+
+
 class Algorithm(models.Model):
 	name = models.CharField(max_length=30)
 	description = models.TextField()
@@ -44,6 +51,8 @@ class Algorithm(models.Model):
 	uri = models.URLField()
 	visible = models.BooleanField()
 	reputation = models.FloatField(default=0)
+
+	tags = models.ManyToManyField(Tag, blank=True, null=True)
 
 	user = models.ForeignKey(User, null=True, blank=True, verbose_name=u"Creator")
 

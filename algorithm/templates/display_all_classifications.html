@@ -1,9 +1,18 @@
 {% extends "main_template.html" %}
 {% block content %}
-<div class="span1"></div>
+<div class="row">
+	<div class="span1"></div>
+	<div class="span10">
+		<h2>Classifications</h2>
+	</div>
+	<div class="span1"></div>
+</div>
+
+<div class="row">
+	<div class="span1"></div>
 	<div id="classifications" class="span10">
 	
-	<table class="table table-bordered" id="classifications_uri">									
+	<table class="table table-bordered" id="classifications_uri">
 			{% for class in user_interested_classifications %}	
 			<tr>
 				<td><a href="{{class.link}}"> {{ class.name }} </td>
@@ -26,5 +35,6 @@
 			{% endfor %}
 		</table>
 	</div>
-<div class="span1"></div>
+	<div class="span1"></div>
+</div>
 {% endblock %}
