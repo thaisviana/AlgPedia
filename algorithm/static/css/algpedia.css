@@ -66,6 +66,10 @@
 	margin-right: 5px;
 }
 
+.submit-button { width: 200px; }
+
+.errorlist { color: #FF1E2F; }
+
 /**
  * cf - CLEARFIX
  * For modern browsers

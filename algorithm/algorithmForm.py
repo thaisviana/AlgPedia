@@ -5,10 +5,10 @@ from django.forms import Textarea
 class AlgorithmForm(forms.ModelForm):
 	class Meta:
 		model = Algorithm
-		fields = ('name','description','classification')
+		fields = ('name', 'tags', 'description', 'classification')
 		widgets = {
-            'description': Textarea(attrs={'cols': 240, 'rows': 10}),
-        }
+			'description': Textarea(attrs={'cols': 240, 'rows': 10}),
+		}
 	
 	def save(self, commit=True):
 		algorithm = super(AlgorithmForm, self).save(commit=False)

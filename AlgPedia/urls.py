@@ -1,5 +1,5 @@
-from algorithm.views import *
 from algorithm.ajax import *
+from algorithm.views import *
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
@@ -31,12 +31,14 @@ urlpatterns = patterns('',
     url(r'^show/alg/all$', show_all_algorithms),
     url(r'^add/alg/id/(\d+)$', insert_implementation),
     url(r'^moderator/$', moderator_dashboard, name='moderator_dashboard'),
-    
-    
-    #ajax
+
+    url(r'^algorithm/add/$', insert_algorithm),
+
+    # ajax
     url(r'^ajax/moderator_action/$', moderator_action, name='moderator_action'),
     url(r'^ajax/moderator_add/$', moderator_add, name='moderator_add'),
-    
+    url(r'^ajax/tag_add/$', 'algorithm.ajax.tag_add', name='ajax-tag_add'),
+
     # serving static files in development
     # (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root' : './algorithm/static/'}),
 
