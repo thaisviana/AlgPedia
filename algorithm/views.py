@@ -330,7 +330,6 @@ def show_classification_by_id(request, id):
 
 @login_required
 def insert_algorithm(request, id=None):
-	print 'as'
 	c = {}
 	if request.method == 'POST':
 		instance = Algorithm(visible=False, user=request.user)
@@ -344,7 +343,7 @@ def insert_algorithm(request, id=None):
 		return HttpResponseRedirect(algorithm.get_show_url())
 	else:
 		c = {
-			'form' : AlgorithmForm({'classification': id}),
+			'form' : AlgorithmForm(initial={'classification': id}),
 			'programming_languages' : get_all_programming_languages(),
 			'logged':  request.user.is_authenticated()
 		}
