@@ -1,9 +1,35 @@
-import os
+import os, math
 from algorithm.models import Classification, Implementation, Algorithm, ProgrammingLanguage, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, ClassificationProeficiencyScale, Question, QuestionOption, UserQuestion, ImplementationQuestion, ImplementationQuestionAnswer, UserQuestionAnswer
 from extractor.FileWriters import RDFWriter
 from django.contrib.auth.models import User
 from django.db import connection
 from django.shortcuts import get_object_or_404
+
+def cosine_similarity(vec1, vec2):
+	 intersection = set(vec1.keys()) & set(vec2.keys())
+	 numerator = sum([vec1[x] * vec2[x] for x in intersection])
+	 sum1 = sum([vec1[x]**2 for x in vec1.keys()])
+	 sum2 = sum([vec2[x]**2 for x in vec2.keys()])
+	 denominator = math.sqrt(sum1) * math.sqrt(sum2)
+	 if not denominator:
+	 	return 0.0
+	 else:
+	 	return float(numerator) / denominator
+	 
+def f_bayes(tag, id, sim_matriz, vecTag):
+	similares = 0.0
+	tagsEmSimilares = 0.0
+	
+	for j in xrange(len(sim_matriz)):
+		if sim_matriz[id][j] > 0.2 and id <> j:
+			similares +=1
+			if tag in vecTag[j]:
+				tagsEmSimilares += 1
+	if similares == 0:
+		return 0.0
+	if(tagsEmSimilares/similares <> 0.0):
+		print tagsEmSimilares/similares
+	return  tagsEmSimilares/similares
 
 def is_database_empty():
 	empty = 0

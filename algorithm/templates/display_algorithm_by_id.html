@@ -25,6 +25,10 @@
 			 </tr>
 		</table >
 		
+		{% for tag in algorithm_tags%}
+		<span class="label label-info">{{ tag.name }}</span>
+		{% endfor %}
+		
 		<label class="control-label" for="inputName"><strong>Implementations :&nbsp;&nbsp;</strong><a id="add_implementation" href="/add/alg/id/{{algorithm_id}}"><img src="{{ STATIC_URL }}images/glyphicons/plus0.png" height="100%" alt="Add implementation" />	</a>
 		<!--<input type="button" value="Add Implementation" id="add_implementation" ></input><i class="icon-plus"></i>-->
 		</label>

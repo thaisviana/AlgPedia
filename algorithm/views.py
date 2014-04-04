@@ -267,10 +267,12 @@ def show_algorithm_by_id(request, id):
 	# Try and create an rdf file for the required algorithm
 	# returns the name of the file so we can show it later
 	rdf_path = try_create_algorithm_rdf(int(id))
-
+	
+	
 	ctx_variables = {}
 
 	ctx_variables['algorithm_name'] = alg.name
+	ctx_variables['algorithm_tags'] = alg.tags.all()
 	ctx_variables['algorithm_id'] = alg.id
 	ctx_variables['algorithm_classification'] = classification.name
 	ctx_variables['algorithm_about'] = alg.description
