@@ -3,7 +3,7 @@ from algorithm.ContactForm import ContactForm
 from algorithm.UserCreateForm import UserCreateForm
 from algorithm.algorithmForm import AlgorithmForm
 from algorithm.controllers import *
-from algorithm.forms import FiltersAlgorithm
+from algorithm.forms import FiltersAlgorithm, FiltersClassification
 from algorithm.models import Classification, Implementation, Algorithm, \
 	ProgrammingLanguage
 from django.contrib import auth
@@ -187,8 +187,11 @@ def rules(request):
 	return render(request, 'rules.html', ctx)
 
 def show_all_classifications(request):
+
+	search = request.GET.get('search', None)
+
 	username = str(request.user) if request.user.is_authenticated() else None
-	ordered_classifications = get_all_classifications_ordered_name_link(username)
+	ordered_classifications = get_all_classifications_ordered_name_link(username, search)
 	user_interested_classifications = get_user_interested_classifications(username)
 
 	ordered_classifications = dict_diff(ordered_classifications, user_interested_classifications)
@@ -196,7 +199,8 @@ def show_all_classifications(request):
 	ctx = {
 		'classifications' : ordered_classifications,  # get_all_classifications_name_link(),
 		'logged':  request.user.is_authenticated(),
-		'user_interested_classifications': user_interested_classifications
+		'user_interested_classifications': user_interested_classifications,
+		'filters': FiltersClassification(request.GET)
 	}
 	return render(request, 'display_all_classifications.html', ctx)
 

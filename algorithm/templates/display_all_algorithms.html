@@ -47,15 +47,20 @@ $(document).ready(function(){
 				{% paginate algorithms %}
 				{% for algorithm in algorithms %}	
 					<tr>
-						<td><a href="{{algorithm.link}}"> {{ algorithm.name }} &nbsp;&nbsp;&nbsp;- <span class="impl-reputation" id="impl-reputation-{{ algorithm.reputation }}" data-reputation_value="#{{ algorithm.reputation }}">
-									Reputation: {{ algorithm.reputation }}
-								</span></td>
+						<td>
+							<a href="{{algorithm.link}}">
+								{{ algorithm.name }} &nbsp;&nbsp;&nbsp;- 
+								<span class="impl-reputation" id="impl-reputation-{{ algorithm.reputation }}" data-reputation_value="#{{ algorithm.reputation }}">
+							</span>
+						</td>
 					</tr>
 					{% empty %}
 					<p> There are no algorithms available. </p>
 				{% endfor %}
 			</table>
+			<div class="pagination-wrapper">
 			{% show_pages %}
+			</div>
 		</div>
 		<div class="span2"></div>
 	</div>

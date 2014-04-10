@@ -8,3 +8,4 @@ django-endless-pagination==2.0
 beautifulsoup4
 numpy
 nltk
+simplejson

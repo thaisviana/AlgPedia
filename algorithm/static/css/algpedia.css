@@ -1,3 +1,37 @@
+header { border-bottom: 1px solid #CCC; margin-bottom: 20px; padding: 10px; background-color: #F0F0F0; }
+header ul { margin-top: 30px; }
+.nav-pills > li > a { padding: 10px; color: #333; }
+.nav-pills > li > a:hover { background-color: #CCC; }
+
+.top-algorithms { text-align: center; }
+.top-algorithms > div { text-align: center; display: inline-block; width: 160px; margin: 0 10px; }
+.top-algorithms > div > div { text-align: center; }
+
+.contents { padding-bottom: 20px; }
+
+html { position: relative; min-height: 100%; }
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 110px !important;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 110px;
+  /* Set the fixed height of the footer here */
+  background-color: #f5f5f5;
+  border-top: 2px solid #CCC;
+}
+
+.footer-inner { padding: 20px; }
+.footer-inner .sponsors { float: right; }
+.footer-inner .sponsors > div { margin-left: 10px; }
+.footer-inner .sponsors img { max-height: 70px; }
+.footer-inner .description { margin-top: 20px; float: left; }
+.footer-inner .trademark { font-size: 22px; }
+
+.pagination-wrapper { text-align: center; font-size: 20px; border: 1px solid #DDD; border-radius: 5px; padding: 10px 0; }
 
 /*
  * Correções para o layout

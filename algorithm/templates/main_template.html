@@ -3,6 +3,7 @@
 	<head>
 		<!--<link rel="stylesheet"	href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />-->
 		<link rel="stylesheet"	href="{{ STATIC_URL }}css/bootstrap.css" />
+		<link rel="stylesheet"	href="{{ STATIC_URL }}css/util.css" />
 		<link rel="stylesheet"	href="{{ STATIC_URL }}css/algpedia.css" />
 		<link rel="stylesheet" href="{{ STATIC_URL }}js/plugins/chosen/chosen.min.css">
 		<link href="{{ STATIC_URL }}css/prettify.css" type="text/css" rel="stylesheet" />
@@ -32,55 +33,73 @@
 		{% endblock %}
 	</head>
 	<body>
-		<ul class="nav nav-pills">
-			<li >
-				<a href="/">Home</a>
-			</li>
-			<!--<li ><a href="/admin">Admin Page</a></li>-->
-			<li >
-				<a href="/show/cat/all">Classifications</a>
-			</li>
-			<li >
-				<a href="/show/alg/all">Algorithms</a>
-			</li>
-			<li >
-				<a href="/about">About Us</a>
-			</li>
-			<li >
-				<a href="/rules">Rules</a>
-			</li>
-			<li >
-				<a href="/contact" id="contact">Contact</a>
-			</li>
-
-			{% if user.is_moderator %}
-			<li >
-				<a href="{% url 'moderator_dashboard' %}">Moderation</a>
-			</li>
-			{% endif %}
-
-			{% if logged %}
-			<li class="tabs-right">
-				<a id="logout" href="/accounts/logout">Logout</a>
-			</li>
-			<input type="hidden" id="logged" name="logged" value="true" />
-			<li class="tabs-right">
-				<a id="profile" href="/accounts/profile">Profile</a>
-			</li>
-			<input type="hidden" id="logged" name="logged" value="true" />
-			{% else %}
-			<li class="tabs-right">
-				<a href="/accounts/login">Login</a>
-			</li>
-			<input type="hidden" id="logged" name="logged" value="false" />
-			{% endif %}
-		</ul>
-		<div>
-
-			{% block content %}
-			{% endblock %}
-
+		<header>
+			<ul class="nav nav-pills pull-right">
+				<!--<li ><a href="/admin">Admin Page</a></li>-->
+				<li >
+					<a href="/show/cat/all">Classifications</a>
+				</li>
+				<li >
+					<a href="/show/alg/all">Algorithms</a>
+				</li>
+				<li >
+					<a href="/about">About Us</a>
+				</li>
+				<li >
+					<a href="/rules">Rules</a>
+				</li>
+				<li >
+					<a href="/contact" id="contact">Contact</a>
+				</li>
+	
+				{% if user.is_moderator %}
+				<li >
+					<a href="{% url 'moderator_dashboard' %}">Moderation</a>
+				</li>
+				{% endif %}
+	
+				{% if logged %}
+				<li class="tabs-right">
+					<a id="logout" href="/accounts/logout">Logout</a>
+				</li>
+				<input type="hidden" id="logged" name="logged" value="true" />
+				<li class="tabs-right">
+					<a id="profile" href="/accounts/profile">Profile</a>
+				</li>
+				<input type="hidden" id="logged" name="logged" value="true" />
+				{% else %}
+				<li class="tabs-right">
+					<a href="/accounts/login">Login</a>
+				</li>
+				<input type="hidden" id="logged" name="logged" value="false" />
+				{% endif %}
+			</ul>
+			<a href="/">
+				<h3><img src="{{ STATIC_URL }}images/logo-transparent.png" /></h3>
+			</a>
+		</header>
+		<div class="contents">
+			{% block content %}{% endblock %}
 		</div>
-
+		<div id="footer">
+			<div class="footer-inner">
+				<div class="description">
+					<div class="trademark">AlgPedia - 2014</div>
+					<div>A project made by Computer Science students of UFRJ.</div>
+				</div>
+				<div class="sponsors">
+					<div class="inline-block">
+						<a href="http://dcc.ufrj.br">
+							<img src="{{ STATIC_URL }}images/dcc.png" class="img-rounded" style="border-style:solid;" alt="IM" />
+						</a>
+					</div>
+					<div class="inline-block">
+						<a href="http://www.ufrj.br/">
+							<img src="{{ STATIC_URL }}images/logo_ufrj.jpg" class="img-rounded" style="border-style:solid;" alt="UFRJ" />
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

@@ -1,91 +1,43 @@
 {% extends "main_template.html" %}
 {% block content %}
 
-<div class="main container-fluid">
-	<div class="row-fluid">
-		<div class="span5"></div>
-		<div class="span2">
-			<div class="space2"></div>
-			<img class="img-responsive" src="{{ STATIC_URL }}images/a.png" alt="" />
-		</div>
-		<div class="span5"></div>
-	</div>
-
-	<div class="space"></div>
-
+<div class="container-fluid">
 	<h3 class="text-center">AlgPedia is a <strong>free collaborative </strong>encyclopedia constructed to provide an RDF-based algorithms that can be accessed via this website or through Open Linked Data applications that process structured data. </h3>
 </div>
-<div class="space3">
-	&nbsp;
-</div>
-
-
-
-<div class="container-fluid">
-
-	<div class="row-fluid">
-		<div class="span2">
-			&nbsp;
-		</div>
-		<div class="span8 text-center">
-			
-			<h4>Below, the top 3 algorithms:</h4>
-			<div class="row-fluid">		
-				
-				<div class="span3">
-					&nbsp;
-				</div>
-			{% for alg in top5_algorithms %}
-			{% if forloop.first %}
-				<div class="span2 text-center"><img class="thumbnail img-center" src="{{ STATIC_URL }}images/Metal-gold.png" alt="{{alg.link}}" />
-					<a href="{{alg.link}}"> {{ alg.name }} </a>
-				</div>
-			{% endif %}	
-			{% if forloop.counter0 == 1 %}
-				<div class="span2 text-center"><img class="thumbnail img-center" src="{{ STATIC_URL }}images/Metal-silver.png" alt="{{alg.link}}" />
-					<a href="{{alg.link}}"> {{ alg.name }} </a>
-				</div>
-			{% endif %}	
-			{% if forloop.counter0 == 2 %}
-				<div class="span2 text-center"><img class="thumbnail img-center" src="{{ STATIC_URL }}images/Metal-bronze.png" alt="{{alg.link}}" />
-					<a href="{{alg.link}}"> {{ alg.name }} </a>
-				</div>
-			{% endif %}	
-			{% empty %}
-				<p>
-					We have no votes yet for the algorithms. <a href="/accounts/login">Be the first to vote!</a> You just need to be logged in.
-				</p>
-			{% endfor %}
-			<div class="span3">
-					&nbsp;
-				</div>
+<div class="container">
+	<div class="row">
+		<div class="offset2 span8 margin-top-40">
+			<h4 class="text-center">Below, the top 3 algorithms:</h4>
+			<div class="top-algorithms">
+				{% for alg in top5_algorithms %}
+				{% if forloop.first %}
+					<div class="text-center">
+						<img src="{{ STATIC_URL }}images/Metal-gold.png" alt="{{alg.link}}" />
+						<div><a href="{{alg.link}}"> {{ alg.name }} </a></div>
+					</div>
+				{% endif %}	
+				{% if forloop.counter0 == 1 %}
+					<div class="text-center">
+						<img src="{{ STATIC_URL }}images/Metal-silver.png" alt="{{alg.link}}" />
+						<div><a href="{{alg.link}}"> {{ alg.name }} </a></div>
+					</div>
+				{% endif %}	
+				{% if forloop.counter0 == 2 %}
+					<div class="text-center">
+						<img src="{{ STATIC_URL }}images/Metal-bronze.png" alt="{{alg.link}}" />
+						<div><a href="{{alg.link}}"> {{ alg.name }} </a></div>
+					</div>
+				{% endif %}	
+				{% empty %}
+					<div>
+						We have no votes yet for the algorithms. <a href="/accounts/login">Be the first to vote!</a> You just need to be logged in.
+					</div>
+				{% endfor %}
 			</div>
 		</div>
-		<div class="span2">
-			&nbsp;
-		</div>
-	</div>
-</div>		
-
-<div >
-	&nbsp;&nbsp;&nbsp;
-</div>
-
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="span4">
-			&nbsp;
-		</div>
-		<div class="span2">
-			<img src="{{ STATIC_URL }}images/dcc.png" class="img-rounded" style="border-style:solid;" alt="IM" />
-		</div>
-		<div class="span2">
-			<img src="{{ STATIC_URL }}images/logo_ufrj.jpg" class="img-rounded" style="border-style:solid;" alt="UFRJ" />
-		</div>
-		<div class="span4">
-			&nbsp;
-		</div>
+		
 	</div>
 </div>
+
 
 {% endblock %}

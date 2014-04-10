@@ -1,5 +1,6 @@
 {% extends "main_template.html" %}
 {% block content %}
+{% load endless %}
 <div id="classifications">
 
 
@@ -20,16 +21,16 @@
 		</div>
 		<div class="span8">
 			<table class="table table-bordered" id="classifications_uri">
-		{% for class in user_interested_classifications %}
-		<tr>
-			<td><a href="{{class.link}}"> {{ class.name }} </td>
-		</tr>
-		{% empty %}
-		<p>
-			You have not indicated any interest in classification algorithm
-		</p>
-		{% endfor %}
-	</table>
+				{% for class in user_interested_classifications %}
+				<tr>
+					<td><a href="{{class.link}}"> {{ class.name }} </td>
+				</tr>
+				{% empty %}
+				<p>
+					You have not indicated any interest in classification algorithm
+				</p>
+				{% endfor %}
+			</table>
 		</div>
 		<div class="span2">
 			&nbsp;
@@ -45,10 +46,18 @@
 			&nbsp;
 		</div>
 		<div class="span8">
+			<div class="filters cf">
+				<form action="" method="GET">
+				<div class="pull-left">
+					Search for: {{ filters.search }}
+				</div>
+				</form>
+			</div>
 			<table class="table table-bordered" id="classifications_uri">
 				<tr>
 					<td>Other Algorithms </td>
 				</tr>
+				{% paginate classifications %}
 				{% for class in classifications %}
 				<tr>
 					<td><a href="{{class.link}}"> {{ class.name }} </td>
@@ -59,6 +68,9 @@
 				</p>
 				{% endfor %}
 			</table>
+			<div class="pagination-wrapper">
+			{% show_pages %}
+			</div>
 		</div>
 		<div class="span2">
 			&nbsp;

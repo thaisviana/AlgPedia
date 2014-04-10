@@ -7,6 +7,10 @@ class FiltersAlgorithm(forms.Form):
     classification = forms.ModelChoiceField(queryset=Classification.objects.all(), empty_label="All")
 
 
+class FiltersClassification(forms.Form):
+    search = forms.CharField()
+
+
 class TagForm(forms.ModelForm):
     class Meta:
         model = Tag

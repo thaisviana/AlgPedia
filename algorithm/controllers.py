@@ -8,28 +8,28 @@ from django.shortcuts import get_object_or_404
 def cosine_similarity(vec1, vec2):
 	 intersection = set(vec1.keys()) & set(vec2.keys())
 	 numerator = sum([vec1[x] * vec2[x] for x in intersection])
-	 sum1 = sum([vec1[x]**2 for x in vec1.keys()])
-	 sum2 = sum([vec2[x]**2 for x in vec2.keys()])
+	 sum1 = sum([vec1[x] ** 2 for x in vec1.keys()])
+	 sum2 = sum([vec2[x] ** 2 for x in vec2.keys()])
 	 denominator = math.sqrt(sum1) * math.sqrt(sum2)
 	 if not denominator:
 	 	return 0.0
 	 else:
 	 	return float(numerator) / denominator
-	 
+
 def f_bayes(tag, id, sim_matriz, vecTag):
 	similares = 0.0
 	tagsEmSimilares = 0.0
-	
+
 	for j in xrange(len(sim_matriz)):
 		if sim_matriz[id][j] > 0.2 and id <> j:
-			similares +=1
+			similares += 1
 			if tag in vecTag[j]:
 				tagsEmSimilares += 1
 	if similares == 0:
 		return 0.0
-	if(tagsEmSimilares/similares <> 0.0):
-		print tagsEmSimilares/similares
-	return  tagsEmSimilares/similares
+	if(tagsEmSimilares / similares <> 0.0):
+		print tagsEmSimilares / similares
+	return  tagsEmSimilares / similares
 
 def is_database_empty():
 	empty = 0
@@ -68,14 +68,18 @@ def get_user_interested_classifications(username=None):
 	return classif
 
 # returns a tuple (names, links) of classifications
-def get_all_classifications_name_link():
+def get_all_classifications_name_link(search=None):
 	# collection = dict()
 
 	names = []
 	links = []
 	ids = []
 
-	classifications = Classification.objects.order_by("name")
+	filters = {}
+	if search:
+		filters['name__icontains'] = search
+
+	classifications = Classification.objects.filter(**filters).order_by("name")
 
 	for classification in classifications:
 		names.append(classification.name)
@@ -87,8 +91,8 @@ def get_all_classifications_name_link():
 
 	return classif
 
-def get_all_classifications_ordered_name_link(username=None):
-	all_classifications = get_all_classifications_name_link()
+def get_all_classifications_ordered_name_link(username=None, search=None):
+	all_classifications = get_all_classifications_name_link(search)
 	user_interested_classifications = get_user_interested_classifications(username)
 	# ordered_classifications = list(user_interested_classifications)
 	ordered_classifications = []
