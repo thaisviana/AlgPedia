@@ -1,38 +1,44 @@
 $(function() {	
 	prettyPrint();
-		$('.impl-reputation').each(function() {
-			$rep = $(this).data('reputation_value');
-			if($rep != null){$rep = $rep.substring(1, 7);}
-			$(this).mouseover(function () {
-				return overlib($(this).data('reputation_value').substring(1, 7), ABOVE);
-			});
-			$(this).mouseout(function () {
-				return nd();
-			});	
-				//var star_0 = "<img src='/algorithm/static/images/glyphicons/glyphicons_048_dislikes.png' alt='"+$rep+"'  width='22' height='22'/>";
-				//var star_1 = "<img src='/algorithm/static/images/glyphicons/glyphicons_049_star.png' alt='"+$rep+"' width='22' height='22' />";
-		
-		
-		
-			var star_0 = "<img src='/algorithm/static/images/glyphicons/starOff.png' alt='"+$rep+"' width='22' height='22'/>";
-			var star_1 = "<img src='/algorithm/static/images/glyphicons/star.png' alt='"+$rep+"' width='22' height='22'/>";
-			$rep = parseFloat($rep);
-			if($rep == 0.0){
-				$(this).html('Reputation : '+ star_0 + star_0 + star_0 + star_0+ star_0);
-			}else if($rep < 0.2){
-				$(this).html(' Reputation : '+ star_1 + star_0 + star_0 + star_0+ star_0);
-			}else if(0.2 <= $rep && $rep < 0.4){
-				$(this).html(' Reputation : '+ star_1 + star_1 + star_0 + star_0+ star_0);
-			}else if(0.4 <= $rep && $rep < 0.6){
-				$(this).html(' Reputation : '+star_1 + star_1 + star_1 + star_0+ star_0);
-			}else if(0.6 <= $rep && $rep < 0.8){
-				$(this).html(' Reputation : '+ star_1 + star_1 + star_1 + star_1+ star_0);
-			}else if(0.8 <= $rep){
-				$(this).html(' Reputation : '+ star_1 + star_1 + star_1 + star_1+ star_1);
-			}else if($rep == 0.0){
-				$(this).html(' Reputation : '+ star_0 + star_0 + star_0 + star_0+ star_0);
+	
+	$('.impl-reputation').each(function() {
+		$rep = $(this).data('reputation_value');
+		if($rep != null){$rep = $rep.substring(1, 7);}
+		$(this).mouseover(function () {
+			var val;
+			if($(this).data('reputation_value') != "#"){
+				val = $(this).data('reputation_value').substring(1, 7);
+			} else {
+				val = "Not evaluated yet";
 			}
-			
+			return overlib(val, ABOVE);
+		});
+		$(this).mouseout(function () {
+			return nd();
+		});	
+			//var star_0 = "<img src='/algorithm/static/images/glyphicons/glyphicons_048_dislikes.png' alt='"+$rep+"'  width='22' height='22'/>";
+			//var star_1 = "<img src='/algorithm/static/images/glyphicons/glyphicons_049_star.png' alt='"+$rep+"' width='22' height='22' />";
+	
+	
+	
+		var star_0 = "<img src='/algorithm/static/images/glyphicons/starOff.png' alt='"+$rep+"' width='22' height='22'/>";
+		var star_1 = "<img src='/algorithm/static/images/glyphicons/star.png' alt='"+$rep+"' width='22' height='22'/>";
+		var img;
+		$rep = parseFloat($rep);
+		if($rep == 0 || isNaN($rep)){
+			img = star_0 + star_0 + star_0 + star_0+ star_0;
+		}else if($rep < 0.2){
+			img = star_1 + star_0 + star_0 + star_0+ star_0;
+		}else if(0.2 <= $rep && $rep < 0.4){
+			img = star_1 + star_1 + star_0 + star_0+ star_0;
+		}else if(0.4 <= $rep && $rep < 0.6){
+			img = star_1 + star_1 + star_1 + star_0+ star_0;
+		}else if(0.6 <= $rep && $rep < 0.8){
+			img = star_1 + star_1 + star_1 + star_1+ star_0;
+		}else if(0.8 <= $rep){
+			img = star_1 + star_1 + star_1 + star_1+ star_1;
+		}
+		$(this).html(img);
 	});
 			
 	tinyMCE.init({

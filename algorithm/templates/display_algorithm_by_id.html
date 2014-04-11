@@ -55,9 +55,7 @@
 							<div class="accordion-inner align-center" style="overflow:auto; max-height:275px;">
 								<pre  class="prettyprint lang-{{implementation.programming_language}}">{{ implementation.code }}</pre>
 							</div>
-							<span class="impl-reputation" id="impl-reputation-{{ implementation.reputation }}" data-reputation_value="#{{ implementation.reputation }}">
-								Reputation: {{ implementation.reputation }}
-							</span>
+							<span class="impl-reputation" id="impl-reputation-{{ implementation.reputation }}" data-reputation_value="#{{ implementation.reputation|default_if_none:"" }}"></span>
 							{% if not implementation.user %}
 							<img src="{{ STATIC_URL }}images/wikipedia.png" alt="" width="32" height="32" style="float: right;" />	
 							{% endif %}

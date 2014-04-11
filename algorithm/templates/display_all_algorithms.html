@@ -49,8 +49,8 @@ $(document).ready(function(){
 					<tr>
 						<td>
 							<a href="{{algorithm.link}}">
-								{{ algorithm.name }} &nbsp;&nbsp;&nbsp;- 
-								<span class="impl-reputation" id="impl-reputation-{{ algorithm.reputation }}" data-reputation_value="#{{ algorithm.reputation }}">
+								{{ algorithm.name }}
+								<span class="impl-reputation pull-right" id="impl-reputation-{{ algorithm.reputation }}" data-reputation_value="#{{ algorithm.reputation|default_if_none:'' }}">
 							</span>
 						</td>
 					</tr>
