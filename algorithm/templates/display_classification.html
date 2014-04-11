@@ -1,8 +1,19 @@
 {% extends "main_template.html" %}
 
 {% block content %}
-<div >
-	&nbsp;
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2"></div>
+		<div class="span6">
+			<h2>{{ classif.name }}</h2>
+		</div>
+		<div class="span2 text-right actions">
+			<a href="/add/cat/id/{{classif.id}}"><img src="{{ STATIC_URL }}images/glyphicons/plus0.png" height="100%"/>
+				Add an algorithm
+			</a>
+		</div>
+		<div class="span2"></div>
+	</div>
 </div>
 <div class="container-fluid">
 
@@ -13,14 +24,9 @@
 		<div class="span8">
 			
 			<!--Página-->
-			<label class="control-label"><strong>{{ classif.name }} &nbsp;&nbsp;&nbsp;</strong><a id="add_algorithm" href="/add/cat/id/{{classif.id}}"><img src="{{ STATIC_URL }}images/glyphicons/plus0.png" height="100%" alt="Add algorithm" /> </a>
 				<div id="classification">
 					&nbsp;&nbsp;&nbsp;<a href="{{ classif.uri }}" target="_blank"> [More Information] </a></td>
 					<!-- table containing algorithms with such classification -->
-					<form id="add_algorithm" >
-						<input type="hidden" name="classification_id" value="{{classif.id}}"/>	
-						<br />
-					</form>
 				</div> 
 				<div class="container-fluid">
 

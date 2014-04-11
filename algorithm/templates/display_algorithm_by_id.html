@@ -1,8 +1,13 @@
 {% extends "main_template.html" %}
 
 {% block content %}
-<div >
-	&nbsp;
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2"></div>
+		<div class="span6">
+			<h2><a href="{{ classification_algp_url }}"	target="_blank">{{algorithm_classification }}</a></h2>
+		</div>
+	</div>
 </div>
 <div class="container-fluid">
 
@@ -11,10 +16,6 @@
 			&nbsp;
 		</div>
 		<div class="span8">
-			
-			<!--Página-->
-			<h3><a href="{{ classification_algp_url }}"	target="_blank">{{algorithm_classification }}</a></h3>
-	
 	<form id="add_algorithm_form">
 		<input type="hidden" id="algorithm_id" value="{{algorithm_id}}" />	
 		<h4><span id="algorithm-name">{{algorithm_name}}</span> &nbsp;<a href="{{ STATIC_URL }}{{rdf_path}}" target="_blank"> <img style="width: 20px; height:20px" src="{{ STATIC_URL }}images/rdf.jpeg" id="rdf"/> </a></h4>
