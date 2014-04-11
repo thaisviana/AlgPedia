@@ -18,6 +18,8 @@ from extractor.Bootstrapping import Bootstrapper
 import htmlentitydefs
 import json
 import re
+import sys 
+import unicodedata
 
 # get_all_classifications_name_link, wipe_database, is_database_empty, get_classification_by_id
 
@@ -119,7 +121,7 @@ def profile(request):
 					int_q_answer_id = int(q_data)
 					insert_user_question_answer(username, q.id, int_q_answer_id)
 			else:
-				print 'aaa'
+				#print 'aaa'
 				delete_user_question_answer(username, q.id)
 
 		data = request.POST.getlist("classifications_interest")
@@ -224,6 +226,8 @@ def show_all_algorithms(request):
 def show_algorithm_by_id(request, id):
 	alg = get_algorithm_by_id(int(id))
 	imps = get_implementations_by_alg_id(int(id))
+	reload(sys)
+	sys.setdefaultencoding("utf-8")
 	for imp in imps:
 		imp.code = re.sub('<[^>]*>', '', imp.code)
 		imp.code = re.sub('&([^;]+);', lambda m: unichr(htmlentitydefs.name2codepoint[m.group(1)]), imp.code)
@@ -275,7 +279,7 @@ def show_algorithm_by_id(request, id):
 	
 	ctx_variables = {}
 
-	ctx_variables['algorithm_name'] = alg.name
+	ctx_variables['algorithm_name'] = alg.name.encode('cp850','replace').decode('cp850')
 	ctx_variables['algorithm_tags'] = alg.tags.all()
 	ctx_variables['algorithm_id'] = alg.id
 	ctx_variables['algorithm_classification'] = classification.name
