@@ -4,13 +4,12 @@ from algorithm.UserCreateForm import UserCreateForm
 from algorithm.algorithmForm import AlgorithmForm
 from algorithm.controllers import *
 from algorithm.forms import FiltersAlgorithm, FiltersClassification
-from algorithm.models import Classification, Implementation, Algorithm, \
-	ProgrammingLanguage
+from algorithm.models import Classification, Implementation, Algorithm, ProgrammingLanguage
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.context_processors import csrf
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, redirect
 from django.template import Context, RequestContext
 from django.template.loader import get_template
 from django.views.decorators.csrf import csrf_exempt
@@ -18,7 +17,7 @@ from extractor.Bootstrapping import Bootstrapper
 import htmlentitydefs
 import json
 import re
-import sys 
+import sys
 import unicodedata
 
 # get_all_classifications_name_link, wipe_database, is_database_empty, get_classification_by_id
@@ -61,7 +60,7 @@ def signin(request):
 		if form.is_valid():
 			new_user = form.save()
 			ctx = {'logged':  request.user.is_authenticated()}
-			return render(request, 'default_debug.html', ctx)
+			return redirect(profile)
 		else:
 			c = {'logged':  request.user.is_authenticated(), 'form' : form}
 			c.update(csrf(request))

@@ -30,7 +30,7 @@ $(document).ready(function(){
 			<!--Página-->
 			   {% if not user.is_moderator %}
     <div class="alert alert-info">
-    	<a class="moderator-add"><img src="{{ STATIC_URL }}images/glyphicons/glyphicons_003_user.png" /> &nbsp;&nbsp;&nbsp; Become an AlgPedia moderator.</a>
+    	<a class="moderator-add"><img src="{{ STATIC_URL }}images/glyphicons/glyphicons_003_user.png" /> Become an AlgPedia moderator.</a>
     </div>
 	{% endif %}
 	<p>Welcome, {{ name }}. Thanks for logging in.</p>

@@ -20,6 +20,7 @@
 			&nbsp;
 		</div>
 		<div class="span8">
+			<h4>Classifications that may interest you</h4>
 			<table class="table table-bordered" id="classifications_uri">
 				{% for class in user_interested_classifications %}
 				<tr>
@@ -46,6 +47,7 @@
 			&nbsp;
 		</div>
 		<div class="span8">
+			<h4>Other classifications</h4>
 			<div class="filters cf">
 				<form action="" method="GET">
 				<div class="pull-left">
@@ -54,9 +56,6 @@
 				</form>
 			</div>
 			<table class="table table-bordered" id="classifications_uri">
-				<tr>
-					<td>Other Algorithms </td>
-				</tr>
 				{% paginate classifications %}
 				{% for class in classifications %}
 				<tr>
