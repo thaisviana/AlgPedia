@@ -76,7 +76,7 @@ class Implementation(models.Model):
 	visible = models.BooleanField()
 
 	reputation = models.FloatField(default=0)
-	evaluation_count = models.IntegerField(default=0)
+	accumulated_weight = models.FloatField(default=0)
 
 	user = models.ForeignKey(User, null=True, blank=True, verbose_name=u"Creator")
 
@@ -87,9 +87,11 @@ class Implementation(models.Model):
 		return "/show/imp/id/%i" % self.id
 
 	def save_reputation(self, reputation, user_weight):
-		# change evaluation_count to accumulated weight
-		self.reputation = ((self.reputation * self.evaluation_count) + reputation * user_weight) / float(self.evaluation_count + user_weight)
-		self.evaluation_count = self.evaluation_count + user_weight
+		if not self.reputation:
+			self.reputation = 0
+		# Média ponderada pelos pesos dos usuários de todas as reputações daquela implementação.
+		self.reputation = ((self.reputation * self.accumulated_weight) + reputation * user_weight) / float(self.accumulated_weight + user_weight)
+		self.accumulated_weight = self.accumulated_weight + user_weight
 		self.save()
 		return True
 

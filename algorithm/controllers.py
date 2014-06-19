@@ -216,18 +216,17 @@ def insert_user_impl_question_answer(username, impl_id, question_id, question_an
 
 	try:
 		# Updating the answer
-		question = ImplementationQuestion.objects.get(id=question_id)
-		existing_question_answer = ImplementationQuestionAnswer.objects.get(user=user, implementation__id=impl_id, implementation_question=question)
-
-		if question_answer_id and existing_question_answer.question_answer.id != question_answer_id:
-				question_option = QuestionOption.objects.get(id=question_answer_id)
-				existing_question_answer.question_option = question_option
-				existing_question_answer.save()
+		existing_question_answer = ImplementationQuestionAnswer.objects.get(user=user, implementation__id=impl_id, implementation_question_id=question_id)
+		raise Exception(u"Cannot vote twice for an implementation")
+# 		if question_answer_id and existing_question_answer.question_option.id != question_answer_id:
+# 			question_option = QuestionOption.objects.get(id=question_answer_id)
+# 			existing_question_answer.question_option = question_option
+# 			existing_question_answer.save()
 	except ImplementationQuestionAnswer.DoesNotExist:
 		implementation = Implementation.objects.get(id=impl_id)
 		question_option = QuestionOption.objects.get(id=question_answer_id)
 
-		existing_question_answer = ImplementationQuestionAnswer.objects.create(user=user, implementation=implementation, implementation_question=question, question_option=question_option)
+		existing_question_answer = ImplementationQuestionAnswer.objects.create(user=user, implementation=implementation, implementation_question_id=question_id, question_option=question_option)
 		# returns a list with user weight and reputation
 		result = [existing_question_answer.calculate_reputation(), existing_question_answer.calculate_user_weight()]
 		return result
