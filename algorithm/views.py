@@ -264,7 +264,8 @@ def show_algorithm_by_id(request, id):
 			reputation += result_set[0]
 			user_weight = result_set[1]
 
-		reputation = reputation / 12
+		# TODO: remove hardcode 12.
+		reputation = reputation / 12  # 12 is the sum from all question weights
 
 		implementation.save_reputation(reputation, user_weight)
 		implementation.algorithm.calculate_reputation()

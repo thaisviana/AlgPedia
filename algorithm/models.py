@@ -150,16 +150,23 @@ class ImplementationQuestionAnswer(models.Model):
 		super(ImplementationQuestionAnswer, self).save(*args, **kwargs)
 
 	def calculate_user_weight(self):
+		PROFILE_WEIGHT = 2
+		LANGUAGE_WEIGHT = 3
+		KNOWLEDGE_WEIGHT = 5
+
 		classifications_proeficiency = ClassificationProeficiencyScale.objects.filter(user=self.user).values_list('classification_id', flat=True)
 		programminglanguage_proeficiency = ProgrammingLanguageProeficiencyScale.objects.filter(user=self.user).values_list('programming_language_id', flat=True)
 
-		classification_weight = 1 if self.implementation.algorithm.classification.id in classifications_proeficiency else 0.5
-		language_weight = 1 if self.implementation.programming_language.id in programminglanguage_proeficiency else 0.5
+		classification_value = 1 if self.implementation.algorithm.classification.id in classifications_proeficiency else 0.5
+		language_value = 1 if self.implementation.programming_language.id in programminglanguage_proeficiency else 0.5
 		try:
-			user_profile_weight = self.user.userquestionanswer_set.get(question_option__question_id=1).question_option.value / float(10)  # user_profile_weight vary from 0 to 10
+			user_profile_value = self.user.userquestionanswer_set.get(question_option__question_id=1).question_option.value  # user_profile_weight vary from 0 to 10
 		except:  # does not exists
-			user_profile_weight = 0.1
-		user_weight = user_profile_weight * language_weight * classification_weight
+			user_profile_value = 1
+		user_profile_value /= float(10)
+
+		user_weight = ((PROFILE_WEIGHT * user_profile_value) + (LANGUAGE_WEIGHT * language_value) + (KNOWLEDGE_WEIGHT * classification_value)) \
+						/ (PROFILE_WEIGHT + LANGUAGE_WEIGHT + KNOWLEDGE_WEIGHT)
 		return user_weight
 
 	def calculate_reputation(self):
