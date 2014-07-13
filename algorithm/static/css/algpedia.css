@@ -136,6 +136,18 @@ body {
     *zoom: 1;
 }
 
+a:link {
+COLOR: #006633;
+}
+a:visited {
+COLOR: #003300;
+}
+a:hover {
+COLOR: #003300;
+}
+a:active {
+COLOR: #003300;
+}
 
 form.django-default { }
 form.django-default label { margin-top: 10px; font-weight: bold; margin-bottom: 0; }

@@ -15,7 +15,7 @@ $(document).ready(function(){
 					$('#id_tags').append('<option value="'+tag.id+'" selected="selected">'+tag.name+'</option>');
 					$('#id_tags').trigger("liszt:updated");
 				} else {
-					alert("Something went wrong. Please try again.")
+					bootbox.alert("Something went wrong. Please try again.")
 				}
 			});
 		}
@@ -64,7 +64,7 @@ $(document).ready(function(){
 						<div>
 							{{form.tags}}
 						</div>
-						<div><a href="#" class="js-add-tag">Add a new tag</a></div>
+						<div><a href="#" class="controls js-add-tag">Add a new tag</a></div>
 						<div>
 							{{form.tags.errors}}
 						</div>
@@ -81,7 +81,7 @@ $(document).ready(function(){
 				<div class="control-group">
 					<label class="control-label" for="inputAlgorithm"></label>
 					<div class="controls">
-						<button class="btn btn-large btn-block btn-info submit-button" type="submit" id="add_alg">Add Algorithm</button>
+						<button class="btn btn-large btn-block btn-success submit-button" type="submit" id="add_alg">Add Algorithm</button>
 					</div>
 				</div>
 				
