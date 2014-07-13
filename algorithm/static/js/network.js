@@ -1007,7 +1007,9 @@ links.Network.prototype._selectNodes = function(selection, append) {
         // fire the select event
         this.trigger('select');
     }
-
+	
+	var id = this.nodes[row].id;
+	window.location.href ="http://algpedia.dcc.ufrj.br/show/alg/id/"+id;
     return changed;
 };
 
