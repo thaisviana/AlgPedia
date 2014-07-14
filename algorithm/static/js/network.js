@@ -1009,8 +1009,13 @@ links.Network.prototype._selectNodes = function(selection, append) {
     }
 	
 	var id = this.nodes[row].id;
-	window.location.href ="http://algpedia.dcc.ufrj.br/show/alg/id/"+id;
-    return changed;
+	if(id > 200 ){
+		return changed
+	}else{
+		window.location.href ="http://algpedia.dcc.ufrj.br/show/alg/id/"+id;
+    
+	}
+	;
 };
 
 /**
