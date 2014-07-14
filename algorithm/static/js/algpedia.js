@@ -72,7 +72,11 @@ $(function() {
 	
 	$('.textarea').wysihtml5();
 	
-	
+	$('.signup').click(function() {
+		bootbox.alert("Thank you for registering.");
+		$( "form:first" ).submit();
+	});
+		
 	$("#add_algorithm").click(function() {
 		event.preventDefault();
 		if($('#logged').val()== 'false'){

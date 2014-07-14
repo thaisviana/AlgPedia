@@ -7,13 +7,13 @@
 		<div class="span2"></div>
 		<div id="signin" class="span4">
 			
-			<h2>Signin</h2>
+			<h2>SignUp</h2>
 			
 			{{message}}
 			<form class="form-horizontal django-default" action="." method="post">{% csrf_token %}
 				{{form}}
 				<div class="margin-top">
-					<button type="submit" class="btn">Submit</button>
+					<button class="signup">Submit</button>
 				</div>
 			</form>
 		</div>

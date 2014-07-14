@@ -9,7 +9,7 @@ $(document).ready(function(){
 		var action = 'moderator_add';
 		var data = {'action': action}; 
 		$.post('{% url "moderator_add" %}', data, function(response){
-			alert("Thanks for become an AlgPedia moderator!");
+			bootbox.alert("Thanks for become an AlgPedia moderator!");
 			window.location.reload();
 		});
 	});
