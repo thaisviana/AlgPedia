@@ -58,7 +58,10 @@
 							</div>
 							<span class="impl-reputation" id="impl-reputation-{{ implementation.reputation }}" data-reputation_value="#{{ implementation.reputation|default_if_none:"" }}"></span>
 							{% if not implementation.user %}
-							<span style="float: right;"><small>Fonte:</small><img src="{{ STATIC_URL }}images/wikipedia.png" alt="Fonte: " style="float: right;" /></span>
+							<span style="float: right;">
+								<small>Fonte:</small>
+								<img src="{{ STATIC_URL }}images/wikipedia.png" alt="Fonte: Wikipedia" title="Wikipedia" style="float: right;" />
+							</span>
 							{% endif %}
 						</div>
 					</div>
