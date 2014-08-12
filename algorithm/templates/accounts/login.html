@@ -16,6 +16,7 @@
 	
 <form class="form-horizontal" method="POST" action="{% url 'django.contrib.auth.views.login' %}">
 	{% csrf_token %}
+	<input type="hidden" name="next" value="{{ request.GET.next }}" />
 	{% if form.errors %}
 	<div class="control-group">
 	<div class="alert alert-error alert-block text-center">

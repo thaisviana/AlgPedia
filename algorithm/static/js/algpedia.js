@@ -1,4 +1,10 @@
-$(function() {	
+$(function() {
+	$('.js-login-link').click(function(ev){
+		ev.preventDefault();
+		var next = location.pathname;
+		window.location.href = $(this).attr('href') + '?next=' + next;
+	});
+	
 	prettyPrint();
 	
 	$('.impl-reputation').each(function() {

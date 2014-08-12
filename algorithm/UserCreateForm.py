@@ -4,15 +4,14 @@ from django import forms
 from django.forms.util import flatatt
 from django.template import loader
 from django.utils.datastructures import SortedDict
-from django.utils.html import format_html, format_html_join
 from django.utils.http import int_to_base36
 from django.utils.safestring import mark_safe
 from django.utils.text import capfirst
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from django.contrib.auth import authenticate, get_user_model
+from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from django.contrib.auth.hashers import UNUSABLE_PASSWORD, identify_hasher
+from django.contrib.auth.hashers import UNUSABLE_PASSWORD
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.models import get_current_site
 
@@ -47,7 +46,7 @@ class UserCreateForm(forms.ModelForm):
         # but it sets a nicer error message than the ORM. See #13147.
         username = self.cleaned_data["username"]
         try:
-            User._default_manager.get(username=username)
+            User.objects.get(username=username)
         except User.DoesNotExist:
             return username
         raise forms.ValidationError(self.error_messages['duplicate_username'])
