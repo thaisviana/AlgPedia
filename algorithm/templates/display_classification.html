@@ -68,25 +68,23 @@
 		</div>
 	</div>
 </div>		
+				{% if algorithms %}
 				<table id="algorithms" class="table table-bordered">
-							<tr>
-								<td>Other Algorithms </td>
-							</tr>
-							{% for alg in algorithms %}
-							<tr>
-								<td><a href="{{alg.link}}"> {{ alg.name }}- <!-- Reputation: {{ alg.reputation }} -->
-									<span class="impl-reputation" style="float: right;" id="impl-reputation-{{ alg.reputation }}" data-reputation_value="#{{ alg.reputation }}">
-							</span>
-									
-								</td>
-							</tr>
-							{% empty %}
-							<p>
-								There are no Algorithms with this Classification.
-							</p>
-							{% endfor %}
-						</table>
-				<!--Página-->
+					<tr>
+						<td>Other Algorithms </td>
+					</tr>
+					{% for alg in algorithms %}
+					<tr>
+						<td><a href="{{alg.link}}"> {{ alg.name }}- <!-- Reputation: {{ alg.reputation }} -->
+							<span class="impl-reputation" style="float: right;" id="impl-reputation-{{ alg.reputation }}" data-reputation_value="#{{ alg.reputation }}">
+					</span>
+							
+						</td>
+					</tr>
+					{% endfor %}
+				</table>
+				{% endif %}
+		<!--Página-->
 		</div>
 		<div class="span2">
 			&nbsp;
