@@ -132,4 +132,28 @@ $(function() {
 	$(".js-refuse").mouseout(function () {
 		return nd();
 	});
+	
+	$.widget("custom.catcomplete", $.ui.autocomplete, {
+		_renderMenu: function( ul, items ) {
+			var that = this,
+			currentCategory = "";
+			$.each( items, function( index, item ) {
+				if ( item.category != currentCategory ) {
+					ul.append( "<li class='ui-autocomplete-category'>" + item.category_label + "</li>" );
+					currentCategory = item.category;
+				}
+				that._renderItemData( ul, item );
+			});
+		}
+	});
+	$("#global_search_input").catcomplete({
+		source : url_global_search_autocomplete,
+		minLength : 2,
+		select : function(event, ui) {
+			window.location.href = ui.item.url;
+		},
+		focus: function( event, ui ) {
+			event.preventDefault();
+		}
+	});
 });

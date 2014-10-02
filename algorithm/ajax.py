@@ -1,7 +1,8 @@
 from algorithm.forms import TagForm
-from algorithm.models import Implementation
+from algorithm.models import Implementation, Algorithm, Classification
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import Group
+from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from inoa.http.responses import JsonResponse
 
@@ -41,3 +42,29 @@ def tag_add(request):
 		ctx['errors'] = form.errors
 
 	return JsonResponse(ctx)
+
+def global_search_autocomplete(request):
+	data = []
+	term = request.GET.get('term', None)
+
+	classifications = Classification.objects.filter(name__icontains=term).order_by('name')[:10]
+	for item in classifications:
+		url = reverse('algorithm.views.show_classification_by_id', args=(item.id,))
+		data.append({
+			'label': item.name,
+			'category': 'classfications',
+			'category_label': u"Classifications",
+			'url': url,
+		})
+
+	algorithms = Algorithm.objects.filter(name__icontains=term).order_by('-reputation')[:10]
+	for item in algorithms:
+		url = reverse('algorithm.views.show_algorithm_by_id', args=(item.id,))
+		data.append({
+			'label': item.name,
+			'category': 'algorithms',
+			'category_label': u"Algorithms",
+			'url': url,
+		})
+
+	return JsonResponse(data)

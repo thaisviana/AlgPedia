@@ -174,16 +174,16 @@ body {
 }
 
 a:link {
-COLOR: #006633;
+color: #006633;
 }
 a:visited {
-COLOR: #003300;
+color: #003300;
 }
 a:hover {
-COLOR: #003300;
+color: #003300;
 }
 a:active {
-COLOR: #003300;
+color: #003300;
 }
 
 form.django-default { }
@@ -192,3 +192,6 @@ form.django-default label { margin-top: 10px; font-weight: bold; margin-bottom: 
 .global-search { position: relative; top: 5px; margin-left: 10px; border-left: 1px solid #CCC; padding-left: 20px; }
 .global-search .input-append { margin-bottom: 0; }
 .global-search input { width: 200px; }
+
+.ui-autocomplete-category { font-weight: bold; font-size: 16px; background-color: #063; color: #FFF;
+	padding: 7px 5px; }
