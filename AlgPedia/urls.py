@@ -28,7 +28,7 @@ urlpatterns = patterns('',
     url(r'^show/cat/id/(\d+)', show_classification_by_id),
     url(r'^add/cat/id/(\d+)', insert_algorithm),  # shows the page where we can add an algorithm by category
     url(r'^show/alg/id/(\d+)', show_algorithm_by_id),
-    url(r'^show/alg/all$', show_all_algorithms),
+    url(r'^show/alg/all$', 'algorithm.views.show_all_algorithms'),
     url(r'^add/alg/id/(\d+)$', insert_implementation),
     url(r'^moderator/$', moderator_dashboard, name='moderator_dashboard'),
 

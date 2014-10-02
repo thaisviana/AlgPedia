@@ -1,6 +1,6 @@
 h2 { margin-bottom: 30px; }
 header { border-bottom: 1px solid #CCC; margin-bottom: 20px; padding: 10px; background-color: #F0F0F0; }
-header ul { margin-top: 30px; }
+header .navigation-bar { margin-top: 30px; }
 a { cursor: pointer; }
 .nav-pills > li > a { padding: 10px; color: #333; }
 .nav-pills > li > a:hover { background-color: #CCC; }
@@ -188,3 +188,7 @@ COLOR: #003300;
 
 form.django-default { }
 form.django-default label { margin-top: 10px; font-weight: bold; margin-bottom: 0; }
+
+.global-search { position: relative; top: 5px; margin-left: 10px; border-left: 1px solid #CCC; padding-left: 20px; }
+.global-search .input-append { margin-bottom: 0; }
+.global-search input { width: 200px; }
