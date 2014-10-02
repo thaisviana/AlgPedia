@@ -42,6 +42,10 @@
 <div class="container-fluid">
 	<div id="mynetwork"></div>
 </div>
+
+{% endblock %}
+
+{% block extra_js %}
     <script type="text/javascript">
       var nodesTable = null;
       var linksTable = null;
@@ -579,4 +583,4 @@
         network.draw(nodesTable, linksTable, options);
       }
    </script>
-{% endblock %}
+   {% endblock %}
