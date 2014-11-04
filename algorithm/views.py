@@ -78,6 +78,10 @@ def logout(request):
 def about(request):
 	ctx = {'logged':  request.user.is_authenticated()}
 	return render(request, 'about.html', ctx)
+	
+def ontoviz(request):
+	ctx = {'logged':  request.user.is_authenticated()}
+	return render(request, 'ontoviz.html', ctx)
 
 def contact(request):
 	if request.method == 'POST':

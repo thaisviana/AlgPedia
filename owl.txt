@@ -1,0 +1,1405 @@
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fifo"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Cycle_Detection"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Cycle_Detection"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Multiply_With_Carry"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Random_Password_Generator"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Random_Password_Generator"/> 
+<NamedIndividual IRI="#PHP"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Random_Password_Generator"/> 
+<NamedIndividual IRI="#BASH"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Random_Password_Generator"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Left_Recursion"/> 
+<NamedIndividual IRI="#TEXT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Longitudinal_Redundancy_Check"/> 
+<NamedIndividual IRI="#CSHARP"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Longitudinal_Redundancy_Check"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Longitudinal_Redundancy_Check"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fast_Inverse_Square_Root"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Luhn_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Luhn_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#BNF"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion_(computer_Science)"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Minimax"/> 
+<NamedIndividual IRI="#LUA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Counting_Sort"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Gradient_Descent"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Insertion_Sort"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Insertion_Sort"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Merge_Sort"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Quicksort"/> 
+<NamedIndividual IRI="#JAVASCRIPT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Quicksort"/> 
+<NamedIndividual IRI="#JAVASCRIPT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Quicksort"/> 
+<NamedIndividual IRI="#JAVASCRIPT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Radix_Sort"/> 
+<NamedIndividual IRI="#CPP"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Radix_Sort"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Recursion"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Selection_Sort"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Selection_Sort"/> 
+<NamedIndividual IRI="#PASCAL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Mutual_Recursion"/> 
+<NamedIndividual IRI="#OCAML"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Mutual_Recursion"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Mutual_Recursion"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Mutual_Recursion"/> 
+<NamedIndividual IRI="#OCAML"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Mutual_Recursion"/> 
+<NamedIndividual IRI="#SCHEME"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Shellsort"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Polymorphic_Recursion"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Polymorphic_Recursion"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Newton's_Method"/> 
+<NamedIndividual IRI="#MATLAB"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Newton's_Method"/> 
+<NamedIndividual IRI="#MATLAB"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fold_(higher_Order_Function)"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fold_(higher_Order_Function)"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fold_(higher_Order_Function)"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fold_(higher_Order_Function)"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fold_(higher_Order_Function)"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fold_(higher_Order_Function)"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fold_(higher_Order_Function)"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fold_(higher_Order_Function)"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fold_(higher_Order_Function)"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fold_(higher_Order_Function)"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fold_(higher_Order_Function)"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Golden_Section_Search"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Brent's_Method"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Odd–even_Sort"/> 
+<NamedIndividual IRI="#JAVASCRIPT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tail_Call"/> 
+<NamedIndividual IRI="#JAVASCRIPT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tail_Call"/> 
+<NamedIndividual IRI="#JAVASCRIPT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tail_Call"/> 
+<NamedIndividual IRI="#JAVASCRIPT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tail_Call"/> 
+<NamedIndividual IRI="#JAVASCRIPT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tail_Call"/> 
+<NamedIndividual IRI="#JAVASCRIPT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tail_Call"/> 
+<NamedIndividual IRI="#SCHEME"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tail_Call"/> 
+<NamedIndividual IRI="#SCHEME"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tail_Call"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tail_Call"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tail_Call"/> 
+<NamedIndividual IRI="#PROLOG"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tail_Call"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tail_Call"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tail_Call"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Proxmap_Sort"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Maximum_Subarray_Problem"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Maximum_Subarray_Problem"/> 
+<NamedIndividual IRI="#CPP"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Discrete_Wavelet_Transform"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Hamming(7,4)"/> 
+<NamedIndividual IRI="#MATLAB"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Steffensen's_Method"/> 
+<NamedIndividual IRI="#MATLAB"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Viterbi_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Viterbi_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Viterbi_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Corecursion"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Secant_Method"/> 
+<NamedIndividual IRI="#MATLAB"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Backpropagation"/> 
+<NamedIndividual IRI="#JAVASCRIPT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Comb_Sort"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Gnome_Sort"/> 
+<NamedIndividual IRI="#CPP"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fisher–yates_Shuffle"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#FREEBASIC"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#ASM"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#ASM"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#BASH"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#VB"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#SCHEME"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#SCHEME"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#SCHEME"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#PHP"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Infinite_Loop"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Shrinking_Generator"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Marsaglia_Polar_Method"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Cycle_Sort"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#American_Flag_Sort"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Bitonic_Sorter"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Cma_Es"/> 
+<NamedIndividual IRI="#MATLAB"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Cma_Es"/> 
+<NamedIndividual IRI="#MATLAB"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Dutch_National_Flag_Problem"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Dutch_National_Flag_Problem"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Library_Sort"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Schwartzian_Transform"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Schwartzian_Transform"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Schwartzian_Transform"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Schwartzian_Transform"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Spreadsort"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Stooge_Sort"/> 
+<NamedIndividual IRI="#JAVASCRIPT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Strand_Sort"/> 
+<NamedIndividual IRI="#OCAML"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Strand_Sort"/> 
+<NamedIndividual IRI="#PHP"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Strand_Sort"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tree_Sort"/> 
+<NamedIndividual IRI="#QBASIC"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Tree_Sort"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Middle_Square_Method"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Batcher_Odd–even_Mergesort"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Berlekamp–massey_Algorithm"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Berlekamp–massey_Algorithm"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Randomized_Algorithm"/> 
+<NamedIndividual IRI="#PASCAL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Randomized_Algorithm"/> 
+<NamedIndividual IRI="#PASCAL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Randomized_Algorithm"/> 
+<NamedIndividual IRI="#PASCAL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Randomized_Algorithm"/> 
+<NamedIndividual IRI="#PASCAL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Xorshift"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Forward–backward_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Forward–backward_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Forward–backward_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Forward–backward_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Forward–backward_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Forward–backward_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Z_Order_Curve"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Z_Order_Curve"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Convolutional_Code"/> 
+<NamedIndividual IRI="#MATLAB"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Midpoint_Circle_Algorithm"/> 
+<NamedIndividual IRI="#CSHARP"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Midpoint_Circle_Algorithm"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Midpoint_Circle_Algorithm"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fixed_Point_Combinator"/> 
+<NamedIndividual IRI="#OCAML"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fixed_Point_Combinator"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fixed_Point_Combinator"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fixed_Point_Combinator"/> 
+<NamedIndividual IRI="#OCAML"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Interpolation_Search"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Escape_Character"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Escape_Character"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Escape_Character"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Escape_Character"/> 
+<NamedIndividual IRI="#BASH"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Escape_Character"/> 
+<NamedIndividual IRI="#DOS"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Escape_Character"/> 
+<NamedIndividual IRI="#DOS"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Luhn_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Luhn_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Multiplication_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Cksum"/> 
+<NamedIndividual IRI="#BASH"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Cksum"/> 
+<NamedIndividual IRI="#BASH"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Buzen's_Algorithm"/> 
+<NamedIndividual IRI="#PASCAL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Minimax"/> 
+<NamedIndividual IRI="#LUA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Binary_Search_Algorithm"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Binary_Search_Algorithm"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Binary_Search_Algorithm"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Computus"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Computus"/> 
+<NamedIndividual IRI="#VBNET"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Delimiter"/> 
+<NamedIndividual IRI="#TEXT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Delimiter"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Delimiter"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Delimiter"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Delimiter"/> 
+<NamedIndividual IRI="#VB"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Delimiter"/> 
+<NamedIndividual IRI="#VB"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Delimiter"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Delimiter"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Delimiter"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Delimiter"/> 
+<NamedIndividual IRI="#XML"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Delimiter"/> 
+<NamedIndividual IRI="#XML"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Delimiter"/> 
+<NamedIndividual IRI="#XML"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pseudocode"/> 
+<NamedIndividual IRI="#FORTRAN"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pseudocode"/> 
+<NamedIndividual IRI="#PASCAL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pseudocode"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#TEXT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#TEXT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#TEXT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Regular_Expression"/> 
+<NamedIndividual IRI="#PERL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Rsync"/> 
+<NamedIndividual IRI="#BASH"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Double_Dabble"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Diff"/> 
+<NamedIndividual IRI="#DIFF"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Diff"/> 
+<NamedIndividual IRI="#DIFF"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Diff"/> 
+<NamedIndividual IRI="#DIFF"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Diff"/> 
+<NamedIndividual IRI="#DIFF"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Index_Mapping"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Index_Mapping"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Double_Hashing"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Ida*"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Ida*"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Adler_32"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#A*_Search_Algorithm"/> 
+<NamedIndividual IRI="#CPP"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#A*_Search_Algorithm"/> 
+<NamedIndividual IRI="#CPP"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Mtd_F"/> 
+<NamedIndividual IRI="#VB"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Ternary_Search"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Wang_And_Landau_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Wang_And_Landau_Algorithm"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Java_Hashcode()"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Md5"/> 
+<NamedIndividual IRI="#CPP"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Perceptron"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Sma*"/> 
+<NamedIndividual IRI="#PASCAL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Sma*"/> 
+<NamedIndividual IRI="#PASCAL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fletcher's_Checksum"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fletcher's_Checksum"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fletcher's_Checksum"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fletcher's_Checksum"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Luhn_Mod_N_Algorithm"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Luhn_Mod_N_Algorithm"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Luhn_Mod_N_Algorithm"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Find_(command)"/> 
+<NamedIndividual IRI="#TEXT"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Find_(command)"/> 
+<NamedIndividual IRI="#DOS"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Exponentiation_By_Squaring"/> 
+<NamedIndividual IRI="#RUBY"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pattern_Matching"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pattern_Matching"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pattern_Matching"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pattern_Matching"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pattern_Matching"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pattern_Matching"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pattern_Matching"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pattern_Matching"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pattern_Matching"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pattern_Matching"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Pattern_Matching"/> 
+<NamedIndividual IRI="#HASKELL"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Extendible_Hashing"/> 
+<NamedIndividual IRI="#PYTHON"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Fifo"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Computus"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Computus"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Computus"/> 
+<NamedIndividual IRI="#C"/> 
+</ObjectPropertyAssertion> 
+<ObjectPropertyAssertion> 
+<ObjectProperty IRI="#implementation"/> 
+<NamedIndividual IRI="#Java_Hashcode()"/> 
+<NamedIndividual IRI="#JAVA"/> 
+</ObjectPropertyAssertion> 
