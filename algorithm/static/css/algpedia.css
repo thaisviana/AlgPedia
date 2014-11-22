@@ -15,7 +15,24 @@ html { position: relative; min-height: 100%; }
 body {
   /* Margin bottom by footer height */
   margin-bottom: 110px !important;
+  
 }
+
+.centersectiontitle { 
+	repeat-x scroll 0 0 transparent; 
+	background-position: center; 
+	margin: 10px 0 25px; 
+	min-height: 20px; 
+	text-align: center; 
+}
+.centersectiontitle h4 { 
+	font-size: 23px; 
+	background: #fff; 
+	display: inline; 
+	padding-right: 10px; 
+	padding-left: 10px; 
+}
+
 #footer {
   position: absolute;
   bottom: 0;

@@ -7,6 +7,23 @@ $(function() {
 	
 	prettyPrint();
 	
+	$('.user-reputation').each(function() {
+		$rep = $(this).data('reputation_value');
+		if($rep != null){$rep = $rep.substring(1, 7);}
+		$(this).mouseover(function () {
+			var val;
+			if($(this).data('reputation_value') != "#"){
+				val = $(this).data('reputation_value').substring(1, 7);
+			} else {
+				val = "Not evaluated yet";
+			}
+			return overlib(val, ABOVE);
+		});
+		$(this).mouseout(function () {
+			return nd();
+		});	
+	});
+	
 	$('.impl-reputation').each(function() {
 		$rep = $(this).data('reputation_value');
 		if($rep != null){$rep = $rep.substring(1, 7);}

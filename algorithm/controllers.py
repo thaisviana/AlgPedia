@@ -1,5 +1,5 @@
 import os, math
-from algorithm.models import Classification, Implementation, Algorithm, ProgrammingLanguage, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, ClassificationProeficiencyScale, Question, QuestionOption, UserQuestion, ImplementationQuestion, ImplementationQuestionAnswer, UserQuestionAnswer
+from algorithm.models import UserReputation,Classification,UniversityRank, Implementation, Algorithm, ProgrammingLanguage, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, ClassificationProeficiencyScale, Question, QuestionOption, UserQuestion, ImplementationQuestion, ImplementationQuestionAnswer, UserQuestionAnswer
 from extractor.FileWriters import RDFWriter
 from django.contrib.auth.models import User
 from django.db import connection
@@ -132,6 +132,13 @@ def get_algorithms_by_classification(a_classification):
 	except Algorithm.DoesNotExist:
 		return []
 
+def get_all_universities():
+	try:
+		u = UniversityRank.objects.all().order_by("position")
+		return u
+	except UniversityRank.DoesNotExist:
+		return []
+		
 def insert_classification_db(c_name, c_uri):
 	try:
 		classif = Classification.objects.get(name=c_name)
@@ -371,7 +378,11 @@ def get_algorithm_by_id(a_id):
 
 def get_all_programming_languages():
 	return ProgrammingLanguage.objects.order_by("name")
-
+	
+def insert_user_reputation(u_username,u_reputation):
+	u_user = User.objects.get(username=u_username)
+	UserReputation.objects.get_or_create(user=u_user, reputation=u_reputation)
+	
 def insert_implementation_alg_p_lang(i_alg, i_p_lang, i_code, i_visible, i_user):
 	imp = Implementation(algorithm=i_alg, programming_language=i_p_lang, code=i_code, visible=i_visible , user=i_user)
 	imp.save()
@@ -392,12 +403,22 @@ def get_implementations_by_alg_id(a_id):
 	except Algorithm.DoesNotExist:
 		return []
 
+
+def get_top5_users():		
+	try:
+		reputations = UserReputation.objects.filter(reputation__isnull=False).order_by("-reputation")[0:5]
+		reps = [ (r.reputation, r.user) for r in reputations]
+		l_reputation = 	[{'reputation' : a[0], 'username' : a[1].username} for a in reps]
+		return l_reputation;
+	except UserReputation.DoesNotExist:
+		return []
+		
 def get_top5_algorithms():
 	try:
 		algorithms = Algorithm.objects.filter(reputation__isnull=False).order_by("-reputation")[0:5]
 		# algorithms = Algorithm.objects.order_by("-reputation")[0:5]
-		algs = [ (alg.get_show_url(), alg.name) for alg in algorithms]
-		algorithms = [{'link' : a[0], 'name' : a[1]} for a in algs]
+		algs = [ (alg.get_show_url(), alg.name, alg.reputation) for alg in algorithms]
+		algorithms = [{'link' : a[0], 'name' : a[1], 'reputation' : a[2]} for a in algs]
 		return algorithms
 	except Algorithm.DoesNotExist:
 		return []

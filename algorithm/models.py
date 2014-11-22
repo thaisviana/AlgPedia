@@ -2,6 +2,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.aggregates import Avg, Max
+from datetime import datetime
 
 
 class CustomUser(User):
@@ -17,6 +18,11 @@ class CustomUser(User):
 	def programming_languages(self):
 		return ProgrammingLanguageProeficiencyScale.objects.filter(user=self).only("programming_language")
 
+		
+class UserReputation(models.Model):
+	reputation = models.FloatField(default=0)
+	user = models.ForeignKey(User)
+	
 class ProgrammingLanguage(models.Model):
 	name = models.CharField(max_length=10)
 
@@ -35,6 +41,13 @@ class Classification(models.Model):
 
 	class Meta:
 		ordering = ['name']
+		
+class UniversityRank(models.Model):
+	name = models.CharField(max_length=60)
+	position = models.IntegerField()
+
+	class Meta:
+		ordering = ['position']
 
 
 class Tag(models.Model):
@@ -51,6 +64,7 @@ class Algorithm(models.Model):
 	uri = models.URLField()
 	visible = models.BooleanField()
 	reputation = models.FloatField(default=0)
+	date = models.DateField(blank=False, default=datetime.now())
 
 	tags = models.ManyToManyField(Tag, blank=True, null=True)
 

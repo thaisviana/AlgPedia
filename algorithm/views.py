@@ -4,7 +4,7 @@ from algorithm.UserCreateForm import UserCreateForm
 from algorithm.algorithmForm import AlgorithmForm
 from algorithm.controllers import *
 from algorithm.forms import FiltersAlgorithm, FiltersClassification
-from algorithm.models import Classification, Implementation, Algorithm, ProgrammingLanguage
+from algorithm.models import Classification, Implementation, Algorithm, ProgrammingLanguage, UniversityRank, UserReputation
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.context_processors import csrf
@@ -23,7 +23,10 @@ import unicodedata
 # get_all_classifications_name_link, wipe_database, is_database_empty, get_classification_by_id
 
 def show_main_page(request):
-	ctx = {'logged':  request.user.is_authenticated(), 'message' : 'Welcome to AlgPedia - the free encyclopedia that anyone can edit.', 'top5_algorithms' : get_top5_algorithms()}
+	ctx = {'logged':  request.user.is_authenticated(), 
+	'message' : 'Welcome to AlgPedia - the free encyclopedia that anyone can edit.', 
+	'top5_algorithms' : get_top5_algorithms(),
+	'top5_users' : get_top5_users()}
 	return render(request, 'index.html', ctx)
 
 def sync_database(request):
@@ -108,14 +111,17 @@ def profile(request):
 	username = request.user.username
 	classifications = get_all_classifications_name_link()
 	programming_languages = get_all_programming_languages()
-
+	universities = get_all_universities()
 	# Recupero as perguntas com as respostas possiveis e as respostas que o usuario ja respondeu
 	for user_question in user_questions :
 		question_answers.append({"q": user_question, "qa" : get_questionaswer_by_question_id(user_question.id), "u_qa": get_userquestionanswer_by_question_id_and_user(username, user_question.id)})
 
 
 	if request.method == "POST":
-
+		u = float(request.POST["universities"])
+		reputation= (1/u)
+		insert_user_reputation(username,reputation)
+		
 		# Insere as respostas para as perguntas
 		for q in user_questions:
 			q_data = request.POST["profile_" + str(q.id)]
@@ -181,6 +187,7 @@ def profile(request):
 		'user_classification_proeficiencies' : u_c_p,
 		'user_programming_languages_proeficiencies' : u_p_l_p,
 		'programming_languages' : programming_languages,
+		'universities' : get_all_universities(),
 		'questions': get_all_userquestions()})
 
 	c.update(csrf(request))
