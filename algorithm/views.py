@@ -119,9 +119,9 @@ def profile(request):
 
 	if request.method == "POST":
 		u = float(request.POST["universities"])
-		reputation= (1/u)
-		insert_user_reputation(username,reputation)
-		
+		reputation= 190 - u
+		u_university = get_university_by_position(request.POST["universities"])
+		save_university(username, u_university)
 		# Insere as respostas para as perguntas
 		for q in user_questions:
 			q_data = request.POST["profile_" + str(q.id)]
@@ -188,6 +188,7 @@ def profile(request):
 		'user_programming_languages_proeficiencies' : u_p_l_p,
 		'programming_languages' : programming_languages,
 		'universities' : get_all_universities(),
+		'user_university' : get_user_univertisy(request.user.username),
 		'questions': get_all_userquestions()})
 
 	c.update(csrf(request))
@@ -280,7 +281,7 @@ def show_algorithm_by_id(request, id):
 
 		implementation.save_reputation(reputation, user_weight)
 		implementation.algorithm.calculate_reputation()
-
+		add_user_point(username)
 		return HttpResponse('success')
 
 	# Try and create an rdf file for the required algorithm
@@ -315,6 +316,7 @@ def insert_implementation(request, id):
 		algorithm = get_algorithm_by_id(int(request.POST['algorithm_id']))
 		p_lang = get_programming_language_by_id(int(request.POST['programming_languages']))
 		implementation = insert_implementation_alg_p_lang(algorithm, p_lang, request.POST['algorithm_code'], False, request.user)
+		add_user_point(request.user.username)
 		return HttpResponseRedirect(algorithm.get_show_url())
 	else:
 		c = {'logged':  request.user.is_authenticated(), 'programming_languages' : get_all_programming_languages(), 'algorithm' : get_algorithm_by_id(int(id))}
@@ -356,6 +358,7 @@ def insert_algorithm(request, id=None):
 		form = AlgorithmForm(request.POST, instance=instance)
 		if form.is_valid():
 			algorithm = form.save()
+			add_user_point(request.user.username)
 		else:
 			c['form'] = form
 			return render(request, "add_algorithm.html", c)

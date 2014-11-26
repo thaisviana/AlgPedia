@@ -31,6 +31,40 @@ def f_bayes(tag, id, sim_matriz, vecTag):
 		print tagsEmSimilares / similares
 	return  tagsEmSimilares / similares
 
+def get_university_by_position(u_position):
+	return UniversityRank.objects.get(position=u_position)
+
+def get_user_univertisy(u_username):
+	u_user = User.objects.get(username=u_username)
+	try:
+		ur = UserReputation.objects.get(user=u_user)
+		if(ur.university is not None):
+			return ur.university.position
+		else:
+			return ""
+	except UserReputation.DoesNotExist:
+		return ""
+		
+def save_university(u_username, u_university):
+	u_user = User.objects.get(username=u_username)
+	try:
+		ur = UserReputation.objects.get(user=u_user)
+		ur.university = u_university
+		ur.save()
+	except UserReputation.DoesNotExist:
+		ur = UserReputation(user=u_user, reputation=1, university=u_university)
+		ur.save()
+	
+def add_user_point(u_username):
+	u_user = User.objects.get(username=u_username)
+	try:
+		ur = UserReputation.objects.get(user=u_user)
+		ur.reputation = ur.reputation + 1
+		ur.save()
+	except UserReputation.DoesNotExist:
+		ur = UserReputation(user=u_user, reputation=1)
+		ur.save()
+	
 def is_database_empty():
 	empty = 0
 
@@ -381,7 +415,8 @@ def get_all_programming_languages():
 	
 def insert_user_reputation(u_username,u_reputation):
 	u_user = User.objects.get(username=u_username)
-	UserReputation.objects.get_or_create(user=u_user, reputation=u_reputation)
+	ur = UserReputation(user=u_user, reputation=u_reputation)
+	ur.save
 	
 def insert_implementation_alg_p_lang(i_alg, i_p_lang, i_code, i_visible, i_user):
 	imp = Implementation(algorithm=i_alg, programming_language=i_p_lang, code=i_code, visible=i_visible , user=i_user)

@@ -28,7 +28,7 @@ $(document).ready(function(){
 		<div class="span8">
 			
 			<!--Página-->
-			   {% if not user.is_moderator %}
+	{% if not user.is_moderator %}
     <div class="alert alert-info">
     	<a class="moderator-add"><img src="{{ STATIC_URL }}images/glyphicons/glyphicons_003_user.png" /> Become an AlgPedia moderator.</a>
     </div>
@@ -72,10 +72,10 @@ $(document).ready(function(){
 					<select name="universities" id="universities" data-placeholder="Choose University" >
 						<option value=""></option> 
 					{% for u in universities %}
-						{% if u.id not in user_university %}
-								<option value="{{u.id}}">{{ u.name }}</option>
+						{% if u.id == user_university %}
+								<option value="{{u.position}}">{{ u.name }}</option>
 							{% else %}
-								<option value="{{u.id}}" selected="selected">{{ u.name }}</option>
+								<option value="{{u.position}}" selected="selected">{{ u.name }}</option>
 							{% endif %}
 					{% endfor %}
 					</select>

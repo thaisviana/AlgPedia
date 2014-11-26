@@ -1,0 +1,1747 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY Ontology1362526289006 "http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:Ontology1362526289006="http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <Ontology rdf:about="http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#belongs -->
+
+    <ObjectProperty rdf:about="&Ontology1362526289006;belongs">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:domain rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <rdfs:range rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#implementation -->
+
+    <ObjectProperty rdf:about="&Ontology1362526289006;implementation">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:domain rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <rdfs:range rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#ALGORITHM -->
+
+    <Class rdf:about="&Ontology1362526289006;ALGORITHM"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#CLASSIFICATION -->
+
+    <Class rdf:about="&Ontology1362526289006;CLASSIFICATION"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#PROGRAMMING_LANGUAGE -->
+
+    <Class rdf:about="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#ASM -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;ASM">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Adler_32 -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Adler_32">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Checksum_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Algorithm_Description_Languages -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Algorithm_Description_Languages">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Algorithms_For_Calculating_Var -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Algorithms_For_Calculating_Var">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Statistical_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Algorithms_On_Strings -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Algorithms_On_Strings">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#American_Flag_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;American_Flag_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Approximation_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Approximation_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Arbitrary_Precision_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Arbitrary_Precision_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#BASH -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;BASH">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#BNF -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;BNF">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Backpropagation -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Backpropagation">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVASCRIPT"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Machine_Learning_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Binary_Search_Algorithm -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Binary_Search_Algorithm">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Search_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Bioinformatics_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Bioinformatics_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Bitonic_Sorter -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Bitonic_Sorter">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#C -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;C">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#CPP -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;CPP">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#CSHARP -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;CSHARP">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Calendar_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Calendar_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Checksum_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Checksum_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Cksum -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Cksum">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;BASH"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Checksum_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Classification_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Classification_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Cma_Es -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Cma_Es">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Evolutionary_Algorithms"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;MATLAB"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Optimization_Algorithms_And_Methods"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Comb_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Comb_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Combinatorial_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Combinatorial_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Compression_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Compression_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Computational_Group_Theory -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Computational_Group_Theory">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Computational_Number_Theory -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Computational_Number_Theory">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Computational_Physics -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Computational_Physics">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Computational_Statistics -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Computational_Statistics">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Computer_Algebra -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Computer_Algebra">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Computus -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Computus">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Calendar_Algorithms"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVA"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;VBNET"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Concurrent_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Concurrent_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Convolutional_Code -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Convolutional_Code">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Error_Detection_And_Correction"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;MATLAB"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Corecursion -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Corecursion">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;HASKELL"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Recursion"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Counting_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Counting_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Cryptographic_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Cryptographic_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Cycle_Detection -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Cycle_Detection">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Combinatorial_Algorithms"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Cycle_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Cycle_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#DIFF -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;DIFF">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#DOS -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;DOS">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Data_Clustering_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Data_Clustering_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Data_Mining -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Data_Mining">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Database_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Database_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Delimiter -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Delimiter">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PERL"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Pattern_Matching"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;TEXT"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;VB"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;XML"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Diff -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Diff">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;DIFF"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Pattern_Matching"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Digital_Signal_Processing -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Digital_Signal_Processing">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Discrete_Wavelet_Transform -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Discrete_Wavelet_Transform">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Digital_Signal_Processing"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVA"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Distributed_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Distributed_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Double_Dabble -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Double_Dabble">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Arbitrary_Precision_Algorithms"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Double_Hashing -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Double_Hashing">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Search_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Dutch_National_Flag_Problem -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Dutch_National_Flag_Problem">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVA"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Error_Detection_And_Correction -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Error_Detection_And_Correction">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Escape_Character -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Escape_Character">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;BASH"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;DOS"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PERL"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Pattern_Matching"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Evolutionary_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Evolutionary_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Exponentiation_By_Squaring -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Exponentiation_By_Squaring">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Arbitrary_Precision_Algorithms"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;RUBY"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Extendible_Hashing -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Extendible_Hashing">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Search_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#External_Memory_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;External_Memory_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#FORTRAN -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;FORTRAN">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#FREEBASIC -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;FREEBASIC">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Fast_Inverse_Square_Root -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Fast_Inverse_Square_Root">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Root-Finding_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Fifo -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Fifo">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVA"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Scheduling_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Fixed_Point_Combinator -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Fixed_Point_Combinator">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;HASKELL"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;OCAML"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Recursion"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Geometric_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Geometric_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Gnome_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Gnome_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;CPP"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Golden_Section_Search -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Golden_Section_Search">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVA"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Optimization_Algorithms_And_Methods"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Gradient_Descent -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Gradient_Descent">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Optimization_Algorithms_And_Methods"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#HASKELL -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;HASKELL">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Heuristic_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Heuristic_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Index_Mapping -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Index_Mapping">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Search_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Infinite_Loop -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Infinite_Loop">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;ASM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;BASH"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;FREEBASIC"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PERL"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PHP"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Recursion"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;SCHEME"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;VB"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Insertion_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Insertion_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#International_Standard_Book_Nu -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;International_Standard_Book_Nu">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Checksum_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Interpolation_Search -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Interpolation_Search">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVA"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Search_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#JAVA -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;JAVA">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#JAVASCRIPT -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;JAVASCRIPT">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#LUA -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;LUA">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Left_Recursion -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Left_Recursion">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Recursion"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;TEXT"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Lehmer_Random_Number_Generator -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Lehmer_Random_Number_Generator">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Pseudorandom_Number_Generators"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Library_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Library_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Linear_Feedback_Shift_Register -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Linear_Feedback_Shift_Register">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Cryptographic_Algorithms"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Pseudorandom_Number_Generators"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Longitudinal_Redundancy_Check -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Longitudinal_Redundancy_Check">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;CSHARP"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Error_Detection_And_Correction"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVA"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Luhn_Algorithm -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Luhn_Algorithm">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Checksum_Algorithms"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Error_Detection_And_Correction"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Luhn_Mod_N_Algorithm -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Luhn_Mod_N_Algorithm">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Checksum_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#MATLAB -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;MATLAB">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Machine_Learning_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Machine_Learning_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Marsaglia_Polar_Method -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Marsaglia_Polar_Method">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVA"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Pseudorandom_Number_Generators"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Maximum_Subarray_Problem -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Maximum_Subarray_Problem">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;CPP"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Optimization_Algorithms_And_Methods"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Md5 -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Md5">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;CPP"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Checksum_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Memory_Management_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Memory_Management_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Merge_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Merge_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Methods_Of_Computing_Square_Ro -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Methods_Of_Computing_Square_Ro">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Root-Finding_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Middle_Square_Method -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Middle_Square_Method">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Pseudorandom_Number_Generators"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Midpoint_Circle_Algorithm -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Midpoint_Circle_Algorithm">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;CSHARP"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Geometric_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Minimax -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Minimax">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;LUA"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Optimization_Algorithms_And_Methods"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Search_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Mtd_F -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Mtd_F">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Search_Algorithms"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;VB"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Multiplication_Algorithm -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Multiplication_Algorithm">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Arbitrary_Precision_Algorithms"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Multiply_With_Carry -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Multiply_With_Carry">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Pseudorandom_Number_Generators"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Multivariate_Kernel_Density_Es -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Multivariate_Kernel_Density_Es">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Computational_Statistics"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Mutual_Recursion -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Mutual_Recursion">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;OCAML"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Recursion"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;SCHEME"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Networking_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Networking_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#OCAML -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;OCAML">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Online_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Online_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Optimization_Algorithms_And_Methods -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Optimization_Algorithms_And_Methods">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#PASCAL -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;PASCAL">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#PERL -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;PERL">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#PHP -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;PHP">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#PROLOG -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;PROLOG">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#PYTHON -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;PYTHON">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Pattern_Matching -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Pattern_Matching">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;HASKELL"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Pattern_Matching"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Perceptron -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Perceptron">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Classification_Algorithms"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Polymorphic_Recursion -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Polymorphic_Recursion">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;HASKELL"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Recursion"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Proxmap_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Proxmap_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVA"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Pseudo-Polynomial_Time_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Pseudo-Polynomial_Time_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Pseudocode -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Pseudocode">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Algorithm_Description_Languages"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;FORTRAN"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PASCAL"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Pseudorandom_Number_Generators -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Pseudorandom_Number_Generators">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#QBASIC -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;QBASIC">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Quantum_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Quantum_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Quicksort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Quicksort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVASCRIPT"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#RUBY -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;RUBY">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Radix_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Radix_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;CPP"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Random_Password_Generator -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Random_Password_Generator">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;BASH"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Cryptographic_Algorithms"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PHP"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Randomized_Algorithm -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Randomized_Algorithm">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PASCAL"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Randomized_Algorithms"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Stochastic_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Randomized_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Randomized_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Recursion -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Recursion">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Recursion"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Regular_Expression -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Regular_Expression">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PERL"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Pattern_Matching"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;TEXT"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Root-Finding_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Root-Finding_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Routing_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Routing_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Rsync -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Rsync">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;BASH"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Networking_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#SCHEME -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;SCHEME">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Scheduling_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Scheduling_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Schwartzian_Transform -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Schwartzian_Transform">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PERL"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Search_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Search_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Secant_Method -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Secant_Method">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;MATLAB"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Root-Finding_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Selection_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Selection_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Selection_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Selection_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PASCAL"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Shellsort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Shellsort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Shrinking_Generator -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Shrinking_Generator">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Pseudorandom_Number_Generators"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Sorting_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Sorting_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Spreadsort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Spreadsort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Statistical_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Statistical_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Stochastic_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Stochastic_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Stooge_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Stooge_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVASCRIPT"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Strand_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Strand_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;OCAML"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PHP"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#TEXT -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;TEXT">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Tail_Call -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Tail_Call">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVASCRIPT"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PROLOG"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Recursion"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;SCHEME"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Ternary_Search -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Ternary_Search">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Search_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Tree_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Tree_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;HASKELL"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;QBASIC"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Unicode_Algorithms -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Unicode_Algorithms">
+        <rdf:type rdf:resource="&Ontology1362526289006;CLASSIFICATION"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#VB -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;VB">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#VBNET -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;VBNET">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Viterbi_Algorithm -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Viterbi_Algorithm">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Error_Detection_And_Correction"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Wang_And_Landau_Algorithm -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Wang_And_Landau_Algorithm">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Computational_Physics"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Statistical_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#XML -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;XML">
+        <rdf:type rdf:resource="&Ontology1362526289006;PROGRAMMING_LANGUAGE"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Xorshift -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Xorshift">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Pseudorandom_Number_Generators"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Z_Order_Curve -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Z_Order_Curve">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Database_Algorithms"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#A*_Search_Algorithm -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;A*_Search_Algorithm">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;CPP"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Routing_Algorithms"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Search_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Batcher_Odd–even_Mergesort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Batcher_Odd–even_Mergesort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Berlekamp–massey_Algorithm -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Berlekamp–massey_Algorithm">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Error_Detection_And_Correction"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVA"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Brent&apos;s_Method -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Brent&apos;s_Method">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVA"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Root-Finding_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Buzen&apos;s_Algorithm -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Buzen&apos;s_Algorithm">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PASCAL"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Statistical_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Deutsch–Jozsa_algorithm -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Deutsch–Jozsa_algorithm">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Quantum_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Find_(command) -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Find_(command)">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;DOS"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Pattern_Matching"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;TEXT"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Fisher–yates_Shuffle -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Fisher–yates_Shuffle">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Combinatorial_Algorithms"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Fletcher&apos;s_Checksum -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Fletcher&apos;s_Checksum">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Checksum_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Fold_(higher_Order_Function) -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Fold_(higher_Order_Function)">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;HASKELL"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Recursion"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Forward–backward_Algorithm -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Forward–backward_Algorithm">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Error_Detection_And_Correction"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Machine_Learning_Algorithms"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Hamming(7,4) -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Hamming(7,4)">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Error_Detection_And_Correction"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;MATLAB"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Ida* -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Ida*">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PYTHON"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Routing_Algorithms"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Search_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Java_Hashcode() -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Java_Hashcode()">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Checksum_Algorithms"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVA"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Newton&apos;s_Method -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Newton&apos;s_Method">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;MATLAB"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Optimization_Algorithms_And_Methods"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Root-Finding_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Odd–even_Sort -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Odd–even_Sort">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVASCRIPT"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Sorting_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Recursion_(computer_Science) -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Recursion_(computer_Science)">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;BNF"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;C"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;JAVA"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Recursion"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Sma* -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Sma*">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;PASCAL"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Routing_Algorithms"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Search_Algorithms"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2013/2/Ontology1362526289006.owl#Steffensen&apos;s_Method -->
+
+    <NamedIndividual rdf:about="&Ontology1362526289006;Steffensen&apos;s_Method">
+        <rdf:type rdf:resource="&Ontology1362526289006;ALGORITHM"/>
+        <Ontology1362526289006:implementation rdf:resource="&Ontology1362526289006;MATLAB"/>
+        <Ontology1362526289006:belongs rdf:resource="&Ontology1362526289006;Root-Finding_Algorithms"/>
+    </NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

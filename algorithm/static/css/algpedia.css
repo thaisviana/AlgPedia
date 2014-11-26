@@ -11,6 +11,15 @@ a { cursor: pointer; }
 
 .contents { padding-bottom: 20px; }
 
+.ontology{
+border-top: 1px solid #CCC; 
+border-bottom: 1px solid #CCC; 
+margin-bottom: 20px; 
+padding: 10px; 
+background-color: #F0F0F0; 
+height: 100px;
+}
+
 html { position: relative; min-height: 100%; }
 body {
   /* Margin bottom by footer height */
@@ -32,6 +41,37 @@ body {
 	padding-right: 10px; 
 	padding-left: 10px; 
 }
+.button {
+   border-top: 1px solid #33877d;
+   background: #33877d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#1e4f4a), to(#33877d));
+   background: -webkit-linear-gradient(top, #1e4f4a, #33877d);
+   background: -moz-linear-gradient(top, #1e4f4a, #33877d);
+   background: -ms-linear-gradient(top, #1e4f4a, #33877d);
+   background: -o-linear-gradient(top, #1e4f4a, #33877d);
+   padding: 20px 40px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 24px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #1e4f4a;
+   background: #1e4f4a;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #1e4f4a;
+   background: #1e4f4a;
+   }
 
 #footer {
   position: absolute;

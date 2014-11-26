@@ -18,10 +18,17 @@ class CustomUser(User):
 	def programming_languages(self):
 		return ProgrammingLanguageProeficiencyScale.objects.filter(user=self).only("programming_language")
 
-		
+class UniversityRank(models.Model):
+	name = models.CharField(max_length=60)
+	position = models.IntegerField()
+
+	class Meta:
+		ordering = ['position']
+
 class UserReputation(models.Model):
 	reputation = models.FloatField(default=0)
 	user = models.ForeignKey(User)
+	university = models.ForeignKey(UniversityRank, null=True)
 	
 class ProgrammingLanguage(models.Model):
 	name = models.CharField(max_length=10)
@@ -42,14 +49,6 @@ class Classification(models.Model):
 	class Meta:
 		ordering = ['name']
 		
-class UniversityRank(models.Model):
-	name = models.CharField(max_length=60)
-	position = models.IntegerField()
-
-	class Meta:
-		ordering = ['position']
-
-
 class Tag(models.Model):
 	name = models.CharField(max_length=50)
 
