@@ -177,7 +177,7 @@ def profile(request):
 
 	# Recupero todas as classificacoes que o usuario tem interesse
 	u_c_i = get_user_classifications_interests_ids(username)
-
+	
 	c = Context({
 		'logged':  request.user.is_authenticated(),
 		'name' : request.user.username,

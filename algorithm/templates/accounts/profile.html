@@ -72,10 +72,11 @@ $(document).ready(function(){
 					<select name="universities" id="universities" data-placeholder="Choose University" >
 						<option value=""></option> 
 					{% for u in universities %}
-						{% if u.id == user_university %}
-								<option value="{{u.position}}">{{ u.name }}</option>
-							{% else %}
+						{% if user_university == u.position %}
 								<option value="{{u.position}}" selected="selected">{{ u.name }}</option>
+							{% else %}
+								<option value="{{u.position}}">{{ u.name }}</option>
+								
 							{% endif %}
 					{% endfor %}
 					</select>
