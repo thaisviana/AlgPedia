@@ -1,10 +1,44 @@
 {% extends "main_template.html" %}
 {% block content %}
 <p align="right"> Download AlgPedia dataset in : <a href='{{ STATIC_URL }}ontology/algorithm.owl'> owl</a> or <a href='{{ STATIC_URL }}ontology/algpedia-rdf.rdf'> rdf</a>&nbsp;&nbsp;</p>
-	<div class="container">	
-			
-			<!-- ANIMATED COLUMNS ================================================== -->
 
+	
+	<!-- DESCRIPTION-->
+	
+		
+		<div >&nbsp;</div>
+			
+		
+		<div class="row-fluid">	
+				<div class="span2">&nbsp;</div>		
+				<div class="span4">
+				
+				<!--	<h5><img src="{{ STATIC_URL }}images/index.gif" /> </h5>-->
+				<h2>For each <span style="color:#ff6666"><i>problem</i></span>, a <span style="color:#BBBBBB">solution </span>
+				<h2>For each <span style="color:#BBBBBB">solution</span>, an <span style="color:#33877d"><i>algorithm</i> </span>
+				<!--<h2>FOR EACH  <span style="color:#ff6666">PROBLEM </span>, ONE SOLUTION</h2>
+				<br>
+				<h2>FOR EACH SOLUTION, ONE   <span style="color:#33877d">ALGORITHM </span></h2>-->
+				<h4>Welcome to AlgPedia!</h4>
+					<!--<h3>AlgPedia is a free collaborative encyclopedia constructed to provide an RDF-based algorithms that can be accessed via this website or through Open Linked Data applications that process structured data.</h3>-->
+				</div>
+				<div class="span1">&nbsp;</div>
+				<div class="span5" align="left">
+					<h5><img src="{{ STATIC_URL }}images/check.png" /> Algorithm description</h5>
+					<h5><img src="{{ STATIC_URL }}images/check.png" />Implementations in many programming languages</h5>
+					<h5><img src="{{ STATIC_URL }}images/check.png" />Ranked implementations</h5>
+					<h5><img src="{{ STATIC_URL }}images/check.png" />Vote system</h5>
+				</div>
+				
+			</div>
+		<div>&nbsp;</div>
+		<div>&nbsp;</div>
+	
+				<!-- DESCRIPTION-->
+			
+
+			<!-- ANIMATED COLUMNS ================================================== -->
+	<div class="container">	
 		<div class="row-fluid">
 			<div class="offset2  margin-top-40">
 				<ul class="ca-menu centersectiontitle">
@@ -75,25 +109,27 @@
 		<div class="row-fluid">
 			<div class="offset2  margin-top-40" style="text-align: center;">
 				<div class="span2">
-					<h5><img src="{{ STATIC_URL }}images/analytics.png" height="64"  width="64"/></h5>
+				<h5><img src="{{ STATIC_URL }}images/django_girls.png" height="64"  width="64"/></h5>
 					<p>
-						User #1000<br>April 10, 2015 
+						 Algpedia talk in Django Girls Sao Jose dos Campos
+						 <br><a href="https://djangogirls.org/saojosedoscampos/">Django Girls</a> November 8, 2015
 					</p>
 				</div>
-				<div class="span2">
-					<h5><img src="{{ STATIC_URL }}images/analytics.png" height="64"  width="64"/></h5>
-					<p>
-						 Pages visualizations<br> #50 000<br>February 28, 2015
-					</p>
-				</div>
-				<div class="span2">
-				<h5><img src="{{ STATIC_URL }}images/square-twitter.png" height="64"  width="64"/></h5>
-					<p>
-						 algpedia.dcc.ufrj.br/  is super awesome. Keep up the good work ;) #algpedia #Algorithm
-						 <br><a href="https://twitter.com/matheusrma">@matheusrma</a> November 4, 2014
-					</p>
-				</div>
+
 				
+				<div class="span2">
+					<h5><img src="{{ STATIC_URL }}images/analytics.png" height="64"  width="64"/></h5>
+					<p>
+						 Pages visualizations<br> #60 000<br>November 3, 2015
+					</p>
+				</div>
+				<div class="span2">
+					<h5><img src="{{ STATIC_URL }}images/analytics.png" height="64"  width="64"/></h5>
+					<p>
+						User #1400<br>August 30, 2015 
+					</p>
+				</div>
+								
 				<div class="span3">
 					<h5><img src="{{ STATIC_URL }}images/brain.png" height="64"  width="64"/></h5>
 					<p>

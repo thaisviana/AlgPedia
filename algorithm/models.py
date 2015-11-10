@@ -87,10 +87,9 @@ class Implementation(models.Model):
 	code = models.TextField()
 	programming_language = models.ForeignKey(ProgrammingLanguage)
 	visible = models.BooleanField()
-
+	date = models.DateField(blank=False, default=datetime.now())
 	reputation = models.FloatField(default=0)
 	accumulated_weight = models.FloatField(default=0)
-
 	user = models.ForeignKey(User, null=True, blank=True, verbose_name=u"Creator")
 
 	def __unicode__(self):
@@ -114,7 +113,7 @@ class Implementation(models.Model):
 class Interest(models.Model):
 	classification = models.ForeignKey(Classification)
 	user = models.ForeignKey(User)
-
+	date = models.DateField(blank=False, default=datetime.now())
 # Classe base de proeficiencia do usuario em algo
 class ProeficiencyScale(models.Model):
 	user = models.ForeignKey(User)
@@ -146,7 +145,7 @@ class UserQuestionAnswer(models.Model):
 	user = models.ForeignKey(User)
 	user_question = models.ForeignKey(UserQuestion)
 	question_option = models.ForeignKey(QuestionOption)
-
+	date = models.DateField(blank=False, default=datetime.now())
 # Pergunta em relacao a uma implementacao
 class ImplementationQuestion(Question):
 	pass
@@ -158,7 +157,7 @@ class ImplementationQuestionAnswer(models.Model):
 	implementation = models.ForeignKey(Implementation)
 	implementation_question = models.ForeignKey(ImplementationQuestion)
 	question_option = models.ForeignKey(QuestionOption)
-
+	date = models.DateField(blank=False, default=datetime.now())
 	def save(self, *args, **kwargs):
 		super(ImplementationQuestionAnswer, self).save(*args, **kwargs)
 
