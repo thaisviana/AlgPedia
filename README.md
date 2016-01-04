@@ -1,26 +1,11 @@
 AlgPedia
 ========
 
-Algpedia é um um projeto open source.
-Uma enciclopédia livre sobre algoritmos e implementações desenvolvida como projeto final de alunos da UFRJ (Thais Viana e Pablo Abdelhay) 
-Funcionalidades implementadas:
-	1. Wiki
-	2. Sistema de recomendação por reputação e confiança
-	3. Extração de dados (web crawler)
-	4. Tradução de base relacional para base semântica
-	5. Buscas
-	5. Sistema de tageamento
-Instruções:
-	Observação: O projeto foi feito usando python 2.7 e mysql
-	1. Instalar o ActivePython (http://www.activestate.com/activepython/downloads)
-	2. Criar o env com o virtualenv para o projeto
-	3. Fazer o checkout do projeto
-	4. Criar o banco algpedia
-		4.1. Na pasta AlgPedia/database tem um dump, rode o .sql no seu workbench ou heidi...
-	5. Instalar as dependências através de PIP e PYPM (para windows)
-		5.1 $ source env/bin/activate
-		5.2 $ pip install -r requirements/requirements.txt
-		5.3 Para sair do ambiente virtual do Python, rode  $ deactivate
-	6.Rodar runserver.bat para inicializar o serviço em localhost:8000 por padrão.
+Projeto Final da Thata e do Tchotcho
 
-	Nosso trello: https://trello.com/b/P8TgPwjK/algpedia
+Instruções:
+	Observação: O projeto foi feito usando python 2.7
+	1. Baixar o django1.5 [https://www.djangoproject.com/download/] e seguir as instruções presentes nessa página para instalá-lo.
+	2. Baixar o BeautifulSoup4 [http://www.crummy.com/software/BeautifulSoup/] e seguir as instruções presentes nessa página para instalá-lo.
+	3. Fazer o checkout do projeto 
+		3.1 Rodar runserver.bat para inicializar o serviço em localhost:8000 por padrão.
