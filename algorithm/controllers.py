@@ -519,3 +519,29 @@ def get_classification_display_url():
 
 def get_algorithm_display_url():
 	return "/show/alg/id/#"
+
+""" Metodos de calculo de probalidade da matrix , depois tirar daqui"""
+
+def prob_aa():
+    count_user = User.objects.all().count()
+    count_alg = Algorithm.objects.all().count()
+    count_crwaled_aa = Algorithm.objects.filter(user=None).count()
+    prob = ((count_alg - count_crwaled_aa)/float(count_user))
+    return str(prob)
+
+def prob_ai():
+    count_user = User.objects.all().count()
+    count_impl = Implementation.objects.all().count()
+    count_crawled_ai = Implementation.objects.filter(user=None).count()
+    prob = ((count_impl - count_crawled_ai)/float(count_user))
+    return str(prob)
+
+def prob_ap():
+	count_ap = UserQuestionAnswer.objects.all().count()
+	count_user = User.objects.all().count()
+	return str(count_ap/float(count_user))
+
+def prob_v():
+	count_v = ImplementationQuestionAnswer.objects.all().count()/3
+	count_user = User.objects.all().count()
+	return str(count_v/float(count_user))
