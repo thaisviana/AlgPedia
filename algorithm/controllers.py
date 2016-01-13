@@ -2,7 +2,9 @@ import os, math
 from algorithm.models import UserReputation,Classification,UniversityRank, Implementation, Algorithm, ProgrammingLanguage, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, ClassificationProeficiencyScale, Question, QuestionOption, UserQuestion, ImplementationQuestion, ImplementationQuestionAnswer, UserQuestionAnswer
 from extractor.FileWriters import RDFWriter
 from django.contrib.auth.models import User
+from django.db.models import Q
 from django.db import connection
+import itertools
 from django.shortcuts import get_object_or_404
 
 def cosine_similarity(vec1, vec2):
@@ -521,27 +523,58 @@ def get_algorithm_display_url():
 	return "/show/alg/id/#"
 
 """ Metodos de calculo de probalidade da matrix , depois tirar daqui"""
+def get_users_by_actions():
+	user_action ={}
+	aas = Algorithm.objects.filter(~Q(user=None))
+	users_aa = [ (aa.user.id) for aa in aas]
 
-def prob_aa():
+	user_action['aa'] = users_aa
+
+	ais = Implementation.objects.filter(~Q(user=None))
+	users_ai = [ (ai.user.id) for ai in ais]
+
+	user_action['ai'] = users_ai
+
+	aps = UserQuestionAnswer.objects.filter(~Q(user=None))
+	users_ap = [(ap.user.id) for ap in aps]
+
+	user_action['ap'] = users_ap
+
+	avs = ImplementationQuestionAnswer.objects.all()
+	users_av = [(av.user.id) for av in avs]
+	user_action['v'] = users_av[::3]
+
+	return user_action
+
+def str_historico():
+	acoes = ['aa','ai','v','ap']
+	historico=['']
+	for i in xrange(1,len(acoes)+1):
+		historico += list(combinations(acoes,i))
+	print historico
+	return historico
+
+def get_n_users():
     count_user = User.objects.all().count()
-    count_alg = Algorithm.objects.all().count()
-    count_crwaled_aa = Algorithm.objects.filter(user=None).count()
-    prob = ((count_alg - count_crwaled_aa)/float(count_user))
-    return str(prob)
+    return float(count_user)
 
-def prob_ai():
-    count_user = User.objects.all().count()
-    count_impl = Implementation.objects.all().count()
-    count_crawled_ai = Implementation.objects.filter(user=None).count()
-    prob = ((count_impl - count_crawled_ai)/float(count_user))
-    return str(prob)
-
-def prob_ap():
-	count_ap = UserQuestionAnswer.objects.all().count()
-	count_user = User.objects.all().count()
-	return str(count_ap/float(count_user))
-
-def prob_v():
-	count_v = ImplementationQuestionAnswer.objects.all().count()/3
-	count_user = User.objects.all().count()
-	return str(count_v/float(count_user))
+def combinations(iterable, r):
+    # combinations('ABCD', 2) --> AB AC AD BC BD CD
+    # combinations(range(4), 3) --> 012 013 023 123
+    result = ""
+    pool = list(iterable)
+    n = len(pool)
+    if r > n:
+        return
+    indices = range(r)
+    yield '_'.join(list(pool[i] for i in indices))
+    while True:
+        for i in reversed(range(r)):
+            if indices[i] != i + n - r:
+                break
+        else:
+            return
+        indices[i] += 1
+        for j in range(i+1, r):
+            indices[j] = indices[j-1] + 1
+        yield '_'.join(list(pool[i] for i in indices))
