@@ -1,5 +1,5 @@
 import os, math
-from algorithm.models import UserReputation,Classification,UniversityRank, Implementation, Algorithm, ProgrammingLanguage, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, ClassificationProeficiencyScale, Question, QuestionOption, UserQuestion, ImplementationQuestion, ImplementationQuestionAnswer, UserQuestionAnswer
+from algorithm.models import Paradigm,UserReputation,Classification,UniversityRank, Implementation, Algorithm, ProgrammingLanguage, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, ClassificationProeficiencyScale, Question, QuestionOption, UserQuestion, ImplementationQuestion, ImplementationQuestionAnswer, UserQuestionAnswer
 from extractor.FileWriters import RDFWriter
 from django.contrib.auth.models import User
 from django.db.models import Q
@@ -146,6 +146,14 @@ def get_classification_by_id(c_id):
 	except Classification.DoesNotExist:
 		return []
 
+# returns a	paradigm object
+def get_paradigm_by_id(p_id):
+	try:
+		paradigm = Paradigm.objects.get(id=p_id)
+		return paradigm
+	except Paradigm.DoesNotExist:
+		return []
+
 # returns a	user question answer by question
 def get_questionaswer_by_question_id(question_id):
 	try:
@@ -181,6 +189,15 @@ def insert_classification_db(c_name, c_uri):
 		return classif
 	except Classification.DoesNotExist:
 		aux = Classification(name=c_name, uri=c_uri)
+		aux.save()
+		return aux
+
+def insert_paradigm(p_label, p_abstract, p_w_page, p_db_page):
+	try:
+		paradigm = Paradigm.objects.get(label=p_label)
+		return paradigm
+	except Paradigm.DoesNotExist:
+		aux = Paradigm(dbpedia_uri=p_db_page, wikipedia_uri=p_w_page, label=p_label,abstract=p_abstract)
 		aux.save()
 		return aux
 

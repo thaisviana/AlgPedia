@@ -1,0 +1,50 @@
+{% extends "main_template.html" %}
+
+{% block content %}
+{% load endless %}
+
+<div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2"></div>
+		<div align="justify" class="span8">
+			<h2>Paradigms</h2>
+			<div>&nbsp;&nbsp;&nbsp;</div>
+			<h6>A programming paradigm is a fundamental style of computer programming, serving as a way of building the structure and elements of computer programs. Capabilities and styles of various programming languages are defined by their supported programming paradigms; some programming languages are designed to follow only one paradigm, while others support multiple paradigms.</h6>
+
+			<h6>Programming paradigms that are often distinguished include imperative, declarative, functional, object-oriented, procedural, logic and symbolic programming. With different paradigms, programs can be seen and built in different ways; for example, in object-oriented programming, a program is a collection of objects interacting in explicitly defined ways, while in declarative programming the computer is told only what the problem is, not how to actually solve it.</h6>
+		</div>
+		<div class="span2"></div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+	
+		<div class="span2"></div>
+		<div class="span8">
+			
+			<table id="classifications_uri" class="table table-bordered">
+				{% paginate paradigms %}
+				{% for paradigm in paradigms %}	
+					<tr>
+						<td>
+							<a href="{{paradigm.link}}">
+								{{ paradigm.label }}
+						</td>
+					</tr>
+					{% empty %}
+					<p> There are no algorithms available. </p>
+				{% endfor %}
+			</table>
+			<div class="pagination-wrapper">
+			{% show_pages %}
+			</div>
+		</div>
+		<div class="span2"></div>
+	</div>
+</div>
+
+</div>
+{% endblock %}

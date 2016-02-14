@@ -4,7 +4,7 @@ from algorithm.UserCreateForm import UserCreateForm
 from algorithm.algorithmForm import AlgorithmForm
 from algorithm.controllers import *
 from algorithm.forms import FiltersAlgorithm, FiltersClassification
-from algorithm.models import Classification, Implementation, Algorithm, ProgrammingLanguage, UniversityRank, UserReputation
+from algorithm.models import Paradigm, Classification, Implementation, Algorithm, ProgrammingLanguage, UniversityRank, UserReputation
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.context_processors import csrf
@@ -232,6 +232,27 @@ def show_all_algorithms(request):
 	ctx_variables['logged'] = request.user.is_authenticated()
 	ctx_variables['filters'] = FiltersAlgorithm(request.GET)
 	return render(request, 'display_all_algorithms.html', ctx_variables)
+
+def show_all_paradigms(request):
+
+	ps = Paradigm.objects.all().order_by("label")
+
+	ctx_variables = {}
+	paras = [ (p.label, p.get_show_url()) for p in ps]
+	paradigms = [{'label' : a[0], 'link' : a[1]} for a in paras]
+	ctx_variables['paradigms'] = paradigms
+	ctx_variables['logged'] = request.user.is_authenticated()
+	return render(request, 'display_all_paradigms.html', ctx_variables)
+
+
+def show_paradigm_by_id(request, id):
+	paradigm = get_paradigm_by_id(int(id))
+	ctx = {
+		'paradigm' : paradigm,
+		'logged':  request.user.is_authenticated()
+	}
+	return render(request, 'display_paradigm.html', ctx)
+
 
 
 def show_algorithm_by_id(request, id):

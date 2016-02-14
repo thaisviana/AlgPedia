@@ -1,0 +1,35 @@
+{% extends "main_template.html" %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2"></div>
+		<div class="span6">
+			<h2>{{ paradigm.label }}</h2>
+		</div>
+		
+		<div class="span2"></div>
+	</div>
+</div>
+<div class="container-fluid">
+
+	<div class="row-fluid">
+		<div class="span2">
+			&nbsp;
+		</div>
+		<div class="span8">
+			
+			<!--Página-->
+				<div align="justify" id="para">
+					<h6 >{{paradigm.abstract}}</h6>
+					&nbsp;&nbsp;&nbsp;<a href="{{ paradigm.wikipedia_uri }}" target="_blank"> [More Information] </a>
+					&nbsp;&nbsp;&nbsp;<a href="{{ paradigm.dbpedia_uri }}" target="_blank"> [DBpedia's Page] </a>
+				</div> 
+		</div>		
+		<div class="span2">
+			&nbsp;
+		</div>
+	</div>
+</div>
+{% endblock %}
+
