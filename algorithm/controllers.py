@@ -568,7 +568,8 @@ def str_historico():
 	historico=['']
 	for i in xrange(1,len(acoes)+1):
 		historico += list(combinations(acoes,i))
-	print historico
+	#print "historico"
+	#print historico
 	return historico
 
 def get_n_users():
