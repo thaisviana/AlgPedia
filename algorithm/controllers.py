@@ -540,6 +540,8 @@ def get_algorithm_display_url():
 	return "/show/alg/id/#"
 
 """ Metodos de calculo de probalidade da matrix , depois tirar daqui"""
+#returns a dictionary which the key is a possible action for an user and the value is a list containing all the users that
+#have made the key action
 def get_users_by_actions():
 	user_action ={}
 	aas = Algorithm.objects.filter(~Q(user=None))
@@ -563,6 +565,7 @@ def get_users_by_actions():
 
 	return user_action
 
+#returns all the possible combinations for all the actions an user can do
 def str_historico():
 	acoes = ['aa','ai','v','ap']
 	historico=['']
@@ -572,13 +575,15 @@ def str_historico():
 	#print historico
 	return historico
 
+#return the total of user in the database
 def get_n_users():
     count_user = User.objects.all().count()
     return float(count_user)
 
+#return all the combinations for each element of iterable combined by r
+# combinations('ABCD', 2) --> AB AC AD BC BD CD
+# combinations(range(4), 3) --> 012 013 023 123
 def combinations(iterable, r):
-    # combinations('ABCD', 2) --> AB AC AD BC BD CD
-    # combinations(range(4), 3) --> 012 013 023 123
     result = ""
     pool = list(iterable)
     n = len(pool)
