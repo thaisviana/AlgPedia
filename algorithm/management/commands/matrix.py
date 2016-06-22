@@ -15,12 +15,15 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         try:
             with open('matriz.csv', 'w') as csvfile:
-                prob_actions = ['state','aa', 'ai', 'v', 'ap']
-                writer = csv.DictWriter(csvfile, fieldnames=prob_actions)
+                actions = ['state','aa', 'ai', 'v', 'ap']
+                #writer para escrever cabeçalho da matriz
+                writer = csv.DictWriter(csvfile, fieldnames=actions)
                 writer.writeheader()
+                #dicionário separado por ação contendo todos os usuários que fizeram cada ação pelo menos uma vez
                 users_action = get_users_by_actions()
+                #total de usuários do sistema
                 n_users= get_n_users()
-                
+                #todas as combinações de ações possíveis para histórico
                 historico = str_historico()
 
                 for hist in historico:
@@ -35,27 +38,69 @@ class Command(BaseCommand):
                             if hist is '':
                                 bayes = len(users_action[acao])/n_users
                                 rowResults[acao] = bayes
-                                #print acao, bayes
+
                             elif len(hist.split('_')) == 1 :
-                                subset_acao = list(set(filter(lambda x: x in users_action[acao] , users_action[hist])))
-                                bayes = len(subset_acao)/float(len(users_action[hist]))
+                                usersActionAndHist = list(set(filter(lambda x: x in users_action[acao] , users_action[hist])))
+                                usersHist = users_action[hist]
+
+                                bayes = len(usersActionAndHist)/float(len(usersHist))
+
                                 rowResults[acao] = bayes
-                                #print acao, hist, bayes
+                                
                             else :
-                                subset = users_action[hist.split('_')[0]]
+                                #inicializa com todos os usuários que fizeram a primeira ação
+                                usersHist = users_action[hist.split('_')[0]]
                                 for index in range(len(hist.split('_'))):
                                     if index == 0: pass
-                                    subset = list(set(filter(lambda x: x in users_action[hist.split('_')[index]] , subset)))
-                                subset_acao = list(set(filter(lambda x: x in users_action[acao] , subset)))
-                                bayes = len(subset_acao)/float(len(subset))
+                                    usersHist = list(set(filter(lambda x: x in users_action[hist.split('_')[index]] , usersHist)))
+                                
+                                usersAction = users_action[acao]
+                                usersActionAndHist = list(set(filter(lambda x: x in usersAction, usersHist)))
+
+                                bayes = len(usersActionAndHist)/float(len(usersHist))
+
                                 rowResults[acao] = bayes
-                                #print acao, hist, bayes
                         else : 
-                            rowResults[acao] = '-'
+                            
+                            ##### CONTAGEM DE USUÁRIOS QUE FIZERAM TODAS AS AÇÕES DO HISTÓRICO QUE SÃO DIFERENTES DA AÇÃO A SER CALCULADA A PROB
+                             
+                            #for para inicializar a variavel subset que conterá os usuários
+                            firstIndex = len(hist.split('_'))
+                            for i in range(len(hist.split('_'))):
+                                if hist.split('_')[i] == acao: pass
+                                else: 
+                                    usersHistNoRepetition = users_action[hist.split('_')[i]]
+                                    firstIndex = index
+                                    break
+                            #outro for para continuar appendando os usuários
+                            for index in range(firstIndex, len(hist.split('_'))):
+                                if hist.split('_')[index] == acao: pass
+                                usersHistNoRepetition = list(set(filter(lambda x: x in users_action[hist.split('_')[index]]  , usersHistNoRepetition)))
+
+                            #### CONTAGEM DE USUÁRIO QUE FIZERAM AÇÃO REPETIDAS VEZES NO HISTÓRICO
+                            #lista contendo os usuários que fizeram ação e se repetem na lista totalRepeticoesAcao vezes
+                            totalActionRepetitionHist = hist.count(acao)
+                            usersHistRepetition = list(set(filter(lambda x: users_action[acao].count(x) == totalActionRepetitionHist, users_action[acao])))
+
+                            #lista contendo os usuários que fizeram ação e se repetem na lista 
+                            #totalRepeticoesAcao vezes + 1 que seria a ação a ser calculada a probabilidade
+                            totalActionRepetition = totalActionRepetitionHist + 1
+                            usersTotalRepetition = list(set(filter(lambda x: users_action[acao].count(x) == totalActionRepetition, users_action[acao])))
+
+                            #lista com todos os usuários que fizeram todas as ações diferentes da ação a ser calculada e
+                            #também fizeram a ação calculada X vezes
+                            usersHistAndAction = list(set(filter(lambda x: x in  usersTotalRepetition, usersHistNoRepetition)))
+
+                            #lista com todos os usuários que fizeram todas as ações sem repetição do histórico e 
+                            #também fizeram a ação repetidas vezes
+                            usersHist = list(set(filter(lambda x: x in  usersHistRepetition, usersHistNoRepetition)))
+
+                            bayes = len(usersHistAndAction)/ float(len(usersHist))
+
+                            rowResults[acao] = bayes
+
                     writer.writerow({'state': hist,'aa': rowResults['aa'], 'ai': rowResults['ai'],'v': rowResults['v'],'ap': rowResults['ap']})
 
-                            
-                
         except:
             import traceback
             traceback.print_exc()
