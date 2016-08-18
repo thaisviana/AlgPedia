@@ -546,7 +546,7 @@ def get_users_by_actions():
 	users_aa = [ (aa.user.id) for aa in aas]
 
 	user_action['aa'] = users_aa
-
+	
 	ais = Implementation.objects.filter(~Q(user=None))
 	users_ai = [ (ai.user.id) for ai in ais]
 
@@ -555,10 +555,12 @@ def get_users_by_actions():
 	aps = UserQuestionAnswer.objects.filter(~Q(user=None))
 	users_ap = [(ap.user.id) for ap in aps]
 
+
 	user_action['ap'] = users_ap
 
 	avs = ImplementationQuestionAnswer.objects.all()
 	users_av = [(av.user.id) for av in avs]
+
 	user_action['v'] = users_av[::3]
 
 	return user_action

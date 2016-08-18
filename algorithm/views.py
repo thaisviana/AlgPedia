@@ -81,6 +81,13 @@ def logout(request):
 def about(request):
 	ctx = {'logged':  request.user.is_authenticated()}
 	return render(request, 'about.html', ctx)
+
+
+def advanced_search(request):
+	ctx = {'logged': request.user.is_authenticated()}
+	if request.method == 'POST':
+		searchwords = (request.POST['ad_search_input'])
+	return render(request, 'search.html', ctx)
 	
 def ontoviz(request):
 	ctx = {'logged':  request.user.is_authenticated()}
@@ -249,6 +256,7 @@ def show_paradigm_by_id(request, id):
 	paradigm = get_paradigm_by_id(int(id))
 	ctx = {
 		'paradigm' : paradigm,
+		'programming_languages' : get_all_programming_languages(),
 		'logged':  request.user.is_authenticated()
 	}
 	return render(request, 'display_paradigm.html', ctx)

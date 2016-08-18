@@ -43,7 +43,7 @@ class Command(BaseCommand):
                             bagOfWords[token] = 1
                             
                 vecBag += [bagOfWords]
-                vecTag.append( alg.tags.all() )
+                vecTag.append( alg.tags.all())
             
             
             for i in xrange(len(algorithms)):

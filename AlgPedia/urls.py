@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^contact/$', contact),
     url(r'^rules/$', rules),
     url(r'^about/$', about),
+    url(r'^advanced_search/$', advanced_search),
     url(r'^show/cat/all$', show_all_classifications),
     url(r'^show/cat/id/(\d+)', 'algorithm.views.show_classification_by_id'),
     url(r'^add/cat/id/(\d+)', insert_algorithm),  # shows the page where we can add an algorithm by category
