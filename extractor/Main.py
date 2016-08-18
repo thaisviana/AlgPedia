@@ -36,18 +36,21 @@ def doMain():
 	# if no second parameter is passed then the QueryFetcher assumes that there exists ./temp
 	query_fetcher = QueryFetcher('csv')
 
-	dbpedia_master_query = '''select * where{
+	dbpedia_master_query = '''{
 			?classification skos:broader <http://dbpedia.org/resource/Category:Algorithms>.
+			?algorithm dct:subject ?classification.
 			?algorithm foaf:isPrimaryTopicOf ?wikipedia
 			}'''
 
 	print "Calling QueryFetcher..."
-	#filename = query_fetcher.fetchResult(dbpedia_master_query)
-	filename = "temp/dbpedia_fetch_0.csv"
+	generated_files = query_fetcher.fetchResult(dbpedia_master_query)
+	print generated_files
 
 	print "Finished fetching results..."
+
 	# always 0-based, baby
-	insertClassifications(filename, 0)
+	for file_path in generated_files:
+		insertClassifications(file_path, 0)
 
 # returns a list of beautiful names.
 # each name only appears once in this list.
@@ -89,7 +92,6 @@ def insertClassifications(filename, col_number):
 	db = MySQLdb.connect("localhost","root","123mudar","AlgPedia" )
 	cursor = db.cursor()
 
-	id = 1
 	for line in col_classification:
 		classification = extractClassification(line)
 		uri = extractURI(line)
@@ -97,16 +99,16 @@ def insertClassifications(filename, col_number):
 		try:
 			query = "INSERT INTO algorithm_classification VALUES (%s,%s,%s)"
 			print "Executing: ", query
-			cursor.execute(query,(id,classification,uri))
+
+			#this id should be a uuid
+			#cursor.execute(query,(str(uuid.uuid4()),classification,uri))
+			cursor.execute(query,(random.randint(1, 10000000),classification,uri))
 			db.commit()
-			id = id + 1
 		except MySQLdb.Error as error:
 			print "Error: {}".format(error)
 			#print "Insert failed, rollback"
 			db.rollback()
 	db.close()
-
-
 
 if __name__ == '__main__':
     doMain();
