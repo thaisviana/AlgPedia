@@ -48,23 +48,19 @@ class WikiPediaAbstractExtractor:
 	def get_alg_pseudo_code(self):
 		
 		pseudo_srcs = []
+		divs = self.pool.find_all("div", {"class" : "mw-highlight mw-content-ltr" })
 		
-		divs = self.pool.findAll("div", {"class" : "mw-geshi mw-code mw-content-ltr" })
-		for div in divs:
-			language = div.find('div')
-			match = self.pseudo_src_pattern.match(language['class'][1])
-			if match:
-				pseudo_code = language.find('pre')
-				
-				#pseudo_srcs.append((match.group(1),pseudo_code.text))
-				pseudo_srcs.append((match.group(1),pseudo_code))
-			
-			match = self.src_pattern.match(language['class'][1])
-			if match:
-				pseudo_code = language.find('pre')
-				#pseudo_srcs.append((match.group(1),pseudo_code.text))
-				pseudo_srcs.append((match.group(1),pseudo_code))
-				
+		if divs == []:
+			pre = self.pool.find_all('pre')
+			if pre != []:
+				pseudo_code = pre[0].get_text()
+				pseudo_srcs.append(pseudo_code)
+		else:
+			for div in divs:
+				pseudo_code = div.find('pre')
+				pseudo_srcs.append(pseudo_code.get_text())
+		
+		#print(pseudo_srcs)
 		return pseudo_srcs
 		
 	#print pool
