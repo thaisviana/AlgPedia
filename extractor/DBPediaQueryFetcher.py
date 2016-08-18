@@ -7,6 +7,7 @@ import os
 import urllib
 import urllib2
 from FileWriters import HTMLWriter, CSVWriter
+from BeautifulSoup import *
 
 class QueryFetcher:
 
@@ -30,26 +31,57 @@ class QueryFetcher:
 		elif(fetch_format.upper() == 'CSV'):
 			self.file_writer = CSVWriter(self.temp_folder)
 
-	# fetch the resource and delegate the writing of the file to the
-	# appropriate instance of FileWriter
-    def fetchResult(self, query_string):
+    def fetch(self, query):
+        self.get_params['query'] = query
 
-		self.get_params['query'] = query_string
+        query_url = self.base_url + '?' + urllib.urlencode(self.get_params)
 
-		query_url = self.base_url + '?' + urllib.urlencode(self.get_params)
+        data = urllib.urlencode(self.get_params)
+        headers = {'User-Agent' : 'Mozilla/5.0'}
+        request = urllib2.Request(self.base_url,data, headers)
+        response = urllib2.urlopen(request)
 
-		data = urllib.urlencode(self.get_params)
-		headers = {'User-Agent' : 'Mozilla/5.0'}
-		request = urllib2.Request(self.base_url,data, headers)
-		response = urllib2.urlopen(request)
+        return response.read()
 
-		the_page = response.read()
+    def fetchCount(self, query_body):
+        query_string = "select count(*) where " + query_body
 
-		file_path = self.file_writer.writeFile(the_page, 'dbpedia_fetch_%d' % self.n_fetch)
+        result = self.fetch(query_string)
 
-		self.n_fetch += 1;
+        soup = BeautifulSoup(result)
+        pre = soup('pre')
+        return int(pre[0].string)
 
-		return file_path
+    # fetch the resource and delegate the writing of the file to the
+    # appropriate instance of FileWriter
+    def fetchResult(self, query_body):
+        file_paths = []
+        batch_size = 100
+        total_results = self.fetchCount(query_body)
+
+        offset = 0
+
+        while offset*batch_size < total_results:
+    		query = "select * where " + query_body
+    		query += "limit " + str(batch_size) + " offset "
+    		query += str(offset*batch_size)
+    		# print query
+
+    		self.get_params['query'] = query
+
+    		the_page = self.fetch(query)
+
+    		file_paths.append(self.file_writer.writeFile(the_page, 'dbpedia_fetch_%d' % self.n_fetch))
+
+    		offset += 1
+    		query = query_body
+
+    		print str(offset*batch_size) + " results fetched"
+    		print str(total_results - offset*batch_size) + " left to fetch"
+
+    		self.n_fetch += 1
+
+    	return file_paths
 
     # change the output path of the fetched resource
     def changeOutputFolder(self, new_folder_path):
