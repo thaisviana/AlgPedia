@@ -2,20 +2,20 @@
 {% block content %}
 <p align="right"> Download AlgPedia dataset in : <a href='{{ STATIC_URL }}ontology/algorithm.owl'> owl</a> or <a href='{{ STATIC_URL }}ontology/algpedia-rdf.rdf'> rdf</a>&nbsp;&nbsp;</p>
 
-	
+
 	<!-- DESCRIPTION-->
-	
-		
+
+
 		<div >&nbsp;</div>
 
 			<!-- ANIMATED COLUMNS ================================================== -->
-	<div class="container">	
+	<div class="container">
 		<div class="row-fluid">
 			<div class="offset2  margin-top-40">
 				<ul class="ca-menu centersectiontitle">
 				{% for alg in top5_algorithms %}
 					{% if forloop.counter0 == 1 %}
-				
+
 					<li>
 					<a href="{{alg.link}}">
 					<span class="ca-icon"><img src="{{ STATIC_URL }}images/Metal-silver-green.png" alt="{{alg.link}}" /></span>
@@ -25,7 +25,7 @@
 					</div>
 					</a>
 					</li>
-					
+
 					{% endif %}
 					{% if forloop.first %}
 					<li>
@@ -49,34 +49,34 @@
 					</a>
 					</li>
 					{% endif %}
-					
-					
+
+
 					{% empty %}
 					<div>
 						We have no votes yet for the algorithms. <a href="/accounts/login">Be the first to vote!</a> You just need to be logged in.
 					</div>
 					{% endfor %}
-					
+
 				</ul>
 			</div>
 		</div>
-		
+
 		</div>
-			
-			
-			
-			
+
+
+
+
 		</div>
 		<!-- CONTENT ================================================== -->
-		
+
 		<div >&nbsp;</div>
-				
-			
+
+
 		<!-- CONTENT ================================================== -->
 		<div align="center" class="centersectiontitle" style="background: #33877d; ">
 			<h4> AlgPedia News</h4>
 		</div>
-		
+
 		<div class="row-fluid">
 			<div class="offset2  margin-top-40" style="text-align: center;">
 				<div class="span2">
@@ -87,7 +87,7 @@
 					</p>
 				</div>
 
-				
+
 				<div class="span2">
 					<h5><img src="{{ STATIC_URL }}images/analytics.png" height="64"  width="64"/></h5>
 					<p>
@@ -97,32 +97,32 @@
 				<div class="span2">
 					<h5><img src="{{ STATIC_URL }}images/analytics.png" height="64"  width="64"/></h5>
 					<p>
-						User #1400<br>August 30, 2015 
+						User #1400<br>August 30, 2015
 					</p>
 				</div>
-								
+
 				<div class="span3">
 					<h5><img src="{{ STATIC_URL }}images/brain.png" height="64"  width="64"/></h5>
 					<p>
-						We had a perfect grade in our presentation  for concluding Bachelor degree in Computer Science at UFRJ.<br>October 22, 2014 
+						We had a perfect grade in our presentation  for concluding Bachelor degree in Computer Science at UFRJ.<br>October 22, 2014
 					</p>
 				</div>
 				<div class="span2">
 					<h5><img src="{{ STATIC_URL }}images/infow.jpeg" height="64"  width="64"/></h5>
 					<p>
 						<a href="http://www.infoworld.com/article/2825055/application-development/5-sites-to-help-developers-make-a-cross-language-leap.html?fb_action_ids=720300761352055&fb_action_types=og.likes">
-						Learning a second programming language? Try these 5 sites</a><br>October 13, 2014 
+						Learning a second programming language? Try these 5 sites</a><br>October 13, 2014
 					</p>
 				</div>
-				
-				
+
+
 			</div>
 		</div>
 		<div>&nbsp;</div>
 		<div align="center" class="centersectiontitle" style="background: #33877d; ">
 			<h4>Remarkable AlgPedians</h4>
 		</div>
-						
+
 		<div class="row-fluid" align="center">
 			<div class="offset2  margin-top-40">
 			{% for user in top5_users %}
@@ -159,8 +159,8 @@
 			{% endfor %}
 			</div>
 		</div>
-		
-		
+
+
 
 		<div>&nbsp;</div>
 </div>

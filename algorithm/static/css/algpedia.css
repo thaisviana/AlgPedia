@@ -1,6 +1,7 @@
 h2 { margin-bottom: 30px; }
-header { border-bottom: 1px solid #CCC; margin-bottom: 20px; padding: 10px; background-color: #F0F0F0; }
-header .navigation-bar { margin-top: 30px; }
+header { border-bottom: 1px solid #CCC; margin-bottom: 20px; padding: 2pt; background-color: #F0F0F0; }
+header .navigation-bar { margin-top: 3pt; margin-right: 15pt; }
+header .logo { max-height: 25pt; margin-left: 25pt; }
 a { cursor: pointer; }
 .nav-pills > li > a { padding: 10px; color: #333; }
 .nav-pills > li > a:hover { background-color: #CCC; }
@@ -12,11 +13,11 @@ a { cursor: pointer; }
 .contents { padding-bottom: 20px; }
 
 .ontology{
-border-top: 1px solid #CCC; 
-border-bottom: 1px solid #CCC; 
-margin-bottom: 20px; 
-padding: 10px; 
-background-color: #F0F0F0; 
+border-top: 1px solid #CCC;
+border-bottom: 1px solid #CCC;
+margin-bottom: 20px;
+padding: 10px;
+background-color: #F0F0F0;
 height: 100px;
 }
 
@@ -24,22 +25,22 @@ html { position: relative; min-height: 100%; }
 body {
   /* Margin bottom by footer height */
   margin-bottom: 110px !important;
-  
+
 }
 
-.centersectiontitle { 
-	repeat-x scroll 0 0 transparent; 
-	background-position: center; 
-	margin: 10px 0 25px; 
-	min-height: 20px; 
-	text-align: center; 
+.centersectiontitle {
+	repeat-x scroll 0 0 transparent;
+	background-position: center;
+	margin: 10px 0 25px;
+	min-height: 20px;
+	text-align: center;
 }
-.centersectiontitle h4 { 
-	font-size: 23px; 
-	background: #fff; 
-	display: inline; 
-	padding-right: 10px; 
-	padding-left: 10px; 
+.centersectiontitle h4 {
+	font-size: 23px;
+	background: #fff;
+	display: inline;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 .button {
    border-top: 1px solid #33877d;
