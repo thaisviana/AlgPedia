@@ -1,7 +1,14 @@
 {% extends "main_template.html" %}
 {% block content %}
-<p align="right"> Download AlgPedia dataset in : <a href='{{ STATIC_URL }}ontology/algorithm.owl'> owl</a> or <a href='{{ STATIC_URL }}ontology/algpedia-rdf.rdf'> rdf</a>&nbsp;&nbsp;</p>
 
+<div class="cointainer description">
+	<div class="description-content">
+		<img src="{{ STATIC_URL }}images/logo-transparent.png">
+		<p>AlgPedia's goal is to become a reference for programmers, providing relevant information about algorithms and their implementations. </p>
+	</div>
+</div>
+
+<p align="right"> Download AlgPedia dataset in : <a href='{{ STATIC_URL }}ontology/algorithm.owl'> owl</a> or <a href='{{ STATIC_URL }}ontology/algpedia-rdf.rdf'> rdf</a>&nbsp;&nbsp;</p>
 
 	<!-- DESCRIPTION-->
 
