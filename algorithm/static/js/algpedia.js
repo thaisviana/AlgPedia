@@ -4,9 +4,9 @@ $(function() {
 		var next = location.pathname;
 		window.location.href = $(this).attr('href') + '?next=' + next;
 	});
-	
+
 	prettyPrint();
-	
+
 	$('.user-reputation').each(function() {
 		$rep = $(this).data('reputation_value');
 		if($rep != null){$rep = $rep.substring(1, 7);}
@@ -21,9 +21,9 @@ $(function() {
 		});
 		$(this).mouseout(function () {
 			return nd();
-		});	
+		});
 	});
-	
+
 	$('.impl-reputation').each(function() {
 		$rep = $(this).data('reputation_value');
 		if($rep != null){$rep = $rep.substring(1, 7);}
@@ -38,12 +38,12 @@ $(function() {
 		});
 		$(this).mouseout(function () {
 			return nd();
-		});	
+		});
 			//var star_0 = "<img src='/algorithm/static/images/glyphicons/glyphicons_048_dislikes.png' alt='"+$rep+"'  width='22' height='22'/>";
 			//var star_1 = "<img src='/algorithm/static/images/glyphicons/glyphicons_049_star.png' alt='"+$rep+"' width='22' height='22' />";
-	
-	
-	
+
+
+
 		var star_0 = "<img src='/algorithm/static/images/glyphicons/starOff.png' alt='"+$rep+"' width='22' height='22'/>";
 		var star_1 = "<img src='/algorithm/static/images/glyphicons/star.png' alt='"+$rep+"' width='22' height='22'/>";
 		var img;
@@ -63,12 +63,12 @@ $(function() {
 		}
 		$(this).html(img);
 	});
-			
+
 	tinyMCE.init({
 		// General options
 		mode : "textareas",
 		plugins : "",
-		
+
 		// Theme options
 		theme_advanced_buttons1 : "",
 	});
@@ -79,44 +79,44 @@ $(function() {
 		setTimeout(function () {
 			document.location.href = $("#logout").attr('href'); // redireciona pra url nova
         }, 1000);
-		
-	});	
-		
-	
+
+	});
+
+
 	$("#add_implementation").click(function(){
 		if($('#logged').val()== 'false'){
 			bootbox.alert("You have to login first");
-		}else{			
+		}else{
 			var form = document.forms[0];
-			var alg_id = form['algorithm_id'].value;			
+			var alg_id = form['algorithm_id'].value;
 			window.location = "/add/alg/id/"+alg_id;
 		}
 	});
-	
+
 	$('.textarea').wysihtml5();
-	
+
 	$('.signup').click(function() {
 		bootbox.alert("Thank you for registering.");
 		$( "form:first" ).submit();
 	});
-		
+
 	$("#add_algorithm").click(function() {
 		event.preventDefault();
 		if($('#logged').val()== 'false'){
 			bootbox.alert("You have to login first");
-		}else{	
+		}else{
 			var form = document.forms[0];
 			var classification_id = form['classification_id'].value;
-			
+
 			window.location = "/add/cat/id/"+classification_id;
-		}		
+		}
 	});
 	$("#add_algorithm").mouseover(function () {
 		return overlib("Add an algorithm", ABOVE);
 	});
 	$("#add_algorithm").mouseout(function () {
 		return nd();
-	});	
+	});
 	$("#add_implementation").mouseover(function () {
 		return overlib("Add implementation", ABOVE);
 	});
@@ -149,7 +149,7 @@ $(function() {
 	$(".js-refuse").mouseout(function () {
 		return nd();
 	});
-	
+
 	$.widget("custom.catcomplete", $.ui.autocomplete, {
 		_renderMenu: function( ul, items ) {
 			var that = this,
@@ -163,7 +163,7 @@ $(function() {
 			});
 		}
 	});
-	$("#global_search_input").catcomplete({
+	$(".search-input").catcomplete({
 		source : url_global_search_autocomplete,
 		minLength : 2,
 		select : function(event, ui) {

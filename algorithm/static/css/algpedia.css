@@ -10,11 +10,20 @@ a { cursor: pointer; }
 .top-algorithms > div { text-align: center; display: inline-block; width: 160px; margin: 0 10px; }
 .top-algorithms > div > div { text-align: center; }
 
-.description { background-color: #CCE0D3; margin-top: -20px; padding: 160px 0 160px 0; }
+.description { background-color: #CCE0D3; margin-top: -20px; padding: 120px 0; }
 
 .description-content { text-align: center; margin: 0 15% 0 15%; width: 70%; }
-.description-content img { margin-bottom: 28pt; }
+.description-content img { margin-bottom: 22pt; }
 .description-content p { font-size: 18pt; line-height: 24pt; color: #404040; }
+
+.description-search-wrapper { margin: 40pt 18% 0 18%; }
+.description-search .input-append { margin-bottom: 0;  width: 100%; }
+.description-search input { width: 70%; height: 20pt; }
+.description-search .add-on { height: 20pt; width: 20pt; }
+.description-search .add-on .icon-search { margin-top: 5pt; }
+
+.dataset-links { margin-top: 50pt; }
+.dataset-links p { font-size: 12pt; color: #999; }
 
 .contents { padding-bottom: 20px; }
 

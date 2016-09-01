@@ -5,10 +5,22 @@
 	<div class="description-content">
 		<img src="{{ STATIC_URL }}images/logo-transparent.png">
 		<p>AlgPedia's goal is to become a reference for programmers, providing relevant information about algorithms and their implementations. </p>
+
+		<div class="description-search-wrapper">
+			<form name="global-search" class="description-search" action="{% url 'algorithm.views.show_all_algorithms' %}" method="GET">
+				<div class="input-append">
+					<input name="search" id="description_search_input" class="search-input" type="text" placeholder="Search for algorithms..." />
+					<span class="add-on"><i class="icon-search"></i></span>
+				</div>
+			</form>
+		</div>
+
+		<div class="dataset-links">
+			<p> Download AlgPedia dataset in : <a href='{{ STATIC_URL }}ontology/algorithm.owl'> owl</a> or <a href='{{ STATIC_URL }}ontology/algpedia-rdf.rdf'> rdf</a>&nbsp;&nbsp;</p>
+		</div>
+
 	</div>
 </div>
-
-<p align="right"> Download AlgPedia dataset in : <a href='{{ STATIC_URL }}ontology/algorithm.owl'> owl</a> or <a href='{{ STATIC_URL }}ontology/algpedia-rdf.rdf'> rdf</a>&nbsp;&nbsp;</p>
 
 	<!-- DESCRIPTION-->
 
