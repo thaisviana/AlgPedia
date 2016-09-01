@@ -24,12 +24,45 @@
 					<h6 >{{paradigm.abstract}}</h6>
 					&nbsp;&nbsp;&nbsp;<a href="{{ paradigm.wikipedia_uri }}" target="_blank"> [More Information] </a>
 					&nbsp;&nbsp;&nbsp;<a href="{{ paradigm.dbpedia_uri }}" target="_blank"> [DBpedia's Page] </a>
-				</div> 
+				</div>
+				<div>&nbsp;&nbsp;&nbsp;</div> 
+				<div>
+					<a href="#p_lang" id="para_modal" data-toggle="modal">Do you know any programming languages whose design was inspired or supported by this paradigm?</a>
+				</div>
+
+				<div>&nbsp;&nbsp;&nbsp;</div> 
+				<div>&nbsp;&nbsp;&nbsp;</div> 
 		</div>		
 		<div class="span2">
 			&nbsp;
 		</div>
 	</div>
+
+	<div id="p_lang" class="modal hide fade">
+		  <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		    <h6>Do you know any programming languages whose design was inspired or supported by this paradigm({{ paradigm.label }})?</h6>
+		  </div>
+		  <div class="modal-body">
+		    {% for p_lang in programming_languages %}
+				&nbsp;&nbsp;<input type="checkbox" value="{{p_lang.id}}"> {{p_lang.name}}<br>
+			{% endfor %}
+		  </div>
+		  <div class="modal-footer">
+		    <a href="#" class="btn btn-primary">Save changes</a>
+		  </div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#p_lang").modal('hide');
+
+			$("#para_modal").click(function(ev){
+				$("#p_lang").modal('shown');
+			});
+		});
+	</script>
+
 </div>
 {% endblock %}
 

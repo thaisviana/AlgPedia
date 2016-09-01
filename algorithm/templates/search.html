@@ -1,0 +1,23 @@
+{% extends "main_template.html" %}
+
+{% block content %}
+<form>
+<div class="container-fluid">
+    <h3>Code Retrival to GitHub repositories</h3>
+	<input name="adsearch" id="ad_search_input" type="text" placeholder="Search for algorithms..." style="
+    margin: 10%;width: 80%;"><span class="add-on"><i class="icon-search"></i></span>
+</div>
+</form>
+{% endblock %}
+
+<script  type="text/javascript">
+$(document).ready(function(){
+
+	$('.input').keypress(function (e) {
+	  if (e.which == 13) {
+	    $('form').submit();
+	    return false;    //<---- Add this line
+	  }
+	});
+});
+</script>
