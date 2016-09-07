@@ -10,7 +10,16 @@ a { cursor: pointer; }
 .top-algorithms > div { text-align: center; display: inline-block; width: 160px; margin: 0 10px; }
 .top-algorithms > div > div { text-align: center; }
 
-.description { background-color: #CCE0D3; margin-top: -20px; padding: 120px 0; }
+.description {
+  margin-top: -20px;
+  padding: 120px 0;
+  background-color: #CCE0D3;
+  background: #bcd6c5; /* Old browsers */
+  background: -moz-linear-gradient(top, #bcd6c5 0%, #cce0d3 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #bcd6c5 0%,#cce0d3 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #bcd6c5 0%,#cce0d3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bcd6c5', endColorstr='#cce0d3',GradientType=0 ); /* IE6-9 */
+}
 
 .description-content { text-align: center; margin: 0 15% 0 15%; width: 70%; }
 .description-content img { margin-bottom: 22pt; }
@@ -43,16 +52,19 @@ body {
 
 }
 
+.center-section { border-bottom: 1px solid #E5E5E5; padding: 50px 0; }
+
 .centersectiontitle {
 	repeat-x scroll 0 0 transparent;
 	background-position: center;
-	margin: 10px 0 25px;
+	margin: 20px 0;
 	min-height: 20px;
 	text-align: center;
 }
 .centersectiontitle h4 {
-	font-size: 23px;
-	background: #fff;
+	font-size: 26pt;
+  font-weight: normal;
+  color: #555;
 	display: inline;
 	padding-right: 10px;
 	padding-left: 10px;
@@ -103,7 +115,7 @@ body {
 .footer-inner .sponsors { float: right; }
 .footer-inner .sponsors > div { margin-left: 10px; }
 .footer-inner .sponsors img { max-height: 70px; }
-.footer-inner .description { margin-top: 20px; float: left; }
+.footer-inner .footer-description { margin-top: 20px; float: left; }
 .footer-inner .trademark { font-size: 22px; }
 
 .pagination-wrapper { text-align: center; font-size: 20px; border: 1px solid #DDD; border-radius: 5px; padding: 10px 0; }
