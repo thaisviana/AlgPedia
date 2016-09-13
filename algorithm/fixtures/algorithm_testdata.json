@@ -1,0 +1,92 @@
+[
+{
+    "pk": 1,
+    "model": "algorithm.algorithm",
+    "fields": {
+        "name": "Fifo",
+        "classification": 1,
+        "tags": [],
+        "uri": "http://dbpedia.org/resource/FIFO",
+        "visible": true,
+        "reputation": 0.175,
+        "user": null,
+        "date": "2014-11-04",
+        "description": "FIFO is an acronym for First In, First Out, which is an abstraction related to ways of organizing and manipulation of data relative to time and prioritization. This expression describes the principle of a queue processing technique or servicing conflicting demands by ordering process by first-come, first-served (FCFS) behaviour: where the persons leave the queue in the order they arrive, or waiting one's turn at a traffic control signal."
+    }
+},
+{
+    "pk": 2,
+    "model": "algorithm.algorithm",
+    "fields": {
+        "name": "Cycle Detection",
+        "classification": 1,
+        "tags": [],
+        "uri": "http://dbpedia.org/resource/Cycle_detection",
+        "visible": true,
+        "reputation": 0.416666666666667,
+        "user": null,
+        "date": "2014-11-04",
+        "description": "In computer science, cycle detection is the algorithmic problem of finding a cycle in a sequence of iterated function values."
+    }
+},
+{
+    "pk": 3,
+    "model": "algorithm.algorithm",
+    "fields": {
+        "name": "Multiply With Carry",
+        "classification": 1,
+        "tags": [],
+        "uri": "http://dbpedia.org/resource/Multiply-with-carry",
+        "visible": true,
+        "reputation": 0.5,
+        "user": null,
+        "date": "2014-11-04",
+        "description": "In computer science, multiply-with-carry (MWC) is a method invented by George Marsaglia for generating sequences of random integers based on an initial set from two to many thousands of randomly chosen seed values. The main advantages of the MWC method are that it invokes simple computer integer arithmetic and leads to very fast generation of sequences of random numbers with immense periods, ranging from around 260 to 22000000."
+    }
+},
+{
+    "pk": 4,
+    "model": "algorithm.algorithm",
+    "fields": {
+        "name": "Algoritmo Boladao 1",
+        "classification": 1,
+        "tags": [],
+        "uri": "http://dbpedia.org/resource/Boladovski-algorithm",
+        "visible": true,
+        "reputation": 0.5,
+        "user": null,
+        "date": "2014-11-04",
+        "description": "This is a very awesome algorithm"
+    }
+},
+{
+    "pk": 5,
+    "model": "algorithm.algorithm",
+    "fields": {
+        "name": "Algoritmo Boladao 2",
+        "classification": 1,
+        "tags": [],
+        "uri": "http://dbpedia.org/resource/Boladovski-algorithm",
+        "visible": true,
+        "reputation": 0.5,
+        "user": null,
+        "date": "2014-11-04",
+        "description": "This is a very awesome algorithm"
+    }
+},
+{
+    "pk": 6,
+    "model": "algorithm.algorithm",
+    "fields": {
+        "name": "Algoritmo Boladao 3", 
+        "classification": 1,
+        "tags": [],
+        "uri": "http://dbpedia.org/resource/Boladovski-algorithm",
+        "visible": true,
+        "reputation": 0.5,
+        "user": null,
+        "date": "2014-11-04",
+        "description": "This is a very awesome algorithm"
+    }
+}
+]
