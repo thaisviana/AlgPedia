@@ -1,0 +1,70 @@
+[ {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Algorithm",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Bubble_Sort",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Algorithm" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#C",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Programming_Language" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#C++",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Programming_Language" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Classification",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Computation_Problems",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Dijkstra",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Algorithm" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Java",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Programming_Language" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Programming_Language",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Python",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Programming_Language" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Quick_Sort",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Algorithm" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Sorting_Algorithms",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Classification" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Travelling_Salesman",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Computation_Problems" ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#implementationOf",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Programming_Language"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Algorithm"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#isClassifiedAs",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Algorithm"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Classification"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#solves",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Algorithm"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.semanticweb.org/cmartins/ontologies/2016/8/algpedia#Computation_Problems"
+  } ]
+} ]
