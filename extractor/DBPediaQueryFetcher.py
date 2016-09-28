@@ -7,7 +7,7 @@ import os
 import urllib
 import urllib2
 from FileWriters import HTMLWriter, CSVWriter
-from BeautifulSoup import *
+from bs4 import *
 
 class QueryFetcher:
 
