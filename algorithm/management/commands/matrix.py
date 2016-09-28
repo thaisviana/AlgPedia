@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
-from algorithm.models import Algorithm
 from algorithm.controllers import *
 from django.core.management.base import BaseCommand
 import csv
 
-#Código de implementação de lógica de geração de matriz de probabilidades de ações dado o histórico do usuário.
+"""Código de implementação de lógica de geração de matriz de probabilidades de ações dado o histórico do usuário.
 #O cálculo das probabilidades é feito usando-se funções de obtenção de total de usuários que realizaram tal ação e
 #usando a fórmula do teorema de Bayes. Probabilidades de ações dado históricos que contém a ação que será efetuada estão sendo ignoradas
 #temporariamente devido à alteração feita no banco de dados.
-#A saída do programa é um arquivo csv salvo na pasta root do projeto com o nome 'matriz.csv'.
+#A saída do programa é um arquivo csv salvo na pasta root do projeto com o nome 'matriz.csv'. """
 class Command(BaseCommand):
     help = u"""Matriz de analise de comportamento"""
 
@@ -51,7 +50,35 @@ class Command(BaseCommand):
                                 rowResults[acao] = bayes
                                 #print acao, hist, bayes
                         else : 
-                            rowResults[acao] = '-'
+                            ##### CONTAGEM DE USUÁRIOS QUE FIZERAM TODAS AS AÇÕES DO HISTÓRICO QUE SÃO DIFERENTES DA AÇÃO A SER CALCULADA A PROB
+                             
+                            '''For para montar a lista sem repetições de usuários que fizeram as ações do histórico que não são a 
+                            ação futura '''
+                            totalActionsHist = len(hist.split('_'))
+                            usersHistNoRepetition = []
+                            
+                            for index in range(len(hist.split('_'))):
+                                if hist.split('_')[index] == acao: pass
+                                else: usersHistNoRepetition = list(set(filter(lambda x: x in users_action[hist.split('_')[index]]  , usersHistNoRepetition)))
+                            
+                            #### CONTAGEM DE USUÁRIO QUE FIZERAM AÇÃO REPETIDAS VEZES NO HISTÓRICO
+                            '''Lista contendo os usuários que fizeram ação tantas vezes quanto aparece no histórico'''
+                            totalActionRepetitionHist = hist.count(acao)
+                            usersHistRepetition = list(set(filter(lambda x: users_action[acao].count(x) == totalActionRepetitionHist, users_action[acao])))
+                            
+                            '''Lista contendo os usuários que fizeram ação tantas vezes quanto aparece no histórico + 1 (que seria
+                                a ação futura)'''
+                            totalActionRepetition = totalActionRepetitionHist + 1
+                            usersTotalRepetition = list(set(filter(lambda x: users_action[acao].count(x) == totalActionRepetition, users_action[acao])))
+                            
+                            '''Lista com todos os usuários que fizeram todas as ações do histórico'''
+                            usersHist = usersHistNoRepetition + usersHistRepetition
+                            
+                            '''Lista com todos os usuários que fizeram todas as ações do histórico e a ação futura'''
+                            usersHistAndAction = usersTotalRepetition + usersHistNoRepetition
+                            
+                            bayes = len(usersHistAndAction)/ float(len(usersHist))
+                            rowResults[acao] = bayes
                     writer.writerow({'state': hist,'aa': rowResults['aa'], 'ai': rowResults['ai'],'v': rowResults['v'],'ap': rowResults['ap']})
 
                             
