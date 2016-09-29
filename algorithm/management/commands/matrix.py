@@ -34,12 +34,10 @@ class Command(BaseCommand):
                             if hist is '':
                                 bayes = len(users_action[acao])/n_users
                                 rowResults[acao] = bayes
-                                #print acao, bayes
                             elif len(hist.split('_')) == 1 :
                                 subset_acao = list(set(filter(lambda x: x in users_action[acao] , users_action[hist])))
                                 bayes = len(subset_acao)/float(len(users_action[hist]))
                                 rowResults[acao] = bayes
-                                #print acao, hist, bayes
                             else :
                                 subset = users_action[hist.split('_')[0]]
                                 for index in range(len(hist.split('_'))):
@@ -48,36 +46,30 @@ class Command(BaseCommand):
                                 subset_acao = list(set(filter(lambda x: x in users_action[acao] , subset)))
                                 bayes = len(subset_acao)/float(len(subset))
                                 rowResults[acao] = bayes
-                                #print acao, hist, bayes
                         else : 
-                            ##### CONTAGEM DE USUÁRIOS QUE FIZERAM TODAS AS AÇÕES DO HISTÓRICO QUE SÃO DIFERENTES DA AÇÃO A SER CALCULADA A PROB
-                             
-                            '''For para montar a lista sem repetições de usuários que fizeram as ações do histórico que não são a 
-                            ação futura '''
-                            totalActionsHist = len(hist.split('_'))
-                            usersHistNoRepetition = []
                             
-                            for index in range(len(hist.split('_'))):
-                                if hist.split('_')[index] == acao: pass
-                                else: usersHistNoRepetition = list(set(filter(lambda x: x in users_action[hist.split('_')[index]]  , usersHistNoRepetition)))
+                            '''For para montar lista de usuários que executaram as ações do histórico.
+                               Caso uma ação se repita 2 vezes no histórico, iremos retornar os usuários que a 
+                               realizaram pelo menos 2 vezes.'''
+                            usersHist =[]
+                            actionsHist = list(set(hist.split('_')))
+                            totalActionsHist = len(actionsHist)
+
+                            for index in range(len(actionsHist)):
+                                acaoHist = hist.split('_')[index]
+                                totalActionRepetitionHist = hist.count(acaoHist)
+                                if usersHist == [] : 
+                                    usersHist = list(set(filter(lambda x: users_action[acaoHist].count(x) >= totalActionRepetitionHist, users_action[acaoHist])))
+                                else:
+                                    usersHist = list(set(filter(lambda x: users_action[acaoHist].count(x) >= totalActionRepetitionHist, usersHist)))
                             
-                            #### CONTAGEM DE USUÁRIO QUE FIZERAM AÇÃO REPETIDAS VEZES NO HISTÓRICO
-                            '''Lista contendo os usuários que fizeram ação tantas vezes quanto aparece no histórico'''
-                            totalActionRepetitionHist = hist.count(acao)
-                            usersHistRepetition = list(set(filter(lambda x: users_action[acao].count(x) == totalActionRepetitionHist, users_action[acao])))
-                            
-                            '''Lista contendo os usuários que fizeram ação tantas vezes quanto aparece no histórico + 1 (que seria
-                                a ação futura)'''
-                            totalActionRepetition = totalActionRepetitionHist + 1
-                            usersTotalRepetition = list(set(filter(lambda x: users_action[acao].count(x) == totalActionRepetition, users_action[acao])))
-                            
-                            '''Lista com todos os usuários que fizeram todas as ações do histórico'''
-                            usersHist = usersHistNoRepetition + usersHistRepetition
-                            
-                            '''Lista com todos os usuários que fizeram todas as ações do histórico e a ação futura'''
-                            usersHistAndAction = usersTotalRepetition + usersHistNoRepetition
+                            '''Lista contendo os usuários que fizeram ação futura, pelo menos, tantas vezes quanto aparece no histórico + 1 (que seria
+                                a própria ação futura)'''
+                            totalActionRepetition = hist.count(acao) + 1
+                            usersHistAndAction = list(set(filter(lambda x: users_action[acao].count(x) >= totalActionRepetition, usersHist)))
                             
                             bayes = len(usersHistAndAction)/ float(len(usersHist))
+                            
                             rowResults[acao] = bayes
                     writer.writerow({'state': hist,'aa': rowResults['aa'], 'ai': rowResults['ai'],'v': rowResults['v'],'ap': rowResults['ap']})
 
