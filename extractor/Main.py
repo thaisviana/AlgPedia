@@ -43,14 +43,13 @@ def doMain():
 			}'''
 
 	print "Calling QueryFetcher..."
-	generated_files = query_fetcher.fetchResult(dbpedia_master_query)
-	print generated_files
+	generated_file = query_fetcher.fetchResult(dbpedia_master_query)
+	print generated_file
 
 	print "Finished fetching results..."
 
 	# always 0-based, baby
-	for file_path in generated_files:
-		insertClassifications(file_path, 0)
+	insertClassifications(generated_file, 0)
 
 # returns a list of beautiful names.
 # each name only appears once in this list.

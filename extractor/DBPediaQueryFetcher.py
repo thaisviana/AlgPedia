@@ -55,33 +55,10 @@ class QueryFetcher:
     # fetch the resource and delegate the writing of the file to the
     # appropriate instance of FileWriter
     def fetchResult(self, query_body):
-        file_paths = []
-        batch_size = 100
-        total_results = self.fetchCount(query_body)
-
-        offset = 0
-
-        while offset*batch_size < total_results:
-    		query = "select * where " + query_body
-    		query += "limit " + str(batch_size) + " offset "
-    		query += str(offset*batch_size)
-    		# print query
-
-    		self.get_params['query'] = query
-
-    		the_page = self.fetch(query)
-
-    		file_paths.append(self.file_writer.writeFile(the_page, 'dbpedia_fetch_%d' % self.n_fetch))
-
-    		offset += 1
-    		query = query_body
-
-    		print str(offset*batch_size) + " results fetched"
-    		print str(total_results - offset*batch_size) + " left to fetch"
-
-    		self.n_fetch += 1
-
-    	return file_paths
+    	query = "select * where " + query_body
+        the_page = self.fetch(query)
+        file_path = self.file_writer.writeFile(the_page, 'dbpedia_fetch_%d' % self.n_fetch)
+    	return file_path
 
     # change the output path of the fetched resource
     def changeOutputFolder(self, new_folder_path):
