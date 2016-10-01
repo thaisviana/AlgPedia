@@ -54,10 +54,10 @@ class QueryFetcher:
 
     # fetch the resource and delegate the writing of the file to the
     # appropriate instance of FileWriter
-    def fetchResult(self, query_body):
+    def fetchResult(self, query_body, name):
     	query = "select * where " + query_body
         the_page = self.fetch(query)
-        file_path = self.file_writer.writeFile(the_page, 'dbpedia_fetch_%d' % self.n_fetch)
+        file_path = self.file_writer.writeFile(the_page, 'dbpedia_{}_fetch_{}'.format(name, self.n_fetch))
     	return file_path
 
     # change the output path of the fetched resource

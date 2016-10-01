@@ -16,14 +16,20 @@ class WikiPediaAbstractExtractor:
 		self.src_pattern = re.compile('^source-([a-zA-Z]+)$')
 		self.pseudo_src_pattern = re.compile('^source-pli$')
 
+	def remove_break_line(self, url):
+		new_url = ""
+		if url.endswith('\n'):
+			new_url = url[:-1]
+		return new_url
+
 	def search_page(self, url):
-		self.url = url
+		self.url = self.remove_break_line(url)
 
 		request = urllib2.Request(self.url, None, self.headers)
 		try:
 			response = urllib2.urlopen(request)
 		except Exception, e:
-			raise ExtractionError("Error retreiving: " + str(url))
+			raise ExtractionError("Error retreiving: " + str(self.url))
 
 		data = self.decode(response)
 
@@ -49,7 +55,7 @@ class WikiPediaAbstractExtractor:
 		#nao pega nenhuma tag <li>, porem em algumas paginas listas fornecem informacoes relevantes
 		div = self.pool.find("div", {"class" : "mw-content-ltr" })
 		paragraphs = div.findAll('p')
-		
+
 		paragraphs_text = []
 		for text in paragraphs:
 			paragraphs_text.append(text.text)
