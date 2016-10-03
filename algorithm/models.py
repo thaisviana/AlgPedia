@@ -29,7 +29,7 @@ class UserReputation(models.Model):
 	reputation = models.FloatField(default=0)
 	user = models.ForeignKey(User)
 	university = models.ForeignKey(UniversityRank, null=True)
-	
+
 class ProgrammingLanguage(models.Model):
 	name = models.CharField(max_length=10)
 
@@ -48,7 +48,7 @@ class Classification(models.Model):
 
 	class Meta:
 		ordering = ['name']
-		
+
 class Tag(models.Model):
 	name = models.CharField(max_length=50)
 
@@ -58,7 +58,7 @@ class Tag(models.Model):
 class Paradigm(models.Model):
 	##["paradigm", "wpage", "abstract", "label"]
 	dbpedia_uri = models.CharField(max_length=100)
-	wikipedia_uri = models.CharField(max_length=100)	
+	wikipedia_uri = models.CharField(max_length=100)
 	label = models.CharField(max_length=100)
 	abstract = models.TextField()
 
@@ -206,3 +206,7 @@ class ImplementationQuestionAnswer(models.Model):
 		reputation = answer * question_weight
 
 		return reputation
+
+class AlgorithmFullText(models.Model):
+	alg_name = models.CharField(max_length=30)
+	description = models.TextField()
