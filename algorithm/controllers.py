@@ -572,7 +572,7 @@ def str_historico():
 	acoes = ['aa','ai','v','ap']
 	historico=['']
 	limiteCombinacoes = len(acoes)+1
-	for i in xrange(1, limiteCombinacoes):
+	for i in xrange(1, 15):
 		for combination in itertools.combinations_with_replacement(acoes, i):
 			str = "_".join(list(combination))
 			historico += [str]
