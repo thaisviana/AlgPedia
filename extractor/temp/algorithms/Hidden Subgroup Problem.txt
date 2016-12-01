@@ -1,0 +1,60 @@
+ABOUT
+The hidden subgroup problem (HSP) is a topic of research in mathematics and theoretical computer science. The framework captures problems like factoring, graph isomorphism, and the shortest vector problem. This makes it especially important in the theory of quantum computing because Shor's quantum algorithm for factoring is essentially equivalent to the hidden subgroup problem for finite Abelian groups, while the other problems correspond to finite groups that are not Abelian.
+FULL TEXT
+The hidden subgroup problem (HSP) is a topic of research in mathematics and theoretical computer science. The framework captures problems like factoring, graph isomorphism, and the shortest vector problem. This makes it especially important in the theory of quantum computing because Shor's quantum algorithm for factoring is essentially equivalent to the hidden subgroup problem for finite Abelian groups, while the other problems correspond to finite groups that are not Abelian.
+
+
+Given a group G, a subgroup H ≤ G, and a set X, we say a function f : G → X hides the subgroup H if for all g1, g2 ∈ G, f(g1) = f(g2) if and only if g1H = g2H for the cosets of H. Equivalently, the function f is constant on the cosets of H, while it is different between the different cosets of H.
+Hidden subgroup problem: Let G be a group, X a finite set, and f : G → X a function that hides a subgroup H ≤ G. The function f is given via an oracle, which uses O(log |G|+log|X|) bits. Using information gained from evaluations of f via its oracle, determine a generating set for H.
+A special case is when X is a group and f is a group homomorphism in which case H corresponds to the kernel of f.
+The Hidden Subgroup Problem is especially important in the theory of quantum computing for the following reasons.
+There is a polynomial time quantum algorithm for solving HSP over finite Abelian groups. (In the case of hidden subgroup problem, "a polynomial time algorithm" means an algorithm whose running time is a polynomial of the logarithm of the size of the group.) Shor's algorithm applies a particular case of this quantum algorithm.
+For arbitrary groups, it is known that the hidden subgroup problem is solvable using a polynomial number of evaluations of the oracle.[3] This result, however, allows the quantum algorithm a running time that is exponential in log|G|. To design efficient algorithms for the graph isomorphism and SVP, one needs an algorithm for which both the number of oracle evaluations and the running time are polynomial.
+The existence of such algorithm for arbitrary groups is open. Quantum polynomial time algorithms exist for certain subclasses of groups, such as semi-direct products of some Abelian groups.
+The 'standard' approach to this problem involves: the creation of the quantum state 
+
+
+
+
+
+1
+
+
+|
+
+G
+
+|
+
+
+
+
+
+∑
+
+x
+∈
+G
+
+
+
+
+|
+
+x
+⟩
+⊗
+
+|
+
+f
+(
+x
+)
+⟩
+
+
+
+{\displaystyle {\frac {1}{\sqrt {|G|}}}\sum _{x\in G}{|x\rangle \otimes |f(x)\rangle }}
+
+, a subsequent Quantum Fourier transform to the left register, after which this register gets sampled. This approach has been shown to be insufficient for the hidden subgroup problem for the symmetric group.[4][5]

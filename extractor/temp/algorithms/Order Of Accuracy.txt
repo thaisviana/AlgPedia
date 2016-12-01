@@ -1,0 +1,130 @@
+ABOUT
+In numerical analysis, order of accuracy quantifies the rate of convergence of a numerical approximation of a differential equation to the exact solution. A numerical solution to a differential equation is said to be 
+
+
+
+n
+
+
+{\displaystyle n}
+
+th-order accurate if the error, 
+
+
+
+E
+
+
+{\displaystyle E}
+
+, is proportional to the step-size 
+
+
+
+h
+
+
+{\displaystyle h}
+
+ to the 
+
+
+
+n
+
+
+{\displaystyle n}
+
+th power;[1]
+FULL TEXT
+In numerical analysis, order of accuracy quantifies the rate of convergence of a numerical approximation of a differential equation to the exact solution. A numerical solution to a differential equation is said to be 
+
+
+
+n
+
+
+{\displaystyle n}
+
+th-order accurate if the error, 
+
+
+
+E
+
+
+{\displaystyle E}
+
+, is proportional to the step-size 
+
+
+
+h
+
+
+{\displaystyle h}
+
+ to the 
+
+
+
+n
+
+
+{\displaystyle n}
+
+th power;[1]
+The size of the error of a first-order accurate approximation is directly proportional to 
+
+
+
+h
+
+
+{\displaystyle h}
+
+. In big O notation, an 
+
+
+
+n
+
+
+{\displaystyle n}
+
+th-order accurate numerical method is notated as 
+
+
+
+O
+(
+
+h
+
+n
+
+
+)
+
+
+{\displaystyle O(h^{n})}
+
+. Partial differential equations which vary over both time and space are said to be accurate to order 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ in time and to order 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ in space.[2]

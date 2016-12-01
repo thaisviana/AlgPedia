@@ -1,0 +1,343 @@
+ABOUT
+In machine learning, a Hyper basis function network, or HyperBF network, is a generalization of radial basis function (RBF) networks concept, where the Mahalanobis-like distance is used instead of Euclidean distance measure. Hyper basis function networks were first introduced by Poggio and Girosi in the 1990 paper “Networks for Approximation and Learning”.[1][2]
+FULL TEXT
+In machine learning, a Hyper basis function network, or HyperBF network, is a generalization of radial basis function (RBF) networks concept, where the Mahalanobis-like distance is used instead of Euclidean distance measure. Hyper basis function networks were first introduced by Poggio and Girosi in the 1990 paper “Networks for Approximation and Learning”.[1][2]
+The typical HyperBF network structure consists of a real input vector 
+
+
+
+x
+∈
+
+
+R
+
+
+n
+
+
+
+
+{\displaystyle x\in \mathbb {R} ^{n}}
+
+, a hidden layer of activation functions and a linear output layer. The output of the network is a scalar function of the input vector, 
+
+
+
+ϕ
+:
+
+
+R
+
+
+n
+
+
+→
+
+R
+
+
+
+{\displaystyle \phi :\mathbb {R} ^{n}\to \mathbb {R} }
+
+, is given by
+where 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ is a number of neurons in the hidden layer, 
+
+
+
+
+μ
+
+j
+
+
+
+
+{\displaystyle \mu _{j}}
+
+ and 
+
+
+
+
+a
+
+j
+
+
+
+
+{\displaystyle a_{j}}
+
+ are the center and weight of neuron 
+
+
+
+j
+
+
+{\displaystyle j}
+
+. The activation function 
+
+
+
+
+ρ
+
+j
+
+
+(
+
+|
+
+
+|
+
+x
+−
+
+μ
+
+j
+
+
+
+|
+
+
+|
+
+)
+
+
+{\displaystyle \rho _{j}(||x-\mu _{j}||)}
+
+ at the HyperBF network takes the following form
+where 
+
+
+
+
+R
+
+j
+
+
+
+
+{\displaystyle R_{j}}
+
+ is a positive definite 
+
+
+
+d
+×
+d
+
+
+{\displaystyle d\times d}
+
+ matrix. Depending on the application, the following types of matrices 
+
+
+
+
+R
+
+j
+
+
+
+
+{\displaystyle R_{j}}
+
+ are usually considered[3]
+Training HyperBF networks involves estimation of weights 
+
+
+
+
+a
+
+j
+
+
+
+
+{\displaystyle a_{j}}
+
+, shape and centers of neurons 
+
+
+
+
+R
+
+j
+
+
+
+
+{\displaystyle R_{j}}
+
+ and 
+
+
+
+
+μ
+
+j
+
+
+
+
+{\displaystyle \mu _{j}}
+
+. Poggio and Girosi (1990) describe the training method with moving centers and adaptable neuron shapes. The outline of the method is provided below.
+Consider the quadratic loss of the network 
+
+
+
+H
+[
+
+ϕ
+
+∗
+
+
+]
+=
+
+∑
+
+i
+=
+1
+
+
+N
+
+
+(
+
+y
+
+i
+
+
+−
+
+ϕ
+
+∗
+
+
+(
+
+x
+
+i
+
+
+)
+
+)
+
+2
+
+
+
+
+{\displaystyle H[\phi ^{*}]=\sum _{i=1}^{N}(y_{i}-\phi ^{*}(x_{i}))^{2}}
+
+. The following conditions must be satisfied at the optimum:
+where 
+
+
+
+
+R
+
+j
+
+
+=
+
+W
+
+T
+
+
+W
+
+
+{\displaystyle R_{j}=W^{T}W}
+
+. Then in the gradient descent method the values of 
+
+
+
+
+a
+
+j
+
+
+,
+
+μ
+
+j
+
+
+,
+W
+
+
+{\displaystyle a_{j},\mu _{j},W}
+
+ that minimize 
+
+
+
+H
+[
+
+ϕ
+
+∗
+
+
+]
+
+
+{\displaystyle H[\phi ^{*}]}
+
+ can be found as a stable fixed point of the following dynamic system:
+where 
+
+
+
+ω
+
+
+{\displaystyle \omega }
+
+ determines the rate of convergence.
+Overall, training HyperBF networks can be computationally challenging. Moreover, the high degree of freedom of HyperBF leads to overfitting and poor generalization. However, HyperBF networks have an important advantage that a small number of neurons is enough for learning complex functions.[2]

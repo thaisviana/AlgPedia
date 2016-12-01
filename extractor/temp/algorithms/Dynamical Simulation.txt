@@ -1,0 +1,59 @@
+ABOUT
+Dynamical simulation, in computational physics, is the simulation of systems of objects that are free to move, usually in three dimensions according to Newton's laws of dynamics, or approximations thereof. Dynamical simulation is used in computer animation to assist animators to produce realistic motion, in industrial design (for example to simulate crashes as an early step in crash testing), and in video games. Body movement is calculated using time integration methods.
+FULL TEXT
+Dynamical simulation, in computational physics, is the simulation of systems of objects that are free to move, usually in three dimensions according to Newton's laws of dynamics, or approximations thereof. Dynamical simulation is used in computer animation to assist animators to produce realistic motion, in industrial design (for example to simulate crashes as an early step in crash testing), and in video games. Body movement is calculated using time integration methods.
+
+
+In computer science, a program called a physics engine is used to model the behaviors of objects in space. These engines allow simulation of the way bodies of many types are affected by a variety of physical stimuli. They are also used to create Dynamical simulations without having to know anything about physics. Physics engines are used throughout the video game and movie industry, but not all physics engines are alike; They are generally broken into real-time and the high precision but these are not the only options. Most real-time physics engines are inaccurate and yield only the barest approximation of the real world, whereas most high-precision engines are far too slow for use in everyday applications. To understand how these Physics engines are built, a basic understanding of physics is required. Physics engines are based on the actual behaviors of the world as described by classical mechanics. Engines do not typically account for Modern Mechanics (see Theory of relativity and quantum mechanics) because most visualization deals with large bodies moving relatively slowly, but the most complicated engines perform calculations for Modern Mechanics as well as Classical. The models used in Dynamical simulations determine how accurate these simulations are.
+The first model which may be used in physics engines governs the motion of infinitesimal objects with finite mass called “particles.” This equation, called Newton’s Second law (see Newton's laws) or the definition of force, is the fundamental behavior governing all motion:
+This equation will allow us to fully model the behavior of particles, but this is not sufficient for most simulations because it does not account for the rotational motion of rigid bodies. This is the simplest model that can be used in a physics engine and was used extensively in early video games.
+Bodies in the real world deform as forces are applied to them, so we call them “soft,” but often the deformation is negligibly small compared to the motion, and it is very complicated to model, so most physics engines ignore deformation. A body that is assumed to be non-deformable is called a rigid body. Rigid body dynamics deals with the motion of objects that cannot change shape, size, or mass but can change orientation and position.
+To account for rotational energy and momentum, we must describe how force is applied to the object using a moment, and account for the mass distribution of the object using an inertia tensor. We describe these complex interactions with an equation somewhat similar to the definition of force above:
+where 
+
+
+
+
+I
+
+
+
+{\displaystyle \mathbf {I} }
+
+ is the central inertia tensor, 
+
+
+
+
+
+
+ω
+→
+
+
+
+
+
+{\displaystyle {\vec {\omega }}}
+
+ is the angular velocity vector, and 
+
+
+
+
+τ
+
+j
+
+
+
+
+{\displaystyle \tau _{j}}
+
+ is the moment of the jth external force about the mass center.
+The inertia tensor describes the location of each particle of mass in a given object in relation to the object's center of mass. This allows us to determine how an object will rotate dependent on the forces applied to it. This angular motion is quantified by the angular velocity vector.
+As long as we stay below relativistic speeds (see Relativistic dynamics), this model will accurately simulate all relevant behavior. This method requires the Physics engine to solve six ordinary differential equations at every instant we want to render, which is a simple task for modern computers.
+The inertial model is much more complex than we typically need but it is the most simple to use. In this model, we do not need to change our forces or constrain our system. However, if we make a few intelligent changes to our system, simulation will become much easier, and our calculation time will decrease. The first constraint will be to put each torque in terms of the principal axes. This makes each torque much more difficult to program, but it simplifies our equations significantly. When we apply this constraint, we diagonalize the moment of inertia tensor, which simplifies our three equations into a special set of equations called Euler's equations. These equations describe all rotational momentum in terms of the principal axes:
+The drawback to this model is that all the computation is on the front end, so it is still slower than we would like. The real usefulness is not apparent because it still relies on a system of non-linear differential equations. To alleviate this problem, we have to find a method that can remove the second term from the equation. This will allow us to integrate much more easily. The easiest way to do this is to assume a certain amount of symmetry.
+The two types of symmetric objects that will simplify Euler's equations are “symmetric tops” and “symmetric spheres.” The first assumes one degree of symmetry, this makes two of the I terms equal. These objects, like cylinders and tops, can be expressed with one very simple equation and two slightly simpler equations. This does not do us much good, because with one more symmetry we can get a large jump in speed with almost no change in appearance. The symmetric sphere makes all of the I terms equal (the Moment of inertia scalar), which makes all of these equations simple:
+These equations allow us to simulate the behavior of an object that can spin in a way very close to the method simulate motion without spin. This is a simple model but it is accurate enough to produce realistic output in real-time Dynamical simulations. It also allows a Physics engine to focus on the changing forces and torques rather than varying inertia.

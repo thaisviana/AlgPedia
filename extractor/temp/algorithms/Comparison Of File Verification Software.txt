@@ -1,0 +1,5 @@
+ABOUT
+The following tables compare file verification software that typically use checksums to confirm the integrity or authenticity of a file.
+FULL TEXT
+The following tables compare file verification software that typically use checksums to confirm the integrity or authenticity of a file.
+

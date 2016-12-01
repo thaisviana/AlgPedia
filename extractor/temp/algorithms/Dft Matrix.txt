@@ -1,0 +1,312 @@
+ABOUT
+In applied mathematics, a DFT matrix is an expression of a discrete Fourier transform (DFT) as a transformation matrix, which can be applied to a signal through matrix multiplication.
+FULL TEXT
+In applied mathematics, a DFT matrix is an expression of a discrete Fourier transform (DFT) as a transformation matrix, which can be applied to a signal through matrix multiplication.
+
+
+An N-point DFT is expressed as the multiplication 
+
+
+
+X
+=
+W
+x
+
+
+{\displaystyle X=Wx}
+
+, where 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ is the original input signal, 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ is the N-by-N square DFT matrix, and 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ is the DFT of the signal.
+The transformation matrix 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ can be defined as 
+
+
+
+W
+=
+
+
+(
+
+
+
+ω
+
+j
+k
+
+
+
+N
+
+
+
+)
+
+
+j
+,
+k
+=
+0
+,
+…
+,
+N
+−
+1
+
+
+
+
+{\displaystyle W=\left({\frac {\omega ^{jk}}{\sqrt {N}}}\right)_{j,k=0,\ldots ,N-1}}
+
+, or equivalently:
+where 
+
+
+
+ω
+=
+
+e
+
+−
+2
+π
+i
+
+/
+
+N
+
+
+
+
+{\displaystyle \omega =e^{-2\pi i/N}}
+
+ is a primitive Nth root of unity in which 
+
+
+
+i
+=
+
+
+−
+1
+
+
+
+
+{\displaystyle i={\sqrt {-1}}}
+
+. This is the Vandermonde matrix for the roots of unity, up to the normalization factor. Note that the normalization factor in front of the sum 
+
+
+
+(
+1
+
+/
+
+
+
+N
+
+
+)
+
+
+{\displaystyle (1/{\sqrt {N}})}
+
+ and the sign of the exponent in ω are merely conventions, and differ in some treatments. All of the following discussion applies regardless of the convention, with at most minor adjustments. The only important thing is that the forward and inverse transforms have opposite-sign exponents, and that the product of their normalization factors be 1/N. However, the 
+
+
+
+1
+
+/
+
+
+
+N
+
+
+
+
+{\displaystyle 1/{\sqrt {N}}}
+
+ choice here makes the resulting DFT matrix unitary, which is convenient in many circumstances.
+Fast Fourier transform algorithms utilize the symmetries of the matrix to reduce the time of multiplying a vector by this matrix, from the usual 
+
+
+
+O
+(
+
+N
+
+2
+
+
+)
+
+
+{\displaystyle O(N^{2})}
+
+. Similar techniques can be applied for multiplications by matrices such as Hadamard matrix and the Walsh matrix.
+The two-point DFT is a simple case, in which the first entry is the DC (sum) and the second entry is the AC (difference).
+The first row performs the sum, and the second row performs the difference.
+The factor of 
+
+
+
+1
+
+/
+
+
+
+2
+
+
+
+
+{\displaystyle 1/{\sqrt {2}}}
+
+ is to make the transform unitary (see below).
+The four-point DFT matrix is as follows:
+where 
+
+
+
+ω
+=
+
+e
+
+−
+
+
+
+π
+i
+
+2
+
+
+
+
+=
+−
+i
+
+
+{\displaystyle \omega =e^{-{\frac {\pi i}{2}}}=-i}
+
+.
+The first non-trivial integer power of two case is for eight points:
+where
+(Note that 
+
+
+
+
+ω
+
+8
++
+n
+
+
+=
+
+ω
+
+n
+
+
+
+
+{\displaystyle \omega ^{8+n}=\omega ^{n}}
+
+.)
+The following image depicts the DFT as a matrix multiplication, with elements of the matrix depicted by samples of complex exponentials:
+
+The real part (cosine wave) is denoted by a solid line, and the imaginary part (sine wave) by a dashed line.
+The top row is all ones (scaled by 
+
+
+
+1
+
+/
+
+
+
+8
+
+
+
+
+{\displaystyle 1/{\sqrt {8}}}
+
+ for unitarity), so it "measures" the DC component in the input signal. The next row is eight samples of negative one cycle of a complex exponential, i.e., a signal with a fractional frequency of −1/8, so it "measures" how much "strength" there is at fractional frequency +1/8 in the signal. Recall that a matched filter compares the signal with a time reversed version of whatever we're looking for, so when we're looking for fracfreq. 1/8 we compare with fracfreq. −1/8 so that is why this row is a negative frequency. The next row is negative two cycles of a complex exponential, sampled in eight places, so it has a fractional frequency of −1/4, and thus "measures" the extent to which the signal has a fractional frequency of +1/4.
+The following summarizes how the 8-point DFT works, row by row, in terms of fractional frequency:
+Equivalently the last row can be said to have a fractional frequency of +1/8 and thus measure how much of the signal has a fractional frequency of −1/8. In this way, it could be said that the top rows of the matrix "measure" positive frequency content in the signal and the bottom rows measure negative frequency component in the signal.
+The DFT is (or can be, through appropriate selection of scaling) a unitary transform, i.e., one that preserves energy. The appropriate choice of scaling to achieve unitarity is 
+
+
+
+1
+
+/
+
+
+
+N
+
+
+
+
+{\displaystyle 1/{\sqrt {N}}}
+
+, so that the energy in the physical domain will be the same as the energy in the Fourier domain, i.e., to satisfy Parseval's theorem. (Other, non-unitary, scalings, are also commonly used for computational convenience; e.g., the convolution theorem takes on a slightly simpler form with the scaling shown in the discrete Fourier transform article.)
+For other properties of the DFT matrix, including its eigenvalues, connection to convolutions, applications, and so on, see the discrete Fourier transform article.
+If we make a very large matrix with complex exponentials in the rows (i.e., cosine real parts and sine imaginary parts), and increase the resolution without bound, we approach the kernel of the Fredholm integral equation of the 2nd kind, namely the Fourier operator that defines the continuous Fourier transform. A rectangular portion of this continuous Fourier operator can be displayed as an image, analogous to the DFT matrix, as shown at right, where greyscale pixel value denotes numerical quantity.

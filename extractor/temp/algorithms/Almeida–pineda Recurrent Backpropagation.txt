@@ -1,0 +1,6 @@
+ABOUT
+Almeida–Pineda recurrent backpropagation is an extension to the backpropagation algorithm that is applicable to recurrent neural networks. It is a type of supervised learning.
+FULL TEXT
+Almeida–Pineda recurrent backpropagation is an extension to the backpropagation algorithm that is applicable to recurrent neural networks. It is a type of supervised learning.
+A recurrent neural network for this algorithm consists of some input units, some output units and eventually some hidden units.
+For a given set of (input, target) states, the network is trained to settle into a stable activation state with the output units in the target state, based on a given input state clamped on the input units.

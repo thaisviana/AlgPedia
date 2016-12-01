@@ -1,0 +1,410 @@
+ABOUT
+Matching pursuit (MP) is a sparse approximation algorithm which involves finding the "best matching" projections of multidimensional data onto the span of an over-complete (i.e., redundant) dictionary 
+
+
+
+D
+
+
+{\displaystyle D}
+
+. The basic idea is to approximately represent a signal 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ from Hilbert space 
+
+
+
+H
+
+
+{\displaystyle H}
+
+ as a weighted sum of finitely many functions 
+
+
+
+
+g
+
+
+γ
+
+n
+
+
+
+
+
+
+{\displaystyle g_{\gamma _{n}}}
+
+ (called atoms) taken from 
+
+
+
+D
+
+
+{\displaystyle D}
+
+. An approximation with 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ atoms has the form
+FULL TEXT
+Matching pursuit (MP) is a sparse approximation algorithm which involves finding the "best matching" projections of multidimensional data onto the span of an over-complete (i.e., redundant) dictionary 
+
+
+
+D
+
+
+{\displaystyle D}
+
+. The basic idea is to approximately represent a signal 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ from Hilbert space 
+
+
+
+H
+
+
+{\displaystyle H}
+
+ as a weighted sum of finitely many functions 
+
+
+
+
+g
+
+
+γ
+
+n
+
+
+
+
+
+
+{\displaystyle g_{\gamma _{n}}}
+
+ (called atoms) taken from 
+
+
+
+D
+
+
+{\displaystyle D}
+
+. An approximation with 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ atoms has the form
+where 
+
+
+
+
+a
+
+n
+
+
+
+
+{\displaystyle a_{n}}
+
+ is the scalar weighting factor (amplitude) for the atom 
+
+
+
+
+g
+
+
+γ
+
+n
+
+
+
+
+∈
+D
+
+
+{\displaystyle g_{\gamma _{n}}\in D}
+
+. Normally, not every atom in 
+
+
+
+D
+
+
+{\displaystyle D}
+
+ will be used in this sum. Instead, matching pursuit chooses the atoms one at a time in order to maximally (greedily) reduce the approximation error. This is achieved by finding the atom that has the biggest inner product with the signal (assuming the atoms are normalized), subtracting from the signal an approximation that uses only that one atom, and repeating the process until the signal is satisfactorily decomposed, i.e., the norm of the residual is small, where the residual after calculating 
+
+
+
+
+γ
+
+N
+
+
+
+
+{\displaystyle \gamma _{N}}
+
+ and 
+
+
+
+
+a
+
+N
+
+
+
+
+{\displaystyle a_{N}}
+
+ is denoted by
+If 
+
+
+
+
+R
+
+n
+
+
+
+
+{\displaystyle R_{n}}
+
+ converges quickly to zero, then only a few atoms are needed to get a good approximation to 
+
+
+
+f
+
+
+{\displaystyle f}
+
+. Such sparse representations are desirable for signal coding and compression. More precisely, the sparsity problem that matching pursuit is intended to approximately solve is
+with 
+
+
+
+∥
+x
+
+∥
+
+0
+
+
+
+
+{\displaystyle \|x\|_{0}}
+
+ the 
+
+
+
+
+L
+
+0
+
+
+
+
+{\displaystyle L_{0}}
+
+ pseudo-norm (i.e. the number of nonzero elements of 
+
+
+
+x
+
+
+{\displaystyle x}
+
+). In the previous notation, the nonzero entries of 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ are 
+
+
+
+
+x
+
+
+γ
+
+n
+
+
+
+
+=
+
+a
+
+n
+
+
+
+
+{\displaystyle x_{\gamma _{n}}=a_{n}}
+
+, and the 
+
+
+
+
+γ
+
+n
+
+
+
+
+{\displaystyle \gamma _{n}}
+
+th column of the matrix 
+
+
+
+D
+
+
+{\displaystyle D}
+
+ is 
+
+
+
+
+g
+
+
+γ
+
+n
+
+
+
+
+
+
+{\displaystyle g_{\gamma _{n}}}
+
+. Solving the sparsity problem exactly is NP-hard, which is why approximation methods like MP are used.
+For comparison, consider the Fourier series representation of a signal - this can be described in the terms given above, where the dictionary is built from sinusoidal basis functions (the smallest possible complete dictionary). The main disadvantage of Fourier analysis in signal processing is that it extracts only global features of signals and does not adapt to analysed signals 
+
+
+
+f
+
+
+{\displaystyle f}
+
+. By taking an extremely redundant dictionary we can look in it for functions that best match a signal 
+
+
+
+f
+
+
+{\displaystyle f}
+
+.
+
+
+If 
+
+
+
+D
+
+
+{\displaystyle D}
+
+ contains a large number of vectors, searching for the most sparse representation of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is computationally unacceptable for practical applications. In 1993 Mallat and Zhang[1] proposed a greedy solution that they named "Matching Pursuit." The algorithm iteratively generates for any signal 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ and any dictionary 
+
+
+
+D
+
+
+{\displaystyle D}
+
+ a sorted list of atom indices and weighting scalars which represent the sub-optimal solution to the problem of sparse signal representation.
+The concept of matching pursuit in signal processing is related to statistical projection pursuit, in which "interesting" projections were found; ones that deviate more from a normal distribution are considered to be more interesting.
+Matching pursuit has been applied to signal, image and video coding,[2][3] shape representation and recognition,[4] 3D objects coding,[5] and in interdisciplinary applications like structural health monitoring.[6] It has been shown that it performs better than DCT based coding for low bit rates in both efficiency of coding and quality of image.[7] The main problem with matching pursuit is the computational complexity of the encoder. In the basic version of an algorithm, the large dictionary has to be searched at each iteration. Improvements include the use of approximate dictionary representations and suboptimal ways of choosing the best match at each iteration (atom extraction).[8] The matching pursuit algorithm is used in MP/SOFT, a method of simulating quantum dynamics.[9]
+MP is also used in dictionary learning.[10] In this algorithm, atoms are learned from a database and not chosen among generic dictionaries.
+A popular extension of Matching Pursuit (MP) is its orthogonal version: Orthogonal Matching Pursuit[11][12] (OMP). The main difference from MP is that after every step, all the coefficients extracted so far are updated, by computing the orthogonal projection of the signal onto the set of atoms selected so far. This can lead to better results than standard MP, but requires more computation.
+Extensions such as Multichannel MP[13] and Multichannel OMP[14] allow to process multicomponents signals.
+Matching pursuit is related to the field of compressed sensing and has been extended by researchers in that community. Notable extensions are Orthogonal Matching Pursuit (OMP),[15] Stagewise OMP (StOMP),[16] compressive sampling matching pursuit (CoSaMP),[17] and Multipath Matching Pursuit (MMP).[18]

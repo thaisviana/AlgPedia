@@ -1,0 +1,10 @@
+ABOUT
+ND4S is a free, open-source extension of the Scala programming language operating on the Java Virtual Machine—though it is compatible with both Java and Clojure.[1]
+FULL TEXT
+ND4S is a free, open-source extension of the Scala programming language operating on the Java Virtual Machine—though it is compatible with both Java and Clojure.[1]
+ND4S is a scientific computing library for linear algebra and matrix manipulation in a production environment, integrating with Hadoop and Spark to work with distributed GPUs. It supports n-dimensional arrays for JVM-based languages.
+ND4S has primarily been developed by the group in San Francisco that built Deeplearning4j, led by Adam Gibson.[2] It was created under an Apache Software Foundation license.
+
+
+ND4S's operations include distributed parallel versions. They can take place in a cluster and process massive amounts of data. Matrix manipulation occurs in parallel on GPUs or CPUs in the cloud, and can work within Spark or Hadoop clusters.
+Benchmarks show that ND4S runs roughly twice as fast as Numpy on large matrices.[3]

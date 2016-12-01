@@ -1,0 +1,8 @@
+ABOUT
+If Wiktionary has a definition already, change this tag to {{TWCleanup2}} or else consider a soft redirect to Wiktionary by replacing the text on this page with {{Wi}}. If Wiktionary does not have the definition yet, consider moving the whole article to Wiktionary by replacing this tag with the template {{Copy to Wiktionary}}.
+FULL TEXT
+If Wiktionary has a definition already, change this tag to {{TWCleanup2}} or else consider a soft redirect to Wiktionary by replacing the text on this page with {{Wi}}. If Wiktionary does not have the definition yet, consider moving the whole article to Wiktionary by replacing this tag with the template {{Copy to Wiktionary}}.
+This template will no longer automatically categorize articles as candidates to move to Wiktionary.
+A gating signal is a digital signal or pulse (sometimes called a "trigger") that provides a time window so that a particular event or signal from among many will be selected and others will be eliminated or discarded.
+In a multiple input AND/OR gate, a signal at one of the inputs triggers the passage of a signal at other inputs; i.e., it passes through or blocks the signal at other inputs. Such a signal is called a gating signal.
+Signal gating means to mask unwanted signal transitions from propagating forward.

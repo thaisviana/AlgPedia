@@ -1,0 +1,5 @@
+ABOUT
+Time triple modular redundancy, also known as TTMR, is a patented single event upset mitigation technique that detects and corrects errors in a computer or microprocessor. TTMR allows the use of very long instruction word (VLIW) style microprocessors in space or other applications where external sources, such as radiation, would cause an elevated rate of errors. TTMR permits triple modular redundancy (TMR) protection in a single processor.
+FULL TEXT
+Time triple modular redundancy, also known as TTMR, is a patented single event upset mitigation technique that detects and corrects errors in a computer or microprocessor. TTMR allows the use of very long instruction word (VLIW) style microprocessors in space or other applications where external sources, such as radiation, would cause an elevated rate of errors. TTMR permits triple modular redundancy (TMR) protection in a single processor.
+Space Micro Inc developed and patented TTMR. It has been implemented in Space Micro's space qualified single board computers, such as the Proton200k.

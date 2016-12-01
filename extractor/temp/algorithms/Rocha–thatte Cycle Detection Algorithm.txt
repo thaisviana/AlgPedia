@@ -1,0 +1,394 @@
+ABOUT
+Rocha–Thatte algorithm[1] is a distributed algorithm in graph theory for detecting cycles on large-scale directed graphs based on the bulk synchronous message passing abstraction. This algorithm for detecting cycles by message passing is suitable to be implemented in distributed graph processing systems, and it is also suitable for implementations in systems for disk-based computations, such as the GraphChi,[2] where the computation is mainly based on secondary memory. Disk-based computations are necessary when we have a single computer for processing large-scale graphs, and the computation exceeds the primary memory capacity.
+FULL TEXT
+Rocha–Thatte algorithm[1] is a distributed algorithm in graph theory for detecting cycles on large-scale directed graphs based on the bulk synchronous message passing abstraction. This algorithm for detecting cycles by message passing is suitable to be implemented in distributed graph processing systems, and it is also suitable for implementations in systems for disk-based computations, such as the GraphChi,[2] where the computation is mainly based on secondary memory. Disk-based computations are necessary when we have a single computer for processing large-scale graphs, and the computation exceeds the primary memory capacity.
+The Rocha–Thatte algorithm is a general algorithm for detecting cycles in a directed graph 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ by message passing among its vertices, based on the bulk synchronous message passing abstraction. This is a vertex-centric approach in which the vertices of the graph work together for detecting cycles. The bulk synchronous parallel model consists of a sequence of iterations, in each of which a vertex can receive messages sent by other vertices in the previous iteration, and send messages to other vertices.
+In each pass, each active vertex of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ sends a set of sequences of vertices to its out-neighbours as described next. In the first pass, each vertex 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ sends the message 
+
+
+
+(
+v
+)
+
+
+{\displaystyle (v)}
+
+ to all its out-neighbours. In subsequent iterations, each active vertex 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ appends 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ to each sequence it received in the previous iteration. It then sends all the updated sequences to its out-neighbours. If 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ has not received any message in the previous iteration, then 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ deactivates itself. The algorithm terminates when all the vertices have been deactivated.
+For a sequence 
+
+
+
+(
+
+v
+
+1
+
+
+,
+
+v
+
+2
+
+
+,
+…
+,
+
+v
+
+k
+
+
+)
+
+
+{\displaystyle (v_{1},v_{2},\ldots ,v_{k})}
+
+ received by vertex 
+
+
+
+v
+
+
+{\displaystyle v}
+
+, the appended sequence is not forwarded in two cases: (i) if 
+
+
+
+v
+=
+
+v
+
+1
+
+
+
+
+{\displaystyle v=v_{1}}
+
+, then 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ has detected a cycle, which is reported; (ii) if 
+
+
+
+v
+=
+
+v
+
+i
+
+
+
+
+{\displaystyle v=v_{i}}
+
+ for some 
+
+
+
+i
+∈
+
+2
+,
+3
+,
+…
+,
+k
+
+
+
+{\displaystyle i\in {2,3,\ldots ,k}}
+
+, then 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ has detected a sequence that contains the cycle 
+
+
+
+(
+v
+=
+
+v
+
+i
+
+
+,
+
+v
+
+i
+
+
++
+1
+,
+…
+,
+
+v
+
+k
+
+
+,
+
+v
+
+k
+
+
++
+1
+=
+v
+)
+
+
+{\displaystyle (v=v_{i},v_{i}+1,\ldots ,v_{k},v_{k}+1=v)}
+
+; in this case, the sequence is discarded, since the cycle must have been detected in an earlier iteration; to be precise, this cycle must have been detected in iteration 
+
+
+
+k
+−
+i
++
+1
+
+
+{\displaystyle k-i+1}
+
+. Every cycle 
+
+
+
+(
+
+v
+
+1
+
+
+,
+
+v
+
+2
+
+
+,
+…
+,
+
+v
+
+k
+
+
+,
+
+v
+
+k
+
+
++
+1
+=
+
+v
+
+1
+
+
+)
+
+
+{\displaystyle (v_{1},v_{2},\ldots ,v_{k},v_{k}+1=v_{1})}
+
+ is detected by all 
+
+
+
+
+v
+
+i
+
+
+,
+i
+=
+1
+
+
+{\displaystyle v_{i},i=1}
+
+ to 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ in the same iteration; it is reported by the vertex 
+
+
+
+min
+{
+
+v
+
+1
+
+
+,
+…
+,
+
+v
+
+k
+
+
+}
+
+
+{\displaystyle \min\{v_{1},\ldots ,v_{k}\}}
+
+.
+The figure below presents an example of the execution of the algorithm. In iteration 
+
+
+
+i
+=
+3
+
+
+{\displaystyle i=3}
+
+, all the three vertices detect the cycle 
+
+
+
+(
+2
+,
+3
+,
+4
+)
+
+
+{\displaystyle (2,3,4)}
+
+. The algorithm ensures that the cycle is reported only once by emitting the detected cycle only from the vertex with the least identifier value in the ordered sequence, which is the vertex 2 in the example.[1]
+
+The total number of iterations of the algorithm is the number of vertices in the longest path in the graph, plus a few more steps for deactivating the final vertices. During the analysis of the total number of iterations, we ignore the few extra iterations needed for deactivating the final vertices and detecting the end of the computation, since it is 
+
+
+
+O
+(
+1
+)
+
+
+{\displaystyle O(1)}
+
+ iterations. In practice, the actual number of these final few iterations depends on the framework being used to implement the algorithm.[1]
+Simulations[3] show that the Rocha-Thatte algorithm has a smaller communication overhead than a distributed version of depth-first search, regarding both the number of messages and the total number of bits sent. Specifically, the distributed version of DFS may require up to one order of magnitude more messages exchanged than the Rocha-Thatte algorithm.

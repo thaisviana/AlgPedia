@@ -1,0 +1,215 @@
+ABOUT
+In descriptive statistics and chaos theory, a recurrence plot (RP) is a plot showing, for a given moment in time, the times at which a phase space trajectory visits roughly the same area in the phase space. In other words, it is a graph of
+FULL TEXT
+In descriptive statistics and chaos theory, a recurrence plot (RP) is a plot showing, for a given moment in time, the times at which a phase space trajectory visits roughly the same area in the phase space. In other words, it is a graph of
+showing 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ on a horizontal axis and 
+
+
+
+j
+
+
+{\displaystyle j}
+
+ on a vertical axis, where 
+
+
+
+
+
+
+x
+→
+
+
+
+
+
+{\displaystyle {\vec {x}}}
+
+ is a phase space trajectory.
+
+
+Natural processes can have a distinct recurrent behaviour, e.g. periodicities (as seasonal or Milankovich cycles), but also irregular cyclicities (as El Niño Southern Oscillation). Moreover, the recurrence of states, in the meaning that states are again arbitrarily close after some time of divergence, is a fundamental property of deterministic dynamical systems and is typical for nonlinear or chaotic systems (cf. Poincaré recurrence theorem). The recurrence of states in nature has been known for a long time and has also been discussed in early work (e.g. Henri Poincaré 1890).
+Eckmann et al. (1987) introduced recurrence plots, which provide a way to visualize the periodic nature of a trajectory through a phase space. Often, the phase space does not have a low enough dimension (two or three) to be pictured, since higher-dimensional phase spaces can only be visualized by projection into the two or three-dimensional sub-spaces. However, making a recurrence plot enables us to investigate certain aspects of the m-dimensional phase space trajectory through a two-dimensional representation.
+A recurrence is a time the trajectory returns to a location it has visited before. The recurrence plot depicts the collection of pairs of times at which the trajectory is at the same place, i.e. the set of 
+
+
+
+(
+i
+,
+j
+)
+
+
+{\displaystyle (i,j)}
+
+ with 
+
+
+
+
+
+
+x
+→
+
+
+
+(
+i
+)
+=
+
+
+
+x
+→
+
+
+
+(
+j
+)
+
+
+{\displaystyle {\vec {x}}(i)={\vec {x}}(j)}
+
+. This can show many things, for instance, if the trajectory is strictly periodic with period 
+
+
+
+T
+
+
+{\displaystyle T}
+
+, then all such pairs of times will be separated by a multiple of 
+
+
+
+T
+
+
+{\displaystyle T}
+
+ and visible as diagonal lines. To make the plot, continuous time and continuous phase space are discretized, taking e.g. 
+
+
+
+
+
+
+x
+→
+
+
+
+(
+i
+)
+
+
+{\displaystyle {\vec {x}}(i)}
+
+ as the location of the trajectory at time 
+
+
+
+i
+τ
+
+
+{\displaystyle i\tau }
+
+ and counting as a recurrence any time the trajectory gets sufficiently close (say, within ε) to a point it has been previously. Concretely then, recurrence/non-recurrence can be recorded by the binary function
+and the recurrence plot puts a (black) point at coordinates 
+
+
+
+(
+i
+,
+j
+)
+
+
+{\displaystyle (i,j)}
+
+ if 
+
+
+
+R
+(
+i
+,
+j
+)
+=
+1
+
+
+{\displaystyle R(i,j)=1}
+
+.
+Caused by characteristic behaviour of the phase space trajectory, a recurrence plot contains typical small-scale structures, as single dots, diagonal lines and vertical/horizontal lines (or a mixture of the latter, which combines to extended clusters). The large-scale structure, also called texture, can be visually characterised by homogenous, periodic, drift or disrupted. The visual appearance of an RP gives hints about the dynamics of the system.
+The small-scale structures in RPs are used by the recurrence quantification analysis (Zbilut & Webber 1992; Marwan et al. 2002). This quantification allows to describe the RPs in a quantitative way, and to study transitions or nonlinear parameters of the system. In contrast to the heuristic approach of the recurrence quantification analysis, which depends on the choice of the embedding parameters, some dynamical invariants as correlation dimension, K2 entropy or mutual information, which are independent on the embedding, can also be derived from recurrence plots. The base for these dynamical invariants are the recurrence rate and the distribution of the lengths of the diagonal lines.
+Close returns plots are similar to recurrence plots. The difference is that the relative time between recurrences is used for the 
+
+
+
+y
+
+
+{\displaystyle y}
+
+-axis (instead of absolute time).
+The main advantage of recurrence plots is that they provide useful information even for short and non-stationary data, where other methods fail.
+Multivariate extensions of recurrence plots were developed as cross recurrence plots and joint recurrence plots.
+Cross recurrence plots consider the phase space trajectories of two different systems in the same phase space (Marwan & Kurths 2002):
+The dimension of both systems must be the same, but the number of considered states (i.e. data length) can be different. Cross recurrence plots compare the occurrences of similar states of two systems. They can be used in order to analyse the similarity of the dynamical evolution between two different systems, to look for similar matching patterns in two systems, or to study the time-relationship of two similar systems, whose time-scale differ (Marwan & Kurths 2005).
+Joint recurrence plots are the Hadamard product of the recurrence plots of the considered sub-systems (Romano et al. 2004), e.g. for two systems 
+
+
+
+
+
+
+x
+→
+
+
+
+
+
+{\displaystyle {\vec {x}}}
+
+ and 
+
+
+
+
+
+
+y
+→
+
+
+
+
+
+{\displaystyle {\vec {y}}}
+
+ the joint recurrence plot is
+In contrast to cross recurrence plots, joint recurrence plots compare the simultaneous occurrence of recurrences in two (or more) systems. Moreover, the dimension of the considered phase spaces can be different, but the number of the considered states has to be the same for all the sub-systems. Joint recurrence plots can be used in order to detect phase synchronisation.

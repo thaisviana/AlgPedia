@@ -1,0 +1,12 @@
+ABOUT
+In computer science, the ostrich algorithm is a strategy of ignoring potential problems on the basis that they may be exceedingly rare. It is named for the ostrich effect which is defined as "to stick one's head in the sand and pretend there is no problem." It is used when it is more cost-effective to allow the problem to occur than to attempt its prevention.
+FULL TEXT
+In computer science, the ostrich algorithm is a strategy of ignoring potential problems on the basis that they may be exceedingly rare. It is named for the ostrich effect which is defined as "to stick one's head in the sand and pretend there is no problem." It is used when it is more cost-effective to allow the problem to occur than to attempt its prevention.
+
+
+This approach may be used in dealing with deadlocks in concurrent programming if they are believed to be very rare and the cost of detection or prevention is high. For example if each PC deadlocks once per 10 years, the one reboot may be less painful than the restrictions needed to prevent it.[1]
+A set of processes is deadlocked if each process in the set is waiting for an event that only another process in the set can cause. Usually the event is release of a currently held resource and none of the processes can run, release resources, and be awakened.[2]
+The Ostrich algorithm pretends there is no problem and is reasonable to use if deadlocks occur very rarely and the cost of their prevention would be high. The UNIX and Windows operating systems take this approach.[3]
+Although using the Ostrich algorithm is one of the methods of dealing with deadlocks, other effective methods exist such as dynamic avoidance, banker's algorithm, detection and recovery, and prevention.[4]
+Although efficient, using the Ostrich algorithm trades correctness for convenience. Yet since the algorithm directly deals with extreme cases it is not a large trade-off. In fact, the simplest and most used method to recover from a deadlock is a reboot.
+Some algorithms with poor worst-case performance are commonly used because they only exhibit poor performance on artificial cases that do not occur in practice; typical examples are the simplex algorithm and the type-inference algorithm for Standard ML. Issues like integer overflow in programming languages with fixed-width integers are also frequently ignored because they occur only in exceptional cases that do not arise for practical inputs.

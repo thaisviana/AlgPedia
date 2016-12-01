@@ -1,0 +1,775 @@
+ABOUT
+Starting with a sample 
+
+
+
+{
+
+x
+
+1
+
+
+,
+…
+,
+
+x
+
+m
+
+
+}
+
+
+{\displaystyle \{x_{1},\ldots ,x_{m}\}}
+
+ observed from a random variable X having a given distribution law with a non-set parameter, a parametric inference problem consists of computing suitable values – call them estimates – of this parameter precisely on the basis of the sample. An estimate is suitable if replacing it with the unknown parameter does not cause major damage in next computations. In algorithmic inference, suitability of an estimate reads in terms of compatibility with the observed sample.
+FULL TEXT
+Starting with a sample 
+
+
+
+{
+
+x
+
+1
+
+
+,
+…
+,
+
+x
+
+m
+
+
+}
+
+
+{\displaystyle \{x_{1},\ldots ,x_{m}\}}
+
+ observed from a random variable X having a given distribution law with a non-set parameter, a parametric inference problem consists of computing suitable values – call them estimates – of this parameter precisely on the basis of the sample. An estimate is suitable if replacing it with the unknown parameter does not cause major damage in next computations. In algorithmic inference, suitability of an estimate reads in terms of compatibility with the observed sample.
+In turn, parameter compatibility is a probability measure that we derive from the probability distribution of the random variable to which the parameter refers. In this way we identify a random parameter Θ compatible with an observed sample. Given a sampling mechanism 
+
+
+
+
+M
+
+X
+
+
+=
+(
+
+g
+
+θ
+
+
+,
+Z
+)
+
+
+{\displaystyle M_{X}=(g_{\theta },Z)}
+
+, the rationale of this operation lies in using the Z seed distribution law to determine both the X distribution law for the given θ, and the Θ distribution law given an X sample. Hence, we may derive the latter distribution directly from the former if we are able to relate domains of the sample space to subsets of Θ support. In more abstract terms, we speak about twisting properties of samples with properties of parameters and identify the former with statistics that are suitable for this exchange, so denoting a well behavior w.r.t. the unknown parameters. The operational goal is to write the analytic expression of the cumulative distribution function 
+
+
+
+
+F
+
+Θ
+
+
+(
+θ
+)
+
+
+{\displaystyle F_{\Theta }(\theta )}
+
+, in light of the observed value s of a statistic S, as a function of the S distribution law when the X parameter is exactly θ.
+
+
+Given a sampling mechanism 
+
+
+
+
+M
+
+X
+
+
+=
+(
+
+g
+
+θ
+
+
+,
+Z
+)
+
+
+{\displaystyle M_{X}=(g_{\theta },Z)}
+
+ for the random variable X, we model 
+
+
+
+
+X
+
+=
+{
+
+X
+
+1
+
+
+,
+…
+,
+
+X
+
+m
+
+
+}
+
+
+{\displaystyle {\boldsymbol {X}}=\{X_{1},\ldots ,X_{m}\}}
+
+ to be equal to 
+
+
+
+{
+
+g
+
+θ
+
+
+(
+
+Z
+
+1
+
+
+)
+,
+…
+,
+
+g
+
+θ
+
+
+(
+
+Z
+
+m
+
+
+)
+}
+
+
+{\displaystyle \{g_{\theta }(Z_{1}),\ldots ,g_{\theta }(Z_{m})\}}
+
+. Focusing on a relevant statistic 
+
+
+
+S
+=
+
+h
+
+1
+
+
+(
+
+X
+
+1
+
+
+,
+…
+,
+
+X
+
+m
+
+
+)
+
+
+{\displaystyle S=h_{1}(X_{1},\ldots ,X_{m})}
+
+ for the parameterθ, the master equation reads
+When s is a well-behaved statistic w.r.t the parameter, we are sure that a monotone relation exists for each 
+
+
+
+
+z
+
+=
+{
+
+z
+
+1
+
+
+,
+…
+,
+
+z
+
+m
+
+
+}
+
+
+{\displaystyle {\boldsymbol {z}}=\{z_{1},\ldots ,z_{m}\}}
+
+ between s and θ. We are also assured that Θ, as a function of 
+
+
+
+
+Z
+
+
+
+{\displaystyle {\boldsymbol {Z}}}
+
+ for given s, is a random variable since the master equation provides solutions that are feasible and independent of other (hidden) parameters.[1]
+The direction of the monotony determines for any 
+
+
+
+
+z
+
+
+
+{\displaystyle {\boldsymbol {z}}}
+
+ a relation between events of the type 
+
+
+
+s
+≥
+
+s
+′
+
+↔
+θ
+≥
+
+θ
+′
+
+
+
+{\displaystyle s\geq s'\leftrightarrow \theta \geq \theta '}
+
+ or vice versa 
+
+
+
+s
+≥
+
+s
+′
+
+↔
+θ
+≤
+
+θ
+′
+
+
+
+{\displaystyle s\geq s'\leftrightarrow \theta \leq \theta '}
+
+, where 
+
+
+
+
+s
+′
+
+
+
+{\displaystyle s'}
+
+ is computed by the master equation with 
+
+
+
+
+θ
+′
+
+
+
+{\displaystyle \theta '}
+
+. In the case that s assumes discrete values the first relation changes into 
+
+
+
+s
+≥
+
+s
+′
+
+→
+θ
+≥
+
+θ
+′
+
+→
+s
+≥
+
+s
+′
+
++
+ℓ
+
+
+{\displaystyle s\geq s'\rightarrow \theta \geq \theta '\rightarrow s\geq s'+\ell }
+
+ where 
+
+
+
+ℓ
+>
+0
+
+
+{\displaystyle \ell >0}
+
+ is the size of the s discretization grain, idem with the opposite monotony trend. Resuming these relations on all seeds, for s continuous we have either
+or
+For s discrete we have an interval where 
+
+
+
+
+F
+
+Θ
+
+|
+
+S
+=
+s
+
+
+(
+θ
+)
+
+
+{\displaystyle F_{\Theta |S=s}(\theta )}
+
+ lies, because of 
+
+
+
+ℓ
+>
+0
+
+
+{\displaystyle \ell >0}
+
+. The whole logical contrivance is called a twisting argument. A procedure implementing it is as follows.
+The rationale behind twisting arguments does not change when parameters are vectors, though some complication arises from the management of joint inequalities. Instead, the difficulty of dealing with a vector of parameters proved to be the Achilles heel of Fisher's approach to the fiducial distribution of parameters (Fisher 1935). Also Fraser’s constructive probabilities (Fraser 1966) devised for the same purpose do not treat this point completely.
+For 
+
+
+
+
+x
+
+
+
+{\displaystyle {\boldsymbol {x}}}
+
+ drawn from a Gamma distribution, whose specification requires values for the parameters λ and k, a twisting argument may be stated by following the below procedure. Given the meaning of these parameters we know that
+where 
+
+
+
+
+s
+
+k
+
+
+=
+
+∏
+
+i
+=
+1
+
+
+m
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle s_{k}=\prod _{i=1}^{m}x_{i}}
+
+ and 
+
+
+
+
+s
+
+λ
+
+
+=
+
+∑
+
+i
+=
+1
+
+
+m
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle s_{\lambda }=\sum _{i=1}^{m}x_{i}}
+
+. This leads to a joint cumulative distribution function 
+
+
+
+
+F
+
+Λ
+,
+K
+
+
+(
+λ
+,
+k
+)
+=
+
+F
+
+Λ
+
+|
+
+k
+
+
+(
+λ
+
+|
+
+k
+)
+
+F
+
+K
+
+
+(
+k
+)
+=
+
+F
+
+K
+
+|
+
+λ
+
+
+(
+k
+
+|
+
+λ
+)
+
+F
+
+Λ
+
+
+(
+λ
+)
+
+
+{\displaystyle F_{\Lambda ,K}(\lambda ,k)=F_{\Lambda |k}(\lambda |k)F_{K}(k)=F_{K|\lambda }(k|\lambda )F_{\Lambda }(\lambda )}
+
+. Using the first factorization and replacing 
+
+
+
+
+s
+
+k
+
+
+
+
+{\displaystyle s_{k}}
+
+ with 
+
+
+
+
+r
+
+k
+
+
+=
+
+
+
+s
+
+k
+
+
+
+s
+
+λ
+
+
+m
+
+
+
+
+
+
+{\displaystyle r_{k}={\frac {s_{k}}{s_{\lambda }^{m}}}}
+
+ in order to have a distribution of 
+
+
+
+K
+
+
+{\displaystyle K}
+
+ that is independent of 
+
+
+
+Λ
+
+
+{\displaystyle \Lambda }
+
+, we have
+with m denoting the sample size, 
+
+
+
+
+s
+
+Λ
+
+
+
+
+{\displaystyle s_{\Lambda }}
+
+ and 
+
+
+
+
+r
+
+K
+
+
+
+
+{\displaystyle r_{K}}
+
+ are the observed statistics (hence with indices denoted by capital letters), 
+
+
+
+Γ
+(
+a
+,
+b
+)
+
+
+{\displaystyle \Gamma (a,b)}
+
+ the Incomplete Gamma function and 
+
+
+
+
+F
+
+
+R
+
+k
+
+
+
+
+(
+
+r
+
+K
+
+
+)
+
+
+{\displaystyle F_{R_{k}}(r_{K})}
+
+ the Fox's H function that can be approximated with a Gamma distribution again with proper parameters (for instance estimated through the method of moments) as a function of k and m.
+With a sample size 
+
+
+
+m
+=
+30
+,
+
+s
+
+Λ
+
+
+=
+72.82
+
+
+{\displaystyle m=30,s_{\Lambda }=72.82}
+
+ and 
+
+
+
+
+r
+
+K
+
+
+=
+
+
+{\displaystyle r_{K}=}
+
+ 
+
+
+
+4.5
+×
+
+10
+
+−
+46
+
+
+
+
+{\displaystyle 4.5\times 10^{-46}}
+
+, you may find the joint p.d.f. of the Gamma parameters K and 
+
+
+
+Λ
+
+
+{\displaystyle \Lambda }
+
+ on the left. The marginal distribution of K is reported in the picture on the right.

@@ -1,0 +1,967 @@
+ABOUT
+In graph theory, graph coloring is a special case of graph labeling; it is an assignment of labels traditionally called "colors" to elements of a graph subject to certain constraints. In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices share the same color; this is called a vertex coloring. Similarly, an edge coloring assigns a color to each edge so that no two adjacent edges share the same color, and a face coloring of a planar graph assigns a color to each face or region so that no two faces that share a boundary have the same color.
+FULL TEXT
+In graph theory, graph coloring is a special case of graph labeling; it is an assignment of labels traditionally called "colors" to elements of a graph subject to certain constraints. In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices share the same color; this is called a vertex coloring. Similarly, an edge coloring assigns a color to each edge so that no two adjacent edges share the same color, and a face coloring of a planar graph assigns a color to each face or region so that no two faces that share a boundary have the same color.
+Vertex coloring is the starting point of the subject, and other coloring problems can be transformed into a vertex version. For example, an edge coloring of a graph is just a vertex coloring of its line graph, and a face coloring of a plane graph is just a vertex coloring of its dual. However, non-vertex coloring problems are often stated and studied as is. That is partly for perspective, and partly because some problems are best studied in non-vertex form, as for instance is edge coloring.
+The convention of using colors originates from coloring the countries of a map, where each face is literally colored. This was generalized to coloring the faces of a graph embedded in the plane. By planar duality it became coloring the vertices, and in this form it generalizes to all graphs. In mathematical and computer representations, it is typical to use the first few positive or nonnegative integers as the "colors". In general, one can use any finite set as the "color set". The nature of the coloring problem depends on the number of colors but not on what they are.
+Graph coloring enjoys many practical applications as well as theoretical challenges. Beside the classical types of problems, different limitations can also be set on the graph, or on the way a color is assigned, or even on the color itself. It has even reached popularity with the general public in the form of the popular number puzzle Sudoku. Graph coloring is still a very active field of research.
+Note: Many terms used in this article are defined in Glossary of graph theory.
+
+
+The first results about graph coloring deal almost exclusively with planar graphs in the form of the coloring of maps. While trying to color a map of the counties of England, Francis Guthrie postulated the four color conjecture, noting that four colors were sufficient to color the map so that no regions sharing a common border received the same color. Guthrie’s brother passed on the question to his mathematics teacher Augustus de Morgan at University College, who mentioned it in a letter to William Hamilton in 1852. Arthur Cayley raised the problem at a meeting of the London Mathematical Society in 1879. The same year, Alfred Kempe published a paper that claimed to establish the result, and for a decade the four color problem was considered solved. For his accomplishment Kempe was elected a Fellow of the Royal Society and later President of the London Mathematical Society.[1]
+In 1890, Heawood pointed out that Kempe’s argument was wrong. However, in that paper he proved the five color theorem, saying that every planar map can be colored with no more than five colors, using ideas of Kempe. In the following century, a vast amount of work and theories were developed to reduce the number of colors to four, until the four color theorem was finally proved in 1976 by Kenneth Appel and Wolfgang Haken. The proof went back to the ideas of Heawood and Kempe and largely disregarded the intervening developments.[2] The proof of the four color theorem is also noteworthy for being the first major computer-aided proof.
+In 1912, George David Birkhoff introduced the chromatic polynomial to study the coloring problems, which was generalised to the Tutte polynomial by Tutte, important structures in algebraic graph theory. Kempe had already drawn attention to the general, non-planar case in 1879,[3] and many results on generalisations of planar graph coloring to surfaces of higher order followed in the early 20th century.
+In 1960, Claude Berge formulated another conjecture about graph coloring, the strong perfect graph conjecture, originally motivated by an information-theoretic concept called the zero-error capacity of a graph introduced by Shannon. The conjecture remained unresolved for 40 years, until it was established as the celebrated strong perfect graph theorem by Chudnovsky, Robertson, Seymour, and Thomas in 2002.
+Graph coloring has been studied as an algorithmic problem since the early 1970s: the chromatic number problem is one of Karp’s 21 NP-complete problems from 1972, and at approximately the same time various exponential-time algorithms were developed based on backtracking and on the deletion-contraction recurrence of Zykov (1949). One of the major applications of graph coloring, register allocation in compilers, was introduced in 1981.
+When used without any qualification, a coloring of a graph is almost always a proper vertex coloring, namely a labeling of the graph’s vertices with colors such that no two vertices sharing the same edge have the same color. Since a vertex with a loop (i.e. a connection directly back to itself) could never be properly colored, it is understood that graphs in this context are loopless.
+The terminology of using colors for vertex labels goes back to map coloring. Labels like red and blue are only used when the number of colors is small, and normally it is understood that the labels are drawn from the integers {1, 2, 3, ...}.
+ A coloring using at most k colors is called a (proper) k-coloring. The smallest number of colors needed to color a graph G is called its chromatic number, and is often denoted χ(G). Sometimes γ(G) is used, since χ(G) is also used to denote the Euler characteristic of a graph. A graph that can be assigned a (proper) k-coloring is k-colorable, and it is k-chromatic if its chromatic number is exactly k. A subset of vertices assigned to the same color is called a color class, every such class forms an independent set. Thus, a k-coloring is the same as a partition of the vertex set into k independent sets, and the terms k-partite and k-colorable have the same meaning.
+The chromatic polynomial counts the number of ways a graph can be colored using no more than a given number of colors. For example, using three colors, the graph in the adjacent image can be colored in 12 ways. With only two colors, it cannot be colored at all. With four colors, it can be colored in 24 + 4⋅12 = 72 ways: using all four colors, there are 4! = 24 valid colorings (every assignment of four colors to any 4-vertex graph is a proper coloring); and for every choice of three of the four colors, there are 12 valid 3-colorings. So, for the graph in the example, a table of the number of valid colorings would start like this:
+The chromatic polynomial is a function P(G, t) that counts the number of t-colorings of G. As the name indicates, for a given G the function is indeed a polynomial in t. For the example graph, P(G, t) = t(t − 1)2(t − 2), and indeed P(G, 4) = 72.
+The chromatic polynomial includes at least as much information about the colorability of G as does the chromatic number. Indeed, χ is the smallest positive integer that is not a root of the chromatic polynomial
+An edge coloring of a graph is a proper coloring of the edges, meaning an assignment of colors to edges so that no vertex is incident to two edges of the same color. An edge coloring with k colors is called a k-edge-coloring and is equivalent to the problem of partitioning the edge set into k matchings. The smallest number of colors needed for an edge coloring of a graph G is the chromatic index, or edge chromatic number, χ′(G). A Tait coloring is a 3-edge coloring of a cubic graph. The four color theorem is equivalent to the assertion that every planar cubic bridgeless graph admits a Tait coloring.
+Total coloring is a type of coloring on the vertices and edges of a graph. When used without any qualification, a total coloring is always assumed to be proper in the sense that no adjacent vertices, no adjacent edges, and no edge and its end-vertices are assigned the same color. The total chromatic number χ″(G) of a graph G is the least number of colors needed in any total coloring of G.
+An unlabeled coloring of a graph is an orbit of a coloring under the action of the automorphism group of the graph. If we interpret a coloring of a graph on 
+
+
+
+d
+
+
+{\displaystyle d}
+
+ vertices as a vector in 
+
+
+
+
+
+Z
+
+
+d
+
+
+
+
+{\displaystyle \mathbb {Z} ^{d}}
+
+, the action of an automorphism is a permutation of the coefficients of the coloring. There are analogues of the chromatic polynomials which count the number of unlabeled colorings of a graph from a given finite color set.
+Assigning distinct colors to distinct vertices always yields a proper coloring, so
+The only graphs that can be 1-colored are edgeless graphs. A complete graph 
+
+
+
+
+K
+
+n
+
+
+
+
+{\displaystyle K_{n}}
+
+ of n vertices requires 
+
+
+
+χ
+(
+
+K
+
+n
+
+
+)
+=
+n
+
+
+{\displaystyle \chi (K_{n})=n}
+
+ colors. In an optimal coloring there must be at least one of the graph’s m edges between every pair of color classes, so
+If G contains a clique of size k, then at least k colors are needed to color that clique; in other words, the chromatic number is at least the clique number:
+For perfect graphs this bound is tight.
+The 2-colorable graphs are exactly the bipartite graphs, including trees and forests. By the four color theorem, every planar graph can be 4-colored.
+A greedy coloring shows that every graph can be colored with one more color than the maximum vertex degree,
+Complete graphs have 
+
+
+
+χ
+(
+G
+)
+=
+n
+
+
+{\displaystyle \chi (G)=n}
+
+ and 
+
+
+
+Δ
+(
+G
+)
+=
+n
+−
+1
+
+
+{\displaystyle \Delta (G)=n-1}
+
+, and odd cycles have 
+
+
+
+χ
+(
+G
+)
+=
+3
+
+
+{\displaystyle \chi (G)=3}
+
+ and 
+
+
+
+Δ
+(
+G
+)
+=
+2
+
+
+{\displaystyle \Delta (G)=2}
+
+, so for these graphs this bound is best possible. In all other cases, the bound can be slightly improved; Brooks’ theorem[4] states that
+Several lower bounds for the chromatic bounds have been discovered over the years:
+Hoffman's bound: Let 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ be a real symmetric matrix such that 
+
+
+
+
+W
+
+i
+,
+j
+
+
+=
+0
+
+
+{\displaystyle W_{i,j}=0}
+
+ whenever 
+
+
+
+(
+i
+,
+j
+)
+
+
+{\displaystyle (i,j)}
+
+ is not an edge in 
+
+
+
+G
+
+
+{\displaystyle G}
+
+. Define 
+
+
+
+
+χ
+
+W
+
+
+(
+G
+)
+=
+1
+−
+
+
+
+
+
+λ
+
+max
+
+
+(
+W
+)
+
+
+
+λ
+
+min
+
+
+(
+W
+)
+
+
+
+
+
+
+{\displaystyle \chi _{W}(G)=1-{\tfrac {\lambda _{\max }(W)}{\lambda _{\min }(W)}}}
+
+, where 
+
+
+
+
+λ
+
+max
+
+
+(
+W
+)
+,
+
+λ
+
+min
+
+
+(
+W
+)
+
+
+{\displaystyle \lambda _{\max }(W),\lambda _{\min }(W)}
+
+ are the largest and smallest eigenvalues of 
+
+
+
+W
+
+
+{\displaystyle W}
+
+. Define 
+
+
+
+
+χ
+
+H
+
+
+(
+G
+)
+=
+
+max
+
+W
+
+
+
+χ
+
+W
+
+
+(
+G
+)
+
+
+{\displaystyle \chi _{H}(G)=\max _{W}\chi _{W}(G)}
+
+, with 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ as above. Then:
+Vector chromatic number: Let 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ be a positive semi-definite matrix such that 
+
+
+
+
+W
+
+i
+,
+j
+
+
+≤
+−
+
+
+
+1
+
+k
+−
+1
+
+
+
+
+
+
+{\displaystyle W_{i,j}\leq -{\tfrac {1}{k-1}}}
+
+ whenever 
+
+
+
+(
+i
+,
+j
+)
+
+
+{\displaystyle (i,j)}
+
+ is an edge in 
+
+
+
+G
+
+
+{\displaystyle G}
+
+. Define 
+
+
+
+
+χ
+
+V
+
+
+(
+G
+)
+
+
+{\displaystyle \chi _{V}(G)}
+
+ to be the least k for which such a matrix 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ exists. Then
+Lovász number: The Lovász number of a complementary graph, is also a lower bound on the chromatic number:
+Fractional chromatic number: The Fractional chromatic number of a graph, is a lower bound on the chromatic number as well:
+These bounds are ordered as follows:
+Graphs with large cliques have a high chromatic number, but the opposite is not true. The Grötzsch graph is an example of a 4-chromatic graph without a triangle, and the example can be generalised to the Mycielskians.
+From Brooks’s theorem, graphs with high chromatic number must have high maximum degree. Another local property that leads to high chromatic number is the presence of a large clique. But colorability is not an entirely local phenomenon: A graph with high girth looks locally like a tree, because all cycles are long, but its chromatic number need not be 2:
+An edge coloring of G is a vertex coloring of its line graph 
+
+
+
+L
+(
+G
+)
+
+
+{\displaystyle L(G)}
+
+, and vice versa. Thus,
+There is a strong relationship between edge colorability and the graph’s maximum degree 
+
+
+
+Δ
+(
+G
+)
+
+
+{\displaystyle \Delta (G)}
+
+. Since all edges incident to the same vertex need their own color, we have
+Moreover,
+In general, the relationship is even stronger than what Brooks’s theorem gives for vertex coloring:
+A graph has a k-coloring if and only if it has an acyclic orientation for which the longest path has length at most k; this is the Gallai–Hasse–Roy–Vitaver theorem (Nešetřil & Ossona de Mendez 2012).
+For planar graphs, vertex colorings are essentially dual to nowhere-zero flows.
+About infinite graphs, much less is known. The following are two of the few results about infinite graph coloring:
+The chromatic number of the plane, where two points are adjacent if they have unit distance, is unknown, although it is one of 4, 5, 6, or 7. Other open problems concerning the chromatic number of graphs include the Hadwiger conjecture stating that every graph with chromatic number k has a complete graph on k vertices as a minor, the Erdős–Faber–Lovász conjecture bounding the chromatic number of unions of complete graphs that have at exactly one vertex in common to each pair, and the Albertson conjecture that among k-chromatic graphs the complete graphs are the ones with smallest crossing number.
+When Birkhoff and Lewis introduced the chromatic polynomial in their attack on the four-color theorem, they conjectured that for planar graphs G, the polynomial 
+
+
+
+P
+(
+G
+,
+t
+)
+
+
+{\displaystyle P(G,t)}
+
+ has no zeros in the region 
+
+
+
+[
+4
+,
+∞
+)
+
+
+{\displaystyle [4,\infty )}
+
+. Although it is known that such a chromatic polynomial has no zeros in the region 
+
+
+
+[
+5
+,
+∞
+)
+
+
+{\displaystyle [5,\infty )}
+
+ and that 
+
+
+
+P
+(
+G
+,
+4
+)
+≠
+0
+
+
+{\displaystyle P(G,4)\neq 0}
+
+, their conjecture is still unresolved. It also remains an unsolved problem to characterize graphs which have the same chromatic polynomial and to determine which polynomials are chromatic.
+Determining if a graph can be colored with 2 colors is equivalent to determining whether or not the graph is bipartite, and thus computable in linear time using breadth-first search or depth-first search. More generally, the chromatic number and a corresponding coloring of perfect graphs can be computed in polynomial time using semidefinite programming. Closed formulas for chromatic polynomial are known for many classes of graphs, such as forests, chordal graphs, cycles, wheels, and ladders, so these can be evaluated in polynomial time.
+If the graph is planar and has low branch-width (or is nonplanar but with a known branch decomposition), then it can be solved in polynomial time using dynamic programming. In general, the time required is polynomial in the graph size, but exponential in the branch-width.
+Brute-force search for a k-coloring considers each of the 
+
+
+
+
+k
+
+n
+
+
+
+
+{\displaystyle k^{n}}
+
+ assignments of k colors to n vertices and checks for each if it is legal. To compute the chromatic number and the chromatic polynomial, this procedure is used for every 
+
+
+
+k
+=
+1
+,
+…
+,
+n
+−
+1
+
+
+{\displaystyle k=1,\ldots ,n-1}
+
+, impractical for all but the smallest input graphs.
+Using dynamic programming and a bound on the number of maximal independent sets, k-colorability can be decided in time and space 
+
+
+
+O
+(
+
+2.445
+
+n
+
+
+)
+
+
+{\displaystyle O(2.445^{n})}
+
+.[6] Using the principle of inclusion–exclusion and Yates’s algorithm for the fast zeta transform, k-colorability can be decided in time 
+
+
+
+O
+(
+
+2
+
+n
+
+
+n
+)
+
+
+{\displaystyle O(2^{n}n)}
+
+[5] for any k. Faster algorithms are known for 3- and 4-colorability, which can be decided in time 
+
+
+
+O
+(
+
+1.3289
+
+n
+
+
+)
+
+
+{\displaystyle O(1.3289^{n})}
+
+[7] and 
+
+
+
+O
+(
+
+1.7272
+
+n
+
+
+)
+
+
+{\displaystyle O(1.7272^{n})}
+
+,[8] respectively.
+The contraction 
+
+
+
+G
+
+/
+
+u
+v
+
+
+{\displaystyle G/uv}
+
+ of a graph G is the graph obtained by identifying the vertices u and v, and removing any edges between them. The remaining edges originally incident to u or v are now incident to their identification. This operation plays a major role in the analysis of graph coloring.
+The chromatic number satisfies the recurrence relation:
+due to Zykov (1949), where u and v are non-adjacent vertices, and 
+
+
+
+G
++
+u
+v
+
+
+{\displaystyle G+uv}
+
+ is the graph with the edge 
+
+
+
+u
+v
+
+
+{\displaystyle uv}
+
+ added. Several algorithms are based on evaluating this recurrence and the resulting computation tree is sometimes called a Zykov tree. The running time is based on a heuristic for choosing the vertices u and v.
+The chromatic polynomial satisfies the following recurrence relation
+where u and v are adjacent vertices, and 
+
+
+
+G
+−
+u
+v
+
+
+{\displaystyle G-uv}
+
+ is the graph with the edge 
+
+
+
+u
+v
+
+
+{\displaystyle uv}
+
+ removed. 
+
+
+
+P
+(
+G
+−
+u
+v
+,
+k
+)
+
+
+{\displaystyle P(G-uv,k)}
+
+ represents the number of possible proper colorings of the graph, where the vertices may have the same or different colors. Then the proper colorings arise from two different graphs. To explain, if the vertices u and v have different colors, then we might as well consider a graph where u and v are adjacent. If u and v have the same colors, we might as well consider a graph where u and v are contracted. Tutte’s curiosity about which other graph properties satisfied this recurrence led him to discover a bivariate generalization of the chromatic polynomial, the Tutte polynomial.
+These expressions give rise to a recursive procedure called the deletion–contraction algorithm, which forms the basis of many algorithms for graph coloring. The running time satisfies the same recurrence relation as the Fibonacci numbers, so in the worst case the algorithm runs in time within a polynomial factor of 
+
+
+
+(
+(
+1
++
+
+
+5
+
+
+)
+
+/
+
+2
+
+)
+
+n
++
+m
+
+
+=
+O
+(
+
+1.6180
+
+n
++
+m
+
+
+)
+
+
+{\displaystyle ((1+{\sqrt {5}})/2)^{n+m}=O(1.6180^{n+m})}
+
+ for n vertices and m edges.[9] The analysis can be improved to within a polynomial factor of the number 
+
+
+
+t
+(
+G
+)
+
+
+{\displaystyle t(G)}
+
+ of spanning trees of the input graph.[10] In practice, branch and bound strategies and graph isomorphism rejection are employed to avoid some recursive calls. The running time depends on the heuristic used to pick the vertex pair.
+The greedy algorithm considers the vertices in a specific order 
+
+
+
+
+v
+
+1
+
+
+
+
+{\displaystyle v_{1}}
+
+,…,
+
+
+
+
+v
+
+n
+
+
+
+
+{\displaystyle v_{n}}
+
+ and assigns to 
+
+
+
+
+v
+
+i
+
+
+
+
+{\displaystyle v_{i}}
+
+ the smallest available color not used by 
+
+
+
+
+v
+
+i
+
+
+
+
+{\displaystyle v_{i}}
+
+’s neighbours among 
+
+
+
+
+v
+
+1
+
+
+
+
+{\displaystyle v_{1}}
+
+,…,
+
+
+
+
+v
+
+i
+−
+1
+
+
+
+
+{\displaystyle v_{i-1}}
+
+, adding a fresh color if needed. The quality of the resulting coloring depends on the chosen ordering. There exists an ordering that leads to a greedy coloring with the optimal number of 
+
+
+
+χ
+(
+G
+)
+
+
+{\displaystyle \chi (G)}
+
+ colors. On the other hand, greedy colorings can be arbitrarily bad; for example, the crown graph on n vertices can be 2-colored, but has an ordering that leads to a greedy coloring with 
+
+
+
+n
+
+/
+
+2
+
+
+{\displaystyle n/2}
+
+ colors.
+For chordal graphs, and for special cases of chordal graphs such as interval graphs and indifference graphs, the greedy coloring algorithm can be used to find optimal colorings in polynomial time, by choosing the vertex ordering to be the reverse of a perfect elimination ordering for the graph. The perfectly orderable graphs generalize this property, but it is NP-hard to find a perfect ordering of these graphs.
+If the vertices are ordered according to their degrees, the resulting greedy coloring uses at most 
+
+
+
+
+
+max
+
+
+i
+
+
+
+ min
+
+{
+d
+(
+
+x
+
+i
+
+
+)
++
+1
+,
+i
+}
+
+
+{\displaystyle {\text{max}}_{i}{\text{ min}}\{d(x_{i})+1,i\}}
+
+ colors, at most one more than the graph’s maximum degree. This heuristic is sometimes called the Welsh–Powell algorithm.[11] Another heuristic due to Brélaz establishes the ordering dynamically while the algorithm proceeds, choosing next the vertex adjacent to the largest number of different colors.[12] Many other graph coloring heuristics are similarly based on greedy coloring for a specific static or dynamic strategy of ordering the vertices, these algorithms are sometimes called sequential coloring algorithms.
+The maximum (worst) number of colors that can be obtained by the greedy algorithm, by using a vertex ordering chosen to maximize this number, is called the Grundy number of a graph.
+In the field of distributed algorithms, graph coloring is closely related to the problem of symmetry breaking. The current state-of-the-art randomized algorithms are faster for sufficiently large maximum degree Δ than deterministic algorithms. The fastest randomized algorithms employ the multi-trials technique by Schneider et al.[13]
+In a symmetric graph, a deterministic distributed algorithm cannot find a proper vertex coloring. Some auxiliary information is needed in order to break symmetry. A standard assumption is that initially each node has a unique identifier, for example, from the set {1, 2, ..., n}. Put otherwise, we assume that we are given an n-coloring. The challenge is to reduce the number of colors from n to, e.g., Δ + 1. The more colors are employed, e.g. O(Δ) instead of Δ + 1, the fewer communication rounds are required.[13]
+A straightforward distributed version of the greedy algorithm for (Δ + 1)-coloring requires Θ(n) communication rounds in the worst case − information may need to be propagated from one side of the network to another side.
+The simplest interesting case is an n-cycle. Richard Cole and Uzi Vishkin[14] show that there is a distributed algorithm that reduces the number of colors from n to O(log n) in one synchronous communication step. By iterating the same procedure, it is possible to obtain a 3-coloring of an n-cycle in O(log* n) communication steps (assuming that we have unique node identifiers).
+The function log*, iterated logarithm, is an extremely slowly growing function, "almost constant". Hence the result by Cole and Vishkin raised the question of whether there is a constant-time distributed algorithm for 3-coloring an n-cycle. Linial (1992) showed that this is not possible: any deterministic distributed algorithm requires Ω(log* n) communication steps to reduce an n-coloring to a 3-coloring in an n-cycle.
+The technique by Cole and Vishkin can be applied in arbitrary bounded-degree graphs as well; the running time is poly(Δ) + O(log* n).[15] The technique was extended to unit disk graphs by Schneider et al.[16] The fastest deterministic algorithms for (Δ + 1)-coloring for small Δ are due to Leonid Barenboim, Michael Elkin and Fabian Kuhn.[17] The algorithm by Barenboim et al. runs in time O(Δ) + log*(n)/2, which is optimal in terms of n since the constant factor 1/2 cannot be improved due to Linial's lower bound. Panconesi et al.[18] use network decompositions to compute a Δ+1 coloring in time 
+
+
+
+
+2
+
+O
+
+(
+
+
+log
+⁡
+n
+
+
+)
+
+
+
+
+
+{\displaystyle 2^{O\left({\sqrt {\log n}}\right)}}
+
+.
+The problem of edge coloring has also been studied in the distributed model. Panconesi & Rizzi (2001) achieve a (2Δ − 1)-coloring in O(Δ + log* n) time in this model. The lower bound for distributed vertex coloring due to Linial (1992) applies to the distributed edge coloring problem as well.
+Decentralized algorithms are ones where no message passing is allowed (in contrast to distributed algorithms where local message passing takes places), and efficient decentralized algorithms exist that will color a graph if a proper coloring exists. These assume that a vertex is able to sense whether any of its neighbors are using the same color as the vertex i.e., whether a local conflict exists. This is a mild assumption in many applications e.g. in wireless channel allocation it is usually reasonable to assume that a station will be able to detect whether other interfering transmitters are using the same channel (e.g. by measuring the SINR). This sensing information is sufficient to allow algorithms based on learning automata to find a proper graph coloring with probability one, e.g. see Leith (2006) and Duffy (2008).
+Graph coloring is computationally hard. It is NP-complete to decide if a given graph admits a k-coloring for a given k except for the cases k ∈ {0,1,2} . In particular, it is NP-hard to compute the chromatic number.[19] The 3-coloring problem remains NP-complete even on 4-regular planar graphs.[20] However, k-coloring of a planar graph is in P, for every k>3, since every planar graph has a 4-coloring (and thus, also a k-coloring, for every k≥4); see Four color theorem.
+The best known approximation algorithm computes a coloring of size at most within a factor O(n(log n)−3(log log n)2) of the chromatic number.[21] For all ε > 0, approximating the chromatic number within n1−ε is NP-hard.[22]
+It is also NP-hard to color a 3-colorable graph with 4 colors[23] and a k-colorable graph with k(log k ) / 25 colors for sufficiently large constant k.[24]
+Computing the coefficients of the chromatic polynomial is #P-hard. In fact, even computing the value of 
+
+
+
+χ
+(
+G
+,
+k
+)
+
+
+{\displaystyle \chi (G,k)}
+
+ is #P-hard at any rational point k except for k = 1 and k = 2.[25] There is no FPRAS for evaluating the chromatic polynomial at any rational point k ≥ 1.5 except for k = 2 unless NP = RP.[26]
+For edge coloring, the proof of Vizing’s result gives an algorithm that uses at most Δ+1 colors. However, deciding between the two candidate values for the edge chromatic number is NP-complete.[27] In terms of approximation algorithms, Vizing’s algorithm shows that the edge chromatic number can be approximated to within 4/3, and the hardness result shows that no (4/3 − ε )-algorithm exists for any ε > 0 unless P = NP. These are among the oldest results in the literature of approximation algorithms, even though neither paper makes explicit use of that notion.[28]
+Vertex coloring models to a number of scheduling problems.[29] In the cleanest form, a given set of jobs need to be assigned to time slots, each job requires one such slot. Jobs can be scheduled in any order, but pairs of jobs may be in conflict in the sense that they may not be assigned to the same time slot, for example because they both rely on a shared resource. The corresponding graph contains a vertex for every job and an edge for every conflicting pair of jobs. The chromatic number of the graph is exactly the minimum makespan, the optimal time to finish all jobs without conflicts.
+Details of the scheduling problem define the structure of the graph. For example, when assigning aircraft to flights, the resulting conflict graph is an interval graph, so the coloring problem can be solved efficiently. In bandwidth allocation to radio stations, the resulting conflict graph is a unit disk graph, so the coloring problem is 3-approximable.
+A compiler is a computer program that translates one computer language into another. To improve the execution time of the resulting code, one of the techniques of compiler optimization is register allocation, where the most frequently used values of the compiled program are kept in the fast processor registers. Ideally, values are assigned to registers so that they can all reside in the registers when they are used.
+The textbook approach to this problem is to model it as a graph coloring problem.[30] The compiler constructs an interference graph, where vertices are variables and an edge connects two vertices if they are needed at the same time. If the graph can be colored with k colors then any set of variables needed at the same time can be stored in at most k registers.
+The problem of coloring a graph arises in many practical areas such as pattern matching, sports scheduling, designing seating plans, exam timetabling, the scheduling of taxis, and solving Sudoku puzzles.[31]
+An important class of improper coloring problems is studied in Ramsey theory, where the graph’s edges are assigned to colors, and there is no restriction on the colors of incident edges. A simple example is the friendship theorem, which states that in any coloring of the edges of 
+
+
+
+
+K
+
+6
+
+
+
+
+{\displaystyle K_{6}}
+
+, the complete graph of six vertices, there will be a monochromatic triangle; often illustrated by saying that any group of six people either has three mutual strangers or three mutual acquaintances. Ramsey theory is concerned with generalisations of this idea to seek regularity amid disorder, finding general conditions for the existence of monochromatic subgraphs with given structure.
+Coloring can also be considered for signed graphs and gain graphs.

@@ -1,0 +1,234 @@
+ABOUT
+A logarithmic number system (LNS) is an arithmetic system used for representing real numbers in computer and digital hardware, especially for digital signal processing.
+FULL TEXT
+A logarithmic number system (LNS) is an arithmetic system used for representing real numbers in computer and digital hardware, especially for digital signal processing.
+
+
+In LNS, a number, 
+
+
+
+X
+
+
+{\displaystyle X}
+
+, is represented by the logarithm, 
+
+
+
+x
+
+
+{\displaystyle x}
+
+, of its absolute value as follows:
+where 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ is a bit denoting the sign of 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ (
+
+
+
+s
+=
+0
+
+
+{\displaystyle s=0}
+
+ if 
+
+
+
+X
+>
+0
+
+
+{\displaystyle X>0}
+
+ and 
+
+
+
+s
+=
+1
+
+
+{\displaystyle s=1}
+
+ if 
+
+
+
+X
+<
+0
+
+
+{\displaystyle X<0}
+
+).
+The number 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ is represented by a binary word which usually is in the two's complement format. LNS can be considered as a floating-point number with the significand being always equal to 1. This formulation simplifies the operations of multiplication, division, powers and roots, since they are reduced down to addition, subtraction, multiplication and division, respectively.
+On the other hand, the operations of addition and subtraction are more complicated and they are calculated by the formula:
+where the "sum" function is defined by 
+
+
+
+
+s
+
+b
+
+
+(
+z
+)
+=
+
+log
+
+b
+
+
+⁡
+(
+1
++
+
+b
+
+z
+
+
+)
+
+
+{\displaystyle s_{b}(z)=\log _{b}(1+b^{z})}
+
+, and the "difference" function by 
+
+
+
+
+d
+
+b
+
+
+(
+z
+)
+=
+
+log
+
+b
+
+
+⁡
+(
+
+|
+
+1
+−
+
+b
+
+z
+
+
+
+|
+
+)
+
+
+{\displaystyle d_{b}(z)=\log _{b}(|1-b^{z}|)}
+
+. These functions 
+
+
+
+
+s
+
+b
+
+
+(
+z
+)
+
+
+{\displaystyle s_{b}(z)}
+
+ and 
+
+
+
+
+d
+
+b
+
+
+(
+z
+)
+
+
+{\displaystyle d_{b}(z)}
+
+, depicted in the figures to the right, are also known as Gaussian logarithms. For natural logarithms we have the following identity with hyperbolic functions:
+That shows, that 
+
+
+
+
+s
+
+e
+
+
+
+
+{\displaystyle s_{e}}
+
+ has a Taylor expansion where all but the first term are rational and all odd terms except the linear one are zero.
+The simplification of multiplication, division, roots, and powers is counterbalanced by the cost of evaluating these functions for addition and subtraction. This added cost of evaluation may not be critical when using LNS primarily for increasing the precision of floating-point math operations.
+Logarithmic number systems have been independently invented and published at least three times, as an alternative to fixed-point and floating-point number systems.[1]
+Kingsbury and Rayner introduced "logarithmic arithmetic" for digital signal processing in 1971.[2]
+A similar LNS was described in 1975 by Swartzlander and Alexopoulos; rather than use two's complement notation for the logarithms, they offset them (scale the numbers being represented) to avoid negative logs.[3]
+Lee and Edgar described a similar system, which they called the "focus" number system, in 1977.[4]
+The mathematical foundations for addition and subtraction in an LNS trace back to Carl Friedrich Gauss and Z. Leonelli.[5][6]
+LNS has been used in the Gravity Pipe (GRAPE) special-purpose supercomputer[7] that won the Gordon Bell Prize in 1999.
+A substantial effort to explore the applicability of LNS as a viable alternative to floating point for general-purpose processing of single-precision real numbers is described in the context of the European Logarithmic Microprocessor (ELM).[8] A fabricated prototype of the processor, which has a 32-bit cotransformation-based LNS arithmetic logic unit (ALU), demonstrated LNS as a "more accurate alternative to floating-point," with improved speed. Further improvement of the LNS design based on the ELM architecture has again shown its capability to offer significantly better in speed and more accurate than the floating-point.[9]
+LNS is sometimes used in FPGA-based applications where most arithmetic operations are multiplication or division.[10]

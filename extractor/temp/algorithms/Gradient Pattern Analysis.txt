@@ -1,0 +1,228 @@
+ABOUT
+Gradient pattern analysis (GPA)[1] is a geometric computing method for characterizing geometrical bilateral symmetry breaking of an ensemble of symmetric vectors regularly distributed in a square lattice. Usually, the lattice of vectors represent the first-order gradient of a scalar field, here an M x M square amplitude matrix. An important property of the gradient representation is the following: A given M x M matrix where all amplitudes are different results in an M x M gradient lattice containing 
+
+
+
+
+N
+
+V
+
+
+=
+
+M
+
+2
+
+
+
+
+{\displaystyle N_{V}=M^{2}}
+
+ asymmetric vectors. As each vector can be characterized by its norm and phase, variations in the 
+
+
+
+
+M
+
+2
+
+
+
+
+{\displaystyle M^{2}}
+
+ amplitudes can modify the respective 
+
+
+
+
+M
+
+2
+
+
+
+
+{\displaystyle M^{2}}
+
+ gradient pattern.
+FULL TEXT
+Gradient pattern analysis (GPA)[1] is a geometric computing method for characterizing geometrical bilateral symmetry breaking of an ensemble of symmetric vectors regularly distributed in a square lattice. Usually, the lattice of vectors represent the first-order gradient of a scalar field, here an M x M square amplitude matrix. An important property of the gradient representation is the following: A given M x M matrix where all amplitudes are different results in an M x M gradient lattice containing 
+
+
+
+
+N
+
+V
+
+
+=
+
+M
+
+2
+
+
+
+
+{\displaystyle N_{V}=M^{2}}
+
+ asymmetric vectors. As each vector can be characterized by its norm and phase, variations in the 
+
+
+
+
+M
+
+2
+
+
+
+
+{\displaystyle M^{2}}
+
+ amplitudes can modify the respective 
+
+
+
+
+M
+
+2
+
+
+
+
+{\displaystyle M^{2}}
+
+ gradient pattern.
+The original concept of GPA was introduced by Rosa, Sharma and Valdivia in 1999.[2] Usually GPA is applied for spatio-temporal pattern analysis in physics and environmental sciences operating on time-series and digital images.
+By connecting all vectors using a Delaunay triangulation criterion it is possible to characterize gradient asymmetries computing the so-called gradient asymmetry coefficient, that has been defined as: 
+
+
+
+
+G
+
+A
+
+
+=
+
+
+
+
+N
+
+C
+
+
+−
+
+N
+
+V
+
+
+
+
+N
+
+V
+
+
+
+
+
+
+{\displaystyle G_{A}={\frac {N_{C}-N_{V}}{N_{V}}}}
+
+, where 
+
+
+
+
+N
+
+V
+
+
+>
+0
+
+
+{\displaystyle N_{V}>0}
+
+ is the total number of asymmetric vectors, 
+
+
+
+
+N
+
+C
+
+
+
+
+{\displaystyle N_{C}}
+
+ is the number of Delaunay connections among them and the property 
+
+
+
+
+N
+
+C
+
+
+>
+
+N
+
+V
+
+
+
+
+{\displaystyle N_{C}>N_{V}}
+
+ is valid for any gradient square lattice.
+As the asymmetry coefficient is very sensitive to small changes in the phase and modulus of each gradient vector, it can distinguish complex variability patterns (bilateral asymmetry) even when they are very similar but consist of a very fine structural difference. Note that, unlike most of the statistical tools, the GPA does not rely on the statistical properties of the data but depends solely on the local symmetry properties of the correspondent gradient pattern.
+For a complex extended pattern (matrix of amplitudes of a spatio-temporal pattern) composed by locally asymmetric fluctuations, 
+
+
+
+
+G
+
+A
+
+
+
+
+{\displaystyle G_{A}}
+
+ is nonzero, defining different classes of irregular fluctuation patterns (1/f noise, chaotic, reactive-diffusive, etc.).
+Besides 
+
+
+
+
+G
+
+A
+
+
+
+
+{\displaystyle G_{A}}
+
+ other measurements (called gradient moments) can be calculated from the gradient lattice.[3] Considering the sets of local norms and phases as discrete compact groups, spatially distributed in a square lattice, the gradient moments have the basic property of being globally invariant (for rotation and modulation).
+The primary research on gradient lattices applied to characterize weak wave turbulence from X-ray images of solar active regions was developed in the Department of Astronomy at University of Maryland, College Park, USA. A key line of research on GPA's algorithms and applications has been developed at Lab for Computing and Applied Mathematics (LAC) at National Institute for Space Research (INPE) in Brazil.
+When GPA is conjugated with wavelet analysis, then the method is called Gradient spectral analysis (GSA), usually applied to short time series analysis.[4]

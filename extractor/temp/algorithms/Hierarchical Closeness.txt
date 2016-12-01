@@ -1,0 +1,312 @@
+ABOUT
+Hierarchical closeness (HC) is a structural centrality measure used in network theory or graph theory. It is extended from closeness centrality to rank how centrally located a node is in a directed network. While the original closeness centrality of a directed network considers the most important node to be that with the least total distance from all other nodes, hierarchical closeness evaluates the most important node as the one which reaches the most nodes by the shortest paths. The hierarchical closeness explicitly includes information about the range of other nodes that can be affected by the given node. In a directed network 
+
+
+
+G
+(
+V
+,
+A
+)
+
+
+{\displaystyle G(V,A)}
+
+ where 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ is the set of nodes and 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ is the set of interactions, hierarchical closeness of a node 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ ∈ 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ called 
+
+
+
+
+C
+
+h
+c
+
+
+(
+i
+)
+
+
+{\displaystyle C_{hc}(i)}
+
+ was proposed by Tran and Kwon[1] as follows:
+FULL TEXT
+Hierarchical closeness (HC) is a structural centrality measure used in network theory or graph theory. It is extended from closeness centrality to rank how centrally located a node is in a directed network. While the original closeness centrality of a directed network considers the most important node to be that with the least total distance from all other nodes, hierarchical closeness evaluates the most important node as the one which reaches the most nodes by the shortest paths. The hierarchical closeness explicitly includes information about the range of other nodes that can be affected by the given node. In a directed network 
+
+
+
+G
+(
+V
+,
+A
+)
+
+
+{\displaystyle G(V,A)}
+
+ where 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ is the set of nodes and 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ is the set of interactions, hierarchical closeness of a node 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ ∈ 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ called 
+
+
+
+
+C
+
+h
+c
+
+
+(
+i
+)
+
+
+{\displaystyle C_{hc}(i)}
+
+ was proposed by Tran and Kwon[1] as follows:
+where:
+In the formula, 
+
+
+
+
+N
+
+R
+
+
+(
+i
+)
+
+
+{\displaystyle N_{R}(i)}
+
+ represents the number of nodes in 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ that can be reachable from 
+
+
+
+i
+
+
+{\displaystyle i}
+
+. It can also represent the hierarchical position of a node in a directed network. It notes that if 
+
+
+
+
+N
+
+R
+
+
+(
+i
+)
+=
+0
+
+
+{\displaystyle N_{R}(i)=0}
+
+, then 
+
+
+
+
+C
+
+h
+c
+
+
+(
+i
+)
+=
+0
+
+
+{\displaystyle C_{hc}(i)=0}
+
+ because 
+
+
+
+
+C
+
+(
+c
+l
+o
+−
+i
+)
+
+
+(
+i
+)
+
+
+{\displaystyle C_{(clo-i)}(i)}
+
+ is 
+
+
+
+0
+
+
+{\displaystyle 0}
+
+. In cases where 
+
+
+
+
+N
+
+R
+
+
+(
+i
+)
+>
+0
+
+
+{\displaystyle N_{R}(i)>0}
+
+, the reachability is a dominant factor because 
+
+
+
+
+N
+
+R
+
+
+(
+i
+)
+≥
+1
+
+
+{\displaystyle N_{R}(i)\geq 1}
+
+ but 
+
+
+
+
+C
+
+(
+c
+l
+o
+−
+i
+)
+
+
+(
+i
+)
+<
+1
+
+
+{\displaystyle C_{(clo-i)}(i)<1}
+
+. In other words, the first term indicates the level of the global hierarchy and the second term presents the level of the local centrality.
+Hierarchical closeness can be used in biological networks to rank the risk of genes to carry diseases.[1]

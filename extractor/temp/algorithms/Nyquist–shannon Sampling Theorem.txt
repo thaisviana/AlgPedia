@@ -1,0 +1,163 @@
+ABOUT
+In the field of digital signal processing, the sampling theorem is a fundamental bridge between continuous-time signals (often called "analog signals") and discrete-time signals (often called "digital signals"). It establishes a sufficient condition for a sample rate that permits a discrete sequence of samples to capture all the information from a continuous-time signal of finite bandwidth.
+FULL TEXT
+In the field of digital signal processing, the sampling theorem is a fundamental bridge between continuous-time signals (often called "analog signals") and discrete-time signals (often called "digital signals"). It establishes a sufficient condition for a sample rate that permits a discrete sequence of samples to capture all the information from a continuous-time signal of finite bandwidth.
+Strictly speaking, the theorem only applies to a class of mathematical functions having a Fourier transform that is zero outside of a finite region of frequencies. Intuitively we expect that when one reduces a continuous function to a discrete sequence and interpolates back to a continuous function, the fidelity of the result depends on the density (or sample rate) of the original samples. The sampling theorem introduces the concept of a sample rate that is sufficient for perfect fidelity for the class of functions that are bandlimited to a given bandwidth, such that no actual information is lost in the sampling process. It expresses the sufficient sample rate in terms of the bandwidth for the class of functions. The theorem also leads to a formula for perfectly reconstructing the original continuous-time function from the samples.
+Perfect reconstruction may still be possible when the sample-rate criterion is not satisfied, provided other constraints on the signal are known. (See § Sampling of non-baseband signals below, and compressed sensing.) In some cases (when the sample-rate criterion is not satisfied), utilizing additional constraints allows for approximate reconstructions. The fidelity of these reconstructions can be verified and quantified utilizing Bochner's theorem.[1]
+The name Nyquist–Shannon sampling theorem honors Harry Nyquist and Claude Shannon. The theorem was also discovered independently by E. T. Whittaker, by Vladimir Kotelnikov, and by others. It is thus also known by the names Nyquist–Shannon–Kotelnikov, Whittaker–Shannon–Kotelnikov, Whittaker–Nyquist–Kotelnikov–Shannon, and cardinal theorem of interpolation.
+
+
+Sampling is a process of converting a signal (for example, a function of continuous time and/or space) into a numeric sequence (a function of discrete time and/or space). Shannon's version of the theorem states:[2]
+If a function x(t) contains no frequencies higher than B hertz, it is completely determined by giving its ordinates at a series of points spaced 1/(2B) seconds apart.
+A sufficient sample-rate is therefore 2B samples/second, or anything larger. Equivalently, for a given sample rate fs, perfect reconstruction is guaranteed possible for a bandlimit B < fs/2.
+When the bandlimit is too high (or there is no bandlimit), the reconstruction exhibits imperfections known as aliasing. Modern statements of the theorem are sometimes careful to explicitly state that x(t) must contain no sinusoidal component at exactly frequency B, or that B must be strictly less than ½ the sample rate. The two thresholds, 2B and fs/2 are respectively called the Nyquist rate and Nyquist frequency. And respectively, they are attributes of x(t) and of the sampling equipment. The condition described by these inequalities is called the Nyquist criterion, or sometimes the Raabe condition. The theorem is also applicable to functions of other domains, such as space, in the case of a digitized image. The only change, in the case of other domains, is the units of measure applied to t, fs, and B.
+The symbol T = 1/fs is customarily used to represent the interval between samples and is called the sample period or sampling interval. And the samples of function x(t) are commonly denoted by x[n] = x(nT) (alternatively "xn" in older signal processing literature), for all integer values of n. A mathematically ideal way to interpolate the sequence involves the use of sinc functions. Each sample in the sequence is replaced by a sinc function, centered on the time axis at the original location of the sample, nT, with the amplitude of the sinc function scaled to the sample value, x[n]. Subsequently, the sinc functions are summed into a continuous function. A mathematically equivalent method is to convolve one sinc function with a series of Dirac delta pulses, weighted by the sample values. Neither method is numerically practical. Instead, some type of approximation of the sinc functions, finite in length, is used. The imperfections attributable to the approximation are known as interpolation error.
+Practical digital-to-analog converters produce neither scaled and delayed sinc functions, nor ideal Dirac pulses. Instead they produce a piecewise-constant sequence of scaled and delayed rectangular pulses (the zero-order hold), usually followed by an "anti-imaging filter" to clean up spurious high-frequency content.
+When x(t) is a function with a Fourier transform, X(f):
+the Poisson summation formula indicates that the samples, x(nT), of x(t) are sufficient to create a periodic summation of X(f). The result is:
+
+
+
+
+
+X
+
+s
+
+
+(
+f
+)
+ 
+
+
+
+
+=
+
+
+
+d
+e
+f
+
+
+
+
+
+
+∑
+
+k
+=
+−
+∞
+
+
+∞
+
+
+X
+
+(
+f
+−
+k
+
+f
+
+s
+
+
+)
+
+=
+
+∑
+
+n
+=
+−
+∞
+
+
+∞
+
+
+T
+⋅
+x
+(
+n
+T
+)
+ 
+
+e
+
+−
+i
+2
+π
+n
+T
+f
+
+
+,
+
+
+{\displaystyle X_{s}(f)\ {\stackrel {\mathrm {def} }{=}}\sum _{k=-\infty }^{\infty }X\left(f-kf_{s}\right)=\sum _{n=-\infty }^{\infty }T\cdot x(nT)\ e^{-i2\pi nTf},}
+
+
+
+ 
+ 
+ 
+ 
+(Eq.1)
+which is a periodic function and its equivalent representation as a Fourier series, whose coefficients are T•x(nT). This function is also known as the discrete-time Fourier transform (DTFT) of the sequence T•x(nT), for integers n.
+As depicted, copies of X(f) are shifted by multiples of fs and combined by addition. For a band-limited function  (X(f) = 0 for all |f| ≥ B),  and sufficiently large fs, it is possible for the copies to remain distinct from each other. But if the Nyquist criterion is not satisfied, adjacent copies overlap, and it is not possible in general to discern an unambiguous X(f). Any frequency component above fs/2 is indistinguishable from a lower-frequency component, called an alias, associated with one of the copies. In such cases, the customary interpolation techniques produce the alias, rather than the original component. When the sample-rate is pre-determined by other considerations (such as an industry standard), x(t) is usually filtered to reduce its high frequencies to acceptable levels before it is sampled. The type of filter required is a lowpass filter, and in this application it is called an anti-aliasing filter.
+When there is no overlap of the copies (aka "images") of X(f), the k = 0 term of Xs(f) can be recovered by the product:
+At this point, the sampling theorem is proved, since X(f) uniquely determines x(t).
+All that remains is to derive the formula for reconstruction. H(f) need not be precisely defined in the region [B, fs − B] because Xs(f) is zero in that region. However, the worst case is when B = fs/2, the Nyquist frequency. A function that is sufficient for that and all less severe cases is:
+where rect(•) is the rectangular function.  Therefore:
+The inverse transform of both sides produces the Whittaker–Shannon interpolation formula:
+which shows how the samples, x(nT), can be combined to reconstruct x(t).
+Poisson shows that the Fourier series in Eq.1 produces the periodic summation of X(f), regardless of fs and B. Shannon, however, only derives the series coefficients for the case fs = 2B. Virtually quoting Shannon's original paper:
+Shannon's proof of the theorem is complete at that point, but he goes on to discuss reconstruction via sinc functions, what we now call the Whittaker–Shannon interpolation formula as discussed above. He does not derive or prove the properties of the sinc function, but these would have been familiar to engineers reading his works at the time, since the Fourier pair relationship between rect (the rectangular function) and sinc was well known.
+As in the other proof, the existence of the Fourier transform of the original signal is assumed, so the proof does not say whether the sampling theorem extends to bandlimited stationary random processes.
+The sampling theorem is usually formulated for functions of a single variable. Consequently, the theorem is directly applicable to time-dependent signals and is normally formulated in that context. However, the sampling theorem can be extended in a straightforward way to functions of arbitrarily many variables. Grayscale images, for example, are often represented as two-dimensional arrays (or matrices) of real numbers representing the relative intensities of pixels (picture elements) located at the intersections of row and column sample locations. As a result, images require two independent variables, or indices, to specify each pixel uniquely—one for the row, and one for the column.
+Color images typically consist of a composite of three separate grayscale images, one to represent each of the three primary colors—red, green, and blue, or RGB for short. Other colorspaces using 3-vectors for colors include HSV, CIELAB, XYZ, etc. Some colorspaces such as cyan, magenta, yellow, and black (CMYK) may represent color by four dimensions. All of these are treated as vector-valued functions over a two-dimensional sampled domain.
+Similar to one-dimensional discrete-time signals, images can also suffer from aliasing if the sampling resolution, or pixel density, is inadequate. For example, a digital photograph of a striped shirt with high frequencies (in other words, the distance between the stripes is small), can cause aliasing of the shirt when it is sampled by the camera's image sensor. The aliasing appears as a moiré pattern. The "solution" to higher sampling in the spatial domain for this case would be to move closer to the shirt, use a higher resolution sensor, or to optically blur the image before acquiring it with the sensor.
+Another example is shown to the right in the brick patterns. The top image shows the effects when the sampling theorem's condition is not satisfied. When software rescales an image (the same process that creates the thumbnail shown in the lower image) it, in effect, runs the image through a low-pass filter first and then downsamples the image to result in a smaller image that does not exhibit the moiré pattern. The top image is what happens when the image is downsampled without low-pass filtering: aliasing results.
+The application of the sampling theorem to images should be made with care. For example, the sampling process in any standard image sensor (CCD or CMOS camera) is relatively far from the ideal sampling which would measure the image intensity at a single point. Instead these devices have a relatively large sensor area at each sample point in order to obtain sufficient amount of light. In other words, any detector has a finite-width point spread function. The analog optical image intensity function which is sampled by the sensor device is not in general bandlimited, and the non-ideal sampling is itself a useful type of low-pass filter, though not always sufficient to remove enough high frequencies to sufficiently reduce aliasing. When the area of the sampling spot (the size of the pixel sensor) is not large enough to provide sufficient spatial anti-aliasing, a separate anti-aliasing filter (optical low-pass filter) is typically included in a camera system to further blur the optical image. Despite images having these problems in relation to the sampling theorem, the theorem can be used to describe the basics of down and up sampling of images.
+To illustrate the necessity of fs > 2B, consider the family of sinusoids generated by different values of θ in this formula:
+With fs = 2B or equivalently T = 1/(2B), the samples are given by:
+regardless of the value of θ. That sort of ambiguity is the reason for the strict inequality of the sampling theorem's condition.
+As discussed by Shannon:[2]
+A similar result is true if the band does not start at zero frequency but at some higher value, and can be proved by a linear translation (corresponding physically to single-sideband modulation) of the zero-frequency case. In this case the elementary pulse is obtained from sin(x)/x by single-side-band modulation.
+That is, a sufficient no-loss condition for sampling signals that do not have baseband components exists that involves the width of the non-zero frequency interval as opposed to its highest frequency component. See Sampling (signal processing) for more details and examples.
+For example, in order to sample the FM radio signals in the frequency range of 100-102 MHz, it is not necessary to sample at 204 MHz (twice the upper frequency), but rather it is sufficient to sample at 4 MHz (twice the width of the frequency interval).
+A bandpass condition is that X(f) = 0, for all nonnegative f outside the open band of frequencies:
+for some nonnegative integer N. This formulation includes the normal baseband condition as the case N=0.
+The corresponding interpolation function is the impulse response of an ideal brick-wall bandpass filter (as opposed to the ideal brick-wall lowpass filter used above) with cutoffs at the upper and lower edges of the specified band, which is the difference between a pair of lowpass impulse responses:
+Other generalizations, for example to signals occupying multiple non-contiguous bands, are possible as well. Even the most generalized form of the sampling theorem does not have a provably true converse. That is, one cannot conclude that information is necessarily lost just because the conditions of the sampling theorem are not satisfied; from an engineering perspective, however, it is generally safe to assume that if the sampling theorem is not satisfied then information will most likely be lost.
+The sampling theory of Shannon can be generalized for the case of nonuniform sampling, that is, samples not taken equally spaced in time. The Shannon sampling theory for non-uniform sampling states that a band-limited signal can be perfectly reconstructed from its samples if the average sampling rate satisfies the Nyquist condition.[3] Therefore, although uniformly spaced samples may result in easier reconstruction algorithms, it is not a necessary condition for perfect reconstruction.
+The general theory for non-baseband and nonuniform samples was developed in 1967 by Landau.[4] He proved that the average sampling rate (uniform or otherwise) must be twice the occupied bandwidth of the signal, assuming it is a priori known what portion of the spectrum was occupied. In the late 1990s, this work was partially extended to cover signals of when the amount of occupied bandwidth was known, but the actual occupied portion of the spectrum was unknown.[5] In the 2000s, a complete theory was developed (see the section Beyond Nyquist below) using compressed sensing. In particular, the theory, using signal processing language, is described in this 2009 paper.[6] They show, among other things, that if the frequency locations are unknown, then it is necessary to sample at least at twice the Nyquist criteria; in other words, you must pay at least a factor of 2 for not knowing the location of the spectrum. Note that minimum sampling requirements do not necessarily guarantee stability.
+The Nyquist–Shannon sampling theorem provides a sufficient condition for the sampling and reconstruction of a band-limited signal. When reconstruction is done via the Whittaker–Shannon interpolation formula, the Nyquist criterion is also a necessary condition to avoid aliasing, in the sense that if samples are taken at a slower rate than twice the band limit, then there are some signals that will not be correctly reconstructed. However, if further restrictions are imposed on the signal, then the Nyquist criterion may no longer be a necessary condition.
+A non-trivial example of exploiting extra assumptions about the signal is given by the recent field of compressed sensing, which allows for full reconstruction with a sub-Nyquist sampling rate. Specifically, this applies to signals that are sparse (or compressible) in some domain. As an example, compressed sensing deals with signals that may have a low over-all bandwidth (say, the effective bandwidth EB), but the frequency locations are unknown, rather than all together in a single band, so that the passband technique doesn't apply. In other words, the frequency spectrum is sparse. Traditionally, the necessary sampling rate is thus 2B. Using compressed sensing techniques, the signal could be perfectly reconstructed if it is sampled at a rate slightly lower than 2EB. The downside of this approach is that reconstruction is no longer given by a formula, but instead by the solution to a convex optimization program which requires well-studied but nonlinear methods.
+The sampling theorem was implied by the work of Harry Nyquist in 1928,[7]  in which he showed that up to 2B independent pulse samples could be sent through a system of bandwidth B; but he did not explicitly consider the problem of sampling and reconstruction of continuous signals. About the same time, Karl Küpfmüller showed a similar result,[8] and discussed the sinc-function impulse response of a band-limiting filter, via its integral, the step response Integralsinus; this bandlimiting and reconstruction filter that is so central to the sampling theorem is sometimes referred to as a Küpfmüller filter (but seldom so in English).
+The sampling theorem, essentially a dual of Nyquist's result, was proved by Claude E. Shannon.[2]  V. A. Kotelnikov published similar results in 1933,[9]  as did the mathematician E. T. Whittaker in 1915,[10]  J. M. Whittaker in 1935,[11]  and Gabor in 1946 ("Theory of communication").  In 1999, the Eduard Rhein Foundation awarded Kotelnikov their Basic Research Award "for the first theoretically exact formulation of the sampling theorem."
+In 1948 and 1949, Claude E. Shannon published the two revolutionary papers in which he founded the information theory. [12][13][2]  In Shannon 1948 the sampling theorem is formulated as “Theorem 13”:  Let f(t) contain no frequencies over W.  Then
+where Xn = f(n/2W).  It was not until these papers were published that the theorem known as “Shannon’s sampling theorem” became common property among communication engineers, although Shannon himself writes that this is a fact which is common knowledge in the communication art.[note 2] A few lines further on, however, he adds: ... "but in spite of its evident importance [it] seems not to have appeared explicitly in the literature of communication theory".
+Others who have independently discovered or played roles in the development of the sampling theorem have been discussed in several historical articles, for example by Jerri[14] and by Lüke.[15] For example, Lüke points out that H. Raabe, an assistant to Küpfmüller, proved the theorem in his 1939 Ph.D. dissertation; the term Raabe condition came to be associated with the criterion for unambiguous representation (sampling rate greater than twice the bandwidth). Meijering[16] mentions several other discoverers and names in a paragraph and pair of footnotes:
+As pointed out by Higgins [135], the sampling theorem should really be considered in two parts, as done above: the first stating the fact that a bandlimited function is completely determined by its samples, the second describing how to reconstruct the function using its samples. Both parts of the sampling theorem were given in a somewhat different form by J. M. Whittaker [350, 351, 353] and before him also by Ogura [241, 242]. They were probably not aware of the fact that the first part of the theorem had been stated as early as 1897 by Borel [25].27 As we have seen, Borel also used around that time what became known as the cardinal series. However, he appears not to have made the link [135]. In later years it became known that the sampling theorem had been presented before Shannon to the Russian communication community by Kotel'nikov [173]. In more implicit, verbal form, it had also been described in the German literature by Raabe [257]. Several authors [33, 205] have mentioned that Someya [296] introduced the theorem in the Japanese literature parallel to Shannon. In the English literature, Weston [347] introduced it independently of Shannon around the same time.28
+27 Several authors, following Black [16], have claimed that this first part of the sampling theorem was stated even earlier by Cauchy, in a paper [41] published in 1841. However, the paper of Cauchy does not contain such a statement, as has been pointed out by Higgins [135].
+28 As a consequence of the discovery of the several independent introductions of the sampling theorem, people started to refer to the theorem by including the names of the aforementioned authors, resulting in such catchphrases as “the Whittaker–Kotel’nikov–Shannon (WKS) sampling theorem" [155] or even "the Whittaker–Kotel'nikov–Raabe–Shannon–Someya sampling theorem" [33]. To avoid confusion, perhaps the best thing to do is to refer to it as the sampling theorem, "rather than trying to find a title that does justice to all claimants" [136].
+Exactly how, when, or why Harry Nyquist had his name attached to the sampling theorem remains obscure. The term Nyquist Sampling Theorem (capitalized thus) appeared as early as 1959 in a book from his former employer, Bell Labs,[17] and appeared again in 1963,[18] and not capitalized in 1965.[19] It had been called the Shannon Sampling Theorem as early as 1954,[20] but also just the sampling theorem by several other books in the early 1950s.
+In 1958, Blackman and Tukey cited Nyquist's 1928 paper as a reference for the sampling theorem of information theory,[21] even though that paper does not treat sampling and reconstruction of continuous signals as others did. Their glossary of terms includes these entries:
+Exactly what "Nyquist's result" they are referring to remains mysterious.
+When Shannon stated and proved the sampling theorem in his 1949 paper, according to Meijering[16] "he referred to the critical sampling interval T = 1/(2W) as the Nyquist interval corresponding to the band W, in recognition of Nyquist’s discovery of the fundamental importance of this interval in connection with telegraphy." This explains Nyquist's name on the critical interval, but not on the theorem.
+Similarly, Nyquist's name was attached to Nyquist rate in 1953 by Harold S. Black:[22]
+According to the OED, this may be the origin of the term Nyquist rate. In Black's usage, it is not a sampling rate, but a signaling rate.

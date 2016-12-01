@@ -1,0 +1,373 @@
+ABOUT
+Estimation theory is a branch of statistics that deals with estimating the values of parameters based on measured empirical data that has a random component. The parameters describe an underlying physical setting in such a way that their value affects the distribution of the measured data. An estimator attempts to approximate the unknown parameters using the measurements.
+FULL TEXT
+Estimation theory is a branch of statistics that deals with estimating the values of parameters based on measured empirical data that has a random component. The parameters describe an underlying physical setting in such a way that their value affects the distribution of the measured data. An estimator attempts to approximate the unknown parameters using the measurements.
+For example, it is desired to estimate the proportion of a population of voters who will vote for a particular candidate. That proportion is the parameter sought; the estimate is based on a small random sample of voters.
+Or, for example, in radar the goal is to estimate the range of objects (airplanes, boats, etc.) by analyzing the two-way transit timing of received echoes of transmitted pulses. Since the reflected pulses are unavoidably embedded in electrical noise, their measured values are randomly distributed, so that the transit time must be estimated.
+In estimation theory, two approaches are generally considered. [1]
+For example, in electrical communication theory, the measurements which contain information regarding the parameters of interest are often associated with a noisy signal. Without randomness, or noise, the problem would be deterministic and estimation would not be needed.
+
+
+To build a model, several statistical "ingredients" need to be known. These are needed to ensure the estimator has some mathematical tractability.
+The first is a set of statistical samples taken from a random vector (RV) of size N. Put into a vector,
+Secondly, there are the corresponding M parameters
+which need to be established with their continuous probability density function (pdf) or its discrete counterpart, the probability mass function (pmf)
+It is also possible for the parameters themselves to have a probability distribution (e.g., Bayesian statistics). It is then necessary to define the Bayesian probability
+After the model is formed, the goal is to estimate the parameters, commonly denoted 
+
+
+
+
+
+
+
+θ
+
+^
+
+
+
+
+
+{\displaystyle {\hat {\mathbf {\theta } }}}
+
+, where the "hat" indicates the estimate.
+One common estimator is the minimum mean squared error estimator, which utilizes the error between the estimated parameters and the actual value of the parameters
+as the basis for optimality. This error term is then squared and minimized for the MMSE estimator.
+Commonly used estimators and estimation methods, and topics related to them:
+Consider a received discrete signal, 
+
+
+
+x
+[
+n
+]
+
+
+{\displaystyle x[n]}
+
+, of 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ independent samples that consists of an unknown constant 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ with additive white Gaussian noise (AWGN) 
+
+
+
+w
+[
+n
+]
+
+
+{\displaystyle w[n]}
+
+ with known variance 
+
+
+
+
+σ
+
+2
+
+
+
+
+{\displaystyle \sigma ^{2}}
+
+ (i.e., 
+
+
+
+
+
+N
+
+
+(
+0
+,
+
+σ
+
+2
+
+
+)
+
+
+{\displaystyle {\mathcal {N}}(0,\sigma ^{2})}
+
+). Since the variance is known then the only unknown parameter is 
+
+
+
+A
+
+
+{\displaystyle A}
+
+.
+The model for the signal is then
+Two possible (of many) estimators for the parameter 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ are:
+Both of these estimators have a mean of 
+
+
+
+A
+
+
+{\displaystyle A}
+
+, which can be shown through taking the expected value of each estimator
+and
+At this point, these two estimators would appear to perform the same. However, the difference between them becomes apparent when comparing the variances.
+and
+It would seem that the sample mean is a better estimator since its variance is lower for every N > 1.
+Continuing the example using the maximum likelihood estimator, the probability density function (pdf) of the noise for one sample 
+
+
+
+w
+[
+n
+]
+
+
+{\displaystyle w[n]}
+
+ is
+and the probability of 
+
+
+
+x
+[
+n
+]
+
+
+{\displaystyle x[n]}
+
+ becomes (
+
+
+
+x
+[
+n
+]
+
+
+{\displaystyle x[n]}
+
+ can be thought of a 
+
+
+
+
+
+N
+
+
+(
+A
+,
+
+σ
+
+2
+
+
+)
+
+
+{\displaystyle {\mathcal {N}}(A,\sigma ^{2})}
+
+)
+By independence, the probability of 
+
+
+
+
+x
+
+
+
+{\displaystyle \mathbf {x} }
+
+ becomes
+Taking the natural logarithm of the pdf
+and the maximum likelihood estimator is
+Taking the first derivative of the log-likelihood function
+and setting it to zero
+This results in the maximum likelihood estimator
+which is simply the sample mean. From this example, it was found that the sample mean is the maximum likelihood estimator for 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ samples of a fixed, unknown parameter corrupted by AWGN.
+To find the Cramér–Rao lower bound (CRLB) of the sample mean estimator, it is first necessary to find the Fisher information number
+and copying from above
+Taking the second derivative
+and finding the negative expected value is trivial since it is now a deterministic constant 
+
+
+
+−
+
+E
+
+
+[
+
+
+
+∂
+
+2
+
+
+
+∂
+
+A
+
+2
+
+
+
+
+
+ln
+⁡
+p
+(
+
+x
+
+;
+A
+)
+]
+
+=
+
+
+N
+
+σ
+
+2
+
+
+
+
+
+
+{\displaystyle -\mathrm {E} \left[{\frac {\partial ^{2}}{\partial A^{2}}}\ln p(\mathbf {x} ;A)\right]={\frac {N}{\sigma ^{2}}}}
+
+
+Finally, putting the Fisher information into
+results in
+Comparing this to the variance of the sample mean (determined previously) shows that the sample mean is equal to the Cramér–Rao lower bound for all values of 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ and 
+
+
+
+A
+
+
+{\displaystyle A}
+
+. In other words, the sample mean is the (necessarily unique) efficient estimator, and thus also the minimum variance unbiased estimator (MVUE), in addition to being the maximum likelihood estimator.
+One of the simplest non-trivial examples of estimation is the estimation of the maximum of a uniform distribution. It is used as a hands-on classroom exercise and to illustrate basic principles of estimation theory. Further, in the case of estimation based on a single sample, it demonstrates philosophical issues and possible misunderstandings in the use of maximum likelihood estimators and likelihood functions.
+Given a discrete uniform distribution 
+
+
+
+1
+,
+2
+,
+…
+,
+N
+
+
+{\displaystyle 1,2,\dots ,N}
+
+ with unknown maximum, the UMVU estimator for the maximum is given by
+where m is the sample maximum and k is the sample size, sampling without replacement.[2][3] This problem is commonly known as the German tank problem, due to application of maximum estimation to estimates of German tank production during World War II.
+The formula may be understood intuitively as:
+the gap being added to compensate for the negative bias of the sample maximum as an estimator for the population maximum.[note 1]
+This has a variance of[2]
+so a standard deviation of approximately 
+
+
+
+N
+
+/
+
+k
+
+
+{\displaystyle N/k}
+
+, the (population) average size of a gap between samples; compare 
+
+
+
+
+
+m
+k
+
+
+
+
+{\displaystyle {\frac {m}{k}}}
+
+ above. This can be seen as a very simple case of maximum spacing estimation.
+The sample maximum is the maximum likelihood estimator for the population maximum, but, as discussed above, it is biased.
+Numerous fields require the use of estimation theory. Some of these fields include (but are by no means limited to):
+Measured data are likely to be subject to noise or uncertainty and it is through statistical probability that optimal solutions are sought to extract as much information from the data as possible.

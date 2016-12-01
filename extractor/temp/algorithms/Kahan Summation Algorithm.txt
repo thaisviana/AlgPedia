@@ -1,0 +1,280 @@
+ABOUT
+In numerical analysis, the Kahan summation algorithm (also known as compensated summation [1]) significantly reduces the numerical error in the total obtained by adding a sequence of finite precision floating point numbers, compared to the obvious approach. This is done by keeping a separate running compensation (a variable to accumulate small errors).
+FULL TEXT
+In numerical analysis, the Kahan summation algorithm (also known as compensated summation [1]) significantly reduces the numerical error in the total obtained by adding a sequence of finite precision floating point numbers, compared to the obvious approach. This is done by keeping a separate running compensation (a variable to accumulate small errors).
+In particular, simply summing n numbers in sequence has a worst-case error that grows proportional to n, and a root mean square error that grows as 
+
+
+
+
+
+n
+
+
+
+
+{\displaystyle {\sqrt {n}}}
+
+ for random inputs (the roundoff errors form a random walk).[2] With compensated summation, the worst-case error bound is independent of n, so a large number of values can be summed with an error that only depends on the floating-point precision.[2]
+The algorithm is attributed to William Kahan.[3] Similar, earlier techniques are, for example, Bresenham's line algorithm, keeping track of the accumulated error in integer operations (although first documented around the same time[4]) and the Delta-sigma modulation[5] (integrating, not just summing the error).
+
+
+In pseudocode, the algorithm is:
+This example will be given in decimal. Computers typically use binary arithmetic, but the principle being illustrated is the same. Suppose we are using six-digit decimal floating point arithmetic, sum has attained the value 10000.0, and the next two values of input(i) are 3.14159 and 2.71828. The exact result is 10005.85987, which rounds to 10005.9. With a plain summation, each incoming value would be aligned with sum and many low order digits lost (by truncation or rounding). The first result, after rounding, would be 10003.1. The second result would be 10005.81828 before rounding, and 10005.8 after rounding. This is not correct.
+However, with compensated summation, we get the correct rounded result of 10005.9.
+Assume that c has the initial value zero.
+The sum is so large that only the high-order digits of the input numbers are being accumulated. But on the next step, c gives the error.
+So the summation is performed with two accumulators: sum holds the sum, and c accumulates the parts not assimilated into sum, to nudge the low-order part of sum the next time around. Thus the summation proceeds with "guard digits" in c which is better than not having any but is not as good as performing the calculations with double the precision of the input. However, simply increasing the precision of the calculations is not practical in general; if input is already double precision, few systems supply quadruple precision and if they did, input could then be quadruple precision.
+A careful analysis of the errors in compensated summation is needed to appreciate its accuracy characteristics. While it is more accurate than naive summation, it can still give large relative errors for ill-conditioned sums.
+Suppose that one is summing n values xi, for i=1,...,n. The exact sum is:
+With compensated summation, one instead obtains 
+
+
+
+
+S
+
+n
+
+
++
+
+E
+
+n
+
+
+
+
+{\displaystyle S_{n}+E_{n}}
+
+, where the error 
+
+
+
+
+E
+
+n
+
+
+
+
+{\displaystyle E_{n}}
+
+ is bounded by:[2]
+where ε is the machine precision of the arithmetic being employed (e.g. ε≈10−16 for IEEE standard double precision floating point). Usually, the quantity of interest is the relative error 
+
+
+
+
+|
+
+
+E
+
+n
+
+
+
+|
+
+
+/
+
+
+|
+
+
+S
+
+n
+
+
+
+|
+
+
+
+{\displaystyle |E_{n}|/|S_{n}|}
+
+, which is therefore bounded above by:
+In the expression for the relative error bound, the fraction Σ|xi|/|Σxi| is the condition number of the summation problem. Essentially, the condition number represents the intrinsic sensitivity of the summation problem to errors, regardless of how it is computed.[6] The relative error bound of every (backwards stable) summation method by a fixed algorithm in fixed precision (i.e. not those that use arbitrary precision arithmetic, nor algorithms whose memory and time requirements change based on the data), is proportional to this condition number.[2] An ill-conditioned summation problem is one in which this ratio is large, and in this case even compensated summation can have a large relative error. For example, if the summands xi are uncorrelated random numbers with zero mean, the sum is a random walk and the condition number will grow proportional to 
+
+
+
+
+
+n
+
+
+
+
+{\displaystyle {\sqrt {n}}}
+
+. On the other hand, for random inputs with nonzero mean the condition number asymptotes to a finite constant as 
+
+
+
+n
+→
+∞
+
+
+{\displaystyle n\to \infty }
+
+. If the inputs are all non-negative, then the condition number is 1.
+Given a condition number, the relative error of compensated summation is effectively independent of n. In principle, there is the O(nε2) that grows linearly with n, but in practice this term is effectively zero: since the final result is rounded to a precision ε, the nε2 term rounds to zero unless n is roughly 1/ε or larger.[2] In double precision, this corresponds to an n of roughly 1016, much larger than most sums. So, for a fixed condition number, the errors of compensated summation are effectively O(ε), independent of n.
+In comparison, the relative error bound for naive summation (simply adding the numbers in sequence, rounding at each step) grows as 
+
+
+
+O
+(
+ε
+n
+)
+
+
+{\displaystyle O(\varepsilon n)}
+
+ multiplied by the condition number.[2] This worst-case error is rarely observed in practice, however, because it only occurs if the rounding errors are all in the same direction. In practice, it is much more likely that the rounding errors have a random sign, with zero mean, so that they form a random walk; in this case, naive summation has a root mean square relative error that grows as 
+
+
+
+O
+(
+ε
+
+
+n
+
+
+)
+
+
+{\displaystyle O(\varepsilon {\sqrt {n}})}
+
+ multiplied by the condition number.[7] This is still much worse than compensated summation, however. Note, however, that if the sum can be performed in twice the precision, then ε is replaced by ε2 and naive summation has a worst-case error comparable to the O(nε2) term in compensated summation at the original precision.
+By the same token, the Σ|xi| that appears in 
+
+
+
+
+E
+
+n
+
+
+
+
+{\displaystyle E_{n}}
+
+ above is a worst-case bound that occurs only if all the rounding errors have the same sign (and are of maximum possible magnitude).[2] In practice, it is more likely that the errors have random sign, in which case terms in Σ|xi| are replaced by a random walk—in this case, even for random inputs with zero mean, the error 
+
+
+
+
+E
+
+n
+
+
+
+
+{\displaystyle E_{n}}
+
+ grows only as 
+
+
+
+O
+(
+ε
+
+
+n
+
+
+)
+
+
+{\displaystyle O(\varepsilon {\sqrt {n}})}
+
+ (ignoring the nε2 term), the same rate the sum 
+
+
+
+
+S
+
+n
+
+
+
+
+{\displaystyle S_{n}}
+
+ grows, canceling the 
+
+
+
+
+
+n
+
+
+
+
+{\displaystyle {\sqrt {n}}}
+
+ factors when the relative error is computed. So, even for asymptotically ill-conditioned sums, the relative error for compensated summation can often be much smaller than a worst-case analysis might suggest.
+Although Kahan's algorithm achieves 
+
+
+
+O
+(
+1
+)
+
+
+{\displaystyle O(1)}
+
+ error growth for summing n numbers, only slightly worse 
+
+
+
+O
+(
+log
+⁡
+n
+)
+
+
+{\displaystyle O(\log n)}
+
+ growth can be achieved by pairwise summation: one recursively divides the set of numbers into two halves, sums each half, and then adds the two sums.[2] This has the advantage of requiring the same number of arithmetic operations as the naive summation (unlike Kahan's algorithm, which requires four times the arithmetic and has a latency of four times a simple summation) and can be calculated in parallel. The base case of the recursion could in principle be the sum of only one (or zero) numbers, but to amortize the overhead of recursion one would normally use a larger base case. The equivalent of pairwise summation is used in many fast Fourier transform (FFT) algorithms, and is responsible for the logarithmic growth of roundoff errors in those FFTs.[8] In practice, with roundoff errors of random signs, the root mean square errors of pairwise summation actually grow as 
+
+
+
+O
+(
+
+
+log
+⁡
+n
+
+
+)
+
+
+{\displaystyle O({\sqrt {\log n}})}
+
+.[7]
+Another alternative is to use arbitrary precision arithmetic, which in principle need no rounding at all with a cost of much greater computational effort. A way of performing exactly rounded sums using arbitrary precision is to extend adaptively using multiple floating-point components. This will minimize computational cost in common cases where high precision is not needed.[9][10] Another method that uses only integer arithmetic, but a large accumulator was described by Kirchner and Kulisch;[11] a hardware implementation was described by Müller, Rüb and Rülling.[12]
+In principle, a sufficiently aggressive optimizing compiler could destroy the effectiveness of Kahan summation: for example, if the compiler simplified expressions according to the associativity rules of real arithmetic, it might "simplify" the second step in the sequence t = sum + y; c = (t - sum) - y; to ((sum + y) - sum) - y; then to c = 0;, eliminating the error compensation.[13] In practice, many compilers do not use associativity rules (which are only approximate in floating-point arithmetic) in simplifications unless explicitly directed to do so by compiler options enabling "unsafe" optimizations,[14][15][16][17] although the Intel C++ Compiler is one example that allows associativity-based transformations by default.[18] The original K&R C version of the C programming language allowed the compiler to re-order floating-point expressions according to real-arithmetic associativity rules, but the subsequent ANSI C standard prohibited re-ordering in order to make C better suited for numerical applications (and more similar to Fortran, which also prohibits re-ordering),[19] although in practice compiler options can re-enable re-ordering as mentioned above.
+In general, built-in "sum" functions in computer languages typically provide no guarantees that a particular summation algorithm will be employed, much less Kahan summation.[citation needed] The BLAS standard for linear algebra subroutines explicitly avoids mandating any particular computational order of operations for performance reasons,[20] and BLAS implementations typically do not use Kahan summation.
+The standard library of the Python computer language specifies an fsum function for exactly rounded summation, using the Shewchuk algorithm [10] to track multiple partial sums.

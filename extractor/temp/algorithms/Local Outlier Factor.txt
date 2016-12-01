@@ -1,0 +1,454 @@
+ABOUT
+In anomaly detection, the local outlier factor (LOF) is an algorithm proposed by Markus M. Breunig, Hans-Peter Kriegel, Raymond T. Ng and Jörg Sander in 2000 for finding anomalous data points by measuring the local deviation of a given data point with respect to its neighbours.[1]
+FULL TEXT
+In anomaly detection, the local outlier factor (LOF) is an algorithm proposed by Markus M. Breunig, Hans-Peter Kriegel, Raymond T. Ng and Jörg Sander in 2000 for finding anomalous data points by measuring the local deviation of a given data point with respect to its neighbours.[1]
+LOF shares some concepts with DBSCAN and OPTICS such as the concepts of "core distance" and "reachability distance", which are used for local density estimation.[2]
+
+
+The local outlier factor is based on a concept of a local density, where locality is given by 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ nearest neighbors, whose distance is used to estimate the density. By comparing the local density of an object to the local densities of its neighbors, one can identify regions of similar density, and points that have a substantially lower density than their neighbors. These are considered to be outliers.
+The local density is estimated by the typical distance at which a point can be "reached" from its neighbors. The definition of "reachability distance" used in LOF is an additional measure to produce more stable results within clusters.
+Let 
+
+
+
+
+k-distance
+
+(
+A
+)
+
+
+{\displaystyle {\mbox{k-distance}}(A)}
+
+ be the distance of the object 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ to the k-th nearest neighbor. Note that the set of the k nearest neighbors includes all objects at this distance, which can in the case of a "tie" be more than k objects. We denote the set of k nearest neighbors as 
+
+
+
+
+N
+
+k
+
+
+(
+A
+)
+
+
+{\displaystyle N_{k}(A)}
+
+.
+This distance is used to define what is called reachability distance:
+
+
+
+
+
+
+reachability-distance
+
+
+k
+
+
+(
+A
+,
+B
+)
+=
+max
+{
+
+k-distance
+
+(
+B
+)
+,
+d
+(
+A
+,
+B
+)
+}
+
+
+{\displaystyle {\mbox{reachability-distance}}_{k}(A,B)=\max\{{\mbox{k-distance}}(B),d(A,B)\}}
+
+
+In words, the reachability distance of an object 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ from 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ is the true distance of the two objects, but at least the 
+
+
+
+
+k-distance
+
+
+
+{\displaystyle {\mbox{k-distance}}}
+
+ of 
+
+
+
+B
+
+
+{\displaystyle B}
+
+. Objects that belong to the k nearest neighbors of 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ (the "core" of 
+
+
+
+B
+
+
+{\displaystyle B}
+
+, see DBSCAN cluster analysis) are considered to be equally distant. The reason for this distance is to get more stable results. Note that this is not a distance in the mathematical definition, since it is not symmetric. (While it is a common mistake[3] to always use the 
+
+
+
+
+k-distance
+
+
+
+{\displaystyle {\mbox{k-distance}}}
+
+, this yields a slightly different method, referred to as Simplified-LOF[3])
+The local reachability density of an object 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ is defined by
+
+
+
+
+
+lrd
+
+(
+A
+)
+:=
+1
+
+/
+
+
+(
+
+
+
+
+∑
+
+B
+∈
+
+N
+
+k
+
+
+(
+A
+)
+
+
+
+
+reachability-distance
+
+
+k
+
+
+(
+A
+,
+B
+)
+
+
+
+|
+
+
+N
+
+k
+
+
+(
+A
+)
+
+|
+
+
+
+
+)
+
+
+
+{\displaystyle {\mbox{lrd}}(A):=1/\left({\frac {\sum _{B\in N_{k}(A)}{\mbox{reachability-distance}}_{k}(A,B)}{|N_{k}(A)|}}\right)}
+
+
+which is the inverse of the average reachability distance of the object 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ from its neighbors. Note that it is not the average reachability of the neighbors from 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ (which by definition would be the 
+
+
+
+
+k-distance
+
+(
+A
+)
+
+
+{\displaystyle {\mbox{k-distance}}(A)}
+
+), but the distance at which it can be "reached" from its neighbors. With duplicate points, this value can become infinite.
+The local reachability densities are then compared with those of the neighbors using
+
+
+
+
+
+
+LOF
+
+
+k
+
+
+(
+A
+)
+:=
+
+
+
+
+∑
+
+B
+∈
+
+N
+
+k
+
+
+(
+A
+)
+
+
+
+
+
+
+lrd
+
+(
+B
+)
+
+
+
+lrd
+
+(
+A
+)
+
+
+
+
+
+
+|
+
+
+N
+
+k
+
+
+(
+A
+)
+
+|
+
+
+
+
+=
+
+
+
+
+∑
+
+B
+∈
+
+N
+
+k
+
+
+(
+A
+)
+
+
+
+lrd
+
+(
+B
+)
+
+
+
+|
+
+
+N
+
+k
+
+
+(
+A
+)
+
+|
+
+
+
+
+
+/
+
+
+lrd
+
+(
+A
+)
+
+
+{\displaystyle {\mbox{LOF}}_{k}(A):={\frac {\sum _{B\in N_{k}(A)}{\frac {{\mbox{lrd}}(B)}{{\mbox{lrd}}(A)}}}{|N_{k}(A)|}}={\frac {\sum _{B\in N_{k}(A)}{\mbox{lrd}}(B)}{|N_{k}(A)|}}/{\mbox{lrd}}(A)}
+
+
+which is the average local reachability density of the neighbors divided by the object's own local reachability density. A value of approximately 
+
+
+
+1
+
+
+{\displaystyle 1}
+
+ indicates that the object is comparable to its neighbors (and thus not an outlier). A value below 
+
+
+
+1
+
+
+{\displaystyle 1}
+
+ indicates a denser region (which would be an inlier), while values significantly larger than 
+
+
+
+1
+
+
+{\displaystyle 1}
+
+ indicate outliers.
+Due to the local approach, LOF is able to identify outliers in a data set that would not be outliers in another area of the data set. For example, a point at a "small" distance to a very dense cluster is an outlier, while a point within a sparse cluster might exhibit similar distances to its neighbors.
+While the geometric intuition of LOF is only applicable to low-dimensional vector spaces, the algorithm can be applied in any context a dissimilarity function can be defined. It has experimentally been shown to work very well in numerous setups, often outperforming the competitors, for example in network intrusion detection[4] and on processed classification benchmark data.[5]
+The LOF family of methods can be easily generalized and then applied to various other problems, such as detecting outliers in geographic data, video streams or authorship networks.[3]
+The resulting values are quotient-values and hard to interpret. A value of 1 or even less indicates a clear inlier, but there is no clear rule for when a point is an outlier. In one data set, a value of 1.1 may already be an outlier, in another dataset and parameterization (with strong local fluctuations) a value of 2 could still be an inlier. These differences can also occur within a dataset due to the locality of the method. There exist extensions of LOF that try to improve over LOF in these aspects:

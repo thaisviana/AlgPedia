@@ -1,0 +1,332 @@
+ABOUT
+The Barabási–Albert (BA) model is an algorithm for generating random scale-free networks using a preferential attachment mechanism. Scale-free networks are widely observed in natural and human-made systems, including the Internet, the world wide web, citation networks, and some social networks. The algorithm is named for its inventors Albert-László Barabási and Réka Albert.[1]
+FULL TEXT
+The Barabási–Albert (BA) model is an algorithm for generating random scale-free networks using a preferential attachment mechanism. Scale-free networks are widely observed in natural and human-made systems, including the Internet, the world wide web, citation networks, and some social networks. The algorithm is named for its inventors Albert-László Barabási and Réka Albert.[1]
+
+
+Many observed networks (at least approximately) fall into the class of scale-free networks, meaning that they have power-law (or scale-free) degree distributions, while random graph models such as the Erdős–Rényi (ER) model and the Watts–Strogatz (WS) model do not exhibit power laws. The Barabási–Albert model is one of several proposed models that generates scale-free networks. It incorporates two important general concepts: growth and preferential attachment. Both growth and preferential attachment exist widely in real networks.
+Growth means that the number of nodes in the network increases over time.
+Preferential attachment means that the more connected a node is, the more likely it is to receive new links. Nodes with higher degree have stronger ability to grab links added to the network. Intuitively, the preferential attachment can be understood if we think in terms of social networks connecting people. Here a link from A to B means that person A "knows" or "is acquainted with" person B. Heavily linked nodes represent well-known people with lots of relations. When a newcomer enters the community, s/he is more likely to become acquainted with one of those more visible people rather than with a relative unknown. The BA model was proposed by assuming that in the World Wide Web, new pages link preferentially to hubs, i.e. very well known sites such as Google, rather than to pages that hardly anyone knows. If someone selects a new page to link to by randomly choosing an existing link, the probability of selecting a particular page would be proportional to its degree. The BA model claims that this explains the preferential attachment probability rule. However, in spite of being quite a useful model, empirical evidence suggests that the mechanism in its simplest form does not apply to the World Wide Web as shown in "Technical Comment to 'Emergence of Scaling in Random Networks'".  However, later Bianconi–Barabási model addresses this issue by introducing a fitness parameter. Preferential attachment is an example of a positive feedback cycle where initially random variations (one node initially having more links or having started accumulating links earlier than another) are automatically reinforced, thus greatly magnifying differences. This is also sometimes called the Matthew effect, "the rich get richer", and in chemistry autocatalysis.
+The network begins with an initial connected network of 
+
+
+
+
+m
+
+0
+
+
+
+
+{\displaystyle m_{0}}
+
+ nodes.
+New nodes are added to the network one at a time. Each new node is connected to 
+
+
+
+m
+≤
+
+m
+
+0
+
+
+
+
+{\displaystyle m\leq m_{0}}
+
+ existing nodes with a probability that is proportional to the number of links that the existing nodes already have. Formally, the probability 
+
+
+
+
+p
+
+i
+
+
+
+
+{\displaystyle p_{i}}
+
+ that the new node is connected to node 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ is[2]
+where 
+
+
+
+
+k
+
+i
+
+
+
+
+{\displaystyle k_{i}}
+
+ is the degree of node 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ and the sum is made over all pre-existing nodes 
+
+
+
+j
+
+
+{\displaystyle j}
+
+ (i.e. the denominator results in twice the current number of edges in the network). Heavily linked nodes ("hubs") tend to quickly accumulate even more links, while nodes with only a few links are unlikely to be chosen as the destination for a new link. The new nodes have a "preference" to attach themselves to the already heavily linked nodes.
+The degree distribution resulting from the BA model is scale free, in particular, it is a power law of the form
+The h-index or Hirsch index distribution was shown to also be scale free and was proposed as the lobby index, to be used as a centrality measure[4]
+Furthermore, an analytic result for the density of nodes with h-index 1 can be obtained in the case where 
+
+
+
+
+m
+
+0
+
+
+=
+1
+
+
+{\displaystyle m_{0}=1}
+
+
+The average path length of the BA model increases approximately logarithmically with the size of the network. The actual form has a double logarithmic correction and goes as[5]
+The BA model has a systematically shorter average path length than a random graph.
+Correlations between the degrees of connected nodes develop spontaneously in the BA model because of the way the network evolves. The probability, 
+
+
+
+
+n
+
+k
+ℓ
+
+
+
+
+{\displaystyle n_{k\ell }}
+
+, of finding a link that connects a node of degree 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ to an ancestor node of degree 
+
+
+
+ℓ
+
+
+{\displaystyle \ell }
+
+ in the BA model for the special case of 
+
+
+
+m
+=
+1
+
+
+{\displaystyle m=1}
+
+ is given by
+This is certainly not the result expected if the distributions were uncorrelated, 
+
+
+
+
+n
+
+k
+ℓ
+
+
+=
+
+k
+
+−
+3
+
+
+
+ℓ
+
+−
+3
+
+
+
+
+{\displaystyle n_{k\ell }=k^{-3}\ell ^{-3}}
+
+.[2]
+For general 
+
+
+
+m
+
+
+{\displaystyle m}
+
+, the fraction of links who connect a node of degree 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ to a node of degree 
+
+
+
+ℓ
+
+
+{\displaystyle \ell }
+
+ is[6]
+Also, the nearest-neighbor degree distribution 
+
+
+
+p
+(
+ℓ
+∣
+k
+)
+
+
+{\displaystyle p(\ell \mid k)}
+
+, that is, the degree distribution of the neighbors of a node with degree 
+
+
+
+k
+
+
+{\displaystyle k}
+
+, is given by[6]
+In other words, if we select a node with degree 
+
+
+
+k
+
+
+{\displaystyle k}
+
+, and then select one of its neighbors randomly, the probability that this randomly selected neighbor will have degree 
+
+
+
+ℓ
+
+
+{\displaystyle \ell }
+
+ is given by the expression 
+
+
+
+p
+(
+ℓ
+
+|
+
+k
+)
+
+
+{\displaystyle p(\ell |k)}
+
+ above.
+While there is no analytical result for the clustering coefficient of the BA model, the empirically determined clustering coefficients are generally significantly higher for the BA model than for random networks. The clustering coefficient also scales with network size following approximately a power law
+Edit: Analytical result for the clustering coefficient of the BA model was obtained by Klemm and Eguíluz[7] and proven by Bollobás.[8] A mean-field approach to study the clustering coefficient was applied by Fronczak, Fronczak and Holyst.[9]
+This behavior is still distinct from the behavior of small-world networks where clustering is independent of system size. In the case of hierarchical networks, clustering as a function of node degree also follows a power-law,
+This result was obtained analytically by Dorogovtsev, Goltsev and Mendes.[10]
+The spectral density of BA model has a different shape from the semicircular spectral density of random graph. It has a triangle-like shape with the top lying well above the semicircle and edges decaying as a power law. [11]
+By definition, the BA model describes a time developing phenomenon and hence, besides its scale-free property, one could also look for its dynamic scaling property. In the dynamic network each node can be better characterized by generalized degree 
+
+
+
+q
+
+
+{\displaystyle q}
+
+, the product of the square root of the birth time of each node and their corresponding degree 
+
+
+
+k
+
+
+{\displaystyle k}
+
+, instead of the degree 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ alone since the time of birth matters in the BA network. We find that the generalized degree distribution 
+
+
+
+F
+(
+q
+,
+t
+)
+
+
+{\displaystyle F(q,t)}
+
+ has some non-trivial features and exhibits dynamic scaling.[12]
+Model A retains growth but does not include preferential attachment. The probability of a new node connecting to any pre-existing node is equal. The resulting degree distribution in this limit is geometric,[13] indicating that growth alone is not sufficient to produce a scale-free structure.
+Model B retains preferential attachment but eliminates growth. The model begins with a fixed number of disconnected nodes and adds links, preferentially choosing high degree nodes as link destinations. Though the degree distribution early in the simulation looks scale-free, the distribution is not stable, and it eventually becomes nearly Gaussian as the network nears saturation. So preferential attachment alone is not sufficient to produce a scale-free structure.
+The failure of models A and B to lead to a scale-free distribution indicates that growth and preferential attachment are needed simultaneously to reproduce the stationary power-law distribution observed in real networks.[2]
+The first use of a preferential attachment mechanism to explain power-law distributions appears to have been by Yule in 1925.[14] The modern master equation method, which yields a more transparent derivation, was applied to the problem by Herbert A. Simon in 1955[15] in the course of studies of the sizes of cities and other phenomena. It was first applied to the growth of networks by Derek de Solla Price in 1976[16] who was interested in the networks of citation between scientific papers. The name "preferential attachment" and the present popularity of scale-free network models is due to the work of Albert-László Barabási and Réka Albert, who rediscovered the process independently in 1999 and applied it to degree distributions on the web.[3]

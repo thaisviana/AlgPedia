@@ -1,0 +1,431 @@
+ABOUT
+In numerical analysis, Bairstow's method is an efficient algorithm for finding the roots of a real polynomial of arbitrary degree. The algorithm first appeared in the appendix of the 1920 book Applied Aerodynamics by Leonard Bairstow. The algorithm finds the roots in complex conjugate pairs using only real arithmetic.
+FULL TEXT
+In numerical analysis, Bairstow's method is an efficient algorithm for finding the roots of a real polynomial of arbitrary degree. The algorithm first appeared in the appendix of the 1920 book Applied Aerodynamics by Leonard Bairstow. The algorithm finds the roots in complex conjugate pairs using only real arithmetic.
+See root-finding algorithm for other algorithms.
+
+
+Bairstow's approach is to use Newton's method to adjust the coefficients u and v in the quadratic 
+
+
+
+
+x
+
+2
+
+
++
+u
+x
++
+v
+
+
+{\displaystyle x^{2}+ux+v}
+
+ until its roots are also roots of the polynomial being solved. The roots of the quadratic may then be determined, and the polynomial may be divided by the quadratic to eliminate those roots. This process is then iterated until the polynomial becomes quadratic or linear, and all the roots have been determined.
+Long division of the polynomial to be solved
+by 
+
+
+
+
+x
+
+2
+
+
++
+u
+x
++
+v
+
+
+{\displaystyle x^{2}+ux+v}
+
+ yields a quotient 
+
+
+
+Q
+(
+x
+)
+=
+
+∑
+
+i
+=
+0
+
+
+n
+−
+2
+
+
+
+b
+
+i
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle Q(x)=\sum _{i=0}^{n-2}b_{i}x^{i}}
+
+ and a remainder 
+
+
+
+c
+x
++
+d
+
+
+{\displaystyle cx+d}
+
+ such that
+A second division of 
+
+
+
+Q
+(
+x
+)
+
+
+{\displaystyle Q(x)}
+
+ by 
+
+
+
+
+x
+
+2
+
+
++
+u
+x
++
+v
+
+
+{\displaystyle x^{2}+ux+v}
+
+ is performed to yield a quotient 
+
+
+
+R
+(
+x
+)
+=
+
+∑
+
+i
+=
+0
+
+
+n
+−
+4
+
+
+
+f
+
+i
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle R(x)=\sum _{i=0}^{n-4}f_{i}x^{i}}
+
+ and remainder 
+
+
+
+g
+x
++
+h
+
+
+{\displaystyle gx+h}
+
+ with
+The variables 
+
+
+
+c
+,
+
+d
+,
+
+g
+,
+
+h
+
+
+{\displaystyle c,\,d,\,g,\,h}
+
+, and the 
+
+
+
+{
+
+b
+
+i
+
+
+}
+,
+
+{
+
+f
+
+i
+
+
+}
+
+
+{\displaystyle \{b_{i}\},\;\{f_{i}\}}
+
+ are functions of 
+
+
+
+u
+
+
+{\displaystyle u}
+
+ and 
+
+
+
+v
+
+
+{\displaystyle v}
+
+. They can be found recursively as follows.
+The quadratic evenly divides the polynomial when
+Values of 
+
+
+
+u
+
+
+{\displaystyle u}
+
+ and 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ for which this occurs can be discovered by picking starting values and iterating Newton's method in two dimensions
+until convergence occurs. This method to find the zeroes of polynomials can thus be easily implemented with a programming language or even a spreadsheet.
+The task is to determine a pair of roots of the polynomial
+As first quadratic polynomial one may choose the normalized polynomial formed from the leading three coefficients of f(x),
+The iteration then produces the table
+After eight iterations the method produced a quadratic factor that contains the roots −1/3 and −3 within the represented precision. The step length from the fourth iteration on demonstrates the superlinear speed of convergence.
+Bairstow's algorithm inherits the local quadratic convergence of Newton's method, except in the case of quadratic factors of multiplicity higher than 1, when convergence to that factor is linear. A particular kind of instability is observed when the polynomial has odd degree and only one real root. Quadratic factors that have a small value at this real root tend to diverge to infinity.
+The images represent pairs 
+
+
+
+(
+s
+,
+t
+)
+∈
+[
+−
+3
+,
+3
+
+]
+
+2
+
+
+
+
+{\displaystyle (s,t)\in [-3,3]^{2}}
+
+. Points in the upper half plane t > 0 correspond to a linear factor with roots 
+
+
+
+s
+±
+i
+t
+
+
+{\displaystyle s\pm it}
+
+, that is 
+
+
+
+
+x
+
+2
+
+
++
+u
+x
++
+v
+=
+(
+x
+−
+s
+
+)
+
+2
+
+
++
+
+t
+
+2
+
+
+
+
+{\displaystyle x^{2}+ux+v=(x-s)^{2}+t^{2}}
+
+. Points in the lower half plane t < 0 correspond to quadratic factors with roots 
+
+
+
+s
+±
+t
+
+
+{\displaystyle s\pm t}
+
+, that is, 
+
+
+
+
+x
+
+2
+
+
++
+u
+x
++
+v
+=
+(
+x
+−
+s
+
+)
+
+2
+
+
+−
+
+t
+
+2
+
+
+
+
+{\displaystyle x^{2}+ux+v=(x-s)^{2}-t^{2}}
+
+, so in general 
+
+
+
+(
+u
+,
+
+v
+)
+=
+(
+−
+2
+s
+,
+
+
+s
+
+2
+
+
++
+t
+
+
+|
+
+t
+
+|
+
+)
+
+
+{\displaystyle (u,\,v)=(-2s,\,s^{2}+t\,|t|)}
+
+. Points are colored according to the final point of the Bairstow iteration, black points indicate divergent behavior.
+The first image is a demonstration of the single real root case. The second indicates that one can remedy the divergent behavior by introducing an additional real root, at the cost of slowing down the speed of convergence. One can also in the case of odd degree polynomials first find a real root using Newton's method and/or an interval shrinking method, so that after deflation a better-behaved even-degree polynomial remains. The third image corresponds to the example above.

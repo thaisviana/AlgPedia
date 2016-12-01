@@ -1,0 +1,73 @@
+ABOUT
+Forward kinematics refers to the use of the kinematic equations of a robot to compute the position of the end-effector from specified values for the joint parameters.[1]
+FULL TEXT
+Forward kinematics refers to the use of the kinematic equations of a robot to compute the position of the end-effector from specified values for the joint parameters.[1]
+The kinematics equations of the robot are used in robotics, computer games, and animation. The reverse process that computes the joint parameters that achieve a specified position of the end-effector is known as inverse kinematics.
+
+
+The kinematics equations for the series chain of a robot are obtained using a rigid transformation [Z] to characterize the relative movement allowed at each joint and separate rigid transformation [X] to define the dimensions of each link. The result is a sequence of rigid transformations alternating joint and link transformations from the base of the chain to its end link, which is equated to the specified position for the end link,
+where [T] is the transformation locating the end-link. These equations are called the kinematics equations of the serial chain.[2]
+In 1955, Jacques Denavit and Richard Hartenberg introduced a convention for the definition of the joint matrices [Z] and link matrices [X] to standardize the coordinate frame for spatial linkages.[3][4] This convention positions the joint frame so that it consists of a screw displacement along the Z-axis
+and it positions the link frame so it consists of a screw displacement along the X-axis,
+Using this notation, each transformation-link goes along a serial chain robot, and can be described by the coordinate transformation,
+where θi, di, αi,i+1 and ai,i+1 are known as the Denavit-Hartenberg parameters.
+The kinematics equations of a serial chain of n links, with joint parameters θi are given by[5]
+where 
+
+
+
+
+
+
+
+i
+−
+1
+
+
+
+T
+
+i
+
+
+(
+
+θ
+
+i
+
+
+)
+
+
+{\displaystyle {}^{i-1}T_{i}(\theta _{i})}
+
+ is the transformation matrix from the frame of link 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ to link 
+
+
+
+i
+−
+1
+
+
+{\displaystyle i-1}
+
+. In robotics, these are conventionally described by Denavit–Hartenberg parameters.[6]
+The matrices associated with these operations are:
+Similarly,
+The use of the Denavit-Hartenberg convention yields the link transformation matrix, [i-1Ti] as
+known as the Denavit-Hartenberg matrix.
+The forward kinematic equations can be used as a method in 3D computer graphics for animating models.
+The essential concept of forward kinematic animation is that the positions of particular parts of the model at a specified time are calculated from the position and orientation of the object, together with any information on the joints of an articulated model. So for example if the object to be animated is an arm with the shoulder remaining at a fixed location, the location of the tip of the thumb would be calculated from the angles of the shoulder, elbow, wrist, thumb and knuckle joints. Three of these joints (the shoulder, wrist and the base of the thumb) have more than one degree of freedom, all of which must be taken into account. If the model were an entire human figure, then the location of the shoulder would also have to be calculated from other properties of the model.
+Forward kinematic animation can be distinguished from inverse kinematic animation by this means of calculation - in inverse kinematics the orientation of articulated parts is calculated from the desired position of certain points on the model. It is also distinguished from other animation systems by the fact that the motion of the model is defined directly by the animator - no account is taken of any physical laws that might be in effect on the model, such as gravity or collision with other models.

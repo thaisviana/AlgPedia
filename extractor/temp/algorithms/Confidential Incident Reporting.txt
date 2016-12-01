@@ -1,0 +1,7 @@
+ABOUT
+A confidential incident reporting system is a mechanism which allows problems in safety-critical fields such as aviation and medicine to be reported in confidence. This allows events to be reported which otherwise might not be reported through fear of blame or reprisals against the reporter. Analysis of the reported incidents can provide insight into how those events occurred, which can spur the development of measures to make the system safer.[1][2]
+FULL TEXT
+A confidential incident reporting system is a mechanism which allows problems in safety-critical fields such as aviation and medicine to be reported in confidence. This allows events to be reported which otherwise might not be reported through fear of blame or reprisals against the reporter. Analysis of the reported incidents can provide insight into how those events occurred, which can spur the development of measures to make the system safer.[1][2]
+The Aviation Safety Reporting System, created by the US aviation industry in 1976, was one of the earliest confidential reporting systems. The International Confidential Aviation Safety Systems Group is an umbrella organization for confidential reporting systems in the airline industry.[3]
+Other examples include:
+It has been suggested that medical organizations also adopt the confidential reporting model.[6] Examples of confidential reporting in medicine include CORESS, a confidential reporting system for surgery in the United Kingdom[7]

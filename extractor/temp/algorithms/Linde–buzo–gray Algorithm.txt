@@ -1,0 +1,6 @@
+ABOUT
+The Linde–Buzo–Gray algorithm (introduced by Yoseph Linde, Andrés Buzo and Robert M. Gray in 1980) is a vector quantization algorithm to derive a good codebook.
+FULL TEXT
+The Linde–Buzo–Gray algorithm (introduced by Yoseph Linde, Andrés Buzo and Robert M. Gray in 1980) is a vector quantization algorithm to derive a good codebook.
+It is similar to the k-means method in data clustering.
+At each iteration, each vector is split into two new vectors.

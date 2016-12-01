@@ -1,0 +1,684 @@
+ABOUT
+In mathematics, a square-free polynomial is a polynomial defined over a field (or more generally, a unique factorization domain) that does not have as a factor any square of a non-unit factor. In the important case of univariate polynomials over a field k, this means that, 
+
+
+
+f
+∈
+k
+[
+X
+]
+
+
+{\displaystyle f\in k[X]}
+
+ is square-free if and only if 
+
+
+
+
+b
+
+2
+
+
+∤
+f
+
+
+{\displaystyle b^{2}\nmid f}
+
+ for every polynomial 
+
+
+
+b
+∈
+k
+[
+X
+]
+
+
+{\displaystyle b\in k[X]}
+
+ of positive degree.[1] In applications in physics and engineering, a square-free polynomial is commonly called a polynomial with no repeated roots (such polynomials are called separable, but over a perfect field that is the same as square-free).
+FULL TEXT
+In mathematics, a square-free polynomial is a polynomial defined over a field (or more generally, a unique factorization domain) that does not have as a factor any square of a non-unit factor. In the important case of univariate polynomials over a field k, this means that, 
+
+
+
+f
+∈
+k
+[
+X
+]
+
+
+{\displaystyle f\in k[X]}
+
+ is square-free if and only if 
+
+
+
+
+b
+
+2
+
+
+∤
+f
+
+
+{\displaystyle b^{2}\nmid f}
+
+ for every polynomial 
+
+
+
+b
+∈
+k
+[
+X
+]
+
+
+{\displaystyle b\in k[X]}
+
+ of positive degree.[1] In applications in physics and engineering, a square-free polynomial is commonly called a polynomial with no repeated roots (such polynomials are called separable, but over a perfect field that is the same as square-free).
+A square-free decomposition or square-free factorization of a polynomial is a factorization into powers of square-free factors
+where those of the ak that are not equal to 1 are pairwise coprime square-free polynomials.[1] Every non-zero polynomial with coefficients in a field admits a square-free factorization, which is unique up to the multiplication of the factors by non zero constants. The square-free factorization is much easier to compute than the complete factorization into irreducible factors, and is thus often preferred when the complete factorization is not really needed, as for the partial fraction decomposition and the symbolic integration of rational fractions. Square-free factorization is the first step of the polynomial factorization algorithms which are implemented in computer algebra systems. Therefore, the algorithm of square-free factorization is basic in computer algebra.
+In the case of univariate polynomials over a field, any multiple factor of a polynomial introduces a nontrivial common factor of f and its formal derivative f ′, so a sufficient condition for f to be square-free is that the greatest common divisor of f and f ′ is 1. This condition is also necessary over a field of characteristic 0 or, more generally, over a perfect field, because over such a field, every irreducible polynomial is separable, and thus coprime with its derivative.
+Over a field of characteristic 0, the quotient of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ by its GCD with its derivative is the product of the 
+
+
+
+
+a
+
+i
+
+
+
+
+{\displaystyle a_{i}}
+
+ in the above square free decomposition. Over a perfect field of nonzero characteristic p, this quotient is the product of the 
+
+
+
+
+a
+
+i
+
+
+
+
+{\displaystyle a_{i}}
+
+ such that i is not a multiple of p. Further GCD computations and exact divisions allow computing the square-free factorization (see square-free factorization over a finite field). In characteristic zero, a better algorithm is known, Yun's algorithm, which is described below.[1] Its computational complexity is, at most, twice that of the GCD computation of the input polynomial and its derivative. More precisely, if 
+
+
+
+
+T
+
+n
+
+
+
+
+{\displaystyle T_{n}}
+
+ is the time needed to compute the GCD of two polynomials of degree 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ and the quotient of these polynomial by the GCD, then 
+
+
+
+2
+
+T
+
+n
+
+
+
+
+{\displaystyle 2T_{n}}
+
+ is an upper bound for the time needed to compute the square free decomposition.
+There are also known algorithms for the computation of the square-free decomposition of multivariate polynomials.[2]
+In this section we describe Yun's algorithm for the square-free decomposition of univariate polynomials over a field of characteristic 0.[1] It proceeds by a succession of GCD computations and exact divisions.
+The input is thus a non zero polynomial f, and the first step of the algorithm consists in computing the GCD a0 of f and its formal derivative f'.
+If
+is the desired factorization, we have thus
+and
+If we set 
+
+
+
+
+b
+
+1
+
+
+=
+f
+
+/
+
+
+a
+
+0
+
+
+
+
+{\displaystyle b_{1}=f/a_{0}}
+
+, 
+
+
+
+
+c
+
+1
+
+
+=
+
+f
+′
+
+
+/
+
+
+a
+
+0
+
+
+
+
+{\displaystyle c_{1}=f'/a_{0}}
+
+ and 
+
+
+
+
+d
+
+1
+
+
+=
+
+c
+
+1
+
+
+−
+
+b
+
+1
+
+′
+
+
+
+{\displaystyle d_{1}=c_{1}-b_{1}'}
+
+, we get that
+and
+Iterating this process until 
+
+
+
+
+b
+
+k
++
+1
+
+
+=
+1
+
+
+{\displaystyle b_{k+1}=1}
+
+ we find all the 
+
+
+
+
+a
+
+i
+
+
+.
+
+
+{\displaystyle a_{i}.}
+
+
+This is formalized into an algorithm as follows:
+
+
+
+
+
+a
+
+0
+
+
+:=
+gcd
+(
+f
+,
+
+f
+′
+
+)
+;
+
+
+b
+
+1
+
+
+:=
+f
+
+/
+
+
+a
+
+0
+
+
+;
+
+
+c
+
+1
+
+
+:=
+
+f
+′
+
+
+/
+
+
+a
+
+0
+
+
+;
+
+
+d
+
+1
+
+
+:=
+
+c
+
+1
+
+
+−
+
+b
+
+1
+
+′
+
+;
+
+i
+:=
+1
+;
+
+
+{\displaystyle a_{0}:=\gcd(f,f');\quad b_{1}:=f/a_{0};\quad c_{1}:=f'/a_{0};\quad d_{1}:=c_{1}-b_{1}';\quad i:=1;}
+
+
+repeat
+
+
+
+
+
+a
+
+i
+
+
+:=
+gcd
+(
+
+b
+
+i
+
+
+,
+
+d
+
+i
+
+
+)
+;
+
+
+b
+
+i
++
+1
+
+
+:=
+
+b
+
+i
+
+
+
+/
+
+
+a
+
+i
+
+
+;
+
+
+c
+
+i
++
+1
+
+
+:=
+
+d
+
+i
+
+
+
+/
+
+
+a
+
+i
+
+
+;
+
+i
+:=
+i
++
+1
+;
+
+
+d
+
+i
+
+
+:=
+
+c
+
+i
+
+
+−
+
+b
+
+i
++
+1
+
+′
+
+;
+
+
+
+{\displaystyle a_{i}:=\gcd(b_{i},d_{i});\quad b_{i+1}:=b_{i}/a_{i};\quad c_{i+1}:=d_{i}/a_{i};\quad i:=i+1;\quad d_{i}:=c_{i}-b_{i+1}';\quad }
+
+
+until 
+
+
+
+b
+=
+1
+;
+
+
+{\displaystyle b=1;}
+
+
+Output 
+
+
+
+
+a
+
+1
+
+
+,
+…
+,
+
+a
+
+i
+−
+1
+
+
+.
+
+
+{\displaystyle a_{1},\ldots ,a_{i-1}.}
+
+
+The degree of 
+
+
+
+
+c
+
+i
+
+
+
+
+{\displaystyle c_{i}}
+
+ and 
+
+
+
+
+d
+
+i
+
+
+
+
+{\displaystyle d_{i}}
+
+ is one less than the degree of 
+
+
+
+
+b
+
+i
+
+
+.
+
+
+{\displaystyle b_{i}.}
+
+ As 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is the product of the 
+
+
+
+
+b
+
+i
+
+
+,
+
+
+{\displaystyle b_{i},}
+
+ the sum of the degrees of the 
+
+
+
+
+b
+
+i
+
+
+
+
+{\displaystyle b_{i}}
+
+ is the degree of 
+
+
+
+f
+.
+
+
+{\displaystyle f.}
+
+ As the complexity of GCD computations and divisions increase more than linearly with the degree, it follows that the total running time of the "repeat" loop is less than the running time of the first line of the algorithm, and that the total running time of Yun's algorithm is upper bounded by twice the time needed to compute the GCD of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ and 
+
+
+
+
+f
+′
+
+
+
+{\displaystyle f'}
+
+ and the quotient of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ and 
+
+
+
+
+f
+′
+
+
+
+{\displaystyle f'}
+
+ by their GCD.

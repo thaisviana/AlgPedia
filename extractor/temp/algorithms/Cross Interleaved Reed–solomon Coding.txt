@@ -1,0 +1,8 @@
+ABOUT
+In the compact disc system, cross-interleaved Reed–Solomon code (CIRC) provides error detection and error correction.[1] CIRC adds to every three data bytes one redundant parity byte.
+FULL TEXT
+In the compact disc system, cross-interleaved Reed–Solomon code (CIRC) provides error detection and error correction.[1] CIRC adds to every three data bytes one redundant parity byte.
+
+
+Reed–Solomon codes are specifically useful in combating mixtures of random and burst errors. CIRC corrects error bursts up to 3,500 bits in sequence (2.4 mm in length as seen on CD surface) and compensates for error bursts up to 12,000 bits (8.5 mm) that may be caused by minor scratches.[2]
+Errors found in compact discs (CDs) are a combination of random and burst errors. In order to alleviate the strain on the error control code, some form of interleaving is required. The CD system employs two concatenated Reed–Solomon codes, which are interleaved cross-wise. Judicious positioning of the stereo channels as well as the audio samples on even or odd-number instants within the interleaving scheme provide the error concealment ability, and the multitude of interleave structures used on the CD makes it possible to correct and detect errors with a relatively low amount of redundancy.[3]

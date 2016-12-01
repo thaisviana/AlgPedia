@@ -1,0 +1,59 @@
+ABOUT
+The Kabsch algorithm, named after Wolfgang Kabsch, is a method for calculating the optimal rotation matrix that minimizes the RMSD (root mean squared deviation) between two paired sets of points. It is useful in graphics, cheminformatics to compare molecular structures, and also bioinformatics for comparing protein structures (in particular, see root-mean-square deviation (bioinformatics)).
+FULL TEXT
+The Kabsch algorithm, named after Wolfgang Kabsch, is a method for calculating the optimal rotation matrix that minimizes the RMSD (root mean squared deviation) between two paired sets of points. It is useful in graphics, cheminformatics to compare molecular structures, and also bioinformatics for comparing protein structures (in particular, see root-mean-square deviation (bioinformatics)).
+The algorithm only computes the rotation matrix, but it also requires the computation of a translation vector. When both the translation and rotation are actually performed, the algorithm is sometimes called partial Procrustes superimposition (see also orthogonal Procrustes problem).
+
+
+The algorithm starts with two sets of paired points, P and Q. Each set of points can be represented as an N×3 matrix. The first row is the coordinates of the first point, the second row is the coordinates of the second point, the Nth row is the coordinates of the Nth point.
+The algorithm works in three steps: a translation, the computation of a covariance matrix, and the computation of the optimal rotation matrix.
+Both sets of coordinates must be translated first, so that their centroid coincides with the origin of the coordinate system. This is done by subtracting from the point coordinates the coordinates of the respective centroid.
+The second step consists of calculating a cross-covariance matrix A. In matrix notation,
+or, using summation notation,
+It is possible to calculate the optimal rotation U based on the matrix formula 
+
+
+
+U
+=
+(
+
+A
+
+T
+
+
+A
+
+)
+
+1
+
+/
+
+2
+
+
+
+A
+
+−
+1
+
+
+
+
+{\displaystyle U=(A^{T}A)^{1/2}A^{-1}}
+
+ but implementing a numerical solution to this formula becomes complicated when all special cases are accounted for (for example, the case of A not having an inverse).
+If singular value decomposition (SVD) routines are available, the optimal rotation, U, can be calculated using the following simple algorithm.
+First, calculate the SVD of the covariance matrix A.
+Next, decide whether we need to correct our rotation matrix to ensure a right-handed coordinate system
+Finally, calculate our optimal rotation matrix, U, as
+Coutsias, Seok, and Dill[1] have found an equivalent method that uses quaternions. Expressing the optimal rotation matrix with a quaternion goes back to 1999: see appendix in [2] and was generalized in 2002 to probability distributions (continuous or not): see appendix A.5 in.[3]
+The algorithm was described for points in a three-dimensional space. The generalization to D dimensions is immediate.
+This SVD algorithm is described in more detail at http://cnx.org/content/m11608/latest/
+A Matlab function is available at http://www.mathworks.com/matlabcentral/fileexchange/25746-kabsch-algorithm
+A C++ implementation (and unit test) using Eigen
+A Python script is available at https://github.com/charnley/rmsd
+A free PyMol plugin easily implementing Kabsch is Cealign. VMD uses the Kabsch algorithm for its alignment.

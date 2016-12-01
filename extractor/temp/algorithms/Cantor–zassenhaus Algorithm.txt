@@ -1,0 +1,986 @@
+ABOUT
+In computational algebra, the Cantor–Zassenhaus algorithm is a well known method for factorising polynomials over finite fields (also called Galois fields).
+FULL TEXT
+In computational algebra, the Cantor–Zassenhaus algorithm is a well known method for factorising polynomials over finite fields (also called Galois fields).
+The algorithm consists mainly of exponentiation and polynomial GCD computations. It was invented by David G. Cantor and Hans Zassenhaus in 1981.
+It is arguably the dominant algorithm for solving the problem, having replaced the earlier Berlekamp's algorithm of 1967. It is currently implemented in many well-known computer algebra systems.
+
+
+The Cantor–Zassenhaus algorithm takes as input a squarefree polynomial 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ (i.e. one with no repeated factors) of degree n with coefficients in a finite field 
+
+
+
+
+
+F
+
+
+q
+
+
+
+
+{\displaystyle \mathbb {F} _{q}}
+
+ whose irreducible polynomial factors are all of equal degree (algorithms exist for efficiently factorising arbitrary polynomials into a product of polynomials satisfying these conditions, for instance, 
+
+
+
+f
+(
+x
+)
+
+/
+
+G
+c
+d
+(
+f
+(
+x
+)
+,
+
+f
+′
+
+(
+x
+)
+)
+
+
+{\displaystyle f(x)/Gcd(f(x),f'(x))}
+
+ is a squarefree polynomial with the same factors as 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+, so that the Cantor–Zassenhaus algorithm can be used to factorise arbitrary polynomials). It gives as output a polynomial 
+
+
+
+g
+(
+x
+)
+
+
+{\displaystyle g(x)}
+
+ with coefficients in the same field such that 
+
+
+
+g
+(
+x
+)
+
+
+{\displaystyle g(x)}
+
+ divides 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+. The algorithm may then be applied recursively to these and subsequent divisors, until we find the decomposition of 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ into powers of irreducible polynomials (recalling that the ring of polynomials over any field is a unique factorisation domain).
+All possible factors of 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ are contained within the factor ring 
+
+
+
+R
+=
+
+
+
+
+
+F
+
+
+q
+
+
+[
+x
+]
+
+
+⟨
+f
+(
+x
+)
+⟩
+
+
+
+
+
+{\displaystyle R={\frac {\mathbb {F} _{q}[x]}{\langle f(x)\rangle }}}
+
+. If we suppose that 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ has irreducible factors 
+
+
+
+
+p
+
+1
+
+
+(
+x
+)
+,
+
+p
+
+2
+
+
+(
+x
+)
+,
+…
+,
+
+p
+
+s
+
+
+(
+x
+)
+
+
+{\displaystyle p_{1}(x),p_{2}(x),\ldots ,p_{s}(x)}
+
+, all of degree d, then this factor ring is isomorphic to the direct product of factor rings 
+
+
+
+S
+=
+
+∏
+
+i
+=
+1
+
+
+s
+
+
+
+
+
+
+
+F
+
+
+q
+
+
+[
+x
+]
+
+
+⟨
+
+p
+
+i
+
+
+(
+x
+)
+⟩
+
+
+
+
+
+{\displaystyle S=\prod _{i=1}^{s}{\frac {\mathbb {F} _{q}[x]}{\langle p_{i}(x)\rangle }}}
+
+. The isomorphism from R to S, say 
+
+
+
+ϕ
+
+
+{\displaystyle \phi }
+
+, maps a polynomial 
+
+
+
+g
+(
+x
+)
+∈
+R
+
+
+{\displaystyle g(x)\in R}
+
+ to the s-tuple of its reductions modulo each of the 
+
+
+
+
+p
+
+i
+
+
+(
+x
+)
+
+
+{\displaystyle p_{i}(x)}
+
+, i.e. if:
+
+
+
+
+
+
+
+
+g
+(
+x
+)
+
+
+
+
+
+≡
+
+g
+
+1
+
+
+(
+x
+)
+
+
+(
+mod
+
+
+p
+
+1
+
+
+(
+x
+)
+)
+
+,
+
+
+
+
+g
+(
+x
+)
+
+
+
+
+
+≡
+
+g
+
+2
+
+
+(
+x
+)
+
+
+(
+mod
+
+
+p
+
+2
+
+
+(
+x
+)
+)
+
+,
+
+
+
+
+
+
+
+ 
+ 
+⋮
+
+
+
+
+g
+(
+x
+)
+
+
+
+
+
+≡
+
+g
+
+s
+
+
+(
+x
+)
+
+
+(
+mod
+
+
+p
+
+s
+
+
+(
+x
+)
+)
+
+,
+
+
+
+
+
+
+{\displaystyle {\begin{aligned}g(x)&{}\equiv g_{1}(x){\pmod {p_{1}(x)}},\\g(x)&{}\equiv g_{2}(x){\pmod {p_{2}(x)}},\\&{}\ \ \vdots \\g(x)&{}\equiv g_{s}(x){\pmod {p_{s}(x)}},\end{aligned}}}
+
+
+then 
+
+
+
+ϕ
+(
+g
+(
+x
+)
++
+⟨
+f
+(
+x
+)
+⟩
+)
+=
+(
+
+g
+
+1
+
+
+(
+x
+)
++
+⟨
+
+p
+
+1
+
+
+(
+x
+)
+⟩
+,
+…
+,
+
+g
+
+s
+
+
+(
+x
+)
++
+⟨
+
+p
+
+s
+
+
+(
+x
+)
+⟩
+)
+
+
+{\displaystyle \phi (g(x)+\langle f(x)\rangle )=(g_{1}(x)+\langle p_{1}(x)\rangle ,\ldots ,g_{s}(x)+\langle p_{s}(x)\rangle )}
+
+. It is important to note the following at this point, as it shall be of critical importance later in the algorithm: Since the 
+
+
+
+
+p
+
+i
+
+
+(
+x
+)
+
+
+{\displaystyle p_{i}(x)}
+
+ are each irreducible, each of the factor rings in this direct sum is in fact a field. These fields each have degree 
+
+
+
+
+q
+
+d
+
+
+
+
+{\displaystyle q^{d}}
+
+.
+The core result underlying the Cantor–Zassenhaus algorithm is the following: If 
+
+
+
+a
+(
+x
+)
+∈
+R
+
+
+{\displaystyle a(x)\in R}
+
+ is a polynomial satisfying:
+where 
+
+
+
+
+a
+
+i
+
+
+(
+x
+)
+
+
+{\displaystyle a_{i}(x)}
+
+ is the reduction of 
+
+
+
+a
+(
+x
+)
+
+
+{\displaystyle a(x)}
+
+ modulo 
+
+
+
+
+p
+
+i
+
+
+(
+x
+)
+
+
+{\displaystyle p_{i}(x)}
+
+ as before, and if any two of the following three sets is non-empty:
+then there exist the following non-trivial factors of 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+:
+The Cantor–Zassenhaus algorithm computes polynomials of the same type as 
+
+
+
+a
+(
+x
+)
+
+
+{\displaystyle a(x)}
+
+ above using the isomorphism discussed in the Background section. It proceeds as follows, in the case where the field 
+
+
+
+
+
+F
+
+
+q
+
+
+
+
+{\displaystyle \mathbb {F} _{q}}
+
+ is of odd-characteristic. The process can be generalised to characteristic 2 fields in a fairly straightforward way: Select a random polynomial 
+
+
+
+b
+(
+x
+)
+∈
+R
+
+
+{\displaystyle b(x)\in R}
+
+ such that 
+
+
+
+b
+(
+x
+)
+≠
+0
+,
+±
+1
+
+
+{\displaystyle b(x)\neq 0,\pm 1}
+
+. Set 
+
+
+
+m
+=
+(
+
+q
+
+d
+
+
+−
+1
+)
+
+/
+
+2
+
+
+{\displaystyle m=(q^{d}-1)/2}
+
+ and compute 
+
+
+
+b
+(
+x
+
+)
+
+m
+
+
+
+
+{\displaystyle b(x)^{m}}
+
+. Since 
+
+
+
+ϕ
+
+
+{\displaystyle \phi }
+
+ is an isomorphism, we have (using our now-established notation):
+Now, each 
+
+
+
+
+b
+
+i
+
+
+(
+x
+)
++
+⟨
+
+p
+
+i
+
+
+(
+x
+)
+⟩
+
+
+{\displaystyle b_{i}(x)+\langle p_{i}(x)\rangle }
+
+ is an element of a field of order 
+
+
+
+
+q
+
+d
+
+
+
+
+{\displaystyle q^{d}}
+
+, as noted earlier. The multiplicative subgroup of this field has order 
+
+
+
+
+q
+
+d
+
+
+−
+1
+
+
+{\displaystyle q^{d}-1}
+
+ and so, unless 
+
+
+
+
+b
+
+i
+
+
+(
+x
+)
+=
+0
+
+
+{\displaystyle b_{i}(x)=0}
+
+, we have 
+
+
+
+
+b
+
+i
+
+
+(
+x
+
+)
+
+
+q
+
+d
+
+
+−
+1
+
+
+=
+1
+
+
+{\displaystyle b_{i}(x)^{q^{d}-1}=1}
+
+ for each i and hence 
+
+
+
+
+b
+
+i
+
+
+(
+x
+
+)
+
+m
+
+
+=
+±
+1
+
+
+{\displaystyle b_{i}(x)^{m}=\pm 1}
+
+ for each i. If 
+
+
+
+
+b
+
+i
+
+
+(
+x
+)
+=
+0
+
+
+{\displaystyle b_{i}(x)=0}
+
+, then of course 
+
+
+
+
+b
+
+i
+
+
+(
+x
+
+)
+
+m
+
+
+=
+0
+
+
+{\displaystyle b_{i}(x)^{m}=0}
+
+. Hence 
+
+
+
+b
+(
+x
+
+)
+
+m
+
+
+
+
+{\displaystyle b(x)^{m}}
+
+ is a polynomial of the same type as 
+
+
+
+a
+(
+x
+)
+
+
+{\displaystyle a(x)}
+
+ above. Further, since 
+
+
+
+b
+(
+x
+)
+≠
+0
+,
+±
+1
+
+
+{\displaystyle b(x)\neq 0,\pm 1}
+
+, at least two of the sets 
+
+
+
+A
+,
+B
+
+
+{\displaystyle A,B}
+
+ and C are non-empty and by computing the above GCDs we may obtain non-trivial factors. Since the ring of polynomials over a field is an Euclidean domain, we may compute these GCDs using the Euclidean algorithm.
+One important application of the Cantor–Zassenhaus algorithm is in computing discrete logarithms over finite fields of prime-power order. Computing discrete logarithms is an important problem in public key cryptography. For a field of prime-power order, the fastest known method is the index calculus method, which involves the factorisation of field elements. If we represent the prime-power order field in the usual way – that is, as polynomials over the prime order base field, reduced modulo an irreducible polynomial of appropriate degree – then this is simply polynomial factorisation, as provided by the Cantor–Zassenhaus algorithm.
+The Cantor–Zassenhaus algorithm may be accessed in the PARI/GP package using the factorcantor command.

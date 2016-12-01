@@ -1,0 +1,252 @@
+ABOUT
+The Robinson–Foulds metric is a way to measure the distance between unrooted phylogenetic trees. It is defined as (A + B) where A is the number of partitions of data implied by the first tree but not the second tree and B is the number of partitions of data implied by the second tree but not the first tree. It is also known as the symmetric difference metric.
+FULL TEXT
+The Robinson–Foulds metric is a way to measure the distance between unrooted phylogenetic trees. It is defined as (A + B) where A is the number of partitions of data implied by the first tree but not the second tree and B is the number of partitions of data implied by the second tree but not the first tree. It is also known as the symmetric difference metric.
+
+
+Given two unrooted trees of nodes and a set of labels (i.e., taxa) for each node (which could be empty, but only nodes with degree greater than or equal to three can be labeled by an empty set) the Robinson–Foulds metric finds the number of 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ and 
+
+
+
+
+α
+
+−
+1
+
+
+
+
+{\displaystyle \alpha ^{-1}}
+
+ operations to convert one into the other. The number of operations defines their distance. The authors define two trees to be the same if they are isomorphic and the isomorphism preserves the labeling. The construction of the proof is based on a function called 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+, which contracts an edge (combining the nodes, creating a union of their sets). Conversely, 
+
+
+
+
+α
+
+−
+1
+
+
+
+
+{\displaystyle \alpha ^{-1}}
+
+ expands an edge (decontraction), where the set can be split in any fashion.
+The 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ function removes all edges from 
+
+
+
+
+T
+
+1
+
+
+
+
+{\displaystyle T_{1}}
+
+ that are not in 
+
+
+
+
+T
+
+2
+
+
+
+
+{\displaystyle T_{2}}
+
+, creating 
+
+
+
+
+T
+
+1
+
+
+∧
+
+T
+
+2
+
+
+
+
+{\displaystyle T_{1}\wedge T_{2}}
+
+, and then 
+
+
+
+
+α
+
+−
+1
+
+
+
+
+{\displaystyle \alpha ^{-1}}
+
+ is used to create edges in 
+
+
+
+
+T
+
+1
+
+
+∧
+
+T
+
+2
+
+
+
+
+{\displaystyle T_{1}\wedge T_{2}}
+
+ to build 
+
+
+
+
+T
+
+2
+
+
+
+
+{\displaystyle T_{2}}
+
+. The number of operations in each of these procedures is equivalent to the number of edges in 
+
+
+
+
+T
+
+1
+
+
+
+
+{\displaystyle T_{1}}
+
+ that are not in 
+
+
+
+
+T
+
+2
+
+
+
+
+{\displaystyle T_{2}}
+
+ plus the number of edges in 
+
+
+
+
+T
+
+2
+
+
+
+
+{\displaystyle T_{2}}
+
+ that are not in 
+
+
+
+
+T
+
+1
+
+
+
+
+{\displaystyle T_{1}}
+
+. The sum of the operations is equivalent to a transformation from 
+
+
+
+
+T
+
+1
+
+
+
+
+{\displaystyle T_{1}}
+
+ to 
+
+
+
+
+T
+
+2
+
+
+
+
+{\displaystyle T_{2}}
+
+, or vice versa.
+In their 1981 paper Robinson and Foulds proved that the distance is in fact a metric.
+In 1985 Day gave an algorithm based on perfect hashing that computes this distance that has only a linear complexity in the number of nodes in the trees. A randomized algorithm that uses hash tables that are not necessarily perfect has been shown to approximate the Robinson-Foulds distance with a bounded error in sublinear time.
+In phylogenetics, the metric is often used to compute a distance between two trees. The treedist program in the PHYLIP suite offers this function, as does the RAxML_standard package and the DendroPy Python library (under the name "symmetric difference metric"). For comparing groups of trees, the fastest implementations include HashRF and MrsRF.
+The Robinson–Foulds metric has also been used in quantitative comparative linguistics to compute distances between trees that represent how languages are related to each other.

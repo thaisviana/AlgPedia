@@ -1,0 +1,82 @@
+ABOUT
+In queueing theory, a discipline within the mathematical theory of probability, Buzen's algorithm (or convolution algorithm) is an algorithm for calculating the normalization constant G(N) in the Gordon–Newell theorem. This method was first proposed by Jeffrey P. Buzen in 1973.[1] Computing G(N) is required to compute the stationary probability distribution of a closed queueing network.[2]
+FULL TEXT
+In queueing theory, a discipline within the mathematical theory of probability, Buzen's algorithm (or convolution algorithm) is an algorithm for calculating the normalization constant G(N) in the Gordon–Newell theorem. This method was first proposed by Jeffrey P. Buzen in 1973.[1] Computing G(N) is required to compute the stationary probability distribution of a closed queueing network.[2]
+Performing a naïve computation of the normalising constant requires enumeration of all states. For a system with N jobs and M states there are 
+
+
+
+
+
+
+
+(
+
+
+
+N
++
+M
+−
+1
+
+
+M
+−
+1
+
+
+
+)
+
+
+
+
+
+
+{\displaystyle {\tbinom {N+M-1}{M-1}}}
+
+ states. Buzen's algorithm "computes G(1), G(2), ..., G(N) using a total of NM multiplications and NM additions." This is a significant improvement and allows for computations to be performed with much larger networks.[1]
+
+
+Consider a closed queueing network with M service facilities and N circulating customers. Write ni(t) for the number of customers present at the ith facility at time t, such that 
+
+
+
+
+
+∑
+
+i
+=
+1
+
+
+M
+
+
+
+n
+
+i
+
+
+=
+N
+
+
+
+{\displaystyle \scriptstyle \sum _{i=1}^{M}n_{i}=N}
+
+. We assume that the service time for a customer at the ith facility is given by an exponentially distributed random variable with parameter μi and that after completing service at the ith facility a customer will proceed to the jth facility with probability pij.[2]
+It follows from the Gordon–Newell theorem that the equilibrium distribution of this model is
+where the Xi are found by solving
+and G(N) is a normalizing constant chosen that the above probabilities sum to 1.[1]
+Buzen's algorithm is an efficient method to compute G(N).[1]
+Write g(N,M) for the normalising constant of a closed queueing network with N circulating customers and M service stations. The algorithm starts by noting solving the above relations for the Xi and then setting starting conditions[1]
+The recurrence relation[1]
+is used to compute a grid of values. The sought for value G(N) = g(N,M).[1]
+The coefficients g(n,m), computed using Buzen's algorithm, can also be used to compute marginal distributions and expected number of customers at each node.
+the expected number of customers at facility i by
+It will be assumed that the Xm have been computed by solving the relevant equations and are available as an input to our routine. Although g is in principle a two dimensional matrix, it can be computed in a column by column fashion starting from the leftmost column. The routine uses a single column vector C to represent the current column of g.
+At completion, C contains the desired values G(0), G(1) to G(N). [1]

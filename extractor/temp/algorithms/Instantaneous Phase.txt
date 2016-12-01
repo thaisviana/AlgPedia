@@ -1,0 +1,21 @@
+ABOUT
+Instantaneous phase and instantaneous frequency are important concepts in signal processing that occur in the context of the representation and analysis of time-varying functions. The instantaneous phase (or "local phase" or simply "phase") of a complex-valued function s(t), is the real-valued function:
+FULL TEXT
+Instantaneous phase and instantaneous frequency are important concepts in signal processing that occur in the context of the representation and analysis of time-varying functions. The instantaneous phase (or "local phase" or simply "phase") of a complex-valued function s(t), is the real-valued function:
+where arg is the argument function.
+And for a real-valued function s(t), it is determined from the function's analytic representation, sa(t):[1]
+When φ(t) is constrained to its principal value, either the interval (-π, π] or [0, 2π), it is called wrapped phase. Otherwise it is called unwrapped phase, which is a continuous function of argument t, assuming sa(t) is a continuous function of t. Unless otherwise indicated, the continuous form should be inferred.
+
+
+where ω > 0.
+In this simple sinusoidal example, the constant θ is also commonly referred to as phase or phase offset. φ(t) is a function of time; θ is not. In the next example, we also see that the phase offset of a real-valued sinusoid is ambiguous unless a reference (sin or cos) is specified. φ(t) is unambiguously defined.
+where ω > 0.
+In both examples the local maxima of s(t) correspond to φ(t) = 2πN for integer values of N. This has applications in the field of computer vision.
+Instantaneous angular frequency is defined as:
+and instantaneous (ordinary) frequency is defined as:
+The inverse operation is:
+For discrete-time functions, this can be written as a recursion:
+Discontinuities can then be removed by adding 2π whenever Δφ(nT) ≤ −π, and subtracting 2π whenever Δφ(nT) > π. That allows φ(nT) to accumulate without limit and produces an unwrapped instantaneous phase. An equivalent formulation that replaces the modulo 2π operation with a complex multiplication is:
+where the asterisk denotes complex conjugate.
+In some applications, such as averaging the values of phase at several moments of time, it may be useful to convert each value to a complex number, or vector representation:[2]
+This representation is similar to the wrapped phase representation in that it does not distinguish between multiples of 2π in the phase, but similar to the unwrapped phase representation since it is continuous. A vector-average phase can be obtained as the arg of the sum of the complex numbers without concern about wrap-around.

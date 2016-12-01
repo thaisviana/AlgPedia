@@ -1,0 +1,1208 @@
+ABOUT
+Pseudo-spectral methods,[1] also known as discrete variable representation (DVR) methods, are a class of numerical methods used in applied mathematics and scientific computing for the solution of partial differential equations. They are closely related to spectral methods, but complement the basis by an additional pseudo-spectral basis, which allows to represent functions on a quadrature grid. This simplifies the evaluation of certain operators, and can considerably speed up the calculation when using fast algorithms such as the fast Fourier transform.
+FULL TEXT
+Pseudo-spectral methods,[1] also known as discrete variable representation (DVR) methods, are a class of numerical methods used in applied mathematics and scientific computing for the solution of partial differential equations. They are closely related to spectral methods, but complement the basis by an additional pseudo-spectral basis, which allows to represent functions on a quadrature grid. This simplifies the evaluation of certain operators, and can considerably speed up the calculation when using fast algorithms such as the fast Fourier transform.
+
+
+Take the initial-value problem
+with periodic conditions 
+
+
+
+ψ
+(
+x
++
+2
+π
+,
+t
+)
+=
+ψ
+(
+x
+,
+t
+)
+
+
+{\displaystyle \psi (x+2\pi ,t)=\psi (x,t)}
+
+. This specific example is the Schrödinger equation for a particle in a potential 
+
+
+
+V
+(
+x
+)
+
+
+{\displaystyle V(x)}
+
+, but the structure is more general. In many practical partial differential equations, one has a term that involves derivatives (such as a kinetic energy contributions), and a multiplication with a function (for example, a potential).
+In the spectral method, the solution 
+
+
+
+ψ
+
+
+{\displaystyle \psi }
+
+ is expanded in a suitable set of basis functions, for example plane waves,
+Insertion and equating identical coefficients yields a set of ordinary differential equations for the coefficients,
+where the elements 
+
+
+
+
+V
+
+n
+k
+
+
+
+
+{\displaystyle V_{nk}}
+
+ are calculated through the explicit Fourier-transform
+The solution would then be obtained by truncating the expansion to 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ basis functions, and finding a solution for the 
+
+
+
+
+c
+
+n
+
+
+(
+t
+)
+
+
+{\displaystyle c_{n}(t)}
+
+. In general, this is done by numerical methods, such as Runge–Kutta methods. For the numerical solutions, the right-hand side of the ordinary differential equation has to be evaluated repeatedly at different time steps. At this point, the spectral method has a major problem with the potential term 
+
+
+
+V
+(
+x
+)
+
+
+{\displaystyle V(x)}
+
+.
+In the spectral representation, the multiplication with the function 
+
+
+
+V
+(
+x
+)
+
+
+{\displaystyle V(x)}
+
+ transforms into a vector-matrix multiplication, which scales as 
+
+
+
+
+N
+
+2
+
+
+
+
+{\displaystyle N^{2}}
+
+. Also, the matrix elements 
+
+
+
+
+V
+
+n
+k
+
+
+
+
+{\displaystyle V_{nk}}
+
+ need to be evaluated explicitly before the differential equation for the coefficients can be solved, which requires an additional step.
+In the pseudo-spectral method, this term is evaluated differently. Given the coefficients 
+
+
+
+
+c
+
+n
+
+
+(
+t
+)
+
+
+{\displaystyle c_{n}(t)}
+
+, an inverse discrete Fourier transform yields the value of the function 
+
+
+
+ψ
+
+
+{\displaystyle \psi }
+
+ at discrete grid points 
+
+
+
+
+x
+
+j
+
+
+=
+2
+π
+j
+
+/
+
+N
+
+
+{\displaystyle x_{j}=2\pi j/N}
+
+. At these grid points, the function is then multiplied, 
+
+
+
+
+ψ
+′
+
+(
+
+x
+
+i
+
+
+,
+t
+)
+=
+V
+(
+
+x
+
+i
+
+
+)
+ψ
+(
+
+x
+
+i
+
+
+,
+t
+)
+
+
+{\displaystyle \psi '(x_{i},t)=V(x_{i})\psi (x_{i},t)}
+
+, and the result Fourier-transformed back. This yields a new set of coefficients 
+
+
+
+
+c
+
+n
+
+′
+
+(
+t
+)
+
+
+{\displaystyle c'_{n}(t)}
+
+ that are used instead of the matrix product 
+
+
+
+
+∑
+
+k
+
+
+
+V
+
+n
+k
+
+
+
+c
+
+k
+
+
+(
+t
+)
+
+
+{\displaystyle \sum _{k}V_{nk}c_{k}(t)}
+
+.
+It can be shown that both methods have similar accuracy. However, the pseudo-spectral method allows the use of a fast Fourier transform, which scales as 
+
+
+
+O
+(
+N
+ln
+⁡
+N
+)
+
+
+{\displaystyle O(N\ln N)}
+
+, and is therefore significantly more efficient than the matrix multiplication. Also, the function 
+
+
+
+V
+(
+x
+)
+
+
+{\displaystyle V(x)}
+
+ can be used directly without evaluating any additional integrals.
+In a more abstract way, the pseudo-spectral method deals with the multiplication of two functions 
+
+
+
+V
+(
+x
+)
+
+
+{\displaystyle V(x)}
+
+ and 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ as part of a partial differential equation. To simplify the notation, the time-dependence is dropped. Conceptually, it consists of three steps:
+
+The functions 
+
+
+
+f
+,
+
+
+
+f
+~
+
+
+
+
+
+{\displaystyle f,{\tilde {f}}}
+
+ can be expanded in a finite basis 
+
+
+
+{
+
+ϕ
+
+n
+
+
+
+}
+
+n
+=
+0
+,
+…
+,
+N
+
+
+
+
+{\displaystyle \{\phi _{n}\}_{n=0,\ldots ,N}}
+
+ as
+For simplicity, let the basis be orthogonal and normalized, 
+
+
+
+⟨
+
+ϕ
+
+n
+
+
+,
+
+ϕ
+
+m
+
+
+⟩
+=
+
+δ
+
+n
+m
+
+
+
+
+{\displaystyle \langle \phi _{n},\phi _{m}\rangle =\delta _{nm}}
+
+ using the inner product 
+
+
+
+⟨
+f
+,
+g
+⟩
+=
+
+∫
+
+a
+
+
+b
+
+
+f
+(
+x
+)
+
+
+
+g
+(
+x
+)
+
+¯
+
+
+d
+x
+
+
+{\displaystyle \langle f,g\rangle =\int _{a}^{b}f(x){\overline {g(x)}}dx}
+
+ with appropriate boundaries 
+
+
+
+a
+,
+b
+
+
+{\displaystyle a,b}
+
+. The coefficients are then obtained by
+A bit of calculus yields then
+with 
+
+
+
+
+V
+
+n
+m
+
+
+=
+⟨
+V
+
+ϕ
+
+m
+
+
+,
+
+ϕ
+
+n
+
+
+⟩
+
+
+{\displaystyle V_{nm}=\langle V\phi _{m},\phi _{n}\rangle }
+
+. This forms the basis of the spectral method. To distinguish the basis of the 
+
+
+
+
+ϕ
+
+n
+
+
+
+
+{\displaystyle \phi _{n}}
+
+ from the quadrature basis, the expansion is sometimes called Finite Basis Representation (FBR).
+
+For a given basis 
+
+
+
+{
+
+ϕ
+
+n
+
+
+}
+
+
+{\displaystyle \{\phi _{n}\}}
+
+ and number of 
+
+
+
+N
++
+1
+
+
+{\displaystyle N+1}
+
+ basis functions, one can try to find a quadrature, i.e., a set of 
+
+
+
+N
++
+1
+
+
+{\displaystyle N+1}
+
+ points and weights such that
+Special examples are the Gaussian quadrature for polynomials and the Discrete Fourier Transform for plane waves. It should be stressed that the grid points and weights, 
+
+
+
+
+x
+
+i
+
+
+,
+
+w
+
+i
+
+
+
+
+{\displaystyle x_{i},w_{i}}
+
+ are a function of the basis and the number 
+
+
+
+N
+
+
+{\displaystyle N}
+
+.
+The quadrature allows an alternative numerical representation of the function 
+
+
+
+f
+(
+x
+)
+,
+
+
+
+f
+~
+
+
+
+(
+x
+)
+
+
+{\displaystyle f(x),{\tilde {f}}(x)}
+
+ through their value at the grid points. This representation is sometimes denoted Discrete Variable Representation (DVR), and is completely equivalent to the expansion in the basis.
+
+The multiplication with the function 
+
+
+
+V
+(
+x
+)
+
+
+{\displaystyle V(x)}
+
+ is then done at each grid point,
+This generally introduces an additional approximation. To see this, we can calculate one of the coefficients 
+
+
+
+
+
+
+
+c
+~
+
+
+
+
+n
+
+
+
+
+{\displaystyle {\tilde {c}}_{n}}
+
+:
+However, using the spectral method, the same coefficient would be 
+
+
+
+
+
+
+
+c
+~
+
+
+
+
+n
+
+
+=
+⟨
+V
+f
+,
+
+ϕ
+
+n
+
+
+⟩
+
+
+{\displaystyle {\tilde {c}}_{n}=\langle Vf,\phi _{n}\rangle }
+
+. The pseudo-spectral method thus introduces the additional approximation
+If the product 
+
+
+
+V
+f
+
+
+{\displaystyle Vf}
+
+ can be represented with the given finite set of basis functions, the above equation is exact due to the chosen quadrature.
+If periodic boundary conditions with period 
+
+
+
+[
+0
+,
+L
+]
+
+
+{\displaystyle [0,L]}
+
+ are imposed on the system, the basis functions can be generated by plane waves,
+with 
+
+
+
+
+k
+
+n
+
+
+=
+(
+−
+1
+
+)
+
+n
+
+
+⌈
+n
+
+/
+
+2
+⌉
+2
+π
+
+/
+
+L
+
+
+{\displaystyle k_{n}=(-1)^{n}\lceil n/2\rceil 2\pi /L}
+
+, where 
+
+
+
+⌈
+⋅
+⌉
+
+
+{\displaystyle \lceil \cdot \rceil }
+
+ is the ceiling function.
+The quadrature for a cut-off at 
+
+
+
+
+n
+
+max
+
+
+=
+N
+
+
+{\displaystyle n_{\text{max}}=N}
+
+ is given by the discrete Fourier transformation. The grid points are equally spaced, 
+
+
+
+
+x
+
+i
+
+
+=
+i
+Δ
+x
+
+
+{\displaystyle x_{i}=i\Delta x}
+
+ with spacing 
+
+
+
+Δ
+x
+=
+L
+
+/
+
+(
+N
++
+1
+)
+
+
+{\displaystyle \Delta x=L/(N+1)}
+
+, and the constant weights are 
+
+
+
+
+w
+
+i
+
+
+=
+Δ
+x
+
+
+{\displaystyle w_{i}=\Delta x}
+
+.
+For the discussion of the error, note that the product of two plane waves is again a plane wave, 
+
+
+
+
+ϕ
+
+a
+
+
++
+
+ϕ
+
+b
+
+
+=
+
+ϕ
+
+c
+
+
+
+
+{\displaystyle \phi _{a}+\phi _{b}=\phi _{c}}
+
+ with 
+
+
+
+c
+≤
+a
++
+b
+
+
+{\displaystyle c\leq a+b}
+
+. Thus, qualitatively, if the functions 
+
+
+
+f
+(
+x
+)
+,
+V
+(
+x
+)
+
+
+{\displaystyle f(x),V(x)}
+
+ can be represented sufficiently accurately with 
+
+
+
+
+N
+
+f
+
+
+,
+
+N
+
+V
+
+
+
+
+{\displaystyle N_{f},N_{V}}
+
+ basis functions, the pseudo-spectral method gives accurate results if 
+
+
+
+
+N
+
+f
+
+
++
+
+N
+
+V
+
+
+
+
+{\displaystyle N_{f}+N_{V}}
+
+ basis functions are used.
+An expansion in plane waves often has a poor quality and needs many basis functions to converge. However, the transformation between the basis expansion and the grid representation can be done using a Fast Fourier transform, which scales favorably as 
+
+
+
+N
+ln
+⁡
+N
+
+
+{\displaystyle N\ln N}
+
+. As a consequence, plane waves are one of the most common expansion that is encountered with pseudo-spectral methods.
+Another common expansion is into classical polynomials. Here, the Gaussian quadrature is used, which states that one can always find weights 
+
+
+
+
+w
+
+i
+
+
+
+
+{\displaystyle w_{i}}
+
+ and points 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+ such that
+holds for any polynomial 
+
+
+
+p
+(
+x
+)
+
+
+{\displaystyle p(x)}
+
+ of degree 
+
+
+
+2
+N
++
+1
+
+
+{\displaystyle 2N+1}
+
+ or less. Typically, the weight function 
+
+
+
+w
+(
+x
+)
+
+
+{\displaystyle w(x)}
+
+ and ranges 
+
+
+
+a
+,
+b
+
+
+{\displaystyle a,b}
+
+ are chosen for a specific problem, and leads to one of the different forms of the quadrature. To apply this to the pseudo-spectral method, we choose basis functions 
+
+
+
+
+ϕ
+
+n
+
+
+(
+x
+)
+=
+
+
+w
+(
+x
+)
+
+
+
+P
+
+n
+
+
+(
+x
+)
+
+
+{\displaystyle \phi _{n}(x)={\sqrt {w(x)}}P_{n}(x)}
+
+, with 
+
+
+
+
+P
+
+n
+
+
+
+
+{\displaystyle P_{n}}
+
+ being a polynomial of degree 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ with the property
+Under these conditions, the 
+
+
+
+
+ϕ
+
+n
+
+
+
+
+{\displaystyle \phi _{n}}
+
+ form an orthonormal basis with respect to the scalar product 
+
+
+
+⟨
+f
+,
+g
+⟩
+=
+
+∫
+
+a
+
+
+b
+
+
+f
+(
+x
+)
+
+
+
+g
+(
+x
+)
+
+¯
+
+
+d
+x
+
+
+{\displaystyle \langle f,g\rangle =\int _{a}^{b}f(x){\overline {g(x)}}dx}
+
+. This basis, together with the quadrature points can then be used for the pseudo-spectral method.
+For the discussion of the error, note that if 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is well represented by 
+
+
+
+
+N
+
+f
+
+
+
+
+{\displaystyle N_{f}}
+
+ basis functions and 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ is well represented by a polynomial of degree 
+
+
+
+
+N
+
+V
+
+
+
+
+{\displaystyle N_{V}}
+
+, their product can be expanded in the first 
+
+
+
+
+N
+
+f
+
+
++
+
+N
+
+V
+
+
+
+
+{\displaystyle N_{f}+N_{V}}
+
+ basis functions, and the pseudo-spectral method will give accurate results for that many basis functions.
+Such polynomials occur naturally in several standard problems. For example, the quantum harmonic oscillator is ideally expanded in Hermite polynomials, and Jacobi-polynomials can be used to define the associated Legendre functions typically appearing in rotational problems.

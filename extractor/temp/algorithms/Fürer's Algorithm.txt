@@ -1,0 +1,210 @@
+ABOUT
+Fürer's algorithm is an integer multiplication algorithm for very large numbers possessing a very low asymptotic complexity which can be also optimized by using the inverse Ackermann function instead of the iterated logarithm. It was created in 2007 by Swiss mathematician Martin Fürer of Pennsylvania State University[1] as an asymptotically faster (when analysed on a multitape Turing machine) algorithm than its predecessor, the Schönhage–Strassen algorithm published in 1971.[2]
+FULL TEXT
+Fürer's algorithm is an integer multiplication algorithm for very large numbers possessing a very low asymptotic complexity which can be also optimized by using the inverse Ackermann function instead of the iterated logarithm. It was created in 2007 by Swiss mathematician Martin Fürer of Pennsylvania State University[1] as an asymptotically faster (when analysed on a multitape Turing machine) algorithm than its predecessor, the Schönhage–Strassen algorithm published in 1971.[2]
+The predecessor to the Fürer algorithm, the Schönhage–Strassen algorithm, used fast Fourier transforms to compute integer products in time 
+
+
+
+O
+(
+n
+log
+⁡
+n
+log
+⁡
+log
+⁡
+n
+)
+
+
+{\displaystyle O(n\log n\log \log n)}
+
+ (in big O notation) and its authors, Arnold Schönhage and Volker Strassen, also conjectured a lower bound for the problem of 
+
+
+
+Ω
+(
+n
+log
+⁡
+n
+)
+
+
+{\displaystyle \Omega (n\log n)}
+
+. Here, 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ denotes the total number of bits in the two input numbers. Fürer's algorithm reduces the gap between these two bounds: it can be used to multiply binary integers of length 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ in time 
+
+
+
+n
+log
+⁡
+n
+
+
+2
+
+O
+(
+
+log
+
+∗
+
+
+⁡
+n
+)
+
+
+
+
+{\displaystyle n\log n\,2^{O(\log ^{*}n)}}
+
+ (or by a circuit with that many logic gates), where log*n represents the iterated logarithm operation. However, the difference between the 
+
+
+
+log
+⁡
+log
+⁡
+n
+
+
+{\displaystyle \log \log n}
+
+ and 
+
+
+
+
+2
+
+
+log
+
+∗
+
+
+⁡
+n
+
+
+
+
+{\displaystyle 2^{\log ^{*}n}}
+
+ factors in the time bounds of the Schönhage–Strassen algorithm and the Fürer algorithm for realistic values of 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ is very small.[1]
+In 2008, Anindya De, Chandan Saha, Piyush Kurur and Ramprasad Saptharishi[3] gave a similar algorithm that relies on modular arithmetic instead of complex arithmetic to achieve the same running time.
+In 2014, David Harvey, Joris van der Hoeven, and Grégoire Lecerf[4] showed that an optimized version of Fürer's algorithm achieves a running time of 
+
+
+
+O
+(
+n
+log
+⁡
+n
+
+2
+
+3
+
+log
+
+∗
+
+
+⁡
+n
+
+
+)
+
+
+{\displaystyle O(n\log n2^{3\log ^{*}n})}
+
+, making the implied constant in the 
+
+
+
+O
+(
+
+log
+
+∗
+
+
+⁡
+n
+)
+
+
+{\displaystyle O(\log ^{*}n)}
+
+ exponent explicit. They also gave a modification to Fürer's algorithm that achieves 
+
+
+
+O
+(
+n
+log
+⁡
+n
+
+2
+
+2
+
+log
+
+∗
+
+
+⁡
+n
+
+
+)
+
+
+{\displaystyle O(n\log n2^{2\log ^{*}n})}
+
+.
+In 2015 Svyatoslav Covanov and Emmanuel Thomé provided another modification that achieves the same running time.[5] Yet it remains just as impractical as the other implementations of Fürer's algorithm.[citation needed]

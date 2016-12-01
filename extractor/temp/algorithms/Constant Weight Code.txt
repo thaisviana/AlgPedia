@@ -1,0 +1,177 @@
+ABOUT
+In coding theory, a constant-weight code, also called an m of n code, is an error detection and correction code where all codewords share the same Hamming weight. The one-hot code and the balanced code are two widely used kinds of constant-weight code.
+FULL TEXT
+In coding theory, a constant-weight code, also called an m of n code, is an error detection and correction code where all codewords share the same Hamming weight. The one-hot code and the balanced code are two widely used kinds of constant-weight code.
+The theory is closely connected to that of designs (such as t-designs and Steiner systems). Most of the work on this very vital field of discrete mathematics is concerned with binary constant-weight codes.
+Binary constant-weight codes have several applications, including frequency hopping in GSM networks.[1] Most barcodes use a binary constant-weight code to simplify automatically setting the threshold. Most line codes use either a constant-weight code, or a nearly-constant-weight paired disparity code. In addition to use as error correction codes, the large space between code words can also be used in the design of asynchronous circuits such as delay insensitive circuits.
+Constant-weight codes, like Berger codes, can detect all unidirectional errors.
+
+
+The central problem regarding constant-weight codes is the following: what is the maximum number of codewords in a binary constant-weight code with length 
+
+
+
+n
+
+
+{\displaystyle n}
+
+, Hamming distance 
+
+
+
+d
+
+
+{\displaystyle d}
+
+, and weight 
+
+
+
+w
+
+
+{\displaystyle w}
+
+? This number is called 
+
+
+
+A
+(
+n
+,
+d
+,
+w
+)
+
+
+{\displaystyle A(n,d,w)}
+
+.
+Apart from some trivial observations, it is generally impossible to compute these numbers in a straightforward way. Upper bounds are given by several important theorems such as the first and second Johnson bounds,[2] and better upper bounds can sometimes be found in other ways. Lower bounds are most often found by exhibiting specific codes, either with use of a variety of methods from discrete mathematics, or through heavy computer searching. A large table of such record-breaking codes was published in 1990,[3] and an extension to longer codes (but only for those values of 
+
+
+
+d
+
+
+{\displaystyle d}
+
+ and 
+
+
+
+w
+
+
+{\displaystyle w}
+
+ which are relevant for the GSM application) was published in 2006.[1]
+A special case of constant weight codes are the one-of-N codes, that encode 
+
+
+
+l
+o
+
+g
+
+2
+
+
+N
+
+
+{\displaystyle log_{2}N}
+
+ bits in a code-word of 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ bits. The one-of-two code uses the code words 01 and 10 to encode the bits '0' and '1'. A one-of-four code can use the words 0001, 0010, 0100, 1000 in order to encode two bits 00, 01, 10, and 11. An example is dual rail encoding, and chain link [4] used in delay insensitive circuits. For these codes, 
+
+
+
+n
+=
+N
+,
+ 
+d
+=
+2
+,
+ 
+w
+=
+1
+
+
+{\displaystyle n=N,~d=2,~w=1}
+
+ and 
+
+
+
+A
+(
+n
+,
+d
+,
+w
+)
+=
+n
+
+
+{\displaystyle A(n,d,w)=n}
+
+.
+Some of the more notable uses of one-hot codes include biphase mark code uses a 1 of 2 code; pulse-position modulation uses a 1 of n code; address decoder, etc.
+In coding theory, a balanced code is a binary forward error correction code for which each codeword contains an equal number of zero and one bits. Balanced codes have been introduced by Donald Knuth;[5] they are a subset of so-called unordered codes, which are codes having the property that the positions of ones in a codeword are never a subset of the positions of the ones in another codeword. Like all unordered codes, balanced codes are suitable for the detection of all unidirectional errors in an encoded message. Balanced codes allow for particularly efficient decoding, which can be carried out in parallel.[5][6]
+Some of the more notable uses of balanced-weight codes include biphase mark code uses a 1 of 2 code; 6b/8b encoding uses a 4 of 8 code; the Hadamard code is a 
+
+
+
+
+2
+
+k
+
+
+
+/
+
+2
+
+
+{\displaystyle 2^{k}/2}
+
+ of 
+
+
+
+
+2
+
+k
+
+
+
+
+{\displaystyle 2^{k}}
+
+ code (except for the zero codeword), the three of six code; etc.
+An m of n code is a separable error detection code with a code word length of n bits, where each code word contains exactly m instances of a "one." A single bit error will cause the code word to have either m + 1 or m – 1 "ones". An example m-of-n code is the 2 of 5 code used by the United States Postal Service.
+The simplest implementation is to append a string of ones to the original data until it contains m ones, then append zeros to create a code of length n.
+Example:
+Some of the more notable uses of constant-weight codes, other than the one-hot and balanced-weight codes already mentioned above, include Code 39 uses a 3 of 9 code; bi-quinary coded decimal code uses a 2 of 7 code, the 2 of 5 code, etc.

@@ -1,0 +1,103 @@
+ABOUT
+In linear algebra, the Strassen algorithm, named after Volker Strassen, is an algorithm for matrix multiplication. It is faster than the standard matrix multiplication algorithm and is useful in practice for large matrices, but would be slower than the fastest known algorithms for extremely large matrices.
+FULL TEXT
+In linear algebra, the Strassen algorithm, named after Volker Strassen, is an algorithm for matrix multiplication. It is faster than the standard matrix multiplication algorithm and is useful in practice for large matrices, but would be slower than the fastest known algorithms for extremely large matrices.
+Strassen's algorithm works for any ring, such as plus/multiply, but not all semirings, such as min/plus or boolean algebra, where the naive algorithm still works, and so called combinatorial matrix multiplication.
+
+
+Volker Strassen first published this algorithm in 1969 and proved that the n3 general matrix multiplication algorithm wasn't optimal. The Strassen algorithm is only slightly better, but its publication resulted in much more research about matrix multiplication that led to faster approaches, such as the Coppersmith-Winograd algorithm.
+Let A, B be two square matrices over a ring R. We want to calculate the matrix product C as
+If the matrices A, B are not of type 2n × 2n we fill the missing rows and columns with zeros.
+We partition A, B and C into equally sized block matrices
+with
+then
+With this construction we have not reduced the number of multiplications. We still need 8 multiplications to calculate the Ci,j matrices, the same number of multiplications we need when using standard matrix multiplication.
+Now comes the important part. We define new matrices
+only using 7 multiplications (one for each Mk) instead of 8. We may now express the Ci,j in terms of Mk, like this:
+We iterate this division process n times (recursively) until the submatrices degenerate into numbers (elements of the ring R). The resulting product will be padded with zeroes just like A and B, and should be stripped of the corresponding rows and columns.
+Practical implementations of Strassen's algorithm switch to standard methods of matrix multiplication for small enough submatrices, for which those algorithms are more efficient. The particular crossover point for which Strassen's algorithm is more efficient depends on the specific implementation and hardware. Earlier authors had estimated that Strassen's algorithm is faster for matrices with widths from 32 to 128 for optimized implementations.[1] However, it has been observed that this crossover point has been increasing in recent years, and a 2010 study found that even a single step of Strassen's algorithm is often not beneficial on current architectures, compared to a highly optimized traditional multiplication, until matrix sizes exceed 1000 or more, and even for matrix sizes of several thousand the benefit is typically marginal at best (around 10% or less).[2]
+The standard matrix multiplication takes approximately 2N3 (where N = 2n) arithmetic operations (additions and multiplications); the asymptotic complexity is Θ(N3).
+The number of additions and multiplications required in the Strassen algorithm can be calculated as follows: let f(n) be the number of operations for a 2n × 2n matrix. Then by recursive application of the Strassen algorithm, we see that f(n) = 7f(n−1) + ℓ4n, for some constant ℓ that depends on the number of additions performed at each application of the algorithm. Hence f(n) = (7 + o(1))n, i.e., the asymptotic complexity for multiplying matrices of size N = 2n using the Strassen algorithm is
+The reduction in the number of arithmetic operations however comes at the price of a somewhat reduced numerical stability,[3] and the algorithm also requires significantly more memory compared to the naive algorithm. Both initial matrices must have their dimensions expanded to the next power of 2, which results in storing up to four times as many elements, and the seven auxiliary matrices each contain a quarter of the elements in the expanded ones.
+The bilinear complexity or rank of a bilinear map is an important concept in the asymptotic complexity of matrix multiplication. The rank of a bilinear map 
+
+
+
+ϕ
+:
+
+A
+
+×
+
+B
+
+→
+
+C
+
+
+
+{\displaystyle \phi :\mathbf {A} \times \mathbf {B} \rightarrow \mathbf {C} }
+
+ over a field F is defined as (somewhat of an abuse of notation)
+In other words, the rank of a bilinear map is the length of its shortest bilinear computation.[4] The existence of Strassen's algorithm shows that the rank of 2×2 matrix multiplication is no more than seven. To see this, let us express this algorithm (alongside the standard algorithm) as such a bilinear computation. In the case of matrices, the dual spaces A* and B* consist of maps into the field F induced by a scalar double-dot product, (i.e. in this case the sum of all the entries of a Hadamard product.)
+It can be shown that the total number of elementary multiplications L required for matrix multiplication is tightly asymptotically bound to the rank R, i.e. 
+
+
+
+L
+=
+Θ
+(
+R
+)
+
+
+{\displaystyle L=\Theta (R)}
+
+, or more specifically, since the constants are known, 
+
+
+
+
+
+1
+2
+
+
+R
+≤
+L
+≤
+R
+.
+
+
+{\displaystyle {\frac {1}{2}}R\leq L\leq R.}
+
+ One useful property of the rank is that it is submultiplicative for tensor products, and this enables one to show that 2n×2n×2n matrix multiplication can be accomplished with no more than 7n elementary multiplications for any n. (This n-fold tensor product of the 2×2×2 matrix multiplication map with itself—an nth tensor power—is realized by the recursive step in the algorithm shown.)
+Strassen's algorithm is cache oblivious. Analysis of its cache behavior algorithm has shown it to incur
+cache misses during its execution, assuming an idealized cache of M lines, each of b bytes.[5]:13
+The description above states that the matrices are square, and the size is a power of two, and that padding should be used if needed. This restriction allows the matrices to be split in half, recursively, until limit of scalar multiplication is reached. The restriction simplifies the explanation, and analysis of complexity, but is not actually necessary;[6] and in fact, padding the matrix as described will increase the computation time and can easily eliminate the fairly narrow time savings obtained by using the method in the first place.
+A good implementation will observe the following:
+Furthermore, there is no need for the matrices to be square. Non-square matrices can be split in half using the same methods, yielding smaller non-square matrices. If the matrices are sufficiently non-square it will be worthwhile reducing the initial operation to more square products, using simple methods which are essentially 
+
+
+
+O
+(
+
+n
+
+2
+
+
+)
+
+
+{\displaystyle O(n^{2})}
+
+, for instance:
+These techniques will make the implementation more complicated, compared to simply padding to a power-of-two square; however, it is a reasonable assumption that anyone undertaking an implementation of Strassen, rather than conventional, multiplication, will place a higher priority on computational efficiency than on simplicity of the implementation.
+(also includes formulas for fast matrix inversion)

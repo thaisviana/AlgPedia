@@ -1,0 +1,182 @@
+ABOUT
+The BHT algorithm is a quantum algorithm that solves the collision problem. In this problem, one is given n and an r-to-1 function 
+
+
+
+f
+:
+
+{
+1
+,
+…
+,
+n
+}
+→
+{
+1
+,
+…
+,
+n
+}
+
+
+{\displaystyle f:\,\{1,\ldots ,n\}\rightarrow \{1,\ldots ,n\}}
+
+ and needs to find two inputs that f maps to the same output. The BHT algorithm only makes 
+
+
+
+O
+(
+
+n
+
+1
+
+/
+
+3
+
+
+)
+
+
+{\displaystyle O(n^{1/3})}
+
+ queries to f, which matches the lower bound of 
+
+
+
+Ω
+(
+
+n
+
+1
+
+/
+
+3
+
+
+)
+
+
+{\displaystyle \Omega (n^{1/3})}
+
+ in the black box model.[1][2]
+FULL TEXT
+The BHT algorithm is a quantum algorithm that solves the collision problem. In this problem, one is given n and an r-to-1 function 
+
+
+
+f
+:
+
+{
+1
+,
+…
+,
+n
+}
+→
+{
+1
+,
+…
+,
+n
+}
+
+
+{\displaystyle f:\,\{1,\ldots ,n\}\rightarrow \{1,\ldots ,n\}}
+
+ and needs to find two inputs that f maps to the same output. The BHT algorithm only makes 
+
+
+
+O
+(
+
+n
+
+1
+
+/
+
+3
+
+
+)
+
+
+{\displaystyle O(n^{1/3})}
+
+ queries to f, which matches the lower bound of 
+
+
+
+Ω
+(
+
+n
+
+1
+
+/
+
+3
+
+
+)
+
+
+{\displaystyle \Omega (n^{1/3})}
+
+ in the black box model.[1][2]
+The algorithm was discovered by Brassard, Hoyer, and Tapp in 1997.[3] It uses Grover's algorithm, which was discovered in the previous year.
+Intuitively, the algorithm combines the square root speedup from the birthday paradox using (classical) randomness with the square root speedup from Grover's (quantum) algorithm.
+First, n1/3 inputs to f are selected at random and f and is queried at all of them. If there is a collision among these inputs, then we return the colliding pair of inputs. Otherwise, all these inputs map to distinct values by f. Then Grover's algorithm is used to find a new input to f that collides. Since there are only n2/3 such inputs to f, Grover's algorithm can find one (if it exists) by making only 
+
+
+
+O
+(
+
+
+
+n
+
+2
+
+/
+
+3
+
+
+
+
+)
+=
+O
+(
+
+n
+
+1
+
+/
+
+3
+
+
+)
+
+
+{\displaystyle O({\sqrt {n^{2/3}}})=O(n^{1/3})}
+
+ queries to f.

@@ -1,0 +1,97 @@
+ABOUT
+The Kernighan–Lin algorithm is a heuristic algorithm for finding partitions of graphs. The algorithm has important applications in the layout of digital circuits and components in VLSI.[1][2]
+FULL TEXT
+The Kernighan–Lin algorithm is a heuristic algorithm for finding partitions of graphs. The algorithm has important applications in the layout of digital circuits and components in VLSI.[1][2]
+The input to the algorithm is an undirected graph G = (V,E) with vertex set V, edge set E, and (optionally) numerical weights on the edges in E. The goal of the algorithm is to partition V into two disjoint subsets A and B of equal (or nearly equal) size, in a way that minimizes the sum T of the weights of the subset of edges that cross from A to B. If the graph is unweighted, then instead the goal is to minimize the number of crossing edges; this is equivalent to assigning weight one to each edge. The algorithm maintains and improves a partition, in each pass using a greedy algorithm to pair up vertices of A with vertices of B, so that moving the paired vertices from one side of the partition to the other will improve the partition. After matching the vertices, it then performs a subset of the pairs chosen to have the best overall effect on the solution quality T. Given a graph with n vertices, each pass of the algorithm runs in time O(n2 log n).
+In more detail, let 
+
+
+
+
+I
+
+a
+
+
+
+
+{\displaystyle I_{a}}
+
+ be the internal cost of a, that is, the sum of the costs of edges between a and other nodes in A, and let 
+
+
+
+
+E
+
+a
+
+
+
+
+{\displaystyle E_{a}}
+
+ be the external cost of a, that is, the sum of the costs of edges between a and nodes in B. Furthermore, let
+be the difference between the external and internal costs of a. If a and b are interchanged, then the reduction in cost is
+where 
+
+
+
+
+c
+
+a
+,
+b
+
+
+
+
+{\displaystyle c_{a,b}}
+
+ is the cost of the possible edge between a and b.
+The algorithm attempts to find an optimal series of interchange operations between elements of 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ and 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ which maximizes 
+
+
+
+
+T
+
+o
+l
+d
+
+
+−
+
+T
+
+n
+e
+w
+
+
+
+
+{\displaystyle T_{old}-T_{new}}
+
+ and then executes the operations, producing a partition of the graph to A and B.[1]
+See [2]

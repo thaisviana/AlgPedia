@@ -1,0 +1,4 @@
+ABOUT
+Polynomial signal processing is a type of non-linear signal processing. Polynomial systems maybe interpreted as conceptually straight forward extensions of linear systems to the non-linear case.
+FULL TEXT
+Polynomial signal processing is a type of non-linear signal processing. Polynomial systems maybe interpreted as conceptually straight forward extensions of linear systems to the non-linear case.

@@ -1,0 +1,592 @@
+ABOUT
+In mathematics, the Lehmer–Schur algorithm (named after Derrick Henry Lehmer and Issai Schur) is a root-finding algorithm extending the idea of enclosing roots like in the one-dimensional bisection method to the complex plane. It uses the Schur–Cohn test to test increasingly smaller disks for the presence or absence of roots. Alternative methods like Wilf's algorithm apply different tests to differently shaped areas but keep the idea of descent by subdivision.
+FULL TEXT
+In mathematics, the Lehmer–Schur algorithm (named after Derrick Henry Lehmer and Issai Schur) is a root-finding algorithm extending the idea of enclosing roots like in the one-dimensional bisection method to the complex plane. It uses the Schur–Cohn test to test increasingly smaller disks for the presence or absence of roots. Alternative methods like Wilf's algorithm apply different tests to differently shaped areas but keep the idea of descent by subdivision.
+
+
+The Schur–Cohn test described below allows one to determine if a polynomial has no roots in the unit disk and in some cases to determine the exact number of roots. The method proposed by Lehmer test for the presence of roots of a polynomial 
+
+
+
+p
+(
+z
+)
+
+
+{\displaystyle p(z)}
+
+ on a collection of disks 
+
+
+
+D
+(
+c
+,
+ρ
+)
+
+
+{\displaystyle D(c,\rho )}
+
+ in the complex plane by applying the Schur–Cohn test to the shifted and scaled polynomial 
+
+
+
+p
+(
+c
++
+ρ
+z
+)
+.
+
+
+{\displaystyle p(c+\rho z).}
+
+
+Starting with c=0 and ρ=1, the radius in increased or decreased by factors of 2 until the annulus 
+
+
+
+ρ
+≤
+
+|
+
+z
+
+|
+
+≤
+2
+ρ
+
+
+{\displaystyle \rho \leq |z|\leq 2\rho }
+
+ is found to contain roots. Then the method is recursively applied to the 8 disks with center 
+
+
+
+
+c
+
+k
+
+
+=
+
+
+5
+3
+
+
+ρ
+
+e
+
+i
+
+
+
+k
+π
+
+4
+
+
+
+
+
+
+{\displaystyle c_{k}={\frac {5}{3}}\rho e^{i{\frac {k\pi }{4}}}}
+
+, 
+
+
+
+k
+=
+0
+,
+1
+,
+…
+,
+7
+
+
+{\displaystyle k=0,1,\dots ,7}
+
+ and initial radius 
+
+
+
+ρ
+
+
+{\displaystyle \rho }
+
+ (originally 
+
+
+
+
+
+5
+6
+
+
+ρ
+
+
+{\displaystyle {\frac {5}{6}}\rho }
+
+, which is slightly too small to cover the full annulus).
+If after some recursions a small disk is found that contains only one root, this root is further approximated using Newton's method and then the polynomial is deflated by splitting off the corresponding linear factor. After that, the whole procedure is restarted.
+Consider, as before, a polynomial with complex coefficients
+Denote the reverse conjugate polynomial as 
+
+
+
+
+p
+
+∗
+
+
+(
+z
+)
+=
+
+z
+
+n
+
+
+
+
+
+p
+¯
+
+
+
+(
+
+z
+
+−
+1
+
+
+)
+=
+
+z
+
+n
+
+
+
+
+p
+¯
+
+
+(
+
+
+
+
+z
+¯
+
+
+
+
+−
+1
+
+
+)
+
+
+{\displaystyle p^{*}(z)=z^{n}{\bar {p}}(z^{-1})=z^{n}{\overline {p}}({\bar {z}}^{-1})}
+
+. Then the Schur transform 
+
+
+
+T
+p
+
+
+{\displaystyle Tp}
+
+ of 
+
+
+
+p
+
+
+{\displaystyle p}
+
+ is the polynomial
+Since the highest degree coefficients cancel, 
+
+
+
+deg
+⁡
+T
+p
+<
+deg
+⁡
+p
+
+
+{\displaystyle \deg Tp<\deg p}
+
+, and the constant coefficient of 
+
+
+
+T
+p
+
+
+{\displaystyle Tp}
+
+ is 
+
+
+
+
+δ
+
+1
+
+
+=
+(
+T
+p
+)
+(
+0
+)
+=
+
+|
+
+
+a
+
+0
+
+
+
+
+|
+
+
+2
+
+
+−
+
+|
+
+
+a
+
+n
+
+
+
+
+|
+
+
+2
+
+
+.
+
+
+{\displaystyle \delta _{1}=(Tp)(0)=|a_{0}|^{2}-|a_{n}|^{2}.}
+
+
+This result is a consequence of Rouché's theorem.
+Apply the Schur transform repeatedly, 
+
+
+
+
+T
+
+k
++
+1
+
+
+p
+=
+T
+(
+
+T
+
+k
+
+
+p
+)
+
+
+{\displaystyle T^{k+1}p=T(T^{k}p)}
+
+, let K be the first index with 
+
+
+
+
+T
+
+K
++
+1
+
+
+p
+=
+0
+
+
+{\displaystyle T^{K+1}p=0}
+
+. Denote 
+
+
+
+
+d
+
+k
+
+
+=
+deg
+⁡
+
+T
+
+k
+
+
+p
+
+
+{\displaystyle d_{k}=\deg T^{k}p}
+
+, 
+
+
+
+
+d
+
+k
++
+1
+
+
+<
+
+d
+
+k
+
+
+
+
+{\displaystyle d_{k+1}<d_{k}}
+
+ and 
+
+
+
+
+δ
+
+k
+
+
+=
+(
+
+T
+
+k
+
+
+p
+)
+(
+0
+)
+
+
+{\displaystyle \delta _{k}=(T^{k}p)(0)}
+
+.
+The first follows from the root number preserving property of the Schur transform. For the second, 
+
+
+
+
+T
+
+
+
+k
+¯
+
+
+
+
+p
+,
+…
+,
+
+T
+
+K
+
+
+p
+
+
+{\displaystyle T^{\bar {k}}p,\dots ,T^{K}p}
+
+ have no roots inside the unit disk or on the unit circle. 
+
+
+
+
+T
+
+
+
+k
+¯
+
+
+
+
+p
+
+
+{\displaystyle T^{\bar {k}}p}
+
+ has 
+
+
+
+
+d
+
+
+
+k
+¯
+
+
+
+
+=
+deg
+⁡
+
+T
+
+
+
+k
+¯
+
+
+
+
+p
+
+
+{\displaystyle d_{\bar {k}}=\deg T^{\bar {k}}p}
+
+ roots outside the unit disk, so that 
+
+
+
+
+T
+
+
+
+
+k
+¯
+
+
+
+−
+1
+
+
+p
+
+
+{\displaystyle T^{{\bar {k}}-1}p}
+
+ and thus also 
+
+
+
+
+T
+
+
+
+
+k
+¯
+
+
+
+−
+2
+
+
+p
+,
+…
+,
+T
+p
+,
+p
+
+
+{\displaystyle T^{{\bar {k}}-2}p,\dots ,Tp,p}
+
+ have the same number of roots inside the unit disk.
+The aim of this algorithm is to find the roots of a function of one complex variable inside any rectangular region of the function's holomorphicity (i.e., analyticity).
+The rectangle in question is quadrisected into four, congruent quarter rectangles. For each quarter, the image of the boundary is a curve in the complex plane. The argument principle is then applied to this path to find the winding number about the origin. Given that the function is analytic within each of these quarters, a nonzero winding number N (always an integer) identifies N zeros of the function inside the quarter in question by Rouché's theorem, each zero counted as many times as its multiplicity.
+Analogously with the bisection method, the algorithm is then applied recursively to any quarter whose boundary has nonzero winding number to further refine the estimates of the zeros. The recursion is repeated until the zero-containing rectangles are either small enough that their centres give sufficiently accurate zero estimates or, alternatively, that another root-finding algorithm can be applied to the estimates to further refine them.

@@ -1,0 +1,11 @@
+ABOUT
+In computing, find is a command in the command line interpreters (shells) of DOS,[1] OS/2 and Microsoft Windows.[2] It is used to search for a specific text string in a file or files. The command sends the specified lines to the standard output device.[3][4]
+FULL TEXT
+In computing, find is a command in the command line interpreters (shells) of DOS,[1] OS/2 and Microsoft Windows.[2] It is used to search for a specific text string in a file or files. The command sends the specified lines to the standard output device.[3][4]
+The Unix command find performs an entirely different function analogous to dir /s.
+
+
+The find command is a filter to find lines in the input data stream that contain or don't contain a specified string and send these to the output data stream.
+Arguments:
+Flags:
+Note: If a pathname is not specified, FIND searches the text typed at the prompt or piped from another command.

@@ -1,0 +1,12 @@
+ABOUT
+RegexBuddy is a regular expression programming tool by Just Great Software Co. Ltd. for the Microsoft Windows operating system. It provides an interface for building, testing, and debugging regular expressions, in addition to a library of commonly used regular expressions, an interface for generating code to use regular expressions in the desired programming environment, a graphical grep tool for searching through files and directories, and an integrated forum for seeking and providing regular expression advice with other RegexBuddy users.
+FULL TEXT
+RegexBuddy is a regular expression programming tool by Just Great Software Co. Ltd. for the Microsoft Windows operating system. It provides an interface for building, testing, and debugging regular expressions, in addition to a library of commonly used regular expressions, an interface for generating code to use regular expressions in the desired programming environment, a graphical grep tool for searching through files and directories, and an integrated forum for seeking and providing regular expression advice with other RegexBuddy users.
+RegexBuddy's proprietary regular expression engine allows the software to emulate the rules and limitations of numerous popular regular expression flavors.
+
+
+15 regular expression flavors are supported as of RegexBuddy 3.1.
+RegexBuddy allows generating code for a further extended number of environments, based on the above flavors.
+Updates for RegexBuddy have frequently refined the emulation of existing regular expression flavors, as well as occasionally adding support for additional flavors. However, there are several notable limitations as of RegexBuddy 3.3.
+Additionally, flavor-specific modifiers, embedded code, and callouts are not supported.
+In cases where the selected flavor does not support one or more of the above modifiers, the option is disabled.

@@ -1,0 +1,204 @@
+ABOUT
+In computer science, hill climbing is a mathematical optimization technique which belongs to the family of local search. It is an iterative algorithm that starts with an arbitrary solution to a problem, then attempts to find a better solution by incrementally changing a single element of the solution. If the change produces a better solution, an incremental change is made to the new solution, repeating until no further improvements can be found.
+FULL TEXT
+In computer science, hill climbing is a mathematical optimization technique which belongs to the family of local search. It is an iterative algorithm that starts with an arbitrary solution to a problem, then attempts to find a better solution by incrementally changing a single element of the solution. If the change produces a better solution, an incremental change is made to the new solution, repeating until no further improvements can be found.
+For example, hill climbing can be applied to the travelling salesman problem. It is easy to find an initial solution that visits all the cities but will be very poor compared to the optimal solution. The algorithm starts with such a solution and makes small improvements to it, such as switching the order in which two cities are visited. Eventually, a much shorter route is likely to be obtained.
+Hill climbing is good for finding a local optimum (a solution that cannot be improved by considering a neighbouring configuration) but it is not necessarily guaranteed to find the best possible solution (the global optimum) out of all possible solutions (the search space). In convex problems, hill-climbing is optimal. Examples of algorithms that solve convex problems by hill-climbing include the simplex algorithm for linear programming and binary search.[1]:253
+The characteristic that only local optima are guaranteed can be cured by using restarts (i.e. repeated local search). It can also be cured by using more complex schemes based on iterations, like iterated local search, based on memory, like reactive search optimization and tabu search, or based on memory-less stochastic modifications, like simulated annealing.
+The relative simplicity of the algorithm makes it a popular first choice amongst optimizing algorithms. It is used widely in artificial intelligence, for reaching a goal state from a starting node. Choice of next node and starting node can be varied to give a list of related algorithms. Although more advanced algorithms such as simulated annealing or tabu search may give better results, in some situations hill climbing works just as well. Hill climbing can often produce a better result than other algorithms when the amount of time available to perform a search is limited, such as with real-time systems. It is an anytime algorithm: it can return a valid solution even if it's interrupted at any time before it ends.
+
+
+Hill climbing attempts to maximize (or minimize) a target function 
+
+
+
+f
+(
+
+x
+
+)
+
+
+{\displaystyle f(\mathbf {x} )}
+
+, where 
+
+
+
+
+x
+
+
+
+{\displaystyle \mathbf {x} }
+
+ is a vector of continuous and/or discrete values. At each iteration, hill climbing will adjust a single element in 
+
+
+
+
+x
+
+
+
+{\displaystyle \mathbf {x} }
+
+ and determine whether the change improves the value of 
+
+
+
+f
+(
+
+x
+
+)
+
+
+{\displaystyle f(\mathbf {x} )}
+
+. (Note that this differs from gradient descent methods, which adjust all of the values in 
+
+
+
+
+x
+
+
+
+{\displaystyle \mathbf {x} }
+
+ at each iteration according to the gradient of the hill.) With hill climbing, any change that improves 
+
+
+
+f
+(
+
+x
+
+)
+
+
+{\displaystyle f(\mathbf {x} )}
+
+ is accepted, and the process continues until no change can be found to improve the value of 
+
+
+
+f
+(
+
+x
+
+)
+
+
+{\displaystyle f(\mathbf {x} )}
+
+. Then 
+
+
+
+
+x
+
+
+
+{\displaystyle \mathbf {x} }
+
+ is said to be "locally optimal".
+In discrete vector spaces, each possible value for 
+
+
+
+
+x
+
+
+
+{\displaystyle \mathbf {x} }
+
+ may be visualized as a vertex in a graph. Hill climbing will follow the graph from vertex to vertex, always locally increasing (or decreasing) the value of 
+
+
+
+f
+(
+
+x
+
+)
+
+
+{\displaystyle f(\mathbf {x} )}
+
+, until a local maximum (or local minimum) 
+
+
+
+
+x
+
+m
+
+
+
+
+{\displaystyle x_{m}}
+
+ is reached.
+In simple hill climbing, the first closer node is chosen, whereas in steepest ascent hill climbing all successors are compared and the closest to the solution is chosen. Both forms fail if there is no closer node, which may happen if there are local maxima in the search space which are not solutions. Steepest ascent hill climbing is similar to best-first search, which tries all possible extensions of the current path instead of only one.
+Stochastic hill climbing does not examine all neighbors before deciding how to move. Rather, it selects a neighbor at random, and decides (based on the amount of improvement in that neighbor) whether to move to that neighbor or to examine another.
+Coordinate descent does a line search along one coordinate direction at the current point in each iteration. Some versions of coordinate descent randomly pick a different coordinate direction each iteration.
+Random-restart hill climbing is a meta-algorithm built on top of the hill climbing algorithm. It is also known as Shotgun hill climbing. It iteratively does hill-climbing, each time with a random initial condition 
+
+
+
+
+x
+
+0
+
+
+
+
+{\displaystyle x_{0}}
+
+. The best 
+
+
+
+
+x
+
+m
+
+
+
+
+{\displaystyle x_{m}}
+
+ is kept: if a new run of hill climbing produces a better 
+
+
+
+
+x
+
+m
+
+
+
+
+{\displaystyle x_{m}}
+
+ than the stored state, it replaces the stored state.
+Random-restart hill climbing is a surprisingly effective algorithm in many cases. It turns out that it is often better to spend CPU time exploring the space, than carefully optimizing from an initial condition.[original research?]
+Hill climbing will not necessarily find the global maximum, but may instead converge on a local maximum. This problem does not occur if the heuristic is convex. However, as many functions are not convex hill climbing may often fail to reach a global maximum. Other local search algorithms try to overcome this problem such as stochastic hill climbing, random walks and simulated annealing.
+Ridges are a challenging problem for hill climbers that optimize in continuous spaces. Because hill climbers only adjust one element in the vector at a time, each step will move in an axis-aligned direction. If the target function creates a narrow ridge that ascends in a non-axis-aligned direction (or if the goal is to minimize, a narrow alley that descends in a non-axis-aligned direction), then the hill climber can only ascend the ridge (or descend the alley) by zig-zagging. If the sides of the ridge (or alley) are very steep, then the hill climber may be forced to take very tiny steps as it zig-zags toward a better position. Thus, it may take an unreasonable length of time for it to ascend the ridge (or descend the alley).
+By contrast, gradient descent methods can move in any direction that the ridge or alley may ascend or descend. Hence, gradient descent or the conjugate gradient method is generally preferred over hill climbing when the target function is differentiable. Hill climbers, however, have the advantage of not requiring the target function to be differentiable, so hill climbers may be preferred when the target function is complex.
+Another problem that sometimes occurs with hill climbing is that of a plateau. A plateau is encountered when the search space is flat, or sufficiently flat that the value returned by the target function is indistinguishable from the value returned for nearby regions due to the precision used by the machine to represent its value. In such cases, the hill climber may not be able to determine in which direction it should step, and may wander in a direction that never leads to improvement.
+Contrast genetic algorithm; random optimization.
+This article is based on material taken from the Free On-line Dictionary of Computing prior to 1 November 2008 and incorporated under the "relicensing" terms of the GFDL, version 1.3 or later.

@@ -1,0 +1,90 @@
+ABOUT
+Fernandez's method (FB) is a method which is used in the multiprocessor scheduling algorithm. It is actually used to improve the quality of the lower bounding schemes which are adopted by branch and bound algorithms for solving multiprocessor scheduling problem. Fernandez's problem derives a better lower bound than HF[disambiguation needed],and propose a quadratic-time algorithm from calculating the bound. It is known that a straightforward calculation of FB takes O
+
+
+
+(
+
+n
+
+3
+
+
+)
+
+
+{\displaystyle (n^{3})}
+
+ time, since it must examine O
+
+
+
+(
+
+n
+
+2
+
+
+)
+
+
+{\displaystyle (n^{2})}
+
+ combinations each of which takes O
+
+
+
+(
+n
+)
+
+
+{\displaystyle (n)}
+
+ time in the worst case.
+FULL TEXT
+Fernandez's method (FB) is a method which is used in the multiprocessor scheduling algorithm. It is actually used to improve the quality of the lower bounding schemes which are adopted by branch and bound algorithms for solving multiprocessor scheduling problem. Fernandez's problem derives a better lower bound than HF[disambiguation needed],and propose a quadratic-time algorithm from calculating the bound. It is known that a straightforward calculation of FB takes O
+
+
+
+(
+
+n
+
+3
+
+
+)
+
+
+{\displaystyle (n^{3})}
+
+ time, since it must examine O
+
+
+
+(
+
+n
+
+2
+
+
+)
+
+
+{\displaystyle (n^{2})}
+
+ combinations each of which takes O
+
+
+
+(
+n
+)
+
+
+{\displaystyle (n)}
+
+ time in the worst case.

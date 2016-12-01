@@ -1,0 +1,6 @@
+ABOUT
+It was observed in evolution strategies that significant progress toward the fitness/objective function's optimum, generally, can only happen in a narrow band of the mutation step size σ. That narrow band is called evolution window.
+FULL TEXT
+It was observed in evolution strategies that significant progress toward the fitness/objective function's optimum, generally, can only happen in a narrow band of the mutation step size σ. That narrow band is called evolution window.
+There are three well-known methods to adapt the mutation step size σ in evolution strategies:
+On simple functions all of them have been empirically shown to keep the step size within the evolution window.

@@ -1,0 +1,560 @@
+ABOUT
+In mathematics, the Schwartz–Zippel lemma (also called the DeMillo-Lipton-Schwartz–Zippel lemma) is a tool commonly used in probabilistic polynomial identity testing, i.e. in the problem of determining whether a given multivariate polynomial is the 0-polynomial (or identically equal to 0). It was discovered independently by Jack Schwartz,[1] Richard Zippel,[2] and Richard DeMillo and Richard J. Lipton, although DeMillo and Lipton's slightly weaker version was shown a year prior to Schwartz and Zippel's result.[3] The finite field version of this bound was proved by Øystein Ore in 1922.[4]
+FULL TEXT
+In mathematics, the Schwartz–Zippel lemma (also called the DeMillo-Lipton-Schwartz–Zippel lemma) is a tool commonly used in probabilistic polynomial identity testing, i.e. in the problem of determining whether a given multivariate polynomial is the 0-polynomial (or identically equal to 0). It was discovered independently by Jack Schwartz,[1] Richard Zippel,[2] and Richard DeMillo and Richard J. Lipton, although DeMillo and Lipton's slightly weaker version was shown a year prior to Schwartz and Zippel's result.[3] The finite field version of this bound was proved by Øystein Ore in 1922.[4]
+
+
+The input to the problem is an n-variable polynomial over a field F. It can occur in the following forms:
+For example, is
+To solve this, we can multiply it out and check that all the coefficients are 0. However, this takes exponential time. In general, a polynomial can be algebraically represented by an arithmetic formula or circuit.
+Let
+be the determinant of the polynomial matrix.
+Currently, there is no known sub-exponential time algorithm that can solve this problem deterministically. However, there are randomized polynomial algorithms for testing polynomial identities. Their analysis usually requires a bound on the probability that a non-zero polynomial will have roots at randomly selected test points. The Schwartz–Zippel lemma provides this as follows:
+Theorem 1 (Schwartz, Zippel). Let
+be a non-zero polynomial of total degree d ≥ 0 over a field, F. Let S be a finite subset of F and let r1, r2, ..., rn be selected at random independently and uniformly from S. Then
+In the single variable case, this follows directly from the fact that a polynomial of degree d can have no more than d roots. It seems logical, then, to think that a similar statement would hold for multivariable polynomials. This is, in fact, the case.
+Proof. The proof is by mathematical induction on n. For n = 1, as was mentioned before, P can have at most d roots. This gives us the base case. Now, assume that the theorem holds for all polynomials in n − 1 variables. We can then consider P to be a polynomial in x1 by writing it as
+Since P is not identically 0, there is some i such that 
+
+
+
+
+P
+
+i
+
+
+
+
+{\displaystyle P_{i}}
+
+ is not identically 0. Take the largest such i. Then 
+
+
+
+deg
+⁡
+
+P
+
+i
+
+
+≤
+d
+−
+i
+
+
+{\displaystyle \deg P_{i}\leq d-i}
+
+, since the degree of 
+
+
+
+
+x
+
+1
+
+
+i
+
+
+
+P
+
+i
+
+
+
+
+{\displaystyle x_{1}^{i}P_{i}}
+
+ is at most d.
+Now we randomly pick 
+
+
+
+
+r
+
+2
+
+
+,
+…
+,
+
+r
+
+n
+
+
+
+
+{\displaystyle r_{2},\dots ,r_{n}}
+
+ from S. By the induction hypothesis, 
+
+
+
+Pr
+[
+
+P
+
+i
+
+
+(
+
+r
+
+2
+
+
+,
+…
+,
+
+r
+
+n
+
+
+)
+=
+0
+]
+≤
+
+
+
+d
+−
+i
+
+
+
+|
+
+S
+
+|
+
+
+
+
+.
+
+
+{\displaystyle \Pr[P_{i}(r_{2},\ldots ,r_{n})=0]\leq {\frac {d-i}{|S|}}.}
+
+ If 
+
+
+
+
+P
+
+i
+
+
+(
+
+r
+
+2
+
+
+,
+…
+,
+
+r
+
+n
+
+
+)
+≠
+0
+
+
+{\displaystyle P_{i}(r_{2},\ldots ,r_{n})\neq 0}
+
+, then 
+
+
+
+P
+(
+
+x
+
+1
+
+
+,
+
+r
+
+2
+
+
+,
+…
+,
+
+r
+
+n
+
+
+)
+
+
+{\displaystyle P(x_{1},r_{2},\ldots ,r_{n})}
+
+ is of degree i so
+If we denote the event 
+
+
+
+P
+(
+
+r
+
+1
+
+
+,
+
+r
+
+2
+
+
+,
+…
+,
+
+r
+
+n
+
+
+)
+=
+0
+
+
+{\displaystyle P(r_{1},r_{2},\ldots ,r_{n})=0}
+
+ by A, the event 
+
+
+
+
+P
+
+i
+
+
+(
+
+r
+
+2
+
+
+,
+…
+,
+
+r
+
+n
+
+
+)
+=
+0
+
+
+{\displaystyle P_{i}(r_{2},\ldots ,r_{n})=0}
+
+ by B, and the complement of B by 
+
+
+
+
+B
+
+c
+
+
+
+
+{\displaystyle B^{c}}
+
+, we have
+The importance of the Schwartz–Zippel Theorem and Testing Polynomial Identities follows from algorithms which are obtained to problems that can be reduced to the problem of polynomial identity testing.
+Given a pair of polynomials 
+
+
+
+
+p
+
+1
+
+
+(
+x
+)
+
+
+{\displaystyle p_{1}(x)}
+
+ and 
+
+
+
+
+p
+
+2
+
+
+(
+x
+)
+
+
+{\displaystyle p_{2}(x)}
+
+, is
+This problem can be solved by reducing it to the problem of polynomial identity testing. It is equivalent to checking if
+Hence if we can determine that
+where
+then we can determine whether the two polynomials are equivalent.
+Comparison of polynomials has applications for branching programs (also called binary decision diagrams). A read-once branching program can be represented by a multilinear polynomial which computes (over any field) on {0,1}-inputs the same Boolean function as the branching program, and two branching programs compute the same function if and only if the corresponding polynomials are equal. Thus, identity of Boolean functions computed by read-once branching programs can be reduced to polynomial identity testing.
+Comparison of two polynomials (and therefore testing polynomial identities) also has applications in 2D-compression, where the problem of finding the equality of two 2D-texts A and B is reduced to the problem of comparing equality of two polynomials 
+
+
+
+
+p
+
+A
+
+
+(
+x
+,
+y
+)
+
+
+{\displaystyle p_{A}(x,y)}
+
+ and 
+
+
+
+
+p
+
+B
+
+
+(
+x
+,
+y
+)
+
+
+{\displaystyle p_{B}(x,y)}
+
+.
+Given 
+
+
+
+n
+∈
+
+
+Z
+
++
+
+
+
+
+
+{\displaystyle n\in \mathbb {Z^{+}} }
+
+, is 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ a prime number?
+A simple randomized algorithm developed by Manindra Agrawal and Somenath Biswas can determine probabilistically whether 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ is prime and uses polynomial identity testing to do so.
+They propose that all prime numbers n (and only prime numbers) satisfy the following polynomial identity:
+This is a consequence of the Frobenius endomorphism.
+Let
+Then 
+
+
+
+
+
+
+P
+
+
+
+n
+
+
+(
+z
+)
+=
+0
+
+(
+
+mod
+
+
+n
+)
+
+
+{\displaystyle {\mathcal {P}}_{n}(z)=0\;({\mbox{mod}}\;n)}
+
+ iff n is prime. The proof can be found in [4]. However, since this polynomial has degree 
+
+
+
+n
+
+
+{\displaystyle n}
+
+, and since 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ may or may not be a prime, the Schwartz–Zippel method would not work. Agrawal and Biswas use a more sophisticated technique, which divides 
+
+
+
+
+
+
+P
+
+
+
+n
+
+
+
+
+{\displaystyle {\mathcal {P}}_{n}}
+
+ by a random monic polynomial of small degree.
+Prime numbers are used in a number of applications such as hash table sizing, pseudorandom number generators and in key generation for cryptography. Therefore, finding very large prime numbers (on the order of (at least) 
+
+
+
+
+10
+
+350
+
+
+≈
+
+2
+
+1024
+
+
+
+
+{\displaystyle 10^{350}\approx 2^{1024}}
+
+) becomes very important and efficient primality testing algorithms are required.
+Let 
+
+
+
+G
+=
+(
+V
+,
+E
+)
+
+
+{\displaystyle G=(V,E)}
+
+ be a graph of n vertices where n is even. Does G contain a perfect matching?
+Theorem 2 (Tutte 1947): A Tutte matrix determinant is not a 0-polynomial if and only if there exists a perfect matching.
+A subset D of E is called a matching if each vertex in V is incident with at most one edge in D. A matching is perfect if each vertex in V has exactly one edge that is incident to it in D. Create a Tutte matrix A in the following way:
+where
+The Tutte matrix determinant (in the variables xij, 
+
+
+
+i
+<
+j
+
+
+{\displaystyle i<j}
+
+ ) is then defined as the determinant of this skew-symmetric matrix which coincides with the square of the pfaffian of the matrix A and is non-zero (as polynomial) if and only if a perfect matching exists. One can then use polynomial identity testing to find whether G contains a perfect matching. There exists a deterministic black-box algorithm for graphs with polynomially bounded permanents (Grigoriev & Karpinski 1987).[5]
+In the special case of a balanced bipartite graph on 
+
+
+
+n
+=
+m
++
+m
+
+
+{\displaystyle n=m+m}
+
+ vertices this matrix takes the form of a block matrix
+if the first m rows (resp. columns) are indexed with the first subset of the bipartition and the last m rows with the complementary subset. In this case the pfaffian coincides with the usual determinant of the m × m matrix X (up to sign). Here X is the Edmonds matrix.

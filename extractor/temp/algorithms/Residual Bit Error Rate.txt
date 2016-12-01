@@ -1,0 +1,7 @@
+ABOUT
+The residual bit error rate (RBER) is a receive quality metric in digital transmission, one of several used to quantify the accuracy of the received data.[1]
+FULL TEXT
+The residual bit error rate (RBER) is a receive quality metric in digital transmission, one of several used to quantify the accuracy of the received data.[1]
+In digital transmission schemes, including cellular telephony systems such as GSM, a certain percentage of received data will be detected as containing errors, and will be discarded. The likelihood that a particular bit will be detected as erroneous is the bit error rate.
+The RBER characterizes the likelihood that a given bit will be erroneous but will not be detected as such[2]
+When digital communication systems are being designed, the maximum acceptable residual bit error rate can be used, along with other quality metrics, to calculate the minimum acceptable signal to noise ratio in the system. This in turn provides minimum requirements for the physical and electronic design of the transmitter and receiver.[3]

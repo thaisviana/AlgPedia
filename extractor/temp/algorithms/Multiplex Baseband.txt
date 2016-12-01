@@ -1,0 +1,6 @@
+ABOUT
+In telecommunication, the term multiplex baseband has the following meanings:
+FULL TEXT
+In telecommunication, the term multiplex baseband has the following meanings:
+For example, the output of a group multiplexer consists of a band of frequencies from 60 kHz to 108 kHz. This is the group-level baseband that results from combining 12 voice-frequency input channels, having a bandwidth of 4 kHz each, including guard bands. In turn, 5 groups are multiplexed into a super group having a baseband of 312 kHz to 552 kHz. This baseband, however, does not represent a group-level baseband. Ten super groups are in turn multiplexed into one master group, the output of which is a baseband that may be used to modulate a microwave-frequency carrier.
+ This article incorporates public domain material from the General Services Administration document "Federal Standard 1037C" (in support of MIL-STD-188).

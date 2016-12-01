@@ -1,0 +1,47 @@
+ABOUT
+The Lehmer random number generator[1] (named after D. H. Lehmer), sometimes also referred to as the Park–Miller random number generator (after Stephen K. Park and Keith W. Miller), is a type of linear congruential generator (LCG) that operates in multiplicative group of integers modulo n. The general formula is:
+FULL TEXT
+The Lehmer random number generator[1] (named after D. H. Lehmer), sometimes also referred to as the Park–Miller random number generator (after Stephen K. Park and Keith W. Miller), is a type of linear congruential generator (LCG) that operates in multiplicative group of integers modulo n. The general formula is:
+where the modulus n is a prime number or a power of a prime number, the multiplier g is an element of high multiplicative order modulo n (e.g., a primitive root modulo n), and the seed X0 is coprime to n.
+
+
+In 1988, Park and Miller[2] suggested a Lehmer RNG with particular parameters n = 231 − 1 = 2,147,483,647 (a Mersenne prime M31) and g = 75 = 16,807 (a primitive root modulo M31), now known as MINSTD. Although MINSTD was later criticized by Marsaglia and Sullivan (1993),[3] it is still in use today (in particular, in CarbonLib and C++11's minstd_rand0). Park, Miller and Stockmeyer responded to the criticism (1993),[4] saying:
+Given the dynamic nature of the area, it is difficult for nonspecialists to make decisions about what generator to use. "Give me something I can understand, implement and port... it needn't be state-of-the-art, just make sure it's reasonably good and efficient." Our article and the associated minimal standard generator was an attempt to respond to this request. Five years later, we see no need to alter our response other than to suggest the use of the multiplier a = 48271 in place of 16807.
+This revised constant is used in C++11's minstd_rand random number generator.
+The Sinclair ZX81 and its successors use the Lehmer RNG with parameters n = 216 + 1 = 65,537 (a Fermat prime F4) and g = 75 (a primitive root modulo F4). [5] The CRAY random number generator RANF is a Lehmer RNG with n = 248 − 1 and g = 44,485,709,377,909.[6] The GNU Scientific Library includes several random number generators of the Lehmer form, including MINSTD, RANF, and the infamous IBM random number generator RANDU.[6]
+While the Lehmer RNG can be viewed as a particular case of the linear congruential generator with c=0, it is a special case that implies certain restrictions and properties. In particular, for the Lehmer RNG, the initial seed X0 must be coprime to the modulus n that is not required for LCGs in general. The choice of the modulus n and the multiplier g is also more restrictive for the Lehmer RNG. In contrast to LCG, the maximum period of the Lehmer RNG equals n−1 and it is such when n is prime and g is a primitive root modulo n.
+On the other hand, the discrete logarithms (to base g or any primitive root modulo n) of Xk in 
+
+
+
+
+
+Z
+
+
+n
+
+
+
+
+{\displaystyle \mathbb {Z} _{n}}
+
+ represent linear congruential sequence modulo Euler totient 
+
+
+
+φ
+(
+n
+)
+
+
+{\displaystyle \varphi (n)}
+
+.
+Using C code, the Lehmer RNG can be written as follows.
+This function's output can be fed back to its input to generate pseudorandom numbers, as long as the caller is careful to begin with any number except zero. As the product of two 32 bit integers may overflow, the cast to uint64_t is necessary.
+Another popular pair of Lehmer generator parameters uses the prime modulus 232-5:
+Many other Lehmer generators and primes have good properties. The following 128-bit Lehmer generator requires 128-bit support from the compiler and uses a multiplier computed by L'Ecuyer.[7] It has a period of 2126:
+The generator computes an odd 128-bit value and returns its upper 64 bits. Note that the role of s[0] and s[1] must be exchanged in a big-endian architecture.
+This generator passes the most stringent statistical tests such as BigCrush from TestU01 and PractRand.

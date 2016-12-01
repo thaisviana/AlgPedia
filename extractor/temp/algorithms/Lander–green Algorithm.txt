@@ -1,0 +1,4 @@
+ABOUT
+The Lander–Green algorithm is an algorithm, due to Eric Lander and Philip Green for computing the likelihood of observed genotype data given a pedigree. It is appropriate for relatively small pedigrees and a large number of markers. It is used in the analysis of genetic linkage.[1][2]
+FULL TEXT
+The Lander–Green algorithm is an algorithm, due to Eric Lander and Philip Green for computing the likelihood of observed genotype data given a pedigree. It is appropriate for relatively small pedigrees and a large number of markers. It is used in the analysis of genetic linkage.[1][2]

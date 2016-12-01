@@ -1,0 +1,649 @@
+ABOUT
+In signal processing, the overlap–add method (OA, OLA) is an efficient way to evaluate the discrete convolution of a very long signal 
+
+
+
+x
+[
+n
+]
+
+
+{\displaystyle x[n]}
+
+ with a finite impulse response (FIR) filter 
+
+
+
+h
+[
+n
+]
+
+
+{\displaystyle h[n]}
+
+:
+FULL TEXT
+In signal processing, the overlap–add method (OA, OLA) is an efficient way to evaluate the discrete convolution of a very long signal 
+
+
+
+x
+[
+n
+]
+
+
+{\displaystyle x[n]}
+
+ with a finite impulse response (FIR) filter 
+
+
+
+h
+[
+n
+]
+
+
+{\displaystyle h[n]}
+
+:
+where h[m] = 0 for m outside the region [1, M].
+The concept is to divide the problem into multiple convolutions of h[n] with short segments of 
+
+
+
+x
+[
+n
+]
+
+
+{\displaystyle x[n]}
+
+:
+where L is an arbitrary segment length. Then:
+and y[n] can be written as a sum of short convolutions:
+where  
+
+
+
+
+y
+
+k
+
+
+[
+n
+]
+ 
+
+
+
+
+=
+
+
+
+d
+e
+f
+
+
+
+
+
+ 
+
+x
+
+k
+
+
+[
+n
+]
+∗
+h
+[
+n
+]
+
+
+
+{\displaystyle y_{k}[n]\ {\stackrel {\mathrm {def} }{=}}\ x_{k}[n]*h[n]\,}
+
+  is zero outside the region [1, L + M − 1].  And for any parameter  
+
+
+
+N
+≥
+L
++
+M
+−
+1
+,
+
+
+
+{\displaystyle N\geq L+M-1,\,}
+
+  it is equivalent to the 
+
+
+
+N
+
+
+
+{\displaystyle N\,}
+
+-point circular convolution of 
+
+
+
+
+x
+
+k
+
+
+[
+n
+]
+
+
+
+{\displaystyle x_{k}[n]\,}
+
+ with 
+
+
+
+h
+[
+n
+]
+
+
+
+{\displaystyle h[n]\,}
+
+  in the region [1, N].
+The advantage is that the circular convolution can be computed very efficiently as follows, according to the circular convolution theorem:
+
+
+
+
+
+y
+
+k
+
+
+[
+n
+]
+=
+
+
+IFFT
+
+
+
+(
+
+
+FFT
+
+
+
+(
+
+x
+
+k
+
+
+[
+n
+]
+)
+
+⋅
+
+
+FFT
+
+
+
+(
+h
+[
+n
+]
+)
+
+)
+
+
+
+{\displaystyle y_{k}[n]={\textrm {IFFT}}\left({\textrm {FFT}}\left(x_{k}[n]\right)\cdot {\textrm {FFT}}\left(h[n]\right)\right)}
+
+
+
+ 
+ 
+ 
+ 
+(Eq.1)
+where FFT and IFFT refer to the fast Fourier transform and inverse fast Fourier transform, respectively, evaluated over 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ discrete points.
+
+
+Fig. 1 sketches the idea of the overlap–add method. The signal 
+
+
+
+x
+[
+n
+]
+
+
+{\displaystyle x[n]}
+
+ is first partitioned into non-overlapping sequences, then the discrete Fourier transforms of the sequences 
+
+
+
+
+y
+
+k
+
+
+[
+n
+]
+
+
+{\displaystyle y_{k}[n]}
+
+ are evaluated by multiplying the FFT of 
+
+
+
+
+x
+
+k
+
+
+[
+n
+]
+
+
+{\displaystyle x_{k}[n]}
+
+ with the FFT of 
+
+
+
+h
+[
+n
+]
+
+
+{\displaystyle h[n]}
+
+. After recovering of 
+
+
+
+
+y
+
+k
+
+
+[
+n
+]
+
+
+{\displaystyle y_{k}[n]}
+
+ by inverse FFT, the resulting output signal is reconstructed by overlapping and adding the 
+
+
+
+
+y
+
+k
+
+
+[
+n
+]
+
+
+{\displaystyle y_{k}[n]}
+
+ as shown in the figure. The overlap arises from the fact that a linear convolution is always longer than the original sequences. In the early days of development of the fast Fourier transform, 
+
+
+
+L
+
+
+{\displaystyle L}
+
+ was often chosen to be a power of 2 for efficiency, but further development has revealed efficient transforms for larger prime factorizations of L, reducing computational sensitivity to this parameter. A pseudocode of the algorithm is the following:
+When sequence x[n] is periodic, and Nx is the period, then y[n] is also periodic, with the same period.  To compute one period of y[n], Algorithm 1 can first be used to convolve h[n] with just one period of x[n].  In the region M ≤ n ≤ Nx,  the resultant y[n] sequence is correct.  And if the next M − 1 values are added to the first M − 1 values, then the region 1 ≤ n ≤ Nx will represent the desired convolution. The modified pseudocode is:
+The cost of the convolution can be associated to the number of complex multiplications involved in the operation. The major computational effort is due to the FFT operation, which for a radix-2 algorithm applied to a signal of length 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ roughly calls for 
+
+
+
+C
+=
+
+
+N
+2
+
+
+
+log
+
+2
+
+
+⁡
+N
+
+
+{\displaystyle C={\frac {N}{2}}\log _{2}N}
+
+ complex multiplications. It turns out that the number of complex multiplications of the overlap-add method are:
+
+
+
+
+
+C
+
+O
+A
+
+
+
+
+{\displaystyle C_{OA}}
+
+ accounts for the FFT+filter multiplication+IFFT operation.
+The additional cost of the 
+
+
+
+
+M
+
+L
+
+
+
+
+{\displaystyle M_{L}}
+
+ sections involved in the circular version of the overlap–add method is usually very small and can be neglected for the sake of simplicity. The best value of 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ can be found by numerical search of the minimum of 
+
+
+
+
+C
+
+O
+A
+
+
+
+(
+N
+)
+
+=
+
+C
+
+O
+A
+
+
+
+(
+
+2
+
+m
+
+
+)
+
+
+
+{\displaystyle C_{OA}\left(N\right)=C_{OA}\left(2^{m}\right)}
+
+ by spanning the integer 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ in the range 
+
+
+
+
+log
+
+2
+
+
+⁡
+
+(
+M
+)
+
+≤
+m
+≤
+
+log
+
+2
+
+
+⁡
+
+(
+
+N
+
+x
+
+
+)
+
+
+
+{\displaystyle \log _{2}\left(M\right)\leq m\leq \log _{2}\left(N_{x}\right)}
+
+. Being 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ a power of two, the FFTs of the overlap–add method are computed efficiently. Once evaluated the value of 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ it turns out that the optimal partitioning of 
+
+
+
+x
+[
+n
+]
+
+
+{\displaystyle x[n]}
+
+ has 
+
+
+
+L
+=
+N
+−
+M
++
+1
+
+
+{\displaystyle L=N-M+1}
+
+. For comparison, the cost of the standard circular convolution of 
+
+
+
+x
+[
+n
+]
+
+
+{\displaystyle x[n]}
+
+ and 
+
+
+
+h
+[
+n
+]
+
+
+{\displaystyle h[n]}
+
+ is:
+Hence the cost of the overlap–add method scales almost as 
+
+
+
+O
+
+(
+
+N
+
+x
+
+
+
+log
+
+2
+
+
+⁡
+N
+)
+
+
+
+{\displaystyle O\left(N_{x}\log _{2}N\right)}
+
+ while the cost of the standard circular convolution method is almost 
+
+
+
+O
+
+(
+
+N
+
+x
+
+
+
+log
+
+2
+
+
+⁡
+
+N
+
+x
+
+
+)
+
+
+
+{\displaystyle O\left(N_{x}\log _{2}N_{x}\right)}
+
+. However such functions accounts only for the cost of the complex multiplications, regardless of the other operations involved in the algorithm. A direct measure of the computational time required by the algorithms is of much interest. Fig. 2 shows the ratio of the measured time to evaluate a standard circular convolution using  Eq.1 with the time elapsed by the same convolution using the overlap–add method in the form of Alg 2, vs. the sequence and the filter length. Both algorithms have been implemented under Matlab. The bold line represent the boundary of the region where the overlap–add method is faster (ratio>1) than the standard circular convolution. Note that the overlap–add method in the tested cases can be three times faster than the standard method.

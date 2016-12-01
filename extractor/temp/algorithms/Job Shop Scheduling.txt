@@ -1,0 +1,655 @@
+ABOUT
+Job shop scheduling (or job-shop problem) is an optimization problem in computer science and operations research in which ideal jobs are assigned to resources at particular times. The most basic version is as follows: We are given n jobs J1, J2, ..., Jn of varying processing times, which need to be scheduled on m machines with varying processing power, while trying to minimize the makespan. The makespan is the total length of the schedule (that is, when all the jobs have finished processing). In most practical settings, the problem is presented as an online problem (dynamic scheduling), that is, the decision of scheduling a job can only be made online, when the job is presented to the algorithm.
+FULL TEXT
+Job shop scheduling (or job-shop problem) is an optimization problem in computer science and operations research in which ideal jobs are assigned to resources at particular times. The most basic version is as follows: We are given n jobs J1, J2, ..., Jn of varying processing times, which need to be scheduled on m machines with varying processing power, while trying to minimize the makespan. The makespan is the total length of the schedule (that is, when all the jobs have finished processing). In most practical settings, the problem is presented as an online problem (dynamic scheduling), that is, the decision of scheduling a job can only be made online, when the job is presented to the algorithm.
+This problem is one of the best known combinatorial optimization problems, and was the first problem for which competitive analysis was presented, by Graham in 1966.[1] Best problem instances for basic model with makespan objective are due to Taillard.[2]
+
+
+Many variations of the problem exist, including the following:
+Since the travelling salesman problem is NP-hard, the job-shop problem with sequence-dependent setup is clearly also NP-hard, since the TSP is a special case of the JSP with 
+
+
+
+m
+=
+1
+
+
+{\displaystyle m=1}
+
+ (the salesman is the machine and the cities are the jobs).
+The disjunctive graph [4] is one of the popular models used for describing the job shop scheduling problem instances.[5]
+A mathematical statement of the problem can be made as follows:
+Let 
+
+
+
+M
+=
+{
+
+M
+
+1
+
+
+,
+
+M
+
+2
+
+
+,
+…
+,
+
+M
+
+m
+
+
+}
+
+
+{\displaystyle M=\{M_{1},M_{2},\dots ,M_{m}\}}
+
+ and 
+
+
+
+J
+=
+{
+
+J
+
+1
+
+
+,
+
+J
+
+2
+
+
+,
+…
+,
+
+J
+
+n
+
+
+}
+
+
+{\displaystyle J=\{J_{1},J_{2},\dots ,J_{n}\}}
+
+ be two finite sets. On account of the industrial origins of the problem, the 
+
+
+
+
+
+M
+
+i
+
+
+
+
+
+{\displaystyle \displaystyle M_{i}}
+
+ are called machines and the 
+
+
+
+
+
+J
+
+j
+
+
+
+
+
+{\displaystyle \displaystyle J_{j}}
+
+ are called jobs.
+Let 
+
+
+
+
+ 
+
+
+X
+
+
+
+
+
+{\displaystyle \displaystyle \ {\mathcal {X}}}
+
+ denote the set of all sequential assignments of jobs to machines, such that every job is done by every machine exactly once; elements 
+
+
+
+x
+∈
+
+
+X
+
+
+
+
+{\displaystyle x\in {\mathcal {X}}}
+
+ may be written as 
+
+
+
+n
+×
+m
+
+
+{\displaystyle n\times m}
+
+ matrices, in which column 
+
+
+
+
+i
+
+
+
+{\displaystyle \displaystyle i}
+
+ lists the jobs that machine 
+
+
+
+
+
+M
+
+i
+
+
+
+
+
+{\displaystyle \displaystyle M_{i}}
+
+ will do, in order. For example, the matrix
+means that machine 
+
+
+
+
+
+M
+
+1
+
+
+
+
+
+{\displaystyle \displaystyle M_{1}}
+
+ will do the three jobs 
+
+
+
+
+
+J
+
+1
+
+
+,
+
+J
+
+2
+
+
+,
+
+J
+
+3
+
+
+
+
+
+{\displaystyle \displaystyle J_{1},J_{2},J_{3}}
+
+ in the order 
+
+
+
+
+
+J
+
+1
+
+
+,
+
+J
+
+2
+
+
+,
+
+J
+
+3
+
+
+
+
+
+{\displaystyle \displaystyle J_{1},J_{2},J_{3}}
+
+, while machine 
+
+
+
+
+
+M
+
+2
+
+
+
+
+
+{\displaystyle \displaystyle M_{2}}
+
+ will do the jobs in the order 
+
+
+
+
+
+J
+
+2
+
+
+,
+
+J
+
+3
+
+
+,
+
+J
+
+1
+
+
+
+
+
+{\displaystyle \displaystyle J_{2},J_{3},J_{1}}
+
+.
+Suppose also that there is some cost function 
+
+
+
+C
+:
+
+
+X
+
+
+→
+[
+0
+,
++
+∞
+]
+
+
+{\displaystyle C:{\mathcal {X}}\to [0,+\infty ]}
+
+. The cost function may be interpreted as a "total processing time", and may have some expression in terms of times 
+
+
+
+
+C
+
+i
+j
+
+
+:
+M
+×
+J
+→
+[
+0
+,
++
+∞
+]
+
+
+{\displaystyle C_{ij}:M\times J\to [0,+\infty ]}
+
+, the cost/time for machine 
+
+
+
+
+
+M
+
+i
+
+
+
+
+
+{\displaystyle \displaystyle M_{i}}
+
+ to do job 
+
+
+
+
+
+J
+
+j
+
+
+
+
+
+{\displaystyle \displaystyle J_{j}}
+
+.
+The job-shop problem is to find an assignment of jobs 
+
+
+
+x
+∈
+
+
+X
+
+
+
+
+{\displaystyle x\in {\mathcal {X}}}
+
+ such that 
+
+
+
+
+C
+(
+x
+)
+
+
+
+{\displaystyle \displaystyle C(x)}
+
+ is a minimum, that is, there is no 
+
+
+
+y
+∈
+
+
+X
+
+
+
+
+{\displaystyle y\in {\mathcal {X}}}
+
+ such that 
+
+
+
+
+C
+(
+x
+)
+>
+C
+(
+y
+)
+
+
+
+{\displaystyle \displaystyle C(x)>C(y)}
+
+.
+Scheduling efficiency can be defined for a schedule through the ratio of total machine idle time to the total processing time as below:
+
+
+
+
+
+C
+′
+
+=
+1
++
+
+
+
+
+∑
+
+i
+
+
+
+l
+
+i
+
+
+
+
+
+∑
+
+j
+,
+k
+
+
+
+p
+
+j
+k
+
+
+
+
+
+=
+
+
+
+C
+.
+m
+
+
+
+∑
+
+j
+,
+k
+
+
+
+p
+
+j
+k
+
+
+
+
+
+
+
+{\displaystyle C'=1+{\sum _{i}l_{i} \over \sum _{j,k}p_{jk}}={C.m \over \sum _{j,k}p_{jk}}}
+
+
+Here 
+
+
+
+
+l
+
+i
+
+
+
+
+{\displaystyle l_{i}}
+
+ is the idle time of machine 
+
+
+
+i
+
+
+{\displaystyle i}
+
+, 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ is the makespan and 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ is the number of machines. Notice that with the above definition, scheduling efficiency is simply the makespan normalized to the number of machines and the total processing time. This makes it possible to compare the usage of resources across JSP instances of different size.[6]
+One of the first problems that must be dealt with in the JSP is that many proposed solutions have infinite cost: i.e., there exists 
+
+
+
+
+x
+
+∞
+
+
+∈
+
+
+X
+
+
+
+
+{\displaystyle x_{\infty }\in {\mathcal {X}}}
+
+ such that 
+
+
+
+C
+(
+
+x
+
+∞
+
+
+)
+=
++
+∞
+
+
+{\displaystyle C(x_{\infty })=+\infty }
+
+. In fact, it is quite simple to concoct examples of such 
+
+
+
+
+x
+
+∞
+
+
+
+
+{\displaystyle x_{\infty }}
+
+ by ensuring that two machines will deadlock, so that each waits for the output of the other's next step.
+Graham had already provided the List scheduling algorithm in 1966, which is (2 − 1/m)-competitive, where m is the number of machines.[1] Also, it was proved that List scheduling is optimum online algorithm for 2 and 3 machines. The Coffman–Graham algorithm (1972) for uniform-length jobs is also optimum for two machines, and is (2 − 2/m)-competitive.[7][8] In 1992, Bartal, Fiat, Karloff and Vohra presented an algorithm that is 1.986 competitive.[9] A 1.945-competitive algorithm was presented by Karger, Philips and Torng in 1994.[10] In 1992, Albers provided a different algorithm that is 1.923-competitive.[11] Currently, the best known result is an algorithm given by Fleischer and Wahl, which achieves a competitive ratio of 1.9201.[12]
+A lower bound of 1.852 was presented by Albers.[13] Taillard instances has an important role in developing job shop scheduling with makespan objective.
+In 1976 Garey provided a proof[14] that this problem is NP-complete for m>2, that is, no optimal solution can be computed in polynomial time for three or more machines (unless P=NP).
+In 2011 Xin Chen et al. provided optimal algorithms for online scheduling on two related machines[15] improving previous results.[16]
+The simplest form of the offline makespan minimisation problem deals with atomic jobs, that is, jobs that are not subdivided into multiple operations. It is equivalent to packing a number of items of various different sizes into a fixed number of bins, such that the maximum bin size needed is as small as possible. (If instead the number of bins is to be minimised, and the bin size is fixed, the problem becomes a different problem, known as the bin packing problem.)
+Dorit S. Hochbaum and David Shmoys presented a polynomial-time approximation scheme in 1987 that finds an approximate solution to the offline makespan minimisation problem with atomic jobs to any desired degree of accuracy.[17]
+The basic form of the problem of scheduling jobs with multiple (M) operations, over M machines, such that all of the first operations must be done on the first machine, all of the second operations on the second, etc., and a single job cannot be performed in parallel, is known as the open shop scheduling problem. Various algorithms exist, including genetic algorithms.[18]
+A heuristic algorithm by S. M. Johnson can be used to solve the case of a 2 machine N job problem when all jobs are to be processed in the same order.[19] The steps of algorithm are as follows:
+Job Pi has two operations, of duration Pi1, Pi2, to be done on Machine M1, M2 in that sequence.
+If the minimum belongs to Pk1,
+Remove K from list A; Add K to beginning of List L1.
+If minimum belongs to Pk2,
+Remove K from list A; Add K to end of List L2.
+Johnson's method only works optimally for two machines. However, since it is optimal, and easy to compute, some researchers have tried to adopt it for M machines, (M > 2.)
+The idea is as follows: Imagine that each job requires m operations in sequence, on M1, M2 … Mm. We combine the first m/2 machines into an (imaginary) Machining center, MC1, and the remaining Machines into a Machining Center MC2. Then the total processing time for a Job P on MC1 = sum( operation times on first m/2 machines), and processing time for Job P on MC2 = sum(operation times on last m/2 machines).
+By doing so, we have reduced the m-Machine problem into a Two Machining center scheduling problem. We can solve this using Johnson's method.
+Machine learning has been recently used to predict the optimal makespan of a JSP instance without actually producing the optimal schedule.[6] Preliminary results show an accuracy of around 80% when supervised machine learning methods were applied to classify small randomly generated JSP instances based on their optimal scheduling efficiency compared to the average.
+Here is an example of a job shop scheduling problem formulated in AMPL as a mixed-integer programming problem with indicator constraints:

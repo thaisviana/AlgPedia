@@ -1,0 +1,58 @@
+ABOUT
+Least slack time (LST) scheduling is a scheduling algorithm. It assigns priority based on the slack time of a process. Slack time is the amount of time left after a job if the job was started now. This algorithm is also known as least laxity first. Its most common use is in embedded systems, especially those with multiple processors. It imposes the simple constraint that each process on each available processor possesses the same run time, and that individual processes do not have an affinity to a certain processor. This is what lends it a suitability to embedded systems.
+FULL TEXT
+Least slack time (LST) scheduling is a scheduling algorithm. It assigns priority based on the slack time of a process. Slack time is the amount of time left after a job if the job was started now. This algorithm is also known as least laxity first. Its most common use is in embedded systems, especially those with multiple processors. It imposes the simple constraint that each process on each available processor possesses the same run time, and that individual processes do not have an affinity to a certain processor. This is what lends it a suitability to embedded systems.
+This scheduling algorithm first selects those processes that have the smallest "slack time". Slack time is defined as the temporal difference between the deadline, the ready time and the run time.
+More formally, the slack time for a process is defined as:
+
+
+
+
+(
+d
+−
+t
+)
+−
+
+c
+′
+
+
+
+{\displaystyle (d-t)-c'}
+
+
+where 
+
+
+
+d
+
+
+{\displaystyle d}
+
+ is the process deadline, 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ is the real time since the cycle start, and 
+
+
+
+
+c
+′
+
+
+
+{\displaystyle c'}
+
+ is the remaining computation time.
+In realtime scheduling algorithms for periodic jobs, an acceptance test is needed before accepting a sporadic job with a hard deadline. One of the simplest acceptance tests for a sporadic job is calculating the amount of slack time between the release time and deadline of the job.
+LST scheduling is most useful in systems comprising mainly aperiodic tasks, because no prior assumptions are made on the events' rate of occurrence. The main weakness of LST is that it does not look ahead, and works only on the current system state. Thus, during a brief overload of system resources, LST can be suboptimal. It will also be suboptimal when used with uninterruptible processes. However, like earliest deadline first, and unlike rate monotonic scheduling, this algorithm can be used for processor utilization up to 100%.

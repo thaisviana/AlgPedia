@@ -1,0 +1,34 @@
+ABOUT
+The Schreier–Sims algorithm is an algorithm in computational group theory named after mathematicians Otto Schreier and Charles Sims. Once performed, it allows a linear time computation of the order of a finite permutation group, group membership test (is a given permutation contained in a group?), and many other tasks. The algorithm was introduced by Sims in 1970, based on Schreier's subgroup lemma. The timing was subsequently improved by Donald Knuth in 1991. Later, an even faster randomized version of the algorithm was developed.
+FULL TEXT
+The Schreier–Sims algorithm is an algorithm in computational group theory named after mathematicians Otto Schreier and Charles Sims. Once performed, it allows a linear time computation of the order of a finite permutation group, group membership test (is a given permutation contained in a group?), and many other tasks. The algorithm was introduced by Sims in 1970, based on Schreier's subgroup lemma. The timing was subsequently improved by Donald Knuth in 1991. Later, an even faster randomized version of the algorithm was developed.
+The algorithm is an efficient method of computing a base and strong generating set (BSGS) of a permutation group. In particular, an SGS determines the order of a group and makes it easy to test membership in the group. Since the SGS is critical for many algorithms in computational group theory, computer algebra systems typically rely on the Schreier–Sims algorithm for efficient calculations in groups.
+The running time of Schreier–Sims varies on the implementation. Let 
+
+
+
+G
+≤
+
+S
+
+n
+
+
+
+
+{\displaystyle G\leq S_{n}}
+
+ be given by 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ generators. For the deterministic version of the algorithm, possible running times are:
+The use of Schreier vectors can have a significant influence on the performance of implementations of the Schreier–Sims algorithm.
+For Monte Carlo variations of the Schreier–Sims algorithm, we have the following estimated complexity:
+In modern computer algebra systems, such as GAP and Magma, an optimized Monte Carlo algorithm is typically used.

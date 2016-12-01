@@ -1,0 +1,411 @@
+ABOUT
+In signal processing, a window function (also known as an apodization function or tapering function[1]) is a mathematical function that is zero-valued outside of some chosen interval. For instance, a function that is constant inside the interval and zero elsewhere is called a rectangular window, which describes the shape of its graphical representation. When another function or waveform/data-sequence is multiplied by a window function, the product is also zero-valued outside the interval: all that is left is the part where they overlap, the "view through the window".
+FULL TEXT
+In signal processing, a window function (also known as an apodization function or tapering function[1]) is a mathematical function that is zero-valued outside of some chosen interval. For instance, a function that is constant inside the interval and zero elsewhere is called a rectangular window, which describes the shape of its graphical representation. When another function or waveform/data-sequence is multiplied by a window function, the product is also zero-valued outside the interval: all that is left is the part where they overlap, the "view through the window".
+In typical applications, the window functions used are non-negative, smooth, "bell-shaped" curves.[2] Rectangle, triangle, and other functions can also be used. A more general definition of window functions does not require them to be identically zero outside an interval, as long as the product of the window multiplied by its argument is square integrable, and, more specifically, that the function goes sufficiently rapidly toward zero.[3]
+
+
+Applications of window functions include spectral analysis/modification/resynthesis,[4] the design of finite impulse response filters, as well as beamforming and antenna design.
+The Fourier transform of the function cos ωt is zero, except at frequency ±ω. However, many other functions and waveforms do not have convenient closed-form transforms. Alternatively, one might be interested in their spectral content only during a certain time period.
+In either case, the Fourier transform (or a similar transform) can be applied on one or more finite intervals of the waveform. In general, the transform is applied to the product of the waveform and a window function. Any window (including rectangular) affects the spectral estimate computed by this method.
+Windowing of a simple waveform like cos ωt causes its Fourier transform to develop non-zero values (commonly called spectral leakage) at frequencies other than ω. The leakage tends to be worst (highest) near ω and least at frequencies farthest from ω.
+If the waveform under analysis comprises two sinusoids of different frequencies, leakage can interfere with the ability to distinguish them spectrally. If their frequencies are dissimilar and one component is weaker, then leakage from the stronger component can obscure the weaker one’s presence. But if the frequencies are similar, leakage can render them unresolvable even when the sinusoids are of equal strength. The rectangular window has excellent resolution characteristics for sinusoids of comparable strength, but it is a poor choice for sinusoids of disparate amplitudes. This characteristic is sometimes described as low dynamic range.
+At the other extreme of dynamic range are the windows with the poorest resolution and sensitivity, which is the ability to reveal relatively weak sinusoids in the presence of additive random noise. That is because the noise produces a stronger response with high-dynamic-range windows than with high-resolution windows. Therefore, high-dynamic-range windows are most often justified in wideband applications, where the spectrum being analyzed is expected to contain many different components of various amplitudes.
+In between the extremes are moderate windows, such as Hamming and Hann. They are commonly used in narrowband applications, such as the spectrum of a telephone channel. In summary, spectral analysis involves a trade-off between resolving comparable strength components with similar frequencies and resolving disparate strength components with dissimilar frequencies. That trade-off occurs when the window function is chosen.
+When the input waveform is time-sampled, instead of continuous, the analysis is usually done by applying a window function and then a discrete Fourier transform (DFT). But the DFT provides only a sparse sampling of the actual discrete-time Fourier transform (DTFT) spectrum. Figure 1 shows a portion of the DTFT for a rectangularly-windowed sinusoid. The actual frequency of the sinusoid is indicated as "0" on the horizontal axis. Everything else is leakage, exaggerated by the use of a logarithmic presentation. The unit of frequency is "DFT bins"; that is, the integer values on the frequency axis correspond to the frequencies sampled by the DFT. So the figure depicts a case where the actual frequency of the sinusoid coincides with a DFT sample, and the maximum value of the spectrum is accurately measured by that sample. When it misses the maximum value by some amount (up to ½ bin), the measurement error is referred to as scalloping loss (inspired by the shape of the peak). For a known frequency, such as a musical note or a sinusoidal test signal, matching the frequency to a DFT bin can be prearranged by choices of a sampling rate and a window length that results in an integer number of cycles within the window.
+The concepts of resolution and dynamic range tend to be somewhat subjective, depending on what the user is actually trying to do. But they also tend to be highly correlated with the total leakage, which is quantifiable. It is usually expressed as an equivalent bandwidth, B. It can be thought of as redistributing the DTFT into a rectangular shape with height equal to the spectral maximum and width B.[note 1][5] The more the leakage, the greater the bandwidth. It is sometimes called noise equivalent bandwidth or equivalent noise bandwidth, because it is proportional to the average power that will be registered by each DFT bin when the input signal contains a random noise component (or is just random noise). A graph of the power spectrum, averaged over time, typically reveals a flat noise floor, caused by this effect. The height of the noise floor is proportional to B. So two different window functions can produce different noise floors.
+In signal processing, operations are chosen to improve some aspect of quality of a signal by exploiting the differences between the signal and the corrupting influences. When the signal is a sinusoid corrupted by additive random noise, spectral analysis distributes the signal and noise components differently, often making it easier to detect the signal's presence or measure certain characteristics, such as amplitude and frequency. Effectively, the signal to noise ratio (SNR) is improved by distributing the noise uniformly, while concentrating most of the sinusoid's energy around one frequency. Processing gain is a term often used to describe an SNR improvement. The processing gain of spectral analysis depends on the window function, both its noise bandwidth (B) and its potential scalloping loss. These effects partially offset, because windows with the least scalloping naturally have the most leakage.
+The figure at right depicts the effects of three different window functions on the same data set, comprising two equal strength sinusoids in additive noise. The frequencies of the sinusoids are chosen such that one encounters no scalloping and the other encounters maximum scalloping. Both sinusoids suffer less SNR loss under the Hann window than under the Blackman–Harris window. In general (as mentioned earlier), this is a deterrent to using high-dynamic-range windows in low-dynamic-range applications.
+Windows are sometimes used in the design of digital filters, in particular to convert an "ideal" impulse response of infinite duration, such as a sinc function, to a finite impulse response (FIR) filter design. That is called the window method.[6][7]
+When analyzing a transient signal in modal analysis, such as an impulse, a shock response, a sine burst, a chirp burst, or noise burst, where the energy vs time distribution is extremely uneven, the rectangular window may be most appropriate. For instance, when most of the energy is located at the beginning of the recording, a non-rectangular window attenuates most of the energy, degrading the signal-to-noise ratio.[8]
+One might wish to measure the harmonic content of a musical note from a particular instrument or the harmonic distortion of an amplifier at a given frequency. Referring again to Figure 1, we can observe that there is no leakage at a discrete set of harmonically-related frequencies sampled by the DFT. (The spectral nulls are actually zero-crossings, which cannot be shown on a logarithmic scale such as this.) This property is unique to the rectangular window, and it must be appropriately configured for the signal frequency, as described above.
+Window functions generated for digital filter design are symmetrical sequences, usually an odd length with a single maximum at the center. Windows for DFT/FFT usage, as in spectral analysis or time-frequency filtering, are often created by deleting the right-most coefficient of an odd-length, symmetrical window, making their discrete frequency spectrum purely real.[9] These are known as periodic[10] or DFT-even.[11] Such a window is generated by the MATLAB function hann(512,'periodic') for instance. To generate it with the formula in this article (below), the window length (N) is 513, and the 513th coefficient of the generated sequence is discarded.
+For a window function with zero-valued end-points, deleting one or both end-points has no effect on its DTFT. But the function designed for N+1 samples, instead of N, typically has a slightly narrower main lobe, slightly higher sidelobes, and a slightly lower noise bandwidth. Similarly, deleting both zeros from a function designed for N+2 samples further amplifies those effects. For a window function with non-zero end-points, such as triangular or Poisson, deleting one of them can result in higher sidelobes and noise bandwidth with little or no main lobe improvement.
+There is also a cosmetic result of truncating an N+1 sample symmetric window. It happens when we sample the DTFT only at intervals of 
+
+
+
+
+
+
+1
+N
+
+
+
+
+
+{\displaystyle {\tfrac {1}{N}}}
+
+ cycles/sample, which is the effect of an N-point DFT. The baseline width of the N+1 sample window with zero-valued end-points is just N sample-intervals. That usually means the DTFT zero-crossings, which create the fine-grained sidelobe structure away from the main lobe, occur at an interval that asymptotically approaches the same interval as the DFT samples. When that allows most of the DFT samples to occur at or near the zero-crossings, it creates an illusion of little or no spectral leakage. But such a plot only reveals the leakage into the DFT bins from a sinusoid whose frequency is also an integer DFT bin. The unseen sidelobes reveal the leakage to expect from sinusoids at other frequencies.[12] That is why it's important to present the continuous function (as seen below) and choose a window that suppresses the sidelobes to an acceptable level.
+Terminology:
+B-spline windows can be obtained as k-fold convolutions of the rectangular window. They include the rectangular window itself (k = 1), the triangular window (k = 2) and the Parzen window (k = 4).[14] Alternative definitions sample the appropriate normalized B-spline basis functions instead of convolving discrete-time windows. A kth order B-spline basis function is a piece-wise polynomial function of degree k−1 that is obtained by k-fold self-convolution of the rectangular function.
+The rectangular window (sometimes known as the boxcar or Dirichlet window) is the simplest window, equivalent to replacing all but N values of a data sequence by zeros, making it appear as though the waveform suddenly turns on and off:
+Other windows are designed to moderate these sudden changes, which reduces scalloping loss and improves dynamic range, as described above (Window function#Spectral analysis).
+The rectangular window is the 1st order B-spline window as well as the 0th power cosine window.
+Triangular windows are given by:
+where L can be N,[11][16] N+1,[17] or N-1.[18] The last one is also known as Bartlett window or Fejér window. All three definitions converge at large N.
+The triangular window is the 2nd order B-spline window and can be seen as the convolution of two N/2 width rectangular windows. The Fourier transform of the result is the squared values of the transform of the half-width rectangular window.
+The Parzen window, also known as the de la Vallée Poussin window,[11] is the 4th order B-spline window given by:
+The Welch window consists of a single parabolic section:
+The defining quadratic polynomial reaches a value of zero at the samples just outside the span of the window.
+Generalized Hamming windows are of the form:
+The periodic/DFT-even forms have only three non-zero DFT coefficients and share the benefits of a sparse frequency domain representation with higher-order generalized cosine windows.
+The Hann window named after Julius von Hann and also known as the Hanning (for being similar in name and form to the Hamming window), von Hann and the raised cosine window is defined by (with hav for the haversine function):[19]
+The ends of the cosine just touch zero, so the side-lobes roll off at about 18 dB per octave.[20]
+The window with these particular coefficients was proposed by Richard W. Hamming. The window is optimized to minimize the maximum (nearest) side lobe, giving it a height of about one-fifth that of the Hann window.[21][22]
+with
+instead of both constants being equal to 1/2 in the Hann window. The constants are approximations of values α = 25/46 and β = 21/46, which cancel the first sidelobe of the Hann window by placing a zero at frequency 5π/(N − 1).[11] Approximation of the constants to two decimal places substantially lowers the level of sidelobes,[11] to a nearly equiripple condition.[22] In the equiripple sense, the optimal values for the coefficients are α = 0.53836 and β = 0.46164.[22][23]
+Windows of the form:
+have only 2K + 1 non-zero DFT coefficients, which makes them good choices for applications that require windowing by convolution in the frequency-domain. In those applications, the DFT of the unwindowed data vector is needed for a different purpose than spectral analysis. (see Overlap-save method). Generalized cosine windows with just two terms (K = 1) belong in the subfamily generalized Hamming windows.
+Blackman windows are defined as:
+By common convention, the unqualified term Blackman window refers to Blackman's "not very serious proposal" of α = 0.16 (a0 = 0.42, a1 = 0.5, a2 = 0.08), which closely approximates the "exact Blackman",[24] with a0 = 7938/18608 ≈ 0.42659, a1 = 9240/18608 ≈ 0.49656, and a2 = 1430/18608 ≈ 0.076849.[25] These exact values place zeros at the third and fourth sidelobes,[11] but result in a discontinuity at the edges and a 6 dB/oct fall-off. The truncated coefficients do not null the sidelobes as well, but have an improved 18 dB/oct fall-off.[11][26]
+Considering n as a real number, the Nuttall window function and its first derivative are continuous everywhere. That is, the function goes to 0 at n = 0, unlike the Blackman–Nuttall and Blackman–Harris windows, which have a small positive value at zero (at "step" from the zero outside the window), like the Hamming window. The Blackman window defined via α is also continuous with continuous derivative at the edge, but the described "exact Blackman window" is not.
+A generalization of the Hamming family, produced by adding more shifted sinc functions, meant to minimize side-lobe levels[27][28]
+A flat top window is a partially negative-valued window that has minimal scalloping loss in the frequency domain. Such windows have been made available in spectrum analyzers for the measurement of amplitudes of sinusoidal frequency components.[15][29] Drawbacks of the broad bandwidth are poor frequency resolution and high noise bandwidth.
+Flat top windows can be designed using low-pass filter design methods,[29] or they may be of the usual sum-of-cosine-terms variety.[15] An example of the latter is the flat top window available in the Stanford Research Systems (SRS) SR785 spectrum analyzer:
+Rife and Vincent define three classes of windows constructed as sums of cosines; the classes are generalizations of the Hanning window.[30] Their order-P windows are of the form (normalized to have unity average as opposed to unity max as the windows above are):
+For order 1, this formula can match the Hanning window for a1 = −1; this is the Rife–Vincent class-I window, defined by minimizing the high-order sidelobe amplitude. The class-I order-2 Rife–Vincent window has a1 = −4/3 and a2 = 1/3. Coefficients for orders up to 4 are tabulated.[31] For orders greater than 1, the Rife–Vincent window coefficients can be optimized for class II, meaning minimized main-lobe width for a given maximum side-lobe, or for class III, a compromise for which order 2 resembles Blackmann's window.[31][32] Given the wide variety of Rife–Vincent windows, plots are not given here.
+Window functions in the power-of-cosine family are of the form:
+The rectangular window (α = 0), the cosine window (α = 1), and the Hann window (α = 2) are members of this family.
+The cosine window is also known as the sine window. Cosine window describes the shape of 
+
+
+
+
+w
+
+0
+
+
+(
+n
+)
+
+
+
+{\displaystyle w_{0}(n)\,}
+
+
+A cosine window convolved by itself is known as the Bohman window.
+The Fourier transform of a Gaussian is also a Gaussian (it is an eigenfunction of the Fourier Transform). Since the Gaussian function extends to infinity, it must either be truncated at the ends of the window, or itself windowed with another zero-ended window.[33]
+Since the log of a Gaussian produces a parabola, this can be used for nearly exact quadratic interpolation in frequency estimation.[33][34][35]
+The standard deviation of the Gaussian function is σ(N−1)/2 sampling periods.
+The confined Gaussian window yields the smallest possible root mean square frequency width σω for a given temporal width σt.[36] These windows optimize the RMS time-frequency bandwidth products. They are computed as the minimum eigenvectors of a parameter-dependent matrix. The confined Gaussian window family contains the cosine window and the Gaussian window in the limiting cases of large and small σt, respectively.
+A confined Gaussian window of temporal width σt is well approximated by:[36]
+with the Gaussian:
+The temporal width of the approximate window is asymptotically equal to σt for σt < 0.14 N.[36]
+A more generalized version of the Gaussian window is the generalized normal window.[37] Retaining the notation from the Gaussian window above, we can represent this window as
+for any even 
+
+
+
+p
+
+
+{\displaystyle p}
+
+. At 
+
+
+
+p
+=
+2
+
+
+{\displaystyle p=2}
+
+, this is a Gaussian window and as 
+
+
+
+p
+
+
+{\displaystyle p}
+
+ approaches 
+
+
+
+∞
+
+
+{\displaystyle \infty }
+
+, this approximates to a rectangular window. The Fourier transform of this window does not exist in a closed form for a general 
+
+
+
+p
+
+
+{\displaystyle p}
+
+. However, it demonstrates the other benefits of being smooth, adjustable bandwidth. Like the Tukey window discussed later, this window naturally offers a "flat top" to control the amplitude attenuation of a time-series (on which we don't have a control with Gaussian window). In essence, it offers a good (controllable) compromise, in terms of spectral leakage, frequency resolution and amplitude attenuation, between the Gaussian window and the rectangular window. See also [38] for a study on time-frequency representation of this window (or function).
+The Tukey window,[11][39] also known as the tapered cosine window, can be regarded as a cosine lobe of width αN/2 that is convolved with a rectangular window of width (1 − α/2)N.
+or expressed with the havercosine (hvc) function:
+At α = 0 it becomes rectangular, and at α = 1 it becomes a Hann window.
+The so-called "Planck-taper" window is a bump function that has been widely used[40] in the theory of partitions of unity in manifolds. It is smooth (a 
+
+
+
+
+C
+
+∞
+
+
+
+
+{\displaystyle C^{\infty }}
+
+ function) everywhere, but is exactly zero outside of a compact region, exactly one over an interval within that region, and varies smoothly and monotonically between those limits. Its use as a window function in signal processing was first suggested in the context of gravitational-wave astronomy, inspired by the Planck distribution.[41] It is defined as a piecewise function:
+where
+The amount of tapering (the region over which the function is exactly 1) is controlled by the parameter ε, with smaller values giving sharper transitions.
+The DPSS (discrete prolate spheroidal sequence) or Slepian window is used to maximize the energy concentration in the main lobe.[42]
+The main lobe ends at a bin given by the parameter α.[43]
+The Kaiser, or Kaiser-Bessel, window is a simple approximation of the DPSS window using Bessel functions, discovered by Jim Kaiser.[44][45][43][46]
+where I0 is the zero-th order modified Bessel function of the first kind. Variable parameter α determines the tradeoff between main lobe width and side lobe levels of the spectral leakage pattern. The main lobe width, in between the nulls, is given by  
+
+
+
+2
+
+
+1
++
+
+α
+
+2
+
+
+
+
+,
+
+
+{\displaystyle 2{\sqrt {1+\alpha ^{2}}},}
+
+  in units of DFT bins,[47]  and a typical value of α is 3.
+Minimizes the Chebyshev norm of the side-lobes for a given main lobe width.[48]
+The zero-phase Dolph–Chebyshev window function w0(n) is usually defined in terms of its real-valued discrete Fourier transform, W0(k):
+where the parameter α sets the Chebyshev norm of the sidelobes to −20α decibels.[48]
+The window function can be calculated from W0(k) by an inverse discrete Fourier transform (DFT):[48]
+The lagged version of the window, with 0 ≤ n ≤ N−1, can be obtained by:
+which for even values of N must be computed as follows:
+which is an inverse DFT of  
+
+
+
+(
+−
+
+e
+
+
+
+i
+π
+
+N
+
+
+
+
+)
+
+k
+
+
+⋅
+
+W
+
+0
+
+
+(
+k
+)
+.
+
+
+{\displaystyle (-e^{\frac {i\pi }{N}})^{k}\cdot W_{0}(k).}
+
+
+Variations:
+The Ultraspherical window was introduced in 1984 by Roy Streit[49] and has application in antenna array design,[50] non-recursive filter design,[49] and spectrum analysis.[51]
+Like other adjustable windows, the Ultraspherical window has parameters that can be used to control its Fourier transform main-lobe width and relative side-lobe amplitude. Uncommon to other windows, it has an additional parameter which can be used to set the rate at which side-lobes decrease (or increase) in amplitude.[51][52]
+The window can be expressed in the time-domain as follows:[51]
+where 
+
+
+
+
+C
+
+N
+
+
+μ
+
+
+
+
+{\displaystyle C_{N}^{\mu }}
+
+ is the Ultraspherical polynomial of degree N, and 
+
+
+
+
+x
+
+0
+
+
+
+
+{\displaystyle x_{0}}
+
+ and 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ control the side-lobe patterns.[51]
+Certain specific values of 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ yield other well-known windows: 
+
+
+
+μ
+=
+0
+
+
+{\displaystyle \mu =0}
+
+ and 
+
+
+
+μ
+=
+1
+
+
+{\displaystyle \mu =1}
+
+ give the Dolph–Chebyshev and Saramäki windows respectively.[49] See here for illustration of Ultraspherical windows with varied parametrization.
+The Poisson window, or more generically the exponential window increases exponentially towards the center of the window and decreases exponentially in the second half. Since the exponential function never reaches zero, the values of the window at its limits are non-zero (it can be seen as the multiplication of an exponential function by a rectangular window [53]). It is defined by
+where τ is the time constant of the function. The exponential function decays as e ≃ 2.71828 or approximately 8.69 dB per time constant.[54] This means that for a targeted decay of D dB over half of the window length, the time constant τ is given by
+Window functions have also been constructed as multiplicative or additive combinations of other windows.
+A Planck-taper window multiplied by a Kaiser window which is defined in terms of a modified Bessel function. This hybrid window function was introduced to decrease the peak side-lobe level of the Planck-taper window while still exploiting its good asymptotic decay.[55] It has two tunable parameters, ε from the Planck-taper and α from the Kaiser window, so it can be adjusted to fit the requirements of a given signal.
+A Hann window multiplied by a Poisson window, which has no side-lobes, in the sense that its Fourier transform drops off forever away from the main lobe. It can thus be used in hill climbing algorithms like Newton's method.[56] The Hann–Poisson window is defined by:
+where α is a parameter that controls the slope of the exponential.
+When selecting an appropriate window function for an application, this comparison graph may be useful. The frequency axis has units of FFT "bins" when the window of length N is applied to data and a transform of length N is computed. For instance, the value at frequency ½ "bin" (third tick mark) is the response that would be measured in bins k and k+1 to a sinusoidal signal at frequency k+½. It is relative to the maximum possible response, which occurs when the signal frequency is an integer number of bins. The value at frequency ½ is referred to as the maximum scalloping loss of the window, which is one metric used to compare windows. The rectangular window is noticeably worse than the others in terms of that metric.
+Other metrics that can be seen are the width of the main lobe and the peak level of the sidelobes, which respectively determine the ability to resolve comparable strength signals and disparate strength signals. The rectangular window (for instance) is the best choice for the former and the worst choice for the latter. What cannot be seen from the graphs is that the rectangular window has the best noise bandwidth, which makes it a good candidate for detecting low-level sinusoids in an otherwise white noise environment. Interpolation techniques, such as zero-padding and frequency-shifting, are available to mitigate its potential scalloping loss.
+When the length of a data set to be transformed is larger than necessary to provide the desired frequency resolution, a common practice is to subdivide it into smaller sets and window them individually. To mitigate the "loss" at the edges of the window, the individual sets may overlap in time. See Welch method of power spectral analysis and the modified discrete cosine transform.
+Two-dimensional windows are used in, e.g., image processing. They can be constructed from one-dimensional windows in either of two forms.[57]
+The separable form, 
+
+
+
+W
+(
+m
+,
+n
+)
+=
+w
+(
+m
+)
+w
+(
+n
+)
+
+
+{\displaystyle W(m,n)=w(m)w(n)}
+
+ is trivial to compute. The radial form, 
+
+
+
+W
+(
+m
+,
+n
+)
+=
+w
+(
+r
+)
+
+
+{\displaystyle W(m,n)=w(r)}
+
+, which involves the radius 
+
+
+
+r
+=
+
+
+(
+m
+−
+M
+
+/
+
+2
+
+)
+
+2
+
+
++
+(
+n
+−
+N
+
+/
+
+2
+
+)
+
+2
+
+
+
+
+
+
+{\displaystyle r={\sqrt {(m-M/2)^{2}+(n-N/2)^{2}}}}
+
+, is isotropic, independent on the orientation of the coordinate axes. Only the Gaussian function is both separable and isotropic.[58] The separable forms of all other window functions have corners that depend on the choice of the coordinate axes. The isotropy/anisotropy of a two-dimensional window function is shared by its two-dimensional Fourier transform. The difference between the separable and radial forms is akin to the result of diffraction from rectangular vs. circular appertures, which can be visualized in terms of the product of two sinc functions vs. an Airy function, respectively.

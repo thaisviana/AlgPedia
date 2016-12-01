@@ -1,0 +1,657 @@
+ABOUT
+The transmission-line matrix (TLM) method is a space and time discretising method for computation of electromagnetic fields. It is based on the analogy between the electromagnetic field and a mesh of transmission lines. The TLM method allows the computation of complex three-dimensional electromagnetic structures and has proven to be one of the most powerful time-domain methods along with the finite difference time domain (FDTD) method.
+FULL TEXT
+The transmission-line matrix (TLM) method is a space and time discretising method for computation of electromagnetic fields. It is based on the analogy between the electromagnetic field and a mesh of transmission lines. The TLM method allows the computation of complex three-dimensional electromagnetic structures and has proven to be one of the most powerful time-domain methods along with the finite difference time domain (FDTD) method.
+
+
+The TLM method is based on Huygens' model of wave propagation and scattering and the analogy between field propagation and transmission lines. Therefore, it considers the computational domain as a mesh of transmission lines, interconnected at nodes. In the figure on the right is considered a simple example of a 2D TLM mesh with a voltage pulse of amplitude 1 V incident on the central node. This pulse will be partially reflected and transmitted according to the transmission-line theory. If we assume that each line has a characteristic impedance 
+
+
+
+Z
+
+
+{\displaystyle Z}
+
+, then the incident pulse sees effectively three transmission lines in parallel with a total impedance of 
+
+
+
+Z
+
+/
+
+3
+
+
+{\displaystyle Z/3}
+
+. The reflection coefficient and the transmission coefficient are given by
+The energy injected into the node by the incident pulse and the total energy of the scattered pulses are correspondingly
+Therefore, the energy conservation law is fulfilled by the model.
+The next scattering event excites the neighbouring nodes according to the principle described above. It can be seen that every node turns into a secondary source of spherical wave. These waves combine to form the overall waveform. This is in accordance with Huygens principle of light propagation.
+In order to show the TLM schema we will use time and space discretisation. The time-step will be denoted with 
+
+
+
+Δ
+t
+
+
+{\displaystyle \Delta t}
+
+ and the space discretisation intervals with 
+
+
+
+Δ
+x
+
+
+{\displaystyle \Delta x}
+
+, 
+
+
+
+Δ
+y
+
+
+{\displaystyle \Delta y}
+
+ and 
+
+
+
+Δ
+z
+
+
+{\displaystyle \Delta z}
+
+. The absolute time and space will therefore be 
+
+
+
+t
+=
+k
+
+Δ
+t
+
+
+{\displaystyle t=k\,\Delta t}
+
+, 
+
+
+
+x
+=
+l
+
+Δ
+x
+
+
+{\displaystyle x=l\,\Delta x}
+
+, 
+
+
+
+y
+=
+m
+
+Δ
+y
+
+
+{\displaystyle y=m\,\Delta y}
+
+, 
+
+
+
+z
+=
+n
+
+Δ
+z
+
+
+{\displaystyle z=n\,\Delta z}
+
+, where 
+
+
+
+k
+=
+0
+,
+1
+,
+2
+,
+…
+
+
+{\displaystyle k=0,1,2,\ldots }
+
+ is the time instant and 
+
+
+
+m
+,
+n
+,
+l
+
+
+{\displaystyle m,n,l}
+
+ are the cell coordinates. In case 
+
+
+
+Δ
+x
+=
+Δ
+y
+=
+Δ
+z
+
+
+{\displaystyle \Delta x=\Delta y=\Delta z}
+
+ the value 
+
+
+
+Δ
+l
+
+
+{\displaystyle \Delta l}
+
+ will be used, which is the lattice constant. In this case the following holds:
+where 
+
+
+
+
+c
+
+0
+
+
+
+
+{\displaystyle c_{0}}
+
+ is the free space speed of light.
+If we consider an electromagnetic field distribution in which the only non-zero components are 
+
+
+
+
+E
+
+x
+
+
+
+
+{\displaystyle E_{x}}
+
+, 
+
+
+
+
+E
+
+y
+
+
+
+
+{\displaystyle E_{y}}
+
+ and 
+
+
+
+
+H
+
+z
+
+
+
+
+{\displaystyle H_{z}}
+
+ (i.e. a TE-mode distribution), then Maxwell's equations in Cartesian coordinates reduce to
+We can combine these equations to obtain
+The figure on the right presents a structure referred to as a series node. It describes a block of space dimensions 
+
+
+
+Δ
+x
+
+
+{\displaystyle \Delta x}
+
+, 
+
+
+
+Δ
+y
+
+
+{\displaystyle \Delta y}
+
+ and 
+
+
+
+Δ
+z
+
+
+{\displaystyle \Delta z}
+
+ that consists of four ports. 
+
+
+
+
+L
+′
+
+
+
+{\displaystyle L'}
+
+ and 
+
+
+
+
+C
+′
+
+
+
+{\displaystyle C'}
+
+ are the distributed inductance and capacitance of the transmission lines. It is possible to show that a series node is equivalent to a TE-wave, more precisely the mesh current I, the x-direction voltages (ports 1 and 3) and the y-direction voltages (ports 2 and 4) may be related to the field components 
+
+
+
+
+H
+
+z
+
+
+
+
+{\displaystyle H_{z}}
+
+, 
+
+
+
+
+E
+
+x
+
+
+
+
+{\displaystyle E_{x}}
+
+ and 
+
+
+
+
+E
+
+y
+
+
+
+
+{\displaystyle E_{y}}
+
+. If the voltages on the ports are considered, 
+
+
+
+
+L
+
+x
+
+
+=
+
+L
+
+y
+
+
+
+
+{\displaystyle L_{x}=L_{y}}
+
+, and the polarity from the above figure holds, then the following is valid
+where 
+
+
+
+Δ
+x
+=
+Δ
+y
+=
+Δ
+l
+
+
+{\displaystyle \Delta x=\Delta y=\Delta l}
+
+.
+and dividing both sides by 
+
+
+
+Δ
+x
+Δ
+y
+
+
+{\displaystyle \Delta x\Delta y}
+
+
+Since 
+
+
+
+Δ
+x
+=
+Δ
+y
+=
+Δ
+z
+=
+Δ
+l
+
+
+{\displaystyle \Delta x=\Delta y=\Delta z=\Delta l}
+
+ and substituting 
+
+
+
+I
+=
+
+H
+
+z
+
+
+
+Δ
+z
+
+
+{\displaystyle I=H_{z}\,\Delta z}
+
+ gives
+This reduces to Maxwell's equations when 
+
+
+
+Δ
+l
+→
+0
+
+
+{\displaystyle \Delta l\rightarrow 0}
+
+.
+Similarly, using the conditions across the capacitors on ports 1 and 4, it can be shown that the corresponding two other Maxwell equations are the following:
+Having these results, it is possible to compute the scattering matrix of a shunt node. The incident voltage pulse on port 1 at time-step k is denoted as 
+
+
+
+
+
+
+k
+
+
+
+V
+
+1
+
+
+i
+
+
+
+
+{\displaystyle _{k}V_{1}^{i}}
+
+. Replacing the four line segments from the above figure with their Thevenin equivalent it is possible to show that the following equation for the reflected voltage pulse holds:
+If all incident waves as well as all reflected waves are collected in one vector, then this equation may be written down for all ports in matrix form:
+where 
+
+
+
+
+
+
+k
+
+
+
+
+V
+
+
+i
+
+
+
+
+{\displaystyle _{k}\mathbf {V} ^{i}}
+
+ and 
+
+
+
+
+
+
+k
+
+
+
+
+V
+
+
+r
+
+
+
+
+{\displaystyle _{k}\mathbf {V} ^{r}}
+
+ are the incident and the reflected pulse amplitude vectors.
+For a series node the scattering matrix S has the following form
+In order to describe the connection between adjacent nodes by a mesh of series nodes, look at the figure on the right. As the incident pulse in timestep k+1 on a node is the scattered pulse from an adjacent node in timestep k, the following connection equations are derived:
+By modifying the scattering matrix 
+
+
+
+
+
+S
+
+
+
+
+{\displaystyle {\textbf {S}}}
+
+ inhomogeneous and lossy materials can be modelled. By adjusting the connection equations it is possible to simulate different boundaries.
+Apart from the series node, described above there is also the shunt TLM node, which represents a TM-mode field distribution. The only non-zero components of such wave are 
+
+
+
+
+H
+
+x
+
+
+
+
+{\displaystyle H_{x}}
+
+, 
+
+
+
+
+H
+
+y
+
+
+
+
+{\displaystyle H_{y}}
+
+, and 
+
+
+
+
+E
+
+z
+
+
+
+
+{\displaystyle E_{z}}
+
+. With similar considerations as for the series node the scattering matrix of the shunt node can be derived.
+Most problems in electromagnetics require a three-dimensional grid. As we now have structures that describe TE and TM-field distributions, intuitively it seems possible to define a combination of shunt and series nodes providing a full description of the electromagnetic field. Such attempts have been made, but because of the complexity of the resulting structures they proved to be not very useful. Using the analogy that was presented above leads to calculation of the different field components at physically separated points. This causes difficulties in providing simple and efficient boundary definitions. A solution to these problems was provided by Johns in 1987, when he proposed the structure known as the symmetrical condensed node (SCN), presented in the figure on the right. It consists of 12 ports because two field polarisations are to be assigned to each of the 6 sides of a mesh cell.
+The topology of the SCN cannot be analysed using Thevenin equivalent circuits. More general energy and charge conservation principles are to be used.
+The electric and the magnetic fields on the sides of the SCN node number (l,m,n) at time instant k may be summarised in 12-dimensional vectors
+They can be linked with the incident and scattered amplitude vectors via
+where 
+
+
+
+
+Z
+
+F
+
+
+=
+
+
+
+μ
+ε
+
+
+
+
+
+{\displaystyle Z_{F}={\sqrt {\frac {\mu }{\varepsilon }}}}
+
+ is the field impedance, 
+
+
+
+
+
+
+k
+
+
+
+
+a
+
+
+l
+,
+m
+,
+n
+
+
+
+
+{\displaystyle _{k}\mathbf {a} _{l,m,n}}
+
+ is the vector of the amplitudes of the incident waves to the node, and 
+
+
+
+
+
+
+k
+
+
+
+
+b
+
+
+l
+,
+m
+,
+n
+
+
+
+
+{\displaystyle _{k}\mathbf {b} _{l,m,n}}
+
+ is the vector of the scattered amplitudes. The relation between the incident and scattered waves is given by the matrix equation
+The scattering matrix S can be calculated. For the symmetrical condensed node with ports defined as in the figure the following result is obtained
+where the following matrix was used
+The connection between different SCNs is done in the same manner as for the 2D nodes.

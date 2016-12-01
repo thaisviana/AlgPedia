@@ -1,0 +1,4 @@
+ABOUT
+Rapidly exploring dense trees is a family of planning algorithms that includes the rapidly exploring random tree.
+FULL TEXT
+Rapidly exploring dense trees is a family of planning algorithms that includes the rapidly exploring random tree.

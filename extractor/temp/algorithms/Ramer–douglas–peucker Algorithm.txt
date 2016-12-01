@@ -1,0 +1,17 @@
+ABOUT
+The Ramer–Douglas–Peucker algorithm (RDP) is an algorithm for reducing the number of points in a curve that is approximated by a series of points. The initial form of the algorithm was independently suggested in 1972 by Urs Ramer and 1973 by David Douglas and Thomas Peucker[1] and several others in the following decade.[2] This algorithm is also known under the names Douglas–Peucker algorithm, iterative end-point fit algorithm and split-and-merge algorithm.
+FULL TEXT
+The Ramer–Douglas–Peucker algorithm (RDP) is an algorithm for reducing the number of points in a curve that is approximated by a series of points. The initial form of the algorithm was independently suggested in 1972 by Urs Ramer and 1973 by David Douglas and Thomas Peucker[1] and several others in the following decade.[2] This algorithm is also known under the names Douglas–Peucker algorithm, iterative end-point fit algorithm and split-and-merge algorithm.
+
+
+The purpose of the algorithm is, given a curve composed of line segments, to find a similar curve with fewer points. The algorithm defines 'dissimilar' based on the maximum distance between the original curve and the simplified curve (i.e., the Hausdorff distance between the curves). The simplified curve consists of a subset of the points that defined the original curve.
+The starting curve is an ordered set of points or lines and the distance dimension ε > 0.
+The algorithm recursively divides the line. Initially it is given all the points between the first and last point. It automatically marks the first and last point to be kept. It then finds the point that is furthest from the line segment with the first and last points as end points; this point is obviously furthest on the curve from the approximating line segment between the end points. If the point is closer than ε to the line segment then any points not currently marked to be kept can be discarded without the simplified curve being worse than ε.
+If the point furthest from the line segment is greater than ε from the approximation then that point must be kept. The algorithm recursively calls itself with the first point and the worst point and then with the worst point and the last point, which includes marking the worst point being marked as kept.
+When the recursion is completed a new output curve can be generated consisting of all and only those points that have been marked as kept.
+The choice of ε is usually user-defined. Like most line fitting / polygonal approximation / dominant point detection methods, it can be made non-parametric by using the error bound due to digitization / quantization as a termination condition.[3] MATLAB code for such a non-parametric RDP algorithm[4] is available here.[5]
+(Assumes the input is a one-based array)
+The algorithm is used for the processing of vector graphics and cartographic generalization.
+The algorithm is widely used in robotics[6] to perform simplification and denoising of range data acquired by a rotating range scanner; in this field it is known as the split-and-merge algorithm and is attributed to Duda and Hart.
+The expected complexity of this algorithm can be described by the linear recurrence T(n) = 2T( n⁄2) + O(n), which has the well-known solution (via the master theorem) of T(n) ∈ Θ(n log n). However, the worst-case complexity is Θ(n2).
+Alternative algorithms for line simplification include:

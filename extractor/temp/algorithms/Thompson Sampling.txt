@@ -1,0 +1,614 @@
+ABOUT
+In artificial intelligence, Thompson sampling,[1] named after William R. Thompson, is a heuristic for choosing actions that addresses the exploration-exploitation dilemma in the multi-armed bandit problem. It consists in choosing the action that maximizes the expected reward with respect to a randomly drawn belief.
+FULL TEXT
+In artificial intelligence, Thompson sampling,[1] named after William R. Thompson, is a heuristic for choosing actions that addresses the exploration-exploitation dilemma in the multi-armed bandit problem. It consists in choosing the action that maximizes the expected reward with respect to a randomly drawn belief.
+
+
+Consider a set of contexts 
+
+
+
+
+
+X
+
+
+
+
+{\displaystyle {\mathcal {X}}}
+
+, a set of actions 
+
+
+
+
+
+A
+
+
+
+
+{\displaystyle {\mathcal {A}}}
+
+, and rewards in 
+
+
+
+
+R
+
+
+
+{\displaystyle \mathbb {R} }
+
+. In each round, the player obtains a context 
+
+
+
+x
+∈
+
+
+X
+
+
+
+
+{\displaystyle x\in {\mathcal {X}}}
+
+, plays an action 
+
+
+
+a
+∈
+
+
+A
+
+
+
+
+{\displaystyle a\in {\mathcal {A}}}
+
+ and receives a reward 
+
+
+
+r
+∈
+
+R
+
+
+
+{\displaystyle r\in \mathbb {R} }
+
+ following a distribution that depends on the context and the issued action. The aim of the player is to play actions such as to maximize the cumulative rewards.
+The elements of Thompson sampling are as follows:
+Thompson sampling consists in playing the action 
+
+
+
+
+a
+
+∗
+
+
+∈
+
+
+A
+
+
+
+
+{\displaystyle a^{\ast }\in {\mathcal {A}}}
+
+ according to the probability that it maximizes the expected reward, i.e.
+where 
+
+
+
+
+I
+
+
+
+{\displaystyle \mathbb {I} }
+
+ is the indicator function.
+In practice, the rule is implemented by sampling, in each round, a parameter 
+
+
+
+
+θ
+
+∗
+
+
+
+
+{\displaystyle \theta ^{\ast }}
+
+ from the posterior 
+
+
+
+P
+(
+θ
+
+|
+
+
+
+D
+
+
+)
+
+
+{\displaystyle P(\theta |{\mathcal {D}})}
+
+, and choosing the action 
+
+
+
+
+a
+
+∗
+
+
+
+
+{\displaystyle a^{\ast }}
+
+ that maximizes 
+
+
+
+
+E
+
+[
+r
+
+|
+
+
+θ
+
+∗
+
+
+,
+
+a
+
+∗
+
+
+,
+x
+]
+
+
+{\displaystyle \mathbb {E} [r|\theta ^{\ast },a^{\ast },x]}
+
+, i.e. the expected reward given the parameter, the action and the current context. Conceptually, this means that the player instantiates his beliefs randomly in each round, and then he acts optimally according to them.
+Thompson sampling was originally described in an article by Thompson from 1933 [1] but has been largely ignored by the artificial intelligence community. It was subsequently rediscovered numerous times independently in the context of reinforcement learning.[2][3][4][5][6][7] A first proof of convergence for the bandit case has been shown in 1997.[2] The first application to Markov decision processes was in 2000.[4] A related approach (see Bayesian control rule) was published in 2010.[3] In 2010 it was also shown that Thompson sampling is instantaneously self-correcting.[7] Asymptotic convergence results for contextual bandits were published in 2011.[5] Nowadays, Thompson Sampling has been widely used in many online learning problems: Thompson sampling has also been applied to A/B testing in website design and online advertising;[8] Thompson sampling has formed the basis for accelerated learning in decentralized decision making;[9] a Double Thompson Sampling (D-TS) [10] algorithm has been proposed for dueling bandits, a variant of traditional MAB, where feedbacks come in the format of pairwise comparison.
+Probability matching is a decision strategy in which predictions of class membership are proportional to the class base rates. Thus, if in the training set positive examples are observed 60% of the time, and negative examples are observed 40% of the time, the observer using a probability-matching strategy will predict (for unlabeled examples) a class label of "positive" on 60% of instances, and a class label of "negative" on 40% of instances.
+A generalization of Thompson sampling to arbitrary dynamical environments and causal structures, known as Bayesian control rule, has been shown to be the optimal solution to the adaptive coding problem with actions and observations.[3] In this formulation, an agent is conceptualized as a mixture over a set of behaviours. As the agent interacts with its environment, it learns the causal properties and adopts the behaviour that minimizes the relative entropy to the behaviour with the best prediction of the environment's behaviour. If these behaviours have been chosen according to the maximum expected utility principle, then the asymptotic behaviour of the Bayesian control rule matches the asymptotic behaviour of the perfectly rational agent.
+The setup is as follows. Let 
+
+
+
+
+a
+
+1
+
+
+,
+
+a
+
+2
+
+
+,
+…
+,
+
+a
+
+T
+
+
+
+
+{\displaystyle a_{1},a_{2},\ldots ,a_{T}}
+
+ be the actions issued by an agent up to time 
+
+
+
+T
+
+
+{\displaystyle T}
+
+, and let 
+
+
+
+
+o
+
+1
+
+
+,
+
+o
+
+2
+
+
+,
+…
+,
+
+o
+
+T
+
+
+
+
+{\displaystyle o_{1},o_{2},\ldots ,o_{T}}
+
+ be the observations gathered by the agent up to time 
+
+
+
+T
+
+
+{\displaystyle T}
+
+. Then, the agent issues the action 
+
+
+
+
+a
+
+T
++
+1
+
+
+
+
+{\displaystyle a_{T+1}}
+
+ with probability:[3]
+where the "hat"-notation 
+
+
+
+
+
+
+
+a
+^
+
+
+
+
+t
+
+
+
+
+{\displaystyle {\hat {a}}_{t}}
+
+ denotes the fact that 
+
+
+
+
+a
+
+t
+
+
+
+
+{\displaystyle a_{t}}
+
+ is a causal intervention (see Causality), and not an ordinary observation. If the agent holds beliefs 
+
+
+
+θ
+∈
+Θ
+
+
+{\displaystyle \theta \in \Theta }
+
+ over its behaviors, then the Bayesian control rule becomes
+where 
+
+
+
+P
+(
+θ
+
+|
+
+
+
+
+
+a
+^
+
+
+
+
+1
+:
+T
+
+
+,
+
+o
+
+1
+:
+T
+
+
+)
+
+
+{\displaystyle P(\theta |{\hat {a}}_{1:T},o_{1:T})}
+
+ is the posterior distribution over the parameter 
+
+
+
+θ
+
+
+{\displaystyle \theta }
+
+ given actions 
+
+
+
+
+a
+
+1
+:
+T
+
+
+
+
+{\displaystyle a_{1:T}}
+
+ and observations 
+
+
+
+
+o
+
+1
+:
+T
+
+
+
+
+{\displaystyle o_{1:T}}
+
+.
+In practice, the Bayesian control amounts to sampling, in each time step, a parameter 
+
+
+
+
+θ
+
+∗
+
+
+
+
+{\displaystyle \theta ^{\ast }}
+
+ from the posterior distribution 
+
+
+
+P
+(
+θ
+
+|
+
+
+
+
+
+a
+^
+
+
+
+
+1
+:
+T
+
+
+,
+
+o
+
+1
+:
+T
+
+
+)
+
+
+{\displaystyle P(\theta |{\hat {a}}_{1:T},o_{1:T})}
+
+, where the posterior distribution is computed using Bayes' rule by only considering the (causal) likelihoods of the observations 
+
+
+
+
+o
+
+1
+
+
+,
+
+o
+
+2
+
+
+,
+…
+,
+
+o
+
+T
+
+
+
+
+{\displaystyle o_{1},o_{2},\ldots ,o_{T}}
+
+ and ignoring the (causal) likelihoods of the actions 
+
+
+
+
+a
+
+1
+
+
+,
+
+a
+
+2
+
+
+,
+…
+,
+
+a
+
+T
+
+
+
+
+{\displaystyle a_{1},a_{2},\ldots ,a_{T}}
+
+, and then by sampling the action 
+
+
+
+
+a
+
+T
++
+1
+
+
+∗
+
+
+
+
+{\displaystyle a_{T+1}^{\ast }}
+
+ from the action distribution 
+
+
+
+P
+(
+
+a
+
+T
++
+1
+
+
+
+|
+
+
+θ
+
+∗
+
+
+,
+
+
+
+
+a
+^
+
+
+
+
+1
+:
+T
+
+
+,
+
+o
+
+1
+:
+T
+
+
+)
+
+
+{\displaystyle P(a_{T+1}|\theta ^{\ast },{\hat {a}}_{1:T},o_{1:T})}
+
+.

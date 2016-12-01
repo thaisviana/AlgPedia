@@ -1,0 +1,20 @@
+ABOUT
+In computing, cache algorithms (also frequently called cache replacement algorithms or cache replacement policies) are optimizing instructions—​​or algorithms—​​that a computer program or a hardware-maintained structure can follow in order to manage a cache of information stored on the computer. When the cache is full, the algorithm must choose which items to discard to make room for the new ones.
+FULL TEXT
+In computing, cache algorithms (also frequently called cache replacement algorithms or cache replacement policies) are optimizing instructions—​​or algorithms—​​that a computer program or a hardware-maintained structure can follow in order to manage a cache of information stored on the computer. When the cache is full, the algorithm must choose which items to discard to make room for the new ones.
+
+
+The average memory reference time is[1]
+where
+There are two primary figures of merit of a cache: The latency, and the hit rate. There are also a number of secondary factors affecting cache performance.[1]
+The "hit ratio" of a cache describes how often a searched-for item is actually found in the cache. More efficient replacement policies keep track of more usage information in order to improve the hit rate (for a given cache size).
+The "latency" of a cache describes how long after requesting a desired item the cache can return that item (when there is a hit). Faster replacement strategies typically keep track of less usage information—or, in the case of direct-mapped cache, no information—to reduce the amount of time required to update that information.
+Each replacement strategy is a compromise between hit rate and latency.
+Hit rate measurements are typically performed on benchmark applications. The actual hit ratio varies widely from one application to another. In particular, video and audio streaming applications often have a hit ratio close to zero, because each bit of data in the stream is read once for the first time (a compulsory miss), used, and then never read or written again. Even worse, many cache algorithms (in particular, LRU) allow this streaming data to fill the cache, pushing out of the cache information that will be used again soon (cache pollution).[2]
+Using this algorithm the cache behaves in the same way as a FIFO queue. The cache evicts the first block accessed first without any regard to how often or how many times it was accessed before.
+Using this algorithm the cache behaves in the exact opposite way as a FIFO queue. The cache evicts the block accessed most recently first without any regard to how often or how many times it was accessed before.
+Here , A B C D are placed in the cache as there is still space available. At the 5th access E, we see that the block which held D is now replaced with E as this block was used most recently. Another access to C and at the next access to D, C is replaced as it was the block accessed just before D and so on.
+The access sequence is A B C D E.
+The principle here is simple to understand if we only look at the arrow pointers. When there is an access to a value say 'A' and the we cannot find it in the cache then load it from memory and place it at the block where the arrows are pointing go from top to bottom and when you place that block make the arrows point away from that block go from bottom to top. In the above example we see how 'A' was placed followed by 'B', 'C and 'D'. Then as the cache became full 'E' replaced 'A' as that was where the arrows were pointing at that time. On the next access block where 'C' is being held will be replaced.
+Other things to consider:
+Various algorithms also exist to maintain cache coherency. This applies only to situation where multiple independent caches are used for the same data (for example multiple database servers updating the single shared data file).

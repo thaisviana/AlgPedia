@@ -1,0 +1,255 @@
+ABOUT
+The VEGAS algorithm, due to G. P. Lepage,[1] is a method for reducing error in Monte Carlo simulations by using a known or approximate probability distribution function to concentrate the search in those areas of the integrand that make the greatest contribution to the final integral.
+FULL TEXT
+The VEGAS algorithm, due to G. P. Lepage,[1] is a method for reducing error in Monte Carlo simulations by using a known or approximate probability distribution function to concentrate the search in those areas of the integrand that make the greatest contribution to the final integral.
+The VEGAS algorithm is based on importance sampling. It samples points from the probability distribution described by the function 
+
+
+
+
+|
+
+f
+
+|
+
+
+
+{\displaystyle |f|}
+
+, so that the points are concentrated in the regions that make the largest contribution to the integral.
+
+
+In general, if the Monte Carlo integral of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is sampled with points distributed according to a probability distribution described by the function 
+
+
+
+g
+
+
+{\displaystyle g}
+
+, we obtain an estimate 
+
+
+
+
+
+E
+
+
+g
+
+
+(
+f
+;
+N
+)
+
+
+{\displaystyle \mathrm {E} _{g}(f;N)}
+
+,
+The variance of the new estimate is then
+where 
+
+
+
+
+V
+a
+r
+
+(
+f
+;
+N
+)
+
+
+{\displaystyle \mathrm {Var} (f;N)}
+
+ is the variance of the original estimate, 
+
+
+
+
+V
+a
+r
+
+(
+f
+;
+N
+)
+=
+
+E
+
+(
+
+f
+
+2
+
+
+;
+N
+)
+−
+(
+
+E
+
+(
+f
+;
+N
+)
+
+)
+
+2
+
+
+
+
+{\displaystyle \mathrm {Var} (f;N)=\mathrm {E} (f^{2};N)-(\mathrm {E} (f;N))^{2}}
+
+.
+If the probability distribution is chosen as 
+
+
+
+g
+=
+
+|
+
+f
+
+|
+
+
+/
+
+I
+(
+
+|
+
+f
+
+|
+
+)
+
+
+{\displaystyle g=|f|/I(|f|)}
+
+ then it can be shown that the variance 
+
+
+
+
+
+V
+a
+r
+
+
+g
+
+
+(
+f
+;
+N
+)
+
+
+{\displaystyle \mathrm {Var} _{g}(f;N)}
+
+ vanishes, and the error in the estimate will be zero. In practice it is not possible to sample from the exact distribution g for an arbitrary function, so importance sampling algorithms aim to produce efficient approximations to the desired distribution.
+The VEGAS algorithm approximates the exact distribution by making a number of passes over the integration region while histogramming the function f. Each histogram is used to define a sampling distribution for the next pass. Asymptotically this procedure converges to the desired distribution. In order to avoid the number of histogram bins growing like 
+
+
+
+
+K
+
+d
+
+
+
+
+{\displaystyle K^{d}}
+
+ with dimension d the probability distribution is approximated by a separable function: 
+
+
+
+g
+(
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+,
+…
+)
+=
+
+g
+
+1
+
+
+(
+
+x
+
+1
+
+
+)
+
+g
+
+2
+
+
+(
+
+x
+
+2
+
+
+)
+⋯
+
+
+{\displaystyle g(x_{1},x_{2},\ldots )=g_{1}(x_{1})g_{2}(x_{2})\cdots }
+
+ so that the number of bins required is only Kd. This is equivalent to locating the peaks of the function from the projections of the integrand onto the coordinate axes. The efficiency of VEGAS depends on the validity of this assumption. It is most efficient when the peaks of the integrand are well-localized. If an integrand can be rewritten in a form which is approximately separable this will increase the efficiency of integration with VEGAS.

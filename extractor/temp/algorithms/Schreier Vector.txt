@@ -1,0 +1,173 @@
+ABOUT
+In mathematics, especially the field of computational group theory, a Schreier vector is a tool for reducing the time and space complexity required to calculate orbits of a permutation group.
+FULL TEXT
+In mathematics, especially the field of computational group theory, a Schreier vector is a tool for reducing the time and space complexity required to calculate orbits of a permutation group.
+
+
+Suppose G is a finite group with generating sequence 
+
+
+
+X
+=
+{
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+,
+.
+.
+.
+,
+
+x
+
+r
+
+
+}
+
+
+{\displaystyle X=\{x_{1},x_{2},...,x_{r}\}}
+
+ which acts on the finite set 
+
+
+
+Ω
+=
+{
+1
+,
+2
+,
+.
+.
+.
+,
+n
+}
+
+
+{\displaystyle \Omega =\{1,2,...,n\}}
+
+. A common task in computational group theory is to compute the orbit of some element 
+
+
+
+ω
+∈
+Ω
+
+
+{\displaystyle \omega \in \Omega }
+
+ under G. At the same time, one can record a Schreier vector for 
+
+
+
+ω
+
+
+{\displaystyle \omega }
+
+. This vector can then be used to find an element 
+
+
+
+g
+∈
+G
+
+
+{\displaystyle g\in G}
+
+ satisfying 
+
+
+
+
+ω
+
+g
+
+
+=
+α
+
+
+{\displaystyle \omega ^{g}=\alpha }
+
+, for any 
+
+
+
+α
+∈
+
+ω
+
+G
+
+
+
+
+{\displaystyle \alpha \in \omega ^{G}}
+
+. Use of Schreier vectors to perform this requires less storage space and time complexity than storing these g explicitly.
+All variables used here are defined in the overview.
+A Schreier vector for 
+
+
+
+ω
+∈
+Ω
+
+
+{\displaystyle \omega \in \Omega }
+
+ is a vector 
+
+
+
+
+v
+
+=
+(
+v
+[
+1
+]
+,
+v
+[
+2
+]
+,
+.
+.
+.
+,
+v
+[
+n
+]
+)
+
+
+{\displaystyle \mathbf {v} =(v[1],v[2],...,v[n])}
+
+ such that:
+Here we illustrate, using pseudocode, the use of Schreier vectors in two algorithms

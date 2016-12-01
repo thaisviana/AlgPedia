@@ -1,0 +1,746 @@
+ABOUT
+The finite volume method (FVM) is a method for representing and evaluating partial differential equations in the form of algebraic equations [LeVeque, 2002; Toro, 1999]. Similar to the finite difference method or finite element method, values are calculated at discrete places on a meshed geometry. "Finite volume" refers to the small volume surrounding each node point on a mesh. In the finite volume method, volume integrals in a partial differential equation that contain a divergence term are converted to surface integrals, using the divergence theorem. These terms are then evaluated as fluxes at the surfaces of each finite volume. Because the flux entering a given volume is identical to that leaving the adjacent volume, these methods are conservative. Another advantage of the finite volume method is that it is easily formulated to allow for unstructured meshes. The method is used in many computational fluid dynamics packages.
+FULL TEXT
+The finite volume method (FVM) is a method for representing and evaluating partial differential equations in the form of algebraic equations [LeVeque, 2002; Toro, 1999]. Similar to the finite difference method or finite element method, values are calculated at discrete places on a meshed geometry. "Finite volume" refers to the small volume surrounding each node point on a mesh. In the finite volume method, volume integrals in a partial differential equation that contain a divergence term are converted to surface integrals, using the divergence theorem. These terms are then evaluated as fluxes at the surfaces of each finite volume. Because the flux entering a given volume is identical to that leaving the adjacent volume, these methods are conservative. Another advantage of the finite volume method is that it is easily formulated to allow for unstructured meshes. The method is used in many computational fluid dynamics packages.
+
+
+Consider a simple 1D advection problem defined by the following partial differential equation
+Here, 
+
+
+
+ρ
+=
+ρ
+
+(
+x
+,
+t
+)
+
+ 
+
+
+{\displaystyle \rho =\rho \left(x,t\right)\ }
+
+ represents the state variable and 
+
+
+
+f
+=
+f
+
+(
+ρ
+
+(
+x
+,
+t
+)
+
+)
+
+ 
+
+
+{\displaystyle f=f\left(\rho \left(x,t\right)\right)\ }
+
+ represents the flux or flow of 
+
+
+
+ρ
+ 
+
+
+{\displaystyle \rho \ }
+
+. Conventionally, positive 
+
+
+
+f
+ 
+
+
+{\displaystyle f\ }
+
+ represents flow to the right while negative 
+
+
+
+f
+ 
+
+
+{\displaystyle f\ }
+
+ represents flow to the left. If we assume that equation (1) represents a flowing medium of constant area, we can sub-divide the spatial domain, 
+
+
+
+x
+ 
+
+
+{\displaystyle x\ }
+
+, into finite volumes or cells with cell centres indexed as 
+
+
+
+i
+ 
+
+
+{\displaystyle i\ }
+
+. For a particular cell, 
+
+
+
+i
+ 
+
+
+{\displaystyle i\ }
+
+, we can define the volume average value of 
+
+
+
+
+
+ρ
+
+
+i
+
+
+
+(
+t
+)
+
+=
+ρ
+
+(
+x
+,
+t
+)
+
+ 
+
+
+{\displaystyle {\rho }_{i}\left(t\right)=\rho \left(x,t\right)\ }
+
+ at time 
+
+
+
+
+t
+=
+
+t
+
+1
+
+
+
+ 
+
+
+{\displaystyle {t=t_{1}}\ }
+
+ and 
+
+
+
+
+x
+∈
+
+[
+
+x
+
+i
+−
+
+
+1
+2
+
+
+
+
+,
+
+x
+
+i
++
+
+
+1
+2
+
+
+
+
+]
+
+
+ 
+
+
+{\displaystyle {x\in \left[x_{i-{\frac {1}{2}}},x_{i+{\frac {1}{2}}}\right]}\ }
+
+, as
+and at time 
+
+
+
+
+t
+=
+
+t
+
+2
+
+
+
+ 
+
+
+{\displaystyle {t=t_{2}}\ }
+
+ as,
+where 
+
+
+
+
+x
+
+i
+−
+
+
+1
+2
+
+
+
+
+ 
+
+
+{\displaystyle x_{i-{\frac {1}{2}}}\ }
+
+ and 
+
+
+
+
+x
+
+i
++
+
+
+1
+2
+
+
+
+
+ 
+
+
+{\displaystyle x_{i+{\frac {1}{2}}}\ }
+
+ represent locations of the upstream and downstream faces or edges respectively of the 
+
+
+
+
+i
+
+t
+h
+
+
+ 
+
+
+{\displaystyle i^{th}\ }
+
+ cell.
+Integrating equation (1) in time, we have:
+where 
+
+
+
+
+f
+
+x
+
+
+=
+
+
+
+∂
+f
+
+
+∂
+x
+
+
+
+
+
+{\displaystyle f_{x}={\frac {\partial f}{\partial x}}}
+
+.
+To obtain the volume average of 
+
+
+
+ρ
+
+(
+x
+,
+t
+)
+
+
+
+{\displaystyle \rho \left(x,t\right)}
+
+ at time 
+
+
+
+t
+=
+
+t
+
+2
+
+
+ 
+
+
+{\displaystyle t=t_{2}\ }
+
+, we integrate 
+
+
+
+ρ
+
+(
+x
+,
+
+t
+
+2
+
+
+)
+
+
+
+{\displaystyle \rho \left(x,t_{2}\right)}
+
+ over the cell volume, 
+
+
+
+
+[
+
+x
+
+i
+−
+
+
+1
+2
+
+
+
+
+,
+
+x
+
+i
++
+
+
+1
+2
+
+
+
+
+]
+
+
+
+{\displaystyle \left[x_{i-{\frac {1}{2}}},x_{i+{\frac {1}{2}}}\right]}
+
+ and divide the result by 
+
+
+
+Δ
+
+x
+
+i
+
+
+=
+
+x
+
+i
++
+
+
+1
+2
+
+
+
+
+−
+
+x
+
+i
+−
+
+
+1
+2
+
+
+
+
+
+
+{\displaystyle \Delta x_{i}=x_{i+{\frac {1}{2}}}-x_{i-{\frac {1}{2}}}}
+
+, i.e.
+We assume that 
+
+
+
+f
+ 
+
+
+{\displaystyle f\ }
+
+ is well behaved and that we can reverse the order of integration. Also, recall that flow is normal to the unit area of the cell. Now, since in one dimension 
+
+
+
+
+f
+
+x
+
+
+≜
+∇
+⋅
+f
+
+
+{\displaystyle f_{x}\triangleq \nabla \cdot f}
+
+, we can apply the divergence theorem, i.e. 
+
+
+
+
+∮
+
+v
+
+
+∇
+⋅
+f
+d
+v
+=
+
+∮
+
+S
+
+
+f
+
+d
+S
+
+
+{\displaystyle \oint _{v}\nabla \cdot fdv=\oint _{S}f\,dS}
+
+, and substitute for the volume integral of the divergence with the values of 
+
+
+
+f
+(
+x
+)
+ 
+
+
+{\displaystyle f(x)\ }
+
+ evaluated at the cell surface (edges 
+
+
+
+
+x
+
+i
+−
+
+
+1
+2
+
+
+
+
+ 
+
+
+{\displaystyle x_{i-{\frac {1}{2}}}\ }
+
+ and 
+
+
+
+
+x
+
+i
++
+
+
+1
+2
+
+
+
+
+ 
+
+
+{\displaystyle x_{i+{\frac {1}{2}}}\ }
+
+) of the finite volume as follows:
+where 
+
+
+
+
+f
+
+i
+±
+
+
+1
+2
+
+
+
+
+=
+f
+
+(
+
+x
+
+i
+±
+
+
+1
+2
+
+
+
+
+,
+t
+)
+
+
+
+{\displaystyle f_{i\pm {\frac {1}{2}}}=f\left(x_{i\pm {\frac {1}{2}}},t\right)}
+
+.
+We can therefore derive a semi-discrete numerical scheme for the above problem with cell centres indexed as 
+
+
+
+i
+ 
+
+
+{\displaystyle i\ }
+
+, and with cell edge fluxes indexed as 
+
+
+
+i
+±
+
+
+1
+2
+
+
+
+
+{\displaystyle i\pm {\frac {1}{2}}}
+
+, by differentiating (6) with respect to time to obtain:
+where values for the edge fluxes, 
+
+
+
+
+f
+
+i
+±
+
+
+1
+2
+
+
+
+
+
+
+{\displaystyle f_{i\pm {\frac {1}{2}}}}
+
+, can be reconstructed by interpolation or extrapolation of the cell averages. Equation (7) is exact for the volume averages; i.e., no approximations have been made during its derivation.
+This method can also be applied to a 2D situation by considering the north and south faces along with the east and west faces around a node.
+We can also consider the general conservation law problem, represented by the following PDE,
+Here, 
+
+
+
+
+
+u
+
+
+ 
+
+
+{\displaystyle {\mathbf {u} }\ }
+
+ represents a vector of states and 
+
+
+
+
+f
+
+ 
+
+
+{\displaystyle \mathbf {f} \ }
+
+ represents the corresponding flux tensor. Again we can sub-divide the spatial domain into finite volumes or cells. For a particular cell, 
+
+
+
+i
+ 
+
+
+{\displaystyle i\ }
+
+, we take the volume integral over the total volume of the cell, 
+
+
+
+
+v
+
+i
+
+
+ 
+
+
+{\displaystyle v_{i}\ }
+
+, which gives,
+On integrating the first term to get the volume average and applying the divergence theorem to the second, this yields
+where 
+
+
+
+
+S
+
+i
+
+
+ 
+
+
+{\displaystyle S_{i}\ }
+
+ represents the total surface area of the cell and 
+
+
+
+
+
+n
+
+
+
+
+{\displaystyle {\mathbf {n} }}
+
+ is a unit vector normal to the surface and pointing outward. So, finally, we are able to present the general result equivalent to (8), i.e.
+Again, values for the edge fluxes can be reconstructed by interpolation or extrapolation of the cell averages. The actual numerical scheme will depend upon problem geometry and mesh construction. MUSCL reconstruction is often used in high resolution schemes where shocks or discontinuities are present in the solution.
+Finite volume schemes are conservative as cell averages change through the edge fluxes. In other words, one cell's loss is another cell's gain!

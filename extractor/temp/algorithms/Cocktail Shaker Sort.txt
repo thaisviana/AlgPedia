@@ -1,0 +1,58 @@
+ABOUT
+Cocktail shaker sort,[1] also known as bidirectional bubble sort,[2] cocktail sort, martini sort, shaker sort (which can also refer to a variant of selection sort), ripple sort, shuffle sort,[3] or shuttle sort, is a variation of bubble sort that is both a stable sorting algorithm and a comparison sort. The algorithm differs from a bubble sort in that it sorts in both directions on each pass through the list. This sorting algorithm is only marginally more difficult to implement than a bubble sort, and solves the problem of turtles in bubble sorts. It provides only marginal performance improvements, and does not improve asymptotic performance; like the bubble sort, it is not of practical interest (insertion sort is preferred for simple sorts), though it finds some use in education.
+FULL TEXT
+Cocktail shaker sort,[1] also known as bidirectional bubble sort,[2] cocktail sort, martini sort, shaker sort (which can also refer to a variant of selection sort), ripple sort, shuffle sort,[3] or shuttle sort, is a variation of bubble sort that is both a stable sorting algorithm and a comparison sort. The algorithm differs from a bubble sort in that it sorts in both directions on each pass through the list. This sorting algorithm is only marginally more difficult to implement than a bubble sort, and solves the problem of turtles in bubble sorts. It provides only marginal performance improvements, and does not improve asymptotic performance; like the bubble sort, it is not of practical interest (insertion sort is preferred for simple sorts), though it finds some use in education.
+
+
+The simplest form goes through the whole list each time:
+The first rightward pass will shift the largest element to its correct place at the end, and the following leftward pass will shift the smallest element to its correct place at the beginning. The second complete pass will shift the second largest and second smallest elements to their correct places, and so on. After i passes, the first i and the last i elements in the list are in their correct positions, and do not need to be checked. By shortening the part of the list that is sorted each time, the number of operations can be halved (see bubble sort).
+This is an example of the algorithm in MATLAB/OCTAVE with the optimization of remembering the last swap index and updating the bounds.
+Cocktail shaker sort is a slight variation of bubble sort.[1] It differs in that instead of repeatedly passing through the list from bottom to top, it passes alternately from bottom to top and then from top to bottom. It can achieve slightly better performance than a standard bubble sort. The reason for this is that bubble sort only passes through the list in one direction and therefore can only move items backward one step each iteration.
+An example of a list that proves this point is the list (2,3,4,5,1), which would only need to go through one pass of cocktail sort to become sorted, but if using an ascending bubble sort would take four passes. However one cocktail sort pass should be counted as two bubble sort passes. Typically cocktail sort is less than two times faster than bubble sort.
+Another optimization can be that the algorithm remembers where the last actual swap has been done. In the next iteration, there will be no swaps beyond this limit and the algorithm has shorter passes. As the cocktail shaker sort goes bidirectionally, the range of possible swaps, which is the range to be tested, will reduce per pass, thus reducing the overall running time slightly.
+The complexity of the cocktail shaker sort in big O notation is 
+
+
+
+O
+(
+
+n
+
+2
+
+
+)
+
+
+{\displaystyle O(n^{2})}
+
+ for both the worst case and the average case, but it becomes closer to 
+
+
+
+O
+(
+n
+)
+
+
+{\displaystyle O(n)}
+
+ if the list is mostly ordered before applying the sorting algorithm. For example, if every element is at a position that differs by at most k (k ≥ 1) from the position it is going to end up in, the complexity of cocktail shaker sort becomes 
+
+
+
+O
+(
+k
+n
+)
+.
+
+
+{\displaystyle O(kn).}
+
+
+The cocktail shaker sort is also briefly discussed in the book The Art of Computer Programming, along with similar refinements of bubble sort. In conclusion, Knuth states about bubble sort and its improvements:
+But none of these refinements leads to an algorithm better than straight insertion [that is, insertion sort]; and we already know that straight insertion isn't suitable for large N. [...] In short, the bubble sort seems to have nothing to recommend it, except a catchy name and the fact that it leads to some interesting theoretical problems.

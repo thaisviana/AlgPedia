@@ -1,0 +1,4 @@
+ABOUT
+Time varied gain (TVG) is signal compensation that is applied by the receiver electronics through analog or digital signal processing. The desired result is that targets of the same size produce echoes of the same size, regardless of target range.
+FULL TEXT
+Time varied gain (TVG) is signal compensation that is applied by the receiver electronics through analog or digital signal processing. The desired result is that targets of the same size produce echoes of the same size, regardless of target range.

@@ -1,0 +1,309 @@
+ABOUT
+The algorithm of Lamport timestamps is a simple algorithm used to determine the order of events in a distributed computer system. As different nodes or processes will typically not be perfectly synchronized, this algorithm is used to provide a partial ordering of events with minimal overhead, and conceptually provide a starting point for the more advanced vector clock method. They are named after their creator, Leslie Lamport.
+FULL TEXT
+The algorithm of Lamport timestamps is a simple algorithm used to determine the order of events in a distributed computer system. As different nodes or processes will typically not be perfectly synchronized, this algorithm is used to provide a partial ordering of events with minimal overhead, and conceptually provide a starting point for the more advanced vector clock method. They are named after their creator, Leslie Lamport.
+Distributed algorithms such as resource synchronization often depend on some method of ordering events to function. For example, consider a system with two processes and a disk. The processes send messages to each other, and also send messages to the disk requesting access. The disk grants access in the order the messages were sent. For example process A sends a message to the disk requesting write access, and then sends a read instruction message to process B. Process B receives the message, and as a result sends its own read request message to the disk. If there is a timing delay causing the disk to receive both messages at the same time, it can determine which message happened-before the other: (
+
+
+
+A
+
+
+{\displaystyle A}
+
+ happens-before 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ if one can get from 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ to 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ by a sequence of moves of two types: moving forward while remaining in the same process, and following a message from its sending to its reception.) A logical clock algorithm provides a mechanism to determine facts about the order of such events.
+Lamport invented a simple mechanism by which the happened-before ordering can be captured numerically. A Lamport logical clock is an incrementing software counter maintained in each process.
+Conceptually, this logical clock can be thought of as a clock that only has meaning in relation to messages moving between processes. When a process receives a message, it resynchronizes its logical clock with that sender. The above mentioned vector clock is a generalization of the idea into the context of an arbitrary number of parallel, independent processes.
+
+
+The algorithm follows some simple rules:
+In a Pseudocode format, the algorithm for sending:
+The algorithm for receiving a message:
+For every two different events 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ and 
+
+
+
+b
+
+
+{\displaystyle b}
+
+ occurring in the same process, and 
+
+
+
+C
+(
+x
+)
+
+
+{\displaystyle C(x)}
+
+ being the timestamp for a certain event 
+
+
+
+x
+
+
+{\displaystyle x}
+
+, it is necessary that 
+
+
+
+C
+(
+a
+)
+
+
+{\displaystyle C(a)}
+
+ never equals 
+
+
+
+C
+(
+b
+)
+
+
+{\displaystyle C(b)}
+
+.
+Therefore it is necessary that:
+A Lamport clock may be used to create a partial causal ordering of events between processes. Given a logical clock following these rules, the following relation is true: if 
+
+
+
+a
+→
+b
+
+
+{\displaystyle a\rightarrow b}
+
+ then 
+
+
+
+C
+(
+a
+)
+<
+C
+(
+b
+)
+
+
+{\displaystyle C(a)<C(b)}
+
+, where 
+
+
+
+→
+
+
+
+{\displaystyle \rightarrow \,}
+
+ means happened-before.
+This relation only goes one way, and is called clock consistency condition: if one event comes before another, then that event's logical clock comes before the other's. The strong clock consistency condition, which is two way (if 
+
+
+
+C
+(
+a
+)
+<
+C
+(
+b
+)
+
+
+{\displaystyle C(a)<C(b)}
+
+ then 
+
+
+
+a
+→
+b
+
+
+{\displaystyle a\rightarrow b}
+
+), can be obtained by other techniques such as vector clocks. Using only a simple Lamport clock, only a partial causal ordering can be inferred from the clock.
+However, via the contrapositive, it's true that 
+
+
+
+C
+(
+a
+)
+≮
+C
+(
+b
+)
+
+
+{\displaystyle C(a)\nless C(b)}
+
+ implies 
+
+
+
+a
+↛
+b
+
+
+{\displaystyle a\nrightarrow b}
+
+. So, for example, if 
+
+
+
+C
+(
+a
+)
+≥
+C
+(
+b
+)
+
+
+{\displaystyle C(a)\geq C(b)}
+
+ then 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ cannot have happened-before 
+
+
+
+b
+
+
+{\displaystyle b}
+
+.
+Another way of putting this is that 
+
+
+
+C
+(
+a
+)
+<
+C
+(
+b
+)
+
+
+{\displaystyle C(a)<C(b)}
+
+ means that 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ may have happened-before 
+
+
+
+b
+
+
+{\displaystyle b}
+
+, or be incomparable with 
+
+
+
+b
+
+
+{\displaystyle b}
+
+ in the happened-before ordering, but 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ did not happen after 
+
+
+
+b
+
+
+{\displaystyle b}
+
+.
+Nevertheless, Lamport timestamps can be used to create a total ordering of events in a distributed system by using some arbitrary mechanism to break ties (e.g. the ID of the process). The caveat is that this ordering is artifactual and cannot be depended on to imply a causal relationship.

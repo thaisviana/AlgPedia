@@ -1,0 +1,316 @@
+ABOUT
+Bidimensionality theory characterizes a broad range of graph problems (bidimensional) that admit efficient approximate, fixed-parameter or kernel solutions in a broad range of graphs. These graph classes include planar graphs, map graphs, bounded-genus graphs and graphs excluding any fixed minor. In particular, bidimensionality theory builds on the graph minor theory of Robertson and Seymour by extending the mathematical results and building new algorithmic tools. The theory was introduced in the work of Demaine, Fomin, Hajiaghayi, and Thilikos,[1] for which the authors received the Nerode Prize in 2015.
+FULL TEXT
+Bidimensionality theory characterizes a broad range of graph problems (bidimensional) that admit efficient approximate, fixed-parameter or kernel solutions in a broad range of graphs. These graph classes include planar graphs, map graphs, bounded-genus graphs and graphs excluding any fixed minor. In particular, bidimensionality theory builds on the graph minor theory of Robertson and Seymour by extending the mathematical results and building new algorithmic tools. The theory was introduced in the work of Demaine, Fomin, Hajiaghayi, and Thilikos,[1] for which the authors received the Nerode Prize in 2015.
+
+
+A parameterized problem 
+
+
+
+Π
+
+
+{\displaystyle \Pi }
+
+ is a subset of 
+
+
+
+
+Γ
+
+∗
+
+
+×
+
+N
+
+
+
+{\displaystyle \Gamma ^{*}\times \mathbb {N} }
+
+ for some finite alphabet 
+
+
+
+Γ
+
+
+{\displaystyle \Gamma }
+
+. An instance of a parameterized problem consists of (x,k), where k is called the parameter.
+A parameterized problem 
+
+
+
+Π
+
+
+{\displaystyle \Pi }
+
+ is minor-bidimensional if
+Examples of minor-bidimensional problems are the parameterized versions of vertex cover, feedback vertex set, minimum maximal matching, and longest path.
+Let 
+
+
+
+
+Γ
+
+r
+
+
+
+
+{\displaystyle \Gamma _{r}}
+
+ be the graph obtained from the 
+
+
+
+(
+r
+×
+r
+)
+
+
+{\displaystyle (r\times r)}
+
+-grid by triangulating internal faces such that all internal vertices become of degree 6, and then one corner of degree two joined by edges with all vertices of the external face. A parameterized problem 
+
+
+
+Π
+
+
+{\displaystyle \Pi }
+
+ is contraction-bidimensional if
+Examples of contraction-bidimensional problems are dominating set, connected dominating set, max-leaf spanning tree, and edge dominating set.
+All algorithmic applications of bidimensionality are based on the following combinatorial property: either the treewidth of a graph is small, or the graph contains a large grid as a minor or contraction. More precisely,
+Halin's grid theorem is an analogous excluded grid theorem for infinite graphs.[4]
+Let 
+
+
+
+Π
+
+
+{\displaystyle \Pi }
+
+ be a minor-bidimensional problem such that for any graph G excluding some fixed graph as a minor and of treewidth at most t, deciding whether 
+
+
+
+(
+G
+,
+k
+)
+∈
+Π
+
+
+{\displaystyle (G,k)\in \Pi }
+
+ can be done in time 
+
+
+
+
+2
+
+O
+(
+t
+)
+
+
+⋅
+
+|
+
+G
+
+
+|
+
+
+O
+(
+1
+)
+
+
+
+
+{\displaystyle 2^{O(t)}\cdot |G|^{O(1)}}
+
+. Then for every graph G excluding some fixed graph as a minor, deciding whether 
+
+
+
+(
+G
+,
+k
+)
+∈
+Π
+
+
+{\displaystyle (G,k)\in \Pi }
+
+ can be done in time 
+
+
+
+
+2
+
+O
+(
+
+
+k
+
+
+)
+
+
+⋅
+
+|
+
+G
+
+
+|
+
+
+O
+(
+1
+)
+
+
+
+
+{\displaystyle 2^{O({\sqrt {k}})}\cdot |G|^{O(1)}}
+
+. Similarly, for contraction-bidimensional problems, for graph G excluding some fixed apex graph as a minor, inclusion 
+
+
+
+(
+G
+,
+k
+)
+∈
+Π
+
+
+{\displaystyle (G,k)\in \Pi }
+
+ can be decided in time 
+
+
+
+
+2
+
+O
+(
+
+
+k
+
+
+)
+
+
+⋅
+
+|
+
+G
+
+
+|
+
+
+O
+(
+1
+)
+
+
+
+
+{\displaystyle 2^{O({\sqrt {k}})}\cdot |G|^{O(1)}}
+
+.
+Thus many bidimensional problems like Vertex Cover, Dominating Set, k-Path, are solvable in time 
+
+
+
+
+2
+
+O
+(
+
+
+k
+
+
+)
+
+
+⋅
+
+|
+
+G
+
+
+|
+
+
+O
+(
+1
+)
+
+
+
+
+{\displaystyle 2^{O({\sqrt {k}})}\cdot |G|^{O(1)}}
+
+ on graphs excluding some fixed graph as a minor.
+Bidimensionality theory has been used to obtain polynomial-time approximation schemes for many bidimensional problems. If a minor (contraction) bidimensional problem has several additional properties [5][6] then the problem poses efficient polynomial-time approximation schemes on (apex) minor-free graphs.
+In particular, by making use of bidimensionality, it was shown that feedback vertex set, vertex cover, connected vertex cover, cycle packing, diamond hitting set, maximum induced forest, maximum induced bipartite subgraph and maximum induced planar subgraph admit an EPTAS on H-minor-free graphs. Edge dominating set, dominating set, r-dominating set, connected dominating set, r-scattered set, minimum maximal matching, independent set, maximum full-degree spanning tree, maximum induced at most d-degree subgraph, maximum internal spanning tree, induced matching, triangle packing, partial r-dominating set and partial vertex cover admit an EPTAS on apex-minor-free graphs.
+A parameterized problem with a parameter k is said to admit a linear vertex kernel if there is a polynomial time reduction, called a kernelization algorithm, that maps the input instance to an equivalent instance with at most O(k) vertices.
+Every minor-bidimensional problem 
+
+
+
+Π
+
+
+{\displaystyle \Pi }
+
+ with additional properties, namely, with the separation property and with finite integer index, has a linear vertex kernel on graphs excluding some fixed graph as a minor. Similarly, every contraction-bidimensional problem 
+
+
+
+Π
+
+
+{\displaystyle \Pi }
+
+ with the separation property and with finite integer index has a linear vertex kernel on graphs excluding some fixed apex graph as a minor.[7]

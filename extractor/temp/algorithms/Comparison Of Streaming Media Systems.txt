@@ -1,0 +1,9 @@
+ABOUT
+This is a comparison of streaming media systems. A more complete list of streaming media systems is also available.
+FULL TEXT
+This is a comparison of streaming media systems. A more complete list of streaming media systems is also available.
+
+
+The following tables compare general and technical information for a number of streaming media systems both audio and video. Please see the individual systems' linked articles for further information.
+Information about what digital container formats are supported.
+Information about which internet protocols are supported for broadcasting streaming media content.

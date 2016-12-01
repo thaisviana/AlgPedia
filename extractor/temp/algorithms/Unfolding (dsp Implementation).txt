@@ -1,0 +1,232 @@
+ABOUT
+Unfolding is a transformation technique of duplicating the functional blocks to increase the throughput of the DSP program in such a way that preserves its functional behavior at its outputs. Unfolding was first proposed by Keshab K. Parhi and David G. Messerschmitt in 1989. .[1] Unfolding in general program is as known as Loop unrolling
+FULL TEXT
+Unfolding is a transformation technique of duplicating the functional blocks to increase the throughput of the DSP program in such a way that preserves its functional behavior at its outputs. Unfolding was first proposed by Keshab K. Parhi and David G. Messerschmitt in 1989. .[1] Unfolding in general program is as known as Loop unrolling
+Unfolding has applications in designing high-speed and low-power ASIC architectures. One application is to unfold the program to reveal hidden concurrency so that the program can be scheduled to a smaller iteration period, thus increasing the throughput of the implementation. Another application is parallel processing in word level or bit level. Therefore these transformed circuit could increase the throughput and decrease the power consumption.
+
+
+For a DSP program 
+
+
+
+
+y
+(
+n
+)
+=
+a
+y
+(
+n
+−
+9
+)
++
+x
+(
+n
+)
+
+
+
+{\displaystyle \scriptstyle y(n)=ay(n-9)+x(n)}
+
+, replacing the index 
+
+
+
+
+n
+
+
+
+{\displaystyle \scriptstyle n}
+
+ by 
+
+
+
+
+2
+k
+
+
+
+{\displaystyle \scriptstyle 2k}
+
+ could result 
+
+
+
+
+y
+(
+2
+k
+)
+=
+a
+y
+(
+2
+k
+−
+9
+)
++
+x
+(
+2
+k
+)
+
+
+
+{\displaystyle \scriptstyle y(2k)=ay(2k-9)+x(2k)}
+
+. Similarly, replacing the index 
+
+
+
+
+n
+
+
+
+{\displaystyle \scriptstyle n}
+
+ by 
+
+
+
+
+2
+k
++
+1
+
+
+
+{\displaystyle \scriptstyle 2k+1}
+
+ could also result as 
+
+
+
+
+y
+(
+2
+k
++
+1
+)
+=
+a
+y
+(
+2
+k
+−
+8
+)
++
+x
+(
+2
+k
++
+1
+)
+
+
+
+{\displaystyle \scriptstyle y(2k+1)=ay(2k-8)+x(2k+1)}
+
+.
+Hence, we transform the program into following program that receives 2 inputs 
+
+
+
+
+x
+
+
+
+{\displaystyle \scriptstyle x}
+
+ and produce 2 outputs 
+
+
+
+
+y
+
+
+
+{\displaystyle \scriptstyle y}
+
+ at each time.
+Given a DSP program in Data flow graph(DFG) format and a unfolding factor J, unfolding process transforms the DSP program into a new one by duplicating the functional blocks and reconnecting the functional blocks while maintaining its DSP functionality. We call the program performed with factor J as J-unfolded DFG.
+In the J-unfolded DFG, for each node U in original DFG, there are J nodes in the transformed DFG with the same function as U. For each edge in the original DFG, there are J edges in the transformed DFG but its delay is only 1/J times to the original one.
+A data flow graph is a labeled directed graph. Each node is labeled by a type indicating its functionality, and each edge is labeled by a number indicating its delay.
+Given Unfolding factor J
+The following graph shows the process of the algorithm. The original DFG is composed of 2 nodes and 1 edge with 37 delays. The unfolding process uses J = 4 as its unfolding factor. The algorithm first duplicates node U and V to 4 U nodes and 4 Vnodes. Then, it perform reconnecting on the nodes with corresponding delays, like U2 connects to V with index (2 + 37)%4 = 3. Besides, the delay on edge U1 to V2 is 
+
+
+
+
+⌊
+
+
+
+37
++
+1
+
+4
+
+
+⌋
+=
+9
+
+
+
+{\displaystyle \scriptstyle \lfloor {\frac {37+1}{4}}\rfloor =9}
+
+, and the delay on edge U3 to V0 is 
+
+
+
+
+⌊
+
+
+
+37
++
+3
+
+4
+
+
+⌋
+=
+10
+
+
+
+{\displaystyle \scriptstyle \lfloor {\frac {37+3}{4}}\rfloor =10}
+
+.
+The following graph is another example showing the unfolding algorithm. Notice that, if there is the delay smaller than unfolding factor J, the J-unfolded DFG would create the edge with 0 delay but whose corresponding edge at original DFG may be the non-zero edge. Therefore, folding process is potential to create the 0-delay edge to increase the longest path in the DFG. ((P.S. fig. of bottom right is T2 that isn't T1))
+This property holds since the sum of the unfolded DFG is
+Hence, transformation could increase J times throughput but the resource in delay element would not increase.
+When w < J, consider a path with w delays in the original DFG, J-unfolding of this path leads to (J-w) paths with no delays and w path with 1 delay. If all the path on original DFG have the delay larger than J, the critical path of the unfolded DFG is same as the critical path of its original DFG. Hence, the transformed DFG increase its throughput J times. However, if there is a path with delay less than J, it would create a new path without delay. Therefore, the critical path would be potential at such path, that is different as the original critical path, and such that the combinational delay would hence increase. In such case, its throughput would not hence increase J times.
+For solving such problem, we could perform retiming on original DFG to let the every path with the delay larger than J.
+Unfolding is the general case of parallel processing, and it has the low power property same as pipelining and paralleling technique. Although the capacitance would be J times from the original circuit, the time to charge such capacitance is 1/J times. Furthermore, the charging time is inverse-square to its supply voltage. Hence, we could lower the supply voltage to change the J times capacitance in 1/J times time. Eventually, the power consumption is the square to the reduction on supply voltage, and the unfolded circuit could lower its power consumption.
+The unfolding transformation could be used to design a word-parallel architecture from a word-serial architecture. The following is the example of word-serial to word-parallel architecture.
+In such way, the unfolding could perform architecture exploration to find a best implementation in a system.
+Unfolding transformation can unravel hidden concurrency in digital signal processing systems described by DFGs. Therefore, unfolding can be used to increase the throughput of the system by duplicating the functional blocks but without increasing the delay element. If we properly handle the delay on the path, such as retiming, we could increase the throughput as J times, which is the number of duplication on each functional block. In such transform technique, it could be applied to generate world-parallel architectures that can be used for high-speed or low-power applications. Hence, unfolding is the good technique to leverage between area, throughput, and power-consumption.

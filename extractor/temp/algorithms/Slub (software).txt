@@ -1,0 +1,4 @@
+ABOUT
+SLUB ("the unqueued slab allocator"[1]) is a memory management mechanism intended for the efficient memory allocation of kernel objects which displays the desirable property of eliminating fragmentation caused by allocations and deallocations. The technique is used to retain allocated memory that contains a data object of a certain type for reuse upon subsequent allocations of objects of the same type. It is used in Linux and became the default allocator since 2.6.23.[2]
+FULL TEXT
+SLUB ("the unqueued slab allocator"[1]) is a memory management mechanism intended for the efficient memory allocation of kernel objects which displays the desirable property of eliminating fragmentation caused by allocations and deallocations. The technique is used to retain allocated memory that contains a data object of a certain type for reuse upon subsequent allocations of objects of the same type. It is used in Linux and became the default allocator since 2.6.23.[2]

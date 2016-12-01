@@ -1,0 +1,1815 @@
+ABOUT
+The Berlekamp–Welch algorithm, also known as the Welch–Berlekamp algorithm, is named for Elwyn R. Berlekamp and Lloyd R. Welch. The algorithm efficiently corrects errors in BCH codes and Reed–Solomon codes (which are a subset of BCH codes). Unlike many other decoding algorithms, and in correspondence with the code-domain Berlekamp–Massey algorithm that uses syndrome decoding and the dual of the codes, the Berlekamp–Welch decoding algorithm provides a method for decoding Reed–Solomon codes using just the generator matrix and not syndromes.
+FULL TEXT
+The Berlekamp–Welch algorithm, also known as the Welch–Berlekamp algorithm, is named for Elwyn R. Berlekamp and Lloyd R. Welch. The algorithm efficiently corrects errors in BCH codes and Reed–Solomon codes (which are a subset of BCH codes). Unlike many other decoding algorithms, and in correspondence with the code-domain Berlekamp–Massey algorithm that uses syndrome decoding and the dual of the codes, the Berlekamp–Welch decoding algorithm provides a method for decoding Reed–Solomon codes using just the generator matrix and not syndromes.
+
+
+In the problem of decoding Reed–Solomon codes, the inputs are pair wise distinct evaluation points 
+
+
+
+
+α
+
+1
+
+
+,
+⋯
+,
+
+α
+
+n
+
+
+
+
+{\displaystyle \alpha _{1},\cdots ,\alpha _{n}}
+
+ where 
+
+
+
+
+α
+
+i
+
+
+∈
+
+F
+
+
+
+{\displaystyle \alpha _{i}\in \mathbb {F} }
+
+ with dimension 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ and distance 
+
+
+
+d
+=
+n
+−
+k
++
+1
+
+
+{\displaystyle d=n-k+1}
+
+ and a codeword 
+
+
+
+y
+=
+(
+
+y
+
+1
+
+
+,
+⋯
+,
+
+y
+
+n
+
+
+)
+∈
+
+
+F
+
+
+n
+
+
+.
+
+
+{\displaystyle y=(y_{1},\cdots ,y_{n})\in \mathbb {F} ^{n}.}
+
+ Our goal is to describe an algorithm that can correct 
+
+
+
+e
+<
+
+
+
+1
+2
+
+
+
+(
+n
+−
+k
++
+1
+)
+
+
+{\displaystyle e<{\tfrac {1}{2}}(n-k+1)}
+
+ many errors in polynomial time. To do so we have to find 
+
+
+
+P
+∈
+
+F
+
+[
+X
+]
+
+
+{\displaystyle P\in \mathbb {F} [X]}
+
+ such that 
+
+
+
+deg
+⁡
+(
+P
+)
+<
+k
+−
+1
+
+
+{\displaystyle \deg(P)<k-1}
+
+ and the number of indices for which 
+
+
+
+P
+(
+
+α
+
+i
+
+
+)
+≠
+
+y
+
+i
+
+
+
+
+{\displaystyle P(\alpha _{i})\neq y_{i}}
+
+ is less than or equal to 
+
+
+
+e
+.
+
+
+{\displaystyle e.}
+
+ We can assume that there exists a polynomial 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ such that
+Note that the coefficients of 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ are the encoded information. To solve this, we use an indicator for those indices where an error may have occurred. Thus we define an error locator polynomial, 
+
+
+
+E
+∈
+
+F
+
+[
+X
+]
+,
+
+
+{\displaystyle E\in \mathbb {F} [X],}
+
+ by:
+Note that 
+
+
+
+deg
+⁡
+(
+E
+)
+⩽
+
+
+
+1
+2
+
+
+
+(
+n
+−
+k
+)
+.
+
+
+{\displaystyle \deg(E)\leqslant {\tfrac {1}{2}}(n-k).}
+
+ We can also claim that 
+
+
+
+
+y
+
+i
+
+
+E
+(
+
+α
+
+i
+
+
+)
+=
+P
+(
+
+α
+
+i
+
+
+)
+E
+(
+
+α
+
+i
+
+
+)
+
+
+{\displaystyle y_{i}E(\alpha _{i})=P(\alpha _{i})E(\alpha _{i})}
+
+ holds for all 
+
+
+
+1
+⩽
+i
+⩽
+n
+
+
+{\displaystyle 1\leqslant i\leqslant n}
+
+. This fact holds true because in the event of 
+
+
+
+
+y
+
+i
+
+
+≠
+P
+(
+
+α
+
+i
+
+
+)
+
+
+{\displaystyle y_{i}\neq P(\alpha _{i})}
+
+, both sides of the above equation vanish because 
+
+
+
+E
+(
+
+α
+
+i
+
+
+)
+=
+0
+
+
+{\displaystyle E(\alpha _{i})=0}
+
+.
+However, since 
+
+
+
+E
+
+
+{\displaystyle E}
+
+ and 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ are both unknown, the main task of the decoding algorithm would be to find 
+
+
+
+P
+
+
+{\displaystyle P}
+
+. To do this we use a seemingly useless yet very powerful method and define another polynomial 
+
+
+
+Q
+=
+P
+E
+.
+
+
+{\displaystyle Q=PE.}
+
+ This is because the 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ equations with 
+
+
+
+e
++
+k
+
+
+{\displaystyle e+k}
+
+ we need to solve are quadratic in nature. Thus by defining a product of two variables that gives rise to a quadratic term as one unknown variable, we increase the number of unknowns but make the equations linear in nature. This method is called linearization[6] and is a very powerful tool.
+Thus 
+
+
+
+Q
+∈
+
+F
+
+[
+X
+]
+
+
+{\displaystyle Q\in \mathbb {F} [X]}
+
+ having the properties:
+This helps because if we now manage to find 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ and 
+
+
+
+E
+
+
+{\displaystyle E}
+
+, we can easily find 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ using 
+
+
+
+P
+=
+
+
+
+Q
+E
+
+
+
+
+
+{\displaystyle P={\tfrac {Q}{E}}}
+
+. The main purpose of the Berlekamp Welch algorithm is to find out 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ using degree bounded polynomials 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ and 
+
+
+
+E
+
+
+{\displaystyle E}
+
+ and the properties of 
+
+
+
+E
+
+
+{\displaystyle E}
+
+ and 
+
+
+
+N
+
+
+{\displaystyle N}
+
+.
+Computing 
+
+
+
+E
+
+
+{\displaystyle E}
+
+ is as hard as finding the end solution 
+
+
+
+P
+.
+
+
+{\displaystyle P.}
+
+ Once 
+
+
+
+E
+
+
+{\displaystyle E}
+
+ is computed, using erasure decoding for Reed–Solomon codes, we can easily recover 
+
+
+
+P
+
+
+{\displaystyle P}
+
+. However, in a few cases, even the polynomial 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ is as hard to find as 
+
+
+
+E
+
+
+{\displaystyle E}
+
+. As an example, given 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ and 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ (such that 
+
+
+
+
+y
+
+i
+
+
+≠
+0
+
+
+{\displaystyle y_{i}\neq 0}
+
+ for 
+
+
+
+1
+⩽
+i
+⩽
+n
+
+
+{\displaystyle 1\leqslant i\leqslant n}
+
+), by checking positions where 
+
+
+
+Q
+(
+i
+)
+=
+0
+
+
+{\displaystyle Q(i)=0}
+
+, we can ﬁnd the error locations. Thus the algorithm works on the principle that while each of the polynomials 
+
+
+
+E
+
+
+{\displaystyle E}
+
+ and 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ are hard to find individually; computing them together is much easier.
+The Welch–Berlekamp decoder for Reed–Solomon codes consists of the Welch– Berlekamp algorithm augmented by some additional steps that prepare the received word for the algorithm and interpret the result of the algorithm.
+The inputs given to the Berlekamp Welch decoder are the integers denoting Block Length 
+
+
+
+n
+,
+
+
+{\displaystyle n,}
+
+ the number of errors 
+
+
+
+e
+
+
+{\displaystyle e}
+
+ such that 
+
+
+
+e
+<
+
+
+
+1
+2
+
+
+
+(
+n
+−
+k
++
+1
+)
+,
+
+
+{\displaystyle e<{\tfrac {1}{2}}(n-k+1),}
+
+ and the received word 
+
+
+
+(
+
+y
+
+i
+
+
+,
+
+α
+
+i
+
+
+
+)
+
+i
+=
+1
+
+
+n
+
+
+
+
+{\displaystyle (y_{i},\alpha _{i})_{i=1}^{n}}
+
+ satisfying the condition that there exists at most one 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ with 
+
+
+
+deg
+⁡
+(
+P
+)
+⩽
+k
+−
+1
+
+
+{\displaystyle \deg(P)\leqslant k-1}
+
+ with 
+
+
+
+Δ
+(
+y
+,
+P
+(
+
+α
+
+i
+
+
+
+)
+
+i
+
+
+)
+⩽
+e
+
+
+{\displaystyle \Delta (y,P(\alpha _{i})_{i})\leqslant e}
+
+.
+The output of the decoder is either the polynomial 
+
+
+
+P
+
+
+{\displaystyle P}
+
+, or in some cases, a failure. This decoder functions in two steps as follows:
+According to the algorithm, in the cases where it does not output a failure, it outputs a 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ that is the correct and desired polynomial. To prove that, the algorithm always outputs the desired polynomial, we need to prove a few claims we have made while describing the algorithm. Let us go ahead and do so now.
+Let 
+
+
+
+E
+
+
+{\displaystyle E}
+
+ be the error-locating polynomial for 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ :
+Notice that 
+
+
+
+E
+
+
+{\displaystyle E}
+
+ has the following properties by definition:
+Now define 
+
+
+
+Q
+=
+P
+E
+
+
+{\displaystyle Q=PE}
+
+ and note that:
+We can now claim that 
+
+
+
+
+y
+
+i
+
+
+E
+(
+
+α
+
+i
+
+
+)
+=
+Q
+(
+
+α
+
+i
+
+
+)
+
+
+{\displaystyle y_{i}E(\alpha _{i})=Q(\alpha _{i})}
+
+ from the first step of the BW algorithm holds. If 
+
+
+
+E
+(
+
+α
+
+i
+
+
+)
+=
+0
+,
+
+
+{\displaystyle E(\alpha _{i})=0,}
+
+ then 
+
+
+
+Q
+(
+
+α
+
+i
+
+
+)
+=
+P
+(
+
+α
+
+i
+
+
+)
+E
+(
+
+α
+
+i
+
+
+)
+=
+
+y
+
+i
+
+
+E
+(
+
+α
+
+i
+
+
+)
+=
+0
+
+
+{\displaystyle Q(\alpha _{i})=P(\alpha _{i})E(\alpha _{i})=y_{i}E(\alpha _{i})=0}
+
+. For 
+
+
+
+E
+(
+
+α
+
+i
+
+
+)
+≠
+0
+
+
+{\displaystyle E(\alpha _{i})\neq 0}
+
+ we have 
+
+
+
+P
+(
+
+α
+
+i
+
+
+)
+=
+
+y
+
+i
+
+
+
+
+{\displaystyle P(\alpha _{i})=y_{i}}
+
+ and therefore 
+
+
+
+Q
+(
+
+α
+
+i
+
+
+)
+P
+(
+
+α
+
+i
+
+
+)
+E
+(
+
+α
+
+i
+
+
+)
+=
+
+y
+
+i
+
+
+E
+(
+
+α
+
+i
+
+
+)
+
+
+{\displaystyle Q(\alpha _{i})P(\alpha _{i})E(\alpha _{i})=y_{i}E(\alpha _{i})}
+
+ just as we claimed.
+This above claim however just reiterates and proves the fact that there exists a pair of polynomials 
+
+
+
+E
+
+
+{\displaystyle E}
+
+ and 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ such that 
+
+
+
+P
+=
+
+
+
+Q
+E
+
+
+
+.
+
+
+{\displaystyle P={\tfrac {Q}{E}}.}
+
+ It however does not necessarily guarantee the fact that the algorithm we discussed above would indeed output such a pair of polynomials. We therefore move on to look at another claim that helps establish this fact using the above claim and thereby proving the correctness of the algorithm.
+First note that
+Then we define:
+Note that 
+
+
+
+deg
+⁡
+(
+R
+)
+⩽
+2
+e
++
+k
+−
+1.
+
+
+{\displaystyle \deg(R)\leqslant 2e+k-1.}
+
+ From step 1 of the Berlekamp Welch algorithm we also know that 
+
+
+
+
+y
+
+i
+
+
+
+E
+
+1
+
+
+(
+
+α
+
+i
+
+
+)
+=
+
+Q
+
+1
+
+
+(
+
+α
+
+i
+
+
+)
+
+
+{\displaystyle y_{i}E_{1}(\alpha _{i})=Q_{1}(\alpha _{i})}
+
+ and 
+
+
+
+
+y
+
+i
+
+
+
+E
+
+2
+
+
+(
+
+α
+
+i
+
+
+)
+=
+
+Q
+
+2
+
+
+(
+
+α
+
+i
+
+
+)
+.
+
+
+{\displaystyle y_{i}E_{2}(\alpha _{i})=Q_{2}(\alpha _{i}).}
+
+ Now for all 
+
+
+
+i
+∈
+{
+1
+,
+⋯
+,
+n
+}
+
+
+{\displaystyle i\in \{1,\cdots ,n\}}
+
+ we calculate:
+Thus 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ has 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ roots, on the other hand
+Therefore, 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ is the zero polynomial which means that 
+
+
+
+
+Q
+
+1
+
+
+
+E
+
+2
+
+
+
+
+{\displaystyle Q_{1}E_{2}}
+
+ and 
+
+
+
+
+Q
+
+2
+
+
+
+E
+
+1
+
+
+
+
+{\displaystyle Q_{2}E_{1}}
+
+ are identical. Since 
+
+
+
+
+E
+
+1
+
+
+,
+
+E
+
+2
+
+
+
+
+{\displaystyle E_{1},E_{2}}
+
+ are non-zero we can write: 
+
+
+
+
+
+
+
+Q
+
+1
+
+
+
+E
+
+1
+
+
+
+
+
+=
+
+
+
+
+Q
+
+2
+
+
+
+E
+
+2
+
+
+
+
+
+
+
+{\displaystyle {\tfrac {Q_{1}}{E_{1}}}={\tfrac {Q_{2}}{E_{2}}}}
+
+ as per our initial claim.
+Thus based on the above claims, we can safely state that the output of the Berlekamp Welch algorithm, when outputting the polynomial 
+
+
+
+P
+(
+X
+)
+
+
+{\displaystyle P(X)}
+
+ is correct.
+We can now claim that the algorithm can be implemented such that it has a running time of 
+
+
+
+O
+(
+
+n
+
+3
+
+
+)
+
+
+{\displaystyle O(n^{3})}
+
+. This can be proved as follows: In Step 1 of the algorithm, the polynomials 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ and 
+
+
+
+E
+
+
+{\displaystyle E}
+
+ have 
+
+
+
+e
++
+k
+
+
+{\displaystyle e+k}
+
+ and 
+
+
+
+e
++
+1
+
+
+{\displaystyle e+1}
+
+ unknown values respectively and the constraints 
+
+
+
+
+y
+
+i
+
+
+E
+(
+
+α
+
+i
+
+
+)
+=
+Q
+(
+
+α
+
+i
+
+
+)
+
+
+{\displaystyle y_{i}E(\alpha _{i})=Q(\alpha _{i})}
+
+ for all 
+
+
+
+1
+⩽
+i
+⩽
+n
+
+
+{\displaystyle 1\leqslant i\leqslant n}
+
+ acts as a linear equation with these unknowns. We therefore get a system of 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ linear equations in 
+
+
+
+2
+e
++
+k
++
+1
+<
+n
++
+2
+
+
+{\displaystyle 2e+k+1<n+2}
+
+ unknowns. Using our first claim, this system of equations has a solution since 
+
+
+
+deg
+⁡
+(
+E
+)
+=
+e
+.
+
+
+{\displaystyle \deg(E)=e.}
+
+ This can be solved in 
+
+
+
+O
+(
+
+n
+
+3
+
+
+)
+
+
+{\displaystyle O(n^{3})}
+
+ time, by say Gaussian elimination. Finally, we can note that Step 2 of the algorithm can also be implemented in time 
+
+
+
+O
+(
+
+n
+
+3
+
+
+)
+
+
+{\displaystyle O(n^{3})}
+
+ by "long division" method. Hence we can state that the Berlekamp Welch algorithm can be used to uniquely decode any 
+
+
+
+[
+n
+,
+k
+
+]
+
+q
+
+
+
+
+{\displaystyle [n,k]_{q}}
+
+ Reed–Solomon code in 
+
+
+
+O
+(
+
+n
+
+3
+
+
+)
+
+
+{\displaystyle O(n^{3})}
+
+ time for a maximum of 
+
+
+
+
+
+
+1
+2
+
+
+
+(
+n
+−
+k
++
+1
+)
+
+
+{\displaystyle {\tfrac {1}{2}}(n-k+1)}
+
+ errors.
+Consider a simple example where a redundant set of points are used to represent the line 
+
+
+
+y
+=
+5
+−
+x
+
+
+{\displaystyle y=5-x}
+
+, and one of the points is incorrect. The points that the algorithm gets as an input are 
+
+
+
+(
+1
+,
+4
+)
+,
+(
+2
+,
+3
+)
+,
+(
+3
+,
+4
+)
+,
+(
+4
+,
+1
+)
+
+
+{\displaystyle (1,4),(2,3),(3,4),(4,1)}
+
+, where 
+
+
+
+(
+3
+,
+4
+)
+
+
+{\displaystyle (3,4)}
+
+ is the defective point. The algorithm must solve the following system of equations:
+Given a solution pair 
+
+
+
+(
+Q
+,
+E
+)
+
+
+{\displaystyle (Q,E)}
+
+ to this system of equations, it is evident that at any of the points 
+
+
+
+x
+=
+1
+,
+2
+,
+3
+,
+4
+
+
+{\displaystyle x=1,2,3,4}
+
+ one of the following must be true:
+Since 
+
+
+
+E
+
+
+{\displaystyle E}
+
+ is defined as only having a degree of one, the former can only be true in one point. Therefore, 
+
+
+
+P
+(
+
+α
+
+i
+
+
+)
+=
+
+y
+
+i
+
+
+
+
+{\displaystyle P(\alpha _{i})=y_{i}}
+
+ at the three other points.
+Letting 
+
+
+
+E
+(
+x
+)
+=
+x
++
+
+e
+
+0
+
+
+
+
+{\displaystyle E(x)=x+e_{0}}
+
+ and 
+
+
+
+Q
+=
+
+q
+
+0
+
+
++
+
+q
+
+1
+
+
+x
++
+
+q
+
+2
+
+
+
+x
+
+2
+
+
+
+
+{\displaystyle Q=q_{0}+q_{1}x+q_{2}x^{2}}
+
+ we can rewrite the system:
+This system can be solved through Gaussian elimination, and gives the values:
+Thus:
+
+
+
+
+5
+−
+x
+
+
+{\displaystyle 5-x}
+
+ fits three of the four points given, so it is the most likely to be the original polynomial.

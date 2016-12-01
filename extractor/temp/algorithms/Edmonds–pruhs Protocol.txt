@@ -1,0 +1,226 @@
+ABOUT
+Edmonds–Pruhs protocol is a protocol for fair cake-cutting. Its goal is to create a partially proportional division of a heterogeneous resource among n people, such that each person receives a subset of the cake which that person values as at least 1/an of the total, where 
+
+
+
+a
+≥
+10
+
+
+{\displaystyle a\geq 10}
+
+ is some sufficiently large constant. It is a randomized algorithm whose running time is O(n) with probability close to 1. The protocol was developed by Jeff Edmonds and Kirk Pruhs, who later improved it in joint work with Jaisingh Solanki.
+FULL TEXT
+Edmonds–Pruhs protocol is a protocol for fair cake-cutting. Its goal is to create a partially proportional division of a heterogeneous resource among n people, such that each person receives a subset of the cake which that person values as at least 1/an of the total, where 
+
+
+
+a
+≥
+10
+
+
+{\displaystyle a\geq 10}
+
+ is some sufficiently large constant. It is a randomized algorithm whose running time is O(n) with probability close to 1. The protocol was developed by Jeff Edmonds and Kirk Pruhs, who later improved it in joint work with Jaisingh Solanki.
+
+
+A proportional division of a cake can be achieved using the recursive halving algorithm in time O(n log n). Several hardness results show that this run-time is optimal under a wide variety of assumptions. In particular, recursive halving is the fastest possible algorithm for achieving full proportionality when the pieces must be contiguous, and it is the fastest possible deterministic algorithm for achieving even partial proportionality and even when the pieces are allowed to be disconnected. One case which is not covered by the hardness results is the case of randomized algorithms, guaranteeing only partial proportionality and with possibly disconnected pieces. The Edmonds–Pruhs protocol aims to provide an algorithm with run-time O(n) for this case.
+The general scheme is as follows:[1]
+The algorithm guarantees that, with high probability, each partner receives at least half of one of his candidate pieces, which implies (if the values are additive) a value of at least 1/2an.
+There are O(n) candidate pieces and O(n) additional divisions in step #5, each of which takes O(1) time. Hence the total run-time of the algorithm is O(n).
+The main challenge in this scheme is selecting the final pieces in step #4:
+Start by creating the implication graph: a graph whose nodes are the semifinal pieces, and there is an edge from piece I of partner i to piece J of partner j if piece I intersects the other piece of partner j (hence, if we select piece I and want to avoid intersection, we ought to select piece J too).
+Select an arbitrary partner i that has not received a piece yet, and select an arbitrary piece I of that partner as a final piece. Then, traverse the links in the implication graph and select as final pieces all pieces that are reachable from I. There are two good scenarios: either we allocate a single final piece to each partner and we are done, or we reach a piece with no outgoing links (which implies that it does not intersect other pieces). In the latter case we just pick another piece of one of the remaining partners and continue. The bad scenario is that our traversal leads us to two different pieces of the same partner, or equivalently to the other piece of partner i from whom we started. Such a path, leading from one piece of partner i to another piece of the same partner, is called a pair path. If the implication graph contains no pair paths, then the selection algorithm just described returns a collection of n non-overlapping final pieces and we are done. Now it remains to calculate the probability that the implication graph contains a pair path.
+First, consider the special case in which all partners have the same value function (and hence the same collection of candidate pieces). In this case the probability of a pair path is easy to calculate: since the probability of each edge is 1/an, and all edges are independent, the probability of a specific pair path of length k is 1/(an)^k, and the probability of any pair path is at most:
+By selecting d=1 and a sufficiently large, it is possible to make this probability as small as we want. This is true even if we omit the semi-final selection phase (#3) and just take all quarter-final pieces as semi-final.
+Note that this case is analogous to the balls into bins model. It proves that, if d bins are picked randomly for each ball, then it is possible to select one bin for each ball such that the bins are all distinct (- the maximum load is 1).
+In the general cake model, where the value functions are different, the probabilities of the edges in the implication graph are dependent. but thanks to the semi-final selection phase, we can prove that the probability that the implication graph contains a pair path of length at least 3 is at most 
+
+
+
+
+
+
+32
+
+d
+
+5
+
+
+
+
+
+a
+
+2
+
+
+⋅
+(
+a
+−
+4
+
+d
+
+2
+
+
+)
+
+
+
+
+
+{\displaystyle {\frac {32d^{5}}{a^{2}\cdot (a-4d^{2})}}}
+
+.
+It remains to handle pair paths of length 2. Unfortunately the probability of having such pair paths in the implication graph is not negligible. However, with high probability it is possible to partition the partners to two groups, such that in each group there is no pair path of length 2. Hence, we can run the final-piece-selection algorithm twice: once for each group. Intersection can occur only between final pieces of different groups; hence the overlap in each point of the cake is at most 2. The probability that such a 2-partition is not possible is at most 
+
+
+
+
+
+
+16
+
+d
+
+3
+
+
+
+
+a
+
+3
+
+
+
+
++
+
+
+
+8
+
+d
+
+2
+
+
+
+
+a
+
+2
+
+
+
+
+
+
+{\displaystyle {\frac {16d^{3}}{a^{3}}}+{\frac {8d^{2}}{a^{2}}}}
+
+.
+By summing the above two expressions and setting d=2, we get that the probability of failure is still 
+
+
+
+O
+(
+
+
+1
+
+a
+
+2
+
+
+
+
+)
+
+
+{\displaystyle O({\frac {1}{a^{2}}})}
+
+. Recall that a is the proportionality ratio - the more value we want to guarantee each partner, the more likely it is that the division will fail and we will have to start over at step #1.
+The same algorithm works also when the cuts are approximate, i.e., the partners do not know to mark pieces with exactly the same value; they might mark a piece with a value of p percent above or below the required value, where the exact error is picked at random.[1]
+It is possible to further reduce the probability of failure using the following scheme:[2]
+The probability of removing a specific partner in each run is 
+
+
+
+O
+(
+
+
+1
+n
+
+
+)
+
+
+{\displaystyle O({\frac {1}{n}})}
+
+. The probability of removing a specific partner in both runs is 
+
+
+
+O
+(
+
+
+1
+
+n
+
+2
+
+
+
+
+)
+
+
+{\displaystyle O({\frac {1}{n^{2}}})}
+
+. Hence the probability of failure is 
+
+
+
+O
+(
+
+
+n
+
+n
+
+2
+
+
+
+
+)
+=
+O
+(
+
+
+1
+n
+
+
+)
+
+
+{\displaystyle O({\frac {n}{n^{2}}})=O({\frac {1}{n}})}
+
+, which goes to 0 when n increases, even when the partial proportionality ratio a is kept constant.
+The cake model can be seen as a generalization of the balls into bins model. This model has found wide applications in areas such as load balancing. In these situations, a ball represents a job that can be assigned to various bins/machines. Roughly speaking, load-balancing of identical machines is to balls and bins, as load balancing on unrelated machines is to cake-cutting. Hence, it is reasonable that the cake model and the Edmonds–Pruhs protocol should have interesting applications in settings involving load balancing on unrelated machines.[1]

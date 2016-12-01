@@ -1,0 +1,774 @@
+ABOUT
+In numerical analysis and functional analysis, a discrete wavelet transform (DWT) is any wavelet transform for which the wavelets are discretely sampled. As with other wavelet transforms, a key advantage it has over Fourier transforms is temporal resolution: it captures both frequency and location information (location in time).
+FULL TEXT
+In numerical analysis and functional analysis, a discrete wavelet transform (DWT) is any wavelet transform for which the wavelets are discretely sampled. As with other wavelet transforms, a key advantage it has over Fourier transforms is temporal resolution: it captures both frequency and location information (location in time).
+
+
+The first DWT was invented by Hungarian mathematician Alfréd Haar. For an input represented by a list of 
+
+
+
+
+2
+
+n
+
+
+
+
+{\displaystyle 2^{n}}
+
+ numbers, the Haar wavelet transform may be considered to pair up input values, storing the difference and passing the sum. This process is repeated recursively, pairing up the sums to provide the next scale, which leads to 
+
+
+
+
+2
+
+n
+
+
+−
+1
+
+
+{\displaystyle 2^{n}-1}
+
+ differences and a final sum.
+The most commonly used set of discrete wavelet transforms was formulated by the Belgian mathematician Ingrid Daubechies in 1988. This formulation is based on the use of recurrence relations to generate progressively finer discrete samplings of an implicit mother wavelet function; each resolution is twice that of the previous scale. In her seminal paper, Daubechies derives a family of wavelets, the first of which is the Haar wavelet. Interest in this field has exploded since then, and many variations of Daubechies' original wavelets were developed.[1]
+The dual-tree complex wavelet transform (ℂWT) is a relatively recent enhancement to the discrete wavelet transform (DWT), with important additional properties: It is nearly shift invariant and directionally selective in two and higher dimensions. It achieves this with a redundancy factor of only 
+
+
+
+
+2
+
+d
+
+
+
+
+{\displaystyle 2^{d}}
+
+ substantially lower than the undecimated DWT. The multidimensional (M-D) dual-tree ℂWT is nonseparable but is based on a computationally efficient, separable filter bank (FB).[2]
+Other forms of discrete wavelet transform include the non- or undecimated wavelet transform (where downsampling is omitted), the Newland transform (where an orthonormal basis of wavelets is formed from appropriately constructed top-hat filters in frequency space). Wavelet packet transforms are also related to the discrete wavelet transform. Complex wavelet transform is another form.
+The Haar DWT illustrates the desirable properties of wavelets in general. First, it can be performed in 
+
+
+
+O
+(
+n
+)
+
+
+{\displaystyle O(n)}
+
+ operations; second, it captures not only a notion of the frequency content of the input, by examining it at different scales, but also temporal content, i.e. the times at which these frequencies occur. Combined, these two properties make the Fast wavelet transform (FWT) an alternative to the conventional fast Fourier transform (FFT).
+Due to the rate-change operators in the filter bank, the discrete WT is not time-invariant but actually very sensitive to the alignment of the signal in time. To address the time-varying problem of wavelet transforms, Mallat and Zhong proposed a new algorithm for wavelet representation of a signal, which is invariant to time shifts.[3] According to this algorithm, which is called a TI-DWT, only the scale parameter is sampled along the dyadic sequence 2^j (j∈Z) and the wavelet transform is calculated for each point in time.[4][5]
+The discrete wavelet transform has a huge number of applications in science, engineering, mathematics and computer science. Most notably, it is used for signal coding, to represent a discrete signal in a more redundant form, often as a preconditioning for data compression. Practical applications can also be found in signal processing of accelerations for gait analysis,[6] in digital communications and many others.[7] [8][9]
+It is shown that discrete wavelet transform (discrete in scale and shift, and continuous in time) is successfully implemented as analog filter bank in biomedical signal processing for design of low-power pacemakers and also in ultra-wideband (UWB) wireless communications.[10]
+To illustrate the differences and similarities between the discrete wavelet transform with the discrete Fourier transform, consider the DWT and DFT of the following sequence: (1,0,0,0), a unit impulse.
+The DFT has orthogonal basis (DFT matrix):
+while the DWT with Haar wavelets for length 4 data has orthogonal basis in the rows of:
+(To simplify notation, whole numbers are used, so the bases are orthogonal but not orthonormal.)
+Preliminary observations include:
+Decomposing the sequence with respect to these bases yields:
+The DWT demonstrates the localization: the (1,1,1,1) term gives the average signal value, the (1,1,–1,–1) places the signal in the left side of the domain, and the (1,–1,0,0) places it at the left side of the left side, and truncating at any stage yields a downsampled version of the signal:
+The DFT, by contrast, expresses the sequence by the interference of waves of various frequencies – thus truncating the series yields a low-pass filtered version of the series:
+Notably, the middle approximation (2-term) differs. From the frequency domain perspective, this is a better approximation, but from the time domain perspective it has drawbacks – it exhibits undershoot – one of the values is negative, though the original series is non-negative everywhere – and ringing, where the right side is non-zero, unlike in the wavelet transform. On the other hand, the Fourier approximation correctly shows a peak, and all points are within 
+
+
+
+1
+
+/
+
+4
+
+
+{\displaystyle 1/4}
+
+ of their correct value, though all points have error. The wavelet approximation, by contrast, places a peak on the left half, but has no peak at the first point, and while it is exactly correct for half the values (reflecting location), it has an error of 
+
+
+
+1
+
+/
+
+2
+
+
+{\displaystyle 1/2}
+
+ for the other values.
+This illustrates the kinds of trade-offs between these transforms, and how in some respects the DWT provides preferable behavior, particularly for the modeling of transients.
+The DWT of a signal 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ is calculated by passing it through a series of filters. First the samples are passed through a low pass filter with impulse response 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ resulting in a convolution of the two:
+The signal is also decomposed simultaneously using a high-pass filter 
+
+
+
+h
+
+
+{\displaystyle h}
+
+. The outputs giving the detail coefficients (from the high-pass filter) and approximation coefficients (from the low-pass). It is important that the two filters are related to each other and they are known as a quadrature mirror filter.
+However, since half the frequencies of the signal have now been removed, half the samples can be discarded according to Nyquist’s rule. The filter output of the low-pass filter 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ in the diagram above is then subsampled by 2 and further processed by passing it again through a new low- pass filter 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ and a high- pass filter 
+
+
+
+h
+
+
+{\displaystyle h}
+
+ with half the cut-off frequency of the previous one,i.e.:
+This decomposition has halved the time resolution since only half of each filter output characterises the signal. However, each output has half the frequency band of the input, so the frequency resolution has been doubled.
+With the subsampling operator 
+
+
+
+↓
+
+
+{\displaystyle \downarrow }
+
+
+the above summation can be written more concisely.
+However computing a complete convolution 
+
+
+
+x
+∗
+g
+
+
+{\displaystyle x*g}
+
+ with subsequent downsampling would waste computation time.
+The Lifting scheme is an optimization where these two computations are interleaved.
+This decomposition is repeated to further increase the frequency resolution and the approximation coefficients decomposed with high and low pass filters and then down-sampled. This is represented as a binary tree with nodes representing a sub-space with a different time-frequency localisation. The tree is known as a filter bank.
+At each level in the above diagram the signal is decomposed into low and high frequencies. Due to the decomposition process the input signal must be a multiple of 
+
+
+
+
+2
+
+n
+
+
+
+
+{\displaystyle 2^{n}}
+
+ where 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ is the number of levels.
+For example a signal with 32 samples, frequency range 0 to 
+
+
+
+
+f
+
+n
+
+
+
+
+{\displaystyle f_{n}}
+
+ and 3 levels of decomposition, 4 output scales are produced:
+The filterbank implementation of wavelets can be interpreted as computing the wavelet coefficients of a discrete set of child wavelets for a given mother wavelet 
+
+
+
+ψ
+(
+t
+)
+
+
+{\displaystyle \psi (t)}
+
+. In the case of the discrete wavelet transform, the mother wavelet is shifted and scaled by powers of two
+
+
+
+
+
+ψ
+
+j
+,
+k
+
+
+(
+t
+)
+=
+
+
+1
+
+
+2
+
+j
+
+
+
+
+
+ψ
+
+(
+
+
+
+t
+−
+k
+
+2
+
+j
+
+
+
+
+2
+
+j
+
+
+
+
+)
+
+
+
+{\displaystyle \psi _{j,k}(t)={\frac {1}{\sqrt {2^{j}}}}\psi \left({\frac {t-k2^{j}}{2^{j}}}\right)}
+
+
+where 
+
+
+
+j
+
+
+{\displaystyle j}
+
+ is the scale parameter and 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ is the shift parameter, both which are integers.
+Recall that the wavelet coefficient 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+ of a signal 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ is the projection of 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ onto a wavelet, and let 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ be a signal of length 
+
+
+
+
+2
+
+N
+
+
+
+
+{\displaystyle 2^{N}}
+
+. In the case of a child wavelet in the discrete family above,
+
+
+
+
+
+γ
+
+j
+k
+
+
+=
+
+∫
+
+−
+∞
+
+
+∞
+
+
+x
+(
+t
+)
+
+
+1
+
+
+2
+
+j
+
+
+
+
+
+ψ
+
+(
+
+
+
+t
+−
+k
+
+2
+
+j
+
+
+
+
+2
+
+j
+
+
+
+
+)
+
+d
+t
+
+
+{\displaystyle \gamma _{jk}=\int _{-\infty }^{\infty }x(t){\frac {1}{\sqrt {2^{j}}}}\psi \left({\frac {t-k2^{j}}{2^{j}}}\right)dt}
+
+
+Now fix 
+
+
+
+j
+
+
+{\displaystyle j}
+
+ at a particular scale, so that 
+
+
+
+
+γ
+
+j
+k
+
+
+
+
+{\displaystyle \gamma _{jk}}
+
+ is a function of 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ only. In light of the above equation, 
+
+
+
+
+γ
+
+j
+k
+
+
+
+
+{\displaystyle \gamma _{jk}}
+
+ can be viewed as a convolution of 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ with a dilated, reflected, and normalized version of the mother wavelet, 
+
+
+
+h
+(
+t
+)
+=
+
+
+1
+
+
+2
+
+j
+
+
+
+
+
+ψ
+
+(
+
+
+
+−
+t
+
+
+2
+
+j
+
+
+
+
+)
+
+
+
+{\displaystyle h(t)={\frac {1}{\sqrt {2^{j}}}}\psi \left({\frac {-t}{2^{j}}}\right)}
+
+, sampled at the points 
+
+
+
+1
+,
+
+2
+
+j
+
+
+,
+
+2
+
+2
+j
+
+
+,
+.
+.
+.
+,
+
+2
+
+N
+
+
+
+
+{\displaystyle 1,2^{j},2^{2j},...,2^{N}}
+
+. But this is precisely what the detail coefficients give at level 
+
+
+
+j
+
+
+{\displaystyle j}
+
+ of the discrete wavelet transform. Therefore, for an appropriate choice of 
+
+
+
+h
+[
+n
+]
+
+
+{\displaystyle h[n]}
+
+ and 
+
+
+
+g
+[
+n
+]
+
+
+{\displaystyle g[n]}
+
+, the detail coefficients of the filter bank correspond exactly to a wavelet coefficient of a discrete set of child wavelets for a given mother wavelet 
+
+
+
+ψ
+(
+t
+)
+
+
+{\displaystyle \psi (t)}
+
+.
+As an example, consider the discrete Haar wavelet, whose mother wavelet is 
+
+
+
+ψ
+=
+[
+1
+,
+−
+1
+]
+
+
+{\displaystyle \psi =[1,-1]}
+
+. Then the dilated, reflected, and normalized version of this wavelet is 
+
+
+
+h
+[
+n
+]
+=
+
+
+1
+
+2
+
+
+
+[
+−
+1
+,
+1
+]
+
+
+{\displaystyle h[n]={\frac {1}{\sqrt {2}}}[-1,1]}
+
+, which is, indeed, the highpass decomposition filter for the discrete Haar wavelet transform.
+The filterbank implementation of the Discrete Wavelet Transform takes only O(N) in certain cases, as compared to O(N log N) for the fast Fourier transform.
+Note that if 
+
+
+
+g
+[
+n
+]
+
+
+{\displaystyle g[n]}
+
+ and 
+
+
+
+h
+[
+n
+]
+
+
+{\displaystyle h[n]}
+
+ are both a constant length (i.e. their length is independent of N), then 
+
+
+
+x
+∗
+h
+
+
+{\displaystyle x*h}
+
+ and 
+
+
+
+x
+∗
+g
+
+
+{\displaystyle x*g}
+
+ each take O(N) time. The wavelet filterbank does each of these two O(N) convolutions, then splits the signal into two branches of size N/2. But it only recursively splits the upper branch convolved with 
+
+
+
+g
+[
+n
+]
+
+
+{\displaystyle g[n]}
+
+ (as contrasted with the FFT, which recursively splits both the upper branch and the lower branch). This leads to the following recurrence relation
+which leads to an O(N) time for the entire operation, as can be shown by a geometric series expansion of the above relation.
+As an example, the discrete Haar wavelet transform is linear, since in that case 
+
+
+
+h
+[
+n
+]
+
+
+{\displaystyle h[n]}
+
+ and 
+
+
+
+g
+[
+n
+]
+
+
+{\displaystyle g[n]}
+
+ are constant length 2.
+The Adam7 algorithm, used for interlacing in the Portable Network Graphics (PNG) format, is a multiscale model of the data which is similar to a DWT with Haar wavelets.
+Unlike the DWT, it has a specific scale – it starts from an 8×8 block, and it downsamples the image, rather than decimating (low-pass filtering, then downsampling). It thus offers worse frequency behavior, showing artifacts (pixelation) at the early stages, in return for simpler implementation.
+In its simplest form, the DWT is remarkably easy to compute.
+The Haar wavelet in Java:
+Complete Java code for a 1-D and 2-D DWT using Haar, Daubechies, Coiflet, and Legendre wavelets is available from the open source project: JWave. Furthermore, a fast lifting implementation of the discrete biorthogonal CDF 9/7 wavelet transform in C, used in the JPEG 2000 image compression standard can be found here (archived 5 March 2012).
+This figure shows an example of applying the above code to compute the Haar wavelet coefficients on a sound waveform. This example highlights two key properties of the wavelet transform:

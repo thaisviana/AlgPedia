@@ -1,0 +1,387 @@
+ABOUT
+Q-learning is a model-free reinforcement learning technique. Specifically, Q-learning can be used to find an optimal action-selection policy for any given (finite) Markov decision process (MDP). It works by learning an action-value function that ultimately gives the expected utility of taking a given action in a given state and following the optimal policy thereafter. A policy is a rule that the agent follows in selecting actions, given the state it is in. When such an action-value function is learned, the optimal policy can be constructed by simply selecting the action with the highest value in each state. One of the strengths of Q-learning is that it is able to compare the expected utility of the available actions without requiring a model of the environment. Additionally, Q-learning can handle problems with stochastic transitions and rewards, without requiring any adaptations. It has been proven that for any finite MDP, Q-learning eventually finds an optimal policy, in the sense that the expected value of the total reward return over all successive steps, starting from the current state, is the maximum achievable.
+FULL TEXT
+Q-learning is a model-free reinforcement learning technique. Specifically, Q-learning can be used to find an optimal action-selection policy for any given (finite) Markov decision process (MDP). It works by learning an action-value function that ultimately gives the expected utility of taking a given action in a given state and following the optimal policy thereafter. A policy is a rule that the agent follows in selecting actions, given the state it is in. When such an action-value function is learned, the optimal policy can be constructed by simply selecting the action with the highest value in each state. One of the strengths of Q-learning is that it is able to compare the expected utility of the available actions without requiring a model of the environment. Additionally, Q-learning can handle problems with stochastic transitions and rewards, without requiring any adaptations. It has been proven that for any finite MDP, Q-learning eventually finds an optimal policy, in the sense that the expected value of the total reward return over all successive steps, starting from the current state, is the maximum achievable.
+
+
+The problem model consists of an agent, states 
+
+
+
+S
+
+
+{\displaystyle S}
+
+ and a set of actions per state 
+
+
+
+A
+
+
+{\displaystyle A}
+
+. By performing an action 
+
+
+
+a
+∈
+A
+
+
+{\displaystyle a\in A}
+
+, the agent can move from state to state. Executing an action in a specific state provides the agent with a reward (a numerical score). The goal of the agent is to maximize its total reward. It does this by learning which action is optimal for each state. The action that is optimal for each state is the action that has the highest long-term reward. This reward is a weighted sum of the expected values of the rewards of all future steps starting from the current state, where the weight for a step from a state 
+
+
+
+Δ
+t
+
+
+{\displaystyle \Delta t}
+
+ steps into the future is calculated as 
+
+
+
+
+γ
+
+Δ
+t
+
+
+
+
+{\displaystyle \gamma ^{\Delta t}}
+
+. Here, 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+ is a number between 0 and 1 (
+
+
+
+0
+≤
+γ
+≤
+1
+
+
+{\displaystyle 0\leq \gamma \leq 1}
+
+) called the discount factor and trades off the importance of sooner versus later rewards. 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+ may also be interpreted as the likelihood to succeed (or survive) at every step 
+
+
+
+Δ
+t
+
+
+{\displaystyle \Delta t}
+
+.
+The algorithm therefore has a function that calculates the Quantity of a state-action combination:
+Before learning has started, 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ returns an (arbitrary) fixed value, chosen by the designer. Then, each time the agent selects an action, and observes a reward and a new state that may depend on both the previous state and the selected action, 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ is updated. The core of the algorithm is a simple value iteration update. It assumes the old value and makes a correction based on the new information.
+where 
+
+
+
+
+r
+
+t
++
+1
+
+
+
+
+{\displaystyle r_{t+1}}
+
+ is the reward observed after performing 
+
+
+
+
+a
+
+t
+
+
+
+
+{\displaystyle a_{t}}
+
+ in 
+
+
+
+
+s
+
+t
+
+
+
+
+{\displaystyle s_{t}}
+
+, and where 
+
+
+
+
+α
+
+t
+
+
+(
+s
+,
+a
+)
+
+
+{\displaystyle \alpha _{t}(s,a)}
+
+ (
+
+
+
+0
+<
+α
+≤
+1
+
+
+{\displaystyle 0<\alpha \leq 1}
+
+) is the learning rate (may be the same for all pairs).
+An episode of the algorithm ends when state 
+
+
+
+
+s
+
+t
++
+1
+
+
+
+
+{\displaystyle s_{t+1}}
+
+ is a final state (or, "absorbing state"). However, Q-learning can also learn in non-episodic tasks. If the discount factor is lower than 1, the action values are finite even if the problem can contain infinite loops.
+Note that for all final states 
+
+
+
+
+s
+
+f
+
+
+
+
+{\displaystyle s_{f}}
+
+, 
+
+
+
+Q
+(
+
+s
+
+f
+
+
+,
+a
+)
+
+
+{\displaystyle Q(s_{f},a)}
+
+ is never updated but is set to the reward value 
+
+
+
+r
+
+
+{\displaystyle r}
+
+. In most cases, 
+
+
+
+Q
+(
+
+s
+
+f
+
+
+,
+a
+)
+
+
+{\displaystyle Q(s_{f},a)}
+
+ can be taken to be equal to zero.
+The learning rate or step size determines to what extent the newly acquired information will override the old information. A factor of 0 will make the agent not learn anything, while a factor of 1 would make the agent consider only the most recent information. In fully deterministic environments, a learning rate of 
+
+
+
+
+α
+
+t
+
+
+(
+s
+,
+a
+)
+=
+1
+
+
+{\displaystyle \alpha _{t}(s,a)=1}
+
+ is optimal. When the problem is stochastic, the algorithm still converges under some technical conditions on the learning rate, that require it to decrease to zero. In practice, often a constant learning rate is used, such as 
+
+
+
+
+α
+
+t
+
+
+(
+s
+,
+a
+)
+=
+0.1
+
+
+{\displaystyle \alpha _{t}(s,a)=0.1}
+
+ for all 
+
+
+
+t
+
+
+{\displaystyle t}
+
+.[1]
+The discount factor 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+ determines the importance of future rewards. A factor of 0 will make the agent "myopic" (or short-sighted) by only considering current rewards, while a factor approaching 1 will make it strive for a long-term high reward. If the discount factor meets or exceeds 1, the action values may diverge. For 
+
+
+
+γ
+=
+1
+
+
+{\displaystyle \gamma =1}
+
+, without a terminal state, or if the agent never reaches one, all environment histories will be infinitely long, and utilities with additive, undiscounted rewards will generally be infinite.[2] Even with a discount factor only slightly lower than 1, the Q-function learning leads to propagation of errors and instabilities when the value function is approximated with an artificial neural network.[3] In that case, it is known that starting with a lower discount factor and increasing it towards its final value yields accelerated learning.[4]
+Since Q-learning is an iterative algorithm, it implicitly assumes an initial condition before the first update occurs. High initial values, also known as "optimistic initial conditions",[5] can encourage exploration: no matter what action is selected, the update rule will cause it to have lower values than the other alternative, thus increasing their choice probability. Recently, it was suggested that the first reward 
+
+
+
+r
+
+
+{\displaystyle r}
+
+ could be used to reset the initial conditions.[citation needed] According to this idea, the first time an action is taken the reward is used to set the value of 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+. This will allow immediate learning in case of fixed deterministic rewards. Surprisingly, this resetting-of-initial-conditions (RIC) approach seems to be consistent with human behaviour in repeated binary choice experiments.[6]
+Q-learning at its simplest uses tables to store data. This very quickly loses viability with increasing sizes of state/action space of the system it is monitoring/controlling. One answer to this problem is to use an (adapted) artificial neural network as a function approximator, as demonstrated by Tesauro in his Backgammon playing temporal difference learning research.[7]
+More generally, Q-learning can be combined with function approximation.[8] This makes it possible to apply the algorithm to larger problems, even when the state space is continuous, and therefore infinitely large. Additionally, it may speed up learning in finite problems, due to the fact that the algorithm can generalize earlier experiences to previously unseen states.
+Q-learning was first introduced by Watkins[9] in 1989. The convergence proof was presented later by Watkins and Dayan[10] in 1992.
+A recent application of Q-learning to deep learning, by Google DeepMind, titled "deep reinforcement learning" or "deep Q-networks", has been successful at playing some Atari 2600 games at expert human levels. Preliminary results were presented in 2014, with a paper published in February 2015 in Nature.[11]
+Because the maximum approximated action value is used in the Q-learning update, in noisy environments Q-learning can sometimes overestimate the actions values, slowing the learning. A recent variant called Double Q-learning was proposed to correct this. [12] This algorithm was later combined with deep learning, as in the DQN algorithm (see above), resulting in Double DQN which was shown to outperform the original DQN algorithm. [13]
+Delayed Q-learning is an alternative implementation of the online Q-learning algorithm, with Probably approximately correct learning (PAC).[14]
+Greedy GQ is a variant of Q-learning to use in combination with (linear) function approximation.[15] The advantage of Greedy GQ is that convergence guarantees can be given even when function approximation is used to estimate the action values.
+Q-learning may suffer from slow rate of convergence, especially when the discount factor 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+ is close to one.[16] Speedy Q-learning, a new variant of Q-learning algorithm, deals with this problem and achieves a probably same rate of convergence as model-based methods such as value iteration.[17]

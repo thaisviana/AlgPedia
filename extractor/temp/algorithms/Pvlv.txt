@@ -1,0 +1,5 @@
+ABOUT
+The primary value learned value (PVLV) model is a possible explanation for the reward-predictive firing properties of dopamine (DA) neurons.[1] It simulates behavioral and neural data on Pavlovian conditioning and the midbrain dopaminergic neurons that fire in proportion to unexpected rewards. It is an alternative to the temporal-differences (TD) algorithm.[2]
+FULL TEXT
+The primary value learned value (PVLV) model is a possible explanation for the reward-predictive firing properties of dopamine (DA) neurons.[1] It simulates behavioral and neural data on Pavlovian conditioning and the midbrain dopaminergic neurons that fire in proportion to unexpected rewards. It is an alternative to the temporal-differences (TD) algorithm.[2]
+It is used as part of Leabra.

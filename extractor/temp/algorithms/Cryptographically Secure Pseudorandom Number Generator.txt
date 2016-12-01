@@ -1,0 +1,701 @@
+ABOUT
+A cryptographically secure pseudo-random number generator (CSPRNG) or cryptographic pseudo-random number generator (CPRNG)[1] is a pseudo-random number generator (PRNG) with properties that make it suitable for use in cryptography.
+FULL TEXT
+A cryptographically secure pseudo-random number generator (CSPRNG) or cryptographic pseudo-random number generator (CPRNG)[1] is a pseudo-random number generator (PRNG) with properties that make it suitable for use in cryptography.
+Many aspects of cryptography require random numbers, for example:
+The "quality" of the randomness required for these applications varies. For example, creating a nonce in some protocols needs only uniqueness. On the other hand, generation of a master key requires a higher quality, such as more entropy. And in the case of one-time pads, the information-theoretic guarantee of perfect secrecy only holds if the key material comes from a true random source with high entropy.
+Ideally, the generation of random numbers in CSPRNGs uses entropy obtained from a high-quality source, generally the operating system's randomness API. However, unexpected correlations have been found in several such ostensibly independent processes. From an information-theoretic point of view, the amount of randomness, the entropy that can be generated, is equal to the entropy provided by the system. But sometimes, in practical situations, more random numbers are needed than there is entropy available. Also the processes to extract randomness from a running system are slow in actual practice. In such instances, a CSPRNG can sometimes be used. A CSPRNG can "stretch" the available entropy over more bits.
+
+
+The requirements of an ordinary PRNG are also satisfied by a cryptographically secure PRNG, but the reverse is not true. CSPRNG requirements fall into two groups: first, that they pass statistical randomness tests; and secondly, that they hold up well under serious attack, even when part of their initial or running state becomes available to an attacker.[citation needed]
+Most PRNGs are not suitable for use as CSPRNGs and will fail on both counts. First, while most PRNGs outputs appear random to assorted statistical tests, they do not resist determined reverse engineering. Specialized statistical tests may be found specially tuned to such a PRNG that shows the random numbers not to be truly random. Second, for most PRNGs, when their state has been revealed, all past random numbers can be retrodicted, allowing an attacker to read all past messages, as well as future ones.
+CSPRNGs are designed explicitly to resist this type of cryptanalysis.
+In the asymptotic setting, a family of deterministic polynomial time computable functions 
+
+
+
+
+G
+
+k
+
+
+:
+{
+0
+,
+1
+
+}
+
+k
+
+
+→
+{
+0
+,
+1
+
+}
+
+p
+(
+k
+)
+
+
+
+
+{\displaystyle G_{k}\colon \{0,1\}^{k}\to \{0,1\}^{p(k)}}
+
+ for some polynomial 
+
+
+
+p
+
+
+{\displaystyle p}
+
+, is a pseudorandom number generator (PRG), if it stretches the length of its input (
+
+
+
+p
+(
+k
+)
+>
+k
+
+
+{\displaystyle p(k)>k}
+
+ for any 
+
+
+
+k
+
+
+{\displaystyle k}
+
+), and if its output is computationally indistinguishable from true randomess, i.e. for any probabilistic polynomial time algorithm 
+
+
+
+A
+
+
+{\displaystyle A}
+
+, which outputs 1 or 0 as a distinguisher,
+for some negligible function 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+.[3] (The notation 
+
+
+
+x
+←
+X
+
+
+{\displaystyle x\gets X}
+
+ means that 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ is chosen uniformly at random from the set 
+
+
+
+X
+
+
+{\displaystyle X}
+
+.)
+There is an equivalent characterization: For any function family 
+
+
+
+
+G
+
+k
+
+
+:
+{
+0
+,
+1
+
+}
+
+k
+
+
+→
+{
+0
+,
+1
+
+}
+
+p
+(
+k
+)
+
+
+
+
+{\displaystyle G_{k}\colon \{0,1\}^{k}\to \{0,1\}^{p(k)}}
+
+, 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ is a PRG if and only if the next output bit of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ cannot be predicted by a polynomial time algorithm.[4]
+A forward-secure PRG with block length 
+
+
+
+t
+(
+k
+)
+
+
+{\displaystyle t(k)}
+
+ is a PRG 
+
+
+
+
+G
+
+k
+
+
+:
+{
+0
+,
+1
+
+}
+
+k
+
+
+→
+{
+0
+,
+1
+
+}
+
+k
+
+
+×
+{
+0
+,
+1
+
+}
+
+t
+(
+k
+)
+
+
+
+
+{\displaystyle G_{k}\colon \{0,1\}^{k}\to \{0,1\}^{k}\times \{0,1\}^{t(k)}}
+
+, where the input string 
+
+
+
+
+s
+
+i
+
+
+
+
+{\displaystyle s_{i}}
+
+ with length 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ is the current state at period 
+
+
+
+i
+
+
+{\displaystyle i}
+
+, and the output (
+
+
+
+
+s
+
+i
++
+1
+
+
+
+
+{\displaystyle s_{i+1}}
+
+, 
+
+
+
+
+y
+
+i
+
+
+
+
+{\displaystyle y_{i}}
+
+) consists of the next state 
+
+
+
+
+s
+
+i
++
+1
+
+
+
+
+{\displaystyle s_{i+1}}
+
+ and the pseudorandom output block 
+
+
+
+
+y
+
+i
+
+
+
+
+{\displaystyle y_{i}}
+
+ of period 
+
+
+
+i
+
+
+{\displaystyle i}
+
+, such that it withstands state compromise extensions in the following sense. If the initial state 
+
+
+
+
+s
+
+1
+
+
+
+
+{\displaystyle s_{1}}
+
+ is chosen uniformly at random from 
+
+
+
+{
+0
+,
+1
+
+}
+
+k
+
+
+
+
+{\displaystyle \{0,1\}^{k}}
+
+, then for any 
+
+
+
+i
+
+
+{\displaystyle i}
+
+, the sequence 
+
+
+
+(
+
+y
+
+1
+
+
+,
+
+y
+
+2
+
+
+,
+…
+,
+
+y
+
+i
+
+
+,
+
+s
+
+i
++
+1
+
+
+)
+
+
+{\displaystyle (y_{1},y_{2},\dots ,y_{i},s_{i+1})}
+
+ must be computationally indistinguishable from 
+
+
+
+(
+
+r
+
+1
+
+
+,
+
+r
+
+2
+
+
+,
+…
+,
+
+r
+
+i
+
+
+,
+
+s
+
+i
++
+1
+
+
+)
+
+
+{\displaystyle (r_{1},r_{2},\dots ,r_{i},s_{i+1})}
+
+, in which the 
+
+
+
+
+r
+
+i
+
+
+
+
+{\displaystyle r_{i}}
+
+ are chosen uniformly at random from 
+
+
+
+{
+0
+,
+1
+
+}
+
+t
+(
+k
+)
+
+
+
+
+{\displaystyle \{0,1\}^{t(k)}}
+
+.[5]
+Any PRG 
+
+
+
+G
+:
+{
+0
+,
+1
+
+}
+
+k
+
+
+→
+{
+0
+,
+1
+
+}
+
+p
+(
+k
+)
+
+
+
+
+{\displaystyle G\colon \{0,1\}^{k}\to \{0,1\}^{p(k)}}
+
+ can be turned into a forward secure PRG with block length 
+
+
+
+p
+(
+k
+)
+−
+k
+
+
+{\displaystyle p(k)-k}
+
+ by splitting its output into the next state and the actual output. This is done by setting 
+
+
+
+G
+(
+s
+)
+=
+
+G
+
+0
+
+
+(
+s
+)
+∥
+
+G
+
+1
+
+
+(
+s
+)
+
+
+{\displaystyle G(s)=G_{0}(s)\Vert G_{1}(s)}
+
+, in which 
+
+
+
+
+|
+
+
+G
+
+0
+
+
+(
+s
+)
+
+|
+
+=
+
+|
+
+s
+
+|
+
+=
+k
+
+
+{\displaystyle |G_{0}(s)|=|s|=k}
+
+ and 
+
+
+
+
+|
+
+
+G
+
+1
+
+
+(
+s
+)
+
+|
+
+=
+p
+(
+k
+)
+−
+k
+
+
+{\displaystyle |G_{1}(s)|=p(k)-k}
+
+; then 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ is a forward secure PRG with 
+
+
+
+
+G
+
+0
+
+
+
+
+{\displaystyle G_{0}}
+
+ as the next state and 
+
+
+
+
+G
+
+1
+
+
+
+
+{\displaystyle G_{1}}
+
+ as the pseudorandom output block of the current period.
+Santha and Vazirani proved that several bit streams with weak randomness can be combined to produce a higher-quality quasi-random bit stream.[6] Even earlier, John von Neumann proved that a simple algorithm can remove a considerable amount of the bias in any bit stream[7] which should be applied to each bit stream before using any variation of the Santha-Vazirani design.
+In the discussion below, CSPRNG designs are divided into three classes:
+The last often introduce additional entropy when available and, strictly speaking, are not "pure" pseudorandom number generators, as their output is not completely determined by their initial state. This addition can prevent attacks even if the initial state is compromised.
+There are a number of practical PRNGs that have been designed to be cryptographically secure, including
+Several CSPRNGs have been standardized. For example,
+A good reference is maintained by NIST.
+There are also standards for statistical testing of new CSPRNG designs:
+The Guardian and The New York Times have reported that the National Security Agency (NSA) inserted a PRNG into NIST SP 800-90A that had a backdoor which allows the NSA to readily decrypt material that was encrypted with the aid of Dual_EC_DRBG. Both papers report[18][19] that, as independent security experts long suspected,[20] the NSA has been introducing weaknesses into CSPRNG standard 800-90; this being confirmed for the first time by one of the top secret documents leaked to the Guardian by Edward Snowden. The NSA worked covertly to get its own version of the NIST draft security standard approved for worldwide use in 2006. The leaked document states that "eventually, NSA became the sole editor." In spite of the known potential for a kleptographic backdoor and other known significant deficiencies with Dual_EC_DRBG, several companies such as RSA Security continued using Dual_EC_DRBG until the backdoor was confirmed in 2013.[21] RSA Security received a $10 million payment from the NSA to do so.[22]

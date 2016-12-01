@@ -1,0 +1,4 @@
+ABOUT
+Parvaresh–Vardy codes are a family of error-correcting codes first described in 2005 by Farzad Parvaresh and Alexander Vardy.[1] They can be used for efficient list-decoding.
+FULL TEXT
+Parvaresh–Vardy codes are a family of error-correcting codes first described in 2005 by Farzad Parvaresh and Alexander Vardy.[1] They can be used for efficient list-decoding.

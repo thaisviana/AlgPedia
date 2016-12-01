@@ -1,0 +1,39 @@
+ABOUT
+Computational magnetohydrodynamics (CMHD) is a rapidly developing branch of magnetohydrodynamics that uses numerical methods and algorithms to solve and analyze problems that involve electrically conducting fluids. Most of the methods used in CMHD are borrowed from the well established techniques employed in Computational fluid dynamics. The complexity mainly arises due to the presence of a magnetic field and its coupling with the fluid. One of the important issues is to numerically maintain the 
+
+
+
+∇
+⋅
+
+
+B
+
+
+=
+0
+
+
+{\displaystyle \nabla \cdot {\mathbf {B} }=0}
+
+ (conservation of magnetic flux) condition, from Maxwell's equations, to avoid any unphysical effects.
+FULL TEXT
+Computational magnetohydrodynamics (CMHD) is a rapidly developing branch of magnetohydrodynamics that uses numerical methods and algorithms to solve and analyze problems that involve electrically conducting fluids. Most of the methods used in CMHD are borrowed from the well established techniques employed in Computational fluid dynamics. The complexity mainly arises due to the presence of a magnetic field and its coupling with the fluid. One of the important issues is to numerically maintain the 
+
+
+
+∇
+⋅
+
+
+B
+
+
+=
+0
+
+
+{\displaystyle \nabla \cdot {\mathbf {B} }=0}
+
+ (conservation of magnetic flux) condition, from Maxwell's equations, to avoid any unphysical effects.
+

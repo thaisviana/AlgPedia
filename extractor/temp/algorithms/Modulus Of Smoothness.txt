@@ -1,0 +1,598 @@
+ABOUT
+In mathematics, moduli of smoothness are used to quantitatively measure smoothness of functions. Moduli of smoothness generalise modulus of continuity and are used in approximation theory and numerical analysis to estimate errors of approximation by polynomials and splines.
+FULL TEXT
+In mathematics, moduli of smoothness are used to quantitatively measure smoothness of functions. Moduli of smoothness generalise modulus of continuity and are used in approximation theory and numerical analysis to estimate errors of approximation by polynomials and splines.
+
+
+The modulus of smoothness of order 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ [1] of a function 
+
+
+
+f
+∈
+C
+[
+a
+,
+b
+]
+
+
+{\displaystyle f\in C[a,b]}
+
+ is the function 
+
+
+
+
+ω
+
+n
+
+
+:
+[
+0
+,
+∞
+)
+→
+
+R
+
+
+
+{\displaystyle \omega _{n}:[0,\infty )\to \mathbb {R} }
+
+ defined by
+and
+where we the finite difference (n-th order forward difference) are defined as
+1. 
+
+
+
+
+ω
+
+n
+
+
+(
+0
+)
+=
+0
+,
+
+
+{\displaystyle \omega _{n}(0)=0,}
+
+ 
+
+
+
+
+ω
+
+n
+
+
+(
+0
++
+)
+=
+0.
+
+
+{\displaystyle \omega _{n}(0+)=0.}
+
+
+2. 
+
+
+
+
+ω
+
+n
+
+
+
+
+{\displaystyle \omega _{n}}
+
+ is non-decreasing on 
+
+
+
+[
+0
+,
+∞
+)
+.
+
+
+{\displaystyle [0,\infty ).}
+
+
+3. 
+
+
+
+
+ω
+
+n
+
+
+
+
+{\displaystyle \omega _{n}}
+
+ is continuous on 
+
+
+
+[
+0
+,
+∞
+)
+.
+
+
+{\displaystyle [0,\infty ).}
+
+
+4. 
+
+
+
+
+ω
+
+n
+
+
+(
+m
+t
+)
+≤
+
+m
+
+n
+
+
+
+ω
+
+n
+
+
+(
+t
+)
+
+
+{\displaystyle \omega _{n}(mt)\leq m^{n}\omega _{n}(t)}
+
+, 
+
+
+
+m
+∈
+
+N
+
+
+
+{\displaystyle m\in \mathbb {N} }
+
+, 
+
+
+
+t
+≥
+0.
+
+
+{\displaystyle t\geq 0.}
+
+
+5. 
+
+
+
+
+ω
+
+n
+
+
+(
+f
+,
+λ
+t
+)
+≤
+(
+λ
++
+1
+
+)
+
+n
+
+
+
+ω
+
+n
+
+
+(
+f
+,
+t
+)
+
+
+{\displaystyle \omega _{n}(f,\lambda t)\leq (\lambda +1)^{n}\omega _{n}(f,t)}
+
+, 
+
+
+
+λ
+>
+0.
+
+
+{\displaystyle \lambda >0.}
+
+
+6. For 
+
+
+
+r
+∈
+N
+
+
+{\displaystyle r\in N}
+
+, denote by 
+
+
+
+
+W
+
+r
+
+
+
+
+{\displaystyle W^{r}}
+
+ the space of continuous function on 
+
+
+
+[
+−
+1
+,
+1
+]
+
+
+{\displaystyle [-1,1]}
+
+ that have 
+
+
+
+(
+r
+−
+1
+)
+
+
+{\displaystyle (r-1)}
+
+-st absolutely continuous derivative on 
+
+
+
+[
+−
+1
+,
+1
+]
+
+
+{\displaystyle [-1,1]}
+
+ and 
+
+
+
+∥
+
+f
+
+(
+r
+)
+
+
+
+∥
+
+
+L
+
+∞
+
+
+[
+−
+1
+,
+1
+]
+
+
+<
++
+∞
+.
+
+
+{\displaystyle \|f^{(r)}\|_{L_{\infty }[-1,1]}<+\infty .}
+
+ If 
+
+
+
+f
+∈
+
+W
+
+r
+
+
+
+
+{\displaystyle f\in W^{r}}
+
+, then 
+
+
+
+
+ω
+
+r
+
+
+(
+t
+,
+f
+,
+[
+−
+1
+,
+1
+]
+)
+≤
+
+t
+
+r
+
+
+∥
+
+f
+
+(
+r
+)
+
+
+
+∥
+
+
+L
+
+∞
+
+
+[
+−
+1
+,
+1
+]
+
+
+,
+t
+≥
+0
+,
+
+
+{\displaystyle \omega _{r}(t,f,[-1,1])\leq t^{r}\|f^{(r)}\|_{L_{\infty }[-1,1]},t\geq 0,}
+
+ where 
+
+
+
+∥
+g
+(
+x
+)
+
+∥
+
+
+L
+
+∞
+
+
+[
+−
+1
+,
+1
+]
+
+
+=
+
+
+
+e
+s
+s
+
+sup
+
+
+x
+∈
+[
+−
+1
+,
+1
+]
+
+
+
+|
+
+g
+(
+x
+)
+
+|
+
+.
+
+
+{\displaystyle \|g(x)\|_{L_{\infty }[-1,1]}={\mathrm {ess} \sup }_{x\in [-1,1]}|g(x)|.}
+
+
+Moduli of smoothness can be used to prove estimates on the error of approximation. Due to property (6), moduli of smoothness provide more general estimates than the estimates in terms of derivatives.
+For example, moduli of smoothness are used in Whitney inequality to estimate the error of local polynomial approximation. Another application is given by the following more general version of Jackson inequality:
+For every natural number 
+
+
+
+n
+
+
+{\displaystyle n}
+
+, if 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is 
+
+
+
+2
+π
+
+
+{\displaystyle 2\pi }
+
+-periodic continuous function, there exists a trigonometric polynomial 
+
+
+
+
+T
+
+n
+
+
+
+
+{\displaystyle T_{n}}
+
+ of degree 
+
+
+
+≤
+n
+
+
+{\displaystyle \leq n}
+
+ such that
+where the constant 
+
+
+
+c
+(
+k
+)
+
+
+{\displaystyle c(k)}
+
+ depends on 
+
+
+
+k
+∈
+
+N
+
+.
+
+
+{\displaystyle k\in \mathbb {N} .}
+

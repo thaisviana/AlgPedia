@@ -1,0 +1,4 @@
+ABOUT
+The RC algorithms are a set of symmetric-key encryption algorithms invented by Ron Rivest. The "RC" may stand for either Rivest's cipher or, more informally, Ron's code.[1] Despite the similarity in their names, the algorithms are for the most part unrelated. There have been six RC algorithms so far:
+FULL TEXT
+The RC algorithms are a set of symmetric-key encryption algorithms invented by Ron Rivest. The "RC" may stand for either Rivest's cipher or, more informally, Ron's code.[1] Despite the similarity in their names, the algorithms are for the most part unrelated. There have been six RC algorithms so far:

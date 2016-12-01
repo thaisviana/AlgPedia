@@ -1,0 +1,203 @@
+ABOUT
+The equioscillation theorem concerns the approximation of continuous functions using polynomials when the merit function is the maximum difference (uniform norm). Its discovery is attributed to Chebyshev.
+FULL TEXT
+The equioscillation theorem concerns the approximation of continuous functions using polynomials when the merit function is the maximum difference (uniform norm). Its discovery is attributed to Chebyshev.
+Let 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ be a continuous function from 
+
+
+
+[
+a
+,
+b
+]
+
+
+{\displaystyle [a,b]}
+
+ to 
+
+
+
+
+R
+
+
+
+{\displaystyle \mathbf {R} }
+
+. Among all the polynomials of degree 
+
+
+
+≤
+n
+
+
+{\displaystyle \leq n}
+
+, the polynomial 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ minimizes the uniform norm of the difference 
+
+
+
+
+|
+
+
+|
+
+f
+−
+g
+
+|
+
+
+
+|
+
+
+∞
+
+
+
+
+{\displaystyle ||f-g||_{\infty }}
+
+ if and only if there are 
+
+
+
+n
++
+2
+
+
+{\displaystyle n+2}
+
+ points 
+
+
+
+a
+≤
+
+x
+
+0
+
+
+<
+
+x
+
+1
+
+
+<
+⋯
+<
+
+x
+
+n
++
+1
+
+
+≤
+b
+
+
+{\displaystyle a\leq x_{0}<x_{1}<\cdots <x_{n+1}\leq b}
+
+ such that 
+
+
+
+f
+(
+
+x
+
+i
+
+
+)
+−
+g
+(
+
+x
+
+i
+
+
+)
+=
+σ
+(
+−
+1
+
+)
+
+i
+
+
+
+|
+
+
+|
+
+f
+−
+g
+
+|
+
+
+
+|
+
+
+∞
+
+
+
+
+{\displaystyle f(x_{i})-g(x_{i})=\sigma (-1)^{i}||f-g||_{\infty }}
+
+ where 
+
+
+
+σ
+=
+±
+1
+
+
+{\displaystyle \sigma =\pm 1}
+
+.
+Several minimax approximation algorithms are available, the most common being the Remez algorithm.

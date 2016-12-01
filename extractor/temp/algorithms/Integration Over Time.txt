@@ -1,0 +1,273 @@
+ABOUT
+In mathematics, an integral assigns numbers to functions in a way that can describe displacement, area, volume, and other concepts that arise by combining infinitesimal data. Integration is one of the two main operations of calculus, with its inverse, differentiation, being the other. Given a function f of a real variable x and an interval [a, b] of the real line, the definite integral
+FULL TEXT
+In mathematics, an integral assigns numbers to functions in a way that can describe displacement, area, volume, and other concepts that arise by combining infinitesimal data. Integration is one of the two main operations of calculus, with its inverse, differentiation, being the other. Given a function f of a real variable x and an interval [a, b] of the real line, the definite integral
+is defined informally as the signed area of the region in the xy-plane that is bounded by the graph of f, the x-axis and the vertical lines x = a and x = b. The area above the x-axis adds to the total and that below the x-axis subtracts from the total.
+Roughly speaking, the operation of integration is the reverse of differentiation. For this reason, the term integral may also refer to the related notion of the antiderivative, a function F whose derivative is the given function f. In this case, it is called an indefinite integral and is written:
+The integrals discussed in this article are those termed definite integrals. It is the fundamental theorem of calculus that connects differentiation with the definite integral: if f is a continuous real-valued function defined on a closed interval [a, b], then, once an antiderivative F of f is known, the definite integral of f over that interval is given by
+The principles of integration were formulated independently by Isaac Newton and Gottfried Leibniz in the late 17th century, who thought of the integral as an infinite sum of rectangles of infinitesimal width. A rigorous mathematical definition of the integral was given by Bernhard Riemann. It is based on a limiting procedure which approximates the area of a curvilinear region by breaking the region into thin vertical slabs. Beginning in the nineteenth century, more sophisticated notions of integrals began to appear, where the type of the function as well as the domain over which the integration is performed has been generalised. A line integral is defined for functions of two or three variables, and the interval of integration [a, b] is replaced by a certain curve connecting two points on the plane or in the space. In a surface integral, the curve is replaced by a piece of a surface in the three-dimensional space.
+
+
+The first documented systematic technique capable of determining integrals is the method of exhaustion of the ancient Greek astronomer Eudoxus (ca. 370 BC), which sought to find areas and volumes by breaking them up into an infinite number of divisions for which the area or volume was known. This method was further developed and employed by Archimedes in the 3rd century BC and used to calculate areas for parabolas and an approximation to the area of a circle.
+A similar method was independently developed in China around the 3rd century AD by Liu Hui, who used it to find the area of the circle. This method was later used in the 5th century by Chinese father-and-son mathematicians Zu Chongzhi and Zu Geng to find the volume of a sphere (Shea 2007; Katz 2004, pp. 125–126).
+The next significant advances in integral calculus did not begin to appear until the 17th century. At this time the work of Cavalieri with his method of Indivisibles, and work by Fermat, began to lay the foundations of modern calculus, with Cavalieri computing the integrals of xn up to degree n = 9 in Cavalieri's quadrature formula. Further steps were made in the early 17th century by Barrow and Torricelli, who provided the first hints of a connection between integration and differentiation. Barrow provided the first proof of the fundamental theorem of calculus. Wallis generalized Cavalieri's method, computing integrals of x to a general power, including negative powers and fractional powers.
+The major advance in integration came in the 17th century with the independent discovery of the fundamental theorem of calculus by Newton and Leibniz. The theorem demonstrates a connection between integration and differentiation. This connection, combined with the comparative ease of differentiation, can be exploited to calculate integrals. In particular, the fundamental theorem of calculus allows one to solve a much broader class of problems. Equal in importance is the comprehensive mathematical framework that both Newton and Leibniz developed. Given the name infinitesimal calculus, it allowed for precise analysis of functions within continuous domains. This framework eventually became modern calculus, whose notation for integrals is drawn directly from the work of Leibniz.
+While Newton and Leibniz provided a systematic approach to integration, their work lacked a degree of rigour. Bishop Berkeley memorably attacked the vanishing increments used by Newton, calling them "ghosts of departed quantities". Calculus acquired a firmer footing with the development of limits. Integration was first rigorously formalized, using limits, by Riemann. Although all bounded piecewise continuous functions are Riemann-integrable on a bounded interval, subsequently more general functions were considered—particularly in the context of Fourier analysis—to which Riemann's definition does not apply, and Lebesgue formulated a different definition of integral, founded in measure theory (a subfield of real analysis). Other definitions of integral, extending Riemann's and Lebesgue's approaches, were proposed. These approaches based on the real number system are the ones most common today, but alternative approaches exist, such as a definition of integral as the standard part of an infinite Riemann sum, based on the hyperreal number system.
+Isaac Newton used a small vertical bar above a variable to indicate integration, or placed the variable inside a box. The vertical bar was easily confused with .x or x′, which Newton used to indicate differentiation, and the box notation was difficult for printers to reproduce, so these notations were not widely adopted.
+The modern notation for the indefinite integral was introduced by Gottfried Leibniz in 1675 (Burton 1988, p. 359; Leibniz 1899, p. 154). He adapted the integral symbol, ∫, from the letter ſ (long s), standing for summa (written as ſumma; Latin for "sum" or "total"). The modern notation for the definite integral, with limits above and below the integral sign, was first used by Joseph Fourier in Mémoires of the French Academy around 1819–20, reprinted in his book of 1822 (Cajori 1929, pp. 249–250; Fourier 1822, §231).
+The integral with respect to x of a real-valued function f(x) of a real variable x on the interval [a, b] is written as
+The integral sign ∫ represents integration. The symbol dx, called the differential of the variable x, indicates that the variable of integration is x. The function f(x) to be integrated is called the integrand. The symbol dx is separated from the integrand by a space (as shown). If a function has an integral, it is said to be integrable. The points a and b are called the limits of the integral. An integral where the limits are specified is called a definite integral. The integral is said to be over the interval [a, b].
+When the limits are omitted, as in
+the integral is called an indefinite integral (also known as antiderivative). The fundamental theorem of calculus relates indefinite integrals and definite integrals. There are many extensions of this notation to generalizations of the integral.
+In modern Arabic mathematical notation, a reflected integral symbol  is used instead of the symbol ∫.[1] Some authors use an upright "d" to indicate the variable of integration (i.e., dx instead of dx). The symbol dx is not always placed after f(x), as for instance in
+Integrals appear in many practical situations. If a swimming pool is rectangular with a flat bottom, then from its length, width, and depth we can easily determine the volume of water it can contain (to fill it), the area of its surface (to cover it), and the length of its edge (to rope it). But if it is oval with a rounded bottom, all of these quantities call for integrals. Practical approximations may suffice for such trivial examples, but precision engineering (of any discipline) requires exact and rigorous values for these elements.
+To start off, consider the curve y = f(x) between x = 0 and x = 1 with f(x) = √x (see figure). We ask:
+and call this (yet unknown) area the (definite) integral of f. The notation for this integral will be
+As a first approximation, look at the unit square given by the sides x = 0 to x = 1 and y = f(0) = 0 and y = f(1) = 1. Its area is exactly 1. As it is, the true value of the integral must be somewhat less than 1. Decreasing the width of the approximation rectangles and increasing the number of rectangles shall give a better result; so cross the interval in five steps, using the approximation points 0, 1/5, 2/5, and so on to 1. Fit a box for each step using the right end height of each curve piece, thus √1/5, √2/5, and so on to √1 = 1. Summing the areas of these rectangles, we get a better approximation for the sought integral, namely
+We are taking a sum of finitely many function values of f, multiplied with the differences of two subsequent approximation points. We can easily see that the approximation is still too large. Using more steps produces a closer approximation, but will never be exact: replacing the 5 subintervals by twelve in the same way, but with the left end height of each piece, we will get an approximate value for the area of 0.6203, which is too small. The key idea is the transition from adding finitely many differences of approximation points multiplied by their respective function values to using infinitely many fine, or infinitesimal steps.
+The notation
+conceives the integral as a weighted sum, denoted by the elongated s, of function values, f(x), multiplied by infinitesimal step widths, the so-called differentials, denoted by dx. The multiplication sign is usually omitted.
+Historically, after the failure of early efforts to rigorously interpret infinitesimals, Riemann formally defined integrals as a limit of weighted sums, so that the dx suggested the limit of a difference (namely, the interval width). Shortcomings of Riemann's dependence on intervals and continuity motivated newer definitions, especially the Lebesgue integral, which is founded on an ability to extend the idea of "measure" in much more flexible ways. Thus the notation
+refers to a weighted sum in which the function values are partitioned, with μ measuring the weight to be assigned to each value. Here A denotes the region of integration.
+There are many ways of formally defining an integral, not all of which are equivalent. The differences exist mostly to deal with differing special cases which may not be integrable under other definitions, but also occasionally for pedagogical reasons. The most commonly used definitions of integral are Riemann integrals and Lebesgue integrals.
+The Riemann integral is defined in terms of Riemann sums of functions with respect to tagged partitions of an interval.[2] Let [a, b] be a closed interval of the real line; then a tagged partition of [a, b] is a finite sequence
+This partitions the interval [a, b] into n sub-intervals [xi−1, xi] indexed by i, each of which is "tagged" with a distinguished point ti ∈ [xi−1, xi]. A Riemann sum of a function f with respect to such a tagged partition is defined as
+thus each term of the sum is the area of a rectangle with height equal to the function value at the distinguished point of the given sub-interval, and width the same as the sub-interval width. Let Δi = xi−xi−1 be the width of sub-interval i; then the mesh of such a tagged partition is the width of the largest sub-interval formed by the partition, maxi=1...n Δi. The Riemann integral of a function f over the interval [a, b] is equal to S if:
+When the chosen tags give the maximum (respectively, minimum) value of each interval, the Riemann sum becomes an upper (respectively, lower) Darboux sum, suggesting the close connection between the Riemann integral and the Darboux integral.
+It is often of interest, both in theory and applications, to be able to pass to the limit under the integral. For instance, a sequence of functions can frequently be constructed that approximate, in a suitable sense, the solution to a problem. Then the integral of the solution function should be the limit of the integrals of the approximations. However, many functions that can be obtained as limits are not Riemann-integrable, and so such limit theorems do not hold with the Riemann integral. Therefore, it is of great importance to have a definition of the integral that allows a wider class of functions to be integrated (Rudin 1987).
+Such an integral is the Lebesgue integral, that exploits the following fact to enlarge the class of integrable functions: if the values of a function are rearranged over the domain, the integral of a function should remain the same. Thus Henri Lebesgue introduced the integral bearing his name, explaining this integral thus in a letter to Paul Montel:
+I have to pay a certain sum, which I have collected in my pocket. I take the bills and coins out of my pocket and give them to the creditor in the order I find them until I have reached the total sum. This is the Riemann integral. But I can proceed differently. After I have taken all the money out of my pocket I order the bills and coins according to identical values and then I pay the several heaps one after the other to the creditor. This is my integral.
+As Folland (1984, p. 56) puts it, "To compute the Riemann integral of f, one partitions the domain [a, b] into subintervals", while in the Lebesgue integral, "one is in effect partitioning the range of f". The definition of the Lebesgue integral thus begins with a measure, μ. In the simplest case, the Lebesgue measure μ(A) of an interval A = [a, b] is its width, b − a, so that the Lebesgue integral agrees with the (proper) Riemann integral when both exist. In more complicated cases, the sets being measured can be highly fragmented, with no continuity and no resemblance to intervals.
+Using the "partitioning the range of f" philosophy, the integral of a non-negative function f : R → R should be the sum over t of the areas between a thin horizontal strip between y = t and y = t + dt. This area is just μ{ x : f(x) > t} dt. Let f∗(t) = μ{ x : f(x) > t}. The Lebesgue integral of f is then defined by (Lieb & Loss 2001)
+where the integral on the right is an ordinary improper Riemann integral (f∗ is a strictly decreasing positive function, and therefore has a well-defined improper Riemann integral). For a suitable class of functions (the measurable functions) this defines the Lebesgue integral.
+A general measurable function f is Lebesgue-integrable if the area between the graph of f and the x-axis is finite:
+In that case, the integral is, as in the Riemannian case, the difference between the area above the x-axis and the area below the x-axis:
+where
+Although the Riemann and Lebesgue integrals are the most widely used definitions of the integral, a number of others exist, including:
+The collection of Riemann-integrable functions on a closed interval [a, b] forms a vector space under the operations of pointwise addition and multiplication by a scalar, and the operation of integration
+is a linear functional on this vector space. Thus, firstly, the collection of integrable functions is closed under taking linear combinations; and, secondly, the integral of a linear combination is the linear combination of the integrals,
+Similarly, the set of real-valued Lebesgue-integrable functions on a given measure space E with measure μ is closed under taking linear combinations and hence form a vector space, and the Lebesgue integral
+is a linear functional on this vector space, so that
+More generally, consider the vector space of all measurable functions on a measure space (E,μ), taking values in a locally compact complete topological vector space V over a locally compact topological field K, f : E → V. Then one may define an abstract integration map assigning to each function f an element of V or the symbol ∞,
+that is compatible with linear combinations. In this situation the linearity holds for the subspace of functions whose integral is an element of V (i.e. "finite"). The most important special cases arise when K is R, C, or a finite extension of the field Qp of p-adic numbers, and V is a finite-dimensional vector space over K, and when K = C and V is a complex Hilbert space.
+Linearity, together with some natural continuity properties and normalisation for a certain class of "simple" functions, may be used to give an alternative definition of the integral. This is the approach of Daniell for the case of real-valued functions on a set X, generalized by Nicolas Bourbaki to functions with values in a locally compact topological vector space. See (Hildebrandt 1953) for an axiomatic characterisation of the integral.
+A number of general inequalities hold for Riemann-integrable functions defined on a closed and bounded interval [a, b] and can be generalized to other notions of integral (Lebesgue and Daniell).
+In this section f is a real-valued Riemann-integrable function. The integral
+over an interval [a, b] is defined if a < b. This means that the upper and lower sums of the function f are evaluated on a partition a = x0 ≤ x1 ≤ . . . ≤ xn = b whose values xi are increasing. Geometrically, this signifies that integration takes place "left to right", evaluating f within intervals [x i , x i +1] where an interval with a higher index lies to the right of one with a lower index. The values a and b, the end-points of the interval, are called the limits of integration of f. Integrals can also be defined if a > b:
+This, with a = b, implies:
+The first convention is necessary in consideration of taking integrals over subintervals of [a, b]; the second says that an integral taken over a degenerate interval, or a point, should be zero. One reason for the first convention is that the integrability of f on an interval [a, b] implies that f is integrable on any subinterval [c, d], but in particular integrals have the property that:
+With the first convention, the resulting relation
+is then well-defined for any cyclic permutation of a, b, and c.
+The fundamental theorem of calculus is the statement that differentiation and integration are inverse operations: if a continuous function is first integrated and then differentiated, the original function is retrieved. An important consequence, sometimes called the second fundamental theorem of calculus, allows one to compute integrals by using an antiderivative of the function to be integrated.
+Let f be a continuous real-valued function defined on a closed interval [a, b]. Let F be the function defined, for all x in [a, b], by
+Then, F is continuous on [a, b], differentiable on the open interval (a, b), and
+for all x in (a, b).
+Let f be a real-valued function defined on a closed interval [a, b] that admits an antiderivative F on [a, b]. That is, f and F are functions such that for all x in [a, b],
+If f is integrable on [a, b] then
+The second fundamental theorem allows many integrals to be calculated explicitly. For example, to calculate the integral
+of the square root function f(x) = x1/2 between 0 and 1, it is sufficient to find an antiderivative, that is, a function F(x) whose derivative equals f(x):
+One such function is F(x) = 2/3x3/2. Then the value of the integral in question is
+This is a case of a general rule, that for f(x) = xq, with q ≠ −1, the related function, the so-called antiderivative is F(x) = xq + 1/(q + 1). Tables of this and similar antiderivatives can be used to calculate integrals explicitly, in much the same way that tables of derivatives can be used.
+A "proper" Riemann integral assumes the integrand is defined and finite on a closed and bounded interval, bracketed by the limits of integration. An improper integral occurs when one or more of these conditions is not satisfied. In some cases such integrals may be defined by considering the limit of a sequence of proper Riemann integrals on progressively larger intervals.
+If the interval is unbounded, for instance at its upper end, then the improper integral is the limit as that endpoint goes to infinity.
+If the integrand is only defined or finite on a half-open interval, for instance (a, b], then again a limit may provide a finite result.
+That is, the improper integral is the limit of proper integrals as one endpoint of the interval of integration approaches either a specified real number, or ∞, or −∞. In more complicated cases, limits are required at both endpoints, or at interior points.
+Just as the definite integral of a positive function of one variable represents the area of the region between the graph of the function and the x-axis, the double integral of a positive function of two variables represents the volume of the region between the surface defined by the function and the plane which contains its domain. For example, a function in two dimensions depends on two real variables, x and y, and the integral of a function f over the rectangle R given as the Cartesian product of two intervals 
+
+
+
+R
+=
+[
+a
+,
+b
+]
+×
+[
+c
+,
+d
+]
+
+
+{\displaystyle R=[a,b]\times [c,d]}
+
+ can be written
+where the differential dA indicates that integration is taken with respect to area. This double integral can be defined using Riemann sums, and represents the (signed) volume under the graph of z = f(x,y) over the domain R. Under suitable conditions (e.g., if f is continuous), then Fubini's theorem guarantees that this integral can be expressed as an equivalent iterated integral
+This reduces the problem of computing a double integral to computing one-dimensional integrals. Because of this, another notation for the integral over R uses a double integral sign:
+Integration over more general domains is possible. The integral of a function f, with respect to volume, over a subset D of ℝn is denoted by notation such as
+or similar. See volume integral.
+The concept of an integral can be extended to more general domains of integration, such as curved lines and surfaces. Such integrals are known as line integrals and surface integrals respectively. These have important applications in physics, as when dealing with vector fields.
+A line integral (sometimes called a path integral) is an integral where the function to be integrated is evaluated along a curve. Various different line integrals are in use. In the case of a closed curve it is also called a contour integral.
+The function to be integrated may be a scalar field or a vector field. The value of the line integral is the sum of values of the field at all points on the curve, weighted by some scalar function on the curve (commonly arc length or, for a vector field, the scalar product of the vector field with a differential vector in the curve). This weighting distinguishes the line integral from simpler integrals defined on intervals. Many simple formulas in physics have natural continuous analogs in terms of line integrals; for example, the fact that work is equal to force, F, multiplied by displacement, s, may be expressed (in terms of vector quantities) as:
+For an object moving along a path C in a vector field F such as an electric field or gravitational field, the total work done by the field on the object is obtained by summing up the differential work done in moving from s to s + ds. This gives the line integral
+A surface integral is a definite integral taken over a surface (which may be a curved set in space); it can be thought of as the double integral analog of the line integral. The function to be integrated may be a scalar field or a vector field. The value of the surface integral is the sum of the field at all points on the surface. This can be achieved by splitting the surface into surface elements, which provide the partitioning for Riemann sums.
+For an example of applications of surface integrals, consider a vector field v on a surface S; that is, for each point x in S, v(x) is a vector. Imagine that we have a fluid flowing through S, such that v(x) determines the velocity of the fluid at x. The flux is defined as the quantity of fluid flowing through S in unit amount of time. To find the flux, we need to take the dot product of v with the unit surface normal to S at each point, which will give us a scalar field, which we integrate over the surface:
+The fluid flux in this example may be from a physical fluid such as water or air, or from electrical or magnetic flux. Thus surface integrals have applications in physics, particularly with the classical theory of electromagnetism.
+In complex analysis, the integrand is a complex-valued function of a complex variable z instead of a real function of a real variable x. When a complex function is integrated along a curve 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+ in the complex plane, the integral is denoted as follows
+This is known as a contour integral.
+A differential form is a mathematical concept in the fields of multivariable calculus, differential topology, and tensors. Differential forms are organized by degree. For example, a one-form is a weighted sum of the differentials of the coordinates, such as:
+where E, F, G are functions in three dimensions. A differential one-form can be integrated over an oriented path, and the resulting integral is just another way of writing a line integral. Here the basic differentials dx, dy, dz measure infinitesimal oriented lengths parallel to the three coordinate axes.
+A differential two-form is a sum of the form
+Here the basic two-forms 
+
+
+
+d
+x
+∧
+d
+y
+,
+d
+z
+∧
+d
+x
+,
+d
+y
+∧
+d
+z
+
+
+{\displaystyle dx\wedge dy,dz\wedge dx,dy\wedge dz}
+
+ measure oriented areas parallel to the coordinate two-planes. The symbol 
+
+
+
+∧
+
+
+{\displaystyle \wedge }
+
+ denotes the wedge product, which is similar to the cross product in the sense that the wedge product of two forms representing oriented lengths represents an oriented area. A two-form can be integrated over an oriented surface, and the resulting integral is equivalent to the surface integral giving the flux of 
+
+
+
+E
+
+i
+
++
+F
+
+j
+
++
+G
+
+k
+
+
+
+{\displaystyle E\mathbf {i} +F\mathbf {j} +G\mathbf {k} }
+
+.
+Unlike the cross product, and the three-dimensional vector calculus, the wedge product and the calculus of differential forms makes sense in arbitrary dimension and on more general manifolds (curves, surfaces, and their higher-dimensional analogs). The exterior derivative plays the role of the gradient and curl of vector calculus, and Stokes' theorem simultaneously generalizes the three theorems of vector calculus: the divergence theorem, Green's theorem, and the Kelvin-Stokes theorem.
+The discrete equivalent of integration is summation. Summations and integrals can be put on the same foundations using the theory of Lebesgue integrals or time scale calculus.
+The most basic technique for computing definite integrals of one real variable is based on the fundamental theorem of calculus. Let f(x) be the function of x to be integrated over a given interval [a, b]. Then, find an antiderivative of f; that is, a function F such that F′ = f on the interval. Provided the integrand and integral have no singularities on the path of integration, by the fundamental theorem of calculus,
+The integral is not actually the antiderivative, but the fundamental theorem provides a way to use antiderivatives to evaluate definite integrals.
+The most difficult step is usually to find the antiderivative of f. It is rarely possible to glance at a function and write down its antiderivative. More often, it is necessary to use one of the many techniques that have been developed to evaluate integrals. Most of these techniques rewrite one integral as a different one which is hopefully more tractable. Techniques include:
+Alternative methods exist to compute more complex integrals. Many nonelementary integrals can be expanded in a Taylor series and integrated term by term. Occasionally, the resulting infinite series can be summed analytically. The method of convolution using Meijer G-functions can also be used, assuming that the integrand can be written as a product of Meijer G-functions. There are also many less common ways of calculating definite integrals; for instance, Parseval's identity can be used to transform an integral over a rectangular region into an infinite sum. Occasionally, an integral can be evaluated by a trick; for an example of this, see Gaussian integral.
+Computations of volumes of solids of revolution can usually be done with disk integration or shell integration.
+Specific results which have been worked out by various techniques are collected in the list of integrals.
+Many problems in mathematics, physics, and engineering involve integration where an explicit formula for the integral is desired. Extensive tables of integrals have been compiled and published over the years for this purpose. With the spread of computers, many professionals, educators, and students have turned to computer algebra systems that are specifically designed to perform difficult or tedious tasks, including integration. Symbolic integration has been one of the motivations for the development of the first such systems, like Macsyma.
+A major mathematical difficulty in symbolic integration is that in many cases, a closed formula for the antiderivative of a rather simple-looking function does not exist. For instance, it is known that the antiderivatives of the functions exp(x2), xx and (sin x)/x cannot be expressed in the closed form involving only rational and exponential functions, logarithm, trigonometric and inverse trigonometric functions, and the operations of multiplication and composition; in other words, none of the three given functions is integrable in elementary functions, which are the functions which may be built from rational functions, roots of a polynomial, logarithm, and exponential functions. The Risch algorithm provides a general criterion to determine whether the antiderivative of an elementary function is elementary, and, if it is, to compute it. Unfortunately, it turns out that functions with closed expressions of antiderivatives are the exception rather than the rule. Consequently, computerized algebra systems have no hope of being able to find an antiderivative for a randomly constructed elementary function. On the positive side, if the 'building blocks' for antiderivatives are fixed in advance, it may be still be possible to decide whether the antiderivative of a given function can be expressed using these blocks and operations of multiplication and composition, and to find the symbolic answer whenever it exists. The Risch algorithm, implemented in Mathematica and other computer algebra systems, does just that for functions and antiderivatives built from rational functions, radicals, logarithm, and exponential functions.
+Some special integrands occur often enough to warrant special study. In particular, it may be useful to have, in the set of antiderivatives, the special functions of physics (like the Legendre functions, the hypergeometric function, the Gamma function, the Incomplete Gamma function and so on — see Symbolic integration for more details). Extending the Risch's algorithm to include such functions is possible but challenging and has been an active research subject.
+More recently a new approach has emerged, using D-finite functions, which are the solutions of linear differential equations with polynomial coefficients. Most of the elementary and special functions are D-finite, and the integral of a D-finite function is also a D-finite function. This provides an algorithm to express the antiderivative of a D-finite function as the solution of a differential equation.
+This theory also allows one to compute the definite integral of a D-function as the sum of a series given by the first coefficients, and provides an algorithm to compute any coefficient.[3]
+Some integrals found in real applications can be computed by closed-form antiderivatives. Others are not so accommodating. Some antiderivatives do not have closed forms, some closed forms require special functions which themselves are a challenge to compute, and others are so complex that finding the exact answer is too slow. This motivates the study and application of numerical approximations of integrals. This subject, called numerical integration or numerical quadrature, arose early in the study of integration for the purpose of making hand calculations. The development of general-purpose computers made numerical integration more practical and drove a desire for improvements. The goals of numerical integration are accuracy, reliability, efficiency, and generality, and sophisticated modern methods can vastly outperform a naive method by all four measures (Dahlquist & Björck 2008; Kahaner, Moler & Nash 1989; Stoer & Bulirsch 2002).
+Consider, for example, the integral
+which has the exact answer 94/25 = 3.76. (In ordinary practice the answer is not known in advance, so an important task — not explored here — is to decide when an approximation is good enough.) A “calculus book” approach divides the integration range into, say, 16 equal pieces, and computes function values.
+Using the left end of each piece, the rectangle method sums 16 function values and multiplies by the step width, h, here 0.25, to get an approximate value of 3.94325 for the integral. The accuracy is not impressive, but calculus formally uses pieces of infinitesimal width, so initially this may seem little cause for concern. Indeed, repeatedly doubling the number of steps eventually produces an approximation of 3.76001. However, 218 pieces are required, a great computational expense for such little accuracy; and a reach for greater accuracy can force steps so small that arithmetic precision becomes an obstacle.
+A better approach replaces the rectangles used in a Riemann sum with trapezoids. The trapezoid rule is almost as easy to calculate; it sums all 17 function values, but weights the first and last by one half, and again multiplies by the step width. This immediately improves the approximation to 3.76925, which is noticeably more accurate. Furthermore, only 210 pieces are needed to achieve 3.76000, substantially less computation than the rectangle method for comparable accuracy. The idea behind the trapezoid rule, that more accurate approximations to the function yield better approximations to the integral, can be carried further. Simpson's rule approximates the integrand by a piecewise quadratic function. Riemann sums, the trapezoid rule, and Simpson's rule are examples of a family of quadrature rules called Newton–Cotes formulas. The degree n Newton–Cotes quadrature rule approximates the polynomial on each subinterval by a degree n polynomial. This polynomial is chosen to interpolate the values of the function on the interval. Higher degree Newton-Cotes approximations can be more accurate, but they require more function evaluations (already Simpson's rule requires twice the function evaluations of the trapezoid rule), and they can suffer from numerical inaccuracy due to Runge's phenomenon. One solution to this problem is Clenshaw–Curtis quadrature. In Clenshaw–Curtis quadrature, the integrand is approximated by expanding it in terms of Chebyshev polynomials. This produces an approximation whose values never deviate far from those of the original function.
+Romberg's method builds on the trapezoid method to great effect. First, the step lengths are halved incrementally, giving trapezoid approximations denoted by T(h0), T(h1), and so on, where hk+1 is half of hk. For each new step size, only half the new function values need to be computed; the others carry over from the previous size (as shown in the table above). But the really powerful idea is to interpolate a polynomial through the approximations, and extrapolate to T(0). With this method a numerically exact answer here requires only four pieces (five function values). The Lagrange polynomial interpolating {hk,T(hk)}k = 0...2 = {(4.00,6.128), (2.00,4.352), (1.00,3.908)} is 3.76 + 0.148h2, producing the extrapolated value 3.76 at h = 0.
+Gaussian quadrature often requires noticeably less work for superior accuracy. In this example, it can compute the function values at just two x positions, ±2 ⁄ √3, then double each value and sum to get the numerically exact answer. The explanation for this dramatic success lies in the choice of points. Unlike Newton–Cotes rules, which interpolate the integrand at evenly spaced points, Gaussian quadrature evaluates the function at the roots of a set of orthogonal polynomials. An n-point Gaussian method is exact for polynomials of degree up to 2n − 1. The function in this example is a degree 3 polynomial, plus a term that cancels because the chosen endpoints are symmetric around zero. (Cancellation also benefits the Romberg method.)
+In practice, each method must use extra evaluations to ensure an error bound on an unknown function; this tends to offset some of the advantage of the pure Gaussian method, and motivates the popular Gauss–Kronrod quadrature formulae. More broadly, adaptive quadrature partitions a range into pieces based on function properties, so that data points are concentrated where they are needed most.
+The computation of higher-dimensional integrals (for example, volume calculations) makes important use of such alternatives as Monte Carlo integration.
+A calculus text is no substitute for numerical analysis, but the reverse is also true. Even the best adaptive numerical code sometimes requires a user to help with the more demanding integrals. For example, improper integrals may require a change of variable or methods that can avoid infinite function values, and known properties like symmetry and periodicity may provide critical leverage. For example, the integral 
+
+
+
+
+∫
+
+0
+
+
+1
+
+
+
+x
+
+−
+1
+
+/
+
+2
+
+
+
+e
+
+−
+x
+
+
+
+d
+x
+
+
+{\displaystyle \int _{0}^{1}x^{-1/2}e^{-x}\,dx}
+
+ is difficult to evaluate numerically because it is infinite at x = 0. However, the substitution u = √x transforms the integral into 
+
+
+
+
+∫
+
+0
+
+
+1
+
+
+
+e
+
+−
+
+u
+
+2
+
+
+
+
+
+d
+u
+
+
+{\displaystyle \int _{0}^{1}e^{-u^{2}}\,du}
+
+, which has no singularities at all.
+The area of an arbitrary two-dimensional shape can be determined using a measuring instrument called planimeter. The volume of irregular objects can be measured with precision by the fluid displaced as the object is submerged.
+Area can be found via geometrical compass-and-straightedge constructions of an equivalent square, e.g., squaring the circle.

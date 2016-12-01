@@ -1,0 +1,142 @@
+ABOUT
+In digital signal processing, a cascaded integrator–comb (CIC) is an optimized class of finite impulse response (FIR) filter combined with an interpolator or decimator.[1][2]
+FULL TEXT
+In digital signal processing, a cascaded integrator–comb (CIC) is an optimized class of finite impulse response (FIR) filter combined with an interpolator or decimator.[1][2]
+A CIC filter consists of one or more integrator and comb filter pairs. In the case of a decimating CIC, the input signal is fed through one or more cascaded integrators, then a down-sampler, followed by one or more comb sections (equal in number to the number of integrators). An interpolating CIC is simply the reverse of this architecture, with the down-sampler replaced with a zero-stuffer (up-sampler).[2]
+
+
+CIC filters were invented by Eugene B. Hogenauer, and are a class of FIR filters used in multi-rate digital signal processing. The CIC filter finds applications in interpolation and decimation. Unlike most FIR filters, it has a decimator or interpolator built into the architecture. The figure at the right shows the Hogenauer architecture for a CIC interpolator.[2]
+The system function for the composite CIC filter referenced to the high sampling rate, fs is:
+Where:
+Characteristics of CIC Filters
+A CIC filter is an efficient implementation of a moving-average filter. To see this, consider how a moving average filter can be implemented recursively by adding the newest sample 
+
+
+
+x
+[
+n
+]
+
+
+{\displaystyle x[n]}
+
+ to the previous result 
+
+
+
+y
+[
+n
+−
+1
+]
+
+
+{\displaystyle y[n-1]}
+
+ and subtracting the oldest sample. Omitting the division by 
+
+
+
+R
+M
+
+
+{\displaystyle RM}
+
+, we have:
+The second equality corresponds to a comb (
+
+
+
+c
+[
+n
+]
+=
+x
+[
+n
+]
+−
+x
+[
+n
+−
+R
+M
+]
+
+
+{\displaystyle c[n]=x[n]-x[n-RM]}
+
+) followed by an integrator (
+
+
+
+y
+[
+n
+]
+=
+y
+[
+n
+−
+1
+]
++
+c
+[
+n
+]
+
+
+{\displaystyle y[n]=y[n-1]+c[n]}
+
+). The conventional CIC structure is obtained by cascading 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ identical moving average filters, then rearranging the sections to place all integrators first (decimator) or combs first (interpolator). Such rearrangement is possible because both combs and integrators are LTI. For an interpolator, the upsampler which normally precedes the interpolation filter can be passed through the comb sections using a Noble identity, reducing the number of delay elements needed by a factor of 
+
+
+
+R
+
+
+{\displaystyle R}
+
+. Similarly, for a decimator, the downsampler which normally follows the decimation filter can be moved before the comb sections.
+The equivalence of a CIC to moving average filter allows us to trivially calculate its bit growth as 
+
+
+
+N
+
+log
+
+2
+
+
+⁡
+(
+R
+M
+)
+
+
+{\displaystyle N\log _{2}(RM)}
+
+.[3]
+CIC filters are used in multi-rate processing. An FIR filter is used in a wide array of applications, and can be used in multi-rate processing in conjunction with an interpolator or decimator. CIC filters have low pass frequency characteristics,[2] while FIR filters can have low-pass, high-pass, or band-pass frequency characteristics. CIC filters use only addition and subtraction.[2] FIR filters use addition, subtraction, but most FIR filters also require multiplication. CIC filters have a specific frequency roll-off,[2] while low pass FIR filters can have an arbitrarily sharp frequency roll-off.
+CIC filters are in general much more economical than general FIR filters,[2] but tradeoffs are involved. In cases where only a small amount of interpolation or decimation are needed, FIR filters generally have the advantage. However, when rates change by a factor of 10 or more, achieving a useful FIR filter anti-aliasing stop band requires many FIR taps.
+For large rate changes, a CIC has a significant advantage over a FIR filter with respect to architectural and computational efficiency.[2] Additionally, CIC filters can typically be reconfigured for different rates by changing nothing more than the decimation/interpolation section assuming the bit width of the integrators and comb sections meets certain mathematical criteria based on the maximum possible rate change.
+Whereas a FIR filter can use fixed or floating point math, a CIC filter uses only fixed point math.[2] This is necessary because, as a recursively implemented FIR filter, a CIC filter relies on exact cancellation of poles from the integrator sections by zeros from the comb sections. While the reasons are less than intuitive, an inherent characteristic of the CIC architecture is that if fixed bit length overflows occur in the integrators, they are corrected in the comb sections.[2]
+The range of filter shapes and responses available from a CIC filter is somewhat limited. Larger amounts of stopband rejection can be achieved by increasing the number of poles.[2] However, doing so requires an increase in bit width in the integrator and comb sections which increases filter complexity. The shape of the filter response provides even fewer degrees of design freedom.[2] For this reason, many real-world filtering requirements cannot be met by a CIC filter alone. However, a CIC filter followed by a short to moderate length FIR or IIR proves highly applicable. Additionally, the FIR filter shape is normalized relative to the CIC's sampling rate at the FIR/CIC interface so one set of FIR coefficients can be used over a range of CIC interpolation and decimation rates.[2]

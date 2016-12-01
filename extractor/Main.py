@@ -70,6 +70,18 @@ def insert_classifications(filename):
 			db.rollback()
 	db.close()
 
+def create_directory(path):
+    if not (os.path.isdir(path)):
+		os.mkdir(path)
+
+def save_alg_text_on_file(alg_name, alg_full_text):
+	alg_path = 'temp/algorithms'
+	create_directory(alg_path)
+	with open(alg_path + '/' + alg_name + '.txt', 'w') as f:
+		f.write(alg_full_text.encode('utf-8'))
+		f.close()
+	return None
+
 def insert_algorithms(filename):
 	col_number = 2
 	alg_id = 1
@@ -82,7 +94,11 @@ def insert_algorithms(filename):
 	for alg_url in col_alg_url:
 		try:
 			page_info = occ_matrix_extractor.get_page_text(alg_url)
-			occ_matrix_extractor.insert_text(page_info[0], page_info[1], alg_id)
+
+			full_text = 'ABOUT\n' + page_info[2] + '\nFULL TEXT\n' + page_info[1]
+
+			save_file = save_alg_text_on_file(page_info[0], full_text)
+			save_db = occ_matrix_extractor.insert_text(page_info[0], page_info[1], alg_id) #Nao garante que todos os textos sao inseridos, teremos que inserir no banco depois de salvar nos arquivos.
 			alg_id = alg_id + 1
 		except Exception as e:
 			pass
@@ -119,7 +135,7 @@ def extract_algorithms():
 
 def doMain():
 	print "Extracting classifications"
-	extract_classifications()
+	#extract_classifications()
 
 	print "Extracting algorithms"
 	extract_algorithms()

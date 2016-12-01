@@ -1,0 +1,9 @@
+ABOUT
+In computer science, an inversion list is a data structure that describes a set of non-overlapping numeric ranges, stored in increasing order.
+FULL TEXT
+In computer science, an inversion list is a data structure that describes a set of non-overlapping numeric ranges, stored in increasing order.
+The set is stored in an array. Every other element is the first element of a range, and every other element is the first element after that range (a half-open range).
+For example, for ranges 10-14, 25-37, the inversion list would be:
+10 15 25 38
+To search whether an item belongs to any of the ranges, a binary search is made. If the search ends in a "first" element, the searched item is in the set. If the search ends in an "after" element, or outside the array, the searched item is not in the set.
+This data structure is used in many Unicode implementations for storing Unicode character ranges (like "Greek characters").

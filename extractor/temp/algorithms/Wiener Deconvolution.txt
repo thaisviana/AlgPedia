@@ -1,0 +1,325 @@
+ABOUT
+In mathematics, Wiener deconvolution is an application of the Wiener filter to the noise problems inherent in deconvolution. It works in the frequency domain, attempting to minimize the impact of deconvolved noise at frequencies which have a poor signal-to-noise ratio.
+FULL TEXT
+In mathematics, Wiener deconvolution is an application of the Wiener filter to the noise problems inherent in deconvolution. It works in the frequency domain, attempting to minimize the impact of deconvolved noise at frequencies which have a poor signal-to-noise ratio.
+The Wiener deconvolution method has widespread use in image deconvolution applications, as the frequency spectrum of most visual images is fairly well behaved and may be estimated easily.
+Wiener deconvolution is named after Norbert Wiener.
+
+
+Given a system:
+where 
+
+
+
+∗
+
+
+{\displaystyle *}
+
+ denotes convolution and:
+Our goal is to find some 
+
+
+
+ 
+g
+(
+t
+)
+
+
+{\displaystyle \ g(t)}
+
+ so that we can estimate 
+
+
+
+ 
+x
+(
+t
+)
+
+
+{\displaystyle \ x(t)}
+
+ as follows:
+where 
+
+
+
+ 
+
+
+
+x
+^
+
+
+
+(
+t
+)
+
+
+{\displaystyle \ {\hat {x}}(t)}
+
+ is an estimate of 
+
+
+
+ 
+x
+(
+t
+)
+
+
+{\displaystyle \ x(t)}
+
+ that minimizes the mean square error.
+The Wiener deconvolution filter provides such a 
+
+
+
+ 
+g
+(
+t
+)
+
+
+{\displaystyle \ g(t)}
+
+. The filter is most easily described in the frequency domain:
+where:
+The filtering operation may either be carried out in the time-domain, as above, or in the frequency domain:
+(where 
+
+
+
+ 
+
+
+
+X
+^
+
+
+
+(
+f
+)
+
+
+{\displaystyle \ {\hat {X}}(f)}
+
+ and 
+
+
+
+ 
+Y
+(
+f
+)
+
+
+{\displaystyle \ Y(f)}
+
+ are the Fourier transforms of 
+
+
+
+
+
+
+x
+^
+
+
+
+(
+t
+)
+
+
+{\displaystyle {\hat {x}}(t)}
+
+ and 
+
+
+
+y
+(
+t
+)
+
+
+{\displaystyle y(t)}
+
+, respectively) and then performing an inverse Fourier transform on 
+
+
+
+ 
+
+
+
+X
+^
+
+
+
+(
+f
+)
+
+
+{\displaystyle \ {\hat {X}}(f)}
+
+ to obtain 
+
+
+
+ 
+
+
+
+x
+^
+
+
+
+(
+t
+)
+
+
+{\displaystyle \ {\hat {x}}(t)}
+
+.
+Note that in the case of images, the arguments 
+
+
+
+ 
+t
+
+
+{\displaystyle \ t}
+
+ and 
+
+
+
+ 
+f
+
+
+{\displaystyle \ f}
+
+ above become two-dimensional; however the result is the same.
+The operation of the Wiener filter becomes apparent when the filter equation above is rewritten:
+Here, 
+
+
+
+ 
+1
+
+/
+
+H
+(
+f
+)
+
+
+{\displaystyle \ 1/H(f)}
+
+ is the inverse of the original system, and 
+
+
+
+ 
+
+S
+N
+R
+
+(
+f
+)
+=
+S
+(
+f
+)
+
+/
+
+N
+(
+f
+)
+
+
+{\displaystyle \ \mathrm {SNR} (f)=S(f)/N(f)}
+
+ is the signal-to-noise ratio. When there is zero noise (i.e. infinite signal-to-noise), the term inside the square brackets equals 1, which means that the Wiener filter is simply the inverse of the system, as we might expect. However, as the noise at certain frequencies increases, the signal-to-noise ratio drops, so the term inside the square brackets also drops. This means that the Wiener filter attenuates frequencies dependent on their signal-to-noise ratio.
+The Wiener filter equation above requires us to know the spectral content of a typical image, and also that of the noise. Often, we do not have access to these exact quantities, but we may be in a situation where good estimates can be made. For instance, in the case of photographic images, the signal (the original image) typically has strong low frequencies and weak high frequencies, and in many cases the noise content will be relatively flat with frequency.
+As mentioned above, we want to produce an estimate of the original signal that minimizes the mean square error, which may be expressed:
+where 
+
+
+
+ 
+
+E
+
+
+
+{\displaystyle \ \mathbb {E} }
+
+ denotes expectation.
+If we substitute in the expression for 
+
+
+
+ 
+
+
+
+X
+^
+
+
+
+(
+f
+)
+
+
+{\displaystyle \ {\hat {X}}(f)}
+
+, the above can be rearranged to
+If we expand the quadratic, we get the following:
+However, we are assuming that the noise is independent of the signal, therefore:
+Also, we are defining the power spectral densities as follows:
+Therefore, we have:
+To find the minimum error value, we calculate the Wirtinger derivative with respect to 
+
+
+
+ 
+G
+(
+f
+)
+
+
+{\displaystyle \ G(f)}
+
+ and set it equal to zero.
+This final equality can be rearranged to give the Wiener filter.

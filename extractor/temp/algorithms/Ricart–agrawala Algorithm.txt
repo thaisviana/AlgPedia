@@ -1,0 +1,151 @@
+ABOUT
+The Ricart-Agrawala Algorithm is an algorithm for mutual exclusion on a distributed system. This algorithm is an extension and optimization of Lamport's Distributed Mutual Exclusion Algorithm, by removing the need for 
+
+
+
+r
+e
+l
+e
+a
+s
+e
+
+
+{\displaystyle release}
+
+ messages. It was developed by Glenn Ricart and Ashok Agrawala.
+FULL TEXT
+The Ricart-Agrawala Algorithm is an algorithm for mutual exclusion on a distributed system. This algorithm is an extension and optimization of Lamport's Distributed Mutual Exclusion Algorithm, by removing the need for 
+
+
+
+r
+e
+l
+e
+a
+s
+e
+
+
+{\displaystyle release}
+
+ messages. It was developed by Glenn Ricart and Ashok Agrawala.
+
+
+Requesting Site
+Receiving Site
+Critical Section:
+Once site 
+
+
+
+
+P
+
+i
+
+
+
+
+{\displaystyle P_{i}}
+
+ has received a 
+
+
+
+r
+e
+p
+l
+y
+
+
+{\displaystyle reply}
+
+ message from site 
+
+
+
+
+P
+
+j
+
+
+
+
+{\displaystyle P_{j}}
+
+, site 
+
+
+
+
+P
+
+i
+
+
+
+
+{\displaystyle P_{i}}
+
+ may enter the critical section multiple times without receiving permission from 
+
+
+
+
+P
+
+j
+
+
+
+
+{\displaystyle P_{j}}
+
+ on subsequent attempts up to the moment when 
+
+
+
+
+P
+
+i
+
+
+
+
+{\displaystyle P_{i}}
+
+ has sent a 
+
+
+
+r
+e
+p
+l
+y
+
+
+{\displaystyle reply}
+
+ message to 
+
+
+
+
+P
+
+j
+
+
+
+
+{\displaystyle P_{j}}
+
+. This is called Roucairol-Carvalho optimization or Roucairol-Carvalho algorithm.
+One of the problems in this algorithm is failure of a node. In such a situation a process may starve forever. This problem can be solved by detecting failure of nodes after some timeout.

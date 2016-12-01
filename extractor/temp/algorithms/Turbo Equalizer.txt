@@ -1,0 +1,293 @@
+ABOUT
+In digital communications, a turbo equalizer is a type of receiver used to receive a message corrupted by a communication channel with intersymbol interference (ISI). It approaches the performance of a maximum a posteriori (MAP) receiver via iterative message passing between a soft-in soft-out (SISO) equalizer and a SISO decoder.[1] It is related to turbo codes in that a turbo equalizer may be considered a type of iterative decoder if the channel is viewed as a non-redundant convolutional code. The turbo equalizer is different from classic a turbo-like code, however, in that the 'channel code' adds no redundancy and therefore can only be used to remove non-gaussian noise.
+FULL TEXT
+In digital communications, a turbo equalizer is a type of receiver used to receive a message corrupted by a communication channel with intersymbol interference (ISI). It approaches the performance of a maximum a posteriori (MAP) receiver via iterative message passing between a soft-in soft-out (SISO) equalizer and a SISO decoder.[1] It is related to turbo codes in that a turbo equalizer may be considered a type of iterative decoder if the channel is viewed as a non-redundant convolutional code. The turbo equalizer is different from classic a turbo-like code, however, in that the 'channel code' adds no redundancy and therefore can only be used to remove non-gaussian noise.
+
+
+Turbo codes were invented by Claude Berrou in 1990–1991. In 1993, turbo codes were introduced publicly via a paper listing authors Berrou, Glavieux, and Thitimajshima.[2] In 1995 a novel extension of the turbo principle was applied to an equalizer by Douillard, Jézéquel, and Berrou.[3] In particular, they formulated the ISI receiver problem as a turbo code decoding problem, where the channel is thought of as a rate 1 convolutional code and the error correction coding is the second code. In 1997, Glavieux, Laot, and Labat demonstrated that a linear equalizer could be used in a turbo equalizer framework.[4] This discovery made turbo equalization computationally efficient enough to be applied to a wide range of applications.[5]
+Before discussing turbo equalizers, it is necessary to understand the basic receiver in the context of a communication system. This is the topic of this section.
+At the transmitter, information bits are encoded. Encoding adds redundancy by mapping the information bits 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ to a longer bit vector – the code bit vector 
+
+
+
+b
+
+
+{\displaystyle b}
+
+. The encoded bits 
+
+
+
+b
+
+
+{\displaystyle b}
+
+ are then interleaved. Interleaving permutes the order of the code bits 
+
+
+
+b
+
+
+{\displaystyle b}
+
+ resulting in bits 
+
+
+
+c
+
+
+{\displaystyle c}
+
+. The main reason for doing this is to insulate the information bits from bursty noise. Next, the symbol mapper maps the bits 
+
+
+
+c
+
+
+{\displaystyle c}
+
+ into complex symbols 
+
+
+
+x
+
+
+{\displaystyle x}
+
+. These digital symbols are then converted into analog symbols with a D/A converter. Typically the signal is then up-converted to pass band frequencies by mixing it with a carrier signal. This is a necessary step for complex symbols. The signal is then ready to be transmitted through the channel.
+At the receiver, the operations performed by the transmitter are reversed to recover 
+
+
+
+
+
+
+a
+^
+
+
+
+
+
+{\displaystyle {\hat {a}}}
+
+, an estimate of the information bits. The down-converter mixes the signal back down to baseband. The A/D converter then samples the analog signal, making it digital. At this point, 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ is recovered. The signal 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ is what would be received if 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ were transmitted through the digital baseband equivalent of the channel plus noise. The signal is then equalized. The equalizer attempts to unravel the ISI in the received signal to recover the transmitted symbols. It then outputs the bits 
+
+
+
+
+
+
+c
+^
+
+
+
+
+
+{\displaystyle {\hat {c}}}
+
+ associated with those symbols. The vector 
+
+
+
+
+
+
+c
+^
+
+
+
+
+
+{\displaystyle {\hat {c}}}
+
+ may represent hard decisions on the bits or soft decisions. If the equalizer makes soft decisions, it outputs information relating to the probability of the bit being a 0 or a 1. If the equalizer makes hard decisions on the bits, it quantizes the soft bit decisions and outputs either a 0 or a 1. Next, the signal is deinterleaved which is a simple permutation transformation that undoes the transformation the interleaver executed. Finally, the bits are decoded by the decoder. The decoder estimates 
+
+
+
+
+
+
+a
+^
+
+
+
+
+
+{\displaystyle {\hat {a}}}
+
+ from 
+
+
+
+
+
+
+b
+^
+
+
+
+
+
+{\displaystyle {\hat {b}}}
+
+.
+A diagram of the communication system is shown below. In this diagram, the channel is the equivalent baseband channel, meaning that it encompasses the D/A, the up converter, the channel, the down converter, and the A/D.
+The block diagram of a communication system employing a turbo equalizer is shown below. The turbo equalizer encompasses the equalizer, the decoder, and the blocks in between.
+The difference between a turbo equalizer and a standard equalizer is the feedback loop from the decoder to the equalizer. Due to the structure of the code, the decoder not only estimates the information bits 
+
+
+
+a
+
+
+{\displaystyle a}
+
+, but it also discovers new information about the coded bits 
+
+
+
+b
+
+
+{\displaystyle b}
+
+. The decoder is therefore able to output extrinsic information, 
+
+
+
+
+
+
+b
+~
+
+
+
+
+
+{\displaystyle {\tilde {b}}}
+
+ about the likelihood that a certain code bit stream was transmitted. Extrinsic information is new information that is not derived from information input to the block. This extrinsic information is then mapped back into information about the transmitted symbols 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ for use in the equalizer. These extrinsic symbol likelihoods, 
+
+
+
+
+
+
+x
+~
+
+
+
+
+
+{\displaystyle {\tilde {x}}}
+
+, are fed into the equalizer as a priori symbol probabilities. The equalizer uses this a priori information as well as the input signal 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ to estimate extrinsic probability information about the transmitted symbols. The a priori information fed to the equalizer is initialized to 0, meaning that the initial estimate 
+
+
+
+
+
+
+a
+^
+
+
+
+
+
+{\displaystyle {\hat {a}}}
+
+ made by the turbo equalizer is identical to the estimate made by the standard receiver. The information 
+
+
+
+
+
+
+x
+^
+
+
+
+
+
+{\displaystyle {\hat {x}}}
+
+ is then mapped back into information about 
+
+
+
+b
+
+
+{\displaystyle b}
+
+ for use by the decoder. The turbo equalizer repeats this iterative process until a stopping criterion is reached.
+In practical turbo equalization implementations, an additional issue need to be considered. The channel state information (CSI) that the equalizer operates on comes from some channel estimation technique, and hence un-reliable. Firstly, in order to improve the reliability of the CSI, it is desirable to include the channel estimation block also into the turbo equalization loop, and parse soft or hard decision directed channel estimation within each turbo equalization iteration.[6][7] Secondly, incorporating the presence of CSI uncertainty into the turbo equalizer design leads to a more robust approach with significant performance gains in practical scenarios.[8][9]

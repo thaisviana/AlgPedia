@@ -1,0 +1,11 @@
+ABOUT
+The Beaufort cipher, created by Sir Francis Beaufort, is a substitution cipher similar to the Vigenère cipher, with a slightly modified enciphering mechanism and tableau.[1] Its most famous application was in a rotor-based cipher machine, the Hagelin M-209.[2] The Beaufort cipher is based on the Beaufort square which is essentially the same as a Vigenère square but in reverse order starting with the letter "Z" in the first row,[3] where the first row and the last column serve the same purpose.[4]
+FULL TEXT
+The Beaufort cipher, created by Sir Francis Beaufort, is a substitution cipher similar to the Vigenère cipher, with a slightly modified enciphering mechanism and tableau.[1] Its most famous application was in a rotor-based cipher machine, the Hagelin M-209.[2] The Beaufort cipher is based on the Beaufort square which is essentially the same as a Vigenère square but in reverse order starting with the letter "Z" in the first row,[3] where the first row and the last column serve the same purpose.[4]
+
+
+To encrypt, first choose the plaintext character from the top row of the tableau, call this column P. Secondly, travel down column P to the corresponding key Letter K. Finally, move directly left from the Key letter to the left edge of the tableau, the CipherText encryption of Plaintext P with Key K will be there.
+For example if encrypting Plain text character "d" with Key "m" the steps would be:
+To decrypt, the process is reversed. The Beaufort cipher is a reciprocal cipher, that is, Decryption and Encryption algorithms are the same.
+Due to the similarities between the Beaufort cipher and the Vigenère cipher it is possible, after applying a transformation, to solve it as a Vigenère cipher. By replacing every letter in the ciphertext with its opposite letter (such that 'a' becomes 'z', 'b' becomes 'y' etc.) it can be solved like a Vigenère cipher.
+The Beaufort cipher should not be confused with the "variant Beaufort" cipher. In variant Beaufort, encryption is performed by performing the decryption step of the standard Vigenère cipher, and likewise decryption is performed by using Vigenère encryption.

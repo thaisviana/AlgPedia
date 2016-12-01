@@ -1,0 +1,12 @@
+ABOUT
+The bully algorithm is a programming mechanism that applies a hierarchy to nodes on a system, making a process coordinator or slave. This is used as a method in distributed computing for dynamically electing a coordinator by process ID number. The process with the highest process ID number is selected as the coordinator.
+FULL TEXT
+The bully algorithm is a programming mechanism that applies a hierarchy to nodes on a system, making a process coordinator or slave. This is used as a method in distributed computing for dynamically electing a coordinator by process ID number. The process with the highest process ID number is selected as the coordinator.
+
+
+As this algorithm is part from a system model that tries to make a fail-free system (like the solution shown in Lamport paper), we need some assumptions for the model.
+Notice that this algorithm can be applied over distributed or centralized systems , because processes can be located on one machine or over several as you can make multicast calls or system calls or both if your system is hybrid (for example a multithread server working with several clients)
+These are the bully-algorithm components:
+Compared with Ring election algorithm:
+When a process P determines that the current coordinator is down because of message timeouts or failure of the coordinator to initiate a handshake, it performs the following sequence of actions:
+Note that if P receives a victory message from a process with a lower ID number, it immediately initiates a new election. This is how the algorithm gets its name – a process with a higher ID number will bully a lower ID process out of the coordinator position as soon as it comes online.

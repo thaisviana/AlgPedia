@@ -1,0 +1,391 @@
+ABOUT
+In physics, the Fermi–Pasta–Ulam problem or FPU problem was the apparent paradox in chaos theory that many complicated enough physical systems exhibited almost exactly periodic behavior – called Fermi–Pasta–Ulam recurrence – instead of ergodic behavior. One of the resolutions of the paradox includes the insight that many non-linear equations are exactly integrable. Another may be that ergodic behavior may depend on the initial energy of the system.
+FULL TEXT
+In physics, the Fermi–Pasta–Ulam problem or FPU problem was the apparent paradox in chaos theory that many complicated enough physical systems exhibited almost exactly periodic behavior – called Fermi–Pasta–Ulam recurrence – instead of ergodic behavior. One of the resolutions of the paradox includes the insight that many non-linear equations are exactly integrable. Another may be that ergodic behavior may depend on the initial energy of the system.
+
+
+In the summer of 1953 Enrico Fermi, John Pasta, Stanislaw Ulam, and Mary Tsingou conducted numerical experiments (i.e. computer simulations) of a vibrating string that included a non-linear term (quadratic in one test, cubic in another, and a piecewise linear approximation to a cubic in a third). They found that the behavior of the system was quite different from what intuition would have led them to expect. Fermi thought that after many iterations, the system would exhibit thermalization, an ergodic behavior in which the influence of the initial modes of vibration fade and the system becomes more or less random with all modes excited more or less equally. Instead, the system exhibited a very complicated quasi-periodic behavior. They published their results in a Los Alamos technical report in 1955. (Enrico Fermi died in 1954 and so this technical report was published after Fermi's death.)
+The FPU experiment was important both in showing the complexity of nonlinear system behavior and the value of computer simulation in analyzing systems.
+In January 2008, Physics Today published additional information regarding the development of FPU.[1]
+Fermi, Pasta and Ulam (FPU) simulated the vibrating string by solving the following discrete system of nearest-neighbor coupled oscillators. We follow the explanation as given in Palais's article. Let there be N oscillators representing a string of length l with equilibrium positions 
+
+
+
+
+p
+
+j
+
+
+=
+j
+h
+,
+j
+=
+0
+,
+…
+,
+N
+−
+1
+
+
+{\displaystyle p_{j}=jh,j=0,\dots ,N-1}
+
+ where 
+
+
+
+h
+=
+l
+
+/
+
+(
+N
+−
+1
+)
+
+
+{\displaystyle h=l/(N-1)}
+
+ is the lattice spacing. Then the position of the jth oscillator as a function of time is 
+
+
+
+
+X
+
+j
+
+
+(
+t
+)
+=
+
+p
+
+j
+
+
++
+
+x
+
+j
+
+
+(
+t
+)
+
+
+{\displaystyle X_{j}(t)=p_{j}+x_{j}(t)}
+
+ so that 
+
+
+
+
+x
+
+j
+
+
+(
+t
+)
+
+
+{\displaystyle x_{j}(t)}
+
+ gives the displacement from equilibrium. FPU used the following equations of motion:
+(Note: this equation is not equivalent to the classical one given in the French version of the article)
+This is just Newton's second law for the jth particle. The first factor 
+
+
+
+k
+(
+
+x
+
+j
++
+1
+
+
++
+
+x
+
+j
+−
+1
+
+
+−
+2
+
+x
+
+j
+
+
+)
+
+
+{\displaystyle k(x_{j+1}+x_{j-1}-2x_{j})}
+
+ is just the usual Hooke's law form for the force. The factor with 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ is the nonlinear force. We can rewrite this in terms of continuum quantities by defining 
+
+
+
+c
+=
+
+
+κ
+
+/
+
+ρ
+
+
+
+
+{\displaystyle c={\sqrt {\kappa /\rho }}}
+
+ to be the wave speed, where 
+
+
+
+κ
+=
+k
+
+/
+
+h
+
+
+{\displaystyle \kappa =k/h}
+
+ is the Young's modulus for the string and 
+
+
+
+ρ
+=
+m
+
+/
+
+
+h
+
+3
+
+
+
+
+{\displaystyle \rho =m/h^{3}}
+
+ is the density:
+The continuum limit of the governing equations for the string (with the quadratic force term) is the Korteweg–de Vries equation (KdV equation.) The discovery of this relationship and of the soliton solutions of the KdV equation by Kruskal and Zabusky in 1965 was an important step forward in nonlinear system research. We reproduce below a derivation of this limit, which is rather tricky, as found in Palais's article. Beginning from the "continuum form" of the lattice equations above, we first define u(x,t) to be the displacement of the string at position x and time t. We'll then want a correspondence so that 
+
+
+
+u
+(
+
+p
+
+j
+
+
+,
+t
+)
+
+
+{\displaystyle u(p_{j},t)}
+
+ is 
+
+
+
+
+x
+
+j
+
+
+(
+t
+)
+
+
+{\displaystyle x_{j}(t)}
+
+.
+We can use Taylor's theorem to rewrite the second factor for small 
+
+
+
+h
+
+
+{\displaystyle h}
+
+, (subscripts of u denote partial derivatives):
+Similarly, the second term in the third factor is:
+Thus, the FPU system is:
+If one were to keep terms up to O(h) only and assume that 
+
+
+
+2
+α
+h
+
+
+{\displaystyle 2\alpha h}
+
+ approaches a limit, the resulting equation is one which develops shocks, which is not observed. Thus one keeps the O(h2) term as well:
+We now make the following substitutions, motivated by the decomposition of traveling wave solutions (of the ordinary wave equation, to which this reduces when 
+
+
+
+α
+,
+h
+
+
+{\displaystyle \alpha ,h}
+
+ vanish) into left- and right-moving waves, so that we only consider a right-moving wave. Let 
+
+
+
+ξ
+=
+x
+−
+c
+t
+,
+τ
+=
+(
+α
+h
+)
+c
+t
+,
+y
+(
+ξ
+,
+τ
+)
+=
+u
+(
+x
+,
+t
+)
+
+
+{\displaystyle \xi =x-ct,\tau =(\alpha h)ct,y(\xi ,\tau )=u(x,t)}
+
+. Under this change of coordinates, the equation becomes:
+To take the continuum limit, assume that 
+
+
+
+α
+
+/
+
+h
+
+
+{\displaystyle \alpha /h}
+
+ tends to a constant and 
+
+
+
+α
+,
+h
+
+
+{\displaystyle \alpha ,h}
+
+ tend to zero. If we take 
+
+
+
+δ
+=
+
+lim
+
+h
+→
+0
+
+
+
+
+h
+
+/
+
+(
+24
+α
+)
+
+
+
+
+{\displaystyle \delta =\lim _{h\rightarrow 0}{\sqrt {h/(24\alpha )}}}
+
+, then:
+Taking 
+
+
+
+v
+=
+
+y
+
+ξ
+
+
+
+
+{\displaystyle v=y_{\xi }}
+
+ results in the KdV equation:
+Zabusky and Kruskal argued that it was the fact that soliton solutions of the KdV equation can pass through one another without affecting the asymptotic shapes that explained the quasi-periodicity of the waves in the FPU experiment. In short, thermalization could not occur because of a certain "soliton symmetry" in the system which broke ergodicity.

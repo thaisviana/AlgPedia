@@ -1,0 +1,6 @@
+ABOUT
+An adaptive equalizer is an equalizer that automatically adapts to time-varying properties of the communication channel.[1] It is frequently used with coherent modulations such as phase shift keying, mitigating the effects of multipath propagation and Doppler spreading.
+FULL TEXT
+An adaptive equalizer is an equalizer that automatically adapts to time-varying properties of the communication channel.[1] It is frequently used with coherent modulations such as phase shift keying, mitigating the effects of multipath propagation and Doppler spreading.
+Many adaptation strategies exist. They include:
+A well-known example is the decision feedback equalizer,[3][4] a filter that uses feedback of detected symbols in addition to conventional equalization of future symbols.[5] Some systems use predefined training sequences to provide reference points for the adaptation process.

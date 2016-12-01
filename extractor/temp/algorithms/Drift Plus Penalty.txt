@@ -1,0 +1,968 @@
+ABOUT
+In the mathematical theory of probability, the drift-plus-penalty method is used for optimization of queueing networks and other stochastic systems.
+FULL TEXT
+In the mathematical theory of probability, the drift-plus-penalty method is used for optimization of queueing networks and other stochastic systems.
+The technique is for stabilizing a queueing network while also minimizing the time average of a network penalty function. It can be used to optimize performance objectives such as time average power, throughput, and throughput utility. [1] [2] In the special case when there is no penalty to be minimized, and when the goal is to design a stable routing policy in a multi-hop network, the method reduces to backpressure routing. [3] [4] The drift-plus-penalty method can also be used to minimize the time average of a stochastic process subject to time average constraints on a collection of other stochastic processes. [5] This is done by defining an appropriate set of virtual queues. It can also be used to produce time averaged solutions to convex optimization problems. [6] [7]
+
+
+The drift-plus-penalty method applies to queueing systems that operate in discrete time with time slots t in {0, 1, 2, ...}. First, a non-negative function L(t) is defined as a scalar measure of the state of all queues at time t. The function L(t) is typically defined as the sum of the squares of all queue sizes at time t, and is called a Lyapunov function. The Lyapunov drift is defined:
+Every slot t, the current queue state is observed and control actions are taken to greedily minimize a bound on the following drift-plus-penalty expression:
+where p(t) is the penalty function and V is a non-negative weight. The V parameter can be chosen to ensure the time average of p(t) is arbitrarily close to optimal, with a corresponding tradeoff in average queue size. Like backpressure routing, this method typically does not require knowledge of the probability distributions for job arrivals and network mobility.[5]
+When 
+
+
+
+V
+=
+0
+,
+
+
+{\displaystyle V=0,}
+
+ the method reduces to greedily minimizing the Lyapunov drift. This results in the backpressure routing algorithm originally developed by Tassiulas and Ephremides (also called the max-weight algorithm).[3][8] The 
+
+
+
+V
+p
+(
+t
+)
+
+
+{\displaystyle Vp(t)}
+
+ term was added to the drift expression by Neely[9] and Neely, Modiano, Li[2] for stabilizing a network while also maximizing a throughput utility function. For this, the penalty 
+
+
+
+p
+(
+t
+)
+
+
+{\displaystyle p(t)}
+
+ was defined as 
+
+
+
+−
+1
+
+
+{\displaystyle -1}
+
+ times a reward earned on slot 
+
+
+
+t
+.
+
+
+{\displaystyle t.}
+
+ This drift-plus-penalty technique was later used to minimize average power[1] and optimize other penalty and reward metrics.[4][5]
+The theory was developed primarily for optimizing communication networks, including wireless networks, ad-hoc mobile networks, and other computer networks. However, the mathematical techniques can be applied to optimization and control for other stochastic systems, including renewable energy allocation in smart power grids[10][11][12] and inventory control for product assembly systems.[13]
+This section shows how to use the drift-plus-penalty method to minimize the time average of a function p(t) subject to time average constraints on a collection of other functions. The analysis below is based on the material in.[5]
+Consider a discrete time system that evolves over normalized time slots t in {0, 1, 2, ...}. Define p(t) as a function whose time average should be minimized, called a penalty function. Suppose that minimization of the time average of p(t) must be done subject to time-average constraints on a collection of K other functions:
+Every slot t, the network controller observes a new random event. It then makes a control action based on knowledge of this event. The values of p(t) and y_i(t) are determined as functions of the random event and the control action on slot t:
+The small case notation p(t), y_i(t) and upper case notation P(), Y_i() is used to distinguish the penalty values from the function that determines these values based on the random event and control action for slot t. The random event 
+
+
+
+ω
+(
+t
+)
+
+
+{\displaystyle \omega (t)}
+
+ is assumed to take values in some abstract set of events 
+
+
+
+Ω
+
+
+{\displaystyle \Omega }
+
+. The control action 
+
+
+
+α
+(
+t
+)
+
+
+{\displaystyle \alpha (t)}
+
+ is assumed to be chosen within some abstract set 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ that contains the control options. The sets 
+
+
+
+Ω
+
+
+{\displaystyle \Omega }
+
+ and 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ are arbitrary and can be either finite or infinite. For example, 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ could be a finite list of abstract elements, an uncountably infinite (and possibly non-convex) collection of real-valued vectors, and so on. The functions P(), Y_i() are also arbitrary and do not require continuity or convexity assumptions.
+As an example in the context of communication networks, the random event 
+
+
+
+ω
+(
+t
+)
+
+
+{\displaystyle \omega (t)}
+
+ can be a vector that contains the slot t arrival information for each node and the slot t channel state information for each link. The control action 
+
+
+
+α
+(
+t
+)
+
+
+{\displaystyle \alpha (t)}
+
+ can be a vector that contains the routing and transmission decisions for each node. The functions P() and Y_i() can represent power expenditures or throughputs associated with the control action and channel condition for slot t.
+For simplicity of exposition, assume the P() and Y_i() functions are bounded. Further assume the random event process 
+
+
+
+ω
+(
+t
+)
+
+
+{\displaystyle \omega (t)}
+
+ is independent and identically distributed (i.i.d.) over slots t with some possibly unknown probability distribution. The goal is to design a policy for making control actions over time to solve the following problem:
+It is assumed throughout that this problem is feasible. That is, it is assumed that there exists an algorithm that can satisfy all of the K desired constraints.
+The above problem poses each constraint in the standard form of a time average expectation of an abstract process y_i(t) being non-positive. There is no loss of generality with this approach. For example, suppose one desires the time average expectation of some process a(t) to be less than or equal to a given constant c. Then a new penalty function y(t) = a(t) − c can be defined, and the desired constraint is equivalent to the time average expectation of y(t) being non-positive. Likewise, suppose there are two processes a(t) and b(t) and one desires the time average expectation of a(t) to be less than or equal to that of b(t). This constraint is written in standard form by defining a new penalty function y(t) = a(t) − b(t). The above problem seeks to minimize the time average of an abstract penalty function p'(t)'. This can be used to maximize the time average of some desirable reward function r(t) by defining p(t) = −r('t).
+For each constraint i in {1, ..., K}, define a virtual queue with dynamics over slots t in {0, 1, 2, ...} as follows:
+Initialize Qi(0) = 0 for all i in {1, ..., K}. This update equation is identical to that of a virtual discrete time queue with backlog Q_i(t) and with y_i(t) being the difference between new arrivals and new service opportunities on slot t. Intuitively, stabilizing these virtual queues ensures the time averages of the constraint functions are less than or equal to zero, so the desired constraints are satisfied. To see this precisely, note that (Eq. 1) implies:
+Therefore:
+Summing the above over the first t slots and using the law of telescoping sums implies:
+Dividing by t and taking expectations implies:
+Therefore, the desired constraints of the problem are satisfied whenever the following holds for all i in {1, ..., K}:
+A queue Q_i(t) that satisfies the above limit equation is said to be mean rate stable.[5]
+To stabilize the queues, define the Lyapunov function L(t) as a measure of the total queue backlog on slot t:
+Squaring the queueing equation (Eq. 1) results in the following bound for each queue i in {1, ..., K}:
+Therefore,
+It follows that
+Now define B as a positive constant that upper bounds the first term on the right-hand-side of the above inequality. Such a constant exists because the y_i(t) values are bounded. Then:
+Adding Vp(t) to both sides results in the following bound on the drift-plus-penalty expression:
+The drift-plus-penalty algorithm (defined below) makes control actions every slot t that greedily minimize the right-hand-side of the above inequality. Intuitively, taking an action that minimizes the drift alone would be beneficial in terms of queue stability but would not minimize time average penalty. Taking an action that minimizes the penalty alone would not necessarily stabilize the queues. Thus, taking an action to minimize the weighted sum incorporates both objectives of queue stability and penalty minimization. The weight V can be tuned to place more or less emphasis on penalty minimization, which results in a performance tradeoff.[5]
+Let 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ be the abstract set of all possible control actions. Every slot t, observe the random event and the current queue values:
+Given these observations for slot t, greedily choose a control action 
+
+
+
+α
+(
+t
+)
+∈
+A
+
+
+{\displaystyle \alpha (t)\in A}
+
+ to minimize the following expression (breaking ties arbitrarily):
+Then update the queues for each i in {1, ..., K} according to (Eq. 1). Repeat this procedure for slot t+1.[5]
+Note that the random event and queue backlogs observed on slot t act as given constants when selecting the control action for the slot t minimization. Thus, each slot involves a deterministic search for the minimizing control action over the set A. A key feature of this algorithm is that it does not require knowledge of the probability distribution of the random event process.
+The above algorithm involves finding a minimum of a function over an abstract set A. In general cases, the minimum might not exist, or might be difficult to find. Thus, it is useful to assume the algorithm is implemented in an approximate manner as follows: Define C as a non-negative constant, and assume that for all slots t, the control action 
+
+
+
+α
+(
+t
+)
+
+
+{\displaystyle \alpha (t)}
+
+ is chosen in the set A to satisfy:
+Such a control action is called a C-additive approximation.[5] The case C = 0 corresponds to exact minimization of the desired expression on every slot t.
+This section shows the algorithm results in a time average penalty that is within O(1/V) of optimality, with a corresponding O(V) tradeoff in average queue size.[5]
+Define an 
+
+
+
+ω
+
+
+{\displaystyle \omega }
+
+-only policy to be a stationary and randomized policy for choosing the control action 
+
+
+
+α
+(
+t
+)
+
+
+{\displaystyle \alpha (t)}
+
+ based on the observed 
+
+
+
+ω
+(
+t
+)
+
+
+{\displaystyle \omega (t)}
+
+ only. That is, an 
+
+
+
+ω
+
+
+{\displaystyle \omega }
+
+-only policy specifies, for each possible random event 
+
+
+
+ω
+∈
+Ω
+
+
+{\displaystyle \omega \in \Omega }
+
+, a conditional probability distribution for selecting a control action 
+
+
+
+α
+(
+t
+)
+∈
+A
+
+
+{\displaystyle \alpha (t)\in A}
+
+ given that 
+
+
+
+ω
+(
+t
+)
+=
+ω
+
+
+{\displaystyle \omega (t)=\omega }
+
+. Such a policy makes decisions independent of current queue backlog. Assume there exists an 
+
+
+
+ω
+
+
+{\displaystyle \omega }
+
+-only policy 
+
+
+
+
+α
+
+∗
+
+
+(
+t
+)
+
+
+{\displaystyle \alpha ^{*}(t)}
+
+ that satisfies the following:
+The expectations above are with respect to the random variable 
+
+
+
+ω
+(
+t
+)
+
+
+{\displaystyle \omega (t)}
+
+ for slot 
+
+
+
+t
+,
+
+
+{\displaystyle t,}
+
+ and the random control action 
+
+
+
+α
+(
+t
+)
+
+
+{\displaystyle \alpha (t)}
+
+ chosen on slot 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ after observing 
+
+
+
+ω
+(
+t
+)
+
+
+{\displaystyle \omega (t)}
+
+. Such a policy 
+
+
+
+
+α
+
+∗
+
+
+(
+t
+)
+
+
+{\displaystyle \alpha ^{*}(t)}
+
+ can be shown to exist whenever the desired control problem is feasible and the event space for 
+
+
+
+ω
+(
+t
+)
+
+
+{\displaystyle \omega (t)}
+
+ and action space for 
+
+
+
+α
+(
+t
+)
+
+
+{\displaystyle \alpha (t)}
+
+ are finite, or when mild closure properties are satisfied.[5]
+Let 
+
+
+
+α
+(
+t
+)
+
+
+{\displaystyle \alpha (t)}
+
+ represent the action taken by a C-additive approximation of the drift-plus-penalty algorithm of the previous section, for some non-negative constant C. To simplify terminology, we call this action the drift-plus-penalty action, rather than the C-additive approximate drift-plus-penalty action. Let 
+
+
+
+
+α
+
+∗
+
+
+(
+t
+)
+
+
+{\displaystyle \alpha ^{*}(t)}
+
+ represent the 
+
+
+
+ω
+
+
+{\displaystyle \omega }
+
+-only decision:
+Assume the drift-plus-penalty action 
+
+
+
+α
+(
+t
+)
+
+
+{\displaystyle \alpha (t)}
+
+ is used on each and every slot. By (Eq. 2), the drift-plus-penalty expression under this 
+
+
+
+α
+(
+t
+)
+
+
+{\displaystyle \alpha (t)}
+
+ action satisfies the following for each slot 
+
+
+
+t
+:
+
+
+{\displaystyle t:}
+
+
+where the last inequality follows because action 
+
+
+
+α
+(
+t
+)
+
+
+{\displaystyle \alpha (t)}
+
+ comes within an additive constant 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ of minimizing the preceding expression over all other actions in the set 
+
+
+
+A
+,
+
+
+{\displaystyle A,}
+
+ including 
+
+
+
+
+α
+
+∗
+
+
+(
+t
+)
+.
+
+
+{\displaystyle \alpha ^{*}(t).}
+
+ Taking expectations of the above inequality gives:
+Notice that the 
+
+
+
+
+α
+
+∗
+
+
+(
+t
+)
+
+
+{\displaystyle \alpha ^{*}(t)}
+
+ action was never actually implemented. Its existence was used only for comparison purposes to reach the final inequality. Summing the above inequality over the first 
+
+
+
+t
+>
+0
+
+
+{\displaystyle t>0}
+
+ slots gives:
+Dividing the above by 
+
+
+
+V
+t
+
+
+{\displaystyle Vt}
+
+ yields the following result, which holds for all slots 
+
+
+
+t
+>
+0
+:
+
+
+{\displaystyle t>0:}
+
+
+Thus, the time average expected penalty can be made arbitrarily close to the optimal value 
+
+
+
+
+p
+
+∗
+
+
+
+
+{\displaystyle p^{*}}
+
+ by choosing 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ suitably large. It can be shown that all virtual queues are mean rate stable, and so all desired constraints are satisfied.[5] The parameter 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ affects the size of the queues, which determines the speed at which the time average constraint functions converge to a non-positive number. A more detailed analysis on the size of the queues is given in the next subsection.
+Assume now there exists an 
+
+
+
+ω
+
+
+{\displaystyle \omega }
+
+-only policy 
+
+
+
+
+α
+
+∗
+
+
+(
+t
+)
+
+
+{\displaystyle \alpha ^{*}(t)}
+
+, possibly different from the one that satisfies (Eq. 3)-(Eq.4), that satisfies the following for some 
+
+
+
+ϵ
+>
+0
+
+
+{\displaystyle \epsilon >0}
+
+:
+An argument similar to the one in the previous section shows:
+A telescoping series argument similar to the one in the previous section can thus be used to show the following for all t>0:[5]
+This shows that average queue size is indeed O(V).
+The above analysis considers time average expectations. Related probability 1 performance bounds for infinite horizon time average queue size and penalty can be derived using the drift-plus-penalty method together with martingale theory.[14]
+The above analysis considers constrained optimization of time averages in a stochastic system that did not have any explicit queues. Each time average inequality constraint was mapped to a virtual queue according to (Eq. 1). In the case of optimizing a queueing network, the virtual queue equations in (Eq. 1) are replaced by the actual queueing equations.
+A related problem is the minimization of a convex function of time averages subject to constraints, such as:
+where 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ and 
+
+
+
+
+g
+
+i
+
+
+
+
+{\displaystyle g_{i}}
+
+ are convex functions, and where the time averages are defined:
+Such problems of optimizing convex functions of time averages can be transformed into problems of optimizing time averages of functions via auxiliary variables (see Chapter 5 of the Neely textbook).[2][5] The latter problems can then be solved by the drift-plus-penalty method as described in previous subsections. An alternative primal-dual method makes decisions similar to drift-plus-penalty decisions, but uses a penalty defined by partial derivatives of the objective function 
+
+
+
+f
+.
+
+
+{\displaystyle f.}
+
+[5][15][16] The primal-dual approach can also be used to find local optimums in cases when 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is non-convex.[5]
+The mathematical analysis in the previous section shows that the drift-plus-penalty method produces a time average penalty that is within O(1/V) of optimality, with a corresponding O(V) tradeoff in average queue size. This method, together with the O(1/V), O(V) tradeoff, was developed in Neely[9] and Neely, Modiano, Li [2] in the context of maximizing network utility subject to stability.
+A related algorithm for maximizing network utility was developed by Eryilmaz and Srikant. [17] The Eryilmaz and Srikant work resulted in an algorithm very similar to the drift-plus-penalty algorithm, but used a different analytical technique. That technique was based on Lagrange multipliers. A direct use of the Lagrange multiplier technique results in a worse tradeoff of O(1/V), O(V2). However, the Lagrange multiplier analysis was later strengthened by Huang and Neely to recover the original O(1/V), O(V) tradeoffs, while showing that queue sizes are tightly clustered around the Lagrange multiplier of a corresponding deterministic optimization problem. [18] This clustering result can be used to modify the drift-plus-penalty algorithm to enable improved O(1/V), O(log2(V)) tradeoffs. The modifications can use either place-holder backlog[18] or Last-in-First-Out (LIFO) scheduling. [19] [20]
+When implemented for non-stochastic functions, the drift-plus-penalty method is similar to the dual subgradient method of convex optimization theory, with the exception that its output is a time average of primal variables, rather than the primal variables themselves.[4][6] A related primal-dual technique for maximizing utility in a stochastic queueing network was developed by Stolyar using a fluid model analysis. [15] [16] The Stolyar analysis does not provide analytical results for a performance tradeoff between utility and queue size. A later analysis of the primal-dual method for stochastic networks proves a similar O(1/V), O(V) utility and queue size tradeoff, and also shows local optimality results for minimizing non-convex functions of time averages, under an additional convergence assumption.[5] However, this analysis does not specify how much time is required for the time averages to converge to something close to their infinite horizon limits. Related primal-dual algorithms for utility maximization without queues were developed by Agrawal and Subramanian [21] and Kushner and Whiting. [22]
+The drift-plus-penalty algorithm is known to ensure similar performance guarantees for more general ergodic processes 
+
+
+
+ω
+(
+t
+)
+
+
+{\displaystyle \omega (t)}
+
+, so that the i.i.d. assumption is not crucial to the analysis. The algorithm can be shown to be robust to non-ergodic changes in the probabilities for 
+
+
+
+ω
+(
+t
+)
+
+
+{\displaystyle \omega (t)}
+
+. In certain scenarios, it can be shown to provide desirable analytical guarantees, called universal scheduling guarantees, for arbitrary 
+
+
+
+ω
+(
+t
+)
+
+
+{\displaystyle \omega (t)}
+
+ processes.[5]
+The drift-plus-penalty method can be extended to treat systems that operate over variable size frames.[23] [24] In that case, the frames are labeled with indices r in {0, 1, 2, ...} and the frame durations are denoted {T[0], T[1], T[2], ...}, where T[r] is a non-negative real number for each frame r. Let 
+
+
+
+Δ
+[
+r
+]
+
+
+{\displaystyle \Delta [r]}
+
+ and 
+
+
+
+p
+[
+r
+]
+
+
+{\displaystyle p[r]}
+
+ be the drift between frame r and r + 1, and the total penalty incurred during frame r, respectively. The extended algorithm takes a control action over each frame r to minimize a bound on the following ratio of conditional expectations:
+where Q[r] is the vector of queue backlogs at the beginning of frame&nsbp;r. In the special case when all frames are the same size and are normalized to 1 slot length, so that T[r] = 1 for all r, the above minimization reduces to the standard drift-plus-penalty technique. This frame-based method can be used for constrained optimization of Markov decision problems (MDPs) and for other problems involving systems that experience renewals. [23] [24]
+Let x = (x1, ..., xN) be an N-dimensional vector of real numbers, and define the hyper-rectangle A by:
+where xmin, i, xmax, i are given real numbers that satisfy 
+
+
+
+
+x
+
+min
+,
+i
+
+
+<
+
+x
+
+max
+,
+i
+
+
+
+
+{\displaystyle x_{\min ,i}<x_{\max ,i}}
+
+ for all i. Let P(x) and 
+
+
+
+
+Y
+
+i
+
+
+(
+x
+)
+
+
+{\displaystyle Y_{i}(x)}
+
+ for i in {1, ..., K} be continuous and convex functions of the x vector over all x in A. Consider the following convex programming problem:
+This can be solved by the drift-plus-penalty method as follows: Consider the special case of a deterministic system with no random event process 
+
+
+
+ω
+(
+t
+)
+
+
+{\displaystyle \omega (t)}
+
+. Define the control action 
+
+
+
+α
+(
+t
+)
+
+
+{\displaystyle \alpha (t)}
+
+ as:
+and define the action space as the N-dimensional hyper-rectangle A. Define penalty and constraint functions as:
+Define the following time averages:
+Now consider the following time average optimization problem:
+By Jensen's inequality the following holds for all slots t>0:
+From this, it can be shown that an optimal solution to the time-average problem (Eq. 8)–(Eq. 9) can be achieved by solutions of the type x(t) = x* for all slots t, where x* is a vector that solves the convex program (Eq. 6)–(Eq. 7). Further, any time-averaged vector 
+
+
+
+
+lim
+
+t
+→
+∞
+
+
+
+
+x
+¯
+
+
+(
+t
+)
+
+
+{\displaystyle \lim _{t\rightarrow \infty }{\overline {x}}(t)}
+
+ corresponding to a solution of the time-average problem (Eq. 8)–(Eq. 9) must solve the convex program (Eq. 6)–(Eq. 7). Therefore, the original convex program (Eq. 6)–(Eq. 7) can be solved (to within any desired accuracy) by taking the time average of the decisions made when the drift-plus-penalty algorithm is applied to the corresponding time-averaged problem (Eq. 8)–(Eq. 9). The drift-plus-penalty algorithm for problem (Eq. 8)–(Eq. 9) reduces to the following:
+Every slot t, choose vector 
+
+
+
+x
+(
+t
+)
+=
+(
+
+x
+
+1
+
+
+(
+t
+)
+,
+…
+,
+
+x
+
+N
+
+
+(
+t
+)
+)
+∈
+A
+
+
+{\displaystyle x(t)=(x_{1}(t),\ldots ,x_{N}(t))\in A}
+
+ to minimize the expression:
+Then update the queues according to:
+The time average vector 
+
+
+
+
+
+x
+¯
+
+
+(
+t
+)
+
+
+{\displaystyle {\overline {x}}(t)}
+
+ converges to an O(1/V) approximation to the convex program.[6]
+This algorithm is similar to the standard dual subgradient algorithm of optimization theory, using a fixed stepsize of 1/V. [25] However, a key difference is that the dual subgradient algorithm is typically analyzed under restrictive strict convexity assumptions that are needed for the primal variables x(t) to converge. There are many important cases where these variables do not converge to the optimal solution, and never even get near the optimal solution (this is the case for most linear programs, as shown below). On the other hand, the drift-plus-penalty algorithm does not require strict convexity assumptions. It ensures that the time averages of the primals converge to a solution that is within O(1/V) of optimality, with O(V) bounds on queue sizes (it can be shown that this translates into an O(V2) bound on convergence time).[6]
+Consider the special case of a linear program. Specifically, suppose:
+for given real-valued constants (c1, …, cN), (ain), (b1, …, bK). Then the above algorithm reduces to the following: Every slot t and for each variable n in {1, …, N}, choose xn(t) in [xmin,n, xmax,n] to minimize the expression:
+Then update queues Qi(t) as before. This amounts to choosing each variable xi(t) according to the simple bang-bang control policy:
+Since the primal variables xi(t) are always either xmin,i or xmax,i, they can never converge to the optimal solution if the optimal solution is not a vertex point of the hyper-rectangle A. However, the time-averages of these bang-bang decisions indeed converge to an O(1/V) approximation of the optimal solution. For example, suppose that xmin,1 = 0, xmax,1 = 1, and suppose that all optimal solutions to the linear program have x1 = 3/4. Then roughly 3/4 of the time the bang-bang decision for the first variable will be x1(t) = 1, and the remaining time it will be x1(t) = 0.[7]

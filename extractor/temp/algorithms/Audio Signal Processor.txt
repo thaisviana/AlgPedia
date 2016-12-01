@@ -1,0 +1,4 @@
+ABOUT
+The Audio Signal Processor or ASP (also known as the SoundDroid) is a large-scale digital signal processor developed by James A. Moorer at Lucasfilm's The Droid Works. He programmed a number of Digital signal processing algorithms that were used in major motion picture features. Sounds processed by the ASP were used in the THX logo's Deep Note,[1] Return of the Jedi, Indiana Jones and the Temple of Doom, and others.
+FULL TEXT
+The Audio Signal Processor or ASP (also known as the SoundDroid) is a large-scale digital signal processor developed by James A. Moorer at Lucasfilm's The Droid Works. He programmed a number of Digital signal processing algorithms that were used in major motion picture features. Sounds processed by the ASP were used in the THX logo's Deep Note,[1] Return of the Jedi, Indiana Jones and the Temple of Doom, and others.

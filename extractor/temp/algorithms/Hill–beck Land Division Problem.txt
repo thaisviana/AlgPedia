@@ -1,0 +1,35 @@
+ABOUT
+The following variant of the fair cake-cutting problem was introduced by Ted Hill in 1983.[1]
+FULL TEXT
+The following variant of the fair cake-cutting problem was introduced by Ted Hill in 1983.[1]
+There is a territory D adjacent to n countries. Each country values the different subsets of D differently. The countries would like to divide D fairly among them, where "fair" means a proportional division. Additionally, the share allocated to each country must be connected and adjacent to that country. This geographic constraint distinguishes this problem from classic fair cake-cutting.
+Formally, every country Ci must receive a disjoint piece of D, marked Di, such that a portion of the border between Ci and D is contained in the interior of Ci ∪ Di.
+
+
+There are cases in which the problem cannot be solved:
+1. If there is a single point to which two countries assign all their value (e.g. a holy place), then obviously the territory cannot be divided proportionally. To prevent such situations, we assume that all countries assign a value of 0 to all singular points.
+2. If D is a square, there are 4 countries adjacent to the 4 sides of the square, and each country assigns all its value to the border at the opposite side, then every allocation that connects, say, the northern country with its desired southern border will make it impossible to connect the eastern country with its desired western border (as long as we are in a two-dimensional plane). To prevent such situations, we assume that all countries assign a value of 0 to the boundary of D.
+In 1983, Hill proved that, if each single point in D has a value of 0 for all countries, and the boundary of D has a value of 0 for all countries, then there exists a proportional division with the adjacency constraint. His proof was only existential – no algorithm was described.[1]
+4 years later, Anatole Beck described a protocol for attaining such a division.[2] In essence, the protocol is an elaboration of the Last diminisher protocol. It lets the countries bid for parts of D, gives the smallest bid to its bidder and divides the remainder among the remaining n − 1 countries. Some variations are needed to guarantee that the adjacency constraint is satisfied.
+When D is simply-connected, the following algorithm is used.
+1. Find a Riemann mapping h that maps D to the unit disc, such that for all countries, the value of every circle centered at the origin is 0 and the value of every radius from the origin is 0 (the existence of such an h is proved by a counting argument).
+2. Ask each country to draw, on the unit disc map h(D), a disc centered at the origin with a value of 1/n. This is possible thanks to the condition that the value of all circles centered at the origin is 0.
+3. Find the disc D1 with the smallest radius, r1.
+There are two cases.
+4. If D1 was drawn by only a single country, say Ci, then give this disc to Ci. Its value for the other countries is strictly less than 1/n, so we can give to Ci a small additional piece connecting it to its allocated disc.
+To do this, draw a sector connecting D1 to the image of the boundary between Ci and D. Let each country (other than Ci) trim this sector such that all countries value the union of the disc and the sector as at most 1/n. This is possible thanks to the condition that the value of all radii from the origin is 0. Allocate to Ci the union of D1 and the trimmed sector.
+The remainder is simply-connected and has a value of at least (n − 1)/n to the remaining n − 1 countries, so the division can proceed recursively in step 1.
+If D1 was drawn by k>1 countries, then some more sophisticated auctions are required in order to find a country to which we can give a disc and a connecting sector.
+5. pick an arbitrary winner country and call it the declarer, C1. Let it add a sector connecting D1 to its current territory, and let the other countries trim that sector such that:
+6. Let each of the winning countries bid a new radius r (smaller than its first bid), such that the value of the trimmed sector plus the disc of radius r is exactly 1/n. Select the smallest such disc, D2. Again there are two cases:
+If C1 is one of the countries bidding D2, then just give it D2 (which is slightly smaller than the original D1) and the connecting sector. C1 agreed that the value is 1/n and the other countries agreed that it is at most 1/n, so we can proceed recursively at step 1.
+Otherwise, C1 agrees that the total value of D2 plus the connecting sector is less than 1/n. All non-winners must also agree to this since D2 is smaller than D1. So C1 and all other countries that agree to this are removed from the set of winners.
+7. From among the remaining winners, pick a new declarer C2. Let it add another sector connecting D2 to its current territory, and let the other countries trim that sector as in step 5.
+Note that now D2 is connected to two different territories – C1 and C2. This is a problem because it makes the remaining territory disconnected. To solve this, C2 is allowed to take another sector, this time of length less than 1 so that it doesn't harm the connectivity.[2] That third sector is again trimmed by all countries as in step 5. In return, C2 is required to give up some part of the sector connecting D2 to C1, whose value is equal to the value of the third sector it received.
+C2's candidate allocation now contains the following parts: D2, a single sector of length 1 connecting D2 to C2, and two short sectors that do not reach the border of D. The value of this construction for C2 is 1/n, its value for the non-winners is less than 1/n, and its value for the remaining winners is at most 1/n.
+This process continues with the remaining winners, until only a single winner remains.
+If the territory D is k-connected with a finite k, then the division can proceed by induction on k.
+When k = 1, D is simply-connected and can be divided by the protocol of the previous section.
+Otherwise (k > 1), mark the outer boundary of D by B1 and its inner boundaries by B2, ..., Bk.
+Find a line L connecting the outer boundary B1 to the inner boundary Bk, such that all countries value L as 0. This is possible by the following counting argument. There is an uncountable infinity of pairwise-disjoint lines connecting B1 and Bk and contained in D. But the measure of D is finite, so the number of lines with a positive measure must be finite.
+The set D \ L is (k − 1)-connected. Divide it recursively, then assign L arbitrarily to any country adjacent to it. This does not affect the fairness of the allocation since the value of L is 0 for all countries.

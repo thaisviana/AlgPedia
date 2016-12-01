@@ -1,0 +1,16 @@
+ABOUT
+GetFEM++ is a generic finite element C++ library with interfaces for Python, Matlab and Scilab. It aims at providing finite element methods and elementary matrix computations for solving linear and non-linear problems numerically. Its flexibility in choosing among different finite element approximations and numerical integration methods is one of its distinguishing characteristics.[1]
+FULL TEXT
+GetFEM++ is a generic finite element C++ library with interfaces for Python, Matlab and Scilab. It aims at providing finite element methods and elementary matrix computations for solving linear and non-linear problems numerically. Its flexibility in choosing among different finite element approximations and numerical integration methods is one of its distinguishing characteristics.[1]
+
+
+GetFEM++ is released under the GNU Lesser General Public License, version 3 or later, along with the GCC Runtime Library Exception, version 3.1 or later.
+Gmm++ is a generic matrix template library included in GetFEM++, providing tools for elementary computations with dense and sparse matrices. Among the capabilities implemented in Gmm++ there is also an interface to the popular direct solver for sparse systems of linear equations MUMPS.
+Mesh objects in GetFEM++ contain information about the geometric transformation and connectivity of mesh elements as well as methods for accessing user defined mesh regions.
+Finite element methods can be defined per mesh or per element and they include a wide range of options like classical Lagrange elements Pk and Qk of arbitrary dimension and degree k, Hermite and Argyris elements, discontinuous Pk and Qk elements, vectorial and hierarchical basis elements as well as XFEM elements.
+Integration methods can be defined per mesh or per element as well. The possible options include exact and approximated methods.
+Combining so called brick objects, is the standard way of representing mathematical equations in GetFEM++. Such predifined bricks corresponding to common equation terms like elasticity, Helmholtz, Dirichlet condition and Neumann source terms are included in the software. Among other there is also a number of elaborated bricks related to contact mechanics, corresponding to different formulations of contact with or without friction.
+The assembling procedures included in GetFEM++ aim at efficiently calculating the contribution of each brick to the global tangent matrix and right hand side term of the linearized system of equations.
+GetFEM++ can read meshes provided in the native formats of software like Gmsh, GiD and Ansys. It can export results in the legacy POS file format of Gmsh, the OpenDX file format and the legacy VTK file format.
+In 2007, GetFEM++ received the second prize in the category of scientific software in the Les Trophées du Libre contest.[2]
+CFD Parallel Simulation Using Getfem++ and Mumps

@@ -1,0 +1,5 @@
+ABOUT
+A scanning mobility particle sizer (SMPS) is an analytical instrument that measures the size and number concentration of aerosol particles with diameters from 2.5 nm to 1000 nm.[1] They employ a continuous, fast-scanning technique to provide high-resolution measurements.
+FULL TEXT
+A scanning mobility particle sizer (SMPS) is an analytical instrument that measures the size and number concentration of aerosol particles with diameters from 2.5 nm to 1000 nm.[1] They employ a continuous, fast-scanning technique to provide high-resolution measurements.
+The particles that are investigated can be of biological or chemical nature. The instrument can be used for air quality measurement indoors, vehicle exhaust,[2] research in bioaerosols, atmospheric studies, and toxicology testing.

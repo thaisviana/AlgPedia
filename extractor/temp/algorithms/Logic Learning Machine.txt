@@ -1,0 +1,21 @@
+ABOUT
+Logic Learning Machine (LLM) is a machine learning method based on the generation of intelligible rules. LLM is an efficient implementation of the Switching Neural Network (SNN) paradigm,[1] developed by Marco Muselli, Senior Researcher at the Italian National Research Council CNR-IEIIT in Genoa. Logic Learning Machine is implemented in the Rulex suite.
+FULL TEXT
+Logic Learning Machine (LLM) is a machine learning method based on the generation of intelligible rules. LLM is an efficient implementation of the Switching Neural Network (SNN) paradigm,[1] developed by Marco Muselli, Senior Researcher at the Italian National Research Council CNR-IEIIT in Genoa. Logic Learning Machine is implemented in the Rulex suite.
+LLM has been employed in different fields, including orthopaedic patient classification,[2] DNA microarray analysis [3] and Clinical Decision Support System.[4]
+
+
+The Switching Neural Network approach was developed in the 1990s to overcome the drawbacks of the most commonly used machine learning methods. In particular, black box methods, such as multilayer perceptron and support vector machine, had good accuracy but could not provide deep insight into the studied phenomenon. On the other hand, decision trees were able to describe the phenomenon but often lacked accuracy. Switching Neural Networks made use of Boolean algebra to build sets of intelligible rules able to obtain very good performance. In 2014, an efficient version of Switching Neural Network was developed and implemented in the Rulex suite with the name Logic Learning Machine.[5] Also a LLM version devoted to regression problems was developed.
+Like other machine learning methods, LLM uses data to build a model able to perform a good forecast about future behaviors. LLM starts from a table including a target variable (output) and some inputs and generates a set of rules that return the output value 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ corresponding to a given configuration of inputs. A rule is written in the form:
+where consequence contains the output value whereas premise includes one or more conditions on the inputs. According to the input type, conditions can have different forms:
+A possible rule is therefore in the form
+According to the output type, different versions of Logic Learning Machine have been developed:

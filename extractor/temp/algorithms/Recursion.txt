@@ -1,0 +1,246 @@
+ABOUT
+Recursion occurs when a thing is defined in terms of itself or of its type. Recursion is used in a variety of disciplines ranging from linguistics to logic. The most common application of recursion is in mathematics and computer science, where a function being defined is applied within its own definition. While this apparently defines an infinite number of instances (function values), it is often done in such a way that no loop or infinite chain of references can occur.
+FULL TEXT
+Recursion occurs when a thing is defined in terms of itself or of its type. Recursion is used in a variety of disciplines ranging from linguistics to logic. The most common application of recursion is in mathematics and computer science, where a function being defined is applied within its own definition. While this apparently defines an infinite number of instances (function values), it is often done in such a way that no loop or infinite chain of references can occur.
+The term is also used more generally to describe a process of repeating objects in a self-similar way.[citation needed] For instance, when the surfaces of two mirrors are exactly parallel with each other, the nested images that occur are a form of infinite recursion.[citation needed]
+
+
+In mathematics and computer science, a class of objects or methods exhibit recursive behavior when they can be defined by two properties:
+For example, the following is a recursive definition of a person's ancestors:
+The Fibonacci sequence is a classic example of recursion:
+
+
+
+
+
+Fib
+
+(
+0
+)
+=
+0
+
+ as base case 1,
+
+
+
+{\displaystyle {\text{Fib}}(0)=0{\text{ as base case 1,}}}
+
+
+
+
+
+
+
+Fib
+
+(
+1
+)
+=
+1
+
+ as base case 2,
+
+
+
+{\displaystyle {\text{Fib}}(1)=1{\text{ as base case 2,}}}
+
+
+
+
+
+
+
+For all integers 
+
+n
+>
+1
+,
+ 
+
+ Fib
+
+(
+n
+)
+:=
+
+Fib
+
+(
+n
+−
+1
+)
++
+
+Fib
+
+(
+n
+−
+2
+)
+.
+
+
+{\displaystyle {\text{For all integers }}n>1,~{\text{ Fib}}(n):={\text{Fib}}(n-1)+{\text{Fib}}(n-2).}
+
+
+Many mathematical axioms are based upon recursive rules. For example, the formal definition of the natural numbers by the Peano axioms can be described as: 0 is a natural number, and each natural number has a successor, which is also a natural number. By this base case and recursive rule, one can generate the set of all natural numbers.
+Recursively defined mathematical objects include functions, sets, and especially fractals.
+There are various more tongue-in-cheek "definitions" of recursion; see recursive humor.
+Recursion is the process a procedure goes through when one of the steps of the procedure involves invoking the procedure itself. A procedure that goes through recursion is said to be 'recursive'.
+To understand recursion, one must recognize the distinction between a procedure and the running of a procedure. A procedure is a set of steps based on a set of rules. The running of a procedure involves actually following the rules and performing the steps. An analogy: a procedure is like a written recipe; running a procedure is like actually preparing the meal.
+Recursion is related to, but not the same as, a reference within the specification of a procedure to the execution of some other procedure. For instance, a recipe might refer to cooking vegetables, which is another procedure that in turn requires heating water, and so forth. However, a recursive procedure is where (at least) one of its steps calls for a new instance of the very same procedure, like a sourdough recipe calling for some dough left over from the last time the same recipe was made. This of course immediately creates the possibility of an endless loop; recursion can only be properly used in a definition if the step in question is skipped in certain cases so that the procedure can complete, like a sourdough recipe that also tells you how to get some starter dough in case you've never made it before. Even if properly defined, a recursive procedure is not easy for humans to perform, as it requires distinguishing the new from the old (partially executed) invocation of the procedure; this requires some administration of how far various simultaneous instances of the procedures have progressed. For this reason recursive definitions are very rare in everyday situations. An example could be the following procedure to find a way through a maze. Proceed forward until reaching either an exit or a branching point (a dead end is considered a branching point with 0 branches). If the point reached is an exit, terminate. Otherwise try each branch in turn, using the procedure recursively; if every trial fails by reaching only dead ends, return on the path that led to this branching point and report failure. Whether this actually defines a terminating procedure depends on the nature of the maze: it must not allow loops. In any case, executing the procedure requires carefully recording all currently explored branching points, and which of their branches have already been exhaustively tried.
+Linguist Noam Chomsky among many others has argued that the lack of an upper bound on the number of grammatical sentences in a language, and the lack of an upper bound on grammatical sentence length (beyond practical constraints such as the time available to utter one), can be explained as the consequence of recursion in natural language.[1][2] This can be understood in terms of a recursive definition of a syntactic category, such as a sentence. A sentence can have a structure in which what follows the verb is another sentence: Dorothy thinks witches are dangerous, in which the sentence witches are dangerous occurs in the larger one. So a sentence can be defined recursively (very roughly) as something with a structure that includes a noun phrase, a verb, and optionally another sentence. This is really just a special case of the mathematical definition of recursion.
+This provides a way of understanding the creativity of language—the unbounded number of grammatical sentences—because it immediately predicts that sentences can be of arbitrary length: Dorothy thinks that Toto suspects that Tin Man said that.... Of course, there are many structures apart from sentences that can be defined recursively, and therefore many ways in which a sentence can embed instances of one category inside another. Over the years, languages in general have proved amenable to this kind of analysis.
+Recently, however, the generally-accepted idea that recursion is an essential property of human language has been challenged by Daniel Everett on the basis of his claims about the Pirahã language. Andrew Nevins, David Pesetsky and Cilene Rodrigues are among many who that have argued against this.[3] Literary self-reference can in any case be argued to be different in kind from mathematical or logical recursion.[4]
+Recursion plays a crucial role not only in syntax, but also in natural language semantics. The word and, for example, can be construed as a function that can apply to sentence meanings to create new sentences, and likewise for noun phrase meanings, verb phrase meanings, and others. It can also apply to intransitive verbs, transitive verbs, or ditransitive verbs. In order to provide a single denotation for it that is suitably flexible, and is typically defined so that it can take any of these different types of meanings as arguments. This can be done by defining it for a simple case in which it combines sentences, and then defining the other cases recursively in terms of the simple one.[5]
+Recursion is sometimes used humorously in computer science, programming, philosophy, or mathematics textbooks, generally by giving a circular definition or self-reference, in which the putative recursive step does not get closer to a base case, but instead leads to an infinite regress. It is not unusual for such books to include a joke entry in their glossary along the lines of:
+A variation is found on page 269 in the index of some editions of Brian Kernighan and Dennis Ritchie's book The C Programming Language; the index entry recursively references itself ("recursion 86, 139, 141, 182, 202, 269"). The earliest version of this joke was in "Software Tools" by Kernighan and Plauger, and also appears in "The UNIX Programming Environment" by Kernighan and Pike. It did not appear in the first edition of The C Programming Language.
+Another joke is that "To understand recursion, you must understand recursion."[6] In the English-language version of the Google web search engine, when a search for "recursion" is made, the site suggests "Did you mean: recursion." An alternative form is the following, from Andrew Plotkin: "If you already know what recursion is, just remember the answer. Otherwise, find someone who is standing closer to Douglas Hofstadter than you are; then ask him or her what recursion is."
+Recursive acronyms can also be examples of recursive humor. PHP, for example, stands for "PHP Hypertext Preprocessor", WINE stands for "WINE Is Not an Emulator." and GNU stands for "GNU's not Unix".
+The canonical example of a recursively defined set is given by the natural numbers:
+Another interesting example is the set of all "true reachable" propositions in an axiomatic system.
+This set is called 'true reachable propositions' because in non-constructive approaches to the foundations of mathematics, the set of true propositions may be larger than the set recursively constructed from the axioms and rules of inference. See also Gödel's incompleteness theorems.
+Finite subdivision rules are a geometric form of recursion, which can be used to create fractal-like images. A subdivision rule starts with a collection of polygons labelled by finitely many labels, and then each polygon is subdivided into smaller labelled polygons in a way that depends only on the labels of the original polygon. This process can be iterated. The standard `middle thirds' technique for creating the Cantor set is a subdivision rule, as is barycentric subdivision.
+A function may be partly defined in terms of itself. A familiar example is the Fibonacci number sequence: F(n) = F(n − 1) + F(n − 2). For such a definition to be useful, it must lead to non-recursively defined values, in this case F(0) = 0 and F(1) = 1.
+A famous recursive function is the Ackermann function, which—unlike the Fibonacci sequence—cannot easily be expressed without recursion.
+Applying the standard technique of proof by cases to recursively defined sets or functions, as in the preceding sections, yields structural induction, a powerful generalization of mathematical induction widely used to derive proofs in mathematical logic and computer science.
+Dynamic programming is an approach to optimization that restates a multiperiod or multistep optimization problem in recursive form. The key result in dynamic programming is the Bellman equation, which writes the value of the optimization problem at an earlier time (or earlier step) in terms of its value at a later time (or later step).
+A common method of simplification is to divide a problem into subproblems of the same type. As a computer programming technique, this is called divide and conquer and is key to the design of many important algorithms. Divide and conquer serves as a top-down approach to problem solving, where problems are solved by solving smaller and smaller instances. A contrary approach is dynamic programming. This approach serves as a bottom-up approach, where problems are solved by solving larger and larger instances, until the desired size is reached.
+A classic example of recursion is the definition of the factorial function, given here in C code:
+The function calls itself recursively on a smaller version of the input (n - 1) and multiplies the result of the recursive call by n, until reaching the base case, analogously to the mathematical definition of factorial.
+Recursion in computer programming is exemplified when a function is defined in terms of simpler, often smaller versions of itself. The solution to the problem is then devised by combining the solutions obtained from the simpler versions of the problem. One example application of recursion is in parsers for programming languages. The great advantage of recursion is that an infinite set of possible sentences, designs or other data can be defined, parsed or produced by a finite computer program.
+Recurrence relations are equations to define one or more sequences recursively. Some specific kinds of recurrence relation can be "solved" to obtain a non-recursive definition.
+Use of recursion in an algorithm has both advantages and disadvantages. The main advantage is usually simplicity. The main disadvantage is often that the algorithm may require large amounts of memory if the depth of the recursion is very large.
+The Russian Doll or Matryoshka Doll is a physical artistic example of the recursive concept.[7]
+Recursion has been used in paintings since Giotto's Stefaneschi Triptych, made in 1320. Its central panel contains the kneeling figure of Cardinal Stefaneschi, holding up the triptych itself as an offering.[8]
+M. C. Escher's Print Gallery (1956) is a print which depicts a distorted city which contains a gallery which recursively contains the picture, and so ad infinitum.[9]
+In set theory, this is a theorem guaranteeing that recursively defined functions exist. Given a set X, an element a of X and a function 
+
+
+
+f
+:
+X
+→
+X
+
+
+{\displaystyle f:X\rightarrow X}
+
+, the theorem states that there is a unique function 
+
+
+
+F
+:
+
+N
+
+→
+X
+
+
+{\displaystyle F:\mathbb {N} \rightarrow X}
+
+ (where 
+
+
+
+
+N
+
+
+
+{\displaystyle \mathbb {N} }
+
+ denotes the set of natural numbers including zero) such that
+for any natural number n.
+Take two functions 
+
+
+
+F
+:
+
+N
+
+→
+X
+
+
+{\displaystyle F:\mathbb {N} \rightarrow X}
+
+ and 
+
+
+
+G
+:
+
+N
+
+→
+X
+
+
+{\displaystyle G:\mathbb {N} \rightarrow X}
+
+ such that:
+where a is an element of X.
+It can be proved by mathematical induction that 
+
+
+
+F
+(
+n
+)
+=
+G
+(
+n
+)
+
+
+{\displaystyle F(n)=G(n)}
+
+ for all natural numbers n:
+By induction, 
+
+
+
+F
+(
+n
+)
+=
+G
+(
+n
+)
+
+
+{\displaystyle F(n)=G(n)}
+
+ for all 
+
+
+
+n
+∈
+
+N
+
+
+
+{\displaystyle n\in \mathbb {N} }
+
+.
+Some common recurrence relations are:

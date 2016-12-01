@@ -1,0 +1,51 @@
+ABOUT
+The zero-crossing rate is the rate of sign-changes along a signal, i.e., the rate at which the signal changes from positive to negative or back.[1] This feature has been used heavily in both speech recognition and music information retrieval, being a key feature to classify percussive sounds.[2]
+FULL TEXT
+The zero-crossing rate is the rate of sign-changes along a signal, i.e., the rate at which the signal changes from positive to negative or back.[1] This feature has been used heavily in both speech recognition and music information retrieval, being a key feature to classify percussive sounds.[2]
+ZCR is defined formally as
+where 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ is a signal of length 
+
+
+
+T
+
+
+{\displaystyle T}
+
+ and 
+
+
+
+
+
+1
+
+
+
+
+R
+
+
+<
+0
+
+
+
+
+
+
+{\displaystyle \mathbb {1} _{\mathbb {R} _{<0}}}
+
+ is an indicator function.
+In some cases only the "positive-going" or "negative-going" crossings are counted, rather than all the crossings - since, logically, between a pair of adjacent positive zero-crossings there must be one and only one negative zero-crossing.
+For monophonic tonal signals, the zero-crossing rate can be used as a primitive pitch detection algorithm.
+Zero crossing rates are used for Voice activity detection (VAD), i.e., finding whether human speech is present in an audio segment or not.

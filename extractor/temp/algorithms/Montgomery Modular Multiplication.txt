@@ -1,0 +1,346 @@
+ABOUT
+In modular arithmetic computation, Montgomery modular multiplication, more commonly referred to as Montgomery multiplication, is a method for performing fast modular multiplication. It was introduced in 1985 by the American mathematician Peter L. Montgomery.[1][2]
+FULL TEXT
+In modular arithmetic computation, Montgomery modular multiplication, more commonly referred to as Montgomery multiplication, is a method for performing fast modular multiplication. It was introduced in 1985 by the American mathematician Peter L. Montgomery.[1][2]
+Given two integers a and b, the classical modular multiplication algorithm computes ab mod N. Montgomery multiplication works by transforming a and b into a special representation known as Montgomery form. For a modulus N, the Montgomery form of a is defined to be aR mod N for some constant R depending only on N and the underlying computer architecture. If aR mod N and bR mod N are the Montgomery forms of a and b, then their Montgomery product is abR mod N. Montgomery multiplication is a fast algorithm to compute the Montgomery product. Transforming the result out of Montgomery form yields the classical modular product ab mod N.
+Because of the overhead involved in converting a and b into Montgomery form, computing a single product by Montgomery multiplication is slower than computing the product in the integers and performing a modular reduction by division or Barrett reduction. However, when many products are required, as in modular exponentiation, the conversion to Montgomery form becomes a negligible fraction of the time of the computation, and performing the computation by Montgomery multiplication is faster than the available alternatives. Many important cryptosystems such as RSA and Diffie–Hellman key exchange are based on arithmetic operations modulo a large number, and for these cryptosystems, the increased speed afforded by Montgomery multiplication can be important in practice.[3]
+
+
+Let N denote a positive integer modulus. The quotient ring Z/NZ consists of residue classes modulo N, that is, its elements are sets of the form
+where a ranges across the integers. Each residue class is a set of integers such that the difference of any two integers in the set is divisible by N (and the residue class is maximal with respect to that property; integers aren't left out of the residue class unless they would violate the divisibility condition). The residue class corresponding to a is denoted 
+
+
+
+
+
+
+a
+¯
+
+
+
+
+
+{\displaystyle {\bar {a}}}
+
+. Equality of residue classes is called congruence and is denoted
+Storing an entire residue class on a computer is impossible because the residue class has infinitely many elements. Instead, residue classes are stored as representatives. Conventionally, these representatives are the integers a for which 0 ≤ a ≤ N − 1. If a is an integer, then the representative of 
+
+
+
+
+
+
+a
+¯
+
+
+
+
+
+{\displaystyle {\bar {a}}}
+
+ is written a mod N. When writing congruences, it's common to identify an integer with the residue class it represents. With this convention, the above equality is written 
+
+
+
+a
+≡
+b
+
+
+(
+mod
+
+N
+)
+
+
+
+{\displaystyle a\equiv b{\pmod {N}}}
+
+.
+Arithmetic on residue classes is done by first performing integer arithmetic on their representatives. The output of the integer operation determines a residue class, and the output of the modular operation is determined by computing the residue class's representative. For example, if N = 17, then the sum of the residue classes 
+
+
+
+
+
+7
+¯
+
+
+
+
+{\displaystyle {\overline {7}}}
+
+ and 
+
+
+
+
+
+15
+¯
+
+
+
+
+{\displaystyle {\overline {15}}}
+
+ is computed by finding the integer sum 7 + 15 = 22, then determining 22 mod 17, the integer between 0 and 16 whose difference with 22 is a multiple of 17. In this case, that integer is 5, so 
+
+
+
+
+
+7
+¯
+
+
++
+
+
+15
+¯
+
+
+≡
+
+
+5
+¯
+
+
+
+
+(
+mod
+
+17
+)
+
+
+
+{\displaystyle {\overline {7}}+{\overline {15}}\equiv {\overline {5}}{\pmod {17}}}
+
+.
+If a and b are integers in the range [0, N − 1], then their sum is in the range [0, 2N − 2] and their difference is in the range [−N + 1, N − 1], so determining the representative in [0, N − 1] requires at most one subtraction or addition (respectively) of N. However, the product ab is in the range [0, N2 − 2N + 1]. Storing the intermediate integer product ab requires twice as many bits as either a or b, and efficiently determining the representative in [0, N − 1] requires division. Mathematically, the integer between 0 and N − 1 that is congruent to ab can be expressed by applying the Euclidean division theorem:
+where q is the quotient 
+
+
+
+⌊
+a
+b
+
+/
+
+N
+⌋
+
+
+{\displaystyle \lfloor ab/N\rfloor }
+
+ and r, the remainder, is in the interval [0, N − 1]. The remainder r is ab mod N. Determining r can be done by computing q, then subtracting qN from ab. For example, the product 
+
+
+
+
+
+7
+¯
+
+
+⋅
+
+
+15
+¯
+
+
+
+
+{\displaystyle {\overline {7}}\cdot {\overline {15}}}
+
+ is determined by computing 
+
+
+
+7
+⋅
+15
+=
+105
+
+
+{\displaystyle 7\cdot 15=105}
+
+, dividing 
+
+
+
+⌊
+105
+
+/
+
+17
+⌋
+=
+6
+
+
+{\displaystyle \lfloor 105/17\rfloor =6}
+
+, and subtracting 
+
+
+
+105
+−
+6
+⋅
+17
+=
+105
+−
+102
+=
+3
+
+
+{\displaystyle 105-6\cdot 17=105-102=3}
+
+.
+Because the computation of q requires division, it is undesirably expensive on most computer hardware. Montgomery form is a different way of expressing the elements of the ring in which modular products can be computed without expensive divisions. While divisions are still necessary, they can be done with respect to a different divisor R. This divisor can be chosen to be a power of two, for which division can be replaced by shifting, or a whole number of machine words, for which division can be replaced by omitting words. These divisions are fast, so most of the cost of computing modular products using Montgomery form is the cost of computing ordinary products.
+The auxiliary modulus R must be a positive integer such that gcd(N, R) = 1. For computational purposes it is also necessary that division and reduction modulo R be inexpensive, and the modulus is not useful for modular multiplication unless R > N. The Montgomery form or Montgomery representation of the residue class 
+
+
+
+
+
+
+a
+¯
+
+
+
+
+
+{\displaystyle {\bar {a}}}
+
+ with respect to R is aR mod N, that is, it is the representative of the residue class 
+
+
+
+
+
+
+a
+R
+
+¯
+
+
+
+
+{\displaystyle {\overline {aR}}}
+
+. For example, suppose that N = 17 and that R = 100. The Montgomery forms of 3, 5, 7, and 15 are 300 mod 17 = 11, 500 mod 17 = 7, 700 mod 17 = 3, and 1500 mod 17 = 4.
+Addition and subtraction in Montgomery form are the same as ordinary modular addition and subtraction because of the distributive law:
+This is a consequence of the fact that, because gcd(R, N) = 1, multiplication by R is an isomorphism on the additive group Z/NZ. For example, (7 + 15) mod 17 = 5, which in Montgomery form becomes (3 + 4) mod 17 = 7.
+Multiplication in Montgomery form, however, is seemingly more complicated. The usual product of aR and bR does not represent the product of a and b because it has an extra factor of R:
+Computing products in Montgomery form requires removing the extra factor of R. While division by R is cheap, the intermediate product (aR mod N)(bR mod N) is not divisible by R because the modulo operation has destroyed that property. So for instance, the product of the Montgomery forms of 7 and 15 modulo 17 is the product of 3 and 4, which is 12. Since 12 is not divisible by 100, additional effort is required to remove the extra factor of R.
+Removing the extra factor of R can be done by multiplying by an integer R′ such that 
+
+
+
+R
+
+R
+′
+
+≡
+1
+
+
+(
+mod
+
+N
+)
+
+
+
+{\displaystyle RR'\equiv 1{\pmod {N}}}
+
+, that is, by an R′ whose residue class is the modular inverse of R mod N. Then, working modulo N,
+The integer R′ exists because of the assumption that R and N are coprime. It can be constructed using the extended Euclidean algorithm. The extended Euclidean algorithm efficiently determines integers R′ and N′ that satisfy Bézout's identity: 0 < R′ < N, 0 < N′ < R, and:
+This shows that it is possible to do multiplication in Montgomery form. A straightforward algorithm to multiply numbers in Montgomery form is therefore to multiply aR mod N, bR mod N, and R′ as integers and reduce modulo N.
+For example, to multiply 7 and 15 modulo 17 in Montgomery form, again with R = 100, compute the product of 3 and 4 to get 12 as above. The extended Euclidean algorithm implies that 8⋅100 − 47⋅17 = 1, so R′ = 8. Multiply 12 by 8 to get 96 and reduce modulo 17 to get 11. This is the Montgomery form of 3, as expected.
+While the above algorithm is correct, it is slower than multiplication in the standard representation because of the need to multiply by R′ and divide by N. Montgomery reduction, also known as REDC, is an algorithm that simultaneously computes the product by R′ and reduces modulo N more quickly than the naive method. The speed is because all computations are done using only reduction and divisions with respect to R, not N:
+To see that this algorithm is correct, first observe that m is chosen precisely so that T + mN is divisible by R. A number is divisible by R if and only if it is congruent to zero mod R, and we have:
+Therefore, t is an integer. Second, the output is either t or t − N, both of which are congruent to t mod N, so prove that the output is congruent to TR−1 mod N, it suffices to prove that t is. Modulo N, t satisfies:
+Therefore, the output has the correct residue class. Third, m is in [0, R − 1], and therefore T + mN is between 0 and (RN − 1) + (R − 1)N < 2RN. Hence t is less than 2N, and because it's an integer, this puts t in the range [0, 2N − 1]. Therefore, reducing t into the desired range requires at most a single subtraction, so the algorithm's output lies in the correct range.
+To use REDC to compute the product of 7 and 15 modulo 17, first convert to Montgomery form and multiply as integers to get 12 as above. Then apply REDC with R = 100, N = 17, N′ = 47, and T = 12. The first step sets m to 12 ⋅ 47 mod 100 = 64. The second step sets t to (12 + 64 ⋅ 17) / 100. Notice that 12 + 64 ⋅ 17 is 1100, a multiple of 100 as expected. t is set to 11, which is less than 17, so the final result is 11, which agrees with the computation of the previous section.
+As another example, consider the product 7 ⋅ 15 mod 17 but with R = 10. Using the extended Euclidean algorithm, compute −5 ⋅ 10 + 3 ⋅ 17 = 1, so N′ will be −3 mod 10 = 7. The Montgomery forms of 7 and 15 are 70 mod 17 = 2 and 150 mod 17 = 14, respectively. Their product 28 is the input T to REDC, and since 28 < RN = 170, the assumptions of REDC are satisfied. To run REDC, set m to (28 mod 10) ⋅ 32 mod 10 = 256 mod 10 = 6. Then 28 + 6 ⋅ 17 = 130, so t = 13. Because 30 mod 17 = 13, this is the Montgomery form of 3 = 7 ⋅ 15 mod 17.
+Many operations of interest modulo N can be expressed equally well in Montgomery form. Addition, subtraction, negation, comparison for equality, multiplication by an integer not in Montgomery form, and greatest common divisors with N may all be done with the standard algorithms. The Jacobi symbol can be calculated as 
+
+
+
+(
+
+
+
+a
+N
+
+
+
+)
+=
+(
+
+
+
+
+a
+R
+
+N
+
+
+
+)
+
+/
+
+(
+
+
+
+R
+N
+
+
+
+)
+
+
+{\displaystyle ({\tfrac {a}{N}})=({\tfrac {aR}{N}})/({\tfrac {R}{N}})}
+
+ as long as (R/N) is stored.
+When R > N, most other arithmetic operations can be expressed in terms of REDC. This assumption implies that the product of two representatives mod N is less than RN, the exact hypothesis necessary for REDC to generate correct output. In particular, the product of aR mod N and bR mod N is REDC((aR mod N)(bR mod N)). The combined operation of multiplication and REDC is often called Montgomery multiplication.
+Conversion into Montgomery form is done by computing REDC((a mod N)(R2 mod N)). Conversion out of Montgomery form is done by computing REDC(aR mod N). The modular inverse of aR mod N is REDC((aR mod N)−1(R3 mod N)). Modular exponentiation can be done using exponentiation by squaring by initializing the initial product to the Montgomery representation of 1, that is, to R mod N, and by replacing the multiply and square steps by Montgomery multiplies.
+Performing these operations requires knowing at least N′ and R2 mod N. When R is a power of a small positive integer b, N′ can be computed by Hensel's lemma: The inverse of N modulo b is computed by a naive algorithm (for instance, if b = 2 then the inverse is 1), and Hensel's lemma is used repeatedly to find the inverse modulo higher and higher powers of b, stopping when the inverse modulo R is known; N′ is the negation of this inverse. The constants R mod N and R3 mod N can be generated as REDC(R2 mod N) and as REDC((R2 mod N)(R2 mod N)). The fundamental operation is to compute REDC of a product. When standalone REDC is needed, it can be computed as REDC of a product with 1 mod N. The only place where a direct reduction modulo N is necessary is in the precomputation of R2 mod N.
+Most cryptographic applications require numbers that are hundreds or even thousands of bits long. Such numbers are too large to be stored in a single machine word. Typically, the hardware performs multiplication mod some base B, so performing larger multiplications requires combining several small multiplications. The base B is typically 2 for microelectronic applications, 28 for 8-bit firmware,[4] or 232 or 264 for software applications.
+The REDC algorithm requires products modulo R, and typically R > N so that REDC can be used to compute products. However, when R is a power of B, there is a variant of REDC which requires products only of machine word sized integers. Suppose that positive multi-precision integers are stored little endian, that is, x is stored as an array x[0], ..., x[ℓ - 1] such that 0 ≤ x[i] < B for all i and x = ∑ x[i] Bi. The algorithm begins with a multiprecision integer T and reduces it one word at a time. First an appropriate multiple of N is added to make T divisible by B. Then a multiple of N is added to make T divisible by B2, and so on. Eventually T is divisible by R, and after division by R the algorithm is in the same place as REDC was after the computation of t.
+The final comparison and subtraction is done by the standard algorithms.
+The above algorithm is correct for essentially the same reasons that REDC is correct. Each time through the i loop, m is chosen so that T[i] + mN[0] is divisible by B. Then mNBi is added to T. Because this quantity is zero mod N, adding it does not affect the value of T mod N. If mi denotes the value of m computed in the ith iteration of the loop, then the algorithm sets S to T + (∑ mi Bi)N. Because MultiPrecisionREDC and REDC produce the same output, this sum is the same as the choice of m that the REDC algorithm would make.
+The last word of T, T[r + p + 1], is used only to hold a carry, and so consequently it is either zero or one. Depending upon the processor, it may be possible to store this word as a carry flag instead of a full-sized word.
+It is possible to combine multiprecision multiplication and REDC into a single algorithm. This combined algorithm is usually called Montgomery multiplication. Several different implementations are described by Koç, Acar, and Kaliski.[5] The algorithm may use as little as p + 2 words of storage (plus a carry bit).
+As an example, let B = 10, N = 997, and R = 1000. Suppose that a = 314 and b = 271. The Montgomery representations of a and b are 314000 mod 997 = 942 and 271000 mod 997 = 813. Compute 942 ⋅ 813 = 765846. The initial input T to MultiPrecisionREDC will be [6, 4, 8, 5, 6, 7]. The number N will be represented as [7, 9, 9]. The extended Euclidean algorithm says that −299 ⋅ 10 + 3 ⋅ 997 = 1, so N′ will be 7.
+Therefore, before the final comparison and subtraction, S = 1047. The final subtraction yields the number 50. Since the Montgomery representation of 314 ⋅ 271 mod 997 = 349 is 349000 mod 997 = 50, this is the expected result.
+When working in base 2, determining the correct m at each stage is particularly easy: If the current working bit is even, then m is zero and if it's odd, then m is one. Furthermore, because each step of MultiPrecisionREDC requires knowing only the lowest bit, Montgomery multiplication can be easily combined with a carry-save adder.
+When using it as a part of a cryptographically secure algorithm, unmodified Montgomery reduction is vulnerable to side channel attacks, where the attacker can learn about the inner workings of the algorithm by studying the differences in time, power-consumption or any other parameter affected by the fact that the algorithm performs very different actions depending on the input. However it is simple to modify the algorithm or the hardware to make it resistant to such attacks.[4][6]

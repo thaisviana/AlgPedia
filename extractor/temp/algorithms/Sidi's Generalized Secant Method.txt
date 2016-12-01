@@ -1,0 +1,1249 @@
+ABOUT
+Sidi's generalized secant method is a root-finding algorithm, that is, a numerical method for solving equations of the form 
+
+
+
+f
+(
+x
+)
+=
+0
+
+
+{\displaystyle f(x)=0}
+
+ . The method was published by Avram Sidi.[1]
+FULL TEXT
+Sidi's generalized secant method is a root-finding algorithm, that is, a numerical method for solving equations of the form 
+
+
+
+f
+(
+x
+)
+=
+0
+
+
+{\displaystyle f(x)=0}
+
+ . The method was published by Avram Sidi.[1]
+The method is a generalization of the secant method. Like the secant method, it is an iterative method which requires one evaluation of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ in each iteration and no derivatives of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+. The method can converge much faster though, with an order which approaches 2 provided that 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ satisfies the regularity conditions described below.
+
+
+We call 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ the root of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+, that is, 
+
+
+
+f
+(
+α
+)
+=
+0
+
+
+{\displaystyle f(\alpha )=0}
+
+. Sidi's method is an iterative method which generates a sequence 
+
+
+
+{
+
+x
+
+i
+
+
+}
+
+
+{\displaystyle \{x_{i}\}}
+
+ of approximations of 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+. Starting with k + 1 initial approximations 
+
+
+
+
+x
+
+1
+
+
+,
+…
+,
+
+x
+
+k
++
+1
+
+
+
+
+{\displaystyle x_{1},\dots ,x_{k+1}}
+
+, the approximation 
+
+
+
+
+x
+
+k
++
+2
+
+
+
+
+{\displaystyle x_{k+2}}
+
+ is calculated in the first iteration, the approximation 
+
+
+
+
+x
+
+k
++
+3
+
+
+
+
+{\displaystyle x_{k+3}}
+
+ is calculated in the second iteration, etc. Each iteration takes as input the last k + 1 approximations and the value of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ at those approximations. Hence the nth iteration takes as input the approximations 
+
+
+
+
+x
+
+n
+
+
+,
+…
+,
+
+x
+
+n
++
+k
+
+
+
+
+{\displaystyle x_{n},\dots ,x_{n+k}}
+
+ and the values 
+
+
+
+f
+(
+
+x
+
+n
+
+
+)
+,
+…
+,
+f
+(
+
+x
+
+n
++
+k
+
+
+)
+
+
+{\displaystyle f(x_{n}),\dots ,f(x_{n+k})}
+
+.
+The number k must be 1 or larger: k = 1, 2, 3, .... It remains fixed during the execution of the algorithm. In order to obtain the starting approximations 
+
+
+
+
+x
+
+1
+
+
+,
+…
+,
+
+x
+
+k
++
+1
+
+
+
+
+{\displaystyle x_{1},\dots ,x_{k+1}}
+
+ one could carry out a few initializing iterations with a lower value of k.
+The approximation 
+
+
+
+
+x
+
+n
++
+k
++
+1
+
+
+
+
+{\displaystyle x_{n+k+1}}
+
+ is calculated as follows in the nth iteration. A polynomial of interpolation 
+
+
+
+
+p
+
+n
+,
+k
+
+
+(
+x
+)
+
+
+{\displaystyle p_{n,k}(x)}
+
+ of degree k is fitted to the k + 1 points 
+
+
+
+(
+
+x
+
+n
+
+
+,
+f
+(
+
+x
+
+n
+
+
+)
+)
+,
+…
+(
+
+x
+
+n
++
+k
+
+
+,
+f
+(
+
+x
+
+n
++
+k
+
+
+)
+)
+
+
+{\displaystyle (x_{n},f(x_{n})),\dots (x_{n+k},f(x_{n+k}))}
+
+. With this polynomial, the next approximation 
+
+
+
+
+x
+
+n
++
+k
++
+1
+
+
+
+
+{\displaystyle x_{n+k+1}}
+
+ of 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ is calculated as
+
+
+
+
+
+x
+
+n
++
+k
++
+1
+
+
+=
+
+x
+
+n
++
+k
+
+
+−
+
+
+
+f
+(
+
+x
+
+n
++
+k
+
+
+)
+
+
+
+p
+
+n
+,
+k
+
+′
+
+(
+
+x
+
+n
++
+k
+
+
+)
+
+
+
+
+
+{\displaystyle x_{n+k+1}=x_{n+k}-{\frac {f(x_{n+k})}{p_{n,k}'(x_{n+k})}}}
+
+
+
+ 
+ 
+ 
+ 
+(1)
+with 
+
+
+
+
+p
+
+n
+,
+k
+
+′
+
+(
+
+x
+
+n
++
+k
+
+
+)
+
+
+{\displaystyle p_{n,k}'(x_{n+k})}
+
+ the derivative of 
+
+
+
+
+p
+
+n
+,
+k
+
+
+
+
+{\displaystyle p_{n,k}}
+
+ at 
+
+
+
+
+x
+
+n
++
+k
+
+
+
+
+{\displaystyle x_{n+k}}
+
+. Having calculated 
+
+
+
+
+x
+
+n
++
+k
++
+1
+
+
+
+
+{\displaystyle x_{n+k+1}}
+
+ one calculates 
+
+
+
+f
+(
+
+x
+
+n
++
+k
++
+1
+
+
+)
+
+
+{\displaystyle f(x_{n+k+1})}
+
+ and the algorithm can continue with the (n + 1)th iteration. Clearly, this method requires the function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ to be evaluated only once per iteration; it requires no derivatives of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+.
+The iterative cycle is stopped if an appropriate stop-criterion is met. Typically the criterion is that the last calculated approximation is close enough to the sought-after root 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+.
+To execute the algorithm effectively, Sidi's method calculates the interpolating polynomial 
+
+
+
+
+p
+
+n
+,
+k
+
+
+(
+x
+)
+
+
+{\displaystyle p_{n,k}(x)}
+
+ in its Newton form.
+Sidi showed that if the function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is (k + 1)-times continuously differentiable in an open interval 
+
+
+
+I
+
+
+{\displaystyle I}
+
+ containing 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ (that is, 
+
+
+
+f
+∈
+
+C
+
+k
++
+1
+
+
+(
+I
+)
+
+
+{\displaystyle f\in C^{k+1}(I)}
+
+), 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ is a simple root of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ (that is, 
+
+
+
+
+f
+′
+
+(
+α
+)
+≠
+0
+
+
+{\displaystyle f'(\alpha )\neq 0}
+
+) and the initial approximations 
+
+
+
+
+x
+
+1
+
+
+,
+…
+,
+
+x
+
+k
++
+1
+
+
+
+
+{\displaystyle x_{1},\dots ,x_{k+1}}
+
+ are chosen close enough to 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+, then the sequence 
+
+
+
+{
+
+x
+
+i
+
+
+}
+
+
+{\displaystyle \{x_{i}\}}
+
+ converges to 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+, meaning that the following limit holds: 
+
+
+
+
+lim
+
+n
+→
+∞
+
+
+
+x
+
+n
+
+
+=
+α
+
+
+{\displaystyle \lim \limits _{n\to \infty }x_{n}=\alpha }
+
+.
+Sidi furthermore showed that
+and that the sequence converges to 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ of order 
+
+
+
+
+ψ
+
+k
+
+
+
+
+{\displaystyle \psi _{k}}
+
+, i.e.
+The order of convergence 
+
+
+
+
+ψ
+
+k
+
+
+
+
+{\displaystyle \psi _{k}}
+
+ is the only positive root of the polynomial
+We have e.g. 
+
+
+
+
+ψ
+
+1
+
+
+=
+(
+1
++
+
+
+5
+
+
+)
+
+/
+
+2
+
+
+{\displaystyle \psi _{1}=(1+{\sqrt {5}})/2}
+
+ ≈ 1.6180, 
+
+
+
+
+ψ
+
+2
+
+
+
+
+{\displaystyle \psi _{2}}
+
+ ≈ 1.8393 and 
+
+
+
+
+ψ
+
+3
+
+
+
+
+{\displaystyle \psi _{3}}
+
+ ≈ 1.9276. The order approaches 2 from below if k becomes large: 
+
+
+
+
+lim
+
+k
+→
+∞
+
+
+
+ψ
+
+k
+
+
+=
+2
+
+
+{\displaystyle \lim \limits _{k\to \infty }\psi _{k}=2}
+
+ [2] [3]
+Sidi's method reduces to the secant method if we take k = 1. In this case the polynomial 
+
+
+
+
+p
+
+n
+,
+1
+
+
+(
+x
+)
+
+
+{\displaystyle p_{n,1}(x)}
+
+ is the linear approximation of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ around 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ which is used in the nth iteration of the secant method.
+We can expect that the larger we choose k, the better 
+
+
+
+
+p
+
+n
+,
+k
+
+
+(
+x
+)
+
+
+{\displaystyle p_{n,k}(x)}
+
+ is an approximation of 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ around 
+
+
+
+x
+=
+α
+
+
+{\displaystyle x=\alpha }
+
+. Also, the better 
+
+
+
+
+p
+
+n
+,
+k
+
+′
+
+(
+x
+)
+
+
+{\displaystyle p_{n,k}'(x)}
+
+ is an approximation of 
+
+
+
+
+f
+′
+
+(
+x
+)
+
+
+{\displaystyle f'(x)}
+
+ around 
+
+
+
+x
+=
+α
+
+
+{\displaystyle x=\alpha }
+
+. If we replace 
+
+
+
+
+p
+
+n
+,
+k
+
+′
+
+
+
+{\displaystyle p_{n,k}'}
+
+ with 
+
+
+
+
+f
+′
+
+
+
+{\displaystyle f'}
+
+ in (1) we obtain that the next approximation in each iteration is calculated as
+
+
+
+
+
+x
+
+n
++
+k
++
+1
+
+
+=
+
+x
+
+n
++
+k
+
+
+−
+
+
+
+f
+(
+
+x
+
+n
++
+k
+
+
+)
+
+
+
+f
+′
+
+(
+
+x
+
+n
++
+k
+
+
+)
+
+
+
+
+
+{\displaystyle x_{n+k+1}=x_{n+k}-{\frac {f(x_{n+k})}{f'(x_{n+k})}}}
+
+
+
+ 
+ 
+ 
+ 
+(2)
+This is the Newton–Raphson method. It starts off with a single approximation 
+
+
+
+
+x
+
+1
+
+
+
+
+{\displaystyle x_{1}}
+
+ so we can take k = 0 in (2). It does not require an interpolating polynomial but instead one has to evaluate the derivative 
+
+
+
+
+f
+′
+
+
+
+{\displaystyle f'}
+
+ in each iteration. Depending on the nature of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ this may not be possible or practical.
+Once the interpolating polynomial 
+
+
+
+
+p
+
+n
+,
+k
+
+
+(
+x
+)
+
+
+{\displaystyle p_{n,k}(x)}
+
+ has been calculated, one can also calculate the next approximation 
+
+
+
+
+x
+
+n
++
+k
++
+1
+
+
+
+
+{\displaystyle x_{n+k+1}}
+
+ as a solution of 
+
+
+
+
+p
+
+n
+,
+k
+
+
+(
+x
+)
+=
+0
+
+
+{\displaystyle p_{n,k}(x)=0}
+
+ instead of using (1). For k = 1 these two methods are identical: it is the secant method. For k = 2 this method is known as Muller's method.[3] For k = 3 this approach involves finding the roots of a cubic function, which is unattractively complicated. This problem becomes worse for even larger values of k. An additional complication is that the equation 
+
+
+
+
+p
+
+n
+,
+k
+
+
+(
+x
+)
+=
+0
+
+
+{\displaystyle p_{n,k}(x)=0}
+
+ will in general have multiple solutions and a prescription has to be given which of these solutions is the next approximation 
+
+
+
+
+x
+
+n
++
+k
++
+1
+
+
+
+
+{\displaystyle x_{n+k+1}}
+
+. Muller does this for the case k = 2 but no such prescriptions appear to exist for k > 2.

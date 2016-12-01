@@ -1,0 +1,85 @@
+ABOUT
+The Brams–Taylor procedure (BTP) is a procedure for envy-free cake-cutting. It explicated the first finite procedure to produce an envy-free division of a cake among any positive integer number of players.[1]
+FULL TEXT
+The Brams–Taylor procedure (BTP) is a procedure for envy-free cake-cutting. It explicated the first finite procedure to produce an envy-free division of a cake among any positive integer number of players.[1]
+
+
+In 1988, prior to the discovery of the BTP, Sol Garfunkel contended that the problem solved by the theorem, namely n-person envy-free cake-cutting, was among the most important problems in 20th century mathematics.[2]
+The BTP was discovered by Steven Brams and Alan D. Taylor. It was first published in the January 1995 issue of American Mathematical Monthly,[3] and later in 1996 in the authors' book.[4]
+Brams and Taylor hold a joint US patent from 1999 related to the BTP.[5]
+The BTP divides the cake part-by-part. A typical intermediate state of the BTP is as follows:
+As an example of how an IA can be generated, consider the first stage of the Selfridge–Conway discrete procedure:
+After this stage is done, all the cake except 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+ is divided in an envy-free way. Additionally, Alice now has an IA over whoever took 
+
+
+
+(
+A
+∖
+Y
+)
+
+
+{\displaystyle (A\setminus Y)}
+
+. Why? because Alice took either 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ or 
+
+
+
+C
+
+
+{\displaystyle C}
+
+, and both of them are equal to 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ in her opinion. So, in Alice's opinion, whoever took 
+
+
+
+(
+A
+∖
+Y
+)
+
+
+{\displaystyle (A\setminus Y)}
+
+ can also have 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+ – this will not make her envy.
+If we want to make sure that Alice gets an IA over a specific player (e.g. Bob), then a much more complicated procedure is required. It successively divides the cake to smaller and smaller pieces, always giving Alice a piece that she values more than Bob's, so that an IA is maintained. This might take an unbounded time – depending on the exact valuations of Alice and Bob.
+Using the IA procedure, the main BTP procedure creates IAs for all ordered pairs of partners. For example, when there are 4 partners, there are 12 ordered pairs of partners. For each such pair (X,Y), we run a sub-procedure which guarantees that partner X has an IA over partner Y. After every partner has an IA over every other partner, we can just give the remainder to an arbitrary partner and the result is an envy-free division of the entire cake.

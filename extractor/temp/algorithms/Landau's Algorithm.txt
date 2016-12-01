@@ -1,0 +1,146 @@
+ABOUT
+In algebra, a nested radical is a radical expression (one containing a square root sign, cube root sign, etc.) that contains (nests) another radical expression. Examples include
+FULL TEXT
+In algebra, a nested radical is a radical expression (one containing a square root sign, cube root sign, etc.) that contains (nests) another radical expression. Examples include
+which arises in discussing the regular pentagon, and more complicated ones such as
+
+
+Some nested radicals can be rewritten in a form that is not nested. For example,
+Rewriting a nested radical in this way is called denesting. This process is generally considered a difficult problem, although a special class of nested radical can be denested by assuming it denests into a sum of two surds:
+Squaring both sides of this equation yields:
+This can be solved by finding two numbers such that their sum is equal to a and their product is b2c/4, or by equating coefficients of like terms—setting rational and irrational parts on both sides of the equation equal to each other. The solutions for e and d can be obtained by first equating the rational parts:
+which gives
+For the irrational parts note that
+and squaring both sides yields
+By plugging in a − d for e one obtains
+Rearranging terms will give a quadratic equation which can be solved for d using the quadratic formula:
+Since a = d+e, the solution e is the algebraic conjugate of d. If we set
+then
+However, this approach works for nested radicals of the form 
+
+
+
+
+
+a
+±
+b
+
+
+c
+
+
+ 
+
+
+
+
+{\displaystyle {\sqrt {a\pm b{\sqrt {c}}\ }}}
+
+ if and only if 
+
+
+
+
+
+
+a
+
+2
+
+
+−
+
+b
+
+2
+
+
+c
+
+
+
+
+{\displaystyle {\sqrt {a^{2}-b^{2}c}}}
+
+ is a rational number, in which case the nested radical can be denested into a sum of surds.
+In some cases, higher-power radicals may be needed to denest the nested radical.[citation needed]
+Srinivasa Ramanujan demonstrated a number of curious identities involving denesting of radicals. Among them are the following:[1]
+Other odd-looking radicals inspired by Ramanujan include:
+In 1989 Susan Landau introduced the first algorithm for deciding which nested radicals can be denested.[3] Earlier algorithms worked in some cases but not others.
+In trigonometry, the sines and cosines of many angles can be expressed in terms of nested radicals. For example,
+and
+Nested radicals appear in the algebraic solution of the cubic equation. Any cubic equation can be written in simplified form without a quadratic term, as
+whose general solution for one of the roots is
+In the case in which the cubic has only one real root, the real root is given by this expression with the radicands of the cube roots being real and with the cube roots being the real cube roots. In the case of three real roots, the square root expression is an imaginary number; here any real root is expressed by defining the first cube root to be any specific complex cube root of the complex radicand, and by defining the second cube root to be the complex conjugate of the first one. The nested radicals in this solution cannot in general be simplified unless the cubic equation has at least one rational solution. Indeed, if the cubic has three irrational but real solutions, we have the casus irreducibilis, in which all three real solutions are written in terms of cube roots of complex numbers. On the other hand, consider the equation
+which has the rational solutions 1, 2, and —3. The general solution formula given above gives the solutions
+For any given choice of cube root and its conjugate, this contains nested radicals involving complex numbers, yet it is reducible (even though not obviously so) to one of the solutions 1, 2, or –3.
+Under certain conditions infinitely nested square roots such as
+represent rational numbers. This rational number can be found by realizing that x also appears under the radical sign, which gives the equation
+If we solve this equation, we find that x = 2 (the second solution x = −1 doesn't apply, under the convention that the positive square root is meant). This approach can also be used to show that generally, if n > 0, then
+and is the positive root of the equation x2 − x − n = 0. For n = 1, this root is the golden ratio φ, approximately equal to 1.618. The same procedure also works to obtain
+which is the positive root of the equation x2 + x − n = 0.
+Ramanujan posed the following problem to the Journal of Indian Mathematical Society:
+This can be solved by noting a more general formulation:
+Setting this to F(x) and squaring both sides gives us
+which can be simplified to
+It can then be shown that
+So, setting a = 0, n = 1, and x = 2, we have
+Ramanujan stated the following infinite radical denesting in his lost notebook:
+The repeating pattern of the signs is 
+
+
+
+(
++
+,
++
+,
+−
+,
++
+)
+.
+
+
+{\displaystyle (+,+,-,+).}
+
+
+Viète's formula for pi, the ratio of a circle's circumference to its diameter, is
+In certain cases, infinitely nested cube roots such as
+can represent rational numbers as well. Again, by realizing that the whole expression appears inside itself, we are left with the equation
+If we solve this equation, we find that x = 2. More generally, we find that
+is a real root of the equation x3 − x − n = 0 for all n > 0. For n = 1, this root is the plastic number ρ, approximately equal to 1.3247.
+The same procedure also works to get
+as the real root of the equation x3 + x − n = 0 for all n > 0.
+The value obtained for the infinite nested radical by converting to a polynomial equation and solving is valid only if the sequence of values, obtained by successively nesting more and more radicals, converges. For example, the above-considered expression
+if convergent, is the limiting value of the process
+starting from the initial value 
+
+
+
+
+
+n
+
+
+.
+
+
+{\displaystyle {\sqrt {n}}.}
+
+ We have
+Convergence requires that the absolute value of this expression be less than 1 in the neighborhood of the value of x given earlier that satisfies the corresponding polynomial equation. It turns out that this condition is that n > 3/4, which holds if, for example, we require the positive number n to be an integer. Then it is sufficient for convergence that the initial value 
+
+
+
+
+
+n
+
+
+
+
+{\displaystyle {\sqrt {n}}}
+
+ be in the basin of attraction of the indicated stationary value of x.

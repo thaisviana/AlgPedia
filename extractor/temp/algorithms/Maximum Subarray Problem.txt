@@ -1,0 +1,54 @@
+ABOUT
+In computer science, the maximum subarray problem is the task of finding the contiguous subarray within a one-dimensional array of numbers which has the largest sum. For example, for the sequence of values −2, 1, −3, 4, −1, 2, 1, −5, 4; the contiguous subarray with the largest sum is 4, −1, 2, 1, with sum 6.
+FULL TEXT
+In computer science, the maximum subarray problem is the task of finding the contiguous subarray within a one-dimensional array of numbers which has the largest sum. For example, for the sequence of values −2, 1, −3, 4, −1, 2, 1, −5, 4; the contiguous subarray with the largest sum is 4, −1, 2, 1, with sum 6.
+The problem was first posed by Ulf Grenander of Brown University in 1977, as a simplified model for maximum likelihood estimation of patterns in digitized images. A linear time algorithm was found soon afterwards by Jay Kadane of Carnegie-Mellon University (Bentley 1984).
+
+
+Kadane's algorithm consists of a scan through the array values, computing at each position the maximum (positive sum) subarray ending at that position. This subarray is either empty (in which case its sum is zero) or consists of one more element than the maximum subarray ending at the previous position. The algorithm only needs to keep track of the ending position because the implied starting position is just after the last position at which the sum went negative; a higher sum can always be found by dropping any negative-sum prefix. Thus, the problem can be solved with the following code, expressed here in Python:
+A variation of the problem that does not allow zero-length subarrays to be returned, in the case that the entire array consists of negative numbers, can be solved with the following code:
+The algorithm can also be easily modified to keep track of the starting and ending indices of the maximum subarray.
+Because of the way this algorithm uses optimal substructures (the maximum subarray ending at each position is calculated in a simple way from a related but smaller and overlapping subproblem: the maximum subarray ending at the previous position) this algorithm can be viewed as a simple example of dynamic programming.
+The runtime complexity of Kadane's algorithm is 
+
+
+
+O
+(
+n
+)
+
+
+{\displaystyle O(n)}
+
+.
+Similar problems may be posed for higher-dimensional arrays, but their solutions are more complicated; see, e.g., Takaoka (2002). Brodal & Jørgensen (2007) showed how to find the k largest subarray sums in a one-dimensional array, in the optimal time bound 
+
+
+
+O
+(
+n
++
+k
+)
+
+
+{\displaystyle O(n+k)}
+
+.
+The Maximum sum k-disjoint subarrays can also be computed in the optimal time bound 
+
+
+
+O
+(
+n
++
+k
+)
+
+
+{\displaystyle O(n+k)}
+
+ .[1]

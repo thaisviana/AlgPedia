@@ -1,0 +1,58 @@
+ABOUT
+In graph theory, an isomorphism of graphs G and H is a bijection between the vertex sets of G and H
+FULL TEXT
+In graph theory, an isomorphism of graphs G and H is a bijection between the vertex sets of G and H
+such that any two vertices u and v of G are adjacent in G if and only if ƒ(u) and ƒ(v) are adjacent in H. This kind of bijection is commonly described as "edge-preserving bijection", in accordance with the general notion of isomorphism being a structure-preserving bijection.
+If an isomorphism exists between two graphs, then the graphs are called isomorphic and denoted as 
+
+
+
+G
+≃
+H
+
+
+{\displaystyle G\simeq H}
+
+. In the case when the bijection is a mapping of a graph onto itself, i.e., when G and H are one and the same graph, the bijection is called an automorphism of G.
+Graph isomorphism is an equivalence relation on graphs and as such it partitions the class of all graphs into equivalence classes. A set of graphs isomorphic to each other is called an isomorphism class of graphs.
+The two graphs shown below are isomorphic, despite their different looking drawings.
+f(b) = 6
+f(c) = 8
+f(d) = 3
+f(g) = 5
+f(h) = 2
+f(i) = 4
+f(j) = 7
+
+
+In the above definition, graphs are understood to be undirected non-labeled non-weighted graphs. However, the notion of isomorphism may be applied to all other variants of the notion of graph, by adding the requirements to preserve the corresponding additional elements of structure: arc directions, edge weights, etc., with the following exception.
+For labeled graphs, two definitions of isomorphism are in use.
+Under one definition, an isomorphism is a vertex bijection which is both edge-preserving and label-preserving.[1][2]
+Under another definition, an isomorphism is an edge-preserving vertex bijection which preserves equivalence classes of labels, i.e, vertices with equivalent (e.g., the same) labels are mapped onto the vertices with equivalent labels and vice versa; same with edge labels.[3]
+For example, the 
+
+
+
+
+K
+
+2
+
+
+
+
+{\displaystyle K_{2}}
+
+ graph with the two vertices labelled with 1 and 2 has a single automorphism under the first definition, but under the second definition there are two automorphisms.
+The second definition is assumed in certain situations when graphs are endowed with unique labels commonly taken from the integer range 1,...,n, where n is the number of the vertices of the graph, used only to uniquely identify the vertices. In such cases two labeled graphs are sometimes said to be isomorphic if the corresponding underlying unlabeled graphs are isomorphic (otherwise the definition of isomorphism would be trivial).
+The formal notion of "isomorphism", e.g., of "graph isomorphism", captures the informal notion that some objects have "the same structure" if one ignores individual distinctions of "atomic" components of objects in question. Whenever individuality of "atomic" components (vertices and edges, for graphs) is important for correct representation of whatever is modeled by graphs, the model is refined by imposing additional restrictions on the structure, and other mathematical objects are used: digraphs, labeled graphs, colored graphs, rooted trees and so on. The isomorphism relation may also be defined for all these generalizations of graphs: the isomorphism bijection must preserve the elements of structure which define the object type in question: arcs, labels, vertex/edge colors, the root of the rooted tree, etc.
+The notion of "graph isomorphism" allows us to distinguish graph properties inherent to the structures of graphs themselves from properties associated with graph representations: graph drawings, data structures for graphs, graph labelings, etc. For example, if a graph has exactly one cycle, then all graphs in its isomorphism class also have exactly one cycle. On the other hand, in the common case when the vertices of a graph are (represented by) the integers 1, 2,... N, then the expression
+may be different for two isomorphic graphs.
+The Whitney graph isomorphism theorem,[4] shown by H. Whitney, states that two connected graphs are isomorphic if and only if their line graphs are isomorphic, with a single exception: K3, the complete graph on three vertices, and the complete bipartite graph K1,3, which are not isomorphic but both have K3 as their line graph. The Whitney graph theorem can be extended to hypergraphs.[5]
+While graph isomorphism may be studied in a classical mathematical way, as exemplified by the Whitney theorem, it is recognized that it is a problem to be tackled with an algorithmic approach. The computational problem of determining whether two finite graphs are isomorphic is called the graph isomorphism problem.
+Its practical applications include primarily cheminformatics, mathematical chemistry (identification of chemical compounds), and electronic design automation (verification of equivalence of various representations of the design of an electronic circuit).
+The graph isomorphism problem is one of few standard problems in computational complexity theory belonging to NP, but not known to belong to either of its well-known (and, if P ≠ NP, disjoint) subsets: P and NP-complete. It is one of only two, out of 12 total, problems listed in Garey & Johnson (1979) whose complexity remains unresolved, the other being integer factorization. It is however known that if the problem is NP-complete then the polynomial hierarchy collapses to a finite level.[6]
+In November 2015, László Babai, a mathematician and computer scientist at the University of Chicago, claimed to have proven that the graph isomorphism problem is solvable in quasi-polynomial time. This work has not yet been vetted.[7][8]
+Its generalization, the subgraph isomorphism problem, is known to be NP-complete.
+The main areas of research for the problem are design of fast algorithms and theoretical investigations of its computational complexity, both for the general problem and for special classes of graphs.

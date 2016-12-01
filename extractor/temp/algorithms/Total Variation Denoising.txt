@@ -1,0 +1,174 @@
+ABOUT
+In signal processing, Total variation denoising, also known as total variation regularization is a process, most often used in digital image processing, that has applications in noise removal. It is based on the principle that signals with excessive and possibly spurious detail have high total variation, that is, the integral of the absolute gradient of the signal is high. According to this principle, reducing the total variation of the signal subject to it being a close match to the original signal, removes unwanted detail whilst preserving important details such as edges. The concept was pioneered by Rudin et al. in 1992 and is today known as the ROF model.[1]
+FULL TEXT
+In signal processing, Total variation denoising, also known as total variation regularization is a process, most often used in digital image processing, that has applications in noise removal. It is based on the principle that signals with excessive and possibly spurious detail have high total variation, that is, the integral of the absolute gradient of the signal is high. According to this principle, reducing the total variation of the signal subject to it being a close match to the original signal, removes unwanted detail whilst preserving important details such as edges. The concept was pioneered by Rudin et al. in 1992 and is today known as the ROF model.[1]
+This noise removal technique has advantages over simple techniques such as linear smoothing or median filtering which reduce noise but at the same time smooth away edges to a greater or lesser degree. By contrast, total variation denoising is remarkably effective at simultaneously preserving edges whilst smoothing away noise in flat regions, even at low signal-to-noise ratios.[2]
+
+
+For a digital signal 
+
+
+
+
+y
+
+n
+
+
+
+
+{\displaystyle y_{n}}
+
+, we can, for example, define the total variation as:
+Given an input signal 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+, the goal of total variation denoising is to find an approximation, call it 
+
+
+
+
+y
+
+n
+
+
+
+
+{\displaystyle y_{n}}
+
+, that has smaller total variation than 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+ but is "close" to 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+. One measure of closeness is the sum of square errors:
+So the total variation denoising problem amounts to minimizing the following discrete functional over the signal 
+
+
+
+
+y
+
+n
+
+
+
+
+{\displaystyle y_{n}}
+
+:
+By differentiating this functional with respect to 
+
+
+
+
+y
+
+n
+
+
+
+
+{\displaystyle y_{n}}
+
+, we can derive a corresponding Euler–Lagrange equation, that can be numerically integrated with the original signal 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+ as initial condition. This was the original approach.[1] Alternatively, since this is a convex functional, techniques from convex optimization can be used to minimize it and find the solution 
+
+
+
+
+y
+
+n
+
+
+
+
+{\displaystyle y_{n}}
+
+.[3]
+The regularization parameter 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+ plays a critical role in the denoising process. When 
+
+
+
+λ
+=
+0
+
+
+{\displaystyle \lambda =0}
+
+, there is no denoising and the result is identical to the input signal. As 
+
+
+
+λ
+→
+∞
+
+
+{\displaystyle \lambda \to \infty }
+
+, however, the total variation term plays an increasingly strong role, which forces the result to have smaller total variation, at the expense of being less like the input (noisy) signal. Thus, the choice of regularization parameter is critical to achieving just the right amount of noise removal.
+We now consider 2D signals y, such as images. The total variation norm proposed by the 1992 paper is
+and is isotropic and not differentiable. A variation that is sometimes used, since it may sometimes be easier to minimize, is an anisotropic version
+The standard total variation denoising problem is still of the form
+where E is the 2D L2 norm. In contrast to the 1D case, solving this denoising is non-trivial. A recent algorithm that solves this is known as the primal dual method.[4]
+Due in part to much research in compressed sensing in the mid-2000s, there are many algorithms, such as the split-Bregman method, that solve variants of this problem.

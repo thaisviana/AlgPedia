@@ -1,0 +1,546 @@
+ABOUT
+In mathematics, particularly computational algebra, Berlekamp's algorithm is a well-known method for factoring polynomials over finite fields (also known as Galois fields). The algorithm consists mainly of matrix reduction and polynomial GCD computations. It was invented by Elwyn Berlekamp in 1967. It was the dominant algorithm for solving the problem until the Cantor–Zassenhaus algorithm of 1981. It is currently implemented in many well-known computer algebra systems.
+FULL TEXT
+In mathematics, particularly computational algebra, Berlekamp's algorithm is a well-known method for factoring polynomials over finite fields (also known as Galois fields). The algorithm consists mainly of matrix reduction and polynomial GCD computations. It was invented by Elwyn Berlekamp in 1967. It was the dominant algorithm for solving the problem until the Cantor–Zassenhaus algorithm of 1981. It is currently implemented in many well-known computer algebra systems.
+
+
+Berlekamp's algorithm takes as input a square-free polynomial 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ (i.e. one with no repeated factors) of degree 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ with coefficients in a finite field 
+
+
+
+
+
+F
+
+
+q
+
+
+
+
+{\displaystyle \mathbb {F} _{q}}
+
+ and gives as output a polynomial 
+
+
+
+g
+(
+x
+)
+
+
+{\displaystyle g(x)}
+
+ with coefficients in the same field such that 
+
+
+
+g
+(
+x
+)
+
+
+{\displaystyle g(x)}
+
+ divides 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+. The algorithm may then be applied recursively to these and subsequent divisors, until we find the decomposition of 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ into powers of irreducible polynomials (recalling that the ring of polynomials over a finite field is a unique factorization domain).
+All possible factors of 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ are contained within the factor ring
+The algorithm focuses on polynomials 
+
+
+
+g
+(
+x
+)
+∈
+R
+
+
+{\displaystyle g(x)\in R}
+
+ which satisfy the congruence:
+These polynomials form a subalgebra of R (which can be considered as an 
+
+
+
+n
+
+
+{\displaystyle n}
+
+-dimensional vector space over 
+
+
+
+
+
+F
+
+
+q
+
+
+
+
+{\displaystyle \mathbb {F} _{q}}
+
+), called the Berlekamp subalgebra. The Berlekamp subalgebra is of interest because the polynomials 
+
+
+
+g
+(
+x
+)
+
+
+{\displaystyle g(x)}
+
+ it contains satisfy
+In general, not every GCD in the above product will be a non-trivial factor of 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+, but some are, providing the factors we seek.
+Berlekamp's algorithm finds polynomials 
+
+
+
+g
+(
+x
+)
+
+
+{\displaystyle g(x)}
+
+ suitable for use with the above result by computing a basis for the Berlekamp subalgebra. This is achieved via the observation that Berlekamp subalgebra is in fact the kernel of a certain 
+
+
+
+n
+×
+n
+
+
+{\displaystyle n\times n}
+
+ matrix over 
+
+
+
+
+
+F
+
+
+q
+
+
+
+
+{\displaystyle \mathbb {F} _{q}}
+
+, which is derived from the so-called Berlekamp matrix of the polynomial, denoted 
+
+
+
+
+
+Q
+
+
+
+
+{\displaystyle {\mathcal {Q}}}
+
+. If 
+
+
+
+
+
+Q
+
+
+=
+[
+
+q
+
+i
+,
+j
+
+
+]
+
+
+{\displaystyle {\mathcal {Q}}=[q_{i,j}]}
+
+ then 
+
+
+
+
+q
+
+i
+,
+j
+
+
+
+
+{\displaystyle q_{i,j}}
+
+ is the coefficient of the 
+
+
+
+j
+
+
+{\displaystyle j}
+
+-th power term in the reduction of 
+
+
+
+
+x
+
+i
+q
+
+
+
+
+{\displaystyle x^{iq}}
+
+ modulo 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+, i.e.:
+With a certain polynomial 
+
+
+
+g
+(
+x
+)
+∈
+R
+
+
+{\displaystyle g(x)\in R}
+
+, say:
+we may associate the row vector:
+It is relatively straightforward to see that the row vector 
+
+
+
+g
+
+
+Q
+
+
+
+
+{\displaystyle g{\mathcal {Q}}}
+
+ corresponds, in the same way, to the reduction of 
+
+
+
+g
+(
+x
+
+)
+
+q
+
+
+
+
+{\displaystyle g(x)^{q}}
+
+ modulo 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+. Consequently a polynomial 
+
+
+
+g
+(
+x
+)
+∈
+R
+
+
+{\displaystyle g(x)\in R}
+
+ is in the Berlekamp subalgebra if and only if 
+
+
+
+g
+(
+
+
+Q
+
+
+−
+I
+)
+=
+0
+
+
+{\displaystyle g({\mathcal {Q}}-I)=0}
+
+ (where 
+
+
+
+I
+
+
+{\displaystyle I}
+
+ is the 
+
+
+
+n
+×
+n
+
+
+{\displaystyle n\times n}
+
+ identity matrix), i.e. if and only if it is in the null space of 
+
+
+
+
+
+Q
+
+
+−
+I
+
+
+{\displaystyle {\mathcal {Q}}-I}
+
+.
+By computing the matrix 
+
+
+
+
+
+Q
+
+
+−
+I
+
+
+{\displaystyle {\mathcal {Q}}-I}
+
+ and reducing it to reduced row echelon form and then easily reading off a basis for the null space, we may find a basis for the Berlekamp subalgebra and hence construct polynomials 
+
+
+
+g
+(
+x
+)
+
+
+{\displaystyle g(x)}
+
+ in it. We then need to successively compute GCDs of the form above until we find a non-trivial factor. Since the ring of polynomials over a field is a Euclidean domain, we may compute these GCDs using the Euclidean algorithm.
+One important application of Berlekamp's algorithm is in computing discrete logarithms over finite fields 
+
+
+
+
+
+F
+
+
+
+p
+
+n
+
+
+
+
+
+
+{\displaystyle \mathbb {F} _{p^{n}}}
+
+, where 
+
+
+
+p
+
+
+{\displaystyle p}
+
+ is prime and 
+
+
+
+n
+≥
+2
+
+
+{\displaystyle n\geq 2}
+
+. Computing discrete logarithms is an important problem in public key cryptography and error-control coding. For a finite field, the fastest known method is the index calculus method, which involves the factorisation of field elements. If we represent the field 
+
+
+
+
+
+F
+
+
+
+p
+
+n
+
+
+
+
+
+
+{\displaystyle \mathbb {F} _{p^{n}}}
+
+ in the usual way - that is, as polynomials over the base field 
+
+
+
+
+
+F
+
+
+p
+
+
+
+
+{\displaystyle \mathbb {F} _{p}}
+
+, reduced modulo an irreducible polynomial of degree 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ - then this is simply polynomial factorisation, as provided by Berlekamp's algorithm.
+Berlekamp's algorithm may be accessed in the PARI/GP package using the factormod command, and the WolframAlpha [1] website.

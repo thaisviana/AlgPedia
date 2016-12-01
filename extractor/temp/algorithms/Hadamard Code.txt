@@ -1,0 +1,2510 @@
+ABOUT
+The Hadamard code is an error-correcting code that is used for error detection and correction when transmitting messages over very noisy or unreliable channels. In 1971, the code was used to transmit photos of Mars back to Earth from the NASA space probe Mariner 9.[1] Because of its unique mathematical properties, the Hadamard code is not only used by engineers, but also intensely studied in coding theory, mathematics, and theoretical computer science. The Hadamard code is named after the French mathematician Jacques Hadamard. It is also known under the names Walsh code, Walsh family,[2] and Walsh–Hadamard code[3] in recognition of the American mathematician Joseph Leonard Walsh.
+FULL TEXT
+The Hadamard code is an error-correcting code that is used for error detection and correction when transmitting messages over very noisy or unreliable channels. In 1971, the code was used to transmit photos of Mars back to Earth from the NASA space probe Mariner 9.[1] Because of its unique mathematical properties, the Hadamard code is not only used by engineers, but also intensely studied in coding theory, mathematics, and theoretical computer science. The Hadamard code is named after the French mathematician Jacques Hadamard. It is also known under the names Walsh code, Walsh family,[2] and Walsh–Hadamard code[3] in recognition of the American mathematician Joseph Leonard Walsh.
+The Hadamard code is an example of a linear code over a binary alphabet that maps messages of length 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ to codewords of length 
+
+
+
+
+2
+
+k
+
+
+
+
+{\displaystyle 2^{k}}
+
+. It is unique in that each non-zero codeword has a Hamming weight of exactly 
+
+
+
+
+2
+
+k
+−
+1
+
+
+
+
+{\displaystyle 2^{k-1}}
+
+, which implies that the distance of the code is also 
+
+
+
+
+2
+
+k
+−
+1
+
+
+
+
+{\displaystyle 2^{k-1}}
+
+. In standard coding theory notation for block codes, the Hadamard code is a 
+
+
+
+[
+
+2
+
+k
+
+
+,
+k
+,
+
+2
+
+k
+−
+1
+
+
+
+]
+
+2
+
+
+
+
+{\displaystyle [2^{k},k,2^{k-1}]_{2}}
+
+-code, that is, it is a linear code over a binary alphabet, has block length 
+
+
+
+
+2
+
+k
+
+
+
+
+{\displaystyle 2^{k}}
+
+, message length (or dimension) 
+
+
+
+k
+
+
+{\displaystyle k}
+
+, and minimum distance 
+
+
+
+
+2
+
+k
+
+
+
+/
+
+2
+
+
+{\displaystyle 2^{k}/2}
+
+. The block length is very large compared to the message length, but on the other hand, errors can be corrected even in extremely noisy conditions. The punctured Hadamard code is a slightly improved version of the Hadamard code; it is a 
+
+
+
+[
+
+2
+
+k
+
+
+,
+k
++
+1
+,
+
+2
+
+k
+−
+1
+
+
+
+]
+
+2
+
+
+
+
+{\displaystyle [2^{k},k+1,2^{k-1}]_{2}}
+
+-code and thus has a slightly better rate while maintaining the relative distance of 
+
+
+
+1
+
+/
+
+2
+
+
+{\displaystyle 1/2}
+
+, and is thus preferred in practical applications. The punctured Hadamard code is the same as the first order Reed–Muller code over the binary alphabet.[4]
+Normally, Hadamard codes are based on Sylvester's construction of Hadamard matrices, but the term “Hadamard code” is also used to refer to codes constructed from arbitrary Hadamard matrices, which are not necessarily of Sylvester type. In general, such a code is not linear. Such codes were first constructed by R. C. Bose and S. S. Shrikhande in 1959.[5] If n is the size of the Hadamard matrix, the code has parameters 
+
+
+
+(
+n
+,
+2
+n
+,
+n
+
+/
+
+2
+
+)
+
+2
+
+
+
+
+{\displaystyle (n,2n,n/2)_{2}}
+
+, meaning it is a not-necessarily-linear binary code with 2n codewords of block length n and minimal distance n/2. The construction and decoding scheme described below apply for general n, but the property of linearity and the identification with Reed–Muller codes require that n be a power of 2 and that the Hadamard matrix be equivalent to the matrix constructed by Sylvester's method.
+The Hadamard code is a locally decodable code, which provides a way to recover parts of the original message with high probability, while only looking at a small fraction of the received word. This gives rise to applications in computational complexity theory and particularly in the design of probabilistically checkable proofs. Since the relative distance of the Hadamard code is 1/2, normally one can only hope to recover from at most a 1/4 fraction of error. Using list decoding, however, it is possible to compute a short list of possible candidate messages as long as fewer than 
+
+
+
+
+
+1
+2
+
+
+−
+ϵ
+
+
+{\displaystyle {\frac {1}{2}}-\epsilon }
+
+ of the bits in the received word have been corrupted.
+In code division multiple access (CDMA) communication, the Hadamard code is referred to as Walsh Code, and is used to define individual communication channels. It is usual in the CDMA literature to refer to codewords as “codes”. Each user will use a different codeword, or “code”, to modulate their signal. Because Walsh codewords are mathematically orthogonal, a Walsh-encoded signal appears as random noise to a CDMA capable mobile terminal, unless that terminal uses the same codeword as the one used to encode the incoming signal.[6]
+
+
+Hadamard code is the name that is most commonly used for this code in the literature. However, in modern use these error correcting codes are referred to as Walsh–Hadamard codes.
+There is a reason for this:
+Jacques Hadamard did not invent the code himself, but he defined Hadamard matrices around 1893, long before the first error-correcting code, the Hamming code, was developed in the 1940s.
+The Hadamard code is based on Hadamard matrices, and while there are many different Hadamard matrices that could be used here, normally only Sylvester's construction of Hadamard matrices is used to obtain the codewords of the Hadamard code.
+James Joseph Sylvester developed his construction of Hadamard matrices in 1867, which actually predates Hadamard's work on Hadamard matrices. Hence the name Hadamard code is not undisputed and sometimes the code is called Walsh code, honoring the American mathematician Joseph Leonard Walsh.
+A Hadamard code was used during the 1971 Mariner 9 mission to correct for picture transmission errors. The data words used during this mission were 6 bits long, which represented 64 grayscale values.
+Because of limitations of the quality of the alignment of the transmitter at the time (due to Doppler Tracking Loop issues) the maximum useful data length was about 30 bits. Instead of using a repetition code, a [32, 6, 16] Hadamard code was used.
+Errors of up to 7 bits per word could be corrected using this scheme. Compared to a 5-repetition code, the error correcting properties of this Hadamard code are much better, yet its rate is comparable. The efficient decoding algorithm was an important factor in the decision to use this code.
+The circuitry used was called the "Green Machine". It employed the fast Fourier transform which can increase the decoding speed by a factor of three. Since the 1990s use of this code by space programs has more or less ceased, and the Deep Space Network does not support this error correction scheme for its dishes that are greater than 26 m.
+While all Hadamard codes are based on Hadamard matrices, the constructions differ in subtle ways for different scientific fields, authors, and uses. Engineers, who use the codes for data transmission, and coding theorists, who analyse extremal properties of codes, typically want the rate of the code to be as high as possible, even if this means that the construction becomes mathematically slightly less elegant.
+On the other hand, for many applications of Hadamard codes in theoretical computer science it is not so important to achieve the optimal rate, and hence simpler constructions of Hadamard codes are preferred since they can be analyzed more elegantly.
+When given a binary message 
+
+
+
+x
+∈
+{
+0
+,
+1
+
+}
+
+k
+
+
+
+
+{\displaystyle x\in \{0,1\}^{k}}
+
+ of length 
+
+
+
+k
+
+
+{\displaystyle k}
+
+, the Hadamard code encodes the message into a codeword 
+
+
+
+
+Had
+
+(
+x
+)
+
+
+{\displaystyle {\text{Had}}(x)}
+
+ using an encoding function 
+
+
+
+
+Had
+
+:
+{
+0
+,
+1
+
+}
+
+k
+
+
+→
+{
+0
+,
+1
+
+}
+
+
+2
+
+k
+
+
+
+
+
+
+{\displaystyle {\text{Had}}:\{0,1\}^{k}\to \{0,1\}^{2^{k}}}
+
+. This function makes use of the inner product 
+
+
+
+⟨
+x
+,
+y
+⟩
+
+
+{\displaystyle \langle x,y\rangle }
+
+ of two vectors 
+
+
+
+x
+,
+y
+∈
+{
+0
+,
+1
+
+}
+
+k
+
+
+
+
+{\displaystyle x,y\in \{0,1\}^{k}}
+
+, which is defined as follows:
+Then the Hadamard encoding of 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ is defined as the sequence of all inner products with 
+
+
+
+x
+
+
+{\displaystyle x}
+
+:
+As mentioned above, the punctured Hadamard code is used in practice since the Hadamard code itself is somewhat wasteful. This is because, if the first bit of 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ is zero, 
+
+
+
+
+y
+
+1
+
+
+=
+0
+
+
+{\displaystyle y_{1}=0}
+
+, then the inner product contains no information whatsoever about 
+
+
+
+
+x
+
+1
+
+
+
+
+{\displaystyle x_{1}}
+
+, and hence, it is impossible to fully decode 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ from those positions of the codeword alone. On the other hand, when the codeword is restricted to the positions where 
+
+
+
+
+y
+
+1
+
+
+=
+1
+
+
+{\displaystyle y_{1}=1}
+
+, it is still possible to fully decode 
+
+
+
+x
+
+
+{\displaystyle x}
+
+. Hence it makes sense to restrict the Hadamard code to these positions, which gives rise to the punctured Hadamard encoding of 
+
+
+
+x
+
+
+{\displaystyle x}
+
+; that is, 
+
+
+
+
+pHad
+
+(
+x
+)
+=
+
+
+(
+
+
+⟨
+x
+,
+y
+⟩
+
+
+
+)
+
+
+
+y
+∈
+{
+1
+}
+×
+{
+0
+,
+1
+
+}
+
+k
+−
+1
+
+
+
+
+
+
+{\displaystyle {\text{pHad}}(x)={\Big (}\langle x,y\rangle {\Big )}_{y\in \{1\}\times \{0,1\}^{k-1}}}
+
+.
+The Hadamard code is a linear code, and all linear codes can be generated by a generator matrix 
+
+
+
+G
+
+
+{\displaystyle G}
+
+. This is a matrix such that 
+
+
+
+
+Had
+
+(
+x
+)
+=
+x
+⋅
+G
+
+
+{\displaystyle {\text{Had}}(x)=x\cdot G}
+
+ holds for all 
+
+
+
+x
+∈
+{
+0
+,
+1
+
+}
+
+k
+
+
+
+
+{\displaystyle x\in \{0,1\}^{k}}
+
+, where the message 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ is viewed as a row vector and the vector-matrix product is understood in the vector space over the finite field 
+
+
+
+
+
+F
+
+
+2
+
+
+
+
+{\displaystyle \mathbb {F} _{2}}
+
+. In particular, an equivalent way to write the inner product definition for the Hadamard code arises by using the generator matrix whose columns consist of all strings 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ of length 
+
+
+
+k
+
+
+{\displaystyle k}
+
+, that is,
+where 
+
+
+
+
+y
+
+i
+
+
+∈
+{
+0
+,
+1
+
+}
+
+k
+
+
+
+
+{\displaystyle y_{i}\in \{0,1\}^{k}}
+
+ is the 
+
+
+
+i
+
+
+{\displaystyle i}
+
+-th binary vector in lexicographical order. For example, the generator matrix for the Hadamard code of dimension 
+
+
+
+k
+=
+3
+
+
+{\displaystyle k=3}
+
+ is:
+The matrix 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ is a 
+
+
+
+(
+k
+×
+
+2
+
+k
+
+
+)
+
+
+{\displaystyle (k\times 2^{k})}
+
+-matrix and gives rise to the linear operator 
+
+
+
+
+Had
+
+:
+{
+0
+,
+1
+
+}
+
+k
+
+
+→
+{
+0
+,
+1
+
+}
+
+
+2
+
+k
+
+
+
+
+
+
+{\displaystyle {\text{Had}}:\{0,1\}^{k}\to \{0,1\}^{2^{k}}}
+
+.
+The generator matrix of the punctured Hadamard code is obtained by restricting the matrix 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ to the columns whose first entry is one. For example, the generator matrix for the punctured Hadamard code of dimension 
+
+
+
+k
+=
+3
+
+
+{\displaystyle k=3}
+
+ is:
+Then 
+
+
+
+
+pHad
+
+:
+{
+0
+,
+1
+
+}
+
+k
+
+
+→
+{
+0
+,
+1
+
+}
+
+
+2
+
+k
+−
+1
+
+
+
+
+
+
+{\displaystyle {\text{pHad}}:\{0,1\}^{k}\to \{0,1\}^{2^{k-1}}}
+
+ is a linear mapping with 
+
+
+
+
+pHad
+
+(
+x
+)
+=
+x
+⋅
+
+G
+′
+
+
+
+{\displaystyle {\text{pHad}}(x)=x\cdot G'}
+
+.
+For general 
+
+
+
+k
+
+
+{\displaystyle k}
+
+, the generator matrix of the punctured Hadamard code is a parity-check matrix for the extended Hamming code of length 
+
+
+
+
+2
+
+k
+−
+1
+
+
+
+
+{\displaystyle 2^{k-1}}
+
+ and dimension 
+
+
+
+
+2
+
+k
+−
+1
+
+
+−
+k
+
+
+{\displaystyle 2^{k-1}-k}
+
+, which makes the punctured Hadamard code the dual code of the extended Hamming code. Hence an alternative way to define the Hadamard code is in terms of its parity-check matrix: the parity-check matrix of the Hadamard code is equal to the generator matrix of the Hamming code.
+Generalized Hadamard codes are obtained from an n-by-n Hadamard matrix H. In particular, the 2n codewords of the code are the rows of H and the rows of −H. To obtain a code over the alphabet {0,1}, the mapping −1 ↦ 1, 1 ↦ 0, or, equivalently, x ↦ (1 − x)/2, is applied to the matrix elements. That the minimum distance of the code is n/2 follows from the defining property of Hadamard matrices, namely that their rows are mutually orthogonal. This implies that two distinct rows of a Hadamard matrix differ in exactly n/2 positions, and, since negation of a row does not affect orthogonality, that any row of H differs from any row of −H in n/2 positions as well, except when the rows correspond, in which case they differ in n positions.
+To get the punctured Hadamard code above with 
+
+
+
+n
+=
+
+2
+
+k
+−
+1
+
+
+
+
+{\displaystyle n=2^{k-1}}
+
+, the chosen Hadamard matrix H has to be of Sylvester type, which gives rise to a message length of 
+
+
+
+
+log
+
+2
+
+
+⁡
+(
+2
+n
+)
+=
+k
+
+
+{\displaystyle \log _{2}(2n)=k}
+
+.
+The distance of a code is the minimum Hamming distance between any two distinct codewords, i.e., the minimum number of positions at which two distinct codewords differ. Since the Walsh–Hadamard code is a linear code, the distance is equal to the minimum Hamming weight among all of its non-zero codewords. All non-zero codewords of the Walsh–Hadamard code have a Hamming weight of exactly 
+
+
+
+
+2
+
+k
+−
+1
+
+
+
+
+{\displaystyle 2^{k-1}}
+
+ by the following argument.
+Let 
+
+
+
+x
+∈
+{
+0
+,
+1
+
+}
+
+k
+
+
+
+
+{\displaystyle x\in \{0,1\}^{k}}
+
+ be a non-zero message. Then the following value is exactly equal to the fraction of positions in the codeword that are equal to one:
+The fact that the latter value is exactly 
+
+
+
+1
+
+/
+
+2
+
+
+{\displaystyle 1/2}
+
+ is called the random subsum principle. To see that it is true, assume without loss of generality that 
+
+
+
+
+x
+
+1
+
+
+=
+1
+
+
+{\displaystyle x_{1}=1}
+
+. Then, when conditioned on the values of 
+
+
+
+
+y
+
+2
+
+
+,
+…
+,
+
+y
+
+k
+
+
+
+
+{\displaystyle y_{2},\dots ,y_{k}}
+
+, the event is equivalent to 
+
+
+
+
+y
+
+1
+
+
+⋅
+
+x
+
+1
+
+
+=
+b
+
+
+{\displaystyle y_{1}\cdot x_{1}=b}
+
+ for some 
+
+
+
+b
+∈
+{
+0
+,
+1
+}
+
+
+{\displaystyle b\in \{0,1\}}
+
+ depending on 
+
+
+
+
+x
+
+2
+
+
+,
+…
+,
+
+x
+
+k
+
+
+
+
+{\displaystyle x_{2},\dots ,x_{k}}
+
+ and 
+
+
+
+
+y
+
+2
+
+
+,
+…
+,
+
+y
+
+k
+
+
+
+
+{\displaystyle y_{2},\dots ,y_{k}}
+
+. The probability that 
+
+
+
+
+y
+
+1
+
+
+=
+b
+
+
+{\displaystyle y_{1}=b}
+
+ happens is exactly 
+
+
+
+1
+
+/
+
+2
+
+
+{\displaystyle 1/2}
+
+. Thus, in fact, all non-zero codewords of the Hadamard code have relative Hamming weight 
+
+
+
+1
+
+/
+
+2
+
+
+{\displaystyle 1/2}
+
+, and thus, its relative distance is 
+
+
+
+1
+
+/
+
+2
+
+
+{\displaystyle 1/2}
+
+.
+The relative distance of the punctured Hadamard code is 
+
+
+
+1
+
+/
+
+2
+
+
+{\displaystyle 1/2}
+
+ as well, but it no longer has the property that every non-zero codeword has weight exactly 
+
+
+
+1
+
+/
+
+2
+
+
+{\displaystyle 1/2}
+
+ since the all 
+
+
+
+1
+
+
+{\displaystyle 1}
+
+s vector 
+
+
+
+
+1
+
+
+2
+
+k
+−
+1
+
+
+
+
+
+
+{\displaystyle 1^{2^{k-1}}}
+
+ is a codeword of the punctured Hadamard code. This is because the vector 
+
+
+
+x
+=
+
+10
+
+k
+−
+1
+
+
+
+
+{\displaystyle x=10^{k-1}}
+
+ encodes to 
+
+
+
+
+pHad
+
+(
+
+10
+
+k
+−
+1
+
+
+)
+=
+
+1
+
+
+2
+
+k
+−
+1
+
+
+
+
+
+
+{\displaystyle {\text{pHad}}(10^{k-1})=1^{2^{k-1}}}
+
+. Furthermore, whenever 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ is non-zero and not the vector 
+
+
+
+
+10
+
+k
+−
+1
+
+
+
+
+{\displaystyle 10^{k-1}}
+
+, the random subsum principle applies again, and the relative weight of 
+
+
+
+
+Had
+
+(
+x
+)
+
+
+{\displaystyle {\text{Had}}(x)}
+
+ is exactly 
+
+
+
+1
+
+/
+
+2
+
+
+{\displaystyle 1/2}
+
+.
+A locally decodable code is a code that allows a single bit of the original message to be recovered with high probability by only looking at a small portion of the received word.
+A code is 
+
+
+
+q
+
+
+{\displaystyle q}
+
+-query locally decodable if a message bit, 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+, can be recovered by checking 
+
+
+
+q
+
+
+{\displaystyle q}
+
+ bits of the received word. More formally, a code, 
+
+
+
+C
+:
+{
+0
+,
+1
+
+}
+
+k
+
+
+→
+{
+0
+,
+1
+
+}
+
+n
+
+
+
+
+{\displaystyle C:\{0,1\}^{k}\rightarrow \{0,1\}^{n}}
+
+, is 
+
+
+
+(
+q
+,
+δ
+≥
+0
+,
+ϵ
+≥
+0
+)
+
+
+{\displaystyle (q,\delta \geq 0,\epsilon \geq 0)}
+
+-locally decodable, if there exists a probabilistic decoder, 
+
+
+
+D
+:
+{
+0
+,
+1
+
+}
+
+n
+
+
+→
+{
+0
+,
+1
+
+}
+
+k
+
+
+
+
+{\displaystyle D:\{0,1\}^{n}\rightarrow \{0,1\}^{k}}
+
+, such that (Note: 
+
+
+
+Δ
+(
+x
+,
+y
+)
+
+
+{\displaystyle \Delta (x,y)}
+
+ represents the Hamming distance between vectors 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ and 
+
+
+
+y
+
+
+{\displaystyle y}
+
+):
+
+
+
+
+∀
+x
+∈
+{
+0
+,
+1
+
+}
+
+k
+
+
+,
+∀
+y
+∈
+{
+0
+,
+1
+
+}
+
+n
+
+
+
+
+{\displaystyle \forall x\in \{0,1\}^{k},\forall y\in \{0,1\}^{n}}
+
+, 
+
+
+
+Δ
+(
+y
+,
+C
+(
+x
+)
+)
+≤
+δ
+n
+
+
+{\displaystyle \Delta (y,C(x))\leq \delta n}
+
+ implies that 
+
+
+
+P
+r
+[
+D
+(
+y
+
+)
+
+i
+
+
+=
+
+x
+
+i
+
+
+]
+≥
+
+
+1
+2
+
+
++
+ϵ
+,
+∀
+i
+∈
+[
+k
+]
+
+
+{\displaystyle Pr[D(y)_{i}=x_{i}]\geq {\frac {1}{2}}+\epsilon ,\forall i\in [k]}
+
+
+Theorem 1: The Walsh–Hadamard code is 
+
+
+
+(
+2
+,
+δ
+,
+
+
+1
+2
+
+
+−
+2
+δ
+)
+
+
+{\displaystyle (2,\delta ,{\frac {1}{2}}-2\delta )}
+
+-locally decodable for 
+
+
+
+0
+≤
+δ
+≤
+
+
+1
+4
+
+
+
+
+{\displaystyle 0\leq \delta \leq {\frac {1}{4}}}
+
+.
+Lemma 1: For all codewords, 
+
+
+
+c
+
+
+{\displaystyle c}
+
+ in a Walsh–Hadamard code, 
+
+
+
+C
+
+
+{\displaystyle C}
+
+, 
+
+
+
+
+c
+
+i
+
+
++
+
+c
+
+j
+
+
+=
+
+c
+
+i
++
+j
+
+
+
+
+{\displaystyle c_{i}+c_{j}=c_{i+j}}
+
+, where 
+
+
+
+
+c
+
+i
+
+
+,
+
+c
+
+j
+
+
+
+
+{\displaystyle c_{i},c_{j}}
+
+ represent the bits in 
+
+
+
+c
+
+
+{\displaystyle c}
+
+ in positions 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ and 
+
+
+
+j
+
+
+{\displaystyle j}
+
+ respectively, and 
+
+
+
+
+c
+
+i
++
+j
+
+
+
+
+{\displaystyle c_{i+j}}
+
+ represents the bit at position 
+
+
+
+(
+i
++
+j
+)
+
+
+{\displaystyle (i+j)}
+
+.
+Let 
+
+
+
+C
+(
+x
+)
+=
+c
+=
+(
+
+c
+
+0
+
+
+,
+…
+,
+
+c
+
+
+2
+
+n
+
+
+−
+1
+
+
+)
+
+
+{\displaystyle C(x)=c=(c_{0},\dots ,c_{2^{n}-1})}
+
+ be the codeword in 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ corresponding to message 
+
+
+
+x
+
+
+{\displaystyle x}
+
+.
+Let 
+
+
+
+G
+=
+
+
+(
+
+
+
+↑
+
+
+↑
+
+
+
+↑
+
+
+
+
+
+g
+
+0
+
+
+
+
+
+g
+
+1
+
+
+
+
+…
+
+
+
+g
+
+
+2
+
+n
+
+
+−
+1
+
+
+
+
+
+
+↓
+
+
+↓
+
+
+
+↓
+
+
+
+)
+
+
+
+
+{\displaystyle G={\begin{pmatrix}\uparrow &\uparrow &&\uparrow \\g_{0}&g_{1}&\dots &g_{2^{n}-1}\\\downarrow &\downarrow &&\downarrow \end{pmatrix}}}
+
+ be the generator matrix of 
+
+
+
+C
+
+
+{\displaystyle C}
+
+.
+By definition, 
+
+
+
+
+c
+
+i
+
+
+=
+x
+⋅
+
+g
+
+i
+
+
+
+
+{\displaystyle c_{i}=x\cdot g_{i}}
+
+. From this, 
+
+
+
+
+c
+
+i
+
+
++
+
+c
+
+j
+
+
+=
+x
+⋅
+
+g
+
+i
+
+
++
+x
+⋅
+
+g
+
+j
+
+
+=
+x
+⋅
+(
+
+g
+
+i
+
+
++
+
+g
+
+j
+
+
+)
+
+
+{\displaystyle c_{i}+c_{j}=x\cdot g_{i}+x\cdot g_{j}=x\cdot (g_{i}+g_{j})}
+
+. By the construction of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+, 
+
+
+
+
+g
+
+i
+
+
++
+
+g
+
+j
+
+
+=
+
+g
+
+i
++
+j
+
+
+
+
+{\displaystyle g_{i}+g_{j}=g_{i+j}}
+
+. Therefore, by substitution, 
+
+
+
+
+c
+
+i
+
+
++
+
+c
+
+j
+
+
+=
+x
+⋅
+
+g
+
+i
++
+j
+
+
+=
+
+c
+
+i
++
+j
+
+
+
+
+{\displaystyle c_{i}+c_{j}=x\cdot g_{i+j}=c_{i+j}}
+
+.
+To prove theorem 1 we will construct a decoding algorithm and prove its correctness.
+Input: Received word 
+
+
+
+y
+=
+(
+
+y
+
+0
+
+
+,
+…
+,
+
+y
+
+
+2
+
+n
+
+
+−
+1
+
+
+)
+
+
+{\displaystyle y=(y_{0},\dots ,y_{2^{n}-1})}
+
+
+For each 
+
+
+
+i
+∈
+{
+1
+,
+…
+,
+n
+}
+
+
+{\displaystyle i\in \{1,\dots ,n\}}
+
+:
+Output: Message 
+
+
+
+x
+=
+(
+
+x
+
+1
+
+
+,
+…
+,
+
+x
+
+n
+
+
+)
+
+
+{\displaystyle x=(x_{1},\dots ,x_{n})}
+
+
+For any message, 
+
+
+
+x
+
+
+{\displaystyle x}
+
+, and received word 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ such that 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ differs from 
+
+
+
+c
+=
+C
+(
+x
+)
+
+
+{\displaystyle c=C(x)}
+
+ on at most 
+
+
+
+δ
+
+
+{\displaystyle \delta }
+
+ fraction of bits, 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+ can be decoded with probability at least 
+
+
+
+
+
+1
+2
+
+
++
+(
+1
+−
+2
+δ
+)
+
+
+{\displaystyle {\frac {1}{2}}+(1-2\delta )}
+
+.
+By lemma 1, 
+
+
+
+
+c
+
+j
+
+
++
+
+c
+
+k
+
+
+=
+
+c
+
+j
++
+k
+
+
+=
+x
+⋅
+
+g
+
+j
++
+k
+
+
+=
+x
+⋅
+
+e
+
+i
+
+
+=
+
+x
+
+i
+
+
+
+
+{\displaystyle c_{j}+c_{k}=c_{j+k}=x\cdot g_{j+k}=x\cdot e_{i}=x_{i}}
+
+. Since 
+
+
+
+j
+
+
+{\displaystyle j}
+
+ and 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ are picked uniformly, the probability that 
+
+
+
+
+y
+
+j
+
+
+≠
+
+c
+
+j
+
+
+
+
+{\displaystyle y_{j}\not =c_{j}}
+
+ is at most 
+
+
+
+δ
+
+
+{\displaystyle \delta }
+
+. Similarly, the probability that 
+
+
+
+
+y
+
+k
+
+
+≠
+
+c
+
+k
+
+
+
+
+{\displaystyle y_{k}\not =c_{k}}
+
+ is at most 
+
+
+
+δ
+
+
+{\displaystyle \delta }
+
+. By the union bound, the probability that either 
+
+
+
+
+y
+
+j
+
+
+
+
+{\displaystyle y_{j}}
+
+ or 
+
+
+
+
+y
+
+k
+
+
+
+
+{\displaystyle y_{k}}
+
+ do not match the corresponding bits in 
+
+
+
+c
+
+
+{\displaystyle c}
+
+ is at most 
+
+
+
+2
+δ
+
+
+{\displaystyle 2\delta }
+
+. If both 
+
+
+
+
+y
+
+j
+
+
+
+
+{\displaystyle y_{j}}
+
+ and 
+
+
+
+
+y
+
+k
+
+
+
+
+{\displaystyle y_{k}}
+
+ correspond to 
+
+
+
+c
+
+
+{\displaystyle c}
+
+, then lemma 1 will apply, and therefore, the proper value of 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+ will be computed. Therefore, the probability 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+ is decoded properly is at least 
+
+
+
+1
+−
+2
+δ
+
+
+{\displaystyle 1-2\delta }
+
+. Therefore, 
+
+
+
+ϵ
+=
+
+
+1
+2
+
+
+−
+2
+δ
+
+
+{\displaystyle \epsilon ={\frac {1}{2}}-2\delta }
+
+ and for 
+
+
+
+ϵ
+
+
+{\displaystyle \epsilon }
+
+ to be positive, 
+
+
+
+0
+≤
+δ
+≤
+
+
+1
+4
+
+
+
+
+{\displaystyle 0\leq \delta \leq {\frac {1}{4}}}
+
+.
+Therefore, the Walsh–Hadamard code is 
+
+
+
+(
+2
+,
+δ
+,
+
+
+1
+2
+
+
+−
+2
+δ
+)
+
+
+{\displaystyle (2,\delta ,{\frac {1}{2}}-2\delta )}
+
+ locally decodable for 
+
+
+
+0
+≤
+δ
+≤
+
+
+1
+4
+
+
+
+
+{\displaystyle 0\leq \delta \leq {\frac {1}{4}}}
+
+
+For k ≤ 7 the linear Hadamard codes have been proven optimal in the sense of minimum distance.[7]

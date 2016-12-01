@@ -1,0 +1,367 @@
+ABOUT
+In computer science, binary search, also known as half-interval search[1] or logarithmic search,[2] is a search algorithm that finds the position of a target value within a sorted array.[3][4] It compares the target value to the middle element of the array; if they are unequal, the half in which the target cannot lie is eliminated and the search continues on the remaining half until it is successful.
+FULL TEXT
+In computer science, binary search, also known as half-interval search[1] or logarithmic search,[2] is a search algorithm that finds the position of a target value within a sorted array.[3][4] It compares the target value to the middle element of the array; if they are unequal, the half in which the target cannot lie is eliminated and the search continues on the remaining half until it is successful.
+Binary search runs in at worst logarithmic time, making O(log n) comparisons, where n is the number of elements in the array and log is the logarithm. Binary search takes only constant (O(1)) space, meaning that the space taken by the algorithm is the same for any number of elements in the array.[5] Although specialized data structures designed for fast searching—such as hash tables—can be searched more efficiently, binary search applies to a wider range of search problems.
+Although the idea is simple, implementing binary search correctly requires attention to some subtleties about its exit conditions and midpoint calculation.
+There exist numerous variations of binary search. One variation in particular (fractional cascading) speeds up binary searches for the same value in multiple arrays.
+
+
+Binary search works on sorted arrays. A binary search begins by comparing the middle element of the array with the target value. If the target value matches the middle element, its position in the array is returned. If the target value is less than or greater than the middle element, the search continues in the lower or upper half of the array, respectively, eliminating the other half from consideration.[6]
+Given an array A of n elements with values or records A0 ... An−1, sorted such that A0 ≤ ... ≤ An−1, and target value T, the following subroutine uses binary search to find the index of T in A.[6]
+This iterative procedure keeps track of the search boundaries via two variables. Some implementations may place the comparison for equality at the end of the algorithm, resulting in a faster comparison loop but costing one more iteration on average.[7]
+The above procedure only performs exact matches, finding the position of a target value. However, due to the ordered nature of sorted arrays, it is trivial to extend binary search to perform approximate matches. For example, binary search can be used to compute, for a given value, its rank (the number of smaller elements), predecessor (next-smallest element), successor (next-largest element), and nearest neighbor. Range queries seeking the number of elements between two values can be performed with two rank queries.[8]
+The performance of binary search can be analyzed by reducing the procedure to a binary comparison tree, where the root node is the middle element of the array; the middle element of the lower half is left of the root and the middle element of the upper half is right of the root. The rest of the tree is built in a similar fashion. This model represents binary search; starting from the root node, the left or right subtrees are traversed depending on whether the target value is less or more than the node under consideration, representing the successive elimination of elements.[5][11]
+The worst case is 
+
+
+
+⌊
+
+log
+
+2
+
+
+⁡
+n
++
+1
+⌋
+
+
+{\textstyle \lfloor \log _{2}n+1\rfloor }
+
+ iterations (of the comparison loop), where the 
+
+
+
+⌊
+⌋
+
+
+{\textstyle \lfloor \rfloor }
+
+ notation denotes the floor function that rounds its argument down to an integer and log2 is the binary logarithm. This is reached when the search reaches the deepest level of the tree, equivalent to a binary search that has reduced to one element and, in each iteration, always eliminates the smaller subarray out of the two if they are not of equal size.[a][11]
+On average, assuming that each element is equally likely to be searched, by the time the search completes, the target value will most likely be found at the second-deepest level of the tree. This is equivalent to a binary search that completes one iteration before the worst case, reached after 
+
+
+
+
+log
+
+2
+
+
+⁡
+n
+−
+1
+
+
+{\textstyle \log _{2}n-1}
+
+ iterations. However, the tree may be unbalanced, with the deepest level partially filled, and equivalently, the array may not be divided perfectly by the search in some iterations, half of the time resulting in the smaller subarray being eliminated. The actual number of average iterations is slightly higher, at 
+
+
+
+
+log
+
+2
+
+
+⁡
+n
+−
+
+
+
+n
+−
+
+log
+
+2
+
+
+⁡
+n
+−
+1
+
+n
+
+
+
+
+{\textstyle \log _{2}n-{\frac {n-\log _{2}n-1}{n}}}
+
+ iterations.[5] In the best case, where the first middle element selected is equal to the target value, its position is returned after one iteration.[12] In terms of iterations, no search algorithm that is based solely on comparisons can exhibit better average and worst-case performance than binary search.[11]
+Each iteration of the binary search algorithm defined above makes one or two comparisons, checking if the middle element is equal to the target value in each iteration. Again assuming that each element is equally likely to be searched, each iteration makes 1.5 comparisons on average. A variation of the algorithm instead checks for equality at the very end of the search, eliminating on average half a comparison from each iteration. This decreases the time taken per iteration very slightly on most computers, while guaranteeing that the search takes the maximum number of iterations, on average adding one iteration to the search. Because the comparison loop is performed only 
+
+
+
+⌊
+
+log
+
+2
+
+
+⁡
+n
++
+1
+⌋
+
+
+{\textstyle \lfloor \log _{2}n+1\rfloor }
+
+ times in the worst case, for all but enormous 
+
+
+
+n
+
+
+{\textstyle n}
+
+, the slight increase in comparison loop efficiency does not compensate for the extra iteration. Knuth 1998 gives a value of 
+
+
+
+
+2
+
+66
+
+
+
+
+{\textstyle 2^{66}}
+
+ (more than 73 quintillion)[13] elements for this variation to be faster.[b][14][15]
+Fractional cascading can be used to speed up searches of the same value in multiple arrays. Where 
+
+
+
+k
+
+
+{\textstyle k}
+
+ is the number of arrays, searching each array for the target value takes 
+
+
+
+O
+(
+k
+log
+⁡
+n
+)
+
+
+{\textstyle O(k\log n)}
+
+ time; fractional cascading reduces this to 
+
+
+
+O
+(
+k
++
+log
+⁡
+n
+)
+
+
+{\textstyle O(k+\log n)}
+
+.[16]
+Sorted arrays with binary search are a very inefficient solution when insertion and deletion operations are interleaved with retrieval, taking 
+
+
+
+O
+(
+n
+)
+
+
+{\textstyle O(n)}
+
+ time for each such operation, and complicating memory use.
+Other algorithms support much more efficient insertion and deletion, and also fast exact matching.
+For implementing associative arrays, hash tables, a data structure that maps keys to records using a hash function, are generally faster than binary search on a sorted array of records;[17] most implementations require only amortized constant time on average.[c][19] However, hashing is not useful for approximate matches, such as computing the next-smallest, next-largest, and nearest key, as the only information given on a failed search is that the target is not present in any record.[20] Binary search is ideal for such matches, performing them in logarithmic time. In addition, all operations possible on a sorted array can be performed—such as finding the smallest and largest key and performing range searches.[21]
+A binary search tree is a binary tree data structure that works based on the principle of binary search: the records of the tree are arranged in sorted order, and traversal of the tree is performed using a logarithmic time binary search-like algorithm. Insertion and deletion also require logarithmic time in binary search trees. This is faster than the linear time insertion and deletion of sorted arrays, and binary trees retain the ability to perform all the operations possible on a sorted array, including range and approximate queries.[22]
+However, binary search is usually more efficient for searching as binary search trees will most likely be imperfectly balanced, resulting in slightly worse performance than binary search. This applies even to balanced binary search trees, binary search trees that balance their own nodes—as they rarely produce optimally-balanced trees—but to a lesser extent. Although unlikely, the tree may be severely imbalanced with few internal nodes with two children, resulting in the average and worst-case search time approaching 
+
+
+
+n
+
+
+{\textstyle n}
+
+ comparisons.[d] Binary search trees take more space than sorted arrays.[24]
+Binary search trees lend themselves to fast searching in external memory stored in hard disks, where data needs to be sought and paged into main memory. By splitting the tree into pages of some number of elements, each storing in turn a section of the tree, searching in a binary search tree costs fewer disk seeks, improving its overall performance. Notice that this effectively creates a multiway tree, as each page is connected to each other. The B-tree generalizes this method of tree organization; B-trees are frequently used to organize long-term storage such as databases and filesystems.[25][26]
+Linear search is a simple search algorithm that checks every record until it finds the target value. Linear search can be done on a linked list, which allows for faster insertion and deletion than an array. Binary search is faster than linear search for sorted arrays except if the array is short.[e][28] If the array must first be sorted, that cost must be amortized over any searches. Sorting the array also enables efficient approximate matches and other operations.[29]
+The Judy array uses a combination of approaches to provide a highly efficient solution.
+A related problem to search is set membership. Any algorithm that does lookup, like binary search, can also be used for set membership. There are other algorithms that are more specifically suited for set membership. A bit array is the simplest, useful when the range of keys is limited; it is very fast, requiring only 
+
+
+
+O
+(
+1
+)
+
+
+{\textstyle O(1)}
+
+ time. The Judy1 type of Judy array handles 64-bit keys efficiently.
+For approximate results, Bloom filters, another probabilistic data structure based on hashing, store a set of keys by encoding the keys using a bit array and multiple hash functions. Bloom filters are much more space-efficient than bitarrays in most cases and not much slower: with 
+
+
+
+k
+
+
+{\textstyle k}
+
+ hash functions, membership queries require only 
+
+
+
+O
+(
+k
+)
+
+
+{\textstyle O(k)}
+
+ time. However, Bloom filters suffer from false positives.[f][g][31]
+There exist data structures that may improve on binary search in some cases for both searching and other operations available for sorted arrays. For example, searches, approximate matches, and the operations available to sorted arrays can be performed more efficiently than binary search on specialized data structures such as van Emde Boas trees, fusion trees, tries, and bit arrays. However, while these operations can always be done at least efficiently on a sorted array regardless of the keys, such data structures are usually only faster because they exploit the properties of keys with a certain attribute (usually keys that are small integers), and thus will be time or space consuming for keys that do not have that attribute.[21]
+Uniform binary search stores, instead of the lower and upper bounds, the index of the middle element and the number of elements around the middle element that were not eliminated yet. Each step reduces the width by about half. This variation is uniform because the difference between the indices of middle elements and the preceding middle elements chosen remains constant between searches of arrays of the same length.[32]
+Fibonacci search is a method similar to binary search that successively shortens the interval in which the maximum of a unimodal function lies. Given a finite interval, a unimodal function, and the maximum length of the resulting interval, Fibonacci search finds a Fibonacci number such that if the interval is divided equally into that many subintervals, the subintervals would be shorter than the maximum length. After dividing the interval, it eliminates the subintervals in which the maximum cannot lie until one or more contiguous subintervals remain.[33][34]
+Exponential search is an algorithm for searching primarily in infinite lists, but it can be applied to select the upper bound for binary search. It starts by finding the first element with an index that is both a power of two and greater than the target value. Afterwards, it sets that index as the upper bound, and switches to binary search. A search takes 
+
+
+
+⌊
+
+log
+
+2
+
+
+⁡
+x
++
+1
+⌋
+
+
+{\textstyle \lfloor \log _{2}x+1\rfloor }
+
+ iterations of the exponential search and at most 
+
+
+
+⌊
+
+log
+
+2
+
+
+⁡
+x
+⌋
+
+
+{\textstyle \lfloor \log _{2}x\rfloor }
+
+ iterations of the binary search, where 
+
+
+
+x
+
+
+{\textstyle x}
+
+ is the position of the target value. Only if the target value is near the beginning of the array is this variation more efficient than selecting the highest element as the upper bound.[35]
+Instead of merely calculating the midpoint, interpolation search attempts to calculate the position of the target value, taking into account the lowest and highest elements in the array and the length of the array. This is only possible if the array elements are numbers. It works on the basis that the midpoint is not the best guess in many cases; for example, if the target value is close to the highest element in the array, it is likely to be located near the end of the array.[36] When the distribution of the array elements is uniform or near uniform, it makes 
+
+
+
+O
+(
+log
+⁡
+log
+⁡
+n
+)
+
+
+{\textstyle O(\log \log n)}
+
+ comparisons.[36][37][38]
+In practice, interpolation search is slower than binary search for small arrays, as interpolation search requires extra computation, and the slower growth rate of its time complexity compensates for this only for large arrays.[36]
+Fractional cascading is a technique that speeds up binary searches for the same element for both exact and approximate matching in "catalogs" (arrays of sorted elements) associated with vertices in graphs. Searching each catalog separately requires 
+
+
+
+O
+(
+k
+log
+⁡
+n
+)
+
+
+{\textstyle O(k\log n)}
+
+ time, where 
+
+
+
+k
+
+
+{\textstyle k}
+
+ is the number of catalogs. Fractional cascading reduces this to 
+
+
+
+O
+(
+k
++
+log
+⁡
+n
+)
+
+
+{\textstyle O(k+\log n)}
+
+ by storing specific information in each catalog about other catalogs.[16]
+Fractional cascading was originally developed to efficiently solve various computational geometry problems, but it also has been applied elsewhere, in domains such as data mining and Internet Protocol routing.[16]
+In 1946, John Mauchly made the first mention of binary search as part of the Moore School Lectures, the first ever set of lectures regarding any computer-related topic.[39] Every published binary search algorithm worked only for arrays whose length is one less than a power of two[h] until 1960, when Derrick Henry Lehmer published a binary search algorithm that worked on all arrays.[41] In 1962, Hermann Bottenbruch presented an ALGOL 60 implementation of binary search that placed the comparison for equality at the end, increasing the average number of iterations by one, but reducing to one the number of comparisons per iteration.[7] The uniform binary search was presented to Donald Knuth in 1971 by A. K. Chandra of Stanford University and published in Knuth's The Art of Computer Programming.[39] In 1986, Bernard Chazelle and Leonidas J. Guibas introduced fractional cascading, a technique used to speed up binary searches in multiple arrays.[16][42][43]
+Although the basic idea of binary search is comparatively straightforward, the details can be surprisingly tricky ... — Donald Knuth[2]
+When Jon Bentley assigned binary search as a problem in a course for professional programmers, he found that ninety percent failed to provide a correct solution after several hours of working on it,[44] and another study published in 1988 shows that accurate code for it is only found in five out of twenty textbooks.[45] Furthermore, Bentley's own implementation of binary search, published in his 1986 book Programming Pearls, contained an overflow error that remained undetected for over twenty years. The Java programming language library implementation of binary search had the same overflow bug for more than nine years.[46]
+In a practical implementation, the variables used to represent the indices will often be of fixed size, and this can result in an arithmetic overflow for very large arrays. If the midpoint of the span is calculated as (L + R) / 2, then the value of L + R may exceed the range of integers of the data type used to store the midpoint, even if L and R are within the range. If L and R are nonnegative, this can be avoided by calculating the midpoint as L + (R − L) / 2.[47]
+If the target value is greater than the greatest value in the array, and the last index of the array is the maximum representable value of L, the value of L will eventually become too large and overflow. A similar problem will occur if the target value is smaller than the least value in the array and the first index of the array is the smallest representable value of R. In particular, this means that R must not be an unsigned type if the array starts with index 0.
+An infinite loop may occur if the exit conditions for the loop are not defined correctly. Once L exceeds R, the search has failed and must convey the failure of the search. In addition, the loop must be exited when the target element is found, or in the case of an implementation where this check is moved to the end, checks for whether the search was successful or failed at the end must be in place. Bentley found that, in his assignment of binary search, this[which?] error was made by most of the programmers who failed to implement a binary search correctly.[7][48]
+Many languages' standard libraries include binary search routines:

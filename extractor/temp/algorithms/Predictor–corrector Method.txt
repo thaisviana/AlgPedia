@@ -1,0 +1,64 @@
+ABOUT
+In numerical analysis, predictor–corrector methods belong to a class of algorithms designed to integrate ordinary differential equations - to find an unknown function that satisfies a given differential equation. All such algorithms proceed in two steps:
+FULL TEXT
+In numerical analysis, predictor–corrector methods belong to a class of algorithms designed to integrate ordinary differential equations - to find an unknown function that satisfies a given differential equation. All such algorithms proceed in two steps:
+-- The initial, "prediction" step, starts from a function fitted to the function-values and derivative-values at a preceding set of points to extrapolate ("anticipate") this function's value at a subsequent, new point.
+-- The next, "corrector" step refines the initial approximation by using the predicted value of the function and another method to interpolate that unknown function's value at the same subsequent point.
+
+When considering the numerical solution of ordinary differential equations (ODEs), a predictor–corrector method typically uses an explicit method for the predictor step and an implicit method for the corrector step.
+A simple predictor–corrector method (known as Heun's method) can be constructed from the Euler method (an explicit method) and the trapezoidal rule (an implicit method).
+Consider the differential equation
+and denote the step size by 
+
+
+
+h
+
+
+{\displaystyle h}
+
+.
+First, the predictor step: starting from the current value 
+
+
+
+
+y
+
+i
+
+
+
+
+{\displaystyle y_{i}}
+
+, calculate an initial guess value 
+
+
+
+
+
+
+
+y
+~
+
+
+
+
+i
++
+1
+
+
+
+
+{\displaystyle {\tilde {y}}_{i+1}}
+
+ via the Euler method,
+Next, the corrector step: improve the initial guess using trapezoidal rule,
+That value is used as the next step.
+There are different variants of a predictor–corrector method, depending on how often the corrector method is applied. The Predict–Evaluate–Correct–Evaluate (PECE) mode refers to the variant in the above example:
+It is also possible to evaluate the function f only once per step by using the method in Predict–Evaluate–Correct (PEC) mode:
+Additionally, the corrector step can be repeated in the hope that this achieves an even better approximation to the true solution. If the corrector method is run twice, this yields the PECECE mode:
+The PECEC mode has one fewer function evaluation. More generally, if the corrector is run k times, the method is in P(EC)k or P(EC)kE mode. If the corrector method is iterated until it converges, this could be called PE(CE)∞.[1]

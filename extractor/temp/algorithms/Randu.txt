@@ -1,0 +1,111 @@
+ABOUT
+RANDU is a linear congruential pseudorandom number generator of the Park–Miller type, which has been used since the 1960s.[1] It is defined by the recurrence:
+FULL TEXT
+RANDU is a linear congruential pseudorandom number generator of the Park–Miller type, which has been used since the 1960s.[1] It is defined by the recurrence:
+with the initial seed number, 
+
+
+
+
+
+V
+
+0
+
+
+
+
+
+{\displaystyle \scriptstyle V_{0}}
+
+ as an odd number. It generates pseudorandom integers 
+
+
+
+
+
+V
+
+j
+
+
+
+
+
+{\displaystyle \scriptstyle V_{j}}
+
+ which are uniformly distributed in the interval [1, 231 − 1], but in practical applications are often mapped into pseudorandom rationals 
+
+
+
+
+
+X
+
+j
+
+
+
+
+
+{\displaystyle \scriptstyle X_{j}}
+
+ in the interval (0, 1), by the formula:
+IBM's RANDU is widely considered to be one of the most ill-conceived random number generators ever designed.[2] It fails the spectral test badly for dimensions greater than 2, and every integer result is odd. However, at least eight low-order bits are dropped when converted to single-precision (32 bit, 24 bit mantissa) floating-point.
+The reason for choosing these particular values is that with a 32-bit-integer word size, the arithmetic of mod 231 and 
+
+
+
+65539
+
+
+{\displaystyle 65539}
+
+ 
+
+
+
+(
+
+i.e., 
+
+
+2
+
+16
+
+
++
+3
+)
+
+
+{\displaystyle ({\text{i.e., }}2^{16}+3)}
+
+ calculations could be done quickly, using special features of some computer hardware.
+
+
+To show the problem with these values, of multiplier 65539 and modulus 231, consider the following calculation where every term should be taken mod 231. Start by writing the recursive relation as:
+which becomes, after expanding the quadratic factor:
+and allows us to show the correlation between three points as:
+As a result of this correlation, the points in three-dimensional space (mod 231) fall in 15 planes.[3][not in citation given] As a result of the wide use of RANDU in the early 1970s, many results from that time are seen as suspicious.[4]
+This misbehavior was already detected in 1963[5] on a 36-bit computer, and carefully reimplemented[clarification needed] on the 32-bit IBM System/360.
+The start and end of the RANDU’s output period for the initial seed 
+
+
+
+
+
+V
+
+0
+
+
+=
+1
+
+
+
+{\displaystyle \scriptstyle V_{0}=1}
+
+ is:

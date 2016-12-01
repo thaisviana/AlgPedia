@@ -1,0 +1,23 @@
+ABOUT
+In numerical mathematics, interval propagation or interval constraint propagation is the problem of contracting interval domains associated to variables of R without removing any value that is consistent with a set of constraints (i.e., equations or inequalities). It can be used to propagate uncertainties in the situation where errors are represented by intervals.[1] Interval propagation considers an estimation problem as a constraint satisfaction problem.
+FULL TEXT
+In numerical mathematics, interval propagation or interval constraint propagation is the problem of contracting interval domains associated to variables of R without removing any value that is consistent with a set of constraints (i.e., equations or inequalities). It can be used to propagate uncertainties in the situation where errors are represented by intervals.[1] Interval propagation considers an estimation problem as a constraint satisfaction problem.
+
+
+A contractor associated to an equation involving the variables x1,...,xn is an operator which contracts the intervals [x1],..., [xn] (that are supposed to enclose the xi's) without removing any value for the variables that is consistent with the equation.
+A contractor is said to be atomic if it is not built as a composition of other contractors. The main theory that is used to build atomic contractors are based on interval analysis.
+Example. Consider for instance the equation
+which involves the three variables x1,x2 and x3.
+The associated contractor is given by the following statements
+For instance, if
+the contractor performs the following calculus
+For other constraints, a specific algorithm for implementing the atomic contractor should be written. An illustration is the atomic contractor associated to the equation
+is provided by Figures 1 and 2.
+For more complex constraints, a decomposition into atomic constraints (i.e., constraints for which an atomic contractor exists) should be performed. Consider for instance the constraint
+could be decomposed into
+The interval domains that should be associated to the new intermediate variables are
+The principle of the interval propagation is to call all available atomic contractors until no more contraction could be observed. [2] As a result of the Knaster-Tarski theorem, the procedure always converges to intervals which enclose all feasible values for the variables. A formalization of the interval propagation can be made thanks to the contractor algebra. Interval propagation converges quickly to the result and can deal with problems involving several hundred of variables. [3]
+Consider the electronic circuit of Figure 3.
+Assume that from different measurements, we know that
+From the circuit, we have the following equations
+After performing the interval propagation, we get

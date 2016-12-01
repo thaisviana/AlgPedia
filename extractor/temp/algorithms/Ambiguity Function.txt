@@ -1,0 +1,615 @@
+ABOUT
+In pulsed radar and sonar signal processing, an ambiguity function is a two-dimensional function of time delay and Doppler frequency 
+
+
+
+χ
+(
+τ
+,
+f
+)
+
+
+{\displaystyle \chi (\tau ,f)}
+
+ showing the distortion of a returned pulse due to the receiver matched filter[1] (commonly, but not exclusively, used in pulse compression radar) due to the Doppler shift of the return from a moving target. The ambiguity function is determined by the properties of the pulse and the matched filter, and not any particular target scenario. Many definitions of the ambiguity function exist; Some are restricted to narrowband signals and others are suitable to describe the propagation delay and Doppler relationship of wideband signals. Often the definition of the ambiguity function is given as the magnitude squared of other definitions (Weiss[2]). For a given complex baseband pulse 
+
+
+
+s
+(
+t
+)
+
+
+{\displaystyle s(t)}
+
+, the narrowband ambiguity function is given by
+FULL TEXT
+In pulsed radar and sonar signal processing, an ambiguity function is a two-dimensional function of time delay and Doppler frequency 
+
+
+
+χ
+(
+τ
+,
+f
+)
+
+
+{\displaystyle \chi (\tau ,f)}
+
+ showing the distortion of a returned pulse due to the receiver matched filter[1] (commonly, but not exclusively, used in pulse compression radar) due to the Doppler shift of the return from a moving target. The ambiguity function is determined by the properties of the pulse and the matched filter, and not any particular target scenario. Many definitions of the ambiguity function exist; Some are restricted to narrowband signals and others are suitable to describe the propagation delay and Doppler relationship of wideband signals. Often the definition of the ambiguity function is given as the magnitude squared of other definitions (Weiss[2]). For a given complex baseband pulse 
+
+
+
+s
+(
+t
+)
+
+
+{\displaystyle s(t)}
+
+, the narrowband ambiguity function is given by
+where 
+
+
+
+
+
+
+∗
+
+
+
+
+{\displaystyle ^{*}}
+
+ denotes the complex conjugate and 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ is the imaginary unit. Note that for zero Doppler shift (
+
+
+
+f
+=
+0
+
+
+{\displaystyle f=0}
+
+) this reduces to the autocorrelation of 
+
+
+
+s
+(
+t
+)
+
+
+{\displaystyle s(t)}
+
+. A more concise way of representing the ambiguity function consists of examining the one-dimensional zero-delay and zero-Doppler "cuts"; that is, 
+
+
+
+χ
+(
+0
+,
+f
+)
+
+
+{\displaystyle \chi (0,f)}
+
+ and 
+
+
+
+χ
+(
+τ
+,
+0
+)
+
+
+{\displaystyle \chi (\tau ,0)}
+
+, respectively. The matched filter output as a function of a time (the signal one would observe in a radar system) is a Doppler cut, with constant frequency given by the target's Doppler shift: 
+
+
+
+χ
+(
+τ
+,
+
+f
+
+D
+
+
+)
+
+
+{\displaystyle \chi (\tau ,f_{D})}
+
+.
+
+
+Pulse-Doppler radar equipment sends out a series of radio frequency pulses. Each pulse has a certain shape (waveform)—how long the pulse is, what its frequency is, whether the frequency changes during the pulse, and so on. If the waves reflect off a single object, the detector will see a signal which, in the simplest case, is a copy of the original pulse but delayed by a certain time 
+
+
+
+τ
+
+
+{\displaystyle \tau }
+
+—related to the object's distance—and shifted by a certain frequency 
+
+
+
+f
+
+
+{\displaystyle f}
+
+—related to the object's velocity (Doppler shift). If the original emitted pulse waveform is 
+
+
+
+s
+(
+t
+)
+
+
+{\displaystyle s(t)}
+
+, then the detected signal (neglecting noise, attenuation, and distortion, and wideband corrections) will be:
+The detected signal will never be exactly equal to any 
+
+
+
+
+s
+
+τ
+,
+f
+
+
+
+
+{\displaystyle s_{\tau ,f}}
+
+ because of noise. Nevertheless, if the detected signal has a high correlation with 
+
+
+
+
+s
+
+τ
+,
+f
+
+
+
+
+{\displaystyle s_{\tau ,f}}
+
+, for a certain delay and Doppler shift 
+
+
+
+(
+τ
+,
+f
+)
+
+
+{\displaystyle (\tau ,f)}
+
+, then that suggests that there is an object with 
+
+
+
+(
+τ
+,
+f
+)
+
+
+{\displaystyle (\tau ,f)}
+
+. Unfortunately, this procedure may yield false positives, i.e. wrong values 
+
+
+
+(
+
+τ
+′
+
+,
+
+f
+′
+
+)
+
+
+{\displaystyle (\tau ',f')}
+
+ which are nevertheless highly correlated with the detected signal. In this sense, the detected signal may be ambiguous.
+The ambiguity occurs specifically when there is a high correlation between 
+
+
+
+
+s
+
+τ
+,
+f
+
+
+
+
+{\displaystyle s_{\tau ,f}}
+
+ and 
+
+
+
+
+s
+
+
+τ
+′
+
+,
+
+f
+′
+
+
+
+
+
+{\displaystyle s_{\tau ',f'}}
+
+ for 
+
+
+
+(
+τ
+,
+f
+)
+≠
+(
+
+τ
+′
+
+,
+
+f
+′
+
+)
+
+
+{\displaystyle (\tau ,f)\neq (\tau ',f')}
+
+. This motivates the ambiguity function 
+
+
+
+χ
+
+
+{\displaystyle \chi }
+
+. The defining property of 
+
+
+
+χ
+
+
+{\displaystyle \chi }
+
+ is that the correlation between 
+
+
+
+
+s
+
+τ
+,
+f
+
+
+
+
+{\displaystyle s_{\tau ,f}}
+
+ and 
+
+
+
+
+s
+
+
+τ
+′
+
+,
+
+f
+′
+
+
+
+
+
+{\displaystyle s_{\tau ',f'}}
+
+ is equal to 
+
+
+
+χ
+(
+τ
+−
+
+τ
+′
+
+,
+f
+−
+
+f
+′
+
+)
+
+
+{\displaystyle \chi (\tau -\tau ',f-f')}
+
+.
+Different pulse shapes (waveforms) 
+
+
+
+s
+(
+t
+)
+
+
+{\displaystyle s(t)}
+
+ have different ambiguity functions, and the ambiguity function is relevant when choosing what pulse to use.
+The function 
+
+
+
+χ
+
+
+{\displaystyle \chi }
+
+ is complex-valued; the degree of "ambiguity" is related to its magnitude 
+
+
+
+
+|
+
+χ
+(
+τ
+,
+f
+)
+
+
+|
+
+
+2
+
+
+
+
+{\displaystyle |\chi (\tau ,f)|^{2}}
+
+.
+The ambiguity function plays a key role in the field of time–frequency signal processing,[3] as it is related to the Wigner–Ville distribution by a 2-dimensional Fourier transform. This relationship is fundamental to the formulation of other time–frequency distributions: the bilinear time–frequency distributions are obtained by a 2-dimensional filtering in the ambiguity domain (that is, the ambiguity function of the signal). This class of distribution may be better adapted to the signals considered.[4]
+Moreover, the ambiguity distribution can be seen as the short-time Fourier transform of a signal using the signal itself as the window function. This remark has been used to define an ambiguity distribution over the time-scale domain instead of the time-frequency domain.[5]
+The wideband ambiguity function of 
+
+
+
+s
+∈
+
+L
+
+2
+
+
+(
+R
+)
+
+
+{\displaystyle s\in L^{2}(R)}
+
+ is:[2][6]
+where 
+
+
+
+
+α
+
+
+
+{\displaystyle {\alpha }}
+
+ is a time scale factor of the received signal relative to the transmitted signal given by:
+for a target moving with constant radial velocity v. The reflection of the signal is represented with compression (or expansion) in time by the factor 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+, which is equivalent to a compression by the factor 
+
+
+
+
+α
+
+−
+1
+
+
+
+
+{\displaystyle \alpha ^{-1}}
+
+ in the frequency domain (with an amplitude scaling). When the wave speed in the medium is sufficiently faster than the target speed, as is common with radar, this compression in frequency is closely approximated by a shift in frequency Δf = fc*v/c (known as the doppler shift). For a narrow band signal, this approximation results in the narrowband ambiguity function given above, which can be computed efficiently by making use of the FFT algorithm.
+An ambiguity function of interest is a 2-dimensional Dirac delta function or "thumbtack" function; that is, a function which is infinite at (0,0) and zero elsewhere.
+An ambiguity function of this kind would be somewhat of a misnomer; it would have no ambiguities at all, and both the zero-delay and zero-Doppler cuts would be an impulse. This is not usually desirable (if a target has any Doppler shift from an unknown velocity it will disappear from the radar picture), but if Doppler processing is independently performed, knowledge of the precise Doppler frequency allows ranging without interference from any other targets which are not also moving at exactly the same velocity.
+This type of ambiguity function is produced by ideal white noise (infinite in duration and infinite in bandwidth).[7] However, this would require infinite power and is not physically realizable. There is no pulse 
+
+
+
+s
+(
+t
+)
+
+
+{\displaystyle s(t)}
+
+ that will produce 
+
+
+
+δ
+(
+τ
+)
+δ
+(
+f
+)
+
+
+{\displaystyle \delta (\tau )\delta (f)}
+
+ from the definition of the ambiguity function. Approximations exist, however, and noise-like signals such as binary phase-shift keyed waveforms using maximal-length sequences are the best known performers in this regard.[8]
+(1) Maximum value
+(2) Symmetry about the origin
+(3) Volume invariance
+(4) Modulation by a linear FM signal
+(5) Frequency energy spectrum
+Consider a simple square pulse of duration 
+
+
+
+τ
+
+
+{\displaystyle \tau }
+
+ and amplitude 
+
+
+
+A
+
+
+{\displaystyle A}
+
+:
+where 
+
+
+
+u
+(
+t
+)
+
+
+{\displaystyle u(t)}
+
+ is the Heaviside step function. The matched filter output is given by the autocorrelation of the pulse, which is a triangular pulse of height 
+
+
+
+
+τ
+
+2
+
+
+
+A
+
+2
+
+
+
+
+{\displaystyle \tau ^{2}A^{2}}
+
+ and duration 
+
+
+
+2
+τ
+
+
+{\displaystyle 2\tau }
+
+ (the zero-Doppler cut). However, if the measured pulse has a frequency offset due to Doppler shift, the matched filter output is distorted into a sinc function. The greater the Doppler shift, the smaller the peak of the resulting sinc, and the more difficult it is to detect the target.
+In general, the square pulse is not a desirable waveform from a pulse compression standpoint, because the autocorrelation function is too short in amplitude, making it difficult to detect targets in noise, and too wide in time, making it difficult to discern multiple overlapping targets.
+A commonly used radar or sonar pulse is the linear frequency modulated (LFM) pulse (or "chirp"). It has the advantage of greater bandwidth while keeping the pulse duration short and envelope constant. A constant envelope LFM pulse has an ambiguity function similar to that of the square pulse, except that it is skewed in the delay-Doppler plane. Slight Doppler mismatches for the LFM pulse do not change the general shape of the pulse and reduce the amplitude very little, but they do appear to shift the pulse in time. Thus, an uncompensated Doppler shift changes the target's apparent range; this phenomenon is called range-Doppler coupling.
+The ambiguity function can be extended to multistatic radars, which comprise multiple non-colocated transmitters and/or receivers (and can include bistatic radar as a special case).
+For these types of radar, the simple linear relationship between time and range that exists in the monostatic case no longer applies, and is instead dependent on the specific geometry – i.e. the relative location of transmitter(s), receiver(s) and target. Therefore, the multistatic ambiguity function is mostly usefully defined as a function of two- or three-dimensional position and velocity vectors for a given multistatic geometry and transmitted waveform.
+Just as the monostatic ambiguity function is naturally derived from the matched filter, the multistatic ambiguity function is derived from the corresponding optimal multistatic detector – i.e. that which maximizes the probability of detection given a fixed probability of false alarm through joint processing of the signals at all receivers. The nature of this detection algorithm depends on whether or not the target fluctuations observed by each bistatic pair within the multistatic system are mutually correlated. If so, the optimal detector performs phase coherent summation of received signals which can result in very high target location accuracy.[9] If not, the optimal detector performs incoherent summation of received signals which gives diversity gain. Such systems are sometimes described as MIMO radars due to the information theoretic similarities to MIMO communication systems.[10]

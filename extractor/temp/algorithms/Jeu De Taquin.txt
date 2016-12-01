@@ -1,0 +1,252 @@
+ABOUT
+In the mathematical field of combinatorics, jeu de taquin is a construction due to Marcel-Paul Schützenberger (1977) which defines an equivalence relation on the set of skew standard Young tableaux. A jeu de taquin slide is a transformation where the numbers in a tableau are moved around in a way similar to how the pieces in the fifteen puzzle move. Two tableaux are jeu de taquin equivalent if one can be transformed into the other via a sequence of such slides.
+FULL TEXT
+In the mathematical field of combinatorics, jeu de taquin is a construction due to Marcel-Paul Schützenberger (1977) which defines an equivalence relation on the set of skew standard Young tableaux. A jeu de taquin slide is a transformation where the numbers in a tableau are moved around in a way similar to how the pieces in the fifteen puzzle move. Two tableaux are jeu de taquin equivalent if one can be transformed into the other via a sequence of such slides.
+"Jeu de taquin" (literally "teasing game") is the French name for the fifteen puzzle.
+
+
+Given a skew standard Young tableau T of skew shape 
+
+
+
+λ
+
+/
+
+μ
+
+
+{\displaystyle \lambda /\mu }
+
+, pick an adjacent empty cell c that can be added to the skew diagram 
+
+
+
+λ
+∖
+μ
+
+
+{\displaystyle \lambda \setminus \mu }
+
+; what this means is that c must share at least one edge with some cell in T, and 
+
+
+
+{
+c
+}
+∪
+λ
+∖
+μ
+
+
+{\displaystyle \{c\}\cup \lambda \setminus \mu }
+
+ must also be a skew diagram. There are two kinds of slide, depending on whether c lies to the upper left of T or to the lower right. Suppose to begin with that c lies to the upper left. Slide the number from its neighbouring cell into c; if c has neighbours both to its right and below, then pick the smallest of these two numbers. (This rule is designed so that the tableau property of having increasing rows and columns will be preserved.) If the cell that just has been emptied has no neighbour to its right or below, then the slide is completed. Otherwise, slide a number into that cell according to the same rule as before, and continue in this way until the slide is completed. After this transformation, the resulting tableau (with the now-empty cell removed) is still a skew (or possibly straight) standard Young tableau.
+The other kind of slide, when c lies to the lower right of T, just goes in the opposite direction. In this case, one slides numbers into an empty cell from the neighbour to its left or above, picking the larger number whenever there is a choice. The two types of slides are mutual inverses – a slide of one kind can be undone using a slide of the other kind.
+The two slides described above are referred to as slides into the cell c. The first kind of slide (when c lies to the upper left of T) is said to be an inward slide; the second kind is referred to as an outward slide.
+The word "slide" is synonymous to the French word "glissement", which is occasionally also used in English literature.
+Jeu-de-taquin slides change not only the relative order of the entries of a tableau, but also its shape. In the definition given above, the result of a jeu-de-taquin slide is given as a skew diagram along with a skew standard tableau having it as shape. Often, it is better to work with skew shapes rather than skew diagrams. (Recall that every skew shape 
+
+
+
+λ
+
+/
+
+μ
+
+
+{\displaystyle \lambda /\mu }
+
+ gives rise to a skew diagram 
+
+
+
+λ
+∖
+μ
+
+
+{\displaystyle \lambda \setminus \mu }
+
+, but this is not an injective correspondence because, e. g., the distinct skew shapes 
+
+
+
+(
+2
+,
+1
+)
+
+/
+
+(
+2
+)
+
+
+{\displaystyle (2,1)/(2)}
+
+ and 
+
+
+
+(
+1
+,
+1
+)
+
+/
+
+(
+1
+)
+
+
+{\displaystyle (1,1)/(1)}
+
+ yield the same skew diagram.) For this reason, it is useful to modify the above definition of a jeu-de-taquin slide in such a way that, when given a skew shape along with a skew standard tableau and an addable cell as an input, it yields a well-defined skew shape along with a skew standard tableau at its output. This is done as follows: An inward slide of a skew tableau T of skew shape 
+
+
+
+λ
+
+/
+
+μ
+
+
+{\displaystyle \lambda /\mu }
+
+ into a cell c is defined as above when c is a corner of 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ (that is, when 
+
+
+
+μ
+∖
+
+{
+c
+}
+
+
+
+{\displaystyle \mu \setminus \left\{c\right\}}
+
+ is a Young diagram), and the resulting skew shape is set to be 
+
+
+
+(
+λ
+∖
+
+{
+d
+}
+
+)
+
+/
+
+(
+μ
+∖
+
+{
+c
+}
+
+)
+
+
+{\displaystyle (\lambda \setminus \left\{d\right\})/(\mu \setminus \left\{c\right\})}
+
+ where d is the empty cell at the end of the sliding procedure. An outward slide of a skew tableau T of skew shape 
+
+
+
+λ
+
+/
+
+μ
+
+
+{\displaystyle \lambda /\mu }
+
+ into a cell c is defined as above when c is a cocorner of 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+ (that is, when 
+
+
+
+λ
+∪
+
+{
+c
+}
+
+
+
+{\displaystyle \lambda \cup \left\{c\right\}}
+
+ is a Young diagram), and the resulting skew shape is set to be 
+
+
+
+(
+λ
+∪
+
+{
+c
+}
+
+)
+
+/
+
+(
+μ
+∪
+
+{
+d
+}
+
+)
+
+
+{\displaystyle (\lambda \cup \left\{c\right\})/(\mu \cup \left\{d\right\})}
+
+ where d is the empty cell at the end of the sliding procedure.
+Jeu de taquin slides generalize to skew semistandard (as opposed to skew standard) tableaux and retain most of their properties in that generality. The only change that has to be made to the definition of an inward slide, in order for it to generalize, is a rule on how to proceed when the (temporarily) empty cell has neighbours below and to its right, and these neighbours are filled with equal numbers. In this situation, the neighbour below (not the one to the right) has to be slid into the empty cell. A similar change is needed in the definition of an outward slide (where one has to choose the neighbor above). These changes may seem arbitrary, but they actually make the "only reasonable choices" -- meaning the only choices that keep the columns of the tableau (disregarding the empty cell) strictly increasing (as opposed to just weakly increasing).
+Given a skew standard or skew semistandard tableau T, one can iteratively apply inward slides to T until the tableau becomes straight-shape (which means no more inward slides are possible). This can generally be done in many different ways (one can freely choose into which cell to slide first), but the resulting straight-shape tableau is known to be the same for all possible choices. This tableau is called the rectification of T.
+Two skew semistandard tableaux T and S are said to be jeu-de-taquin equivalent if one can transform one of them into the other using a sequence (possibly empty) of slides (both inward and outward slides being allowed). Equivalently, two skew semistandard tableaux T and S are jeu-de-taquin equivalent if and only if they have the same rectification.
+There are various ways to associate a word (in the sense of combinatorics, i. e., a finite sequence of elements of an alphabet -- here the set of positive integers) to every Young tableau. We choose the one apparently most popular: We associate to every Young tableau T the word obtained by concatenating the rows of T from the bottom row to the top row. (Each row of T is seen as a word simply by reading its entries from left to right, and we draw Young tableaux in English notation so that the longest row of a straight-shape tableau appears at the top.) This word will be referred to as the reading word, or briefly as the word, of T.
+It can then be shown that two skew semistandard tableaux T and S are jeu-de-taquin equivalent if and only if the reading words of T and S are Knuth equivalent. As a consequence, the rectification of a skew semistandard tableau T can also be obtained as the insertion tableau of the reading word of T under the Robinson-Schensted correspondence.
+Jeu de taquin can be used to define an operation on standard Young tableaux of any given shape, which turns out to be an involution, although this is not obvious from the definition. One starts by emptying the square in the top-left corner, turning the tableau into a skew tableau with one less square. Now apply a jeu de taquin slide to turn that skew tableau into a straight one, which will free one square on the outside border. Then fill this square with the negative of the value that was originally removed at the top-left corner; this negated value is considered part of a new tableau rather than of the original tableau, and its position will not change in the sequel. Now as long as the original tableau has some entries left, repeat the operation of removing the entry x of the top-left corner, performing a jeu de taquin slide on what is left of the original tableau, and placing the value −x into the square so freed. When all entries of the original tableau have been handled, their negated values are arranged in such a way that rows and columns are increasing. Finally one can add an appropriate constant to all entries to obtain a Young tableau with positive entries.
+Jeu de taquin is closely connected to such topics as the Robinson–Schensted–Knuth correspondence, the Littlewood–Richardson rule, and Knuth equivalence.

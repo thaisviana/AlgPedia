@@ -1,0 +1,1128 @@
+ABOUT
+In machine learning and mathematical optimization, loss functions for classification are computationally feasible loss functions representing the price paid for inaccuracy of predictions in classification problems.[1] Given 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ as the vector space of all possible inputs, and Y = {–1,1} as the vector space of all possible outputs, we wish to find a function 
+
+
+
+f
+:
+X
+↦
+
+R
+
+
+
+{\displaystyle f:X\mapsto \mathbb {R} }
+
+ which best maps 
+
+
+
+f
+(
+
+
+
+x
+→
+
+
+
+)
+
+
+{\displaystyle f({\vec {x}})}
+
+ to 
+
+
+
+y
+
+
+{\displaystyle y}
+
+.[2] However, because of incomplete information, noise in the measurement, or probabilistic components in the underlying process, it is possible for the same 
+
+
+
+
+
+
+x
+→
+
+
+
+
+
+{\displaystyle {\vec {x}}}
+
+ to generate different 
+
+
+
+y
+
+
+{\displaystyle y}
+
+.[3] As a result, the goal of the learning problem is to minimize expected risk, defined as
+FULL TEXT
+In machine learning and mathematical optimization, loss functions for classification are computationally feasible loss functions representing the price paid for inaccuracy of predictions in classification problems.[1] Given 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ as the vector space of all possible inputs, and Y = {–1,1} as the vector space of all possible outputs, we wish to find a function 
+
+
+
+f
+:
+X
+↦
+
+R
+
+
+
+{\displaystyle f:X\mapsto \mathbb {R} }
+
+ which best maps 
+
+
+
+f
+(
+
+
+
+x
+→
+
+
+
+)
+
+
+{\displaystyle f({\vec {x}})}
+
+ to 
+
+
+
+y
+
+
+{\displaystyle y}
+
+.[2] However, because of incomplete information, noise in the measurement, or probabilistic components in the underlying process, it is possible for the same 
+
+
+
+
+
+
+x
+→
+
+
+
+
+
+{\displaystyle {\vec {x}}}
+
+ to generate different 
+
+
+
+y
+
+
+{\displaystyle y}
+
+.[3] As a result, the goal of the learning problem is to minimize expected risk, defined as
+where 
+
+
+
+V
+(
+f
+(
+
+
+
+x
+→
+
+
+
+)
+,
+y
+)
+
+
+{\displaystyle V(f({\vec {x}}),y)}
+
+ represents the loss function, and 
+
+
+
+p
+(
+
+
+
+x
+→
+
+
+
+,
+y
+)
+
+
+{\displaystyle p({\vec {x}},y)}
+
+ represents the probability distribution of the data, which can equivalently be written using Bayes' theorem as
+In practice, the probability distribution 
+
+
+
+p
+(
+
+
+
+x
+→
+
+
+
+,
+y
+)
+
+
+{\displaystyle p({\vec {x}},y)}
+
+ is unknown. Consequently, utilizing a training set of 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ independently and identically distributed samples
+drawn from the data sample space, one seeks to minimize empirical risk
+as a proxy for expected risk.[3] (See statistical learning theory for a more detailed description.)
+For computational ease, it is standard practice to write loss functions as functions of only one variable. Within classification, loss functions are generally written solely in terms of the product of the true classifier 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ and the predicted value 
+
+
+
+f
+(
+
+
+
+x
+→
+
+
+
+)
+
+
+{\displaystyle f({\vec {x}})}
+
+.[4] Selection of a loss function within this framework
+impacts the optimal 
+
+
+
+
+f
+
+S
+
+
+∗
+
+
+
+
+{\displaystyle f_{S}^{*}}
+
+ which minimizes empirical risk, as well as the computational complexity of the learning algorithm.
+Given the binary nature of classification, a natural selection for a loss function (assuming equal cost for false positives and false negatives) would be the 0–1 indicator function which takes the value of 0 if the predicted classification equals that of the true class or a 1 if the predicted classification does not match the true class. This selection is modeled by
+where 
+
+
+
+H
+
+
+{\displaystyle H}
+
+ indicates the Heaviside step function. However, this loss function is non-convex and non-smooth, and solving for the optimal solution is an NP-hard combinatorial optimization problem.[5] As a result, it is better to substitute continuous, convex loss function surrogates which are tractable for commonly used learning algorithms. In addition to their computational tractability, one can show that the solutions to the learning problem using these loss surrogates allows for the recovery of the actual solution to the original classification problem.[6] Some of these surrogates are described below.
+
+
+Utilizing Bayes' theorem, it can be shown that the optimal 
+
+
+
+
+f
+
+∗
+
+
+
+
+{\displaystyle f^{*}}
+
+ for a binary classification problem is equivalent to
+(when 
+
+
+
+p
+(
+1
+∣
+
+
+
+x
+→
+
+
+
+)
+≠
+p
+(
+−
+1
+∣
+
+
+
+x
+→
+
+
+
+)
+
+
+{\displaystyle p(1\mid {\vec {x}})\neq p(-1\mid {\vec {x}})}
+
+).
+Furthermore, it can be shown that for any convex loss function 
+
+
+
+V
+(
+y
+
+f
+
+0
+
+
+(
+
+
+
+x
+→
+
+
+
+)
+)
+
+
+{\displaystyle V(yf_{0}({\vec {x}}))}
+
+, where 
+
+
+
+
+f
+
+0
+
+
+
+
+{\displaystyle f_{0}}
+
+ is the function that minimizes this loss, if 
+
+
+
+
+f
+
+0
+
+
+(
+
+
+
+x
+→
+
+
+
+)
+≠
+0
+
+
+{\displaystyle f_{0}({\vec {x}})\neq 0}
+
+ and 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ is decreasing in a neighborhood of 0, then 
+
+
+
+
+f
+
+∗
+
+
+(
+
+
+
+x
+→
+
+
+
+)
+=
+sgn
+⁡
+(
+
+f
+
+0
+
+
+(
+
+
+
+x
+→
+
+
+
+)
+)
+
+
+{\displaystyle f^{*}({\vec {x}})=\operatorname {sgn} (f_{0}({\vec {x}}))}
+
+ where 
+
+
+
+sgn
+
+
+{\displaystyle \operatorname {sgn} }
+
+ is the sign function (for proof see [1]). Note also that 
+
+
+
+
+f
+
+0
+
+
+(
+
+
+
+x
+→
+
+
+
+)
+≠
+0
+
+
+{\displaystyle f_{0}({\vec {x}})\neq 0}
+
+ in practice when the loss function is differentiable at the origin. This fact confers a consistency property upon all convex loss functions; specifically, all convex loss functions will lead to consistent results with the 0–1 loss function given the presence of infinite data. Consequently, we can bound the difference of any of these convex loss function from expected risk.[1]
+Given the properties of binary classification properties, it is possible to simplify the calculation of expected risk from the integral specified above. Specifically,
+The second equality follows from the properties described above. The third equality follows since 
+
+
+
+
+
+
+x
+→
+
+
+
+
+
+{\displaystyle {\vec {x}}}
+
+ is simply data and since 
+
+
+
+
+∫
+
+X
+
+
+p
+(
+x
+)
+
+d
+x
+=
+1
+
+
+{\displaystyle \int _{X}p(x)\,dx=1}
+
+. Finally, the fourth equality follows from the fact that 1 and −1 are the only possible values for 
+
+
+
+y
+
+
+{\displaystyle y}
+
+, and the fifth because 
+
+
+
+p
+(
+−
+1
+∣
+x
+)
+=
+1
+−
+p
+(
+1
+∣
+x
+)
+
+
+{\displaystyle p(-1\mid x)=1-p(1\mid x)}
+
+. As a result, one can solve for the minimizers of 
+
+
+
+I
+[
+f
+]
+
+
+{\displaystyle I[f]}
+
+ for any convex loss functions with these properties by differentiating the last equality with respect to 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ and setting the derivative equal to 0. Thus, minimizers for all of the loss function surrogates described below are easily obtained as functions of only 
+
+
+
+f
+(
+
+
+
+x
+→
+
+
+
+)
+
+
+{\displaystyle f({\vec {x}})}
+
+ and 
+
+
+
+p
+(
+1
+∣
+x
+)
+
+
+{\displaystyle p(1\mid x)}
+
+.[3]
+While more commonly used in regression, the square loss function can be re-written as a function 
+
+
+
+ϕ
+(
+y
+f
+(
+
+
+
+x
+→
+
+
+
+)
+)
+
+
+{\displaystyle \phi (yf({\vec {x}}))}
+
+ and utilized for classification. Defined as
+the square loss function is both convex and smooth and matches the 0–1 indicator function when 
+
+
+
+y
+f
+(
+
+
+
+x
+→
+
+
+
+)
+=
+0
+
+
+{\displaystyle yf({\vec {x}})=0}
+
+ and when 
+
+
+
+y
+f
+(
+
+
+
+x
+→
+
+
+
+)
+=
+1
+
+
+{\displaystyle yf({\vec {x}})=1}
+
+. However, the square loss function tends to penalize outliers excessively, leading to slower convergence rates (with regards to sample complexity) than for the logistic loss or hinge loss functions.[1] In addition, functions which yield high values of 
+
+
+
+f
+(
+
+
+
+x
+→
+
+
+
+)
+
+
+{\displaystyle f({\vec {x}})}
+
+ for some 
+
+
+
+x
+∈
+X
+
+
+{\displaystyle x\in X}
+
+ will perform poorly with the square loss function, since high values of 
+
+
+
+y
+f
+(
+
+
+
+x
+→
+
+
+
+)
+
+
+{\displaystyle yf({\vec {x}})}
+
+ will be penalized severely, regardless of whether the signs of 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ and 
+
+
+
+f
+(
+
+
+
+x
+→
+
+
+
+)
+
+
+{\displaystyle f({\vec {x}})}
+
+ match.
+A benefit of the square loss function is that its structure lends itself to easy cross validation of regularization parameters. Specifically for Tikhonov regularization, one can solve for the regularization parameter using leave-one-out cross-validation in the same time as it would take to solve a single problem.[7]
+The minimizer of 
+
+
+
+I
+[
+f
+]
+
+
+{\displaystyle I[f]}
+
+ for the square loss function is
+This function notably equals 
+
+
+
+
+f
+
+∗
+
+
+
+
+{\displaystyle f^{*}}
+
+ for the 0–1 loss function when 
+
+
+
+p
+(
+1
+∣
+x
+)
+=
+1
+
+
+{\displaystyle p(1\mid x)=1}
+
+ or 
+
+
+
+p
+(
+1
+∣
+x
+)
+=
+0
+
+
+{\displaystyle p(1\mid x)=0}
+
+, but predicts a value between the two classifications when the classification of 
+
+
+
+
+
+
+x
+→
+
+
+
+
+
+{\displaystyle {\vec {x}}}
+
+ is not known with absolute certainty.
+The hinge loss function is defined as
+The hinge loss provides a relatively tight, convex upper bound on the 0–1 indicator function. Specifically, the hinge loss equals the 0–1 indicator function when 
+
+
+
+sgn
+⁡
+(
+f
+(
+
+
+
+x
+→
+
+
+
+)
+)
+=
+y
+
+
+{\displaystyle \operatorname {sgn} (f({\vec {x}}))=y}
+
+ and 
+
+
+
+
+|
+
+y
+f
+(
+
+
+
+x
+→
+
+
+
+)
+
+|
+
+≥
+1
+
+
+{\displaystyle |yf({\vec {x}})|\geq 1}
+
+. In addition, the empirical risk minimization of this loss is equivalent to the classical formulation for support vector machines (SVMs). Correctly classified points lying outside the margin boundaries of the support vectors are not penalized, whereas points within the margin boundaries or on the wrong side of the hyperplane are penalized in a linear fashion compared to their distance from the correct boundary.[5]
+While the hinge loss function is both convex and continuous, it is not smooth (that is not differentiable) at 
+
+
+
+y
+f
+(
+
+
+
+x
+→
+
+
+
+)
+=
+1
+
+
+{\displaystyle yf({\vec {x}})=1}
+
+. Consequently, the hinge loss function cannot be used with gradient descent methods or stochastic gradient descent methods which rely on differentiability over the entire domain. However, the hinge loss does have a subgradient at 
+
+
+
+y
+f
+(
+
+
+
+x
+→
+
+
+
+)
+=
+1
+
+
+{\displaystyle yf({\vec {x}})=1}
+
+, which allows for the utilization of subgradient descent methods.[5] SVMs utilizing the hinge loss function can also be solved using quadratic programming.
+The minimizer of 
+
+
+
+I
+[
+f
+]
+
+
+{\displaystyle I[f]}
+
+ for the hinge loss function is
+when 
+
+
+
+p
+(
+1
+∣
+x
+)
+≠
+0.5
+
+
+{\displaystyle p(1\mid x)\neq 0.5}
+
+, which matches that of the 0–1 indicator function. This conclusion makes the hinge loss quite attractive, as bounds can be placed on the difference between expected risk and the sign of hinge loss function.[1]
+The logistic loss function is defined as
+This function displays a similar convergence rate to the hinge loss function, and since it is continuous, gradient descent methods can be utilized. However, the logistic loss function does not assign zero penalty to any points. Instead, functions that correctly classify points with high confidence (i.e., with high values of 
+
+
+
+
+|
+
+f
+(
+
+
+
+x
+→
+
+
+
+)
+
+|
+
+
+
+{\displaystyle |f({\vec {x}})|}
+
+) are penalized less. This structure leads the logistic loss function to be sensitive to outliers in the data.
+The minimizer of 
+
+
+
+I
+[
+f
+]
+
+
+{\displaystyle I[f]}
+
+ for the logistic loss function is
+This function is undefined when 
+
+
+
+p
+(
+1
+∣
+x
+)
+=
+1
+
+
+{\displaystyle p(1\mid x)=1}
+
+ or 
+
+
+
+p
+(
+1
+∣
+x
+)
+=
+0
+
+
+{\displaystyle p(1\mid x)=0}
+
+ (tending toward ∞ and −∞ respectively), but predicts a smooth curve which grows when 
+
+
+
+p
+(
+1
+∣
+x
+)
+
+
+{\displaystyle p(1\mid x)}
+
+ increases and equals 0 when 
+
+
+
+p
+(
+1
+∣
+x
+)
+=
+0.5
+
+
+{\displaystyle p(1\mid x)=0.5}
+
+.[3]
+Using the alternative label convention 
+
+
+
+t
+=
+(
+1
++
+y
+)
+
+/
+
+2
+
+
+{\displaystyle t=(1+y)/2}
+
+ so that 
+
+
+
+t
+∈
+{
+0
+,
+1
+}
+
+
+{\displaystyle t\in \{0,1\}}
+
+, the cross entropy loss is defined as
+The cross entropy loss is closely related to the Kullback-Leibler divergence between the empirical distribution and the predicted distribution. This function is not naturally represented as a product of the true label and the predicted value, but is convex and can be minimized using stochastic gradient descent methods. The cross entropy loss is ubiquitous in modern deep neural networks.

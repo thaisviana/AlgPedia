@@ -1,0 +1,6 @@
+ABOUT
+Beam Stack Search[1] is a search algorithm that combines chronological backtracking (that is, depth-first search) with beam search and is similar to Depth-First Beam Search.[2] Both search algorithms are anytime algorithms that find good but likely sub-optimal solutions quickly, like beam search, then backtrack and continue to find improved solutions until convergence to an optimal solution.
+FULL TEXT
+Beam Stack Search[1] is a search algorithm that combines chronological backtracking (that is, depth-first search) with beam search and is similar to Depth-First Beam Search.[2] Both search algorithms are anytime algorithms that find good but likely sub-optimal solutions quickly, like beam search, then backtrack and continue to find improved solutions until convergence to an optimal solution.
+Beam Stack Search uses the beam stack as a data structure to integrate chronological backtracking with beam search and can be combined with the divide and conquer algorithm technique, resulting in divide-and-conquer beam-stack search.
+Beam Search Using Limited Discrepancy Backtracking[2] (BULB) is a search algorithm that combines limited discrepancy search with beam search and thus performs non-chronological backtracking, which often outperforms the chronological backtracking done by Beam Stack Search and Depth-First Beam Search.

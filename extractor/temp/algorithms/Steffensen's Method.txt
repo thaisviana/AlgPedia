@@ -1,0 +1,1057 @@
+ABOUT
+In numerical analysis, Steffensen's method is a root-finding technique similar to Newton's method, named after Johan Frederik Steffensen. Steffensen's method also achieves quadratic convergence, but without using derivatives as Newton's method does.
+FULL TEXT
+In numerical analysis, Steffensen's method is a root-finding technique similar to Newton's method, named after Johan Frederik Steffensen. Steffensen's method also achieves quadratic convergence, but without using derivatives as Newton's method does.
+
+
+The simplest form of the formula for Steffensen's method occurs when it is used to find the zeros, or roots, of a function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ ; that is: to find the value 
+
+
+
+
+x
+
+⋆
+
+
+
+
+{\displaystyle x_{\star }}
+
+ that satisfies 
+
+
+
+f
+(
+
+x
+
+⋆
+
+
+)
+=
+0
+
+
+{\displaystyle f(x_{\star })=0}
+
+ . Near the solution 
+
+
+
+
+x
+
+⋆
+
+
+
+
+{\displaystyle x_{\star }}
+
+ , the function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is supposed to approximately satisfy 
+
+
+
+−
+1
+<
+
+f
+′
+
+(
+
+x
+
+⋆
+
+
+)
+<
+0
+
+
+{\displaystyle -1<f'(x_{\star })<0}
+
+ ; this condition makes the function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ adequate as a correction for finding its own solution, although it is not required to work efficiently. For some functions, Steffensen's method can work even if this condition is not met, but in such a case, the starting value 
+
+
+
+
+x
+
+0
+
+
+ 
+
+
+{\displaystyle x_{0}\ }
+
+ must be very close to the actual solution 
+
+
+
+
+x
+
+⋆
+
+
+
+
+{\displaystyle x_{\star }}
+
+ , and convergence to the solution may be slow.
+Given an adequate starting value 
+
+
+
+
+x
+
+0
+
+
+ 
+
+
+{\displaystyle x_{0}\ }
+
+ , a sequence of values 
+
+
+
+
+x
+
+0
+
+
+,
+ 
+
+x
+
+1
+
+
+,
+ 
+
+x
+
+2
+
+
+,
+…
+,
+ 
+
+x
+
+n
+
+
+,
+…
+
+
+{\displaystyle x_{0},\ x_{1},\ x_{2},\dots ,\ x_{n},\dots }
+
+ can be generated using the formula below. When it works, each value in the sequence is much closer to the solution 
+
+
+
+
+x
+
+⋆
+
+
+
+
+{\displaystyle x_{\star }}
+
+ than the prior value. The value 
+
+
+
+
+x
+
+n
+
+
+ 
+
+
+{\displaystyle x_{n}\ }
+
+ from the current step generates the value 
+
+
+
+
+x
+
+n
++
+1
+
+
+ 
+
+
+{\displaystyle x_{n+1}\ }
+
+ for the next step, via this formula:[1]
+for n = 0, 1, 2, 3, ... , where the slope function 
+
+
+
+g
+(
+
+x
+
+n
+
+
+)
+
+
+{\displaystyle g(x_{n})}
+
+ is a composite of the original function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ given by the following formula:
+The function 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ is the average value for the slope of the function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ between the last sequence point 
+
+
+
+(
+x
+,
+y
+)
+=
+(
+
+x
+
+n
+
+
+,
+ 
+f
+(
+
+x
+
+n
+
+
+)
+)
+
+
+{\displaystyle (x,y)=(x_{n},\ f(x_{n}))}
+
+ and the auxiliary point 
+
+
+
+(
+x
+,
+y
+)
+=
+(
+
+x
+
+n
+
+
++
+h
+,
+ 
+f
+(
+
+x
+
+n
+
+
++
+h
+)
+)
+
+
+{\displaystyle (x,y)=(x_{n}+h,\ f(x_{n}+h))}
+
+ , with the step 
+
+
+
+h
+=
+f
+(
+
+x
+
+n
+
+
+)
+ 
+
+
+{\displaystyle h=f(x_{n})\ }
+
+ . It is also called the first-order divided difference of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ between those two points.
+It is only for the purpose of finding 
+
+
+
+h
+
+
+{\displaystyle h}
+
+ for this auxiliary point that the value of the function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ must be an adequate correction to get closer to its own solution, and for that reason fulfill the requirement that 
+
+
+
+−
+1
+<
+
+f
+′
+
+(
+
+x
+
+⋆
+
+
+)
+<
+0
+
+
+{\displaystyle -1<f'(x_{\star })<0}
+
+ . For all other parts of the calculation, Steffensen's method only requires the function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ to be continuous and to actually have a nearby solution. Several modest modifications of the step 
+
+
+
+h
+
+
+{\displaystyle h}
+
+ in the slope calculation 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ exist to accommodate functions 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ that do not quite meet the requirement.
+The main advantage of Steffensen’s method is that it has quadratic convergence like Newton's method – that is, both methods find roots to an equation 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ just as ‘quickly’. In this case quickly means that for both methods, the number of correct digits in the answer doubles with each step. But the formula for Newton's method requires a separate function for the derivative; Steffensen’s method does not. So Steffensen's method can be programmed for a generic function, as long as that function meets the constraints mentioned above.
+The price for the quick convergence is the double function evaluation: both 
+
+
+
+f
+(
+
+x
+
+n
+
+
+)
+
+
+{\displaystyle f(x_{n})}
+
+ and 
+
+
+
+f
+(
+
+x
+
+n
+
+
++
+h
+)
+
+
+{\displaystyle f(x_{n}+h)}
+
+ must be calculated, which might be time-consuming if 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is a complicated function. For comparison, the secant method needs only one function evaluation per step, so with two function evaluations the secant method can do two steps, and two steps of the secant method increase the number of correct digits by a factor of 1.6 . The equally time-consuming single step of Steffensen’s (or Newton’s) method increases the correct digits by a factor of 2 , which is only slightly better than the secant method.
+Similar to Newton's method and most other quadratically convergent algorithms, the crucial weakness in Steffensen’s method is the choice of the starting value 
+
+
+
+
+x
+
+0
+
+
+
+
+{\displaystyle x_{0}}
+
+ . If the value of 
+
+
+
+
+x
+
+0
+
+
+
+
+{\displaystyle x_{0}}
+
+ is not close ‘enough’ to the actual solution 
+
+
+
+
+x
+
+⋆
+
+
+
+
+{\displaystyle x_{\star }}
+
+ , the method may fail and the sequence of values 
+
+
+
+
+x
+
+0
+
+
+,
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+,
+
+x
+
+3
+
+
+,
+…
+
+
+{\displaystyle x_{0},x_{1},x_{2},x_{3},\dots }
+
+ may either flip flop between two extremes, or diverge to infinity (possibly both!).
+The version of Steffensen's method implemented in the MATLAB code shown below can be found using the Aitken's delta-squared process for accelerating convergence of a sequence. To compare the following formulae to the formulae in the section above, notice that 
+
+
+
+
+x
+
+n
+
+
+=
+p
+ 
+−
+ 
+
+p
+
+n
+
+
+
+
+{\displaystyle x_{n}=p\ -\ p_{n}}
+
+ . This method assumes starting with a linearly convergent sequence and increases the rate of convergence of that sequence. If the signs of 
+
+
+
+
+p
+
+n
+
+
+,
+ 
+
+p
+
+n
++
+1
+
+
+,
+ 
+
+p
+
+n
++
+2
+
+
+
+
+{\displaystyle p_{n},\ p_{n+1},\ p_{n+2}}
+
+ agree and 
+
+
+
+
+p
+
+n
+
+
+ 
+
+
+{\displaystyle p_{n}\ }
+
+ is sufficiently close to the desired limit of the sequence 
+
+
+
+p
+ 
+
+
+{\displaystyle p\ }
+
+, we can assume the following:
+then
+so
+and hence
+
+Solving for the desired limit of the sequence 
+
+
+
+p
+
+
+{\displaystyle p}
+
+ gives:
+
+
+
+
+which results in the more rapidly convergent sequence:
+Here is the source for an implementation of Steffensen's Method in MATLAB.
+Steffensen's method can also be used to find an input 
+
+
+
+x
+=
+
+x
+
+⋆
+
+
+
+
+{\displaystyle x=x_{\star }}
+
+ for a different kind of function 
+
+
+
+F
+
+
+{\displaystyle F}
+
+ that produces output the same as its input: 
+
+
+
+
+x
+
+⋆
+
+
+=
+F
+(
+
+x
+
+⋆
+
+
+)
+
+
+{\displaystyle x_{\star }=F(x_{\star })}
+
+ for the special value 
+
+
+
+
+x
+
+⋆
+
+
+
+
+{\displaystyle x_{\star }}
+
+ . Solutions like 
+
+
+
+
+x
+
+⋆
+
+
+
+
+{\displaystyle x_{\star }}
+
+ are called fixed points. Many such functions can be used to find their own solutions by repeatedly recycling the result back as input, but the rate of convergence can be slow, or the function can fail to converge at all, depending on the individual function. Steffensen's method accelerates this convergence, to make it quadratic.
+This method for finding fixed points of a real-valued function has been generalised for functions 
+
+
+
+F
+:
+X
+→
+X
+
+
+{\displaystyle F:X\to X}
+
+ on a Banach space 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ . The generalised method assumes that a family of bounded linear operators 
+
+
+
+{
+L
+(
+u
+,
+v
+)
+:
+u
+,
+v
+∈
+X
+}
+
+
+{\displaystyle \{L(u,v):u,v\in X\}}
+
+ associated with 
+
+
+
+u
+ 
+
+
+{\displaystyle u\ }
+
+ and 
+
+
+
+v
+ 
+
+
+{\displaystyle v\ }
+
+ can be found to satisfy the condition[2]
+In the simple form given in the section above, the function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ simply takes in and produces real numbers. There, the function 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ is a divided difference. In the generalized form here, the operator 
+
+
+
+L
+
+
+{\displaystyle L}
+
+ is the analogue of a divided difference for use in the Banach space. The operator 
+
+
+
+L
+
+
+{\displaystyle L}
+
+ is equivalent to a matrix whose entries are all functions of vector arguments 
+
+
+
+u
+ 
+
+
+{\displaystyle u\ }
+
+ and 
+
+
+
+v
+ 
+
+
+{\displaystyle v\ }
+
+.
+Steffensen's method is then very similar to the Newton's method, except that it uses the divided difference
+
+
+
+L
+(
+F
+(
+x
+)
+,
+x
+)
+ 
+
+
+{\displaystyle L(F(x),x)\ }
+
+ instead of the derivative 
+
+
+
+
+F
+′
+
+(
+x
+)
+ 
+
+
+{\displaystyle F'(x)\ }
+
+ . It is thus defined by
+for 
+
+
+
+n
+=
+1
+,
+ 
+2
+,
+ 
+3
+,
+ 
+.
+.
+.
+
+
+{\displaystyle n=1,\ 2,\ 3,\ ...}
+
+ , and where 
+
+
+
+I
+ 
+
+
+{\displaystyle I\ }
+
+ is the identity operator.
+If the operator 
+
+
+
+L
+ 
+
+
+{\displaystyle L\ }
+
+ satisfies
+for some constant 
+
+
+
+K
+ 
+
+
+{\displaystyle K\ }
+
+ , then the method converges quadratically to a fixed point of 
+
+
+
+F
+
+
+{\displaystyle F}
+
+ if the initial approximation 
+
+
+
+
+x
+
+0
+
+
+ 
+
+
+{\displaystyle x_{0}\ }
+
+ is "sufficiently close" to the desired solution 
+
+
+
+
+x
+
+⋆
+
+
+
+
+{\displaystyle x_{\star }}
+
+ , that satisfies 
+
+
+
+
+x
+
+⋆
+
+
+=
+F
+(
+
+x
+
+⋆
+
+
+)
+
+
+{\displaystyle x_{\star }=F(x_{\star })}
+
+ .

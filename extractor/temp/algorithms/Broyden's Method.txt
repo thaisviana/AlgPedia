@@ -1,0 +1,26 @@
+ABOUT
+In numerical analysis, Broyden's method is a quasi-Newton method for finding roots in k variables. It was originally described by C. G. Broyden in 1965.[1]
+FULL TEXT
+In numerical analysis, Broyden's method is a quasi-Newton method for finding roots in k variables. It was originally described by C. G. Broyden in 1965.[1]
+Newton's method for solving f(x) = 0 uses the Jacobian matrix, J, at every iteration. However, computing this Jacobian is a difficult and expensive operation. The idea behind Broyden's method is to compute the whole Jacobian only at the first iteration, and to do a rank-one update at the other iterations.
+In 1979 Gay proved that when Broyden's method is applied to a linear system of size n × n, it terminates in 2 n steps,[2] although like all quasi-Newton methods, it may not converge for nonlinear systems.
+
+
+In the secant method, we replace the first derivative f′ at xn with the finite difference approximation:
+and proceed similar to Newton's Method:
+where n is the iteration index.
+To solve a system of k nonlinear equations
+where f is a vector-valued function of vector x:
+For such problems, Broyden gives a generalization of the one-dimensional Newton's method, replacing the derivative with the Jacobian J. The Jacobian matrix is determined iteratively based on the secant equation in the finite difference approximation:
+where n is the iteration index. For clarity, let us define:
+so the above may be rewritten as:
+The above equation is underdetermined when k is greater than one. Broyden suggests using the current estimate of the Jacobian matrix Jn − 1 and improving upon it by taking the solution to the secant equation that is a minimal modification to Jn − 1:
+This minimizes the following Frobenius norm:
+We may then proceed in the Newton direction:
+Broyden also suggested using the Sherman-Morrison formula to update directly the inverse of the Jacobian matrix:
+This first method is commonly known as the "good Broyden's method".
+A similar technique can be derived by using a slightly different modification to Jn − 1. This yields a second method, the so-called "bad Broyden's method" (but see[3]):
+This minimizes a different Frobenius norm:
+Many other quasi-Newton schemes have been suggested in optimization, where one seeks a maximum or minimum by finding the root of the first derivative (gradient in multi dimensions). The Jacobian of the gradient is called Hessian and is symmetric, adding further constraints to its update.
+Broyden has defined not only two methods, but a whole class of methods. Other members of this class have been added by other authors.
+Simple basic explanation: The story of the blind archer

@@ -1,0 +1,350 @@
+ABOUT
+The bisection method in mathematics is a root-finding method that repeatedly bisects an interval and then selects a subinterval in which a root must lie for further processing. It is a very simple and robust method, but it is also relatively slow. Because of this, it is often used to obtain a rough approximation to a solution which is then used as a starting point for more rapidly converging methods.[1] The method is also called the interval halving method,[2] the binary search method,[3] or the dichotomy method.[4]
+FULL TEXT
+The bisection method in mathematics is a root-finding method that repeatedly bisects an interval and then selects a subinterval in which a root must lie for further processing. It is a very simple and robust method, but it is also relatively slow. Because of this, it is often used to obtain a rough approximation to a solution which is then used as a starting point for more rapidly converging methods.[1] The method is also called the interval halving method,[2] the binary search method,[3] or the dichotomy method.[4]
+
+
+The method is applicable for numerically solving the equation f(x) = 0 for the real variable x, where f is a continuous function defined on an interval [a, b] and where f(a) and f(b) have opposite signs. In this case a and b are said to bracket a root since, by the intermediate value theorem, the continuous function f must have at least one root in the interval (a, b).
+At each step the method divides the interval in two by computing the midpoint c = (a+b) / 2 of the interval and the value of the function f(c) at that point. Unless c is itself a root (which is very unlikely, but possible) there are now only two possibilities: either f(a) and f(c) have opposite signs and bracket a root, or f(c) and f(b) have opposite signs and bracket a root.[5] The method selects the subinterval that is guaranteed to be a bracket as the new interval to be used in the next step. In this way an interval that contains a zero of f is reduced in width by 50% at each step. The process is continued until the interval is sufficiently small.
+Explicitly, if f(a) and f(c) have opposite signs, then the method sets c as the new value for b, and if f(b) and f(c) have opposite signs then the method sets c as the new a. (If f(c)=0 then c may be taken as the solution and the process stops.) In both cases, the new f(a) and f(b) have opposite signs, so the method is applicable to this smaller interval.[6]
+The input for the method is a continuous function f, an interval [a, b], and the function values f(a) and f(b). The function values are of opposite sign (there is at least one zero crossing within the interval). Each iteration performs these steps:
+When implementing the method on a computer, there can be problems with finite precision, so there are often additional convergence tests or limits to the number of iterations. Although f is continuous, finite precision may preclude a function value ever being zero. For f(x) = x − π, there will never be a finite representation of x that gives zero. Floating point representations also have limited precision, so at some point the midpoint of [a, b] will be either a or b.
+The method may be written in pseudocode as follows:[7]
+Suppose that the bisection method is used to find a root of the polynomial
+First, two numbers 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ and 
+
+
+
+b
+
+
+{\displaystyle b}
+
+ have to be found such that 
+
+
+
+f
+(
+a
+)
+
+
+{\displaystyle f(a)}
+
+ and 
+
+
+
+f
+(
+b
+)
+
+
+{\displaystyle f(b)}
+
+ have opposite signs. For the above function, 
+
+
+
+a
+=
+1
+
+
+{\displaystyle a=1}
+
+ and 
+
+
+
+b
+=
+2
+
+
+{\displaystyle b=2}
+
+ satisfy this criterion, as
+and
+Because the function is continuous, there must be a root within the interval [1, 2].
+In the first iteration, the end points of the interval which brackets the root are 
+
+
+
+
+a
+
+1
+
+
+=
+1
+
+
+{\displaystyle a_{1}=1}
+
+ and 
+
+
+
+
+b
+
+1
+
+
+=
+2
+
+
+{\displaystyle b_{1}=2}
+
+, so the midpoint is
+The function value at the midpoint is 
+
+
+
+f
+(
+
+c
+
+1
+
+
+)
+=
+(
+1.5
+
+)
+
+3
+
+
+−
+(
+1.5
+)
+−
+2
+=
+−
+0.125
+
+
+{\displaystyle f(c_{1})=(1.5)^{3}-(1.5)-2=-0.125}
+
+. Because 
+
+
+
+f
+(
+
+c
+
+1
+
+
+)
+
+
+{\displaystyle f(c_{1})}
+
+ is negative, 
+
+
+
+a
+=
+1
+
+
+{\displaystyle a=1}
+
+ is replaced with 
+
+
+
+a
+=
+1.5
+
+
+{\displaystyle a=1.5}
+
+ for the next iteration to ensure that 
+
+
+
+f
+(
+a
+)
+
+
+{\displaystyle f(a)}
+
+ and 
+
+
+
+f
+(
+b
+)
+
+
+{\displaystyle f(b)}
+
+ have opposite signs. As this continues, the interval between 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ and 
+
+
+
+b
+
+
+{\displaystyle b}
+
+ will become increasingly smaller, converging on the root of the function. See this happen in the table below.
+After 13 iterations, it becomes apparent that there is a convergence to about 1.521: a root for the polynomial.
+The method is guaranteed to converge to a root of f if f is a continuous function on the interval [a, b] and f(a) and f(b) have opposite signs. The absolute error is halved at each step so the method converges linearly, which is comparatively slow.
+Specifically, if c1 = a+b/2 is the midpoint of the initial interval, and cn is the midpoint of the interval in the nth step, then the difference between cn and a solution c is bounded by[8]
+This formula can be used to determine in advance the number of iterations that the bisection method would need to converge to a root to within a certain tolerance. The number of iterations needed, n, to achieve a given error (or tolerance), ε, is given by: 
+
+
+
+n
+=
+
+log
+
+2
+
+
+⁡
+
+(
+
+
+
+ϵ
+
+0
+
+
+ϵ
+
+
+)
+
+=
+
+
+
+log
+⁡
+
+ϵ
+
+0
+
+
+−
+log
+⁡
+ϵ
+
+
+log
+⁡
+2
+
+
+
+,
+
+
+{\displaystyle n=\log _{2}\left({\frac {\epsilon _{0}}{\epsilon }}\right)={\frac {\log \epsilon _{0}-\log \epsilon }{\log 2}},}
+
+
+where 
+
+
+
+
+ϵ
+
+0
+
+
+=
+
+initial bracket size
+
+=
+b
+−
+a
+.
+
+
+{\displaystyle \epsilon _{0}={\text{initial bracket size}}=b-a.}
+
+
+Therefore, the linear convergence is expressed by 
+
+
+
+
+ϵ
+
+n
++
+1
+
+
+=
+
+constant
+
+×
+
+ϵ
+
+n
+
+
+m
+
+
+,
+ 
+m
+=
+1.
+
+
+{\displaystyle \epsilon _{n+1}={\text{constant}}\times \epsilon _{n}^{m},\ m=1.}
+

@@ -1,0 +1,10 @@
+ABOUT
+A multidimensional parity-check code (MDPC) is a simple type of error correcting code that operates by arranging the message into a multidimensional grid, and calculating a parity digit for each row and column. In general, an n-dimensional parity scheme can correct n/2 errors.[citation needed]
+FULL TEXT
+A multidimensional parity-check code (MDPC) is a simple type of error correcting code that operates by arranging the message into a multidimensional grid, and calculating a parity digit for each row and column. In general, an n-dimensional parity scheme can correct n/2 errors.[citation needed]
+The two-dimensional parity-check code, usually called the optimal rectangular code, is the most popular form of multidimensional parity-check code.
+Assume that the goal is to transmit the four-digit message "1234", using a two-dimensional parity scheme. First the digits of the message are arranged in a rectangular pattern:
+Parity digits are then calculated by summing each column and row separately:
+The eight-digit sequence "12334746" is the message that is actually transmitted. If any single error occurs during transmission then this error can not only be detected but can also be corrected as well. Let us suppose that the received message contained an error in the first digit. The receiver rearranges the message into the grid:
+The receiver can see that the first row and also the first column add up incorrectly. Using this knowledge and the assumption that only one error occurred, the receiver can correct the error. In order to handle two errors, a 4-dimensional scheme would be required, at the cost of more parity digits.
+An n-dimensional parity scheme is only guaranteed to correct up to n/2 errors, as the minimum distance is (n + 1). As with all block codes, a soft-decision decoder may be able to correct more than this.

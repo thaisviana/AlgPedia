@@ -1,0 +1,69 @@
+ABOUT
+The Itakura–Saito distance (or Itakura–Saito divergence) is a measure of the difference between an original spectrum 
+
+
+
+P
+(
+ω
+)
+
+
+{\displaystyle P(\omega )}
+
+ and an approximation 
+
+
+
+
+
+
+P
+^
+
+
+
+(
+ω
+)
+
+
+{\displaystyle {\hat {P}}(\omega )}
+
+ of that spectrum. Although it is not a perceptual measure it is intended to reflect perceptual (dis)similarity. It was proposed by Fumitada Itakura and Shuzo Saito in the 1960s while they were with NTT.[1]
+FULL TEXT
+The Itakura–Saito distance (or Itakura–Saito divergence) is a measure of the difference between an original spectrum 
+
+
+
+P
+(
+ω
+)
+
+
+{\displaystyle P(\omega )}
+
+ and an approximation 
+
+
+
+
+
+
+P
+^
+
+
+
+(
+ω
+)
+
+
+{\displaystyle {\hat {P}}(\omega )}
+
+ of that spectrum. Although it is not a perceptual measure it is intended to reflect perceptual (dis)similarity. It was proposed by Fumitada Itakura and Shuzo Saito in the 1960s while they were with NTT.[1]
+The distance is defined as:[2]
+The Itakura–Saito distance is a Bregman divergence, but is not a true metric since it is not symmetric[3] and it does not fulfil triangle inequality.
+In Non-negative matrix factorization the Itakura-Saito divergence can be used as a measure of the quality of the factorization: this implies a meaningful statistical model of the components and can be solved through an iterative method.[4]

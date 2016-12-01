@@ -1,0 +1,10 @@
+ABOUT
+Bar recursion is a generalized form of recursion developed by C. Spector in his 1962 paper.[1] It is related to bar induction in the same fashion that primitive recursion is related to ordinary induction, or transfinite recursion is related to transfinite induction.
+FULL TEXT
+Bar recursion is a generalized form of recursion developed by C. Spector in his 1962 paper.[1] It is related to bar induction in the same fashion that primitive recursion is related to ordinary induction, or transfinite recursion is related to transfinite induction.
+Let V, R, and O be types, and i be any natural number, representing a sequence of parameters taken from V. Then the function sequence f of functions fn from Vi+n → R to O is defined by bar recursion from the functions Ln : R → O and B with Bn : ((Vi+n → R) x (Vn → R)) → O if:
+Here "cat" is the concatenation function, sending p, x to the sequence which starts with p, and has x as its last term.
+(This definition is based on the one by Escardó and Oliva.[2])
+Provided that for every sufficiently long function (λα)r of type Vi → R, there is some n with Ln(r) = Bn((λα)r, (λx:V)Ln+1(r)), the bar induction rule ensures that f is well-defined.
+The idea is that one extends the sequence arbitrarily, using the recursion term B to determine the effect, until a sufficiently long node of the tree of sequences over V is reached; then the base term L determines the final value of f. The well-definedness condition corresponds to the requirement that every infinite path must eventually pass though a sufficiently long node: the same requirement that is needed to invoke a bar induction.
+The principles of bar induction and bar recursion are the intuitionistic equivalents of the axiom of dependent choices.[3]

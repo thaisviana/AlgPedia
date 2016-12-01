@@ -1,0 +1,120 @@
+ABOUT
+Bandwidth expansion is a technique for widening the bandwidth or the resonances in an LPC filter. This is done by moving all the poles towards the origin by a constant factor 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+. The bandwidth-expanded filter 
+
+
+
+
+A
+′
+
+(
+z
+)
+
+
+{\displaystyle A'(z)}
+
+ can be easily derived from the original filter 
+
+
+
+A
+(
+z
+)
+
+
+{\displaystyle A(z)}
+
+ by:
+FULL TEXT
+Bandwidth expansion is a technique for widening the bandwidth or the resonances in an LPC filter. This is done by moving all the poles towards the origin by a constant factor 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+. The bandwidth-expanded filter 
+
+
+
+
+A
+′
+
+(
+z
+)
+
+
+{\displaystyle A'(z)}
+
+ can be easily derived from the original filter 
+
+
+
+A
+(
+z
+)
+
+
+{\displaystyle A(z)}
+
+ by:
+Let 
+
+
+
+A
+(
+z
+)
+
+
+{\displaystyle A(z)}
+
+ be expressed as:
+The bandwidth-expanded filter can be expressed as:
+In other words, each coefficient 
+
+
+
+
+a
+
+k
+
+
+
+
+{\displaystyle a_{k}}
+
+ in the original filter is simply multiplied by 
+
+
+
+
+γ
+
+k
+
+
+
+
+{\displaystyle \gamma ^{k}}
+
+ in the bandwidth-expanded filter. The simplicity of this transformation makes it attractive, especially in CELP coding of speech, where it is often used for the perceptual noise weighting and/or to stabilize the LPC analysis. However, when it comes to stabilizing the LPC analysis, lag windowing is often preferred to bandwidth expansion.
+P. Kabal, "Ill-Conditioning and Bandwidth Expansion in Linear Prediction of Speech", Proc. IEEE Int. Conf. Acoustics, Speech, Signal Processing, pp. I-824-I-827, 2003.

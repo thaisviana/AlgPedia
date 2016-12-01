@@ -1,0 +1,5 @@
+ABOUT
+A flooding algorithm is an algorithm for distributing material to every part of a graph. The name derives from the concept of inundation by a flood.
+FULL TEXT
+A flooding algorithm is an algorithm for distributing material to every part of a graph. The name derives from the concept of inundation by a flood.
+Flooding algorithms are used in computer networking and graphics. Flooding algorithms are also useful for solving many mathematical problems, including maze problems and many problems in graph theory.

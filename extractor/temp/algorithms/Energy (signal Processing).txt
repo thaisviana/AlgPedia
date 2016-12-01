@@ -1,0 +1,117 @@
+ABOUT
+In signal processing, the energy 
+
+
+
+
+E
+
+s
+
+
+
+
+{\displaystyle E_{s}}
+
+ of a continuous-time signal x(t) is defined as
+FULL TEXT
+In signal processing, the energy 
+
+
+
+
+E
+
+s
+
+
+
+
+{\displaystyle E_{s}}
+
+ of a continuous-time signal x(t) is defined as
+the energy 
+
+
+
+
+E
+
+s
+
+
+
+
+{\displaystyle E_{s}}
+
+ of a discrete-time signal x(n) is defined as
+
+
+Energy in this context is not, strictly speaking, the same as the conventional notion of energy in physics and the other sciences. The two concepts are, however, closely related, and it is possible to convert from one to the other:
+For example, if x(t) represents the potential (in volts) of an electrical signal propagating across a transmission line, then Z would represent the characteristic impedance (in ohms) of the transmission line. The units of measure for the signal energy 
+
+
+
+
+E
+
+s
+
+
+
+
+{\displaystyle E_{s}}
+
+ would appear as volt2·seconds, which is not dimensionally correct for energy in the sense of the physical sciences. After dividing 
+
+
+
+
+E
+
+s
+
+
+
+
+{\displaystyle E_{s}}
+
+ by Z, however, the dimensions of E would become volt2·seconds per ohm, which is equivalent to joules, the SI unit for energy as defined in the physical sciences.
+Similarly, the spectral energy density of signal x(t) is
+where X(f) is the Fourier transform of x(t).
+For example, if x(t) represents the magnitude of the electric field component (in volts per meter) of an optical signal propagating through free space, then the dimensions of X(f) would become volt·seconds per meter and 
+
+
+
+
+E
+
+s
+
+
+(
+f
+)
+
+
+{\displaystyle E_{s}(f)}
+
+ would represent the signal's spectral energy density (in volts2·second2 per meter2) as a function of frequency f (in hertz). Again, these units of measure are not dimensionally correct in the true sense of energy density as defined in physics. Dividing 
+
+
+
+
+E
+
+s
+
+
+(
+f
+)
+
+
+{\displaystyle E_{s}(f)}
+
+ by Zo, the characteristic impedance of free space (in ohms), the dimensions become joule-seconds per meter2 or, equivalently, joules per meter2 per hertz, which is dimensionally correct in SI units for spectral energy density.
+As a consequence of Parseval's theorem, one can prove that the signal energy is always equal to the summation across all frequency components of the signal's spectral energy density.

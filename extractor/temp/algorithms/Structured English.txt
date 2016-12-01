@@ -1,0 +1,12 @@
+ABOUT
+Structured English is the use of the English language with the syntax of structured programming to communicate the design of a computer program to non-technical users by breaking it down into logical steps using straightforward English words. Structured English gives aims to get the benefits of both the programming logic and natural language: program logic helps to attain precision, whilst natural language helps with the familiarity of the spoken word.[1]
+FULL TEXT
+Structured English is the use of the English language with the syntax of structured programming to communicate the design of a computer program to non-technical users by breaking it down into logical steps using straightforward English words. Structured English gives aims to get the benefits of both the programming logic and natural language: program logic helps to attain precision, whilst natural language helps with the familiarity of the spoken word.[1]
+It is the basis of some programming languages such as SQL (Structured Query Language) "for use by people who have need for interaction with a large database but who are not trained programmers".[2]
+
+
+Structured English is a limited-form "pseudocode" and consists of the following elements:
+The following guidelines are used when writing Structured English:[3]
+A bank will grant loan under the following conditions
+Though useful for planning programs, modules and routines, or describing algorithms it is less useful when numerous decisions need to be made.[4]
+System processes at a lower level involve lot of computations and require more precision and clarity. This can be achieved with tools such as decision trees or decision tables.

@@ -1,0 +1,680 @@
+ABOUT
+In control theory and signal processing, a linear, time-invariant system is said to be minimum-phase if the system and its inverse are causal and stable.[1][2]
+FULL TEXT
+In control theory and signal processing, a linear, time-invariant system is said to be minimum-phase if the system and its inverse are causal and stable.[1][2]
+For example, a discrete-time system with rational transfer function 
+
+
+
+H
+(
+z
+)
+
+
+{\displaystyle H(z)}
+
+ can only satisfy causality and stability requirements if all of its poles are inside the unit circle. However, we are free to choose whether the zeros of the system are inside or outside the unit circle. A system with rational transfer function is minimum-phase if all its zeros are also inside the unit circle. Insight is given below as to why this system is called minimum-phase.
+
+
+A system 
+
+
+
+
+H
+
+
+
+{\displaystyle \mathbb {H} }
+
+ is invertible if we can uniquely determine its input from its output. I.e., we can find a system 
+
+
+
+
+
+H
+
+
+i
+n
+v
+
+
+
+
+{\displaystyle \mathbb {H} _{inv}}
+
+ such that if we apply 
+
+
+
+
+H
+
+
+
+{\displaystyle \mathbb {H} }
+
+ followed by 
+
+
+
+
+
+H
+
+
+i
+n
+v
+
+
+
+
+{\displaystyle \mathbb {H} _{inv}}
+
+, we obtain the identity system 
+
+
+
+
+I
+
+
+
+{\displaystyle \mathbb {I} }
+
+. (See Inverse matrix for a finite-dimensional analog). I.e.,
+Suppose that 
+
+
+
+
+
+
+x
+~
+
+
+
+
+
+{\displaystyle {\tilde {x}}}
+
+ is input to system 
+
+
+
+
+H
+
+
+
+{\displaystyle \mathbb {H} }
+
+ and gives output 
+
+
+
+
+
+
+y
+~
+
+
+
+
+
+{\displaystyle {\tilde {y}}}
+
+.
+Applying the inverse system 
+
+
+
+
+
+H
+
+
+i
+n
+v
+
+
+
+
+{\displaystyle \mathbb {H} _{inv}}
+
+ to 
+
+
+
+
+
+
+y
+~
+
+
+
+
+
+{\displaystyle {\tilde {y}}}
+
+ gives the following.
+So we see that the inverse system 
+
+
+
+
+
+H
+
+
+i
+n
+v
+
+
+
+
+{\displaystyle \mathbb {H} _{inv}}
+
+ allows us to determine uniquely the input 
+
+
+
+
+
+
+x
+~
+
+
+
+
+
+{\displaystyle {\tilde {x}}}
+
+ from the output 
+
+
+
+
+
+
+y
+~
+
+
+
+
+
+{\displaystyle {\tilde {y}}}
+
+.
+Suppose that the system 
+
+
+
+
+H
+
+
+
+{\displaystyle \mathbb {H} }
+
+ is a discrete-time, linear, time-invariant (LTI) system described by the impulse response 
+
+
+
+h
+(
+n
+)
+
+
+{\displaystyle h(n)}
+
+ for n in Z. Additionally, suppose 
+
+
+
+
+
+H
+
+
+i
+n
+v
+
+
+
+
+{\displaystyle \mathbb {H} _{inv}}
+
+ has impulse response 
+
+
+
+
+h
+
+i
+n
+v
+
+
+(
+n
+)
+
+
+{\displaystyle h_{inv}(n)}
+
+. The cascade of two LTI systems is a convolution. In this case, the above relation is the following:
+where 
+
+
+
+δ
+(
+n
+)
+
+
+{\displaystyle \delta (n)}
+
+ is the Kronecker delta or the identity system in the discrete-time case. Note that this inverse system 
+
+
+
+
+
+H
+
+
+i
+n
+v
+
+
+
+
+{\displaystyle \mathbb {H} _{inv}}
+
+ need not be unique.
+When we impose the constraints of causality and stability, the inverse system is unique; and the system 
+
+
+
+
+H
+
+
+
+{\displaystyle \mathbb {H} }
+
+ and its inverse 
+
+
+
+
+
+H
+
+
+i
+n
+v
+
+
+
+
+{\displaystyle \mathbb {H} _{inv}}
+
+ are called minimum-phase. The causality and stability constraints in the discrete-time case are the following (for time-invariant systems where h is the system's impulse response):
+and
+and
+See the article on stability for the analogous conditions for the continuous-time case.
+Performing frequency analysis for the discrete-time case will provide some insight. The time-domain equation is the following.
+Applying the Z-transform gives the following relation in the z-domain.
+From this relation, we realize that
+For simplicity, we consider only the case of a rational transfer function H (z). Causality and stability imply that all poles of H (z) must be strictly inside the unit circle (See stability). Suppose
+where A (z) and D (z) are polynomial in z. Causality and stability imply that the poles – the roots of D (z) – must be strictly inside the unit circle. We also know that
+So, causality and stability for 
+
+
+
+
+H
+
+i
+n
+v
+
+
+(
+z
+)
+
+
+{\displaystyle H_{inv}(z)}
+
+ imply that its poles – the roots of A (z) – must be inside the unit circle. These two constraints imply that both the zeros and the poles of a minimum phase system must be strictly inside the unit circle.
+Analysis for the continuous-time case proceeds in a similar manner except that we use the Laplace transform for frequency analysis. The time-domain equation is the following.
+where 
+
+
+
+δ
+(
+t
+)
+
+
+{\displaystyle \delta (t)}
+
+ is the Dirac delta function. The Dirac delta function is the identity operator in the continuous-time case because of the sifting property with any signal x (t).
+Applying the Laplace transform gives the following relation in the s-plane.
+From this relation, we realize that
+Again, for simplicity, we consider only the case of a rational transfer function H(s). Causality and stability imply that all poles of H (s) must be strictly inside the left-half s-plane (See stability). Suppose
+where A (s) and D (s) are polynomial in s. Causality and stability imply that the poles – the roots of D (s) – must be inside the left-half s-plane. We also know that
+So, causality and stability for 
+
+
+
+
+H
+
+i
+n
+v
+
+
+(
+s
+)
+
+
+{\displaystyle H_{inv}(s)}
+
+ imply that its poles – the roots of A (s) – must be strictly inside the left-half s-plane. These two constraints imply that both the zeros and the poles of a minimum phase system must be strictly inside the left-half s-plane.
+A minimum-phase system, whether discrete-time or continuous-time, has an additional useful property that the natural logarithm of the magnitude of the frequency response (the "gain" measured in nepers which is proportional to dB) is related to the phase angle of the frequency response (measured in radians) by the Hilbert transform. That is, in the continuous-time case, let
+be the complex frequency response of system H(s). Then, only for a minimum-phase system, the phase response of H(s) is related to the gain by
+and, inversely,
+Stated more compactly, let
+where 
+
+
+
+α
+(
+ω
+)
+
+
+{\displaystyle \alpha (\omega )}
+
+ and 
+
+
+
+ϕ
+(
+ω
+)
+
+
+{\displaystyle \phi (\omega )}
+
+ are real functions of a real variable. Then
+and
+The Hilbert transform operator is defined to be
+An equivalent corresponding relationship is also true for discrete-time minimum-phase systems.
+For all causal and stable systems that have the same magnitude response, the minimum phase system has its energy concentrated near the start of the impulse response. i.e., it minimizes the following function which we can think of as the delay of energy in the impulse response.
+For all causal and stable systems that have the same magnitude response, the minimum phase system has the minimum group delay. The following proof illustrates this idea of minimum group delay.
+Suppose we consider one zero 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ of the transfer function 
+
+
+
+H
+(
+z
+)
+
+
+{\displaystyle H(z)}
+
+. Let's place this zero 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ inside the unit circle (
+
+
+
+
+|
+a
+|
+
+<
+1
+
+
+{\displaystyle \left|a\right|<1}
+
+) and see how the group delay is affected.
+Since the zero 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ contributes the factor 
+
+
+
+1
+−
+a
+
+z
+
+−
+1
+
+
+
+
+{\displaystyle 1-az^{-1}}
+
+ to the transfer function, the phase contributed by this term is the following.
+
+
+
+
+
+ϕ
+
+a
+
+
+(
+ω
+)
+
+
+{\displaystyle \phi _{a}(\omega )}
+
+ contributes the following to the group delay.
+The denominator and 
+
+
+
+
+θ
+
+a
+
+
+
+
+{\displaystyle \theta _{a}}
+
+ are invariant to reflecting the zero 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ outside of the unit circle, i.e., replacing 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ with 
+
+
+
+(
+
+a
+
+−
+1
+
+
+
+)
+
+∗
+
+
+
+
+{\displaystyle (a^{-1})^{*}}
+
+. However, by reflecting 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ outside of the unit circle, we increase the magnitude of 
+
+
+
+
+|
+a
+|
+
+
+
+{\displaystyle \left|a\right|}
+
+ in the numerator. Thus, having 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ inside the unit circle minimizes the group delay contributed by the factor 
+
+
+
+1
+−
+a
+
+z
+
+−
+1
+
+
+
+
+{\displaystyle 1-az^{-1}}
+
+. We can extend this result to the general case of more than one zero since the phase of the multiplicative factors of the form 
+
+
+
+1
+−
+
+a
+
+i
+
+
+
+z
+
+−
+1
+
+
+
+
+{\displaystyle 1-a_{i}z^{-1}}
+
+ is additive. I.e., for a transfer function with 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ zeros,
+So, a minimum phase system with all zeros inside the unit circle minimizes the group delay since the group delay of each individual zero is minimized.
+
+Systems that are causal and stable whose inverses are causal and unstable are known as non-minimum-phase systems. A given non-minimum phase system will have a greater phase contribution than the minimum-phase system with the equivalent magnitude response.
+A maximum-phase system is the opposite of a minimum phase system. A causal and stable LTI system is a maximum-phase system if its inverse is causal and unstable.[dubious – discuss] That is,
+Such a system is called a maximum-phase system because it has the maximum group delay of the set of systems that have the same magnitude response. In this set of equal-magnitude-response systems, the maximum phase system will have maximum energy delay.
+For example, the two continuous-time LTI systems described by the transfer functions
+have equivalent magnitude responses; however, the second system has a much larger contribution to the phase shift. Hence, in this set, the second system is the maximum-phase system and the first system is the minimum-phase system.
+A mixed-phase system has some of its zeros inside the unit circle and has others outside the unit circle. Thus, its group delay is neither minimum or maximum but somewhere between the group delay of the minimum and maximum phase equivalent system.
+For example, the continuous-time LTI system described by transfer function
+is stable and causal; however, it has zeros on both the left- and right-hand sides of the complex plane. Hence, it is a mixed-phase system.
+A linear-phase system has constant group delay. Non-trivial linear phase or nearly linear phase systems are also mixed phase.

@@ -1,0 +1,6 @@
+ABOUT
+In information security, message authentication or data origin authentication is a property that a message has not been modified while in transit (data integrity) and that the receiving party can verify the source of the message.[1] Message authentication does not necessarily include the property of non-repudiation.[2][3]
+FULL TEXT
+In information security, message authentication or data origin authentication is a property that a message has not been modified while in transit (data integrity) and that the receiving party can verify the source of the message.[1] Message authentication does not necessarily include the property of non-repudiation.[2][3]
+Message authentication is typically achieved by using message authentication codes (MACs), authenticated encryption (AE) or digital signatures.[2]
+Some cryptographers distinguish between "message authentication without secrecy" systems -- which allow the intended receiver to verify the source of the message, but don't bother hiding the plaintext contents of the message -- from authenticated encryption systems.[4] A few cryptographers have researched subliminal channel systems that send messages that appear to use a "message authentication without secrecy" system, but in fact also transmit a secret message.

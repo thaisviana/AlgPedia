@@ -1,0 +1,56 @@
+ABOUT
+The canopy clustering algorithm is an unsupervised pre-clustering algorithm introduced by Andrew McCallum, Kamal Nigam and Lyle Ungar in 2000.[1] It is often used as preprocessing step for the K-means algorithm or the Hierarchical clustering algorithm. It is intended to speed up clustering operations on large data sets, where using another algorithm directly may be impractical due to the size of the data set.
+FULL TEXT
+The canopy clustering algorithm is an unsupervised pre-clustering algorithm introduced by Andrew McCallum, Kamal Nigam and Lyle Ungar in 2000.[1] It is often used as preprocessing step for the K-means algorithm or the Hierarchical clustering algorithm. It is intended to speed up clustering operations on large data sets, where using another algorithm directly may be impractical due to the size of the data set.
+The algorithm proceeds as follows, using two thresholds 
+
+
+
+
+T
+
+1
+
+
+
+
+{\displaystyle T_{1}}
+
+ (the loose distance) and 
+
+
+
+
+T
+
+2
+
+
+
+
+{\displaystyle T_{2}}
+
+ (the tight distance), where 
+
+
+
+
+T
+
+1
+
+
+>
+
+T
+
+2
+
+
+
+
+{\displaystyle T_{1}>T_{2}}
+
+ .[1][2]
+An important note is that individual data points may be part of several canopies. As an additional speed-up, an approximate and fast distance metric can be used for 3, where a more accurate and slow distance metric can be used for step 4.
+Since the algorithm uses distance functions and requires the specification of distance thresholds, its applicability for high-dimensional data is limited by the curse of dimensionality. Only when a cheap and approximative – low-dimensional – distance function is available, the produced canopies will preserve the clusters produced by K-means.

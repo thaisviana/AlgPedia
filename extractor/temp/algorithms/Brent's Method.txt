@@ -1,0 +1,134 @@
+ABOUT
+In numerical analysis, Brent's method is a root-finding algorithm combining the bisection method, the secant method and inverse quadratic interpolation. It has the reliability of bisection but it can be as quick as some of the less-reliable methods. The algorithm tries to use the potentially fast-converging secant method or inverse quadratic interpolation if possible, but it falls back to the more robust bisection method if necessary. Brent's method is due to Richard Brent[1] and builds on an earlier algorithm by Theodorus Dekker.[2] Consequently, the method is also known as the Brent–Dekker method.
+FULL TEXT
+In numerical analysis, Brent's method is a root-finding algorithm combining the bisection method, the secant method and inverse quadratic interpolation. It has the reliability of bisection but it can be as quick as some of the less-reliable methods. The algorithm tries to use the potentially fast-converging secant method or inverse quadratic interpolation if possible, but it falls back to the more robust bisection method if necessary. Brent's method is due to Richard Brent[1] and builds on an earlier algorithm by Theodorus Dekker.[2] Consequently, the method is also known as the Brent–Dekker method.
+
+
+The idea to combine the bisection method with the secant method goes back to Dekker (1969).
+Suppose that we want to solve the equation f(x) = 0. As with the bisection method, we need to initialize Dekker's method with two points, say a0 and b0, such that f(a0) and f(b0) have opposite signs. If f is continuous on [a0, b0], the intermediate value theorem guarantees the existence of a solution between a0 and b0.
+Three points are involved in every iteration:
+Two provisional values for the next iterate are computed. The first one is given by linear interpolation, also known as the secant method:
+and the second one is given by the bisection method
+If the result of the secant method, s, lies strictly between bk and m, then it becomes the next iterate (bk+1 = s), otherwise the midpoint is used (bk+1 = m).
+Then, the value of the new contrapoint is chosen such that f(ak+1) and f(bk+1) have opposite signs. If f(ak) and f(bk+1) have opposite signs, then the contrapoint remains the same: ak+1 = ak. Otherwise, f(bk+1) and f(bk) have opposite signs, so the new contrapoint becomes ak+1 = bk.
+Finally, if |f(ak+1)| < |f(bk+1)|, then ak+1 is probably a better guess for the solution than bk+1, and hence the values of ak+1 and bk+1 are exchanged.
+This ends the description of a single iteration of Dekker's method.
+Dekker's method performs well if the function f is reasonably well-behaved. However, there are circumstances in which every iteration employs the secant method, but the iterates bk converge very slowly (in particular, |bk − bk−1| may be arbitrarily small). Dekker's method requires far more iterations than the bisection method in this case.
+Brent (1973) proposed a small modification to avoid this problem. He inserted an additional test which must be satisfied before the result of the secant method is accepted as the next iterate. Two inequalities must be simultaneously satisfied: Given a specific numerical tolerance 
+
+
+
+δ
+
+
+{\displaystyle \delta }
+
+, if the previous step used the bisection method, the inequality
+must hold to perform interpolation, otherwise the bisection method is performed and its result used for the next iteration.
+If the previous step performed interpolation, then the inequality
+is used instead to perform the next action (to choose) interpolation (when inequality is true) or bisection method (when inequality is not true).
+Also, if the previous step used the bisection method, the inequality
+must hold, otherwise the bisection method is performed and its result used for the next iteration. If the previous step performed interpolation, then the inequality
+is used instead.
+This modification ensures that at the kth iteration, a bisection step will be performed in at most 
+
+
+
+2
+
+log
+
+2
+
+
+⁡
+(
+
+|
+
+
+b
+
+k
+−
+1
+
+
+−
+
+b
+
+k
+−
+2
+
+
+
+|
+
+
+/
+
+δ
+)
+
+
+{\displaystyle 2\log _{2}(|b_{k-1}-b_{k-2}|/\delta )}
+
+ additional iterations, because the above conditions force consecutive interpolation step sizes to halve every two iterations, and after at most 
+
+
+
+2
+
+log
+
+2
+
+
+⁡
+(
+
+|
+
+
+b
+
+k
+−
+1
+
+
+−
+
+b
+
+k
+−
+2
+
+
+
+|
+
+
+/
+
+δ
+)
+
+
+{\displaystyle 2\log _{2}(|b_{k-1}-b_{k-2}|/\delta )}
+
+ iterations, the step size will be smaller than 
+
+
+
+δ
+
+
+{\displaystyle \delta }
+
+, which invokes a bisection step. Brent proved that his method requires at most N2 iterations, where N denotes the number of iterations for the bisection method. If the function f is well-behaved, then Brent's method will usually proceed by either inverse quadratic or linear interpolation, in which case it will converge superlinearly.
+Furthermore, Brent's method uses inverse quadratic interpolation instead of linear interpolation (as used by the secant method). If f(bk), f(ak) and f(bk−1) are distinct, it slightly increases the efficiency. As a consequence, the condition for accepting s (the value proposed by either linear interpolation or inverse quadratic interpolation) has to be changed: s has to lie between (3ak + bk) / 4 and bk.
+Suppose that we are seeking a zero of the function defined by f(x) = (x + 3)(x − 1)2. We take [a0, b0] = [−4, 4/3] as our initial interval. We have f(a0) = −25 and f(b0) = 0.48148 (all numbers in this section are rounded), so the conditions f(a0) f(b0) < 0 and |f(b0)| ≤ |f(a0)| are satisfied.

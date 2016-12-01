@@ -1,0 +1,100 @@
+ABOUT
+In mathematical optimization, a problem is defined using an objective function to minimize or maximize, and a set of constraints
+FULL TEXT
+In mathematical optimization, a problem is defined using an objective function to minimize or maximize, and a set of constraints
+that define the feasible region, that is, the set of all x to search for the optimal solution. Given a point 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ in the feasible region, a constraint
+is called active at 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ if 
+
+
+
+
+g
+
+i
+
+
+(
+x
+)
+=
+0
+
+
+{\displaystyle g_{i}(x)=0}
+
+ and inactive at 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ if 
+
+
+
+
+g
+
+i
+
+
+(
+x
+)
+>
+0.
+
+
+{\displaystyle g_{i}(x)>0.}
+
+ Equality constraints are always active. The active set at 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ is made up of those constraints 
+
+
+
+
+g
+
+i
+
+
+(
+x
+)
+
+
+{\displaystyle g_{i}(x)}
+
+ that are active at the current point (Nocedal & Wright 2006, p. 308).
+The active set is particularly important in optimization theory as it determines which constraints will influence the final result of optimization. For example, in solving the linear programming problem, the active set gives the hyperplanes that intersect at the solution point. In quadratic programming, as the solution is not necessarily on one of the edges of the bounding polygon, an estimation of the active set gives us a subset of inequalities to watch while searching the solution, which reduces the complexity of the search.
+In general an active set algorithm has the following structure:
+Methods that can be described as active set methods include[citation needed]:

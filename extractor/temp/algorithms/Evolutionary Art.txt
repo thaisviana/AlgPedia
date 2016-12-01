@@ -1,0 +1,10 @@
+ABOUT
+Evolutionary art is a branch of generative art, in which the artist does not do the work of constructing the artwork, but rather lets a system do the construction. In evolutionary art, initially generated art is put through an iterated process of selection and modification to arrive at a final product, where it is the artist who is the selective agent.
+FULL TEXT
+Evolutionary art is a branch of generative art, in which the artist does not do the work of constructing the artwork, but rather lets a system do the construction. In evolutionary art, initially generated art is put through an iterated process of selection and modification to arrive at a final product, where it is the artist who is the selective agent.
+Evolutionary art is to be distinguished from BioArt, which uses living organisms as the material medium instead of paint, stone, metal, etc.
+
+
+In common with biological evolution through natural selection or animal husbandry, the members of a population undergoing artificial evolution modify their form or behavior over many reproductive generations in response to a selective regime.
+In interactive evolution the selective regime may be applied by the viewer explicitly by selecting individuals which are aesthetically pleasing. Alternatively a selection pressure can be generated implicitly, for example according to the length of time a viewer spends near a piece of evolving art.
+Equally, evolution may be employed as a mechanism for generating a dynamic world of adaptive individuals, in which the selection pressure is imposed by the program, and the viewer plays no role in selection, as in the Black Shoals project.

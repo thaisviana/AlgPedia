@@ -1,0 +1,374 @@
+ABOUT
+In mathematics, error analysis is the study of kind and quantity of error, or uncertainty, that may be present in the solution to a problem. This issue is particularly prominent in applied areas such as numerical analysis and statistics.
+FULL TEXT
+In mathematics, error analysis is the study of kind and quantity of error, or uncertainty, that may be present in the solution to a problem. This issue is particularly prominent in applied areas such as numerical analysis and statistics.
+
+
+In numerical simulation or modeling of real systems, error analysis is concerned with the changes in the output of the model as the parameters to the model vary about a mean.
+For instance, in a system modeled as a function of two variables 
+
+
+
+
+z
+
+=
+
+f
+(
+x
+,
+y
+)
+
+
+
+{\displaystyle \scriptstyle z\,=\,f(x,y)}
+
+. Error analysis deals with the propagation of the numerical errors in 
+
+
+
+
+x
+
+
+
+{\displaystyle \scriptstyle x}
+
+ and 
+
+
+
+
+y
+
+
+
+{\displaystyle \scriptstyle y}
+
+ (around mean values 
+
+
+
+
+
+
+
+x
+¯
+
+
+
+
+
+
+{\displaystyle \scriptstyle {\bar {x}}}
+
+ and 
+
+
+
+
+
+
+
+y
+¯
+
+
+
+
+
+
+{\displaystyle \scriptstyle {\bar {y}}}
+
+) to error in 
+
+
+
+
+z
+
+
+
+{\displaystyle \scriptstyle z}
+
+ (around a mean 
+
+
+
+
+
+
+
+z
+¯
+
+
+
+
+
+
+{\displaystyle \scriptstyle {\bar {z}}}
+
+).[1]
+In numerical analysis, error analysis comprises both forward error analysis and backward error analysis.
+Forward error analysis involves the analysis of a function 
+
+
+
+
+
+z
+′
+
+=
+
+f
+′
+
+(
+
+a
+
+0
+
+
+,
+
+
+a
+
+1
+
+
+,
+
+…
+,
+
+
+a
+
+n
+
+
+)
+
+
+
+{\displaystyle \scriptstyle z'=f'(a_{0},\,a_{1},\,\dots ,\,a_{n})}
+
+ which is an approximation (usually a finite polynomial) to a function 
+
+
+
+
+z
+
+=
+
+f
+(
+
+a
+
+0
+
+
+,
+
+a
+
+1
+
+
+,
+…
+,
+
+a
+
+n
+
+
+)
+
+
+
+{\displaystyle \scriptstyle z\,=\,f(a_{0},a_{1},\dots ,a_{n})}
+
+ to determine the bounds on the error in the approximation; i.e., to find 
+
+
+
+
+ϵ
+
+
+
+{\displaystyle \scriptstyle \epsilon }
+
+ such that 
+
+
+
+
+0
+
+≤
+
+
+|
+
+z
+−
+
+z
+′
+
+
+|
+
+
+≤
+
+ϵ
+
+
+
+{\displaystyle \scriptstyle 0\,\leq \,|z-z'|\,\leq \,\epsilon }
+
+.
+Backward error analysis involves the analysis of the approximation function 
+
+
+
+
+
+z
+′
+
+
+=
+
+
+f
+′
+
+(
+
+a
+
+0
+
+
+,
+
+
+a
+
+1
+
+
+,
+
+…
+,
+
+
+a
+
+n
+
+
+)
+
+
+
+{\displaystyle \scriptstyle z'\,=\,f'(a_{0},\,a_{1},\,\dots ,\,a_{n})}
+
+, to determine the bounds on the parameters 
+
+
+
+
+
+a
+
+i
+
+
+
+=
+
+
+
+
+
+a
+
+i
+
+
+¯
+
+
+
+
+±
+
+
+ϵ
+
+i
+
+
+
+
+
+{\displaystyle \scriptstyle a_{i}\,=\,{\bar {a_{i}}}\,\pm \,\epsilon _{i}}
+
+ such that the result 
+
+
+
+
+
+z
+′
+
+
+=
+
+z
+
+
+
+{\displaystyle \scriptstyle z'\,=\,z}
+
+.[2]
+Backward error analysis, the theory of which was developed and popularized by James H. Wilkinson, can be used to establish that an algorithm implementing a numerical function is numerically stable.[3] The basic approach is to show that although the calculated result, due to roundoff errors, will not be exactly correct, it is the exact solution to a nearby problem with slightly perturbed input data. If the perturbation required is small, on the order of the uncertainty in the input data, then the results are in some sense as accurate as the data "deserves". The algorithm is then defined as backward stable. Stability is a measure of the sensitivity to rounding errors of a given numerical procedure; by contrast, the condition number of a function for a given problem indicates the inherent sensitivity of the function to small perturbations in its input and is independent of the implementation used to solve the problem.[4]
+The analysis of errors computed using the global positioning system is important for understanding how GPS works, and for knowing what magnitude errors should be expected. The Global Positioning System makes corrections for receiver clock errors and other effects but there are still residual errors which are not corrected. The Global Positioning System (GPS) was created by the United States Department of Defense (DOD) in the 1970s. It has come to be widely used for navigation both by the U.S. military and the general public.
+In molecular dynamics (MD) simulations, there are errors due to inadequate sampling of the phase space or infrequently occurring events, these lead to the statistical error due to random fluctuation in the measurements.
+For a series of M measurements of a fluctuating property A, the mean value is:
+When these M measurements are independent, the variance of the mean <A> is:
+but in most MD simulations, there is correlation between quantity A at different time, so the variance of the mean <A> will be underestimated as the effective number of independent measurements is actually less than M. In such situations we rewrite the variance as :
+where 
+
+
+
+
+ϕ
+
+μ
+
+
+
+
+{\displaystyle \phi _{\mu }}
+
+ is the autocorrelation function defined by
+We can then use the auto correlation function to estimate the error bar. Luckily, we have a much simpler method based on block averaging.[5]
+Measurements generally have a small amount of error, and repeated measurements of the same item will generally result in slight differences in readings. These differences can be analyzed, and follow certain known mathematical and statistical properties. Should a set of data appear to be too faithful to the hypothesis, i.e., the amount of error that would normally be in such measurements does not appear, a conclusion can be drawn that the data may have been forged. Error analysis alone is typically not sufficient to prove that data have been falsified or fabricated, but it may provide the supporting evidence necessary to confirm suspicions of misconduct.

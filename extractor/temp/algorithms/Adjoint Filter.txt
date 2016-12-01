@@ -1,0 +1,91 @@
+ABOUT
+In signal processing, the adjoint filter mask 
+
+
+
+
+h
+
+∗
+
+
+
+
+{\displaystyle h^{*}}
+
+ of a filter mask 
+
+
+
+h
+
+
+{\displaystyle h}
+
+ is reversed in time and the elements are complex conjugated.
+FULL TEXT
+In signal processing, the adjoint filter mask 
+
+
+
+
+h
+
+∗
+
+
+
+
+{\displaystyle h^{*}}
+
+ of a filter mask 
+
+
+
+h
+
+
+{\displaystyle h}
+
+ is reversed in time and the elements are complex conjugated.
+Its name is derived from the fact, that the convolution with the adjoint filter is the adjoint operator of the original filter with respect to the Hilbert space 
+
+
+
+
+ℓ
+
+2
+
+
+
+
+{\displaystyle \ell _{2}}
+
+ of the sequences with respect to the Euclidean norm.
+The autocorrelation of a signal 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ can be written as 
+
+
+
+
+x
+
+∗
+
+
+∗
+x
+
+
+{\displaystyle x^{*}*x}
+
+.

@@ -1,0 +1,140 @@
+ABOUT
+The Wigner distribution function (WDF) is used in signal processing as a transform in time-frequency analysis.
+FULL TEXT
+The Wigner distribution function (WDF) is used in signal processing as a transform in time-frequency analysis.
+The WDF was first proposed in physics to account for quantum corrections to classical statistical mechanics in 1932 by Eugene Wigner, and it is of importance in quantum mechanics in phase space (see, by way of comparison: Wigner quasi-probability distribution, also called the Wigner function or the Wigner–Ville distribution).
+Given the shared algebraic structure between position-momentum and time-frequency conjugate pairs, it also usefully serves in signal processing, as a transform in time-frequency analysis, the subject of this article. Compared to a short-time Fourier transform, such as the Gabor transform, the Wigner distribution function can furnish higher clarity in some cases.
+
+
+There are several different definitions for the Wigner distribution function. The definition given here is specific to time-frequency analysis. Given the time series 
+
+
+
+x
+[
+t
+]
+
+
+{\displaystyle x[t]}
+
+, its non-stationary autocorrelation function is given by
+where 
+
+
+
+⟨
+⋯
+⟩
+
+
+{\displaystyle \langle \cdots \rangle }
+
+ denotes the average over all possible realizations of the process and 
+
+
+
+μ
+(
+t
+)
+
+
+{\displaystyle \mu (t)}
+
+ is the mean, which may or may not be a function of time. The Wigner function 
+
+
+
+
+W
+
+x
+
+
+(
+t
+,
+f
+)
+
+
+{\displaystyle W_{x}(t,f)}
+
+ is then given by first expressing the autocorrelation function in terms of the average time 
+
+
+
+t
+=
+(
+
+t
+
+1
+
+
++
+
+t
+
+2
+
+
+)
+
+/
+
+2
+
+
+{\displaystyle t=(t_{1}+t_{2})/2}
+
+ and time lag 
+
+
+
+τ
+=
+
+t
+
+1
+
+
+−
+
+t
+
+2
+
+
+
+
+{\displaystyle \tau =t_{1}-t_{2}}
+
+, and then Fourier transforming the lag.
+So for a single (mean-zero) time series, the Wigner function is simply given by
+The motivation for the Wigner function is that it reduces to the spectral density function at all times 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ for stationary processes, yet it is fully equivalent to the non-stationary autocorrelation function. Therefore, the Wigner function tells us (roughly) how the spectral density changes in time.
+Here are some examples illustrating how the WDF is used in time-frequency analysis.
+When the input signal is constant, its time-frequency distribution is a horizontal line along the time axis. For example, if x(t) = 1, then
+When the input signal is a sinusoidal function, its time-frequency distribution is a horizontal line parallel to the time axis, displaced from it by the sinusoidal signal's frequency. For example, if x(t) = e i2πkt, then
+When the input signal is a linear chirp function, the instantaneous frequency is a linear function. This means that the time frequency distribution should be a straight line. For example, if
+then its instantaneous frequency is
+and its WDF
+When the input signal is a delta function, since it is only non-zero at t=0 and contains infinite frequency components, its time-frequency distribution should be a vertical line across the origin. This means that the time frequency distribution of the delta function should also be a delta function. By WDF
+The Wigner distribution function is best suited for time-frequency analysis when the input signal's phase is 2nd order or lower. For those signals, WDF can exactly generate the time frequency distribution of the input signal.
+the rectangular function   ⇒
+The Wigner distribution function is not a linear transform. A cross term ("time beats") occurs when there is more than one component in the input signal, analogous in time to frequency beats. In the ancestral physics Wigner quasi-probability distribution, this term has important and useful physics consequences, required for faithful expectation values. By contrast, the short-time Fourier transform does not have this feature. The following are some examples that exhibit the cross-term feature of the Wigner distribution function.
+
+In order to reduce the cross term problem, many other transforms have been proposed, including the modified Wigner distribution function, the Gabor–Wigner transform, and Cohen’s class distribution.
+The Wigner distribution function has several evident properties listed in the following table.

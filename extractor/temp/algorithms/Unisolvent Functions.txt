@@ -1,0 +1,7 @@
+ABOUT
+In mathematics, a collection of n functions f1, f2, ..., fn is unisolvent on domain Ω if the vectors
+FULL TEXT
+In mathematics, a collection of n functions f1, f2, ..., fn is unisolvent on domain Ω if the vectors
+are linearly independent for any choice of n distinct points x1, x2 ... xn in Ω. Equivalently, the collection is unisolvent if the matrix F with entries fi(xj) has nonzero determinant: det(F) ≠ 0 for any choice of distinct xj's in Ω.
+Unisolvent systems of functions are widely used in interpolation since they guarantee a unique solution to the interpolation problem. Polynomials are unisolvent by the unisolvence theorem
+Systems of unisolvent functions are much more common in 1 dimension than in higher dimensions. In dimension d = 2 and higher (Ω ⊂ Rd), the functions f1, f2, ..., fn cannot be unisolvent on Ω if there exists a single open set on which they are all continuous. To see this, consider moving points x1 and x2 along continuous paths in the open set until they have switched positions, such that x1 and x2 never intersect each other or any of the other xi. The determinant of the resulting system (with x1 and x2 swapped) is the negative of the determinant of the initial system. Since the functions fi are continuous, the intermediate value theorem implies that some intermediate configuration has determinant zero, hence the functions cannot be unisolvent.

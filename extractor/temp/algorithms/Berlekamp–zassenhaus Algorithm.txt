@@ -1,0 +1,6 @@
+ABOUT
+In mathematics, in particular in computational algebra, the Berlekamp–Zassenhaus algorithm is an algorithm for factoring polynomials over the integers, named after Elwyn Berlekamp and Hans Zassenhaus. As a consequence of Gauss's lemma, this amounts to solving the problem also over the rationals.
+FULL TEXT
+In mathematics, in particular in computational algebra, the Berlekamp–Zassenhaus algorithm is an algorithm for factoring polynomials over the integers, named after Elwyn Berlekamp and Hans Zassenhaus. As a consequence of Gauss's lemma, this amounts to solving the problem also over the rationals.
+The algorithm starts by finding factorizations over suitable finite fields using Hensel's lemma to lift the solution from modulo a prime p to a convenient power of p. After this the right factors are found as a subset of these. The worst case of this algorithm is exponential in the number of factors.
+Van Hoeij (2002) improved this algorithm by using the LLL algorithm, substantially reducing the time needed to choose the right subsets of mod p factors.

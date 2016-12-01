@@ -1,0 +1,157 @@
+ABOUT
+In mathematics and computer science, graph edit distance (GED) is a measure of similarity (or dissimilarity) between two graphs. The concept of graph edit distance was first formalized mathematically by Alberto Sanfliu and King-Sun Fu in 1983.[1] A major application of graph edit distance is in inexact graph matching, such as error-tolerant pattern recognition in machine learning.[2]
+FULL TEXT
+In mathematics and computer science, graph edit distance (GED) is a measure of similarity (or dissimilarity) between two graphs. The concept of graph edit distance was first formalized mathematically by Alberto Sanfliu and King-Sun Fu in 1983.[1] A major application of graph edit distance is in inexact graph matching, such as error-tolerant pattern recognition in machine learning.[2]
+The graph edit distance between two graphs is related to the string edit distance between strings. With the interpretation of strings as connected Directed acyclic graphs of maximum degree one, classical definitions of edit distance such as Levenshtein distance, [3] [4] Hamming distance[5] and Jaro–Winkler distance may be interepeted as graph edit distances between suitably constrained graphs. Likewise, graph edit distance is also a generalization of tree edit distance between rooted trees.[6][7][8][9]
+
+
+The mathematical definition of graph edit distance is dependent upon the definitions of the graphs over which it is defined, i.e. whether and how the vertices and edges of the graph are labeled and whether the edges are directed. Generally, given a set of graph edit operations (also known as elementary graph operations), the graph edit distance between two graphs 
+
+
+
+
+g
+
+1
+
+
+
+
+{\displaystyle g_{1}}
+
+ and 
+
+
+
+
+g
+
+2
+
+
+
+
+{\displaystyle g_{2}}
+
+, written as 
+
+
+
+G
+E
+D
+(
+
+g
+
+1
+
+
+,
+
+g
+
+2
+
+
+)
+
+
+{\displaystyle GED(g_{1},g_{2})}
+
+ can defined as
+where 
+
+
+
+
+
+P
+
+
+(
+
+g
+
+1
+
+
+,
+
+g
+
+2
+
+
+)
+
+
+{\displaystyle {\mathcal {P}}(g_{1},g_{2})}
+
+ denotes the set of edit paths transforming 
+
+
+
+
+g
+
+1
+
+
+
+
+{\displaystyle g_{1}}
+
+ into (a graph isomorphic to) 
+
+
+
+
+g
+
+2
+
+
+
+
+{\displaystyle g_{2}}
+
+ and 
+
+
+
+c
+(
+e
+)
+≥
+0
+
+
+{\displaystyle c(e)\geq 0}
+
+ is the cost of each graph edit operation 
+
+
+
+e
+
+
+{\displaystyle e}
+
+.
+The set of elementary graph edit operators typically includes:
+Additional, but less common operators, include operations such as edge splitting that introduces a new vertex into an edge (also creating a new edge), and edge contraction that eliminates vertices of degree two between edges (of the same color). Although such complex edit operators can be defined in terms of more elementary transformations, their use allows finer parameterization of the cost function 
+
+
+
+c
+
+
+{\displaystyle c}
+
+ when the operator is cheaper than the sum of its constituents.
+Graph edit distance finds applications in handwriting recognition,[10] fingerprint recognition[11] and cheminformatics.[12]
+Exact algorithms for computing the graph edit distance between a pair of graphs typically transform the problem into one of finding the minimum cost edit path between the two graphs. The computation of the optimal edit path is cast as a pathfinding search or shortest path problem, often implemented as an A* search algorithm.
+In addition to exact algorithms, a number of efficient approximation algorithms are also known.[13][14]
+Despite the above algorithms sometimes working well in practice, in general the problem of computing graph edit distance is NP-complete[15] (for a proof that's available online, see Section 2 of Zeng et al.), and is even hard to approximate (formally, it is APX-hard[16]).

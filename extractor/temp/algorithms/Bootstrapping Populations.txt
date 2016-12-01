@@ -1,0 +1,786 @@
+ABOUT
+Starting with a sample 
+
+
+
+{
+
+x
+
+1
+
+
+,
+…
+,
+
+x
+
+m
+
+
+}
+
+
+{\displaystyle \{x_{1},\ldots ,x_{m}\}}
+
+ observed from a random variable X having a given distribution law with a set of non fixed parameters which we denote with a vector 
+
+
+
+
+θ
+
+
+
+{\displaystyle {\boldsymbol {\theta }}}
+
+, a parametric inference problem consists of computing suitable values – call them estimates – of these parameters precisely on the basis of the sample. An estimate is suitable if replacing it with the unknown parameter does not cause major damage in next computations. In Algorithmic inference, suitability of an estimate reads in terms of compatibility with the observed sample.
+FULL TEXT
+Starting with a sample 
+
+
+
+{
+
+x
+
+1
+
+
+,
+…
+,
+
+x
+
+m
+
+
+}
+
+
+{\displaystyle \{x_{1},\ldots ,x_{m}\}}
+
+ observed from a random variable X having a given distribution law with a set of non fixed parameters which we denote with a vector 
+
+
+
+
+θ
+
+
+
+{\displaystyle {\boldsymbol {\theta }}}
+
+, a parametric inference problem consists of computing suitable values – call them estimates – of these parameters precisely on the basis of the sample. An estimate is suitable if replacing it with the unknown parameter does not cause major damage in next computations. In Algorithmic inference, suitability of an estimate reads in terms of compatibility with the observed sample.
+In this framework, resampling methods are aimed at generating a set of candidate values to replace the unknown parameters that we read as compatible replicas of them. They represent a population of specifications of a random vector 
+
+
+
+
+Θ
+
+
+
+{\displaystyle {\boldsymbol {\Theta }}}
+
+ [1] compatible with an observed sample, where the compatibility of its values has the properties of a probability distribution. By plugging parameters into the expression of the questioned distribution law, we bootstrap entire populations of random variables compatible with the observed sample.
+The rationale of the algorithms computing the replicas, which we denote population bootstrap procedures, is to identify a set of statistics 
+
+
+
+{
+
+s
+
+1
+
+
+,
+…
+,
+
+s
+
+k
+
+
+}
+
+
+{\displaystyle \{s_{1},\ldots ,s_{k}\}}
+
+ exhibiting specific properties, denoting a well behavior, w.r.t. the unknown parameters. The statistics are expressed as functions of the observed values 
+
+
+
+{
+
+x
+
+1
+
+
+,
+…
+,
+
+x
+
+m
+
+
+}
+
+
+{\displaystyle \{x_{1},\ldots ,x_{m}\}}
+
+, by definition. The 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+ may be expressed as a function of the unknown parameters and a random seed specification 
+
+
+
+
+z
+
+i
+
+
+
+
+{\displaystyle z_{i}}
+
+ through the sampling mechanism 
+
+
+
+(
+
+g
+
+θ
+
+
+,
+Z
+)
+
+
+{\displaystyle (g_{\boldsymbol {\theta }},Z)}
+
+, in turn. Then, by plugging the second expression in the former, we obtain 
+
+
+
+
+s
+
+j
+
+
+
+
+{\displaystyle s_{j}}
+
+ expressions as functions of seeds and parameters – the master equations – that we invert to find values of the latter as a function of: i) the statistics, whose values in turn are fixed at the observed ones; and ii) the seeds, which are random according to their own distribution. Hence from a set of seed samples we obtain a set of parameter replicas.
+
+
+Given a 
+
+
+
+
+x
+
+=
+{
+
+x
+
+1
+
+
+,
+…
+,
+
+x
+
+m
+
+
+}
+
+
+{\displaystyle {\boldsymbol {x}}=\{x_{1},\ldots ,x_{m}\}}
+
+ of a random variable X and a sampling mechanism 
+
+
+
+(
+
+g
+
+θ
+
+
+,
+Z
+)
+
+
+{\displaystyle (g_{\boldsymbol {\theta }},Z)}
+
+ for X, the realization x is given by 
+
+
+
+
+x
+
+=
+{
+
+g
+
+θ
+
+
+(
+
+z
+
+1
+
+
+)
+,
+…
+,
+
+g
+
+θ
+
+
+(
+
+z
+
+m
+
+
+)
+}
+
+
+{\displaystyle {\boldsymbol {x}}=\{g_{\boldsymbol {\theta }}(z_{1}),\ldots ,g_{\boldsymbol {\theta }}(z_{m})\}}
+
+, with 
+
+
+
+
+θ
+
+=
+(
+
+θ
+
+1
+
+
+,
+…
+,
+
+θ
+
+k
+
+
+)
+
+
+{\displaystyle {\boldsymbol {\theta }}=(\theta _{1},\ldots ,\theta _{k})}
+
+. Focusing on well-behaved statistics,
+for their parameters, the master equations read
+For each sample seed 
+
+
+
+{
+
+z
+
+1
+
+
+,
+…
+,
+
+z
+
+m
+
+
+}
+
+
+{\displaystyle \{z_{1},\ldots ,z_{m}\}}
+
+ a vector of parameters 
+
+
+
+
+θ
+
+
+
+{\displaystyle {\boldsymbol {\theta }}}
+
+ is obtained from the solution of the above system with 
+
+
+
+
+s
+
+i
+
+
+
+
+{\displaystyle s_{i}}
+
+ fixed to the observed values. Having computed a huge set of compatible vectors, say N, the empirical marginal distribution of 
+
+
+
+
+Θ
+
+j
+
+
+
+
+{\displaystyle \Theta _{j}}
+
+ is obtained by:
+where 
+
+
+
+
+
+
+
+θ
+˘
+
+
+
+
+j
+,
+i
+
+
+
+
+{\displaystyle {\breve {\theta }}_{j,i}}
+
+ is the j-th component of the generic solution of (1) and where 
+
+
+
+
+I
+
+(
+−
+∞
+,
+θ
+]
+
+
+(
+
+
+
+
+θ
+˘
+
+
+
+
+j
+,
+i
+
+
+)
+
+
+{\displaystyle I_{(-\infty ,\theta ]}({\breve {\theta }}_{j,i})}
+
+ is the indicator function of 
+
+
+
+
+
+
+
+θ
+˘
+
+
+
+
+j
+,
+i
+
+
+
+
+{\displaystyle {\breve {\theta }}_{j,i}}
+
+ in the interval 
+
+
+
+(
+−
+∞
+,
+θ
+]
+.
+
+
+{\displaystyle (-\infty ,\theta ].}
+
+ Some indeterminacies remain if X is discrete and this we will be considered shortly. The whole procedure may be summed up in the form of the following Algorithm, where the index 
+
+
+
+
+Θ
+
+
+
+{\displaystyle {\boldsymbol {\Theta }}}
+
+ of 
+
+
+
+
+
+s
+
+
+Θ
+
+
+
+
+{\displaystyle {\boldsymbol {s}}_{\boldsymbol {\Theta }}}
+
+ denotes the parameter vector from which the statistics vector is derived.
+You may easily see from a table of sufficient statistics that we obtain the curve in the picture on the left by computing the empirical distribution (2) on the population obtained through the above algorithm when: i) X is an Exponential random variable, ii) 
+
+
+
+
+s
+
+Λ
+
+
+=
+
+∑
+
+j
+=
+1
+
+
+m
+
+
+
+x
+
+j
+
+
+
+
+{\displaystyle s_{\Lambda }=\sum _{j=1}^{m}x_{j}}
+
+, and
+and the curve in the picture on the right when: i) X is a Uniform random variable in 
+
+
+
+[
+0
+,
+a
+]
+
+
+{\displaystyle [0,a]}
+
+, ii) 
+
+
+
+
+s
+
+A
+
+
+=
+
+max
+
+j
+=
+1
+,
+…
+,
+m
+
+
+
+x
+
+j
+
+
+
+
+{\displaystyle s_{A}=\max _{j=1,\ldots ,m}x_{j}}
+
+, and
+Note that the accuracy with which a parameter distribution law of populations compatible with a sample is obtained is not a function of the sample size. Instead, it is a function of the number of seeds we draw. In turn, this number is purely a matter of computational time but does not require any extension of the observed data. With other bootstrapping methods focusing on a generation of sample replicas (like those proposed by (Efron and Tibshirani 1993)) the accuracy of the estimate distributions depends on the sample size.
+For 
+
+
+
+
+x
+
+
+
+{\displaystyle {\boldsymbol {x}}}
+
+ expected to represent a Pareto distribution, whose specification requires values for the parameters 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ and k,[2] we have that the cumulative distribution function reads:
+A sampling mechanism 
+
+
+
+(
+
+g
+
+(
+a
+,
+k
+)
+
+
+,
+U
+)
+
+
+{\displaystyle (g_{(a,k)},U)}
+
+ has 
+
+
+
+[
+0
+,
+1
+]
+
+
+{\displaystyle [0,1]}
+
+ uniform seed U and explaining function 
+
+
+
+
+g
+
+(
+a
+,
+k
+)
+
+
+
+
+{\displaystyle g_{(a,k)}}
+
+ described by:
+A relevant statistic 
+
+
+
+
+
+s
+
+
+Θ
+
+
+
+
+{\displaystyle {\boldsymbol {s}}_{\boldsymbol {\Theta }}}
+
+ is constituted by the pair of joint sufficient statistics for 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ and K, respectively 
+
+
+
+
+s
+
+1
+
+
+=
+
+∑
+
+i
+=
+1
+
+
+m
+
+
+log
+⁡
+
+x
+
+i
+
+
+,
+
+s
+
+2
+
+
+=
+min
+{
+
+x
+
+i
+
+
+}
+
+
+{\displaystyle s_{1}=\sum _{i=1}^{m}\log x_{i},s_{2}=\min\{x_{i}\}}
+
+. The master equations read
+with 
+
+
+
+
+u
+
+min
+
+
+=
+min
+{
+
+u
+
+i
+
+
+}
+
+
+{\displaystyle u_{\min }=\min\{u_{i}\}}
+
+.
+Figure on the right reports the three-dimensional plot of the empirical cumulative distribution function (2) of 
+
+
+
+(
+A
+,
+K
+)
+
+
+{\displaystyle (A,K)}
+
+.

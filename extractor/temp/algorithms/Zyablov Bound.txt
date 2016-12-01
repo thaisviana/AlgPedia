@@ -1,0 +1,535 @@
+ABOUT
+In coding theory, the Zyablov bound is a lower bound on the rate 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ and relative distance 
+
+
+
+δ
+
+
+{\displaystyle \delta }
+
+ of concatenated codes.
+FULL TEXT
+In coding theory, the Zyablov bound is a lower bound on the rate 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ and relative distance 
+
+
+
+δ
+
+
+{\displaystyle \delta }
+
+ of concatenated codes.
+
+
+Let 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ be the rate of the outer code 
+
+
+
+
+C
+
+o
+u
+t
+
+
+
+
+{\displaystyle C_{out}}
+
+ and 
+
+
+
+δ
+
+
+{\displaystyle \delta }
+
+ be the relative distance, then the rate of the concatenated codes satisfies the following bound.
+where 
+
+
+
+r
+
+
+{\displaystyle r}
+
+ is the rate of the inner code 
+
+
+
+
+C
+
+i
+n
+
+
+
+
+{\displaystyle C_{in}}
+
+.
+Let 
+
+
+
+
+C
+
+o
+u
+t
+
+
+
+
+{\displaystyle C_{out}}
+
+ be the outer code, 
+
+
+
+
+C
+
+i
+n
+
+
+
+
+{\displaystyle C_{in}}
+
+ be the inner code.
+Consider 
+
+
+
+
+C
+
+o
+u
+t
+
+
+
+
+{\displaystyle C_{out}}
+
+ meets the Singleton bound with rate of 
+
+
+
+R
+
+
+{\displaystyle R}
+
+, i.e. 
+
+
+
+
+C
+
+o
+u
+t
+
+
+
+
+{\displaystyle C_{out}}
+
+ has relative distance 
+
+
+
+δ
+>
+1
+−
+R
+.
+
+
+{\displaystyle \delta >1-R.}
+
+ In order for 
+
+
+
+
+C
+
+o
+u
+t
+
+
+∘
+
+C
+
+i
+n
+
+
+
+
+{\displaystyle C_{out}\circ C_{in}}
+
+ to be an asymptotically good code, 
+
+
+
+
+C
+
+i
+n
+
+
+
+
+{\displaystyle C_{in}}
+
+ also needs to be an asymptotically good code which means, 
+
+
+
+
+C
+
+i
+n
+
+
+
+
+{\displaystyle C_{in}}
+
+ needs to have rate 
+
+
+
+r
+>
+0
+
+
+{\displaystyle r>0}
+
+ and relative distance 
+
+
+
+
+δ
+
+i
+n
+
+
+>
+0
+
+
+{\displaystyle \delta _{in}>0}
+
+.
+Suppose 
+
+
+
+
+C
+
+i
+n
+
+
+
+
+{\displaystyle C_{in}}
+
+ meets the Gilbert-Varshamov bound with rate of 
+
+
+
+r
+
+
+{\displaystyle r}
+
+ and thus with relative distance
+then 
+
+
+
+
+C
+
+o
+u
+t
+
+
+∘
+
+C
+
+i
+n
+
+
+
+
+{\displaystyle C_{out}\circ C_{in}}
+
+ has rate of 
+
+
+
+r
+R
+
+
+{\displaystyle rR}
+
+ and 
+
+
+
+δ
+=
+(
+1
+−
+R
+)
+
+(
+
+H
+
+q
+
+
+−
+1
+
+
+(
+1
+−
+r
+)
+−
+ε
+)
+
+.
+
+
+{\displaystyle \delta =(1-R)\left(H_{q}^{-1}(1-r)-\varepsilon \right).}
+
+
+Expressing 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ as a function of 
+
+
+
+δ
+,
+r
+
+
+{\displaystyle \delta ,r}
+
+
+Then optimizing over the choice of r, we get that rate of the Concatenated error correction code satisﬁes,
+This lower bound is called Zyablov bound (the bound of 
+
+
+
+r
+<
+1
+−
+
+H
+
+q
+
+
+(
+δ
++
+ε
+)
+
+
+{\displaystyle r<1-H_{q}(\delta +\varepsilon )}
+
+ is necessary to ensure 
+
+
+
+R
+>
+0
+
+
+{\displaystyle R>0}
+
+). See Figure 2 for a plot of this bound.
+Note that the Zyablov bound implies that for every 
+
+
+
+δ
+>
+0
+
+
+{\displaystyle \delta >0}
+
+, there exists a (concatenated) code with rate 
+
+
+
+R
+>
+0.
+
+
+{\displaystyle R>0.}
+
+
+We can construct a code that achieves the Zyablov bound in polynomial time. In particular, we can construct explicit asymptotically good code (over some alphabets) in polynomial time.
+Linear Codes will help us complete the proof of the above statement since linear codes have polynomial representation. Let Cout be an 
+
+
+
+[
+N
+,
+K
+
+]
+
+Q
+
+
+
+
+{\displaystyle [N,K]_{Q}}
+
+ Reed-Solomon error correction code where 
+
+
+
+N
+=
+Q
+−
+1
+
+
+{\displaystyle N=Q-1}
+
+ (evaluation points being 
+
+
+
+
+
+F
+
+
+Q
+
+
+∗
+
+
+
+
+{\displaystyle \mathbb {F} _{Q}^{*}}
+
+ with 
+
+
+
+Q
+=
+
+q
+
+k
+
+
+
+
+{\displaystyle Q=q^{k}}
+
+, then 
+
+
+
+k
+=
+θ
+(
+log
+⁡
+N
+)
+
+
+{\displaystyle k=\theta (\log N)}
+
+.
+We need to construct the Inner code that lies on Gilbert-Varshamov bound. This can be done in two ways
+Thus we can construct a code that achieves the Zyablov bound in polynomial time.

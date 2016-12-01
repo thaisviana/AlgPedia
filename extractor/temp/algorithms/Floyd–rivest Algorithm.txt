@@ -1,0 +1,8 @@
+ABOUT
+In computer science, the Floyd-Rivest algorithm is a selection algorithm developed by Robert W. Floyd and Ronald L. Rivest that has an optimal expected number of comparisons within lower-order terms. It is functionally equivalent to quickselect, but runs faster in practice on average. [1] It has an expected running time of O(n) and an expected number of comparisons of n + min(k, n - k) + O(n1/2).
+FULL TEXT
+In computer science, the Floyd-Rivest algorithm is a selection algorithm developed by Robert W. Floyd and Ronald L. Rivest that has an optimal expected number of comparisons within lower-order terms. It is functionally equivalent to quickselect, but runs faster in practice on average. [1] It has an expected running time of O(n) and an expected number of comparisons of n + min(k, n - k) + O(n1/2).
+The algorithm was originally presented in a Stanford University technical report containing two papers, where it was referred to as SELECT and paired with PICK, or median of medians. [2] It was subsequently published in Communications of the ACM, Volume 18: Issue 3.
+The Floyd-Rivest algorithm is a divide and conquer algorithm, sharing many similarities with quickselect. It uses sampling to help partition the list into three sets. It then recursively selects the kth smallest element from the appropriate set.
+The general steps are:
+The following pseudocode sorts the elements between left and right in ascending order, such that for some value k, where left ≤ k ≤ right, the kth element in the list will contain the (k - left + 1)th smallest value:

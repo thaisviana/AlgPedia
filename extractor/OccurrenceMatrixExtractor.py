@@ -10,7 +10,7 @@ class OccurrenceMatrixExtractor:
         wiki_alg_extractor = WikiPediaAbstractExtractor()
 
         wiki_alg_extractor.search_page(alg_url)
-        return (wiki_alg_extractor.get_alg_name(), wiki_alg_extractor.get_full_text())
+        return (wiki_alg_extractor.get_alg_name(), wiki_alg_extractor.get_full_text(), wiki_alg_extractor.get_alg_about())
 
     def insert_text(self, alg_name, full_text, id):
         print "Connecting to database..."
@@ -28,3 +28,5 @@ class OccurrenceMatrixExtractor:
             print "Insert failed, rollingback"
             db.rollback()
 	    db.close()
+
+	return None

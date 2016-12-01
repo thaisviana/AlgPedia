@@ -1,0 +1,319 @@
+ABOUT
+In mathematics and computing, the Levenberg–Marquardt algorithm (LMA), also known as the damped least-squares (DLS) method, is used to solve non-linear least squares problems. These minimization problems arise especially in least squares curve fitting.
+FULL TEXT
+In mathematics and computing, the Levenberg–Marquardt algorithm (LMA), also known as the damped least-squares (DLS) method, is used to solve non-linear least squares problems. These minimization problems arise especially in least squares curve fitting.
+The LMA is used in many software applications for solving generic curve-fitting problems. However, as for many fitting algorithms, the LMA finds only a local minimum, which is not necessarily the global minimum. The LMA interpolates between the Gauss–Newton algorithm (GNA) and the method of gradient descent. The LMA is more robust than the GNA, which means that in many cases it finds a solution even if it starts very far off the final minimum. For well-behaved functions and reasonable starting parameters, the LMA tends to be a bit slower than the GNA. LMA can also be viewed as Gauss–Newton using a trust region approach.
+The algorithm was first published in 1944 by Kenneth Levenberg,[1] while working at the Frankford Army Arsenal. It was rediscovered in 1963 by Donald Marquardt[2] who worked as a statistician at DuPont and independently by Girard,[3] Wynne[4] and Morrison.[5]
+
+
+The primary application of the Levenberg–Marquardt algorithm is in the least-squares curve fitting problem: given a set of 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ empirical datum pairs (xi, yi) of independent and dependent variables, find the parameters β of the model curve f(x, β) so that the sum of the squares of the deviations is minimized:
+Like other numeric minimization algorithms, the Levenberg–Marquardt algorithm is an iterative procedure. To start a minimization, the user has to provide an initial guess for the parameter vector, β. In cases with only one minimum, an uninformed standard guess like βT = (1, 1, ..., 1) will work fine; in cases with multiple minima, the algorithm converges to the global minimum only if the initial guess is already somewhat close to the final solution.
+In each iteration step, the parameter vector β is replaced by a new estimate β + δ. To determine δ, the functions 
+
+
+
+f
+(
+
+x
+
+i
+
+
+,
+
+β
+
++
+
+δ
+
+)
+
+
+{\displaystyle f(x_{i},{\boldsymbol {\beta }}+{\boldsymbol {\delta }})}
+
+ are approximated by their linearizations:
+where
+is the gradient (row-vector in this case) of f with respect to β.
+The sum of squares 
+
+
+
+S
+(
+β
+)
+
+
+{\displaystyle S(\beta )}
+
+ at its minimum has a zero gradient with respect to β. The above first-order approximation of 
+
+
+
+f
+(
+
+x
+
+i
+
+
+,
+
+β
+
++
+
+δ
+
+)
+
+
+{\displaystyle f(x_{i},{\boldsymbol {\beta }}+{\boldsymbol {\delta }})}
+
+ gives
+or in vector notation,
+Taking the derivative of 
+
+
+
+S
+(
+
+β
+
++
+
+δ
+
+)
+
+
+{\displaystyle S({\boldsymbol {\beta }}+{\boldsymbol {\delta }})}
+
+ with respect to δ and setting the result to zero gives
+where 
+
+
+
+
+J
+
+
+
+{\displaystyle \mathbf {J} }
+
+ is the Jacobian matrix whose i-th row equals 
+
+
+
+
+J
+
+i
+
+
+
+
+{\displaystyle J_{i}}
+
+, and where 
+
+
+
+
+f
+
+
+
+{\displaystyle \mathbf {f} }
+
+ and 
+
+
+
+
+y
+
+
+
+{\displaystyle \mathbf {y} }
+
+ are vectors with i-th component 
+
+
+
+f
+(
+
+x
+
+i
+
+
+,
+
+β
+
+)
+
+
+{\displaystyle f(x_{i},{\boldsymbol {\beta }})}
+
+ and 
+
+
+
+
+y
+
+i
+
+
+
+
+{\displaystyle y_{i}}
+
+ respectively. This is a set of linear equations, which can be solved for δ.
+Levenberg's contribution is to replace this equation by a "damped version",
+where I is the identity matrix, giving as the increment δ to the estimated parameter vector β.
+The (non-negative) damping factor λ is adjusted at each iteration. If reduction of S is rapid, a smaller value can be used, bringing the algorithm closer to the Gauss–Newton algorithm, whereas if an iteration gives insufficient reduction in the residual, λ can be increased, giving a step closer to the gradient-descent direction. Note that the gradient of S with respect to δ equals 
+
+
+
+−
+2
+
+
+(
+
+
+
+
+J
+
+
+T
+
+
+[
+
+y
+
+−
+
+f
+
+(
+
+β
+
+)
+]
+
+
+
+)
+
+
+
+T
+
+
+
+
+{\displaystyle -2{\big (}\mathbf {J} ^{T}[\mathbf {y} -\mathbf {f} ({\boldsymbol {\beta }})]{\big )}^{T}}
+
+. Therefore, for large values of λ, the step will be taken approximately in the direction of the gradient. If either the length of the calculated step δ or the reduction of sum of squares from the latest parameter vector β + δ fall below predefined limits, iteration stops, and the last parameter vector β is considered to be the solution.
+Levenberg's algorithm has the disadvantage that if the value of damping factor λ is large, inverting JTJ + λI is not used at all. Marquardt provided the insight that we can scale each component of the gradient according to the curvature, so that there is larger movement along the directions where the gradient is smaller. This avoids slow convergence in the direction of small gradient. Therefore, Marquardt replaced the identity matrix I with the diagonal matrix consisting of the diagonal elements of JTJ, resulting in the Levenberg–Marquardt algorithm:
+A similar damping factor appears in Tikhonov regularization, which is used to solve linear ill-posed problems, as well as in ridge regression, an estimation technique in statistics.
+Various more or less heuristic arguments have been put forward for the best choice for the damping parameter λ. Theoretical arguments exist showing why some of these choices guarantee local convergence of the algorithm; however, these choices can make the global convergence of the algorithm suffer from the undesirable properties of steepest descent, in particular very slow convergence close to the optimum.
+The absolute values of any choice depends on how well-scaled the initial problem is. Marquardt recommended starting with a value λ0 and a factor ν > 1. Initially setting λ = λ0 and computing the residual sum of squares S(β) after one step from the starting point with the damping factor of λ = λ0 and secondly with λ0/ν. If both of these are worse than the initial point, then the damping is increased by successive multiplication by ν until a better point is found with a new damping factor of λ0νk for some k.
+If use of the damping factor λ/ν results in a reduction in squared residual, then this is taken as the new value of λ (and the new optimum location is taken as that obtained with this damping factor) and the process continues; if using λ/ν resulted in a worse residual, but using λ resulted in a better residual, then λ is left unchanged and the new optimum is taken as the value obtained with λ as damping factor.
+In this example we try to fit the function 
+
+
+
+y
+=
+a
+cos
+⁡
+(
+b
+X
+)
++
+b
+sin
+⁡
+(
+a
+X
+)
+
+
+{\displaystyle y=a\cos(bX)+b\sin(aX)}
+
+ using the Levenberg–Marquardt algorithm implemented in GNU Octave as the leasqr function. The graphs show progressively better fitting for the parameters a = 100, b = 102 used in the initial curve. Only when the parameters in the last graph are chosen closest to the original, are the curves fitting exactly. This equation is an example of very sensitive initial conditions for the Levenberg–Marquardt algorithm. One reason for this sensitivity is the existence of multiple minima — the function 
+
+
+
+cos
+⁡
+(
+β
+x
+)
+
+
+{\displaystyle \cos(\beta x)}
+
+ has minima at parameter value 
+
+
+
+
+
+
+β
+^
+
+
+
+
+
+{\displaystyle {\hat {\beta }}}
+
+ and 
+
+
+
+
+
+
+β
+^
+
+
+
++
+2
+n
+π
+
+
+{\displaystyle {\hat {\beta }}+2n\pi }
+
+.

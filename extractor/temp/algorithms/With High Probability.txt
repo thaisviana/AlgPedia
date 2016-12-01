@@ -1,0 +1,21 @@
+ABOUT
+In mathematics, an event that occurs with high probability (often shortened to w.h.p. or WHP) is one whose probability depends on a certain number n and goes to 1 as n goes to infinity, i.e. it can be made as close as desired to 1 by making n big enough.
+FULL TEXT
+In mathematics, an event that occurs with high probability (often shortened to w.h.p. or WHP) is one whose probability depends on a certain number n and goes to 1 as n goes to infinity, i.e. it can be made as close as desired to 1 by making n big enough.
+The term WHP is especially used in computer science, in the analysis of probabilistic algorithms. For example, consider a certain probabilistic algorithm on a graph with n nodes. If the probability that the algorithm returns the correct answer is 
+
+
+
+1
+−
+1
+
+/
+
+n
+
+
+{\displaystyle 1-1/n}
+
+, then when the number of nodes is very large, the algorithm is correct with a probability that is very near 1. This fact is expressed shortly by saying that the algorithm is correct WHP.
+Some algorithms in which this term is used are:

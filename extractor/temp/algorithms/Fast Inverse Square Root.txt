@@ -1,0 +1,419 @@
+ABOUT
+Fast inverse square root, sometimes referred to as Fast InvSqrt() or by the hexadecimal constant 0x5f3759df, is an algorithm that estimates 1/√x, the reciprocal (or multiplicative inverse) of the square root of a 32-bit floating-point number x in IEEE 754 floating-point format. This operation is used in digital signal processing to normalize a vector, i.e., scale it to length 1. For example, computer graphics programs use inverse square roots to compute angles of incidence and reflection for lighting and shading. The algorithm is best known for its implementation in 1999 in the source code of Quake III Arena, a first-person shooter video game that made heavy use of 3D graphics. The algorithm only started appearing on public forums such as Usenet in 2002 or 2003.[1][note 1] At the time, it was generally computationally expensive to compute the reciprocal of a floating-point number, especially on a large scale; the fast inverse square root bypassed this step.
+FULL TEXT
+Fast inverse square root, sometimes referred to as Fast InvSqrt() or by the hexadecimal constant 0x5f3759df, is an algorithm that estimates 1/√x, the reciprocal (or multiplicative inverse) of the square root of a 32-bit floating-point number x in IEEE 754 floating-point format. This operation is used in digital signal processing to normalize a vector, i.e., scale it to length 1. For example, computer graphics programs use inverse square roots to compute angles of incidence and reflection for lighting and shading. The algorithm is best known for its implementation in 1999 in the source code of Quake III Arena, a first-person shooter video game that made heavy use of 3D graphics. The algorithm only started appearing on public forums such as Usenet in 2002 or 2003.[1][note 1] At the time, it was generally computationally expensive to compute the reciprocal of a floating-point number, especially on a large scale; the fast inverse square root bypassed this step.
+The algorithm accepts a 32-bit floating-point number as the input and stores a halved value for later use. Then, treating the bits representing the floating-point number as a 32-bit integer, a logical shift right by one bit is performed and the result subtracted from the magic number 0x5f3759df. This is the first approximation of the inverse square root of the input. Treating the bits again as a floating-point number, it runs one iteration of Newton's method, yielding a more precise approximation.
+The algorithm was originally attributed to John Carmack, but an investigation showed that the code had deeper roots in both the hardware and software side of computer graphics. Adjustments and alterations passed through both Silicon Graphics and 3dfx Interactive, with Gary Tarolli's implementation for the SGI Indigo as the earliest known use. It is not known how the constant was originally derived, though investigation has shed some light on possible methods.
+
+
+The inverse square root of a floating point number is used in calculating a normalized vector.[3] Programs can use normalized vectors to determine angles of incidence and reflection. 3D graphics programs must perform millions of these calculations every second to simulate lighting. When the code was developed in the early 1990s, most floating-point processing power lagged behind the speed of integer processing.[1] This was troublesome for 3D graphics programs before the advent of specialized hardware to handle transform and lighting.
+The length of the vector is determined by calculating its Euclidean norm: the square root of the sum of squares of the vector components. When each component of the vector is divided by that length, the new vector will be a unit vector pointing in the same direction. In a 3D graphics program, all vectors are in three-dimensional space, so 
+
+
+
+
+v
+
+
+
+{\displaystyle {\boldsymbol {v}}}
+
+ would be a vector 
+
+
+
+(
+
+v
+
+1
+
+
+,
+
+v
+
+2
+
+
+,
+
+v
+
+3
+
+
+)
+
+
+{\displaystyle (v_{1},v_{2},v_{3})}
+
+.
+At the time, floating-point division was generally expensive compared to multiplication; the fast inverse square root algorithm bypassed the division step, giving it its performance advantage. Quake III Arena, a first-person shooter video game, used the fast inverse square root algorithm to accelerate graphics computation, but the algorithm has since been implemented in some dedicated hardware vertex shaders using field-programmable gate arrays (FPGA).[4]
+The following code is the fast inverse square root implementation from Quake III Arena, stripped of C preprocessor directives, but including the exact original comment text:[5]
+At the time, the general method to compute the inverse square root was to calculate an approximation for 1/√x, then revise that approximation via another method until it came within an acceptable error range of the actual result. Common software methods in the early 1990s drew approximations from a lookup table.[6] The key of the fast inverse square root was to directly compute an approximation by exploiting the structure of floating-point numbers, proving faster than table lookups. The algorithm was approximately four times faster than computing the square root with another method and calculating the reciprocal via floating point division.[7] The algorithm was designed with the IEEE 754-1985 32-bit floating point specification in mind, but investigation from Chris Lomont showed that it could be implemented in other floating point specifications.[8]
+The advantages in speed offered by the fast inverse square root kludge came from treating the longword[note 2] containing the floating point number as an integer then subtracting it from a specific constant, 0x5f3759df. The purpose of the constant is not immediately clear to someone viewing the code, so, like other such constants found in code, it is often called a magic number.[1][9][10][11] This integer subtraction and bit shift results in a longword which when treated as a floating point number is a rough approximation for the inverse square root of the input number. One iteration of Newton's method is performed to gain some accuracy, and the code is finished. The algorithm generates reasonably accurate results using a unique first approximation for Newton's method; however, it is much slower and less accurate than using the SSE instruction rsqrtss on x86 processors also released in 1999.[12]
+As an example, consider the number x = 0.15625, for which we want to calculate 1/√x ≈ 2.52982. The first steps of the algorithm are illustrated below:
+Using IEEE 32-bit representation:
+Reinterpreting this last bit pattern as a floating point number gives the approximation y = 2.61486, which has an error of about 3.4%. After the single iteration of Newton's method, the final result is y = 2.52549, in error by only 0.17%.
+The algorithm computes 1/√x by performing the following steps:
+Since this algorithm relies heavily on the bit-level representation of single-precision floating point numbers, a short overview of this representation is provided here. In order to encode a non-zero real number x as a single precision float, the first step is to write x as a normalized binary number:[13]
+where the exponent ex is an integer, mx ∈ [0, 1), and 1.b1b2b3... is the binary representation of the "significand" (1 + mx). It should be noted that, since the single bit before the point in the significand is always 1, it need not be stored. From this form, three unsigned integers are computed:[14]
+These fields are then packed, left to right, into a 32 bit container.[15]
+As an example, consider again the number x = 0.15625 = 0.001012. Normalizing x yields:
+and thus, the three unsigned integer fields are:
+these fields are packed as shown in the figure below:
+If one had to calculate 1/√x without a computer or a calculator, a table of logarithms would be useful, together with the identity logb(1/√x) = −½ logb(x), which is valid for every base b. The fast inverse square root is based on this identity, and on the fact that aliasing a float32 to an integer gives a rough approximation of its logarithm. Here is how:
+If x is a positive normal number:
+then we have
+but since mx ∈ [0, 1), the logarithm on the right hand side can be approximated by[16]
+where σ is a free parameter used to tune the approximation. For example, σ = 0 yields exact results at both ends of the interval, while σ ≈ 0.0430357 yields the optimal approximation (the best in the sense of the uniform norm of the error).
+Thus we have the approximation
+On the other hand, interpreting the bit-pattern of x as an integer yields[note 5]
+It then appears that Ix is a scaled and shifted piecewise-linear approximation of log2(x), as illustrated in the figure on the right. In other words, log2(x) is approximated by
+The calculation of y = 1/√x is based on the identity
+Using the approximation of the logarithm above, applied to both x and y, the above equation gives:
+Thus, an approximation of Iy is:
+which is written in the code as
+The first term above is the magic number
+from which it can be inferred σ ≈ 0.0450466. The second term, ½ Ix, is calculated by shifting the bits of Ix one position to the right.[17]
+With y as the inverse square root, 
+
+
+
+f
+(
+y
+)
+=
+
+
+1
+
+y
+
+2
+
+
+
+
+−
+x
+=
+0
+
+
+{\displaystyle f(y)={\frac {1}{y^{2}}}-x=0}
+
+. We can refine the approximation yielded by the earlier steps by using a root-finding method, a method that finds the zero of a function. The algorithm uses Newton's method: if we have an approximation, yn for y, then we can calculate a better approximation 
+
+
+
+
+y
+
+n
++
+1
+
+
+
+
+{\displaystyle y_{n+1}}
+
+ by taking 
+
+
+
+
+y
+
+n
+
+
+−
+
+
+
+f
+(
+
+y
+
+n
+
+
+)
+
+
+
+f
+′
+
+(
+
+y
+
+n
+
+
+)
+
+
+
+
+
+{\displaystyle y_{n}-{\frac {f(y_{n})}{f'(y_{n})}}}
+
+, where 
+
+
+
+
+f
+′
+
+(
+
+y
+
+n
+
+
+)
+
+
+{\displaystyle f'(y_{n})}
+
+ is the derivative of 
+
+
+
+f
+(
+y
+)
+
+
+{\displaystyle f(y)}
+
+ at 
+
+
+
+
+y
+
+n
+
+
+
+
+{\displaystyle y_{n}}
+
+.[18] For the above 
+
+
+
+f
+(
+y
+)
+
+
+{\displaystyle f(y)}
+
+, 
+
+
+
+
+y
+
+n
++
+1
+
+
+=
+
+
+
+
+y
+
+n
+
+
+(
+3
+−
+x
+
+y
+
+n
+
+
+2
+
+
+)
+
+2
+
+
+
+
+{\displaystyle y_{n+1}={\frac {y_{n}(3-xy_{n}^{2})}{2}}}
+
+, where 
+
+
+
+f
+(
+y
+)
+=
+
+
+1
+
+y
+
+2
+
+
+
+
+−
+x
+
+
+{\displaystyle f(y)={\frac {1}{y^{2}}}-x}
+
+ and 
+
+
+
+
+f
+′
+
+(
+y
+)
+=
+
+
+
+−
+2
+
+
+y
+
+3
+
+
+
+
+
+
+{\displaystyle f'(y)={\frac {-2}{y^{3}}}}
+
+.
+Treating y as a floating-point number, y = y*(threehalfs - x2*y*y); is equivalent to 
+
+
+
+
+
+y
+
+n
++
+1
+
+
+=
+
+y
+
+n
+
+
+
+(
+1.5
+−
+
+
+x
+2
+
+
+
+y
+
+n
+
+
+2
+
+
+)
+
+=
+
+
+
+
+y
+
+n
+
+
+(
+3
+−
+x
+
+y
+
+n
+
+
+2
+
+
+)
+
+2
+
+
+
+
+{\displaystyle \,y_{n+1}=y_{n}\left(1.5-{\frac {x}{2}}y_{n}^{2}\right)={\frac {y_{n}(3-xy_{n}^{2})}{2}}}
+
+. By repeating this step, using the output of the function (
+
+
+
+
+y
+
+n
++
+1
+
+
+
+
+{\displaystyle y_{n+1}}
+
+) as the input of the next iteration, the algorithm causes y to converge to the inverse square root.[19] For the purposes of the Quake III engine, only one iteration was used. A second iteration remained in the code but was commented out.[11]
+As noted above, the approximation is surprisingly accurate. The graph on the right plots the error of the function (that is, the error of the approximation after it has been improved by running one iteration of Newton's method), for inputs starting at 0.01, where the standard library gives 10.0 as a result, while InvSqrt() gives 9.982522, making the difference 0.017479, or 0.175%. The absolute error only drops from then on, while the relative error stays within the same bounds across all orders of magnitude.
+The source code for Quake III was not released until QuakeCon 2005, but copies of the fast inverse square root code appeared on Usenet and other forums as early as 2002 or 2003.[1] Initial speculation pointed to John Carmack as the probable author of the code, but he demurred and suggested it was written by Terje Mathisen, an accomplished assembly programmer who had previously helped id Software with Quake optimization. Mathisen had written an implementation of a similar bit of code in the late 1990s, but the original authors proved to be much further back in the history of 3D computer graphics with Gary Tarolli's implementation for the SGI Indigo as a possible earliest known use. Rys Sommefeldt concluded that the original algorithm was devised by Greg Walsh at Ardent Computer in consultation with Cleve Moler, the creator of MATLAB.[20] Cleve Moler learned about this trick from code written by William Kahan and K.C. Ng at Berkeley around 1986 (see the comment section at the end of fdlibm code for sqrt[21]).[22] Jim Blinn also demonstrated a simple approximation of the inverse square root in a 1997 column for IEEE Computer Graphics and Applications.[23]
+It is not known precisely how the exact value for the magic number was determined. Chris Lomont developed a function to minimize approximation error by choosing the magic number R over a range. He first computed the optimal constant for the linear approximation step as 0x5f37642f, close to 0x5f3759df, but this new constant gave slightly less accuracy after one iteration of Newton's method.[24] Lomont then searched for a constant optimal even after one and two Newton iterations and found 0x5f375a86, which is more accurate than the original at every iteration stage.[24] He concluded by asking whether the exact value of the original constant was chosen through derivation or trial and error.[25] Lomont pointed out that the magic number for 64 bit IEEE754 size type double is 0x5fe6ec85e7de30da, but it was later shown by Matthew Robertson to be exactly 0x5fe6eb50c7b537a9.[26]

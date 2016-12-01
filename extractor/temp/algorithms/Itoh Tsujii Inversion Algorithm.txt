@@ -1,0 +1,6 @@
+ABOUT
+The Itoh-Tsujii inversion algorithm is used to invert elements in a finite field. It was introduced in 1988 and first used over GF(2m) using the normal basis representation of elements, however the algorithm is generic and can be used for other bases, such as the polynomial basis. It can also be used in any finite field, GF(pm).
+FULL TEXT
+The Itoh-Tsujii inversion algorithm is used to invert elements in a finite field. It was introduced in 1988 and first used over GF(2m) using the normal basis representation of elements, however the algorithm is generic and can be used for other bases, such as the polynomial basis. It can also be used in any finite field, GF(pm).
+The algorithm is as follows:
+This algorithm is fast because steps 3 and 5 both involve operations in the subfield GF(p). Similarly, if a small value of p is used a lookup table can be used for inversion in step 4. The majority of time spent in this algorithm is in step 2, the first exponentiation. This is one reason why this algorithm is well-suited for the normal basis, since squaring and exponentiation are relatively easy in that basis.

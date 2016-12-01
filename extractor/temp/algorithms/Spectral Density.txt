@@ -1,0 +1,1106 @@
+ABOUT
+The power spectrum 
+
+
+
+
+S
+
+x
+x
+
+
+(
+f
+)
+
+
+{\displaystyle S_{xx}(f)}
+
+ of a time series 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ describes the distribution of power into frequency components composing that signal. According to Fourier analysis any physical signal can be decomposed into a number of discrete frequencies, or a spectrum of frequencies over a continuous range. The statistical average of a certain signal or sort of signal (including noise) as analyzed in terms of its frequency content, is called its spectrum.
+FULL TEXT
+The power spectrum 
+
+
+
+
+S
+
+x
+x
+
+
+(
+f
+)
+
+
+{\displaystyle S_{xx}(f)}
+
+ of a time series 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ describes the distribution of power into frequency components composing that signal. According to Fourier analysis any physical signal can be decomposed into a number of discrete frequencies, or a spectrum of frequencies over a continuous range. The statistical average of a certain signal or sort of signal (including noise) as analyzed in terms of its frequency content, is called its spectrum.
+When the energy of the signal is concentrated around a finite time interval, especially if its total energy is finite, one may compute the energy spectral density. More commonly used is the power spectral density (or simply power spectrum), which applies to signals existing over all time, or over a time period large enough (especially in relation to the duration of a measurement) that it could as well have been over an infinite time interval. The power spectral density (PSD) then refers to the spectral energy distribution that would be found per unit time, since the total energy of such a signal over all time would generally be infinite. Summation or integration of the spectral components yields the total power (for a physical process) or variance (in a statistical process), identical to what would be obtained by integrating 
+
+
+
+
+x
+
+2
+
+
+(
+t
+)
+
+
+{\displaystyle x^{2}(t)}
+
+ over the time domain, as dictated by Parseval's theorem.
+The spectrum of a physical process 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ often contains essential information about the nature of 
+
+
+
+x
+
+
+{\displaystyle x}
+
+. For instance, the pitch and timbre of a musical instrument are immediately determined from a spectral analysis. The color of a light source is determined by the spectrum of the electromagnetic wave's electric field 
+
+
+
+E
+(
+t
+)
+
+
+{\displaystyle E(t)}
+
+ as it fluctuates at an extremely high frequency. Obtaining a spectrum from time series such as these involves the Fourier transform, and generalizations based on Fourier analysis. In many cases the time domain is not specifically employed in practice, such as when a dispersive prism is used to obtain a spectrum of light in a spectrograph, or when a sound is perceived through its effect on the auditory receptors of the inner ear, each of which is sensitive to a particular frequency.
+However this article concentrates on situations in which the time series is known (at least in a statistical sense) or directly measured (such as by a microphone sampled by a computer). The power spectrum is important in statistical signal processing and in the statistical study of stochastic processes, as well as in many other branches of physics and engineering. Typically the process is a function of time but one can similarly discuss data in the spatial domain being decomposed in terms of spatial frequency.
+
+
+Any signal that can be represented as an amplitude that varies in time has a corresponding frequency spectrum. This includes familiar entities such as visible light (perceived as color), musical notes (perceived as pitch), radio/TV (specified by their frequency, or sometimes wavelength) and even the regular rotation of the earth. When these signals are viewed in the form of a frequency spectrum, certain aspects of the received signals or the underlying processes producing them are revealed. In some cases the frequency spectrum may include a distinct peak corresponding to a sine wave component. And additionally there may be peaks corresponding to harmonics of a fundamental peak, indicating a periodic signal which is not simply sinusoidal. Or a continuous spectrum may show narrow frequency intervals which are strongly enhanced corresponding to resonances, or frequency intervals containing almost zero power as would be produced by a notch filter.
+In physics, the signal might be a wave, such as an electromagnetic wave, an acoustic wave, or the vibration of a mechanism. The power spectral density (PSD) of the signal describes the power present in the signal as a function of frequency, per unit frequency. Power spectral density is commonly expressed in watts per hertz (W/Hz).[1]
+When a signal is defined in terms only of a voltage, for instance, there is no unique power associated with the stated amplitude. In this case "power" is simply reckoned in terms of the square of the signal, as this would always be proportional to the actual power delivered by that signal into a given impedance. So one might use units of V2 Hz−1 for the PSD and V2 s Hz−1 for the ESD (energy spectral density)[2] even though no actual "power" or "energy" is specified.
+Sometimes one encounters an amplitude spectral density (ASD), which is the square root of the PSD; the ASD of a voltage signal has units of V Hz−1/2.[3] This is useful when the shape of the spectrum is rather constant, since variations in the ASD will then be proportional to variations in the signal's voltage level itself. But it is mathematically preferred to use the PSD, since only in that case is the area under the curve meaningful in terms of actual power over all frequency or over a specified bandwidth.
+For random vibration analysis, units of g2 Hz−1 are frequently used for the PSD of acceleration. Here g denotes the g-force.[4]
+Mathematically it is not necessary to assign physical dimensions to the signal or to the independent variable. In the following discussion the meaning of x(t) will remain unspecified, but the independent variable will be assumed to be that of time.
+Energy spectral density describes how the energy of a signal or a time series is distributed with frequency. Here, the term energy is used in the generalized sense of signal processing;[5] that is, the energy 
+
+
+
+E
+
+
+{\displaystyle E}
+
+ of a signal 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ is
+The energy spectral density is most suitable for transients—that is, pulse-like signals—having a finite total energy. In this case, Parseval's theorem [6] gives us an alternate expression for the energy of the signal in terms of its Fourier transform, 
+
+
+
+
+
+
+x
+^
+
+
+
+(
+f
+)
+=
+
+∫
+
+−
+∞
+
+
+∞
+
+
+
+e
+
+−
+2
+π
+i
+f
+t
+
+
+x
+(
+t
+)
+d
+t
+.
+
+
+{\displaystyle {\hat {x}}(f)=\int \limits _{-\infty }^{\infty }e^{-2\pi ift}x(t)dt.}
+
+
+Here 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is the frequency in Hz, i.e., cycles per second. Often used is the angular frequency 
+
+
+
+ω
+=
+2
+π
+f
+
+
+{\displaystyle \omega =2\pi f}
+
+. Since the integral on the right-hand side is the energy of the signal, the integrand 
+
+
+
+
+|
+
+
+
+
+x
+^
+
+
+
+(
+f
+)
+
+
+|
+
+
+2
+
+
+
+
+{\displaystyle |{\hat {x}}(f)|^{2}}
+
+ can be interpreted as a density function describing the energy per unit frequency contained in the signal at the frequency 
+
+
+
+f
+
+
+{\displaystyle f}
+
+. In light of this, the energy spectral density of a signal 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ is defined as[6]
+As a physical example of how one might measure the energy spectral density of a signal, suppose 
+
+
+
+V
+(
+t
+)
+
+
+{\displaystyle V(t)}
+
+ represents the potential (in volts) of an electrical pulse propagating along a transmission line of impedance 
+
+
+
+Z
+
+
+{\displaystyle Z}
+
+, and suppose the line is terminated with a matched resistor (so that all of the pulse energy is delivered to the resistor and none is reflected back). By Ohm's law, the power delivered to the resistor at time 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ is equal to 
+
+
+
+V
+(
+t
+
+)
+
+2
+
+
+
+/
+
+Z
+
+
+{\displaystyle V(t)^{2}/Z}
+
+, so the total energy is found by integrating 
+
+
+
+V
+(
+t
+
+)
+
+2
+
+
+
+/
+
+Z
+
+
+{\displaystyle V(t)^{2}/Z}
+
+ with respect to time over the duration of the pulse. To find the value of the energy spectral density 
+
+
+
+
+S
+
+x
+x
+
+
+(
+f
+)
+
+
+{\displaystyle S_{xx}(f)}
+
+ at frequency 
+
+
+
+f
+
+
+{\displaystyle f}
+
+, one could insert between the transmission line and the resistor a bandpass filter which passes only a narrow range of frequencies (
+
+
+
+Δ
+f
+
+
+{\displaystyle \Delta f}
+
+, say) near the frequency of interest and then measure the total energy 
+
+
+
+E
+(
+f
+)
+
+
+{\displaystyle E(f)}
+
+ dissipated across the resistor. The value of the energy spectral density at 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is then estimated to be 
+
+
+
+E
+(
+f
+)
+
+/
+
+Δ
+f
+
+
+{\displaystyle E(f)/\Delta f}
+
+. In this example, since the power 
+
+
+
+V
+(
+t
+
+)
+
+2
+
+
+
+/
+
+Z
+
+
+{\displaystyle V(t)^{2}/Z}
+
+ has units of V2 Ω−1, the energy 
+
+
+
+E
+(
+f
+)
+
+
+{\displaystyle E(f)}
+
+ has units of V2 s Ω−1 = J, and hence the estimate 
+
+
+
+E
+(
+f
+)
+
+/
+
+Δ
+f
+
+
+{\displaystyle E(f)/\Delta f}
+
+ of the energy spectral density has units of J Hz−1, as required. In many situations, it is common to forgo the step of dividing by 
+
+
+
+Z
+
+
+{\displaystyle Z}
+
+ so that the energy spectral density instead has units of V2 s Hz−1.
+This definition generalizes in a straightforward manner to a discrete signal with an infinite number of values 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+ such as a signal sampled at discrete times 
+
+
+
+
+x
+
+n
+
+
+=
+x
+(
+n
+
+Δ
+t
+)
+
+
+{\displaystyle x_{n}=x(n\,\Delta t)}
+
+:
+where 
+
+
+
+
+
+
+
+x
+^
+
+
+
+
+d
+
+
+(
+f
+)
+
+
+{\displaystyle {\hat {x}}_{d}(f)}
+
+ is the discrete Fourier transform of 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+ and 
+
+
+
+
+
+
+
+x
+^
+
+
+
+
+d
+
+
+∗
+
+
+(
+f
+)
+
+
+{\displaystyle {\hat {x}}_{d}^{*}(f)}
+
+ is the complex conjugate of 
+
+
+
+
+
+
+
+x
+^
+
+
+
+
+d
+
+
+(
+f
+)
+
+
+{\displaystyle {\hat {x}}_{d}(f)}
+
+ . The sampling interval 
+
+
+
+Δ
+t
+
+
+{\displaystyle \Delta t}
+
+ is needed to keep the correct physical units and to ensure that we recover the continuous case in the limit 
+
+
+
+Δ
+t
+→
+0
+
+
+{\displaystyle \Delta t\rightarrow 0}
+
+; however, in the mathematical sciences, the interval is often set to 1.
+The above definition of energy spectral density is suitable for transients (pulse-like signals) whose energy is concentrated around one time window; then the Fourier transforms of the signals generally exist. For continuous signals over all time, such as stationary processes, one must rather define the power spectral density (PSD); this describes how power of a signal or time series is distributed over frequency, as in the simple example given previously. Here, power can be the actual physical power, or more often, for convenience with abstract signals, is simply identified with the squared value of the signal. For example, statisticians study the variance of a function over time x(t) (or over another independent variable), and using an analogy with electrical signals (among other physical processes), it is customary to refer to it as the power spectrum even when there is no physical power involved. If one were to create a physical voltage source which followed x(t) and applied it to the terminals of a 1 ohm resistor, then indeed the instantaneous power dissipated in that resistor would be given by x2 watts.
+The average power P of a signal 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ over all time is therefore given by the following time average:
+Note that a stationary process, for instance, may have a finite power but an infinite energy. After all, energy is the integral of power, and the stationary signal continues over an infinite time. That is the reason that we cannot use the energy spectral density as defined above in such cases.
+In analyzing the frequency content of the signal 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+, one might like to compute the ordinary Fourier transform 
+
+
+
+
+
+
+x
+^
+
+
+
+(
+ω
+)
+
+
+{\displaystyle {\hat {x}}(\omega )}
+
+; however, for many signals of interest the Fourier transform does not formally exist.[N 1] Because of this complication one can as well work with a truncated Fourier transform 
+
+
+
+
+
+
+
+x
+^
+
+
+
+
+T
+
+
+(
+ω
+)
+
+
+{\displaystyle {\hat {x}}_{T}(\omega )}
+
+, where the signal is integrated only over a finite interval [0, T]:
+Then the power spectral density can be defined as[8][9]
+Here E denotes the expected value; explicitly, we have[9]
+In the latter form (for a stationary random process), one can make the change of variables 
+
+
+
+Δ
+t
+=
+t
+−
+
+t
+′
+
+
+
+{\displaystyle \Delta t=t-t'}
+
+ and with the limits of integration (rather than [0,T]) approaching infinity, the resulting power spectral density 
+
+
+
+
+S
+
+x
+x
+
+
+(
+ω
+)
+
+
+{\displaystyle S_{xx}(\omega )}
+
+ and the autocorrelation function of this signal are seen to be Fourier transform pairs (Wiener–Khinchin theorem). The autocorrelation function is a statistic defined as 
+
+
+
+γ
+(
+τ
+)
+=
+⟨
+X
+(
+t
+)
+X
+(
+t
++
+τ
+)
+⟩
+
+
+{\displaystyle \gamma (\tau )=\langle X(t)X(t+\tau )\rangle }
+
+ (or more generally as 
+
+
+
+γ
+(
+τ
+)
+=
+⟨
+X
+(
+t
+)
+
+X
+
+∗
+
+
+(
+t
++
+τ
+)
+⟩
+
+
+{\displaystyle \gamma (\tau )=\langle X(t)X^{*}(t+\tau )\rangle }
+
+ in the case that X(t) is complex-valued). Provided that 
+
+
+
+γ
+(
+τ
+)
+
+
+{\displaystyle \gamma (\tau )}
+
+ is absolutely integrable (which is not always true)[10],
+Many authors use this equality to actually define the power spectral density.[11]
+The power of the signal in a given frequency band 
+
+
+
+[
+
+f
+
+1
+
+
+,
+
+f
+
+2
+
+
+]
+
+
+{\displaystyle [f_{1},f_{2}]}
+
+ (or 
+
+
+
+[
+
+ω
+
+1
+
+
+,
+
+ω
+
+2
+
+
+]
+
+
+{\displaystyle [\omega _{1},\omega _{2}]}
+
+) can be calculated by integrating over frequency. Since 
+
+
+
+
+S
+
+x
+x
+
+
+(
+−
+ω
+)
+=
+
+S
+
+x
+x
+
+
+(
+ω
+)
+
+
+{\displaystyle S_{xx}(-\omega )=S_{xx}(\omega )}
+
+, an equal amount of power can be attributed to positive and negative frequencies, which accounts for the factor of 2 in the following form (such trivial factors dependent on conventions used):
+More generally, similar techniques may be used to estimate a time-varying spectral density. In this case the truncated Fourier transform defined above over the finite time interval (0, T) is not evaluated in the limit of T approaching infinity. This results in decreased spectral coverage and resolution since frequencies of less than 1/T are not sampled, and results at frequencies which are not an integer multiple of 1/T are not independent. Just using a single such time series, the estimated power spectrum will be very "noisy", however this can be alleviated if it is possible to evaluate the expected value (in the above equation) using a large (or infinite) number of short-term spectra corresponding to statistical ensembles of realizations of x(t) evaluated over the specified time window.
+This definition of the power spectral density can be generalized to discrete time variables 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+. As above we can consider a finite window of 
+
+
+
+1
+≤
+n
+≤
+N
+
+
+{\displaystyle 1\leq n\leq N}
+
+ with the signal sampled at discrete times 
+
+
+
+
+x
+
+n
+
+
+=
+x
+(
+n
+Δ
+t
+)
+
+
+{\displaystyle x_{n}=x(n\Delta t)}
+
+ for a total measurement period 
+
+
+
+T
+=
+N
+Δ
+t
+
+
+{\displaystyle T=N\Delta t}
+
+. Then a single estimate of the PSD can be obtained through summation rather than integration:
+As before, the actual PSD is achieved when N (and thus T) approach infinity and the expected value is formally applied. In a real-world application, one would typically average this single-measurement PSD over many trials to obtain a more accurate estimate of the theoretical PSD of the physical process underlying the individual measurements. This computed PSD is sometimes called a periodogram. This periodogram converges to the true PSD as the number of estimates as well as the averaging time interval T approach infinity (Brown & Hwang[12]).
+If two signals both possess power spectral densities, then the cross-spectral density can similarly be calculated; as the PSD is related to the autocorrelation, so is the cross-spectral density related to the cross-correlation.
+Some properties of the PSD include:[13]
+The integrated spectrum or power spectral distribution 
+
+
+
+F
+(
+ω
+)
+
+
+{\displaystyle F(\omega )}
+
+ is defined as[dubious – discuss][14]
+Given two signals 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ and 
+
+
+
+y
+(
+t
+)
+
+
+{\displaystyle y(t)}
+
+, each of which possess power spectral densities 
+
+
+
+
+S
+
+x
+x
+
+
+(
+ω
+)
+
+
+{\displaystyle S_{xx}(\omega )}
+
+ and 
+
+
+
+
+S
+
+y
+y
+
+
+(
+ω
+)
+
+
+{\displaystyle S_{yy}(\omega )}
+
+, it is possible to define a cross-spectral density (CSD) given by
+The cross-spectral density (or 'cross power spectrum') is thus the Fourier transform of the cross-correlation function.
+where 
+
+
+
+
+R
+
+x
+y
+
+
+(
+t
+)
+
+
+{\displaystyle R_{xy}(t)}
+
+ is the cross-correlation of 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ and 
+
+
+
+y
+(
+t
+)
+
+
+{\displaystyle y(t)}
+
+.
+By an extension of the Wiener–Khinchin theorem, the Fourier transform of the cross-spectral density 
+
+
+
+
+S
+
+x
+y
+
+
+(
+ω
+)
+
+
+{\displaystyle S_{xy}(\omega )}
+
+ is the cross-covariance function.[15] In light of this, the PSD is seen to be a special case of the CSD for 
+
+
+
+x
+(
+t
+)
+=
+y
+(
+t
+)
+
+
+{\displaystyle x(t)=y(t)}
+
+.
+For discrete signals xn and yn, the relationship between the cross-spectral density and the cross-covariance is
+The goal of spectral density estimation is to estimate the spectral density of a random signal from a sequence of time samples. Depending on what is known about the signal, estimation techniques can involve parametric or non-parametric approaches, and may be based on time-domain or frequency-domain analysis. For example, a common parametric technique involves fitting the observations to an autoregressive model. A common non-parametric technique is the periodogram.
+The spectral density is usually estimated using Fourier transform methods (such as the Welch method), but other techniques such as the maximum entropy method can also be used.
+The concept and use of the power spectrum of a signal is fundamental in electrical engineering, especially in electronic communication systems, including radio communications, radars, and related systems, plus passive remote sensing technology. Electronic instruments called spectrum analyzers are used to observe and measure the power spectra of signals.
+The spectrum analyzer measures the magnitude of the short-time Fourier transform (STFT) of an input signal. If the signal being analyzed can be considered a stationary process, the STFT is a good smoothed estimate of its power spectral density.
+Primordial fluctuations, density variations in the early universe, are quantified by a power spectrum which gives the power of the variations as a function of spatial scale.

@@ -1,0 +1,5 @@
+ABOUT
+In digital communications, an encoding law is a (typically non-uniform) allocation of signal quantization levels across the possible analog signal levels in an analog to digital converter system. They can be viewed as a simple form of instantaneous companding.
+FULL TEXT
+In digital communications, an encoding law is a (typically non-uniform) allocation of signal quantization levels across the possible analog signal levels in an analog to digital converter system. They can be viewed as a simple form of instantaneous companding.
+The best-known encoding laws are the μ-law and A-law encoding laws defined in the ITU-T standard G.711 for use in digital telephony, and still used to the present day.

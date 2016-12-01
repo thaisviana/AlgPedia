@@ -1,0 +1,1643 @@
+ABOUT
+In computer science and graph theory, Karger's algorithm is a randomized algorithm to compute a minimum cut of a connected graph. It was invented by David Karger and first published in 1993.[1]
+FULL TEXT
+In computer science and graph theory, Karger's algorithm is a randomized algorithm to compute a minimum cut of a connected graph. It was invented by David Karger and first published in 1993.[1]
+The idea of the algorithm is based on the concept of contraction of an edge 
+
+
+
+(
+u
+,
+v
+)
+
+
+{\displaystyle (u,v)}
+
+ in an undirected graph 
+
+
+
+G
+=
+(
+V
+,
+E
+)
+
+
+{\displaystyle G=(V,E)}
+
+. Informally speaking, the contraction of an edge merges the nodes 
+
+
+
+u
+
+
+{\displaystyle u}
+
+ and 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ into one, reducing the total number of nodes of the graph by one. All other edges connecting either 
+
+
+
+u
+
+
+{\displaystyle u}
+
+ or 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ are "reattached" to the merged node, effectively producing a multigraph. Karger's basic algorithm iteratively contracts randomly chosen edges until only two nodes remain; those nodes represent a cut in the original graph. By iterating this basic algorithm a sufficient number of times, a minimum cut can be found with high probability.
+
+
+A cut 
+
+
+
+(
+S
+,
+T
+)
+
+
+{\displaystyle (S,T)}
+
+ in an undirected graph 
+
+
+
+G
+=
+(
+V
+,
+E
+)
+
+
+{\displaystyle G=(V,E)}
+
+ is a partition of the vertices 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ into two non-empty, disjoint sets 
+
+
+
+S
+∪
+T
+=
+V
+
+
+{\displaystyle S\cup T=V}
+
+. The cutset of a cut consists of the edges 
+
+
+
+{
+
+u
+v
+∈
+E
+:
+u
+∈
+S
+,
+v
+∈
+T
+
+}
+
+
+{\displaystyle \{\,uv\in E\colon u\in S,v\in T\,\}}
+
+ between the two parts. The size (or weight) of a cut in an unweighted graph is the cardinality of the cutset, i.e., the number of edges between the two parts,
+There are 
+
+
+
+
+2
+
+
+|
+
+V
+
+|
+
+
+
+
+
+{\displaystyle 2^{|V|}}
+
+ ways of choosing for each vertex whether it belongs to 
+
+
+
+S
+
+
+{\displaystyle S}
+
+ or to 
+
+
+
+T
+
+
+{\displaystyle T}
+
+, but two of these choices make 
+
+
+
+S
+
+
+{\displaystyle S}
+
+ or 
+
+
+
+T
+
+
+{\displaystyle T}
+
+ empty and do not give rise to cuts. Among the remaining choices, swapping the roles of 
+
+
+
+S
+
+
+{\displaystyle S}
+
+ and 
+
+
+
+T
+
+
+{\displaystyle T}
+
+ does not change the cut, so each cut is counted twice; therefore, there are 
+
+
+
+
+2
+
+
+|
+
+V
+
+|
+
+−
+1
+
+
+−
+1
+
+
+{\displaystyle 2^{|V|-1}-1}
+
+ distinct cuts. The minimum cut problem is to find a cut of smallest size among these cuts.
+For weighted graphs with positive edge weights 
+
+
+
+w
+:
+E
+→
+
+
+R
+
+
++
+
+
+
+
+{\displaystyle w\colon E\rightarrow \mathbf {R} ^{+}}
+
+ the weight of the cut is the sum of the weights of edges between vertices in each part
+which agrees with the unweighted definition for 
+
+
+
+w
+=
+1
+
+
+{\displaystyle w=1}
+
+.
+A cut is sometimes called a “global cut” to distinguish it from an “
+
+
+
+s
+
+
+{\displaystyle s}
+
+-
+
+
+
+t
+
+
+{\displaystyle t}
+
+ cut” for a given pair of vertices, which has the additional requirement that 
+
+
+
+s
+∈
+S
+
+
+{\displaystyle s\in S}
+
+ and 
+
+
+
+t
+∈
+T
+
+
+{\displaystyle t\in T}
+
+. Every global cut is an 
+
+
+
+s
+
+
+{\displaystyle s}
+
+-
+
+
+
+t
+
+
+{\displaystyle t}
+
+ cut for some 
+
+
+
+s
+,
+t
+∈
+V
+
+
+{\displaystyle s,t\in V}
+
+. Thus, the minimum cut problem can be solved in polynomial time by iterating over all choices of 
+
+
+
+s
+,
+t
+∈
+V
+
+
+{\displaystyle s,t\in V}
+
+ and solving the resulting minimum 
+
+
+
+s
+
+
+{\displaystyle s}
+
+-
+
+
+
+t
+
+
+{\displaystyle t}
+
+ cut problem using the max-flow min-cut theorem and a polynomial time algorithm for maximum flow, such as the push-relabel algorithm, though this approach is not optimal. Better deterministic algorithms for the global minimum cut problem include the Stoer–Wagner algorithm, which has a running time of 
+
+
+
+O
+(
+m
+n
++
+
+n
+
+2
+
+
+log
+⁡
+n
+)
+
+
+{\displaystyle O(mn+n^{2}\log n)}
+
+.[2]
+The fundamental operation of Karger’s algorithm is a form of edge contraction. The result of contracting the edge 
+
+
+
+e
+=
+{
+u
+,
+v
+}
+
+
+{\displaystyle e=\{u,v\}}
+
+ is new node 
+
+
+
+u
+v
+
+
+{\displaystyle uv}
+
+. Every edge 
+
+
+
+{
+w
+,
+u
+}
+
+
+{\displaystyle \{w,u\}}
+
+ or 
+
+
+
+{
+w
+,
+v
+}
+
+
+{\displaystyle \{w,v\}}
+
+ for 
+
+
+
+w
+∉
+{
+u
+,
+v
+}
+
+
+{\displaystyle w\notin \{u,v\}}
+
+ to the endpoints of the contracted edge is replaced by an edge 
+
+
+
+{
+w
+,
+u
+v
+}
+
+
+{\displaystyle \{w,uv\}}
+
+ to the new node. Finally, the contracted nodes 
+
+
+
+u
+
+
+{\displaystyle u}
+
+ and 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ with all their incident edges are removed. In particular, the resulting graph contains no self-loops. The result of contracting edge 
+
+
+
+e
+
+
+{\displaystyle e}
+
+ is denoted 
+
+
+
+G
+
+/
+
+e
+
+
+{\displaystyle G/e}
+
+.
+
+The contraction algorithm repeatedly contracts random edges in the graph, until only two nodes remain, at which point there is only a single cut.
+When the graph is represented using adjacency lists or an adjacency matrix, a single edge contraction operation can be implemented with a linear number of updates to the data structure, for a total running time of 
+
+
+
+O
+(
+
+|
+
+V
+
+
+|
+
+
+2
+
+
+)
+
+
+{\displaystyle O(|V|^{2})}
+
+. Alternatively, the procedure can be viewed as an execution of Kruskal’s algorithm for constructing the minimum spanning tree in a graph where the edges have weights 
+
+
+
+w
+(
+
+e
+
+i
+
+
+)
+=
+π
+(
+i
+)
+
+
+{\displaystyle w(e_{i})=\pi (i)}
+
+ according to a random permutation 
+
+
+
+π
+
+
+{\displaystyle \pi }
+
+. Removing the heaviest edge of this tree results in two components that describe a cut. In this way, the contraction procedure can be implemented like Kruskal’s algorithm in time 
+
+
+
+O
+(
+
+|
+
+E
+
+|
+
+log
+⁡
+
+|
+
+E
+
+|
+
+)
+
+
+{\displaystyle O(|E|\log |E|)}
+
+.
+The best known implementations use 
+
+
+
+O
+(
+
+|
+
+E
+
+|
+
+)
+
+
+{\displaystyle O(|E|)}
+
+ time and space, or 
+
+
+
+O
+(
+
+|
+
+E
+
+|
+
+log
+⁡
+
+|
+
+E
+
+|
+
+)
+
+
+{\displaystyle O(|E|\log |E|)}
+
+ time and 
+
+
+
+O
+(
+
+|
+
+V
+
+|
+
+)
+
+
+{\displaystyle O(|V|)}
+
+ space, respectively.[1]
+In a graph 
+
+
+
+G
+=
+(
+V
+,
+E
+)
+
+
+{\displaystyle G=(V,E)}
+
+ with 
+
+
+
+n
+=
+
+|
+
+V
+
+|
+
+
+
+{\displaystyle n=|V|}
+
+ vertices, the contraction algorithm returns a minimum cut with polynomially small probability 
+
+
+
+
+
+
+
+(
+
+
+n
+2
+
+
+)
+
+
+
+
+−
+1
+
+
+
+
+{\displaystyle {\binom {n}{2}}^{-1}}
+
+. Every graph has 
+
+
+
+
+2
+
+n
+−
+1
+
+
+−
+1
+
+
+{\displaystyle 2^{n-1}-1}
+
+ cuts,[3] among which at most 
+
+
+
+
+
+
+
+(
+
+
+n
+2
+
+
+)
+
+
+
+
+
+
+{\displaystyle {\tbinom {n}{2}}}
+
+ can be minimum cuts. Therefore, the success probability for this algorithm is much better than the probability for picking a cut at random, which is at most 
+
+
+
+
+
+
+
+(
+
+
+n
+2
+
+
+)
+
+
+
+
+
+/
+
+(
+
+2
+
+n
+−
+1
+
+
+−
+1
+)
+
+
+{\displaystyle {\tbinom {n}{2}}/(2^{n-1}-1)}
+
+
+For instance, the cycle graph on 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ vertices has exactly 
+
+
+
+
+
+
+(
+
+
+n
+2
+
+
+)
+
+
+
+
+
+{\displaystyle {\binom {n}{2}}}
+
+ minimum cuts, given by every choice of 2 edges. The contraction procedure finds each of these with equal probability.
+To establish the bound on the success probability in general, let 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ denote the edges of a specific minimum cut of size 
+
+
+
+k
+
+
+{\displaystyle k}
+
+. The contraction algorithm returns 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ if none of the random edges belongs to the cutset of 
+
+
+
+C
+
+
+{\displaystyle C}
+
+. In particular, the first edge contraction avoids 
+
+
+
+C
+
+
+{\displaystyle C}
+
+, which happens with probability 
+
+
+
+1
+−
+k
+
+/
+
+
+|
+
+E
+
+|
+
+
+
+{\displaystyle 1-k/|E|}
+
+. The minimum degree of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ is at least 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ (otherwise a minimum degree vertex would induce a smaller cut), so 
+
+
+
+
+|
+
+E
+
+|
+
+≥
+n
+k
+
+/
+
+2
+
+
+{\displaystyle |E|\geq nk/2}
+
+. Thus, the probability that the contraction algorithm picks an edge from 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ is
+The probability 
+
+
+
+
+p
+
+n
+
+
+
+
+{\displaystyle p_{n}}
+
+ that the contraction algorithm on an 
+
+
+
+n
+
+
+{\displaystyle n}
+
+-vertex graph avoids 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ satisfies the recurrence 
+
+
+
+
+p
+
+n
+
+
+≥
+
+
+(
+
+
+1
+−
+
+
+2
+n
+
+
+
+
+)
+
+
+
+p
+
+n
+−
+1
+
+
+
+
+{\displaystyle p_{n}\geq {\bigl (}1-{\frac {2}{n}}{\bigr )}p_{n-1}}
+
+, with 
+
+
+
+
+p
+
+2
+
+
+=
+1
+
+
+{\displaystyle p_{2}=1}
+
+, which can be expanded as
+By repeating the contraction algorithm 
+
+
+
+T
+=
+
+
+
+(
+
+
+n
+2
+
+
+)
+
+
+
+ln
+⁡
+n
+
+
+{\displaystyle T={\binom {n}{2}}\ln n}
+
+ times with independent random choices and returning the smallest cut, the probability of not finding a minimum cut is
+The total running time for 
+
+
+
+T
+
+
+{\displaystyle T}
+
+ repetitions for a graph with 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ vertices and 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ edges is 
+
+
+
+O
+(
+T
+m
+)
+=
+O
+(
+
+n
+
+2
+
+
+m
+log
+⁡
+n
+)
+
+
+{\displaystyle O(Tm)=O(n^{2}m\log n)}
+
+.
+An extension of Karger’s algorithm due to David Karger and Clifford Stein achieves an order of magnitude improvement.[4]
+The basic idea is to perform the contraction procedure until the graph reaches 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ vertices.
+The probability 
+
+
+
+
+p
+
+n
+,
+t
+
+
+
+
+{\displaystyle p_{n,t}}
+
+ that this contraction procedure avoids a specific cut 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ in an 
+
+
+
+n
+
+
+{\displaystyle n}
+
+-vertex graph is
+
+
+
+
+
+p
+
+n
+,
+t
+
+
+≥
+
+∏
+
+i
+=
+0
+
+
+n
+−
+t
+−
+1
+
+
+
+
+(
+
+
+1
+−
+
+
+2
+
+n
+−
+i
+
+
+
+
+
+)
+
+
+=
+
+
+
+(
+
+
+t
+2
+
+
+)
+
+
+
+
+
+/
+
+
+
+
+
+(
+
+
+n
+2
+
+
+)
+
+
+
+
+.
+
+
+{\displaystyle p_{n,t}\geq \prod _{i=0}^{n-t-1}{\Bigl (}1-{\frac {2}{n-i}}{\Bigr )}={\binom {t}{2}}{\Bigg /}{\binom {n}{2}}\,.}
+
+
+This expression is approximately 
+
+
+
+
+t
+
+2
+
+
+
+/
+
+
+n
+
+2
+
+
+
+
+{\displaystyle t^{2}/n^{2}}
+
+ and becomes less than 
+
+
+
+
+
+1
+2
+
+
+
+
+{\displaystyle {\frac {1}{2}}}
+
+ around 
+
+
+
+t
+=
+n
+
+/
+
+
+
+2
+
+
+
+
+{\displaystyle t=n/{\sqrt {2}}}
+
+. In particular, the probability that an edge from 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ is contracted grows towards the end. This motivates the idea of switching to a slower algorithm after a certain number of contraction steps.
+The probability 
+
+
+
+P
+(
+n
+)
+
+
+{\displaystyle P(n)}
+
+ the algorithm finds a specific cutset 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ is given by the recurrence relation
+with solution 
+
+
+
+P
+(
+n
+)
+=
+O
+
+(
+
+
+1
+
+log
+⁡
+n
+
+
+
+)
+
+
+
+{\displaystyle P(n)=O\left({\frac {1}{\log n}}\right)}
+
+. The running time of fastmincut satisfies
+with solution 
+
+
+
+T
+(
+n
+)
+=
+O
+(
+
+n
+
+2
+
+
+log
+⁡
+n
+)
+
+
+{\displaystyle T(n)=O(n^{2}\log n)}
+
+. To achieve error probability 
+
+
+
+O
+(
+1
+
+/
+
+n
+)
+
+
+{\displaystyle O(1/n)}
+
+, the algorithm can be repeated 
+
+
+
+O
+(
+log
+⁡
+n
+
+/
+
+P
+(
+n
+)
+)
+
+
+{\displaystyle O(\log n/P(n))}
+
+ times, for an overall running time of 
+
+
+
+T
+(
+n
+)
+⋅
+
+
+
+log
+⁡
+n
+
+
+P
+(
+n
+)
+
+
+
+=
+O
+(
+
+n
+
+2
+
+
+
+log
+
+3
+
+
+⁡
+n
+)
+
+
+{\displaystyle T(n)\cdot {\frac {\log n}{P(n)}}=O(n^{2}\log ^{3}n)}
+
+. This is an order of magnitude improvement over Karger’s original algorithm.
+Theorem: With high probability we can find all min cuts in the running time of 
+
+
+
+O
+(
+
+n
+
+2
+
+
+
+ln
+
+3
+
+
+⁡
+n
+)
+
+
+{\displaystyle O(n^{2}\ln ^{3}n)}
+
+.
+Proof: We know that 
+
+
+
+P
+(
+n
+)
+=
+O
+
+(
+
+
+1
+
+ln
+⁡
+n
+
+
+
+)
+
+
+
+{\displaystyle P(n)=O\left({\frac {1}{\ln n}}\right)}
+
+, therefore after running this algorithm 
+
+
+
+O
+(
+
+ln
+
+2
+
+
+⁡
+n
+)
+
+
+{\displaystyle O(\ln ^{2}n)}
+
+ times the probability of missing a specific min-cut is
+And there are at most 
+
+
+
+
+
+
+(
+
+
+n
+2
+
+
+)
+
+
+
+
+
+{\displaystyle {\binom {n}{2}}}
+
+ min-cuts, hence the probability of missing any min-cut is
+The probability of failures is considerably small when n is large enough.∎
+To determine a min-cut, one has to touch every edge in the graph at least once, which is 
+
+
+
+O
+(
+
+n
+
+2
+
+
+)
+
+
+{\displaystyle O(n^{2})}
+
+ time in a dense graph. The Karger–Stein's min-cut algorithm takes the running time of 
+
+
+
+O
+(
+
+n
+
+2
+
+
+
+ln
+
+O
+(
+1
+)
+
+
+⁡
+n
+)
+
+
+{\displaystyle O(n^{2}\ln ^{O(1)}n)}
+
+, which is very close to that.

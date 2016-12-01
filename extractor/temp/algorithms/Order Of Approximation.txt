@@ -1,0 +1,55 @@
+ABOUT
+In science, engineering, and other quantitative disciplines, orders of approximation refer to formal or informal terms for how precise an approximation is, and to indicate progressively more refined approximations: in increasing order of precision, a zeroth-order approximation, a first-order approximation, a second-order approximation, and so forth.
+FULL TEXT
+In science, engineering, and other quantitative disciplines, orders of approximation refer to formal or informal terms for how precise an approximation is, and to indicate progressively more refined approximations: in increasing order of precision, a zeroth-order approximation, a first-order approximation, a second-order approximation, and so forth.
+Formally, an nth-order approximation is one where the order of magnitude of the error is at most 
+
+
+
+
+x
+
+n
++
+1
+
+
+
+
+{\displaystyle x^{n+1}}
+
+, or in terms of big O notation, the error is 
+
+
+
+O
+(
+
+x
+
+n
++
+1
+
+
+)
+.
+
+
+{\displaystyle O(x^{n+1}).}
+
+[citation needed] In the case of a smooth function, the nth-order approximation is a polynomial of degree n, which is obtained by truncating the Taylor series to this degree.
+
+
+Zeroth-order approximation (also 0th order) is the term scientists use for a first educated guess at an answer. Many simplifying assumptions are made, and when a number is needed, an order-of-magnitude answer (or zero significant figures) is often given. For example, you might say "the town has a few thousand residents", when it has 3,914 people in actuality. This is also sometimes referred to as an order-of-magnitude approximation.
+A zeroth-order approximation of a function (that is, mathematically determining a formula to fit multiple data points) will be constant, or a flat line with no slope: a polynomial of degree 0. For example,
+is an approximate fit to the data, obtained by simply averaging the y-values. Other methods for selecting a constant approximation can be used.
+First-order approximation (also 1st order) is the term scientists use for a further educated guess[clarification needed] at an answer. Some simplifying assumptions are made, and when a number is needed, an answer with only one significant figure is often given ("the town has 4×103 or four thousand residents").
+A first-order approximation of a function (that is, mathematically determining a formula to fit multiple data points) will be a linear approximation, straight line with a slope: a polynomial of degree 1. For example,
+is an approximate fit to the data.
+Second-order approximation (also 2nd order) is the term scientists use for a decent-quality answer. Few simplifying assumptions are made, and when a number is needed, an answer with two or more significant figures ("the town has 3.9×103 or thirty nine hundred residents") is generally given. In mathematical finance, second-order approximations are known as convexity corrections.
+A second-order approximation of a function (that is, mathematically determining a formula to fit multiple data points) will be a quadratic polynomial, geometrically, a parabola: a polynomial of degree 2. For example,
+is an approximate fit to the data. In this case, with only three data points, a parabola is an exact fit.
+While higher-order approximations exist and are crucial to a better understanding and description of reality, they are not typically referred to by number.
+Continuing the above, a third-order approximation would be required to perfectly fit four data points, and so on. See polynomial interpolation.
+These terms are also used colloquially by scientists and engineers to describe phenomena that can be neglected as not significant (e.g. "Of course the rotation of the Earth affects our experiment, but it's such a high-order effect that we wouldn't be able to measure it" or "At these velocities, relativity is a fourth-order effect that we only worry about at the annual calibration.") In this usage, the ordinality of the approximation is not exact, but is used to emphasize its insignificance; the higher the number used, the less important the effect.

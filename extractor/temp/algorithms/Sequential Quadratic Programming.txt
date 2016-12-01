@@ -1,0 +1,74 @@
+ABOUT
+Sequential quadratic programming (SQP) is an iterative method for nonlinear optimization. SQP methods are used on mathematical problems for which the objective function and the constraints are twice continuously differentiable.
+FULL TEXT
+Sequential quadratic programming (SQP) is an iterative method for nonlinear optimization. SQP methods are used on mathematical problems for which the objective function and the constraints are twice continuously differentiable.
+SQP methods solve a sequence of optimization subproblems, each of which optimizes a quadratic model of the objective subject to a linearization of the constraints. If the problem is unconstrained, then the method reduces to Newton's method for finding a point where the gradient of the objective vanishes. If the problem has only equality constraints, then the method is equivalent to applying Newton's method to the first-order optimality conditions, or Karush–Kuhn–Tucker conditions, of the problem. SQP methods have been implemented in many packages, including KNITRO,[1] NPSOL, SNOPT, NLPQL, OPSYC, OPTIMA, MATLAB, GNU Octave, SQP and SciPy.
+
+
+Consider a nonlinear programming problem of the form:
+The Lagrangian for this problem is;[2]
+where 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+ and 
+
+
+
+σ
+
+
+{\displaystyle \sigma }
+
+ are Lagrange multipliers. At an iterate 
+
+
+
+
+x
+
+k
+
+
+
+
+{\displaystyle x_{k}}
+
+, a basic sequential quadratic programming algorithm defines an appropriate search direction 
+
+
+
+
+d
+
+k
+
+
+
+
+{\displaystyle d_{k}}
+
+ as a solution to the quadratic programming subproblem
+Note that the term 
+
+
+
+f
+(
+
+x
+
+k
+
+
+)
+
+
+{\displaystyle f(x_{k})}
+
+ in the expression above may be left out for the minimization problem, since it is constant.

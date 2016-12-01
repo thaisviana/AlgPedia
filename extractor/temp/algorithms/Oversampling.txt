@@ -1,0 +1,81 @@
+ABOUT
+In signal processing, oversampling is the process of sampling a signal with a sampling frequency significantly higher than the Nyquist rate. Theoretically a bandwidth-limited signal can be perfectly reconstructed if sampled above the Nyquist rate, which is twice the highest frequency in the signal. Oversampling improves resolution, reduces noise and helps avoid aliasing and phase distortion by relaxing anti-aliasing filter performance requirements.
+FULL TEXT
+In signal processing, oversampling is the process of sampling a signal with a sampling frequency significantly higher than the Nyquist rate. Theoretically a bandwidth-limited signal can be perfectly reconstructed if sampled above the Nyquist rate, which is twice the highest frequency in the signal. Oversampling improves resolution, reduces noise and helps avoid aliasing and phase distortion by relaxing anti-aliasing filter performance requirements.
+A signal is said to be oversampled by a factor of N if it is sampled at N times the Nyquist rate.
+
+
+There are three main reasons for performing oversampling:
+Oversampling can make it easier to realize analog anti-aliasing filters.[1] Without oversampling, it is very difficult to implement filters with the sharp cutoff necessary to maximize use of the available bandwidth without exceeding the Nyquist limit. By increasing the bandwidth of the sampled signal, design constraints for the anti-aliasing filter may be relaxed.[2] Once sampled, the signal can be digitally filtered and downsampled to the desired sampling frequency. In modern integrated circuit technology, digital filters are easier to implement than comparable analog filters.
+In practice, oversampling is implemented in order to achieve cheaper higher-resolution A/D and D/A conversion.[1] For instance, to implement a 24-bit converter, it is sufficient to use a 20-bit converter that can run at 256 times the target sampling rate. Combining 256 consecutive 20-bit samples can increase the signal-to-noise ratio at the voltage level by a factor of 16 (the square root of the number of samples averaged), effectively adding 4 bits to the resolution and producing a single sample with 24-bit resolution.[3]
+When oversampling by a factor of N, the dynamic range increases by log2(N) bits, because there are N times as many possible values for the sum.
+However, the SNR increases by sqrt(N),[citation needed] (not by N as in the article). Summing up uncorrelated noise increases its amplitude by sqrt(N), while summing up a coherent signal increases its average by N. As a result, the SNR (or signal/noise) increases by sqrt(N). In the example, that means while with N=256 there is an increase in Dynamic range by 8 bits, and the content of "coherent signal" increases by N, but the noise changes by a factor of sqrt(N)=sqrt(256)=16 in the example (not to be confused with an increase of 16 bits), so the SNR changes by a factor of 16.
+The number of samples required to get 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ bits of additional data precision is
+To get the mean sample scaled up to an integer with 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ additional bits, the sum of 
+
+
+
+
+2
+
+2
+n
+
+
+
+
+{\displaystyle 2^{2n}}
+
+ samples is divided by 
+
+
+
+
+2
+
+n
+
+
+
+
+{\displaystyle 2^{n}}
+
+:
+This averaging is only possible if the signal contains equally distributed noise which is enough to be observed by the A/D converter.[3] If not, in the case of a stationary input signal, all 
+
+
+
+
+2
+
+n
+
+
+
+
+{\displaystyle 2^{n}}
+
+ samples would have the same value and the resulting average would be identical to this value; so in this case, oversampling would have made no improvement. (In similar cases where the A/D converter sees no noise and the input signal is changing over time, oversampling still improves the result, but to an inconsistent/unpredictable extent.) This is an interesting counter-intuitive example where adding some dithering noise to the input signal can improve (rather than degrade) the final result because the dither noise allows oversampling to work to improve resolution (or dynamic range). In many practical applications, a small increase in noise is well worth a substantial increase in measurement resolution. In practice, the dithering noise can often be placed outside the frequency range of interest to the measurement, so that this noise can be subsequently filtered out in the digital domain—resulting in a final measurement (in the frequency range of interest) with both higher resolution and lower noise.
+If multiple samples are taken of the same quantity with uncorrelated noise added to each sample, then averaging N samples reduces the noise power by a factor of 1/N.[4] If, for example, we oversample by a factor of 4, the signal-to-noise ratio in terms of power improves by factor of 4 which corresponds to a factor of 2 improvement in terms of voltage.[note 1]
+Certain kinds of A/D converters known as delta-sigma converters produce disproportionately more quantization noise in the upper portion of their output spectrum. By running these converters at some multiple of the target sampling rate, and low-pass filtering the oversampled signal down to half the target sampling rate, a final result with less noise (over the entire band of the converter) can be obtained. Delta-sigma converters use a technique called noise shaping to move the quantization noise to the higher frequencies.
+Consider a signal with a bandwidth or highest frequency of B = 100 Hz. The sampling theorem states that sampling frequency would have to be greater than 200 Hz. Sampling at four times that rate requires a sampling frequency of 800 Hz. This gives the anti-aliasing filter a transition band of 300 Hz ((fs/2) − B = (800 Hz/2) − 100 Hz = 300 Hz) instead of 0 Hz if the sampling frequency was 200 Hz.
+Achieving an anti-aliasing filter with 0 Hz transition band is unrealistic whereas an anti-aliasing filter with a transition band of 300 Hz is not difficult to create.
+The term oversampling is also used to denote a process used in the reconstruction phase of digital-to-analog conversion, in which an intermediate high sampling rate is used between the digital input and the analogue output. Here, samples are interpolated in the digital domain to add additional samples in between, thereby converting the data to a higher sample rate, which is a form of upsampling. When the resulting higher-rate samples are converted to analog, a less complex/expensive analog low pass filter is required to remove the high-frequency content, which will consist of reflected images of the real signal created by the zero-order hold of the digital-to-analog converter. Essentially, this is a way to shift some of the complexity of the filtering into the digital domain and achieves the same benefit as oversampling in analog-to-digital conversion.

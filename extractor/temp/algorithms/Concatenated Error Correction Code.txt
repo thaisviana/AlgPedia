@@ -1,0 +1,69 @@
+ABOUT
+In coding theory, concatenated codes form a class of error-correcting codes that are derived by combining an inner code and an outer code. They were conceived in 1966 by Dave Forney as a solution to the problem of finding a code that has both exponentially decreasing error probability with increasing block length and polynomial-time decoding complexity.[1] Concatenated codes became widely used in space communications in the 1970s.
+FULL TEXT
+In coding theory, concatenated codes form a class of error-correcting codes that are derived by combining an inner code and an outer code. They were conceived in 1966 by Dave Forney as a solution to the problem of finding a code that has both exponentially decreasing error probability with increasing block length and polynomial-time decoding complexity.[1] Concatenated codes became widely used in space communications in the 1970s.
+
+
+The field of channel coding is concerned with sending a stream of data at the highest possible rate over a given communications channel, and then decoding the original data reliably at the receiver, using encoding and decoding algorithms that are feasible to implement in a given technology.
+Shannon's channel coding theorem shows that over many common channels there exist channel coding schemes that are able to transmit data reliably at all rates 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ less than a certain threshold 
+
+
+
+C
+
+
+{\displaystyle C}
+
+, called the channel capacity of the given channel. In fact, the probability of decoding error can be made to decrease exponentially as the block length 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ of the coding scheme goes to infinity. However, the complexity of a naive optimum decoding scheme that simply computes the likelihood of every possible transmitted codeword increases exponentially with 
+
+
+
+N
+
+
+{\displaystyle N}
+
+, so such an optimum decoder rapidly becomes infeasible.
+In his doctoral thesis, Dave Forney showed that concatenated codes could be used to achieve exponentially decreasing error probabilities at all data rates less than capacity, with decoding complexity that increases only polynomially with the code block length.
+Let Cin be a [n, k, d] code, that is, a block code of length n, dimension k, minimum Hamming distance d, and rate r = k/n, over an alphabet A:
+Let Cout be a [N, K, D] code over an alphabet B with |B| = |A|k symbols:
+The inner code Cin takes one of |A|k = |B| possible inputs, encodes into an n-tuple over A, transmits, and decodes into one of |B| possible outputs. We regard this as a (super) channel which can transmit one symbol from the alphabet B. We use this channel N times to transmit each of the N symbols in a codeword of Cout. The concatenation of Cout (as outer code) with Cin (as inner code), denoted Cout∘Cin, is thus a code of length Nn over the alphabet A:[1]
+It maps each input message m = (m1, m2, ..., mK) to a codeword (Cin(m'1), Cin(m'2), ..., Cin(m'N)), where (m'1, m'2, ..., m'N) = Cout(m1, m2, ..., mK).
+The key insight in this approach is that if Cin is decoded using a maximum-likelihood approach (thus showing an exponentially decreasing error probability with increasing length), and Cout is a code with length N = 2nr that can be decoded in polynomial time of N, then the concatenated code can be decoded in polynomial time of its combined length n2nr = O(N⋅log(N)) and shows an exponentially decreasing error probability, even if Cin has exponential decoding complexity.[1] This is discussed in more detail in section Decoding concatenated codes.
+In a generalization of above concatenation, there are N possible inner codes Cin,i and the i-th symbol in a codeword of Cout is transmitted across the inner channel using the i-th inner code. The Justesen codes are examples of generalized concatenated codes, where the outer code is a Reed–Solomon code.
+1. The distance of the concatenated code Cout∘Cin is at least dD, that is, it is a [nN, kK, D'] code with D' ≥ dD.
+Proof: Consider two different messages m1 ≠ m2 ∈ BK. Let Δ denote the distance between two codewords. Then
+Thus, there are at least D positions in which the sequence of N symbols of the codewords Cout(m1) and Cout(m2) differ. For these positions, denoted i, we have
+Consequently, there are at least d⋅D positions in the sequence of n⋅N symbols taken from the alphabet A in which the two codewords differ, and hence
+2. If Cout and Cin are linear block codes, then Cout∘Cin is also a linear block code.
+This property can be easily shown based on the idea of defining a generator matrix for the concatenated code in terms of the generator matrices of Cout and Cin.
+A natural concept for a decoding algorithm for concatenated codes is to ﬁrst decode the inner code and then the outer code. For the algorithm to be practical it must be polynomial-time in the final block length. Consider that there is a polynomial-time unique decoding algorithm for the outer code. Now we have to find a polynomial-time decoding algorithm for the inner code. It is understood that polynomial running time here means that running time is polynomial in the final block length. The main idea is that if the inner block length is selected to be logarithmic in the size of the outer code then the decoding algorithm for the inner code may run in exponential time of the inner block length, and we can thus use an exponential-time but optimal maximum likelihood decoder (MLD) for the inner code.
+In detail, let the input to the decoder be the vector y = (y1, ..., yN) ∈ (An)N. Then the decoding algorithm is a two-step process:
+Now, the time complexity of the first step is O(N⋅exp(n)), where n = O(log(N)) is the inner block length. In other words, it is NO(1) (i.e., polynomial-time) in terms of the outer block length N. As the outer decoding algorithm in step two is assumed to run in polynomial time the complexity of the overall decoding algorithm is polynomial-time as well.
+The decoding algorithm described above can be used to correct all errors up to less than dD/4 in number. Using minimum distance decoding, the outer decoder can correct all inputs y' with less than D/2 symbols y'i in error. Similarly, the inner code can reliably correct an input yi if less than d/2 inner symbols are erroneous. Thus, for an outer symbol y'i to be incorrect after inner decoding at least d/2 inner symbols must have been in error, and for the outer code to fail this must have happened for at least D/2 outer symbols. Consequently, the total number of inner symbols that must be received incorrectly for the concatenated code to fail must be at least d/2⋅D/2 = dD/4.
+The algorithm also works if the inner codes are different, e.g., for Justesen codes. The generalized minimum distance algorithm, developed by Forney, can be used to correct up to dD/2 errors.[2] It uses erasure information from the inner code to improve performance of the outer code, and was the first example of an algorithm using soft-decision decoding.[3][4]
+Although a simple concatenation scheme was implemented already for the 1971 Mariner Mars orbiter mission,[5] concatenated codes were starting to be regularly used for deep space communication with the Voyager program, which launched two space probes in 1977.[6] Since then, concatenated codes became the workhorse for efficient error correction coding, and stayed so at least until the invention of turbo codes and LDPC codes.[5][6]
+Typically, the inner code is not a block code but a soft-decision convolutional Viterbi-decoded code with a short constraint length.[7] For the outer code, a longer hard-decision block code, frequently a Reed-Solomon code with eight-bit symbols, is used.[1][5] The larger symbol size makes the outer code more robust to error bursts that can occur due to channel impairments, and also because erroneous output of the convolutional code itself is bursty.[1][5] An interleaving layer is usually added between the two codes to spread error bursts across a wider range.[5]
+The combination of an inner Viterbi convolutional code with an outer Reed–Solomon code (known as an RSV code) was first used in Voyager 2,[5][8] and it became a popular construction both within and outside of the space sector. It is still notably used today for satellite communications, such as the DVB-S digital television broadcast standard.[9]
+In a looser sense, any (serial) combination of two or more codes may be referred to as a concatenated code. For example, within the DVB-S2 standard, a highly efficient LDPC code is combined with an algebraic outer code in order to remove any resilient errors left over from the inner LDPC code due to its inherent error floor.[10]
+A simple concatenation scheme is also used on the compact disc (CD), where an interleaving layer between two Reed–Solomon codes of different sizes spreads errors across various blocks.
+The description above is given for what is now called a serially concatenated code. Turbo codes, as described first in 1993, implemented a parallel concatenation of two convolutional codes, with an interleaver between the two codes and an iterative decoder that passes information forth and back between the codes.[6] This design has a better performance than any previously conceived concatenated codes.
+However, a key aspect of turbo codes is their iterated decoding approach. Iterated decoding is now also applied to serial concatenations in order to achieve higher coding gains, such as within serially concatenated convolutional codes (SCCCs). An early form of iterated decoding was implemented with two to five iterations in the "Galileo code" of the Galileo space probe.[5]

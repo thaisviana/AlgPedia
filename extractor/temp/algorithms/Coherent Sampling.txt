@@ -1,0 +1,338 @@
+ABOUT
+Fast Fourier Transform (FFT) is a common tool to investigate performance of data converters and other sampled systems. Coherent sampling refers to a certain relationship between input frequency, 
+
+
+
+
+f
+
+i
+n
+
+
+
+
+{\displaystyle f_{in}}
+
+, sampling frequency, 
+
+
+
+
+f
+
+s
+
+
+
+
+{\displaystyle f_{s}}
+
+, number of cycles in the sampled set, 
+
+
+
+
+M
+
+c
+y
+c
+l
+e
+s
+
+
+
+
+{\displaystyle M_{cycles}}
+
+, and number of samples, 
+
+
+
+
+N
+
+s
+a
+m
+p
+l
+e
+s
+
+
+
+
+{\displaystyle N_{samples}}
+
+. With coherent sampling one is assured that the signal power in an FFT is contained within one FFT bin, assuming single input frequency.
+FULL TEXT
+Fast Fourier Transform (FFT) is a common tool to investigate performance of data converters and other sampled systems. Coherent sampling refers to a certain relationship between input frequency, 
+
+
+
+
+f
+
+i
+n
+
+
+
+
+{\displaystyle f_{in}}
+
+, sampling frequency, 
+
+
+
+
+f
+
+s
+
+
+
+
+{\displaystyle f_{s}}
+
+, number of cycles in the sampled set, 
+
+
+
+
+M
+
+c
+y
+c
+l
+e
+s
+
+
+
+
+{\displaystyle M_{cycles}}
+
+, and number of samples, 
+
+
+
+
+N
+
+s
+a
+m
+p
+l
+e
+s
+
+
+
+
+{\displaystyle N_{samples}}
+
+. With coherent sampling one is assured that the signal power in an FFT is contained within one FFT bin, assuming single input frequency.
+The condition for coherent sampling is given by
+Where 
+
+
+
+
+N
+
+s
+a
+m
+p
+l
+e
+s
+
+
+
+
+{\displaystyle N_{samples}}
+
+ value must be a power of 2 and 
+
+
+
+
+M
+
+c
+y
+c
+l
+e
+s
+
+
+
+
+{\displaystyle M_{cycles}}
+
+ value must be an odd or prime number.
+If we have 
+
+
+
+
+N
+
+s
+a
+m
+p
+l
+e
+s
+
+
+=
+
+2
+
+11
+
+
+=
+2048
+
+
+{\displaystyle N_{samples}=2^{11}=2048}
+
+ and 
+
+
+
+
+f
+
+s
+
+
+=
+100
+e
+6
+
+
+{\displaystyle f_{s}=100e6}
+
+ and we want an input frequency close to 
+
+
+
+
+f
+
+s
+
+
+
+/
+
+2
+
+
+{\displaystyle f_{s}/2}
+
+, let's say 
+
+
+
+
+f
+
+i
+n
+
+
+=
+44
+M
+H
+z
+
+
+{\displaystyle f_{in}=44MHz}
+
+, then 
+
+
+
+
+M
+
+c
+y
+c
+l
+e
+s
+
+
+=
+901.12
+
+
+{\displaystyle M_{cycles}=901.12}
+
+ which is close to an integer, so we could round it down to 
+
+
+
+
+M
+
+c
+y
+c
+l
+e
+s
+
+
+=
+901
+
+
+{\displaystyle M_{cycles}=901}
+
+ and we would get 
+
+
+
+
+f
+
+i
+n
+
+
+=
+43994140.625
+H
+z
+
+
+{\displaystyle f_{in}=43994140.625Hz}
+
+. This is an input frequency that satisfies coherent sampling and makes sure that we get an integer number of cycles.
+This integer number 
+
+
+
+M
+
+
+{\displaystyle M}
+
+ can be chosen to be a Prime number (except for 2). This ensures that the same FFT samples will not be repeated across any input signal cycles of the sampled signal[1]. For example, if N=32 and M=6 (non-prime) then there will be N/M=5.33 samples per cycle of the input frequency, so three cycles of the input will take exactly 16 samples, and so the first 16 samples will be identical to the second 16 samples. Usually, no additional information is gained by repeating with the same sampling points and so generally a non-prime M should not be used.

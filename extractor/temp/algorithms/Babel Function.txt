@@ -1,0 +1,47 @@
+ABOUT
+The Babel function (also known as cumulative coherence) measures the maximum total coherence between a fixed atom and a collection of other atoms in a dictionary.
+FULL TEXT
+The Babel function (also known as cumulative coherence) measures the maximum total coherence between a fixed atom and a collection of other atoms in a dictionary.
+
+
+The Babel function of a dictionary 
+
+
+
+
+A
+
+
+
+{\displaystyle {\boldsymbol {A}}}
+
+ with normalized columns is a real-valued function that is defined as
+where 
+
+
+
+
+
+a
+
+
+k
+
+
+
+
+{\displaystyle {\boldsymbol {a}}_{k}}
+
+ are the columns (atoms) of the dictionary 
+
+
+
+
+A
+
+
+
+{\displaystyle {\boldsymbol {A}}}
+
+.[1][2]
+When p=1, the babel function is the mutual coherence.

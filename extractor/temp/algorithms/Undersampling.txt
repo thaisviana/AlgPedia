@@ -1,0 +1,83 @@
+ABOUT
+In signal processing, undersampling or bandpass sampling is a technique where one samples a bandpass-filtered signal at a sample rate below its Nyquist rate (twice the upper cutoff frequency), but is still able to reconstruct the signal.
+FULL TEXT
+In signal processing, undersampling or bandpass sampling is a technique where one samples a bandpass-filtered signal at a sample rate below its Nyquist rate (twice the upper cutoff frequency), but is still able to reconstruct the signal.
+When one undersamples a bandpass signal, the samples are indistinguishable from the samples of a low-frequency alias of the high-frequency signal. Such sampling is also known as bandpass sampling, harmonic sampling, IF sampling, and direct IF-to-digital conversion.[1]
+The Fourier transforms of real-valued functions are symmetrical around the 0 Hz axis. After sampling, only a periodic summation of the Fourier transform (called discrete-time Fourier transform) is still available. The individual, frequency-shifted copies of the original transform are called aliases. The frequency offset between adjacent aliases is the sampling-rate, denoted by fs. When the aliases are mutually exclusive (spectrally), the original transform and the original continuous function, or a frequency-shifted version of it (if desired), can be recovered from the samples. The first and third graphs of Figure 1 depict a baseband spectrum before and after being sampled at a rate that completely separates the aliases.
+The second graph of Figure 1 depicts the frequency profile of a bandpass function occupying the band (A, A+B) (shaded blue) and its mirror image (shaded beige). The condition for a non-destructive sample rate is that the aliases of both bands do not overlap when shifted by all integer multiples of fs. The fourth graph depicts the spectral result of sampling at the same rate as the baseband function. The rate was chosen by finding the lowest rate that is an integer sub-multiple of A and also satisfies the baseband Nyquist criterion: fs > 2B.  Consequently, the bandpass function has effectively been converted to baseband. All the other rates that avoid overlap are given by these more general criteria, where A and A+B are replaced by fL and fH, respectively:[2][3]
+The highest n for which the condition is satisfied leads to the lowest possible sampling rates.
+Important signals of this sort include a radio's intermediate-frequency (IF), radio-frequency (RF) signal, and the individual channels of a filter bank.
+If n > 1, then the conditions result in what is sometimes referred to as undersampling, bandpass sampling, or using a sampling rate less than the Nyquist rate (2fH). For the case of a given sampling frequency, simpler formulae for the constraints on the signal's spectral band are given below.
+As we have seen, the normal baseband condition for reversible sampling is that X(f) = 0 outside the interval:   
+
+
+
+
+
+(
+−
+
+
+1
+2
+
+
+
+f
+
+
+s
+
+
+
+,
+
+
+1
+2
+
+
+
+f
+
+
+s
+
+
+
+)
+
+,
+
+
+
+{\displaystyle \scriptstyle \left(-{\frac {1}{2}}f_{\mathrm {s} },{\frac {1}{2}}f_{\mathrm {s} }\right),}
+
+
+and the reconstructive interpolation function, or lowpass filter impulse response, is  
+
+
+
+
+sinc
+⁡
+
+(
+t
+
+/
+
+T
+)
+
+.
+
+
+
+{\displaystyle \scriptstyle \operatorname {sinc} \left(t/T\right).}
+
+
+To accommodate undersampling, the bandpass condition is that X(f) = 0 outside the union of open positive and negative frequency bands
+The corresponding interpolation function is the bandpass filter given by this difference of lowpass impulse responses:
+On the other hand, reconstruction is not usually the goal with sampled IF or RF signals. Rather, the sample sequence can be treated as ordinary samples of the signal frequency-shifted to near baseband, and digital demodulation can proceed on that basis, recognizing the spectrum mirroring when n is even.
+Further generalizations of undersampling for the case of signals with multiple bands are possible, and signals over multidimensional domains (space or space-time) and have been worked out in detail by Igor Kluvánek.

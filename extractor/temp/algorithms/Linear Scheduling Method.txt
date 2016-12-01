@@ -1,0 +1,8 @@
+ABOUT
+Linear Scheduling Method (LSM) is a graphical scheduling method focusing on continuous resource utilization in repetitive activities. It is believed (see Harris and McCaffer 2006:79*) that it originally adopted the idea of Line-Of-Balance method.
+FULL TEXT
+Linear Scheduling Method (LSM) is a graphical scheduling method focusing on continuous resource utilization in repetitive activities. It is believed (see Harris and McCaffer 2006:79*) that it originally adopted the idea of Line-Of-Balance method.
+
+
+LSM is used mainly in the construction industry to schedule resources in repetitive activities commonly found in highway, pipeline, high-rise building and rail construction projects. These projects are called repetitive or linear projects. The main advantages of LSM over Critical Path Method (CPM) is its underlying idea of keeping resources continuously at work. In other words, it schedules activities in such a way that:
+According to,[1] specific names for the linear scheduling method have been adopted, such as:

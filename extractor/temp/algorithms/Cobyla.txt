@@ -1,0 +1,151 @@
+ABOUT
+Constrained optimization by linear approximation (COBYLA) is a numerical optimization method for constrained problems where the derivative of the objective function is not known, invented by Michael J. D. Powell. That is, COBYLA can find the vector 
+
+
+
+
+
+
+x
+→
+
+
+
+∈
+
+
+S
+
+
+
+
+{\displaystyle {\vec {x}}\in {\mathcal {S}}}
+
+ with 
+
+
+
+
+
+S
+
+
+⊆
+
+
+R
+
+
+n
+
+
+
+
+{\displaystyle {\mathcal {S}}\subseteq \mathbb {R} ^{n}}
+
+ that has the minimal (or maximal) 
+
+
+
+f
+(
+
+
+
+x
+→
+
+
+
+)
+
+
+{\displaystyle f({\vec {x}})}
+
+ without knowing the gradient of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+. COBYLA is also the name of Powell's software implementation of the algorithm in Fortran.[1]
+FULL TEXT
+Constrained optimization by linear approximation (COBYLA) is a numerical optimization method for constrained problems where the derivative of the objective function is not known, invented by Michael J. D. Powell. That is, COBYLA can find the vector 
+
+
+
+
+
+
+x
+→
+
+
+
+∈
+
+
+S
+
+
+
+
+{\displaystyle {\vec {x}}\in {\mathcal {S}}}
+
+ with 
+
+
+
+
+
+S
+
+
+⊆
+
+
+R
+
+
+n
+
+
+
+
+{\displaystyle {\mathcal {S}}\subseteq \mathbb {R} ^{n}}
+
+ that has the minimal (or maximal) 
+
+
+
+f
+(
+
+
+
+x
+→
+
+
+
+)
+
+
+{\displaystyle f({\vec {x}})}
+
+ without knowing the gradient of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+. COBYLA is also the name of Powell's software implementation of the algorithm in Fortran.[1]
+Powell invented COBYLA while working for Westland Helicopters.[2]
+It works by iteratively approximating the actual constrained optimization problem with linear programming problems. During an iteration, an approximating linear programming problem is solved to obtain a candidate for the optimal solution. The candidate solution is evaluated using the original objective and constraint functions, yielding a new data point in the optimization space. This information is used to improve the approximating linear programming problem used for the next iteration of the algorithm. When the solution cannot be improved anymore, the step size is reduced, refining the search. When the step size becomes sufficiently small, the algorithm finishes.
+The COBYLA software is distributed under The GNU Lesser General Public License (LGPL).[3]

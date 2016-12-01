@@ -1,0 +1,1281 @@
+ABOUT
+Supersingular isogeny Diffie–Hellman key exchange (SIDH) is a post-quantum cryptographic algorithm used to establish a secret key between two parties over an otherwise insecure communications channel. It is a form of the Diffie–Hellman key exchange, but is designed to resist cryptanalytic attack by an adversary in possession of a quantum computer. SIDH uses the smallest key sizes among all post-quantum cryptosystems; with compression, SIDH uses 3072-bit public keys at a 128-bit quantum security level. SIDH also distinguishes itself from similar systems such as NTRU and Ring-LWE by supporting perfect forward secrecy, a property that prevents compromised long-term keys from compromising the confidentiality of old communication sessions. These properties make SIDH a natural candidate to replace Diffie–Hellman (DHE) and elliptic curve Diffie–Hellman (ECDHE), which are widely used in Internet communication.
+FULL TEXT
+Supersingular isogeny Diffie–Hellman key exchange (SIDH) is a post-quantum cryptographic algorithm used to establish a secret key between two parties over an otherwise insecure communications channel. It is a form of the Diffie–Hellman key exchange, but is designed to resist cryptanalytic attack by an adversary in possession of a quantum computer. SIDH uses the smallest key sizes among all post-quantum cryptosystems; with compression, SIDH uses 3072-bit public keys at a 128-bit quantum security level. SIDH also distinguishes itself from similar systems such as NTRU and Ring-LWE by supporting perfect forward secrecy, a property that prevents compromised long-term keys from compromising the confidentiality of old communication sessions. These properties make SIDH a natural candidate to replace Diffie–Hellman (DHE) and elliptic curve Diffie–Hellman (ECDHE), which are widely used in Internet communication.
+
+
+For certain classes of problems, algorithms running on quantum computers are naturally capable of achieving lower time complexity than on classical computers. That is, quantum algorithms can solve certain problems faster than the most efficient algorithm running on a traditional computer. For example, Shor's algorithm can factor an integer N in polynomial time, while the best-known factoring classic algorithm, the general number field sieve, operates in sub-exponential time. This is significant to public key cryptography because the security of RSA is dependent on the infeasibility of factoring integers, the integer factorization problem. Shor's algorithm can also efficiently solve the discrete logarithm problem, which is the basis for the security of Diffie–Hellman, elliptic curve Diffie–Hellman, elliptic curve DSA, Curve25519, ed25519, and ElGamal. Although quantum computers are currently in their infancy, the ongoing development of quantum computers and their theoretical ability to compromise modern cryptographic protocols (such as TLS/SSL) has prompted the development of post-quantum cryptography.[1]
+SIDH was created in 2011 by De Feo, Jao, and Plut.[2] It uses conventional elliptic curve operations and is not patented.[3] SIDH provides perfect forward secrecy and thus does not rely on the security of long-term private keys. Forward secrecy improves the long-term security of encrypted communications, helps defend against mass surveillance, and reduces the impact of vulnerabilities like Heartbleed.[4][5]
+The supersingular isogeny Diffie-Hellman method works with the set of supersingular elliptic curves E over Fp2, where the number of points on any such curve will be (p ± 1)2. An isogeny of an elliptic curve E is a rational map from E to another elliptic curve E' such that the number of points on both curves is the same. For supersingular elliptic curves, isogenies are equivalently defined by points inside their kernel.
+The SIDH method works with a prime of the form p = (wA)eA(wB)eB(f) ± 1 where wA and wB are small primes and an elliptic curve E defined by the equation: y2 = x3 + ax + b. SIDH builds an isogeny map from a single elliptic curve point which is taken as the generator for the isogeny's kernel. This point is chosen to be a random linear combination to two fixed points chosen to be in the kernel of the isogeny.
+The j-invariant of an elliptic curve E is a fixed function of a set of isomorphic curves. It is computed from the parameters that define the curve. For an elliptic curve E defined by the equation: y2 = x3 + ax + b the j-invariant of the curve E is:
+
+The set of isogenies of a supersingular elliptic curve together with operation of composition form a non-abelian group and the security of the SIDH is dependent on this non-abelian structure.[2] The security of SIDH is closely related to the problem of finding the isogeny mapping between two supersingular elliptic curves with the same number of points. De Feo, Jao and Plut suggest that the security of SIDH will be O(p1/4) for classical computers and O(p1/6) for quantum computers. This suggests that SIDH with a 768-bit prime (p) will have a 128-bit security level.[2] A 2014 study of the isogeny mapping problem by Delfs and Galbraith confirmed the O(p1/4) security analysis for classical computers.[6]
+During a key exchange entities A and B will each transmit information 2 (mod p2) coefficients defining an elliptic curve and 2 elliptic curve points. Each elliptic curve coefficient requires log2p2 bits. Each elliptic curve point can be transmitted in log2p2+1 bits, hence the transmission is 8log2p + 2 bits. This is 6144 bits for a 768-bit modulus p (128-bit security). However, this can be reduced by over half to 2640 bits (330 bytes) using key-compression techniques, the latest of which appears in recent work by authors Costello, Jao, Longa, Naehrig, Renes and Urbanik.[7] With these compression techniques, SIDH has a similar bandwidth requirement to traditional 3072-bit RSA signatures or Diffie-Hellman key exchanges. This small space requirement makes SIDH applicable to context that have a strict space requirement, such as Bitcoin or Tor. Tor's data cells must be less than 517 bytes in length, so they can hold 330-byte SIDH keys. By contrast, NTRUEncrypt must exchange approximately 600 bytes to achieve a 128-bit security and cannot be used within Tor without increasing the cell size.[8]
+In 2014, researchers at the University of Waterloo developed a software implementation of SIDH. They ran their partially optimized code on an x86-64 processor running at 2.4 GHz. For a 768-bit modulus they were able to complete the key exchange computations in 200 milliseconds thus demonstrating that the SIDH is computationally practical.[9]
+In 2016, researchers from Microsoft posted software for the SIDH which runs in constant time (thus protecting against timing attacks) and is the most efficient implementation to date. They write: "The size of public keys is only 564 bytes, which is significantly smaller than most of the popular post-quantum key exchange alternatives. Ultimately, the size and speed of our software illustrates the strong potential of SIDH as a post-quantum key exchange candidate and we hope that these results encourage a wider cryptanalytic effort."[10] Their software is posted on here.
+While several steps of SIDH involve complex isogeny calculations, the overall flow of SIDH for parties A and B is straightforward for those familiar with a Diffie-Hellman key exchange or its elliptic curve variant.
+These are public parameters that can be shared by everyone in the network, or they can be negotiated by parties A and B at the beginning of a session.
+In the key exchange, parties A and B will each create an isogeny from a common elliptic curve E. They each will do this by creating a random point in what will be the kernel of their isogeny. The kernel of their isogeny will be spanned by the pairs of points 
+
+
+
+
+P
+
+A
+
+
+
+
+{\displaystyle P_{A}}
+
+, 
+
+
+
+
+Q
+
+A
+
+
+
+
+{\displaystyle Q_{A}}
+
+ and 
+
+
+
+
+P
+
+B
+
+
+
+
+{\displaystyle P_{B}}
+
+, 
+
+
+
+
+Q
+
+B
+
+
+
+
+{\displaystyle Q_{B}}
+
+ respectively. The different pairs of points used ensure that parties A and B create different, non-communting, isogenies. A random point (
+
+
+
+
+R
+
+A
+
+
+
+
+{\displaystyle R_{A}}
+
+, or 
+
+
+
+
+R
+
+B
+
+
+
+
+{\displaystyle R_{B}}
+
+) in the kernel of the isogenies is created as a random linear combination of the points 
+
+
+
+
+P
+
+A
+
+
+
+
+{\displaystyle P_{A}}
+
+, 
+
+
+
+
+Q
+
+A
+
+
+
+
+{\displaystyle Q_{A}}
+
+ and 
+
+
+
+
+P
+
+B
+
+
+
+
+{\displaystyle P_{B}}
+
+, 
+
+
+
+
+Q
+
+B
+
+
+
+
+{\displaystyle Q_{B}}
+
+.
+Using 
+
+
+
+
+R
+
+A
+
+
+
+
+{\displaystyle R_{A}}
+
+, or 
+
+
+
+
+R
+
+B
+
+
+
+
+{\displaystyle R_{B}}
+
+, parties A and B then use Velu's formulas for creating isogenies 
+
+
+
+
+ϕ
+
+A
+
+
+
+
+{\displaystyle \phi _{A}}
+
+ and 
+
+
+
+
+ϕ
+
+B
+
+
+
+
+{\displaystyle \phi _{B}}
+
+ respectively. From this they compute the image of the pairs of points 
+
+
+
+
+P
+
+A
+
+
+
+
+{\displaystyle P_{A}}
+
+, 
+
+
+
+
+Q
+
+A
+
+
+
+
+{\displaystyle Q_{A}}
+
+ or 
+
+
+
+
+P
+
+B
+
+
+
+
+{\displaystyle P_{B}}
+
+, 
+
+
+
+
+Q
+
+B
+
+
+
+
+{\displaystyle Q_{B}}
+
+ under the 
+
+
+
+
+ϕ
+
+A
+
+
+
+
+{\displaystyle \phi _{A}}
+
+ and 
+
+
+
+
+ϕ
+
+B
+
+
+
+
+{\displaystyle \phi _{B}}
+
+ isogenies respectively.
+As a result, A and B will now have two pairs of points 
+
+
+
+
+ϕ
+
+B
+
+
+(
+
+P
+
+A
+
+
+)
+
+
+{\displaystyle \phi _{B}(P_{A})}
+
+, 
+
+
+
+
+ϕ
+
+B
+
+
+(
+
+Q
+
+A
+
+
+)
+
+
+{\displaystyle \phi _{B}(Q_{A})}
+
+ and 
+
+
+
+
+ϕ
+
+A
+
+
+(
+
+P
+
+B
+
+
+)
+
+
+{\displaystyle \phi _{A}(P_{B})}
+
+, 
+
+
+
+
+ϕ
+
+A
+
+
+(
+
+Q
+
+B
+
+
+)
+
+
+{\displaystyle \phi _{A}(Q_{B})}
+
+ respectively. A and B now exchange these pairs of points over a communications channel.
+A and B now use the pair of points they receive as the basis for the kernel of a new isogeny. They use the same linear coefficients they used above with the points they received to form a point in the kernel of an isogeny that they will create. They each compute points 
+
+
+
+
+S
+
+B
+A
+
+
+
+
+{\displaystyle S_{BA}}
+
+ and 
+
+
+
+
+S
+
+A
+B
+
+
+
+
+{\displaystyle S_{AB}}
+
+ and use Velu's formulas to construct new isogenies.
+To complete the key exchange, A and B compute the coefficients of two new elliptic curves under these two new isogenies. They then compute the j-invariant of these curves. Unless there were errors in transmission, the j-invariant of the curve created by A will equal to the j-invariant of the curve created by B.
+Notationally, the SIDH key exchange between parties A and B works as follows:
+1A. A generates two random integers 
+
+
+
+
+m
+
+A
+
+
+,
+
+n
+
+A
+
+
+<
+(
+
+w
+
+A
+
+
+
+)
+
+
+e
+
+A
+
+
+
+
+.
+
+
+{\displaystyle m_{A},n_{A}<(w_{A})^{e_{A}}.}
+
+
+2A. A generates 
+
+
+
+
+R
+
+A
+
+
+:=
+
+m
+
+A
+
+
+⋅
+(
+
+P
+
+A
+
+
+)
++
+
+n
+
+A
+
+
+⋅
+(
+
+Q
+
+A
+
+
+)
+.
+
+
+{\displaystyle R_{A}:=m_{A}\cdot (P_{A})+n_{A}\cdot (Q_{A}).}
+
+
+3A. A uses the point 
+
+
+
+
+R
+
+A
+
+
+
+
+{\displaystyle R_{A}}
+
+ to create an isogeny mapping 
+
+
+
+
+ϕ
+
+A
+
+
+:
+E
+→
+
+E
+
+A
+
+
+
+
+{\displaystyle \phi _{A}:E\rightarrow E_{A}}
+
+ and curve 
+
+
+
+
+E
+
+A
+
+
+
+
+{\displaystyle E_{A}}
+
+ isogenous to 
+
+
+
+E
+.
+
+
+{\displaystyle E.}
+
+
+4A. A applies 
+
+
+
+
+ϕ
+
+A
+
+
+
+
+{\displaystyle \phi _{A}}
+
+ to 
+
+
+
+
+P
+
+B
+
+
+
+
+{\displaystyle P_{B}}
+
+ and 
+
+
+
+
+Q
+
+B
+
+
+
+
+{\displaystyle Q_{B}}
+
+ to form two points on 
+
+
+
+
+E
+
+A
+
+
+:
+
+ϕ
+
+A
+
+
+(
+
+P
+
+B
+
+
+)
+
+
+{\displaystyle E_{A}:\phi _{A}(P_{B})}
+
+ and 
+
+
+
+
+ϕ
+
+A
+
+
+(
+
+Q
+
+B
+
+
+)
+.
+
+
+{\displaystyle \phi _{A}(Q_{B}).}
+
+
+5A. A sends to B 
+
+
+
+
+E
+
+A
+
+
+,
+
+ϕ
+
+A
+
+
+(
+
+P
+
+B
+
+
+)
+
+
+{\displaystyle E_{A},\phi _{A}(P_{B})}
+
+, and 
+
+
+
+
+ϕ
+
+A
+
+
+(
+
+Q
+
+B
+
+
+)
+.
+
+
+{\displaystyle \phi _{A}(Q_{B}).}
+
+
+1B - 4B: Same as A1 through A4, but with A and B subscripts swapped.
+5B. B sends to A 
+
+
+
+
+E
+
+B
+
+
+,
+
+ϕ
+
+B
+
+
+(
+
+P
+
+A
+
+
+)
+
+
+{\displaystyle E_{B},\phi _{B}(P_{A})}
+
+, and 
+
+
+
+
+ϕ
+
+B
+
+
+(
+
+Q
+
+A
+
+
+)
+.
+
+
+{\displaystyle \phi _{B}(Q_{A}).}
+
+
+7A. A has 
+
+
+
+
+m
+
+A
+
+
+,
+
+n
+
+A
+
+
+,
+
+ϕ
+
+B
+
+
+(
+
+P
+
+A
+
+
+)
+
+
+{\displaystyle m_{A},n_{A},\phi _{B}(P_{A})}
+
+, and 
+
+
+
+
+ϕ
+
+B
+
+
+(
+
+Q
+
+A
+
+
+)
+
+
+{\displaystyle \phi _{B}(Q_{A})}
+
+ and forms 
+
+
+
+
+S
+
+B
+A
+
+
+:=
+
+m
+
+A
+
+
+(
+
+ϕ
+
+B
+
+
+(
+
+P
+
+A
+
+
+)
+)
++
+
+n
+
+A
+
+
+(
+
+ϕ
+
+B
+
+
+(
+
+Q
+
+A
+
+
+)
+)
+.
+
+
+{\displaystyle S_{BA}:=m_{A}(\phi _{B}(P_{A}))+n_{A}(\phi _{B}(Q_{A})).}
+
+
+8A. A uses 
+
+
+
+
+S
+
+B
+A
+
+
+
+
+{\displaystyle S_{BA}}
+
+ to create an isogeny mapping 
+
+
+
+
+ψ
+
+B
+A
+
+
+
+
+{\displaystyle \psi _{BA}}
+
+.
+9A. A uses 
+
+
+
+
+ψ
+
+B
+A
+
+
+
+
+{\displaystyle \psi _{BA}}
+
+ to create an elliptic curve 
+
+
+
+
+E
+
+B
+A
+
+
+
+
+{\displaystyle E_{BA}}
+
+ which is isogenous to 
+
+
+
+E
+
+
+{\displaystyle E}
+
+.
+10A. A computes 
+
+
+
+K
+:=
+
+ j-invariant 
+
+(
+
+j
+
+B
+A
+
+
+)
+
+
+{\displaystyle K:={\text{ j-invariant }}(j_{BA})}
+
+ of the curve 
+
+
+
+
+E
+
+B
+A
+
+
+
+
+{\displaystyle E_{BA}}
+
+.
+7B. Similarly, B has 
+
+
+
+
+m
+
+B
+
+
+,
+
+n
+
+B
+
+
+,
+
+ϕ
+
+A
+
+
+(
+
+P
+
+B
+
+
+)
+
+
+{\displaystyle m_{B},n_{B},\phi _{A}(P_{B})}
+
+, and 
+
+
+
+
+ϕ
+
+A
+
+
+(
+
+Q
+
+B
+
+
+)
+
+
+{\displaystyle \phi _{A}(Q_{B})}
+
+ and forms 
+
+
+
+
+S
+
+A
+B
+
+
+=
+
+m
+
+B
+
+
+(
+
+ϕ
+
+A
+
+
+(
+
+P
+
+B
+
+
+)
+)
++
+
+n
+
+B
+
+
+(
+
+ϕ
+
+A
+
+
+(
+
+Q
+
+B
+
+
+)
+)
+
+
+{\displaystyle S_{AB}=m_{B}(\phi _{A}(P_{B}))+n_{B}(\phi _{A}(Q_{B}))}
+
+.
+8B. B uses 
+
+
+
+
+S
+
+A
+B
+
+
+
+
+{\displaystyle S_{AB}}
+
+ to create an isogeny mapping 
+
+
+
+
+ψ
+
+A
+B
+
+
+
+
+{\displaystyle \psi _{AB}}
+
+.
+9B. B uses 
+
+
+
+
+ψ
+
+A
+B
+
+
+
+
+{\displaystyle \psi _{AB}}
+
+ to create an elliptic curve 
+
+
+
+
+E
+
+A
+B
+
+
+
+
+{\displaystyle E_{AB}}
+
+ which is isogenous to 
+
+
+
+E
+
+
+{\displaystyle E}
+
+.
+10B. B computes 
+
+
+
+K
+:=
+
+ j-invariant 
+
+(
+
+j
+
+A
+B
+
+
+)
+
+
+{\displaystyle K:={\text{ j-invariant }}(j_{AB})}
+
+ of the curve 
+
+
+
+
+E
+
+A
+B
+
+
+
+
+{\displaystyle E_{AB}}
+
+.
+The curves 
+
+
+
+
+E
+
+A
+B
+
+
+
+
+{\displaystyle E_{AB}}
+
+ and 
+
+
+
+
+E
+
+B
+A
+
+
+
+
+{\displaystyle E_{BA}}
+
+ will be guaranteed to both will have the same j-invariant. A function of 
+
+
+
+K
+
+
+{\displaystyle K}
+
+ is used as the shared key.[2]
+The following parameters were taken as an example by De Feo et al.:[2]
+p = prime for the key exchange with wA = 2, wB = 3, eA = 63, eB = 41, and f = 11. Thus p = (263·341·11) - 1.
+E0 = the base (starting) curve for the key exchange = y2 = x3 + x
+Luca De Feo, one of the authors of the paper defining the key exchange has posted software that implements the key exchange for these and other parameters.[11]
+A predecessor to the SIDH was published in 2006 by Rostovtsev and Stolbunov. They created the first Diffie-Hellman replacement based on elliptic curve isogenies. Unlike the method of De Feo, Jao, and Plut, the method of Rostovtsev and Stolbunov used ordinary elliptic curves[12] and was found to have a subexponential quantum attack.[13]
+In March 2014, researchers at the Chinese State Key Lab for Integrated Service Networks and Xidian University extended the security of the SIDH to a form of digital signature with strong designated verifier.[14] In October 2014, well known elliptic curve researchers Jao and Soukharev from the University of Waterloo presented an alternative method of creating undeniable signatures with designated verifier using elliptic curve isogenies.[15]

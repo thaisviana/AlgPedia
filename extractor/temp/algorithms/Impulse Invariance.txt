@@ -1,0 +1,155 @@
+ABOUT
+Impulse invariance is a technique for designing discrete-time infinite-impulse-response (IIR) filters from continuous-time filters in which the impulse response of the continuous-time system is sampled to produce the impulse response of the discrete-time system. The frequency response of the discrete-time system will be a sum of shifted copies of the frequency response of the continuous-time system; if the continuous-time system is approximately band-limited to a frequency less than the Nyquist frequency of the sampling, then the frequency response of the discrete-time system will be approximately equal to it for frequencies below the Nyquist frequency.
+FULL TEXT
+Impulse invariance is a technique for designing discrete-time infinite-impulse-response (IIR) filters from continuous-time filters in which the impulse response of the continuous-time system is sampled to produce the impulse response of the discrete-time system. The frequency response of the discrete-time system will be a sum of shifted copies of the frequency response of the continuous-time system; if the continuous-time system is approximately band-limited to a frequency less than the Nyquist frequency of the sampling, then the frequency response of the discrete-time system will be approximately equal to it for frequencies below the Nyquist frequency.
+
+
+The continuous-time system's impulse response, 
+
+
+
+
+h
+
+c
+
+
+(
+t
+)
+
+
+{\displaystyle h_{c}(t)}
+
+, is sampled with sampling period 
+
+
+
+T
+
+
+{\displaystyle T}
+
+ to produce the discrete-time system's impulse response, 
+
+
+
+h
+[
+n
+]
+
+
+{\displaystyle h[n]}
+
+.
+Thus, the frequency responses of the two systems are related by
+If the continuous time filter is approximately band-limited (i.e. 
+
+
+
+
+H
+
+c
+
+
+(
+j
+Ω
+)
+<
+δ
+
+
+{\displaystyle H_{c}(j\Omega )<\delta }
+
+ when 
+
+
+
+
+|
+
+Ω
+
+|
+
+≥
+π
+
+/
+
+T
+
+
+{\displaystyle |\Omega |\geq \pi /T}
+
+), then the frequency response of the discrete-time system will be approximately the continuous-time system's frequency response for frequencies below π radians per sample (below the Nyquist frequency 1/(2T) Hz):
+Note that aliasing will occur, including aliasing below the Nyquist frequency to the extent that the continuous-time filter's response is nonzero above that frequency. The bilinear transform is an alternative to impulse invariance that uses a different mapping that maps the continuous-time system's frequency response, out to infinite frequency, into the range of frequencies up to the Nyquist frequency in the discrete-time case, as opposed to mapping frequencies linearly with circular overlap as impulse invariance does.
+If the continuous poles at 
+
+
+
+s
+=
+
+s
+
+k
+
+
+
+
+{\displaystyle s=s_{k}}
+
+, the system function can be written in partial fraction expansion as
+Thus, using the inverse Laplace transform, the impulse response is
+The corresponding discrete-time system's impulse response is then defined as the following
+Performing a z-transform on the discrete-time impulse response produces the following discrete-time system function
+Thus the poles from the continuous-time system function are translated to poles at z = eskT. The zeros, if any, are not so simply mapped.[clarification needed]
+If the system function has zeros as well as poles, they can be mapped the same way, but the result is no longer an impulse invariance result: the discrete-time impulse response is not equal simply to samples of the continuous-time impulse response. This method is known as the matched Z-transform method, or pole–zero mapping. In the case of all-pole filters, the methods are equivalent.
+Since poles in the continuous-time system at s = sk transform to poles in the discrete-time system at z = exp(skT), poles in the left half of the s-plane map to inside the unit circle in the z-plane; so if the continuous-time filter is causal and stable, then the discrete-time filter will be causal and stable as well.
+When a causal continuous-time impulse response has a discontinuity at 
+
+
+
+t
+=
+0
+
+
+{\displaystyle t=0}
+
+, the expressions above are not consistent.[1] This is because 
+
+
+
+
+h
+
+c
+
+
+(
+0
+)
+
+
+{\displaystyle h_{c}(0)}
+
+ should really only contribute half its value to 
+
+
+
+h
+[
+0
+]
+
+
+{\displaystyle h[0]}
+
+.
+Making this correction gives
+Performing a z-transform on the discrete-time impulse response produces the following discrete-time system function

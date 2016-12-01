@@ -1,0 +1,442 @@
+ABOUT
+The k-medoids algorithm is a clustering algorithm related to the k-means algorithm and the medoidshift algorithm. Both the k-means and k-medoids algorithms are partitional (breaking the dataset up into groups) and both attempt to minimize the distance between points labeled to be in a cluster and a point designated as the center of that cluster. In contrast to the k-means algorithm, k-medoids chooses datapoints as centers (medoids or exemplars) and works with an arbitrary metrics of distances between datapoints instead of 
+
+
+
+
+l
+
+2
+
+
+
+
+{\displaystyle l_{2}}
+
+. This method was proposed in 1987[1] for the work with 
+
+
+
+
+l
+
+1
+
+
+
+
+{\displaystyle l_{1}}
+
+ norm and other distances.
+FULL TEXT
+The k-medoids algorithm is a clustering algorithm related to the k-means algorithm and the medoidshift algorithm. Both the k-means and k-medoids algorithms are partitional (breaking the dataset up into groups) and both attempt to minimize the distance between points labeled to be in a cluster and a point designated as the center of that cluster. In contrast to the k-means algorithm, k-medoids chooses datapoints as centers (medoids or exemplars) and works with an arbitrary metrics of distances between datapoints instead of 
+
+
+
+
+l
+
+2
+
+
+
+
+{\displaystyle l_{2}}
+
+. This method was proposed in 1987[1] for the work with 
+
+
+
+
+l
+
+1
+
+
+
+
+{\displaystyle l_{1}}
+
+ norm and other distances.
+k-medoid is a classical partitioning technique of clustering that clusters the data set of n objects into k clusters known a priori. A useful tool for determining k is the silhouette.
+It is more robust to noise and outliers as compared to k-means because it minimizes a sum of pairwise dissimilarities instead of a sum of squared Euclidean distances.
+A medoid can be defined as the object of a cluster whose average dissimilarity to all the objects in the cluster is minimal. i.e. it is a most centrally located point in the cluster.
+
+
+The most common realisation of k-medoid clustering is the Partitioning Around Medoids (PAM) algorithm. PAM uses a greedy search which may not find the optimum solution, but it is faster than exhaustive search[citation needed]. It works as follows:
+Other algorithms than PAM have been suggested in the literature, including the following Voronoi iteration method: [2] [3]
+Cluster the following data set of ten objects into two clusters i.e. k = 2.
+Consider a data set of ten objects as follows:
+Initialize k centers.
+Let us assume x2 and x8 are selected as medoids, so the centers are c1 = (3,4) and c2 = (7,4)
+Calculate distances to each center so as to associate each data object to its nearest medoid. Cost is calculated using Manhattan distance (Minkowski distance metric with r = 1). Costs to the nearest medoid are shown bold in the table.
+Then the clusters become:
+Cluster1 = {(3,4)(2,6)(3,8)(4,7)}
+Cluster2 = {(7,4)(6,2)(6,4)(7,3)(8,5)(7,6)}
+Since the points (2,6) (3,8) and (4,7) are closer to c1 hence they form one cluster whilst remaining points form another cluster.
+So the total cost involved is 20.
+Where cost between any two points is found using formula
+
+
+
+
+
+cost
+
+(
+x
+,
+c
+)
+=
+
+∑
+
+i
+=
+1
+
+
+d
+
+
+
+|
+
+
+x
+
+i
+
+
+−
+
+c
+
+i
+
+
+
+|
+
+
+
+{\displaystyle {\mbox{cost}}(x,c)=\sum _{i=1}^{d}|x_{i}-c_{i}|}
+
+
+where x is any data object, c is the medoid, and d is the dimension of the object which in this case is 2.
+Total cost is the summation of the cost of data object from its medoid in its cluster so here:
+
+
+
+
+
+
+
+
+
+total cost
+
+
+
+
+=
+{
+
+cost
+
+(
+(
+3
+,
+4
+)
+,
+(
+2
+,
+6
+)
+)
++
+
+cost
+
+(
+(
+3
+,
+4
+)
+,
+(
+3
+,
+8
+)
+)
++
+
+cost
+
+(
+(
+3
+,
+4
+)
+,
+(
+4
+,
+7
+)
+)
+}
+
+
+
+
+
+ 
++
+{
+
+cost
+
+(
+(
+7
+,
+4
+)
+,
+(
+6
+,
+2
+)
+)
++
+
+cost
+
+(
+(
+7
+,
+4
+)
+,
+(
+6
+,
+4
+)
+)
++
+
+cost
+
+(
+(
+7
+,
+4
+)
+,
+(
+7
+,
+3
+)
+)
+
+
+
+
+
+ 
++
+
+cost
+
+(
+(
+7
+,
+4
+)
+,
+(
+8
+,
+5
+)
+)
++
+
+cost
+
+(
+(
+7
+,
+4
+)
+,
+(
+7
+,
+6
+)
+)
+}
+
+
+
+
+
+
+=
+(
+3
++
+4
++
+4
+)
++
+(
+3
++
+1
++
+1
++
+2
++
+2
+)
+
+
+
+
+
+
+=
+20
+
+
+
+
+
+
+{\displaystyle {\begin{aligned}{\mbox{total cost}}&=\{{\mbox{cost}}((3,4),(2,6))+{\mbox{cost}}((3,4),(3,8))+{\mbox{cost}}((3,4),(4,7))\}\\&~+\{{\mbox{cost}}((7,4),(6,2))+{\mbox{cost}}((7,4),(6,4))+{\mbox{cost}}((7,4),(7,3))\\&~+{\mbox{cost}}((7,4),(8,5))+{\mbox{cost}}((7,4),(7,6))\}\\&=(3+4+4)+(3+1+1+2+2)\\&=20\\\end{aligned}}}
+
+
+Select one of the nonmedoids O′
+Let us assume O′ = (7,3), i.e. x7.
+So now the medoids are c1(3,4) and O′(7,3)
+If c1 and O′ are new medoids, calculate the total cost involved
+By using the formula in the step 1
+
+
+
+
+
+
+
+
+
+total cost
+
+
+
+
+=
+3
++
+4
++
+4
++
+2
++
+2
++
+1
++
+3
++
+3
+
+
+
+
+
+
+=
+22
+
+
+
+
+
+
+{\displaystyle {\begin{aligned}{\mbox{total cost}}&=3+4+4+2+2+1+3+3\\&=22\\\end{aligned}}}
+
+
+So cost of swapping medoid from c2 to O′ is
+
+
+
+
+
+
+
+
+S
+
+
+
+=
+
+current total cost
+
+−
+
+past total cost
+
+
+
+
+
+
+
+=
+22
+−
+20
+
+
+
+
+
+
+=
+2
+>
+0.
+
+
+
+
+
+
+{\displaystyle {\begin{aligned}S&={\mbox{current total cost}}-{\mbox{past total cost}}\\&=22-20\\&=2>0.\end{aligned}}}
+
+
+So moving to O′ would be a bad idea, so the previous choice was good. So we try other nonmedoids and found that our first choice was the best. So the configuration does not change and algorithm terminates here (i.e. there is no change in the medoids).
+It may happen some data points may shift from one cluster to another cluster depending upon their closeness to medoid.
+In some standard situations, k-medoids demonstrate better performance than k-means. An example is presented in Fig. 2. The most time-consuming part of the k-medoids algorithm is the calculation of the distances between objects. If a quadratic preprocessing and storage is applicable, the distances matrix can be precomputed to achieve consequent speed-up. See for example,[3] where the authors also introduce a heuristic to choose the initial k medoids.

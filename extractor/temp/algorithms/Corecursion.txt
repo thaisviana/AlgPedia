@@ -1,0 +1,217 @@
+ABOUT
+In computer science, corecursion is a type of operation that is dual to recursion. Whereas recursion works analytically, starting on data further from a base case and breaking it down into smaller data and repeating until one reaches a base case, corecursion works synthetically, starting from a base case and building it up, iteratively producing data further removed from a base case. Put simply, corecursive algorithms use the data that they themselves produce, bit by bit, as they become available, and needed, to produce further bits of data. A similar but distinct concept is generative recursion which may lack a definite "direction" inherent in corecursion and recursion.
+FULL TEXT
+In computer science, corecursion is a type of operation that is dual to recursion. Whereas recursion works analytically, starting on data further from a base case and breaking it down into smaller data and repeating until one reaches a base case, corecursion works synthetically, starting from a base case and building it up, iteratively producing data further removed from a base case. Put simply, corecursive algorithms use the data that they themselves produce, bit by bit, as they become available, and needed, to produce further bits of data. A similar but distinct concept is generative recursion which may lack a definite "direction" inherent in corecursion and recursion.
+Where recursion allows programs to operate on arbitrarily complex data, so long as they can be reduced to simple data (base cases), corecursion allows programs to produce arbitrarily complex and potentially infinite data structures, such as streams, so long as it can be produced from simple data (base cases). Where recursion may not terminate, never reaching a base state, corecursion starts from a base state, and thus produces subsequent steps deterministically, though it may proceed indefinitely (and thus not terminate under strict evaluation), or it may consume more than it produces and thus become non-productive. Many functions that are traditionally analyzed as recursive can alternatively, and arguably more naturally, be interpreted as corecursive functions that are terminated at a given stage, for example recurrence relations such as the factorial.
+Corecursion can produce both finite and infinite data structures as results, and may employ self-referential data structures. Corecursion is often used in conjunction with lazy evaluation, to produce only a finite subset of a potentially infinite structure (rather than trying to produce an entire infinite structure at once). Corecursion is a particularly important concept in functional programming, where corecursion and codata allow total languages to work with infinite data structures.
+
+
+Corecursion can be understood by contrast with recursion, which is more familiar. While corecursion is primarily of interest in functional programming, it can be illustrated using imperative programming, which is done below using the generator facility in Python. In these examples local variables are used, and assigned values imperatively (destructively), though these are not necessary in corecursion in pure functional programming. In pure functional programming, rather than assigning to local variables, these computed values form an invariable sequence, and prior values are accessed by self-reference (later values in the sequence reference earlier values in the sequence to be computed). The assignments simply express this in the imperative paradigm and explicitly specify where the computations happen, which serves to clarify the exposition.
+A classic example of recursion is computing the factorial, which is defined recursively as 
+
+
+
+0
+!
+:=
+1
+
+
+{\displaystyle 0!:=1}
+
+ and 
+
+
+
+n
+!
+:=
+n
+×
+(
+n
+−
+1
+)
+!
+
+
+{\displaystyle n!:=n\times (n-1)!}
+
+
+To recursively compute its result on a given input, a recursive function calls (a copy of) itself with a different ("smaller" in some way) input and uses the result of this call to construct its result. The recursive call does the same, unless the base case has been reached. Thus a call stack develops in the process. For example, to compute fac(3), this recursively calls in turn fac(2), fac(1), fac(0) ("winding up" the stack), at which point recursion terminates with fac(0) = 1, and then the stack unwinds in reverse order and the results are calculated on the way back along the call stack to the initial call frame fac(3), where the final result is calculated as 3*2 =: 6 and finally returned. In this example a function returns a single value.
+This stack unwinding can be explicated, defining the factorial corecursively, as an iterator, where one starts with the case of 
+
+
+
+1
+=:
+0
+!
+
+
+{\displaystyle 1=:0!}
+
+, then from this starting value constructs factorial values for increasing numbers 1, 2, 3... as in the above recursive definition with "time arrow" reversed, as it were, by reading it backwards as  
+
+
+
+n
+!
+×
+(
+n
++
+1
+)
+=:
+(
+n
++
+1
+)
+!
+
+
+{\displaystyle n!\times (n+1)=:(n+1)!}
+
+. The corecursive algorithm thus defined produces a stream of all factorials. This may be concretely implemented as a generator. Symbolically, noting that computing next factorial value requires keeping track of both n and f (a previous factorial value), this can be represented as:
+or in Haskell,
+meaning, "starting from 
+
+
+
+n
+,
+f
+=
+0
+,
+1
+
+
+{\displaystyle n,f=0,1}
+
+, on each step the next values are calculated as 
+
+
+
+n
++
+1
+,
+f
+×
+(
+n
++
+1
+)
+
+
+{\displaystyle n+1,f\times (n+1)}
+
+". This is mathematically equivalent and almost identical to the recursive definition, but the 
+
+
+
++
+1
+
+
+{\displaystyle +1}
+
+ emphasizes that the factorial values are being built up, going forwards from the starting case, rather than being computed after first going backwards, down to the base case, with a 
+
+
+
+−
+1
+
+
+{\displaystyle -1}
+
+ decrement. Note also that the direct output of the corecursive function does not simply contain the factorial 
+
+
+
+n
+!
+
+
+{\displaystyle n!}
+
+ values, but also includes for each value the auxiliary data of its index n in the sequence, so that any one specific result can be selected among them all, as and when needed.
+Note the connection with denotational semantics, where the denotations of recursive programs is built up corecursively in this way.
+In Python, a recursive factorial function can be defined as:[a]
+This could then be called for example as factorial(5) to compute 5!.
+A corresponding corecursive generator can be defined as:
+This generates an infinite stream of factorials in order; a finite portion of it can be produced by:
+This could then be called to produce the factorials up to 5! via:
+If we're only interested in a certain factorial, just the last value can be taken, or we can fuse the production and the access into one function,
+As can be readily seen here, this is practically equivalent (just by substituting return for the only yield there) to the accumulator argument technique for tail recursion, unwound into an explicit loop. Thus it can be said that the concept of corecursion is an explication of the embodiment of iterative computation processes by recursive definitions, where applicable.
+In the same way, the Fibonacci sequence can be represented as:
+Note that because the Fibonacci sequence is a recurrence relation of order 2, the corecursive relation must track two successive terms, with the 
+
+
+
+(
+b
+,
+−
+)
+
+
+{\displaystyle (b,-)}
+
+ corresponding to shift forward by one step, and the 
+
+
+
+(
+−
+,
+a
++
+b
+)
+
+
+{\displaystyle (-,a+b)}
+
+ corresponding to computing the next term. This can then be implemented as follows (using parallel assignment):
+In Haskell,
+Tree traversal via a depth-first approach is a classic example of recursion. Dually, breadth-first traversal can very naturally be implemented via corecursion.
+Without using recursion or corecursion, one may traverse a tree by starting at the root node, placing the child nodes in a data structure, then removing the nodes in the data structure in turn and iterating over its children.[b] If the data structure is a stack (LIFO), this yields depth-first traversal, while if the data structure is a queue (FIFO), this yields breadth-first traversal.
+Using recursion, a (post-order)[c] depth-first traversal can be implemented by starting at the root node and recursively traversing each child subtree in turn (the subtree based at each child node) – the second child subtree does not start processing until the first child subtree is finished. Once a leaf node is reached or the children of a branch node have been exhausted, the node itself is visited (e.g., the value of the node itself is outputted). In this case, the call stack (of the recursive functions) acts as the stack that is iterated over.
+Using corecursion, a breadth-first traversal can be implemented by starting at the root node, outputting its value,[d] then breadth-first traversing the subtrees – i.e., passing on the whole list of subtrees to the next step (not a single subtree, as in the recursive approach) – at the next step outputting the value of all of their root nodes, then passing on their child subtrees, etc.[e] In this case the generator function, indeed the output sequence itself, acts as the queue. As in the factorial example (above), where the auxiliary information of the index (which step one was at, n) was pushed forward, in addition to the actual output of n!, in this case the auxiliary information of the remaining subtrees is pushed forward, in addition to the actual output. Symbolically:
+meaning that at each step, one outputs the list of values of root nodes, then proceeds to the child subtrees. Generating just the node values from this sequence simply requires discarding the auxiliary child tree data, then flattening the list of lists (values are initially grouped by level (depth); flattening (ungrouping) yields a flat linear list).
+These can be compared as follows. The recursive traversal handles a leaf node (at the bottom) as the base case (when there are no children, just output the value), and analyzes a tree into subtrees, traversing each in turn, eventually resulting in just leaf nodes – actual leaf nodes, and branch nodes whose children have already been dealt with (cut off below). By contrast, the corecursive traversal handles a root node (at the top) as the base case (given a node, first output the value), treats a tree as being synthesized of a root node and its children, then produces as auxiliary output a list of subtrees at each step, which are then the input for the next step – the child nodes of the original root are the root nodes at the next step, as their parents have already been dealt with (cut off above). Note also that in the recursive traversal there is a distinction between leaf nodes and branch nodes, while in the corecursive traversal there is no distinction, as each node is treated as the root node of the subtree it defines.
+Notably, given an infinite tree,[f] the corecursive breadth-first traversal will traverse all nodes, just as for a finite tree, while the recursive depth-first traversal will go down one branch and not traverse all nodes, and indeed if traversing post-order, as in this example (or in-order), it will visit no nodes at all, because it never reaches a leaf. This shows the usefulness of corecursion rather than recursion for dealing with infinite data structures.
+In Python, this can be implemented as follows.[g] The usual post-order depth-first traversal can be defined as:[h]
+This can then be called by df(t) to print the values of the nodes of the tree in post-order depth-first order.
+The breadth-first corecursive generator can be defined as:[i]
+This can then be called to print the values of the nodes of the tree in breadth-first order:
+Initial data types can be defined as being the least fixpoint (up to isomorphism) of some type equation; the isomorphism is then given by an initial algebra. Dually, final (or terminal) data types can be defined as being the greatest fixpoint of a type equation; the isomorphism is then given by a final coalgebra.
+If the domain of discourse is the category of sets and total functions, then final data types may contain infinite, non-wellfounded values, whereas initial types do not.[1][2] On the other hand, if the domain of discourse is the category of complete partial orders and continuous functions, which corresponds roughly to the Haskell programming language, then final types coincide with initial types, and the corresponding final coalgebra and initial algebra form an isomorphism.[3]
+Corecursion is then a technique for recursively defining functions whose range (codomain) is a final data type, dual to the way that ordinary recursion recursively defines functions whose domain is an initial data type.[4]
+The discussion below provides several examples in Haskell that distinguish corecursion. Roughly speaking, if one were to port these definitions to the category of sets, they would still be corecursive. This informal usage is consistent with existing textbooks about Haskell.[5] Also note that the examples used in this article predate the attempts to define corecursion and explain what it is.
+The rule for primitive corecursion on codata is the dual to that for primitive recursion on data. Instead of descending on the argument by pattern-matching on its constructors (that were called up before, somewhere, so we receive a ready-made datum and get at its constituent sub-parts, i.e. "fields"), we ascend on the result by filling-in its "destructors" (or "observers", that will be called afterwards, somewhere - so we're actually calling a constructor, creating another bit of the result to be observed later on). Thus corecursion creates (potentially infinite) codata, whereas ordinary recursion analyses (necessarily finite) data. Ordinary recursion might not be applicable to the codata because it might not terminate. Conversely, corecursion is not strictly necessary if the result type is data, because data must be finite.
+In "Programming with streams in Coq: a case study: the Sieve of Eratosthenes"[6] we find
+where primes "are obtained by applying the primes operation to the stream (Enu 2)". Following the above notation, the sequence of primes (with a throwaway 0 prefixed to it) and numbers streams being progressively sieved, can be represented as
+or in Haskell,
+The authors discuss how the definition of sieve is not guaranteed always to be productive, and could become stuck e.g. if called with [5,10..] as the initial stream.
+Here is another example in Haskell. The following definition produces the list of Fibonacci numbers in linear time:
+This infinite list depends on lazy evaluation; elements are computed on an as-needed basis, and only finite prefixes are ever explicitly represented in memory. This feature allows algorithms on parts of codata to terminate; such techniques are an important part of Haskell programming.
+This can be done in Python as well:[7]
+The definition of zipWith can be inlined, leading to this:
+This example employs a self-referential data structure. Ordinary recursion makes use of self-referential functions, but does not accommodate self-referential data. However, this is not essential to the Fibonacci example. It can be rewritten as follows:
+This employs only self-referential function to construct the result. If it were used with strict list constructor it would be an example of runaway recursion, but with non-strict list constructor this guarded recursion gradually produces an indefinitely defined list.
+Corecursion need not produce an infinite object; a corecursive queue[8] is a particularly good example of this phenomenon. The following definition produces a breadth-first traversal of a binary tree in linear time:
+This definition takes an initial tree and produces a list of subtrees. This list serves dual purpose as both the queue and the result (gen len p produces its output len notches after its input back-pointer, p, along the queue). It is finite if and only if the initial tree is finite. The length of the queue must be explicitly tracked in order to ensure termination; this can safely be elided if this definition is applied only to infinite trees.
+Another particularly good example gives a solution to the problem of breadth-first labeling.[9] The function label visits every node in a binary tree in a breadth first fashion, and replaces each label with an integer, each subsequent integer is bigger than the last by one. This solution employs a self-referential data structure, and the binary tree can be finite or infinite.
+An apomorphism (such as an anamorphism, such as unfold) is a form of corecursion in the same way that a paramorphism (such as a catamorphism, such as fold) is a form of recursion.
+The Coq proof assistant supports corecursion and coinduction using the CoFixpoint command.
+Corecursion, referred to as circular programming, dates at least to (Bird 1984), who credits John Hughes and Philip Wadler; more general forms were developed in (Allison 1989). The original motivations included producing more efficient algorithms (allowing 1 pass over data in some cases, instead of requiring multiple passes) and implementing classical data structures, such as doubly linked lists and queues, in functional languages.
+and initializing a tree, say via:
+In this example nodes are labeled in breadth-first order:

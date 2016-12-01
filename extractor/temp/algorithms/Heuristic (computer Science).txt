@@ -1,0 +1,285 @@
+ABOUT
+In computer science, artificial intelligence, and mathematical optimization, a heuristic is a technique designed for solving a problem more quickly when classic methods are too slow, or for finding an approximate solution when classic methods fail to find any exact solution. This is achieved by trading optimality, completeness, accuracy, or precision for speed. In a way, it can be considered a shortcut.
+FULL TEXT
+In computer science, artificial intelligence, and mathematical optimization, a heuristic is a technique designed for solving a problem more quickly when classic methods are too slow, or for finding an approximate solution when classic methods fail to find any exact solution. This is achieved by trading optimality, completeness, accuracy, or precision for speed. In a way, it can be considered a shortcut.
+A heuristic function, also called simply a heuristic, is a function that ranks alternatives in search algorithms at each branching step based on available information to decide which branch to follow. For example, it may approximate the exact solution.[citation needed]
+
+
+The objective of a heuristic is to produce a solution in a reasonable time frame that is good enough for solving the problem at hand. This solution may not be the best of all the actual solutions to this problem, or it may simply approximate the exact solution. But it is still valuable because finding it does not require a prohibitively long time.
+Heuristics may produce results by themselves, or they may be used in conjunction with optimization algorithms to improve their efficiency (e.g., they may be used to generate good seed values).
+Results about NP-hardness in theoretical computer science make heuristics the only viable option for a variety of complex optimization problems that need to be routinely solved in real-world applications.
+Heuristics underlie the whole field of Artificial Intelligence and the computer simulation of thinking, as they may be used in situations where there are no known algorithms.[1]
+The trade-off criteria for deciding whether to use a heuristic for solving a given problem include the following:
+In some cases, it may be difficult to decide whether the solution found by the heuristic is good enough, because the theory underlying that heuristic is not very elaborate.
+One way of achieving the computational performance gain expected of a heuristic consists in solving a simpler problem whose solution is also a solution to the initial problem. Such a heuristic is unable to find all the solutions to the initial problem, but it may find one much faster because the simple problem is easy to solve.
+An example of approximation is described by Jon Bentley for solving the traveling salesman problem (TSP) so as to select the order to draw using a pen plotter. TSP is known to be NP-Complete so an optimal solution for even moderate size problem is intractable. Instead, the greedy algorithm can be used to give a good but not optimal solution (it is an approximation to the optimal answer) in a reasonably short amount of time. The greedy algorithm heuristic says to pick whatever is currently the best next step regardless of whether that precludes good steps later. It is a heuristic in that practice says it is a good enough solution, theory says there are better solutions (and even can tell how much better in some cases).[2]
+Another example of heuristic making an algorithm faster occurs in certain search problems. Initially, the heuristic tries every possibility at each step, like the full-space search algorithm. But it can stop the search at any time if the current possibility is already worse than the best solution already found. In such search problems, a heuristic can be used to try good choices first so that bad paths can be eliminated early (see alpha-beta pruning).
+In their Turing Award acceptance speech, Allen Newell and Herbert A. Simon discuss the heuristic search hypothesis: a physical symbol system will repeatedly generate and modify known symbol structures until the created structure matches the solution structure. Each successive iteration depends upon the step before it, thus the heuristic search learns what avenues to pursue and which ones to disregard by measuring how close the current iteration is to the solution. Therefore, some possibilities will never be generated as they are measured to be less likely to complete the solution.
+A heuristic method can accomplish its task by using search trees. However, instead of generating all possible solution branches, a heuristic selects branches more likely to produce outcomes than other branches. It is selective at each decision point, picking branches that are more likely to produce solutions.[3]
+Many virus scanners use heuristic rules for detecting viruses and other forms of malware. Heuristic scanning looks for code and/or behavioral patterns indicative of a class or family of viruses, with different sets of rules for different viruses. If a file or executing process is observed to contain matching code patterns and/or to be performing that set of activities, then the scanner infers that the file is infected. The most advanced part of behavior-based heuristic scanning is that it can work against highly randomized polymorphic viruses, which simpler string scanning-only approaches cannot reliably detect. Heuristic scanning has the potential to detect many future viruses without requiring the virus to be detected somewhere, submitted to the virus scanner developer, analyzed, and a detection update for the scanner provided to the scanner's users.
+Some heuristics have a strong underlying theory; they are either derived in a top-down manner from the theory or inferred from experimental data. Others are just rules of thumb learned empirically without even a glimpse of theory. The latter are exposed to a number of pitfalls.
+When a heuristic is reused in various contexts because it has been seen to "work" in one context, without having been mathematically proven to meet a given set of requirements, it is possible that the current data set does not necessarily represent future data sets and that purported "solutions" turn out to be akin to noise.
+Statistical analysis can be conducted when employing heuristics to estimate the probability of incorrect outcomes. To use a heuristic for solving a search or a knapsack problem, it is necessary to check that the heuristic is admissible. Given a heuristic function 
+
+
+
+h
+(
+
+v
+
+i
+
+
+,
+
+v
+
+g
+
+
+)
+
+
+{\displaystyle h(v_{i},v_{g})}
+
+ meant to approximate the true optimal distance 
+
+
+
+
+d
+
+⋆
+
+
+(
+
+v
+
+i
+
+
+,
+
+v
+
+g
+
+
+)
+
+
+{\displaystyle d^{\star }(v_{i},v_{g})}
+
+ to the goal node 
+
+
+
+
+v
+
+g
+
+
+
+
+{\displaystyle v_{g}}
+
+ in a directed graph 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ containing 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ total nodes or vertexes labeled 
+
+
+
+
+v
+
+0
+
+
+,
+
+v
+
+1
+
+
+,
+⋯
+,
+
+v
+
+n
+
+
+
+
+{\displaystyle v_{0},v_{1},\cdots ,v_{n}}
+
+, "admissible" means that 
+
+
+
+h
+(
+
+v
+
+i
+
+
+,
+
+v
+
+g
+
+
+)
+≤
+
+d
+
+⋆
+
+
+(
+
+v
+
+i
+
+
+,
+
+v
+
+g
+
+
+)
+
+
+{\displaystyle h(v_{i},v_{g})\leq d^{\star }(v_{i},v_{g})}
+
+ for all 
+
+
+
+(
+
+v
+
+i
+
+
+,
+
+v
+
+g
+
+
+)
+
+
+{\displaystyle (v_{i},v_{g})}
+
+ where 
+
+
+
+
+i
+,
+g
+
+∈
+[
+0
+,
+1
+,
+.
+.
+.
+,
+n
+]
+
+
+{\displaystyle {i,g}\in [0,1,...,n]}
+
+.
+If a heuristic is not admissible, it may never find the goal, either by ending up in a dead end of graph 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ or by skipping back and forth between two nodes 
+
+
+
+
+v
+
+i
+
+
+
+
+{\displaystyle v_{i}}
+
+ and 
+
+
+
+
+v
+
+j
+
+
+
+
+{\displaystyle v_{j}}
+
+ where 
+
+
+
+
+i
+,
+j
+
+≠
+g
+
+
+{\displaystyle {i,j}\neq g}
+
+.
+The word "heuristic" came into usage in the early 19th century. It is formed irregularly from the Greek word heuriskein, meaning "to find".[4]

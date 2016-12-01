@@ -1,0 +1,176 @@
+ABOUT
+In mathematics, a polynomial decomposition expresses a polynomial f as the functional composition 
+
+
+
+g
+∘
+h
+
+
+{\displaystyle g\circ h}
+
+ of polynomials g and h, where g and h have degree greater than 1.[1] Algorithms are known for decomposing polynomials in polynomial time.
+FULL TEXT
+In mathematics, a polynomial decomposition expresses a polynomial f as the functional composition 
+
+
+
+g
+∘
+h
+
+
+{\displaystyle g\circ h}
+
+ of polynomials g and h, where g and h have degree greater than 1.[1] Algorithms are known for decomposing polynomials in polynomial time.
+Polynomials which are decomposable in this way are composite polynomials; those which are not are prime or indecomposable polynomials[2] (not to be confused with irreducible polynomials, which cannot be factored into products of polynomials).
+
+
+In the simplest case, one of the polynomials is a monomial. For example,
+decomposes into
+since
+Less trivially,
+A polynomial may have distinct decompositions into indecomposable polynomials where 
+
+
+
+f
+=
+
+g
+
+1
+
+
+∘
+
+g
+
+2
+
+
+∘
+⋯
+∘
+
+g
+
+m
+
+
+=
+
+h
+
+1
+
+
+∘
+
+h
+
+2
+
+
+∘
+⋯
+∘
+
+h
+
+n
+
+
+
+
+{\displaystyle f=g_{1}\circ g_{2}\circ \cdots \circ g_{m}=h_{1}\circ h_{2}\circ \cdots \circ h_{n}}
+
+ where 
+
+
+
+
+g
+
+i
+
+
+≠
+
+h
+
+i
+
+
+
+
+{\displaystyle g_{i}\neq h_{i}}
+
+ for some 
+
+
+
+i
+
+
+{\displaystyle i}
+
+. The restriction in the definition to polynomials of degree greater than one excludes the infinitely many decompositions possible with linear polynomials.
+Joseph Ritt proved that 
+
+
+
+m
+=
+n
+
+
+{\displaystyle m=n}
+
+, and the degrees of the components are the same, but possibly in different order; this is Ritt's polynomial decomposition theorem.[2][3] For example, 
+
+
+
+
+x
+
+2
+
+
+∘
+
+x
+
+3
+
+
+=
+
+x
+
+3
+
+
+∘
+
+x
+
+2
+
+
+
+
+{\displaystyle x^{2}\circ x^{3}=x^{3}\circ x^{2}}
+
+.
+A polynomial decomposition may enable more efficient evaluation of a polynomial. For example,
+can be calculated with only 3 multiplications using the decomposition, while Horner's method would require 7.
+A polynomial decomposition enables calculation of symbolic roots using radicals, even for some irreducible polynomials. This technique is used in many computer algebra systems.[4] For example, using the decomposition
+the roots of this irreducible polynomial can be calculated as
+Even in the case of quartic polynomials, where there is an explicit formula for the roots, solving using the decomposition often gives a simpler form. For example, the decomposition
+gives the roots
+but straightforward application of the quartic formula gives equivalent results but in a form that is difficult to simplify and difficult to understand:
+The first algorithm for polynomial decomposition was published in 1985,[6] though it had been discovered in 1976[7] and implemented in the Macsyma computer algebra system.[8] That algorithm took worst-case exponential time but worked independently of the characteristic of the underlying field.
+More recent algorithms ran in polynomial time but with restrictions on the characteristic.[9]
+The most recent algorithm calculates a decomposition in polynomial time and without restrictions on the characteristic.[10]

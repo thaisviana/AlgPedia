@@ -1,0 +1,63 @@
+ABOUT
+In computer algebra, a triangular decomposition of a polynomial system S is a set of simpler polynomial systems S1, ..., Se such that a point is a solution of S if and only if it is a solution of one of the systems S1, ..., Se.
+FULL TEXT
+In computer algebra, a triangular decomposition of a polynomial system S is a set of simpler polynomial systems S1, ..., Se such that a point is a solution of S if and only if it is a solution of one of the systems S1, ..., Se.
+When the purpose is to describe the solution set of S in the algebraic closure of its coefficient field, those simpler systems are regular chains. If the coefficient of S are real numbers, then the real solutions of S can be obtained by a triangular decomposition into regular semi-algebraic systems. In both cases, each of these simpler systems has a triangular shape and remarkable properties, which justifies the terminology.
+
+
+Let k be a field and x1 < ... < xn be ordered variables. We denote by R = k[x1, ..., xn] the corresponding polynomial ring. For F ⊂ R, regarded as a system of polynomial equations, there are two notions of a triangular decomposition over the algebraic closure of k. The first one is to decompose lazily, by representing only the generic points of the algebraic set V(F) in the so-called sense of Kalkbrener.
+The second is to describe explicitly all the points of V(F) in the so-called sense of in Lazard and Wen-Tsun Wu.
+In both cases T1, ..., Te are finitely many regular chains of R and 
+
+
+
+
+
+
+s
+a
+t
+
+(
+
+T
+
+i
+
+
+)
+
+
+
+
+{\displaystyle {\sqrt {\mathrm {sat} (T_{i})}}}
+
+ denotes the radical of the saturated ideal of Ti while W(Ti) denotes the quasi-component of Ti. Please refer to regular chain for definitions of these notions.
+Assume from now on that k is a real closed field. Consider S a semi-algebraic system with polynomials in R. There exist[1] finitely many regular semi-algebraic systems S1, ..., Se such that we have
+where Zk(S) denotes the points of kn which solve S. The regular semi-algebraic systems S1, ..., Se form a triangular decomposition of the semi-algebraic system S.
+The Characteristic Set Method is the first factorization-free algorithm, which was proposed for decomposing an algebraic variety into equidimensional components. Moreover, the Author, Wen-Tsun Wu, realized an implementation of this method and reported experimental data in his 1987 pioneer article titled "A zero structure theorem for polynomial equations solving".[2] To put this work into context, let us recall what was the common idea of an algebraic set decomposition at the time this article was written.
+Let K be an algebraically closed field and k be a subfield of K. A subset V ⊂ Kn is an (affine) algebraic variety over k if there exists a polynomial set F ⊂ k[x1, ..., xn] such that the zero set V(F) ⊂ Kn of F equals V.
+Recall that V is said irreducible if for all algebraic varieties V1, V2 ⊂ Kn the relation V = V1 ∪ V2 implies either V = V1 or V = V2. A first algebraic variety decomposition result is the famous Lasker–Noether theorem which implies the following.
+The varieties V1, ..., Ve in the above Theorem are called the irreducible components of V and can be regarded as a natural output for a decomposition algorithm, or, in other words, for an algorithm solving a system of equations in k[x1, ..., xn].
+In order to lead to a computer program, this algorithm specification should prescribe how irreducible components are represented. Such an encoding is introduced by Joseph Ritt[3] through the following result.
+We call the set C in Ritt's Theorem a Ritt characteristic set of the ideal 
+
+
+
+⟨
+F
+⟩
+
+
+{\displaystyle \langle F\rangle }
+
+. Please refer to regular chain for the notion of a triangular set.
+Joseph Ritt described a method for solving polynomial systems based on polynomial factorization over field extensions and computation of characteristic sets of prime ideals.
+Deriving a practical implementation of this method, however, was and remains a difficult problem. In the 80's, when the Characteristic set Method was introduced, polynomial factorization was an active research area and certain fundamental questions on this subject were solved recently[4]
+Nowadays, decomposing an algebraic variety into irreducible components is not essential to process most application problems, since weaker notions of decompositions, less costly to compute, are sufficient.
+The Characteristic Set Method relies on the following variant of Ritt's Theorem.
+Different concepts and algorithms extended the work of Wen-Tsun Wu. In the early 90's, the notion of a regular chain, introduced independently by Michael Kalkbrener in 1991 in his PhD Thesis and, by Lu Yang and Jingzhong Zhang[5] led to important algorithmic discoveries.
+In Kalkbrener's vision,[6] regular chains are used to represent the generic zeros of the irreducible components of an algebraic variety. In the original work of Yang and Zhang, they are used to decide whether a hypersurface intersects a quasi-variety (given by a regular chain). Regular chains have, in fact, several interesting properties and are the key notion in many algorithms for decomposing systems of algebraic or differential equations.
+Regular chains have been investigated in many papers.[7][8][9]
+The abundant literature on the subject can be explained by the many equivalent definitions of a regular chain. Actually, the original formulation of Kalkbrener is quite different from that of Yang and Zhang. A bridge between these two notions, the point of view of Kalkbrener and that of Yang and Zhang, appears in Dongming Wang's paper.[10]
+There are various algorithms available for obtaining triangular decomposition of V(F) both in the sense of Kalkbrener and in the sense of Lazard and Wen-Tsun Wu. The Lextriangular Algorithm by Daniel Lazard[11] and the Triade Algorithm by Marc Moreno Maza[12] together with the Characteristic Set Method are available in various computer algebra systems, including Axiom.

@@ -1,0 +1,246 @@
+ABOUT
+Extendible hashing is a type of hash system which treats a hash as a bit string, and uses a trie for bucket lookup.[1] Because of the hierarchical nature of the system, re-hashing is an incremental operation (done one bucket at a time, as needed). This means that time-sensitive applications are less affected by table growth than by standard full-table rehashes.
+FULL TEXT
+Extendible hashing is a type of hash system which treats a hash as a bit string, and uses a trie for bucket lookup.[1] Because of the hierarchical nature of the system, re-hashing is an incremental operation (done one bucket at a time, as needed). This means that time-sensitive applications are less affected by table growth than by standard full-table rehashes.
+Extendible hashing was described by Ronald Fagin in 1979. Practically all modern filesystems use either extendible hashing or B-trees. In particular, the Global File System, ZFS, and the SpadFS filesystem use extendible hashing.[2]
+
+
+Assume that the hash function 
+
+
+
+h
+(
+k
+)
+
+
+{\displaystyle h(k)}
+
+ returns a string of bits. The first i bits of each string will be used as indices to figure out where they will go in the "directory" (hash table). Additionally, i is the smallest number such that the index of every item in the table is unique.
+Keys to be used:
+Let's assume that for this particular example, the bucket size is 1. The first two keys to be inserted, k1 and k2, can be distinguished by the most significant bit, and would be inserted into the table as follows:
+Now, if k3 were to be hashed to the table, it wouldn't be enough to distinguish all three keys by one bit (because both k3 and k1 have 1 as their leftmost bit). Also, because the bucket size is one, the table would overflow. Because comparing the first two most significant bits would give each key a unique location, the directory size is doubled as follows:
+And so now k1 and k3 have a unique location, being distinguished by the first two leftmost bits. Because k2 is in the top half of the table, both 00 and 01 point to it because there is no other key to compare to that begins with a 0.
+The above example is from Fagin et al. (1979).
+Now, k4 needs to be inserted, and it has the first two bits as 01..(1110), and using a 2 bit depth in the directory, this maps from 01 to Bucket A. Bucket A is full (max size 1), so it must be split; because there is more than one pointer to Bucket A, there is no need to increase the directory size.
+What is needed is information about:
+In order to distinguish the two action cases:
+Examining the initial case of an extendible hash structure, if each directory entry points to one bucket, then the local depth should be equal to the global depth.
+The number of directory entries is equal to 2global depth, and the initial number of buckets is equal to 2local depth.
+Thus if global depth = local depth = 0, then 20 = 1, so an initial directory of one pointer to one bucket.
+Back to the two action cases:
+If the local depth is equal to the global depth, then there is only one pointer to the bucket, and there is no other directory pointers that can map to the bucket, so the directory must be doubled (case1).
+If the bucket is full, if the local depth is less than the global depth, then there exists more than one pointer from the directory to the bucket, and the bucket can be split (case 2).
+Key 01 points to Bucket A, and Bucket A's local depth of 1 is less than the directory's global depth of 2, which means keys hashed to Bucket A have only used a 1 bit prefix (i.e. 0), and the bucket needs to have its contents split using keys 1 + 1 = 2 bits in length; in general, for any local depth d where d is less than D, the global depth, then d must be incremented after a bucket split, and the new d used as the number of bits of each entry's key to redistribute the entries of the former bucket into the new buckets.
+Now,
+is tried again, with 2 bits 01.., and now key 01 points to a new bucket but there is still 
+
+
+
+
+k
+
+2
+
+
+
+
+{\displaystyle k_{2}}
+
+ in it (
+
+
+
+h
+(
+
+k
+
+2
+
+
+)
+=
+010110
+
+
+{\displaystyle h(k_{2})=010110}
+
+ and also begins with 01).
+If 
+
+
+
+
+k
+
+2
+
+
+
+
+{\displaystyle k_{2}}
+
+ had been 000110, with key 00, there would have been no problem, because 
+
+
+
+
+k
+
+2
+
+
+
+
+{\displaystyle k_{2}}
+
+ would have remained in the new bucket A' and bucket D would have been empty.
+(This would have been the most likely case by far when buckets are of greater size than 1 and the newly split buckets would be exceedingly unlikely to overflow, unless all the entries were all rehashed to one bucket again. But just to emphasize the role of the depth information, the example will be pursued logically to the end.)
+So Bucket D needs to be split, but a check of its local depth, which is 2, is the same as the global depth, which is 2, so the directory must be split again, in order to hold keys of sufficient detail, e.g. 3 bits.
+Now, 
+
+
+
+h
+(
+
+k
+
+2
+
+
+)
+=
+010110
+
+
+{\displaystyle h(k_{2})=010110}
+
+ is in D and 
+
+
+
+h
+(
+
+k
+
+4
+
+
+)
+=
+011110
+
+
+{\displaystyle h(k_{4})=011110}
+
+ is tried again, with 3 bits 011.., and it points to bucket D which already contains 
+
+
+
+
+k
+
+2
+
+
+
+
+{\displaystyle k_{2}}
+
+ so is full; D's local depth is 2 but now the global depth is 3 after the directory doubling, so now D can be split into bucket's D' and E, the contents of D, 
+
+
+
+
+k
+
+2
+
+
+
+
+{\displaystyle k_{2}}
+
+ has its 
+
+
+
+h
+(
+
+k
+
+2
+
+
+)
+
+
+{\displaystyle h(k_{2})}
+
+ retried with a new global depth bitmask of 3 and 
+
+
+
+
+k
+
+2
+
+
+
+
+{\displaystyle k_{2}}
+
+ ends up in D', then the new entry 
+
+
+
+
+k
+
+4
+
+
+
+
+{\displaystyle k_{4}}
+
+ is retried with 
+
+
+
+h
+(
+
+k
+
+4
+
+
+)
+
+
+{\displaystyle h(k_{4})}
+
+ bitmasked using the new global depth bit count of 3 and this gives 011 which now points to a new bucket E which is empty. So 
+
+
+
+
+k
+
+4
+
+
+
+
+{\displaystyle k_{4}}
+
+ goes in Bucket E.
+Below is the extendible hashing algorithm in Python, with the disc block / memory page association, caching and consistency issues removed. Note a problem exists if the depth exceeds the bit size of an integer, because then doubling of the directory or splitting of a bucket won't allow entries to be rehashed to different buckets.
+The code uses the least significant bits, which makes it more efficient to expand the table, as the entire directory can be copied as one block (Ramakrishnan & Gehrke (2003)).

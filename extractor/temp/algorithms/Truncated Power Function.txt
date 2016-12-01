@@ -1,0 +1,25 @@
+ABOUT
+In mathematics, the truncated power function[1] with exponent 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ is defined as
+FULL TEXT
+In mathematics, the truncated power function[1] with exponent 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ is defined as
+In particular,
+and interpret the exponent as conventional power.
+

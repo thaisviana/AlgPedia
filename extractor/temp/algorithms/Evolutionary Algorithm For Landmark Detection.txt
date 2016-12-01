@@ -1,0 +1,36 @@
+ABOUT
+there are several algorithms for locating landmarks in images such as satellite maps, medical images etc.
+nowadays evolutionary algorithms such as particle swarm optimization are so useful to perform this task. evolutionary algorithms generally have two phase, training and test.
+FULL TEXT
+there are several algorithms for locating landmarks in images such as satellite maps, medical images etc.
+nowadays evolutionary algorithms such as particle swarm optimization are so useful to perform this task. evolutionary algorithms generally have two phase, training and test.
+in the training phase, we try to learn the algorithm to locate landmark correctly. this phase performs in some iterations and finally in the last iteration we hope to obtain a system that can locate the landmark, correctly. in the particle swarm optimization there are some particles that search for the landmark. each particle uses a specific formula in each iteration to optimizes the landmark detecting.
+The fundamental particle swarm optimization algorithm used in training phase generally as follows:
+Randomly initialise 100 individuals in the search space in the range [-1,1]
+LOOP UNTIL 100 iterations performed OR detection error of gbest is 0%
+FOR each particle p
+Detection errors at x = 0
+FOR each image i in training set
+FOR each pixel coordinate c in i
+Evaluate x of p on visual features at c
+IF evaluation is highest so far for i THEN
+Detected position in i = c
+IF distance between detected position and marked-up position > 2mm THEN
+Detection errors at x = Detection errors at x + 1
+Fitness of p at x = 1- ( Detection errors at x /Total no. of images in training set)
+IF new _tness of p at x > previous _tness of p at pbest THEN
+pbest _tness of p = new _tness of p at x
+pbest position of p = x of p
+IF new _tness of p at x > previous gbest _tness THEN
+gbest _tness = new _tness of p at x
+gbest position of p = x of p
+FOR each particle p
+Calculate v of p
+IF magnitude of v > v max THEN
+Magnitude of v = v max
+Move x of p to next position using v
+IF x of p outside [-1,1] range THEN
+x of p = -1 or 1 as appropriate
+REPEAT
+Output gbest of last iteration as trained detector d
+citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.72.3218

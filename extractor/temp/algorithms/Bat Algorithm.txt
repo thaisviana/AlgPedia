@@ -1,0 +1,57 @@
+ABOUT
+The Bat algorithm is a metaheuristic algorithm for global optimization. It was inspired by the echolocation behaviour of microbats, with varying pulse rates of emission and loudness.[1][2] The Bat algorithm was developed by Xin-She Yang in 2010.[3]
+FULL TEXT
+The Bat algorithm is a metaheuristic algorithm for global optimization. It was inspired by the echolocation behaviour of microbats, with varying pulse rates of emission and loudness.[1][2] The Bat algorithm was developed by Xin-She Yang in 2010.[3]
+The idealization of the echolocation of microbats can be summarized as follows: Each virtual bat flies randomly with a velocity 
+
+
+
+
+v
+
+i
+
+
+
+
+{\displaystyle v_{i}}
+
+ at position (solution) 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+ with a varying frequency or wavelength and loudness 
+
+
+
+
+A
+
+i
+
+
+
+
+{\displaystyle A_{i}}
+
+. As it searches and finds its prey, it changes frequency, loudness and pulse emission rate 
+
+
+
+r
+
+
+{\displaystyle r}
+
+. Search is intensified by a local random walk. Selection of the best continues until certain stop criteria are met. This essentially uses a frequency-tuning technique to control the dynamic behaviour of a swarm of bats, and the balance between exploration and exploitation can be controlled by tuning algorithm-dependent parameters in bat algorithm.
+A detailed introduction of metaheuristic algorithms including the bat algorithm is given by Yang[4] where a demo program in Matlab/Octave is available, while a comprehensive review is carried out by Parpinelli and Lopes.[5] A further improvement is the development of an evolving bat algorithm (EBA) with better efficiency.[6]

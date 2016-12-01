@@ -1,0 +1,11 @@
+ABOUT
+In optimization theory, semi-infinite programming (SIP) is an optimization problem with a finite number of variables and an infinite number of constraints, or an infinite number of variables and a finite number of constraints. In the former case the constraints are typically parameterized.[1]
+FULL TEXT
+In optimization theory, semi-infinite programming (SIP) is an optimization problem with a finite number of variables and an infinite number of constraints, or an infinite number of variables and a finite number of constraints. In the former case the constraints are typically parameterized.[1]
+
+
+The problem can be stated simply as:
+where
+SIP can be seen as a special case of bilevel programs in which the lower-level variables do not participate in the objective function.
+In the meantime, see external links below for a complete tutorial.
+In the meantime, see external links below for a complete tutorial.

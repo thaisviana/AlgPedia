@@ -1,0 +1,602 @@
+ABOUT
+In mathematics, the Whitney inequality gives an upper bound for the error of best approximation of a function by polynomials in terms of the moduli of smoothness. It was first proved by Hassler Whitney in 1957,[1] and is an important tool in the field of approximation theory for obtaining upper estimates on the errors of best approximation.
+FULL TEXT
+In mathematics, the Whitney inequality gives an upper bound for the error of best approximation of a function by polynomials in terms of the moduli of smoothness. It was first proved by Hassler Whitney in 1957,[1] and is an important tool in the field of approximation theory for obtaining upper estimates on the errors of best approximation.
+
+
+Denote the value of the best uniform approximation of a function 
+
+
+
+f
+∈
+C
+(
+[
+a
+,
+b
+]
+)
+
+
+{\displaystyle f\in C([a,b])}
+
+ by algebraic polynomials 
+
+
+
+
+P
+
+n
+
+
+
+
+{\displaystyle P_{n}}
+
+ of degree 
+
+
+
+≤
+n
+
+
+{\displaystyle \leq n}
+
+ by
+The moduli of smoothness of order 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ of a function 
+
+
+
+f
+∈
+C
+(
+[
+a
+,
+b
+]
+)
+
+
+{\displaystyle f\in C([a,b])}
+
+ are defined as:
+where 
+
+
+
+
+Δ
+
+h
+
+
+k
+
+
+
+
+{\displaystyle \Delta _{h}^{k}}
+
+ is the finite difference of order 
+
+
+
+k
+
+
+{\displaystyle k}
+
+.
+Theorem: [2] [Whitney, 1957] If 
+
+
+
+f
+∈
+C
+(
+[
+a
+,
+b
+]
+)
+
+
+{\displaystyle f\in C([a,b])}
+
+, then
+where 
+
+
+
+
+W
+
+k
+
+
+
+
+{\displaystyle W_{k}}
+
+ is a constant depending only on 
+
+
+
+k
+
+
+{\displaystyle k}
+
+. The Whitney constant 
+
+
+
+W
+(
+k
+)
+
+
+{\displaystyle W(k)}
+
+ is the smallest value of 
+
+
+
+
+W
+
+k
+
+
+
+
+{\displaystyle W_{k}}
+
+ for which the above inequality holds. The theorem is particularly useful when applied on intervals of small length, leading to good estimates on the error of spline approximation.
+The original proof given by Whitney follows an analytic argument which utilizes the properties of moduli of smoothness. However, it can also be proved in a much shorter way using Peetre's K-functionals.[3]
+Let:
+where 
+
+
+
+L
+(
+x
+;
+F
+;
+
+x
+
+0
+
+
+,
+…
+,
+
+x
+
+k
+
+
+)
+
+
+{\displaystyle L(x;F;x_{0},\ldots ,x_{k})}
+
+ is the Lagrange polynomial for 
+
+
+
+F
+
+
+{\displaystyle F}
+
+ at the nodes 
+
+
+
+{
+
+x
+
+0
+
+
+,
+…
+,
+
+x
+
+k
+
+
+}
+
+
+{\displaystyle \{x_{0},\ldots ,x_{k}\}}
+
+.
+Now fix some 
+
+
+
+x
+∈
+[
+a
+,
+b
+]
+
+
+{\displaystyle x\in [a,b]}
+
+ and choose 
+
+
+
+δ
+
+
+{\displaystyle \delta }
+
+ for which 
+
+
+
+(
+x
++
+k
+δ
+)
+∈
+[
+a
+,
+b
+]
+
+
+{\displaystyle (x+k\delta )\in [a,b]}
+
+. Then:
+Therefore:
+And since we have 
+
+
+
+∥
+G
+
+∥
+
+C
+(
+[
+a
+,
+b
+]
+)
+
+
+≤
+h
+
+ω
+
+k
+
+
+(
+h
+)
+
+
+{\displaystyle \|G\|_{C([a,b])}\leq h\omega _{k}(h)}
+
+, (a property of moduli of smoothness)
+Since 
+
+
+
+δ
+
+
+{\displaystyle \delta }
+
+ can always be chosen in such a way that 
+
+
+
+h
+≥
+
+|
+
+δ
+
+|
+
+≥
+h
+
+/
+
+2
+
+
+{\displaystyle h\geq |\delta |\geq h/2}
+
+, this completes the proof.
+It is important to have sharp estimates of the Whitney constants. It is easily shown that 
+
+
+
+W
+(
+1
+)
+=
+1
+
+/
+
+2
+
+
+{\displaystyle W(1)=1/2}
+
+, and it was first proved by Burkill (1952) that 
+
+
+
+W
+(
+2
+)
+≤
+1
+
+
+{\displaystyle W(2)\leq 1}
+
+, who conjectured that 
+
+
+
+W
+(
+k
+)
+≤
+1
+
+
+{\displaystyle W(k)\leq 1}
+
+ for all 
+
+
+
+k
+
+
+{\displaystyle k}
+
+. Whitney was also able to prove that [2]
+and
+In 1964, Brudnyi was able to obtain the estimate 
+
+
+
+W
+(
+k
+)
+=
+O
+(
+
+k
+
+2
+k
+
+
+)
+
+
+{\displaystyle W(k)=O(k^{2k})}
+
+, and in 1982, Sendov proved that 
+
+
+
+W
+(
+k
+)
+≤
+(
+k
++
+1
+)
+
+k
+
+k
+
+
+
+
+{\displaystyle W(k)\leq (k+1)k^{k}}
+
+. Then, in 1985, Ivanov and Takev proved that 
+
+
+
+W
+(
+k
+)
+=
+O
+(
+k
+ln
+⁡
+k
+)
+
+
+{\displaystyle W(k)=O(k\ln k)}
+
+, and Binev proved that 
+
+
+
+W
+(
+k
+)
+=
+O
+(
+k
+)
+
+
+{\displaystyle W(k)=O(k)}
+
+. Sendov conjectured that 
+
+
+
+W
+(
+k
+)
+≤
+1
+
+
+{\displaystyle W(k)\leq 1}
+
+ for all 
+
+
+
+k
+
+
+{\displaystyle k}
+
+, and in 1985 was able to prove that the Whitney constants are bounded above by an absolute constant, that is, 
+
+
+
+W
+(
+k
+)
+≤
+6
+
+
+{\displaystyle W(k)\leq 6}
+
+ for all 
+
+
+
+k
+
+
+{\displaystyle k}
+
+. Kryakin, Gilewicz, and Shevchuk (2002)[4] were able to show that 
+
+
+
+W
+(
+k
+)
+≤
+2
+
+
+{\displaystyle W(k)\leq 2}
+
+ for 
+
+
+
+k
+≤
+82000
+
+
+{\displaystyle k\leq 82000}
+
+, and that 
+
+
+
+W
+(
+k
+)
+≤
+2
++
+
+
+1
+
+e
+
+2
+
+
+
+
+
+
+{\displaystyle W(k)\leq 2+{\frac {1}{e^{2}}}}
+
+ for all 
+
+
+
+k
+
+
+{\displaystyle k}
+
+.

@@ -1,0 +1,5 @@
+ABOUT
+The Zionts–Wallenius method is an interactive method used to find a best solution to a multi-criteria optimization problem.
+FULL TEXT
+The Zionts–Wallenius method is an interactive method used to find a best solution to a multi-criteria optimization problem.
+Specifically it can help a user solve a linear programming problem having more than one (linear) objective. A user is asked to respond to comparisons between feasible solutions or to choose directions of change desired in each iteration. Providing certain mathematical assumptions hold, the method finds an optimal solution.

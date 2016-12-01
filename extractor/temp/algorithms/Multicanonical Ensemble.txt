@@ -1,0 +1,808 @@
+ABOUT
+In statistics and physics, multicanonical ensemble (also called multicanonical sampling or flat histogram) is a Markov chain Monte Carlo sampling technique that uses the Metropolis–Hastings algorithm to compute integrals where the integrand has a rough landscape with multiple local minima. It samples states according to the inverse of the density of states,[1] which has to be known a priori or be computed using other techniques like the Wang and Landau algorithm.[2] Multicanonical sampling is an important technique for spin systems like the Ising model or spin glasses.[1][3][4]
+FULL TEXT
+In statistics and physics, multicanonical ensemble (also called multicanonical sampling or flat histogram) is a Markov chain Monte Carlo sampling technique that uses the Metropolis–Hastings algorithm to compute integrals where the integrand has a rough landscape with multiple local minima. It samples states according to the inverse of the density of states,[1] which has to be known a priori or be computed using other techniques like the Wang and Landau algorithm.[2] Multicanonical sampling is an important technique for spin systems like the Ising model or spin glasses.[1][3][4]
+
+
+In systems with a large number of degrees of freedom, like spin systems, Monte Carlo integration is required. In this integration, importance sampling and in particular the Metropolis algorithm, is a very important technique.[3] However, the Metropolis algorithm samples states according to 
+
+
+
+exp
+⁡
+(
+−
+β
+E
+)
+
+
+{\displaystyle \exp(-\beta E)}
+
+ where beta is the inverse of the temperature. This means that an energy barrier of 
+
+
+
+Δ
+E
+
+
+{\displaystyle \Delta E}
+
+ on the energy spectrum is exponentially difficult to overcome.[1] Systems with multiple local energy minima like the Potts model become hard to sample as the algorithm gets stuck in the system's local minima.[3] This motivates other approaches, namely, other sampling distributions.
+Multicanonical ensemble uses the Metropolis–Hastings algorithm with a sampling distribution given by the inverse of the density of states of the system, contrary to the sampling distribution 
+
+
+
+exp
+⁡
+(
+−
+β
+E
+)
+
+
+{\displaystyle \exp(-\beta E)}
+
+ of the Metropolis algorithm.[1] With this choice, on average, the number of states sampled at each energy is constant, i.e. it is a simulation with a "flat histogram" on energy. This leads to an algorithm for which the energy barriers are no longer difficult to overcome. Another advantage over the Metropolis algorithm is that the sampling is independent of the temperature of the system, which means that one simulation allows the estimation of thermodynamical variables for all temperatures (thus the name "multicanonical": several temperatures). This is a great improvement in the study of first order phase transitions.[1]
+The biggest problem in performing a multicanonical ensemble is that the density of states has to be known a priori.[2][3] One important contribution to multicanonical sampling was the Wang and Landau algorithm, which asymptotically converges to a multicanonical ensemble while calculating the density of states during the convergence.[2]
+The multicanonical ensemble is not restricted to physical systems. It can be employed on abstract systems which have a cost function F. By using the density of states with respect to F, the method becomes general for computing higher-dimensional integrals or finding local minima.[5]
+Consider a system and it phase-space 
+
+
+
+Ω
+
+
+{\displaystyle \Omega }
+
+ characterized by a configuration 
+
+
+
+
+r
+
+∈
+Ω
+
+
+{\displaystyle {\boldsymbol {r}}\in \Omega }
+
+ and a "cost" function F from the system's phase-space to a one-dimensional space 
+
+
+
+Γ
+
+
+{\displaystyle \Gamma }
+
+: 
+
+
+
+F
+(
+Ω
+)
+=
+Γ
+=
+[
+
+Γ
+
+min
+
+
+,
+
+Γ
+
+max
+
+
+]
+
+
+{\displaystyle F(\Omega )=\Gamma =[\Gamma _{\min },\Gamma _{\max }]}
+
+, the spectrum of F.
+The Ising model with N sites is an example of such a system; the phase-space is a discrete phase-space defined by all possible configurations of N spins 
+
+
+
+
+r
+
+=
+(
+
+σ
+
+1
+
+
+,
+…
+,
+
+σ
+
+i
+
+
+,
+…
+,
+
+σ
+
+N
+
+
+)
+
+
+{\displaystyle {\boldsymbol {r}}=(\sigma _{1},\ldots ,\sigma _{i},\ldots ,\sigma _{N})}
+
+ where 
+
+
+
+
+σ
+
+i
+
+
+∈
+{
+−
+1
+,
+1
+}
+
+
+{\displaystyle \sigma _{i}\in \{-1,1\}}
+
+. The cost function is the Hamiltonian of the system:
+where 
+
+
+
+<
+i
+,
+j
+>
+
+
+{\displaystyle <i,j>}
+
+ is the sum over neighborhoods and 
+
+
+
+
+J
+
+i
+j
+
+
+
+
+{\displaystyle J_{ij}}
+
+ is the interaction matrix.
+The energy spectrum is 
+
+
+
+Γ
+=
+[
+
+E
+
+min
+
+
+,
+
+E
+
+max
+
+
+]
+
+
+{\displaystyle \Gamma =[E_{\min },E_{\max }]}
+
+ which, in this case, depends on the particular 
+
+
+
+
+J
+
+i
+j
+
+
+
+
+{\displaystyle J_{ij}}
+
+ used. If all 
+
+
+
+
+J
+
+i
+j
+
+
+
+
+{\displaystyle J_{ij}}
+
+ are 1 (the ferromagnetic Ising model), 
+
+
+
+
+E
+
+min
+
+
+=
+0
+
+
+{\displaystyle E_{\min }=0}
+
+ (e.g. all spins are 1.) and 
+
+
+
+
+E
+
+max
+
+
+=
+2
+D
+N
+
+
+{\displaystyle E_{\max }=2DN}
+
+ (half spins are up, half spins are down). Also notice that in this system, 
+
+
+
+Γ
+∈
+
+Z
+
+
+
+{\displaystyle \Gamma \in \mathbb {Z} }
+
+
+The computation of an average quantity 
+
+
+
+⟨
+Q
+⟩
+
+
+{\displaystyle \langle Q\rangle }
+
+ over the phase-space requires the evaluation of an integral:
+where 
+
+
+
+
+P
+
+r
+
+
+(
+
+r
+
+)
+
+
+{\displaystyle P_{r}({\boldsymbol {r}})}
+
+ is the weight of each state (e.g. 
+
+
+
+
+P
+
+r
+
+
+(
+
+r
+
+)
+=
+1
+
+/
+
+V
+
+
+{\displaystyle P_{r}({\boldsymbol {r}})=1/V}
+
+ correspond to uniformly distributed states).
+When Q does not depend on the particular state but only on the particular F's value of the state 
+
+
+
+F
+(
+
+r
+
+)
+=
+
+F
+
+r
+
+
+
+
+{\displaystyle F({\boldsymbol {r}})=F_{\boldsymbol {r}}}
+
+, the formula for 
+
+
+
+⟨
+Q
+⟩
+
+
+{\displaystyle \langle Q\rangle }
+
+ can be integrated over f by adding a dirac delta function and be written as
+where
+is the marginal distribution of F.
+A system in contact with a heat bath at inverse temperature 
+
+
+
+β
+
+
+{\displaystyle \beta }
+
+ is an example for computing this kind of integral. For instance, the mean energy of the system is weighted by the Boltzmann factor:
+where
+The marginal distribution 
+
+
+
+P
+(
+E
+)
+
+
+{\displaystyle P(E)}
+
+ is given by
+where 
+
+
+
+ρ
+(
+E
+)
+
+
+{\displaystyle \rho (E)}
+
+ is the density of states.
+The average energy 
+
+
+
+⟨
+E
+⟩
+
+
+{\displaystyle \langle E\rangle }
+
+ is then given by
+When the system has a large number of degrees of freedom, an analytical expression for 
+
+
+
+⟨
+Q
+⟩
+
+
+{\displaystyle \langle Q\rangle }
+
+ is often hard to obtain, and Monte Carlo integration is typically employed in the computation of 
+
+
+
+⟨
+Q
+⟩
+
+
+{\displaystyle \langle Q\rangle }
+
+. On the simplest formulation, the method chooses N uniformly distributed states 
+
+
+
+
+
+r
+
+
+i
+
+
+∈
+Ω
+
+
+{\displaystyle {\boldsymbol {r}}_{i}\in \Omega }
+
+, and uses the estimator
+for computing 
+
+
+
+⟨
+Q
+⟩
+
+
+{\displaystyle \langle Q\rangle }
+
+ because 
+
+
+
+
+
+
+Q
+¯
+
+
+
+N
+
+
+
+
+{\displaystyle {\overline {Q}}_{N}}
+
+ converges almost surely to 
+
+
+
+⟨
+Q
+⟩
+
+
+{\displaystyle \langle Q\rangle }
+
+ by the strong law of large numbers:
+One typical problem of this convergence is that the variance of Q can be very high, which leads to a high computational effort to achieve reasonable results.
+On the previous example, the states that mostly contribute to the integral are the ones with low energy. If the states are sampled uniformly, on average, the number of states which are sampled with energy E is given by the density of states. This density of states can be centered far away from the energy's minima and thus the average can be difficult to obtain.
+To improve this convergence, the Metropolis–Hastings algorithm was proposed. Generally, Monte Carlo methods' idea is to use importance sampling to improve the convergence of the estimator 
+
+
+
+
+
+
+Q
+¯
+
+
+
+N
+
+
+
+
+{\displaystyle {\overline {Q}}_{N}}
+
+ by sampling states according to an arbitrary distribution 
+
+
+
+π
+(
+
+r
+
+)
+
+
+{\displaystyle \pi ({\boldsymbol {r}})}
+
+, and use the appropriate estimator:
+This estimator generalizes the estimator of the mean for samples drawn from an arbitrary distribution. Therefore, when 
+
+
+
+π
+(
+
+r
+
+)
+
+
+{\displaystyle \pi ({\boldsymbol {r}})}
+
+ is a uniform distribution, it corresponds the one used on a uniform sampling above.
+When the system is a physical system in contact with a heat bath, each state 
+
+
+
+
+r
+
+
+
+{\displaystyle {\boldsymbol {r}}}
+
+ is weighted according to the Boltzmann factor, 
+
+
+
+
+P
+
+r
+
+
+(
+
+
+r
+
+
+i
+
+
+)
+∝
+exp
+⁡
+(
+−
+β
+
+F
+
+r
+
+
+)
+
+
+{\displaystyle P_{r}({\boldsymbol {r}}_{i})\propto \exp(-\beta F_{\boldsymbol {r}})}
+
+. In Monte Carlo, the canonical ensemble is defined by choosing 
+
+
+
+π
+(
+
+r
+
+)
+
+
+{\displaystyle \pi ({\boldsymbol {r}})}
+
+ to be proportional to 
+
+
+
+
+P
+
+r
+
+
+(
+
+
+r
+
+
+i
+
+
+)
+
+
+{\displaystyle P_{r}({\boldsymbol {r}}_{i})}
+
+. In this situation, the estimator corresponds to a simple arithmetic average:
+Historically, this occurred because the original idea[6] was to use Metropolis–Hastings algorithm to compute averages on a system in contact with a heat bath where the weight is given by the Boltzmann factor, 
+
+
+
+P
+(
+
+x
+
+)
+∝
+exp
+⁡
+(
+−
+β
+E
+(
+
+r
+
+)
+)
+
+
+{\displaystyle P({\boldsymbol {x}})\propto \exp(-\beta E({\boldsymbol {r}}))}
+
+.[3]
+While the it is often the case that the sampling distribution 
+
+
+
+π
+
+
+{\displaystyle \pi }
+
+ is chosen to be the weight distribution 
+
+
+
+
+P
+
+r
+
+
+
+
+{\displaystyle P_{r}}
+
+, this does not need to be the case. One situation where the canonical ensemble is not an efficient choice is when it takes an arbitrarily long time to converge.[1] One situation where this happens is when the function F has multiple local minima. The computational cost for the algorithm to leave a specific region with a local minimum exponentially increases with the cost function's value of the minimum. That is, the deeper the minimum, the more time the algorithm spends there, and the harder it will be to leave (exponentially growing with the depth of the local minimum).
+One way to avoid becoming stuck in local minima of the cost function is to make the sampling technique "invisible" to local minima. This is the basis of the multicanonical ensemble.
+The multicanonical ensemble is defined by choosing the sampling distribution to be
+where 
+
+
+
+P
+(
+f
+)
+
+
+{\displaystyle P(f)}
+
+ is the marginal distribution of F defined above. The consequence of this choice is that the average number of samples with a given value of f, m(f), is given by
+that is, the average number of samples does not depend on f: all costs f are equally sampled regardless of whether they are more or less probable. This motivates the name "flat-histogram". For systems in contact with a heat bath, the sampling is independent of the temperature and one simulation allows to study all temperatures.
+On the ferromagnetic Ising model with N sites (exemplified on previous section), the density of states can be analytically computed. In this case, a multicanonical ensemble can be used to compute any other quantity Q by sampling the system according to 
+
+
+
+P
+(
+
+r
+
+)
+
+
+{\displaystyle P({\boldsymbol {r}})}
+
+ and using the proper estimator 
+
+
+
+
+
+Q
+¯
+
+
+
+
+{\displaystyle {\overline {Q}}}
+
+ defined on the previous section.
+Like in any other Monte Carlo method, there are correlations of the samples being drawn from 
+
+
+
+P
+(
+
+r
+
+)
+
+
+{\displaystyle P({\boldsymbol {r}})}
+
+. A typical measurement of the correlation is the tunneling time. The tunneling time is defined by the number of Markov steps (of the Markov chain) the simulation needs to perform a round-trip between the minimum and maximum of the spectrum of F. One motivation to use the tunneling time is that when it crosses the spectra, it passes through the region of the maximum of the density of states, thus de-correlating the process. On the other hand using round-trips ensures that the system visits all the spectrum.
+Because the histogram is flat on the variable F, a multicanonic ensemble can be seen as a diffusion process (i.e. a random walk) on the one-dimensional line of F values. Detailed balance of the process dictates that there is no drift on the process.[7] This implies that the tunneling time, in local dynamics, should scale as a diffusion process, and thus the tunneling time should scale quadratically with the size of the spectrum, N:
+However, in some systems (the Ising model being the most paradigmatic), the scaling suffers from critical slowing down: it is 
+
+
+
+
+N
+
+2
++
+z
+
+
+
+
+{\displaystyle N^{2+z}}
+
+ where 
+
+
+
+z
+>
+0
+
+
+{\displaystyle z>0}
+
+ depends on the particular system.[4]
+Non-local dynamics were developed to improve the scaling to a quadratic scaling[8] (see the Wolff algorithm), beating the critical slowing down. However, it is still an open question whether there is a local dynamics that does not suffer from critical slowing down in spin systems like the Ising model.

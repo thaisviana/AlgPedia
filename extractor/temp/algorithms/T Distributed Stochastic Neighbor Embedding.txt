@@ -1,0 +1,311 @@
+ABOUT
+t-distributed stochastic neighbor embedding (t-SNE) is a machine learning algorithm for dimensionality reduction developed by Geoffrey Hinton and Laurens van der Maaten.[1] It is a nonlinear dimensionality reduction technique that is particularly well-suited for embedding high-dimensional data into a space of two or three dimensions, which can then be visualized in a scatter plot. Specifically, it models each high-dimensional object by a two- or three-dimensional point in such a way that similar objects are modeled by nearby points and dissimilar objects are modeled by distant points.
+FULL TEXT
+t-distributed stochastic neighbor embedding (t-SNE) is a machine learning algorithm for dimensionality reduction developed by Geoffrey Hinton and Laurens van der Maaten.[1] It is a nonlinear dimensionality reduction technique that is particularly well-suited for embedding high-dimensional data into a space of two or three dimensions, which can then be visualized in a scatter plot. Specifically, it models each high-dimensional object by a two- or three-dimensional point in such a way that similar objects are modeled by nearby points and dissimilar objects are modeled by distant points.
+The t-SNE algorithm comprises two main stages. First, t-SNE constructs a probability distribution over pairs of high-dimensional objects in such a way that similar objects have a high probability of being picked, whilst dissimilar points have an extremely small probability of being picked. Second, t-SNE defines a similar probability distribution over the points in the low-dimensional map, and it minimizes the Kullback–Leibler divergence between the two distributions with respect to the locations of the points in the map. Note that whilst the original algorithm uses the Euclidean distance between objects as the base of its similarity metric, this should be changed as appropriate.
+t-SNE has been used in a wide range of applications, including computer security research,[2] music analysis,[3] cancer research,[4] bioinformatics,[5] and biomedical signal processing.[6]
+Given a set of 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ high-dimensional objects 
+
+
+
+
+
+x
+
+
+1
+
+
+,
+…
+,
+
+
+x
+
+
+N
+
+
+
+
+{\displaystyle \mathbf {x} _{1},\dots ,\mathbf {x} _{N}}
+
+, t-SNE first computes probabilities 
+
+
+
+
+p
+
+i
+j
+
+
+
+
+{\displaystyle p_{ij}}
+
+ that are proportional to the similarity of objects 
+
+
+
+
+
+x
+
+
+i
+
+
+
+
+{\displaystyle \mathbf {x} _{i}}
+
+ and 
+
+
+
+
+
+x
+
+
+j
+
+
+
+
+{\displaystyle \mathbf {x} _{j}}
+
+, as follows:
+The bandwidth of the Gaussian kernels 
+
+
+
+
+σ
+
+i
+
+
+
+
+{\displaystyle \sigma _{i}}
+
+, is set in such a way that the perplexity of the conditional distribution equals a predefined perplexity using a binary search. As a result, the bandwidth is adapted to the density of the data: smaller values of 
+
+
+
+
+σ
+
+i
+
+
+
+
+{\displaystyle \sigma _{i}}
+
+ are used in denser parts of the data space.
+t-SNE aims to learn a 
+
+
+
+d
+
+
+{\displaystyle d}
+
+-dimensional map 
+
+
+
+
+
+y
+
+
+1
+
+
+,
+…
+,
+
+
+y
+
+
+N
+
+
+
+
+{\displaystyle \mathbf {y} _{1},\dots ,\mathbf {y} _{N}}
+
+ (with 
+
+
+
+
+
+y
+
+
+i
+
+
+∈
+
+
+R
+
+
+d
+
+
+
+
+{\displaystyle \mathbf {y} _{i}\in \mathbb {R} ^{d}}
+
+) that reflects the similarities 
+
+
+
+
+p
+
+i
+j
+
+
+
+
+{\displaystyle p_{ij}}
+
+ as well as possible. To this end, it measures similarities 
+
+
+
+
+q
+
+i
+j
+
+
+
+
+{\displaystyle q_{ij}}
+
+ between two points in the map 
+
+
+
+
+
+y
+
+
+i
+
+
+
+
+{\displaystyle \mathbf {y} _{i}}
+
+ and 
+
+
+
+
+
+y
+
+
+j
+
+
+
+
+{\displaystyle \mathbf {y} _{j}}
+
+, using a very similar approach. Specifically, 
+
+
+
+
+q
+
+i
+j
+
+
+
+
+{\displaystyle q_{ij}}
+
+ is defined as:
+Herein a heavy-tailed Student-t distribution (with one-degree of freedom, which is the same as a Cauchy distribution) is used to measure similarities between low-dimensional points in order to allow dissimilar objects to be modeled far apart in the map.
+The locations of the points 
+
+
+
+
+
+y
+
+
+i
+
+
+
+
+{\displaystyle \mathbf {y} _{i}}
+
+ in the map are determined by minimizing the (non-symmetric) Kullback–Leibler divergence of the distribution 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ from the distribution 
+
+
+
+P
+
+
+{\displaystyle P}
+
+, that is:
+The minimization of the Kullback–Leibler divergence with respect to the points 
+
+
+
+
+
+y
+
+
+i
+
+
+
+
+{\displaystyle \mathbf {y} _{i}}
+
+ is performed using gradient descent. The result of this optimization is a map that reflects the similarities between the high-dimensional inputs well.

@@ -1,0 +1,1705 @@
+ABOUT
+In graph theory, the Stoer–Wagner algorithm is a recursive algorithm to solve the minimum cut problem in undirected weighted graphs. It was proposed by Mechthild Stoer and Frank Wagner in 1995. The essential idea of this algorithm is to shrink the graph by merging the most intensive vertices, until the graph only contains two combined vertex sets.[2] After each shrinking, the weight of the merged cut would be stored in a list. Finally, the minimum weight cut in the list will be the minimum of the graph.
+FULL TEXT
+In graph theory, the Stoer–Wagner algorithm is a recursive algorithm to solve the minimum cut problem in undirected weighted graphs. It was proposed by Mechthild Stoer and Frank Wagner in 1995. The essential idea of this algorithm is to shrink the graph by merging the most intensive vertices, until the graph only contains two combined vertex sets.[2] After each shrinking, the weight of the merged cut would be stored in a list. Finally, the minimum weight cut in the list will be the minimum of the graph.
+A cut is a partition of the vertices of a graph into two disjoint subsets. A minimum cut is a cut for which the size or weight of the cut is not larger than the size of any other cut. For an unweighted graph, the minimum cut would simply be the cut with the least edges. For a weighted graph, the sum of all edges' weight on the cut determines whether it is a minimum cut. In practice, the minimum cut problem is always discussed with the maximum flow problem, to explore the maximum capacity of a network, since the minimum cut is a bottleneck in a graph or network.
+
+
+Let 
+
+
+
+G
+=
+(
+V
+,
+E
+,
+w
+)
+
+
+{\displaystyle G=(V,E,w)}
+
+ be a weighted undirected graph. Let 
+
+
+
+(
+S
+,
+T
+)
+
+
+{\displaystyle (S,T)}
+
+ be a global min-cut of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+. Suppose that 
+
+
+
+s
+,
+t
+∈
+V
+
+
+{\displaystyle s,t\in V}
+
+. If exactly one of 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ or 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ is in 
+
+
+
+S
+
+
+{\displaystyle S}
+
+, then 
+
+
+
+(
+S
+,
+T
+)
+
+
+{\displaystyle (S,T)}
+
+ is also a 
+
+
+
+s
+
+
+{\displaystyle s}
+
+-
+
+
+
+t
+
+
+{\displaystyle t}
+
+ min-cut of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+.[3]
+This algorithm starts by finding a s-t min-cut 
+
+
+
+(
+S
+,
+T
+)
+
+
+{\displaystyle (S,T)}
+
+ of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+, for the two vertices 
+
+
+
+
+{
+s
+,
+t
+}
+
+∈
+V
+
+
+{\displaystyle \left\{s,t\right\}\in V}
+
+. For the pair of 
+
+
+
+(
+S
+,
+T
+)
+
+
+{\displaystyle (S,T)}
+
+, it has two different situations: 
+
+
+
+(
+S
+,
+T
+)
+
+
+{\displaystyle (S,T)}
+
+ is a global min-cut of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+; or they belong to the same side of the global min-cut of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+. Therefore, the global min-cut can be found by checking the graph 
+
+
+
+G
+
+/
+
+
+{
+s
+,
+t
+}
+
+
+
+{\displaystyle G/\left\{s,t\right\}}
+
+, which is the graph after the merging of vertices 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ and 
+
+
+
+t
+
+
+{\displaystyle t}
+
+. During the merging, if 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ and 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ are connected by an edge then this edge disappears. If s and t both have edges to some vertex v, then the weight of the edge from the new vertex st to v is 
+
+
+
+w
+(
+s
+,
+v
+)
++
+w
+(
+t
+,
+v
+)
+
+
+{\displaystyle w(s,v)+w(t,v)}
+
+.[3] The algorithm is described as:[2]
+The algorithm works in phases. In the MinimumCutPhase, the subset 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ of the graphs vertices grows starting with an arbitrary single vertex until 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ is equal to 
+
+
+
+V
+
+
+{\displaystyle V}
+
+. In each step, the vertex which is outside of 
+
+
+
+A
+
+
+{\displaystyle A}
+
+, but most tightly connected with 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ is added to the set 
+
+
+
+A
+
+
+{\displaystyle A}
+
+. This procedure can be formally shown as:[2] add vertex 
+
+
+
+Z
+∉
+A
+
+
+{\displaystyle Z\notin A}
+
+ such that 
+
+
+
+w
+(
+A
+,
+z
+)
+=
+max
+{
+w
+(
+A
+,
+y
+∣
+y
+∉
+A
+)
+}
+
+
+{\displaystyle w(A,z)=\max\{w(A,y\mid y\notin A)\}}
+
+, where 
+
+
+
+w
+(
+A
+,
+y
+)
+
+
+{\displaystyle w(A,y)}
+
+ is the sum of the weights of all the edges between 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ and 
+
+
+
+y
+
+
+{\displaystyle y}
+
+. So, in a single phase, a pair of vertices 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ and 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ , and a min 
+
+
+
+s
+
+-
+
+t
+
+
+{\displaystyle s{\text{-}}t}
+
+ cut 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ is determined.[4] After one phase of the MinimumCutPhase, the two vertices are merged as a new vertex, and edges from the two vertices to a remaining vertex are replaced by an edge weighted by the sum of the weights of the previous two edges. Edges joining the merged nodes are removed. If there is a minimum cut of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ separating 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ and 
+
+
+
+t
+
+
+{\displaystyle t}
+
+, the 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ is a minimum cut of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+. If not, then the minimum cut of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ must have 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ and 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ on a same side. Therefore, the algorithm would merge them as one node. In addition, the MinimumCut would record and update the global minimum cut after each MinimumCutPhase. After 
+
+
+
+n
+−
+1
+
+
+{\displaystyle n-1}
+
+ phases, the minimum cut can be determined.[4]
+The graph in step 1 shows the original graph 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ and randomly selects node 2 as the starting node for this algorithm. In the MinimumCutPhase, set 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ only has node 2, the heaviest edge is edge (2,3), so node 3 is added into set 
+
+
+
+A
+
+
+{\displaystyle A}
+
+. Next, set 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ contains node 2 and node 3, the heaviest edge is (3,4), thus node 4 is added to set 
+
+
+
+A
+
+
+{\displaystyle A}
+
+. By following this procedure, the last two nodes are node 5 and node 1, which are 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ and 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ in this phase. By merging them, the new graph is as shown in step 2. In this phase, the weight of cut is 5, which is the summation of edges (1,2) and (1,5). Right now, the first loop of MinimumCut is completed.
+In step 2, starting from node 2, the heaviest edge is (2,15), thus node 15 is put in set 
+
+
+
+A
+
+
+{\displaystyle A}
+
+. The next heaviest edges is (2,3) or (15,6), we choose (15,6) thus node 6 is added to the set. Then we compare edge (2,3) and (6,7) and choose node 3 to put in set 
+
+
+
+A
+
+
+{\displaystyle A}
+
+. The last two nodes are node 7 and node 8. Therefore, merge edge (7,8). The minimum cut is 5, so remain the minimum as 5.
+The following steps repeat the same operations on the merged graph, until there is only one edge in the graph, as shown in step 7. The global minimum cut has edge (2,3) and edge (6,7), which is detected in step 5.
+To prove the correctness of this algorithm, we need to prove that MinimumCutPhase is in fact a minimum 
+
+
+
+s
+
+-
+
+t
+
+
+{\displaystyle s{\text{-}}t}
+
+ cut of the graph, where s and t are the two vertices last added in the phase. Therefore, a lemma is shown below:
+Lemma 1: MinimumCutPhase returns a minimum 
+
+
+
+s
+
+-
+
+t
+
+
+{\displaystyle s{\text{-}}t}
+
+-cut of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+.
+We prove this by induction on the set of active vertices. Let 
+
+
+
+C
+=
+(
+X
+,
+
+
+X
+¯
+
+
+)
+
+
+{\displaystyle C=(X,{\overline {X}})}
+
+ be an arbitrary 
+
+
+
+s
+
+-
+
+t
+
+
+{\displaystyle s{\text{-}}t}
+
+ cut, and 
+
+
+
+C
+P
+
+
+{\displaystyle CP}
+
+ be the cut of the phase. We must show that 
+
+
+
+W
+(
+C
+)
+≥
+W
+(
+C
+P
+)
+
+
+{\displaystyle W(C)\geq W(CP)}
+
+. Observe that a single run of MinimumCutPhase gives us a permutation of all the vertices in the graph (where 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ is the first and 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ and 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ are the two vertices added last in the phase). So, we say that the vertex 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ is active if 
+
+
+
+v
+∈
+X
+
+
+{\displaystyle v\in X}
+
+, the vertex before 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ in the ordering of vertices produced by MinimumCutPhase is in 
+
+
+
+
+
+X
+¯
+
+
+
+
+{\displaystyle {\overline {X}}}
+
+ or vice versa, which is to say, they’re on opposite sides of the cut. We define 
+
+
+
+
+A
+
+v
+
+
+
+
+{\displaystyle A_{v}}
+
+ as the set of vertices added to 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ before 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ and 
+
+
+
+
+C
+
+v
+
+
+
+
+{\displaystyle C_{v}}
+
+ to be the cut of the set 
+
+
+
+
+A
+
+v
+
+
+∪
+{
+v
+}
+
+
+{\displaystyle A_{v}\cup \{v\}}
+
+induced by 
+
+
+
+C
+
+
+{\displaystyle C}
+
+. For all the active vertex 
+
+
+
+v
+
+
+{\displaystyle v}
+
+:
+
+
+
+
+w
+(
+
+A
+
+v
+
+
+,
+v
+)
+≤
+w
+(
+
+C
+
+v
+
+
+)
+
+
+{\displaystyle w(A_{v},v)\leq w(C_{v})}
+
+
+Let 
+
+
+
+
+v
+
+0
+
+
+
+
+{\displaystyle v_{0}}
+
+ be the first active vertex. By the definition of these two quantities, the 
+
+
+
+w
+(
+
+A
+
+
+v
+
+0
+
+
+
+
+,
+
+v
+
+0
+
+
+)
+
+
+{\displaystyle w(A_{v_{0}},v_{0})}
+
+ and 
+
+
+
+w
+(
+
+C
+
+
+v
+
+0
+
+
+
+
+)
+
+
+{\displaystyle w(C_{v_{0}})}
+
+ are equivalent. 
+
+
+
+
+A
+
+
+v
+
+0
+
+
+
+
+
+
+{\displaystyle A_{v_{0}}}
+
+ is simply all vertices added to 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ before 
+
+
+
+
+v
+
+0
+
+
+
+
+{\displaystyle v_{0}}
+
+, and the edges between these vertices and 
+
+
+
+
+v
+
+0
+
+
+
+
+{\displaystyle v_{0}}
+
+ are the edges that cross the cut 
+
+
+
+C
+
+
+{\displaystyle C}
+
+. Therefore, as shown above, for the active vertex 
+
+
+
+u
+
+
+{\displaystyle u}
+
+ and 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ (
+
+
+
+v
+
+
+{\displaystyle v}
+
+ is added to 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ before 
+
+
+
+u
+
+
+{\displaystyle u}
+
+):
+
+
+
+
+w
+(
+
+A
+
+u
+
+
+,
+u
+)
+=
+w
+(
+
+A
+
+v
+
+
+,
+u
+)
++
+w
+(
+
+A
+
+u
+
+
+−
+
+A
+
+v
+
+
+,
+u
+)
+
+
+{\displaystyle w(A_{u},u)=w(A_{v},u)+w(A_{u}-A_{v},u)}
+
+
+
+
+
+
+w
+(
+
+A
+
+u
+
+
+,
+u
+)
+≤
+w
+(
+
+C
+
+v
+
+
+)
++
+w
+(
+
+A
+
+u
+
+
+−
+
+A
+
+v
+
+
+,
+u
+)
+
+
+{\displaystyle w(A_{u},u)\leq w(C_{v})+w(A_{u}-A_{v},u)}
+
+ by induction, 
+
+
+
+w
+(
+
+A
+
+v
+
+
+,
+u
+)
+≤
+w
+(
+
+A
+
+v
+
+
+,
+v
+)
+≤
+w
+(
+
+C
+
+v
+
+
+)
+
+
+{\displaystyle w(A_{v},u)\leq w(A_{v},v)\leq w(C_{v})}
+
+
+
+
+
+
+w
+(
+
+A
+
+u
+
+
+,
+u
+)
+≤
+w
+(
+
+C
+
+u
+
+
+)
+
+
+{\displaystyle w(A_{u},u)\leq w(C_{u})}
+
+ since 
+
+
+
+w
+(
+
+A
+
+u
+
+
+−
+
+A
+
+v
+
+
+,
+u
+)
+
+
+{\displaystyle w(A_{u}-A_{v},u)}
+
+ contributes to 
+
+
+
+w
+(
+
+C
+
+u
+
+
+)
+
+
+{\displaystyle w(C_{u})}
+
+ but not to 
+
+
+
+w
+(
+
+C
+
+v
+
+
+)
+
+
+{\displaystyle w(C_{v})}
+
+
+Thus, since 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ is always an active vertex since the last cut of the phase separates 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ from 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ by definition, for any active vertex 
+
+
+
+t
+
+
+{\displaystyle t}
+
+:
+
+
+
+
+w
+(
+
+A
+
+t
+
+
+,
+t
+)
+≤
+w
+(
+
+C
+
+t
+
+
+)
+=
+w
+(
+C
+)
+
+
+{\displaystyle w(A_{t},t)\leq w(C_{t})=w(C)}
+
+
+Therefore, the cut of the phase is at most as heavy as 
+
+
+
+C
+
+
+{\displaystyle C}
+
+.
+The running time of the algorithm MinimumCut is equal to the added running time of the 
+
+
+
+
+|
+
+V
+
+|
+
+−
+1
+
+
+{\displaystyle |V|-1}
+
+ runs of MinimumCutPhase, which is called on graphs with decreasing number of vertices and edges.
+For the MinimumCutPhase, a single run of it needs at most 
+
+
+
+O
+(
+
+|
+
+E
+
+|
+
++
+
+|
+
+V
+
+|
+
+log
+⁡
+
+|
+
+V
+
+|
+
+)
+
+
+{\displaystyle O(|E|+|V|\log |V|)}
+
+ time.
+Therefore, the overall running time should be the product of two phase complexity, which is 
+
+
+
+O
+(
+
+|
+
+V
+
+|
+
+
+|
+
+E
+
+|
+
++
+
+|
+
+V
+
+
+|
+
+
+2
+
+
+log
+⁡
+
+|
+
+V
+
+|
+
+)
+
+
+{\displaystyle O(|V||E|+|V|^{2}\log |V|)}
+
+[2].[2]
+For the further improvement, the key is to make it easy to select the next vertex to be added to the set 
+
+
+
+A
+
+
+{\displaystyle A}
+
+, the most tightly connected vertex. During execution of a phase, all vertices that are not in 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ reside in a priority queue based on a key field. The key of a vertex 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ is the sum of the weights of the edges connecting it to the current 
+
+
+
+A
+
+
+{\displaystyle A}
+
+, that is, 
+
+
+
+w
+(
+A
+,
+v
+)
+
+
+{\displaystyle w(A,v)}
+
+. Whenever a vertex 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ is added to 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ we have to perform an update of the queue. 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ has to be deleted from the queue, and the key of every vertex 
+
+
+
+w
+
+
+{\displaystyle w}
+
+ not in 
+
+
+
+A
+
+
+{\displaystyle A}
+
+, connected to 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ has to be increased by the weight of the edge 
+
+
+
+v
+w
+
+
+{\displaystyle vw}
+
+, if it exists. As this is done exactly once for every edge, overall we have to perform 
+
+
+
+
+|
+
+V
+
+|
+
+
+
+{\displaystyle |V|}
+
+ ExtractMax and 
+
+
+
+
+|
+
+E
+
+|
+
+
+
+{\displaystyle |E|}
+
+ IncreaseKey operations. By using the Fibonacci heap we can perform an ExtractMax operation in 
+
+
+
+O
+(
+log
+⁡
+
+|
+
+V
+
+|
+
+)
+
+
+{\displaystyle O(\log |V|)}
+
+ amortized time and an IncreaseKey operation in 
+
+
+
+O
+(
+1
+)
+
+
+{\displaystyle O(1)}
+
+ amortized time. Thus, the time we need for this key step that dominates the rest of the phase, is 
+
+
+
+O
+(
+
+|
+
+E
+
+|
+
++
+
+|
+
+V
+
+|
+
+log
+⁡
+
+|
+
+V
+
+|
+
+)
+
+
+{\displaystyle O(|E|+|V|\log |V|)}
+
+.[2]
+[citation needed]

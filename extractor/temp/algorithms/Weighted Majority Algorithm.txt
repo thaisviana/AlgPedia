@@ -1,0 +1,46 @@
+ABOUT
+In machine learning, Weighted Majority Algorithm (WMA) is a meta-learning algorithm used to construct a compound algorithm from a pool of prediction algorithms, which could be any type of learning algorithms, classifiers, or even real human experts.[1][2] The algorithm assumes that we have no prior knowledge about the accuracy of the algorithms in the pool, but there are sufficient reasons to believe that one or more will perform well.
+FULL TEXT
+In machine learning, Weighted Majority Algorithm (WMA) is a meta-learning algorithm used to construct a compound algorithm from a pool of prediction algorithms, which could be any type of learning algorithms, classifiers, or even real human experts.[1][2] The algorithm assumes that we have no prior knowledge about the accuracy of the algorithms in the pool, but there are sufficient reasons to believe that one or more will perform well.
+Assume that the problem is a binary decision problem. To construct the compound algorithm, a positive weight is given to each of the algorithms in the pool. The compound algorithm then collects weighted votes from all the algorithms in the pool, and gives the prediction that has a higher vote. If the compound algorithm makes a mistake, the algorithms in the pool that contributed to the wrong predicting will be discounted by a certain ratio β where 0<β<1.
+It can be shown that the upper bounds on the number of mistakes made in a given sequence of predictions from a pool of algorithms 
+
+
+
+
+A
+
+
+
+{\displaystyle \mathbf {A} }
+
+ is
+if one algorithm in 
+
+
+
+
+
+x
+
+
+i
+
+
+
+
+{\displaystyle \mathbf {x} _{i}}
+
+ makes at most 
+
+
+
+
+m
+
+
+
+{\displaystyle \mathbf {m} }
+
+ mistakes.
+There are many variations of the Weighted Majority Algorithm to handle different situations, like shifting targets, infinite pools, or randomized predictions. The core mechanism remain similar, with the final performances of the compound algorithm bounded by a function of the performance of the specialist (best performing algorithm) in the pool.

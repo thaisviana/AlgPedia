@@ -1,0 +1,289 @@
+ABOUT
+The Misra & Gries edge coloring algorithm is a polynomial time algorithm in graph theory that finds an edge coloring of any graph. The coloring produces uses at most 
+
+
+
+Δ
++
+1
+
+
+{\displaystyle \Delta +1}
+
+ colors, where 
+
+
+
+Δ
+
+
+{\displaystyle \Delta }
+
+ is the maximum degree of the graph. This is optimal for some graphs, and by Vizing's theorem it uses at most one color more than the optimal for all others.
+FULL TEXT
+The Misra & Gries edge coloring algorithm is a polynomial time algorithm in graph theory that finds an edge coloring of any graph. The coloring produces uses at most 
+
+
+
+Δ
++
+1
+
+
+{\displaystyle \Delta +1}
+
+ colors, where 
+
+
+
+Δ
+
+
+{\displaystyle \Delta }
+
+ is the maximum degree of the graph. This is optimal for some graphs, and by Vizing's theorem it uses at most one color more than the optimal for all others.
+It was first published by Jayadev Misra and David Gries in 1992.[1] It is a simplification of a prior algorithm by Béla Bollobás.[2]
+This algorithm is the fastest known almost-optimal algorithm for edge coloring, executing in 
+
+
+
+O
+(
+
+|
+
+E
+
+|
+
+
+|
+
+V
+
+|
+
+)
+
+
+{\displaystyle O(|E||V|)}
+
+ time. A faster time bound of 
+
+
+
+O
+(
+
+|
+
+E
+
+|
+
+
+
+
+|
+
+V
+
+|
+
+log
+⁡
+
+|
+
+V
+
+|
+
+
+
+)
+
+
+{\displaystyle O(|E|{\sqrt {|V|\log |V|}})}
+
+ was claimed in a 1985 technical report by Gabow et al., but this has never been published.[3]
+In general, optimal edge coloring is NP-complete, so it is very unlikely that a polynomial time algorithm exists. There are however exponential time exact edge coloring algorithms that give an optimal solution.
+
+
+A color x is said to be free of an edge (u,v) on u if c(u,z) ≠ x for all (u,z) 
+
+
+
+∈
+
+
+{\displaystyle \in }
+
+ E(G) : z≠v.
+A fan of a vertex u is a sequence of vertices F[1:k] that satisfies the following conditions:
+Given a fan F, any edge (F[i], X) for 1 ≤ i ≤ k is a fan edge. Let c and d be colors. A cdX-path is an edge path that goes through vertex X, only contains edges colored c and d and is maximal (we cannot add any other edge as it would include edges with a color not in {c, d}). Note that only one such path exists for a vertex X, as at most one edge of each color can be adjacent to a given vertex.
+Given a fan F[1:k] of a vertex X, the "rotate fan" operation does the following (in parallel):
+This operation leaves the coloring valid, as for each i, c(F[i + 1], X) was free on (F[i], X).
+The operation "invert the cdX-path" switches every edge on the path colored c to d and every edge colored d to c. Inverting a path can be useful to free a color on X if X is one of the endpoints of the path: if X was adjacent to color c but not d, it will now be adjacent to color d, not c, freeing c for another edge adjacent to X. The flipping operation will not alter the validity of the coloring since for the endpoints, only one of {c, d} can be adjacent to the vertex, and for other members of the path, the operation only switches the color of edges, no new color is added.
+Input: A graph G.
+Output: A proper coloring c of the edges of G
+Let U := E(G)
+while U ≠ ∅ do
+end while
+The correctness of the algorithm is proved in three parts. First, it is shown that the inversion of the cdu path guarantees a vertex w such that w ∈ F, F' = [F[1]...w] is a fan and d is free on w. Then, it is shown that the edge coloring is proper and requires at most Δ + 1 colors.
+Prior to the inversion, there are two cases:
+F[x] can either be in the cdu path or not. If it is not, then the inversion will not affect the set of free colors on F[x], and d will remain free on it. We can set w = F[x]. Otherwise, we can show that F is still a fan and d remains free on F[k]. Since d was free on F[x] before the inversion and F[x] is on the path, F[x] is an endpoint of the cdu path and c will be free on F[x] after the inversion. The inversion will change the color of (u, F[x + 1]) from d to c. Thus, since c is now free on F[x] and (1) holds, F remains a fan. Also, d remains free on F[k], since F[k] is not on the cdu path (suppose that it is; since d is free on F[k], then it would have to be an endpoint of the path, but u and F[x] are the endpoints). Select w = F[k].
+In any case, the fan F' is a prefix of F, which implies F' is also a fan.
+This can be shown by induction on the number of colored edges. Base case: no edge is colored, this is valid. Induction step: suppose this was true at the end of the previous iteration. In the current iteration, after inverting the path, d will be free on u, and by the previous result, it will also be free on w. Rotating F' does not compromises the validity of the coloring. Thus, after setting c(u,w) = d, the coloring is still valid.
+In a given step, only colors c and d are used. Since u is adjacent to at least one uncolored edge and its degree is bounded by Δ, at least one color in {1,...,Δ} is available for c. For d, F[k] may have degree Δ and no uncolored adjacent edge. Thus, a color Δ + 1 may be required.
+At each step, the rotation uncolors the edge (u,w) while coloring edges (u,F[1]) and (u,v) which was previously uncolored. Thus, one additional edge gets colored. Hence, the loop will run 
+
+
+
+O
+(
+
+|
+
+E
+
+|
+
+)
+
+
+{\displaystyle O(|E|)}
+
+ times. Finding the maximal fan, the colors c and d and invert the cdu path can be done in 
+
+
+
+O
+(
+
+|
+
+V
+
+|
+
+)
+
+
+{\displaystyle O(|V|)}
+
+ time. Finding w and rotating F' takes 
+
+
+
+O
+(
+deg
+⁡
+(
+u
+)
+)
+∈
+O
+(
+
+|
+
+V
+
+|
+
+)
+
+
+{\displaystyle O(\deg(u))\in O(|V|)}
+
+ time. Finding and removing the edge (u,v) can be done using a stack in constant time (pop the last element) and this stack can be populated in 
+
+
+
+O
+(
+
+|
+
+E
+
+|
+
+)
+
+
+{\displaystyle O(|E|)}
+
+ time. Thus, each iteration of the loop takes 
+
+
+
+O
+(
+
+|
+
+V
+
+|
+
+)
+
+
+{\displaystyle O(|V|)}
+
+ time, and the total running time is 
+
+
+
+O
+(
+
+|
+
+E
+
+|
+
++
+
+|
+
+E
+
+|
+
+
+|
+
+V
+
+|
+
+)
+=
+O
+(
+
+|
+
+E
+
+|
+
+
+|
+
+V
+
+|
+
+)
+
+
+{\displaystyle O(|E|+|E||V|)=O(|E||V|)}
+
+.

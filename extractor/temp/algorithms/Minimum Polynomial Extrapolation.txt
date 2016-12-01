@@ -1,0 +1,256 @@
+ABOUT
+In mathematics, minimum polynomial extrapolation is a sequence transformation used for convergence acceleration of vector sequences, due to Sabay and Jackson.[1]
+FULL TEXT
+In mathematics, minimum polynomial extrapolation is a sequence transformation used for convergence acceleration of vector sequences, due to Sabay and Jackson.[1]
+While Aitken's method is the most famous, it often fails for vector sequences. An effective method for vector sequences is the minimum polynomial extrapolation. It is usually phrased in terms of the fixed point iteration:
+Given iterates 
+
+
+
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+,
+.
+.
+.
+,
+
+x
+
+k
+
+
+
+
+{\displaystyle x_{1},x_{2},...,x_{k}}
+
+ in 
+
+
+
+
+
+
+R
+
+
+
+n
+
+
+
+
+{\displaystyle {\mathbb {R}}^{n}}
+
+, one constructs the 
+
+
+
+n
+×
+(
+k
+−
+1
+)
+
+
+{\displaystyle n\times (k-1)}
+
+ matrix 
+
+
+
+U
+=
+(
+
+x
+
+2
+
+
+−
+
+x
+
+1
+
+
+,
+
+x
+
+3
+
+
+−
+
+x
+
+2
+
+
+,
+.
+.
+.
+,
+
+x
+
+k
+
+
+−
+
+x
+
+k
+−
+1
+
+
+)
+
+
+{\displaystyle U=(x_{2}-x_{1},x_{3}-x_{2},...,x_{k}-x_{k-1})}
+
+ whose columns are the 
+
+
+
+k
+−
+1
+
+
+{\displaystyle k-1}
+
+ differences. Then, one computes the vector 
+
+
+
+c
+=
+−
+
+U
+
++
+
+
+(
+
+x
+
+k
++
+1
+
+
+−
+
+x
+
+k
+
+
+)
+
+
+{\displaystyle c=-U^{+}(x_{k+1}-x_{k})}
+
+ where 
+
+
+
+
+U
+
++
+
+
+
+
+{\displaystyle U^{+}}
+
+ denotes the Moore–Penrose pseudoinverse of 
+
+
+
+U
+
+
+{\displaystyle U}
+
+. The number 1 is then appended to the end of 
+
+
+
+c
+
+
+{\displaystyle c}
+
+, and the extrapolated limit is
+where 
+
+
+
+X
+=
+(
+
+x
+
+2
+
+
+,
+
+x
+
+3
+
+
+,
+.
+.
+.
+,
+
+x
+
+k
++
+1
+
+
+)
+
+
+{\displaystyle X=(x_{2},x_{3},...,x_{k+1})}
+
+ is the matrix whose columns are the 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ iterates starting at 2.
+The following 4 line MATLAB code segment implements the MPE algorithm:

@@ -1,0 +1,881 @@
+ABOUT
+The randomized weighted majority algorithm is an algorithm in machine learning theory.[1] It improves the mistake bound of the weighted majority algorithm.
+FULL TEXT
+The randomized weighted majority algorithm is an algorithm in machine learning theory.[1] It improves the mistake bound of the weighted majority algorithm.
+Imagine that every morning before the stock market opens, we get a prediction from each of our "experts" about whether the stock market will go up or down. Our goal is to somehow combine this set of predictions into a single prediction that we then use to make a buy or sell decision for the day. The RWMA gives us a way to do this combination such that our prediction record will be nearly as good as that of the single best expert in hindsight.
+
+
+In machine learning, the weighted majority algorithm (WMA) is a meta-learning algorithm which "predicts from expert advice". It is not a randomized algorithm:
+Suppose there are 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ experts and the best expert makes 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ mistakes. The weighted majority algorithm (WMA) makes at most 
+
+
+
+2.4
+(
+
+log
+
+2
+
+
+⁡
+n
++
+m
+)
+
+
+{\displaystyle 2.4(\log _{2}n+m)}
+
+ mistakes, which is not a very good bound. We can do better by introducing randomization.
+The nonrandomized weighted majority algorithm (WMA) only guarantees an upper bound of 
+
+
+
+2.4
+(
+
+log
+
+2
+
+
+⁡
+n
++
+m
+)
+
+
+{\displaystyle 2.4(\log _{2}n+m)}
+
+, which is problematic for highly error-prone experts (e.g. the best expert still makes a mistake 20% of the time.) Suppose we do 
+
+
+
+N
+=
+100
+
+
+{\displaystyle N=100}
+
+ rounds using 
+
+
+
+n
+=
+10
+
+
+{\displaystyle n=10}
+
+ experts. If the best expert makes 
+
+
+
+m
+=
+20
+
+
+{\displaystyle m=20}
+
+ mistakes, we can only guarantee an upper bound of 
+
+
+
+2.4
+(
+
+log
+
+2
+
+
+⁡
+10
++
+20
+)
+≈
+56
+
+
+{\displaystyle 2.4(\log _{2}10+20)\approx 56}
+
+ on our number of mistakes.
+As this is a known limitation of WMA, attempts to improve this shortcoming have been explored in order to improve the dependence on 
+
+
+
+m
+
+
+{\displaystyle m}
+
+. Instead of predicting based on majority vote, the weights are used as probabilities: hence the name randomized weighted majority. If 
+
+
+
+
+w
+
+i
+
+
+
+
+{\displaystyle w_{i}}
+
+ is the weight of expert 
+
+
+
+i
+
+
+{\displaystyle i}
+
+, let 
+
+
+
+W
+=
+
+∑
+
+i
+
+
+
+w
+
+i
+
+
+
+
+{\displaystyle W=\sum _{i}w_{i}}
+
+. We will follow expert 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ with probability 
+
+
+
+
+
+
+w
+
+i
+
+
+W
+
+
+
+
+{\displaystyle {\frac {w_{i}}{W}}}
+
+. The goal is to bound the worst-case expected number of mistakes, assuming that the adversary (the world) has to select one of the answers as correct before we make our coin toss. Why is this better in the worst case? Idea: the worst case for the deterministic algorithm (weighted majority algorithm) was when the weights split 50/50. But, now it is not so bad since we also have a 50/50 chance of getting it right. Also, to trade-off between dependence on 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ and 
+
+
+
+
+log
+
+2
+
+
+⁡
+n
+
+
+{\displaystyle \log _{2}n}
+
+, we will generalize to multiply by 
+
+
+
+β
+<
+1
+
+
+{\displaystyle \beta <1}
+
+, instead of necessarily by 
+
+
+
+
+
+1
+2
+
+
+
+
+{\displaystyle {\frac {1}{2}}}
+
+.
+At the 
+
+
+
+ 
+t
+
+
+{\displaystyle \ t}
+
+-th round, define 
+
+
+
+ 
+
+F
+
+t
+
+
+
+
+{\displaystyle \ F_{t}}
+
+ to be the fraction of weight on the wrong answers. so, 
+
+
+
+ 
+
+F
+
+t
+
+
+
+
+{\displaystyle \ F_{t}}
+
+ is the probability we make a mistake on the 
+
+
+
+ 
+t
+
+
+{\displaystyle \ t}
+
+-th round. Let 
+
+
+
+ 
+M
+
+
+{\displaystyle \ M}
+
+ denote the total number of mistakes we made so far. Furthermore, we define 
+
+
+
+E
+[
+M
+]
+=
+ 
+
+∑
+
+t
+
+
+
+F
+
+t
+
+
+
+
+{\displaystyle E[M]=\ \sum _{t}F_{t}}
+
+, using the fact that expectation is additive. On the 
+
+
+
+ 
+t
+
+
+{\displaystyle \ t}
+
+-th round, 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ becomes 
+
+
+
+ 
+W
+(
+1
+−
+(
+1
+−
+β
+)
+
+F
+
+t
+
+
+)
+
+
+{\displaystyle \ W(1-(1-\beta )F_{t})}
+
+. Reason: on 
+
+
+
+ 
+
+F
+
+t
+
+
+
+
+{\displaystyle \ F_{t}}
+
+ fraction, we are multiplying by 
+
+
+
+ 
+β
+
+
+{\displaystyle \ \beta }
+
+. So, 
+
+
+
+ 
+
+W
+
+f
+i
+n
+a
+l
+
+
+=
+n
+∗
+(
+1
+−
+(
+1
+−
+β
+)
+
+F
+
+1
+
+
+)
+∗
+(
+1
+−
+(
+1
+−
+β
+)
+
+F
+
+2
+
+
+)
+.
+.
+.
+
+
+{\displaystyle \ W_{final}=n*(1-(1-\beta )F_{1})*(1-(1-\beta )F_{2})...}
+
+
+Let's say that 
+
+
+
+ 
+m
+
+
+{\displaystyle \ m}
+
+ is the number of mistakes of the best expert so far. We can use the inequality 
+
+
+
+ 
+W
+≥
+
+β
+
+m
+
+
+
+
+{\displaystyle \ W\geq \beta ^{m}}
+
+. Now we solve. First, take the natural log of both sides. We get: 
+
+
+
+ 
+m
+l
+n
+β
+≤
+l
+n
+(
+n
+)
++
+
+∑
+
+t
+
+
+l
+n
+(
+1
+−
+(
+1
+−
+β
+)
+
+F
+
+t
+
+
+)
+
+
+{\displaystyle \ mln\beta \leq ln(n)+\sum _{t}ln(1-(1-\beta )F_{t})}
+
+, Simplify:
+
+
+
+
+ 
+l
+n
+(
+1
+−
+x
+)
+=
+−
+x
+−
+
+
+
+x
+
+2
+
+
+2
+
+
+−
+
+
+
+x
+
+3
+
+
+3
+
+
+−
+.
+.
+.
+
+
+{\displaystyle \ ln(1-x)=-x-{\frac {x^{2}}{2}}-{\frac {x^{3}}{3}}-...}
+
+, So,
+
+
+
+
+ 
+l
+n
+(
+1
+−
+(
+1
+−
+β
+)
+
+F
+
+t
+
+
+)
+<
+−
+(
+1
+−
+β
+)
+
+F
+
+t
+
+
+
+
+{\displaystyle \ ln(1-(1-\beta )F_{t})<-(1-\beta )F_{t}}
+
+.
+
+
+
+
+ 
+m
+l
+n
+β
+≤
+l
+n
+(
+n
+)
+−
+(
+1
+−
+β
+)
+∗
+
+∑
+
+t
+
+
+
+F
+
+t
+
+
+
+
+{\displaystyle \ mln\beta \leq ln(n)-(1-\beta )*\sum _{t}F_{t}}
+
+
+Now, use 
+
+
+
+ 
+E
+[
+M
+]
+=
+ 
+
+∑
+
+t
+
+
+
+F
+
+t
+
+
+
+
+{\displaystyle \ E[M]=\ \sum _{t}F_{t}}
+
+, and the result is:
+
+
+
+
+ 
+E
+[
+M
+]
+≤
+
+
+
+m
+l
+n
+(
+1
+
+/
+
+β
+)
++
+l
+n
+(
+n
+)
+
+
+1
+−
+β
+
+
+
+
+
+{\displaystyle \ E[M]\leq {\frac {mln(1/\beta )+ln(n)}{1-\beta }}}
+
+
+Let's see if we made any progress:
+If 
+
+
+
+ 
+β
+=
+
+
+1
+2
+
+
+
+
+{\displaystyle \ \beta ={\frac {1}{2}}}
+
+, we get, 
+
+
+
+ 
+1.39
+m
++
+2
+l
+n
+(
+n
+)
+.
+
+
+{\displaystyle \ 1.39m+2ln(n).}
+
+,
+if 
+
+
+
+ 
+β
+=
+
+
+3
+4
+
+
+
+
+{\displaystyle \ \beta ={\frac {3}{4}}}
+
+, we get, 
+
+
+
+ 
+1.15
+m
++
+4
+l
+n
+(
+n
+)
+
+
+{\displaystyle \ 1.15m+4ln(n)}
+
+.
+so we can see we made progress. Roughly, of the form 
+
+
+
+ 
+(
+1
++
+ϵ
+)
+∗
+m
++
+
+ϵ
+
+−
+1
+
+
+∗
+l
+n
+(
+n
+)
+
+
+{\displaystyle \ (1+\epsilon )*m+\epsilon ^{-1}*ln(n)}
+
+.
+Can use to combine multiple algorithms to do nearly as well as best in hindsight.
+can apply Randomized weighted majority algorithm in situations where experts are making choices that cannot be combined (or can't be combined easily).For instance, repeated game-playing or online shortest path problem.In the online shortest path problem, each expert is telling you a different way to drive to work. You pick one using Randomized weighted majority algorithm. Later you find out how well you would have done, and penalize appropriately. To do this right, we want to generalize from just "losS" of 0 to 1 to losses in [0,1]. Goal of having expected loss be not too much worse than loss of best expert.We generalize by penalize 
+
+
+
+
+β
+
+l
+o
+s
+s
+
+
+
+
+{\displaystyle \beta ^{loss}}
+
+, meaning having two examples of loss 
+
+
+
+ 
+
+
+1
+2
+
+
+
+
+{\displaystyle \ {\frac {1}{2}}}
+
+ gives same weight as one example of loss 1 and one example of loss 0 (Analysis still oes through).
+- "Bandit" problem
+- Efficient algorithm for some cases with many experts.
+- Sleeping experts/"specialists" setting.

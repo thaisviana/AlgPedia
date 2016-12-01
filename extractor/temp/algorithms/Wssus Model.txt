@@ -1,0 +1,5 @@
+ABOUT
+The WSSUS (Wide-Sense Stationary Uncorrelated Scattering) model provides a statistical description of the transmission behavior of wireless channels. "Wide-sense stationarity" means the second-order moments of the channel are stationary, which means that they depends only on the time difference, while "uncorrelated scattering" refers to the delay τ due to scatterers. Modelling of mobile channels as WSSUS (wide sense stationary uncorrelated scattering) is rather popular among specialists in recent years.
+FULL TEXT
+The WSSUS (Wide-Sense Stationary Uncorrelated Scattering) model provides a statistical description of the transmission behavior of wireless channels. "Wide-sense stationarity" means the second-order moments of the channel are stationary, which means that they depends only on the time difference, while "uncorrelated scattering" refers to the delay τ due to scatterers. Modelling of mobile channels as WSSUS (wide sense stationary uncorrelated scattering) is rather popular among specialists in recent years.
+A commonly used description of time variant channel applies the set of Bello functions and the theory of stochastic processes.

@@ -1,0 +1,10 @@
+ABOUT
+Ragel is a finite-state machine compiler with output support for C, C++ and Assembly source code.[2] It supports the generation of table or control flow driven state machines from regular expressions[3] and/or state charts and can also build lexical analysers via the longest-match method. Ragel specifically targets text parsing and input validation.[4]
+FULL TEXT
+Ragel is a finite-state machine compiler with output support for C, C++ and Assembly source code.[2] It supports the generation of table or control flow driven state machines from regular expressions[3] and/or state charts and can also build lexical analysers via the longest-match method. Ragel specifically targets text parsing and input validation.[4]
+
+
+Ragel supports the generation of table or control flow driven state machines from regular expressions and/or state charts and can also build lexical analysers via the longest-match method. A unique feature of Ragel is that user actions can be associated with arbitrary state machine transitions using operators that are integrated into the regular expressions. Ragel also supports visualization of the generated machine via graphviz.
+
+The graph represents a state-machine that takes user input as a series of bytes representing ASCII characters and control codes. 48..57 is equivalent to the regular expression [0-9] (i.e. any digit), so only sequences beginning with a digit can be recognised. If 10 (line feed) is encountered, we're done. 46 is the decimal point ('.'), 43 and 45 are positive and negative signs ('+', '-') and 69/101 is uppercase/lowercase 'e' (to indicate a number in scientific format). As such it will recognize the following properly:
+but not:

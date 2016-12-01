@@ -1,0 +1,4 @@
+ABOUT
+In signal processing, the essential bandwidth is the portion of a signal spectrum in the frequency domain which contains most of the energy of the signal.[1]
+FULL TEXT
+In signal processing, the essential bandwidth is the portion of a signal spectrum in the frequency domain which contains most of the energy of the signal.[1]

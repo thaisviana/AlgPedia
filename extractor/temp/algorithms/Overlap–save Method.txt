@@ -1,0 +1,273 @@
+ABOUT
+Overlap–save is the traditional name for an efficient way to evaluate the discrete convolution between a very long signal 
+
+
+
+x
+[
+n
+]
+
+
+{\displaystyle x[n]}
+
+ and a finite impulse response (FIR) filter 
+
+
+
+h
+[
+n
+]
+
+
+{\displaystyle h[n]}
+
+:
+FULL TEXT
+Overlap–save is the traditional name for an efficient way to evaluate the discrete convolution between a very long signal 
+
+
+
+x
+[
+n
+]
+
+
+{\displaystyle x[n]}
+
+ and a finite impulse response (FIR) filter 
+
+
+
+h
+[
+n
+]
+
+
+{\displaystyle h[n]}
+
+:
+
+
+
+
+y
+[
+n
+]
+=
+x
+[
+n
+]
+∗
+h
+[
+n
+]
+ 
+
+
+
+
+=
+
+
+
+d
+e
+f
+
+
+
+
+
+ 
+
+∑
+
+m
+=
+−
+∞
+
+
+∞
+
+
+h
+[
+m
+]
+⋅
+x
+[
+n
+−
+m
+]
+=
+
+∑
+
+m
+=
+1
+
+
+M
+
+
+h
+[
+m
+]
+⋅
+x
+[
+n
+−
+m
+]
+,
+
+
+
+{\displaystyle y[n]=x[n]*h[n]\ {\stackrel {\mathrm {def} }{=}}\ \sum _{m=-\infty }^{\infty }h[m]\cdot x[n-m]=\sum _{m=1}^{M}h[m]\cdot x[n-m],\,}
+
+
+
+ 
+ 
+ 
+ 
+(Eq.1)
+where h[m]=0 for m outside the region [1, M].
+The concept is to compute short segments of y[n] of an arbitrary length L, and concatenate the segments together. Consider a segment that begins at n = kL + M, for any integer k, and define:
+Then, for kL + M  ≤  n  ≤  kL + L + M − 1, and equivalently M  ≤  n − kL  ≤  L + M − 1, we can write:
+The task is thereby reduced to computing yk[n], for M  ≤  n  ≤  L + M − 1. The process described above is illustrated in the accompanying figure.
+Now note that if we periodically extend xk[n] with period N  ≥  L + M − 1, according to:
+the convolutions  
+
+
+
+(
+
+x
+
+k
+,
+N
+
+
+)
+∗
+h
+
+
+
+{\displaystyle (x_{k,N})*h\,}
+
+  and  
+
+
+
+
+x
+
+k
+
+
+∗
+h
+
+
+
+{\displaystyle x_{k}*h\,}
+
+  are equivalent in the region M  ≤  n  ≤  L + M − 1. So it is sufficient to compute the N-point circular (or cyclic) convolution of 
+
+
+
+
+x
+
+k
+
+
+[
+n
+]
+
+
+
+{\displaystyle x_{k}[n]\,}
+
+ with 
+
+
+
+h
+[
+n
+]
+
+
+
+{\displaystyle h[n]\,}
+
+  in the region [1, N].  The subregion [M, L + M − 1] is appended to the output stream, and the other values are discarded.
+The advantage is that the circular convolution can be computed very efficiently as follows, according to the circular convolution theorem:
+where:
+
+
+When the DFT and its inverse is implemented by the FFT algorithm, the pseudocode above requires about N log2(N) + N complex multiplications for the FFT, product of arrays, and IFFT.[note 1] Each iteration produces N-M+1 output samples, so the number of complex multiplications per output sample is about:
+
+
+
+
+
+
+
+N
+
+log
+
+2
+
+
+⁡
+(
+N
+)
++
+N
+
+
+N
+−
+M
++
+1
+
+
+
+.
+
+
+
+{\displaystyle {\frac {N\log _{2}(N)+N}{N-M+1}}.\,}
+
+
+
+ 
+ 
+ 
+ 
+(Eq.2)
+For example, when M=201 and N=1024, Eq.2 equals 13.67, whereas direct evaluation of Eq.1 would require up to 201 complex multiplications per output sample, the worst case being when both x and h are complex-valued. Also note that for any given M, Eq.2 has a minimum with respect to N. It diverges for both small and large block sizes.
+Overlap–discard[1] and Overlap–scrap[2] are less commonly used labels for the same method described here. However, these labels are actually better (than overlap–save) to distinguish from overlap–add, because both methods "save", but only one discards. "Save" merely refers to the fact that M − 1 input (or output) samples from segment k are needed to process segment k + 1.
+The overlap-save algorithm may be extended to include other common operations of a system:[note 2][3]

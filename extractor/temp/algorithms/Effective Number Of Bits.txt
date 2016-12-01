@@ -1,0 +1,10 @@
+ABOUT
+Effective number of bits (ENOB) is a measure of the dynamic range of an analog-to-digital converter (ADC) and its associated circuitry. The resolution of an ADC is specified by the number of bits used to represent the analog value, in principle giving 2N signal levels for an N-bit signal. However, all real ADC circuits introduce noise and distortion. ENOB specifies the resolution of an ideal ADC circuit that would have the same resolution as the circuit under consideration.
+FULL TEXT
+Effective number of bits (ENOB) is a measure of the dynamic range of an analog-to-digital converter (ADC) and its associated circuitry. The resolution of an ADC is specified by the number of bits used to represent the analog value, in principle giving 2N signal levels for an N-bit signal. However, all real ADC circuits introduce noise and distortion. ENOB specifies the resolution of an ideal ADC circuit that would have the same resolution as the circuit under consideration.
+ENOB is also used as a quality measure for other blocks such as sample-and-hold amplifiers. This way, analog blocks can be easily included in signal-chain calculations, as the total ENOB of a chain of blocks is usually below the ENOB of the worst block.
+
+
+An often used definition for ENOB is[1]
+where all values are given in dB and
+This definition compares the SINAD of an ideal ADC or DAC with a word length of ENOB bits with the SINAD of the ADC or DAC being tested.

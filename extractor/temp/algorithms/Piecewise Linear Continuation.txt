@@ -1,0 +1,567 @@
+ABOUT
+
+Simplicial continuation, or piecewise linear continuation (Allgower and Georg),[1][2] is a one-parameter continuation method which is well suited to small to medium embedding spaces. The algorithm has been generalized to compute higher-dimensional manifolds by (Allgower and Gnutzman)[3] and (Allgower and Schmidt).[4]
+FULL TEXT
+
+Simplicial continuation, or piecewise linear continuation (Allgower and Georg),[1][2] is a one-parameter continuation method which is well suited to small to medium embedding spaces. The algorithm has been generalized to compute higher-dimensional manifolds by (Allgower and Gnutzman)[3] and (Allgower and Schmidt).[4]
+The algorithm for drawing contours is a simplicial continuation algorithm, and since it is easy to visualize, it serves as a good introduction to the algorithm.
+
+
+The contour plotting problem is to find the zeros (contours) of 
+
+
+
+f
+(
+x
+,
+y
+)
+=
+0
+
+
+
+{\displaystyle f(x,y)=0\,}
+
+ (
+
+
+
+f
+(
+⋅
+)
+
+
+
+{\displaystyle f(\cdot )\,}
+
+ a smooth scalar valued function) in the square 
+
+
+
+0
+≤
+x
+≤
+1
+,
+0
+≤
+y
+≤
+1
+
+
+
+{\displaystyle 0\leq x\leq 1,0\leq y\leq 1\,}
+
+,
+ 
+The square is divided into small triangles, usually by introducing points at the corners of a regular square mesh 
+
+
+
+i
+
+h
+
+x
+
+
+≤
+x
+≤
+(
+i
++
+1
+)
+
+h
+
+x
+
+
+
+
+
+{\displaystyle ih_{x}\leq x\leq (i+1)h_{x}\,}
+
+, 
+
+
+
+j
+
+h
+
+y
+
+
+≤
+y
+≤
+(
+j
++
+1
+)
+
+h
+
+y
+
+
+
+
+
+{\displaystyle jh_{y}\leq y\leq (j+1)h_{y}\,}
+
+, making a table of the values of 
+
+
+
+f
+(
+
+x
+
+i
+
+
+,
+
+y
+
+j
+
+
+)
+
+
+
+{\displaystyle f(x_{i},y_{j})\,}
+
+ at each corner 
+
+
+
+(
+i
+,
+j
+)
+
+
+
+{\displaystyle (i,j)\,}
+
+, and then dividing each square into two triangles. The value of 
+
+
+
+f
+(
+
+x
+
+i
+
+
+,
+
+y
+
+j
+
+
+)
+
+
+
+{\displaystyle f(x_{i},y_{j})\,}
+
+ at the corners of the triangle defines a unique Piecewise Linear interpolant 
+
+
+
+l
+f
+(
+x
+,
+y
+)
+
+
+
+{\displaystyle lf(x,y)\,}
+
+ to 
+
+
+
+f
+(
+⋅
+)
+
+
+
+{\displaystyle f(\cdot )\,}
+
+ over each triangle. One way of writing this interpolant on the triangle with corners 
+
+
+
+(
+
+x
+
+0
+
+
+,
+
+y
+
+0
+
+
+)
+,
+ 
+(
+
+x
+
+1
+
+
+,
+
+y
+
+1
+
+
+)
+,
+ 
+(
+
+x
+
+2
+
+
+,
+
+y
+
+2
+
+
+)
+
+
+
+{\displaystyle (x_{0},y_{0}),~(x_{1},y_{1}),~(x_{2},y_{2})\,}
+
+ is as the set of equations
+The first four equations can be solved for 
+
+
+
+(
+s
+,
+t
+)
+
+
+
+{\displaystyle (s,t)\,}
+
+ (this maps the original triangle to a right unit triangle), then the remaining equation gives the interpolated value of 
+
+
+
+f
+(
+⋅
+)
+
+
+
+{\displaystyle f(\cdot )\,}
+
+. Over the whole mesh of triangles, this piecewise linear interpolant is continuous.
+ 
+The contour of the interpolant on an individual triangle is a line segment (it is an interval on the intersection of two planes). The equation for the line can be found, however the points where the line crosses the edges of the triangle are the endpoints of the line segment.
+
+The contour of the piecewise linear interpolant is a set of curves made up of these line segments. Any point on the edge connecting 
+
+
+
+(
+
+x
+
+0
+
+
+,
+
+y
+
+0
+
+
+)
+
+
+
+{\displaystyle (x_{0},y_{0})\,}
+
+ and 
+
+
+
+(
+
+x
+
+1
+
+
+,
+
+y
+
+1
+
+
+)
+
+
+
+{\displaystyle (x_{1},y_{1})\,}
+
+ can be written as
+with 
+
+
+
+t
+
+
+
+{\displaystyle t\,}
+
+ in 
+
+
+
+(
+0
+,
+1
+)
+
+
+
+{\displaystyle (0,1)\,}
+
+, and the linear interpolant over the edge is
+So setting 
+
+
+
+f
+=
+0
+
+
+
+{\displaystyle f=0\,}
+
+
+Since this only depends on values on the edge, every triangle which shares this edge will produce the same point, so the contour will be continuous. Each triangle can be tested independently, and if all are checked the entire set of contour curves can be found.
+Piecewise linear continuation is similar to contour plotting (Dobkin, Silvio, Thurston and Wilks),[5] but in higher dimensions. The algorithm is based on the following results:
+An '(n-1)'-dimensional simplex has n vertices, and the function F assigns an 'n'-vector to each. The simplex is convex, and any point within the simplex is a convex combination of the vertices. That is:
+If x is in the interior of an (n-1)-dimensional simplex with n vertices 
+
+
+
+
+v
+
+i
+
+
+
+
+{\displaystyle v_{i}}
+
+, then there are positive scalars 
+
+
+
+0
+<
+
+α
+
+i
+
+
+
+
+{\displaystyle 0<\alpha _{i}}
+
+ such that
+If the vertices of the simplex are linearly independent the non-negative scalars 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ are unique for each point x, and are called the barycentric coordinates of x. They determine the value of the unique interpolant by the formula:
+There are basically two tests. The one which was first used labels the vertices of the simplex with a vector of signs (+/-) of the coordinates of the vertex. For example the vertex (.5,-.2,1.) would be labelled (+,-,+). A simplex is called completely labelled if there is a vertex whose label begins with a string of "+" signs of length 0,1,2,3,4,...n. A completely labelled simplex contains a neighborhood of the origin. This may be surprising, but what underlies this result is that for each coordinate of a completely labelled simplex there is a vector with "+" and another with a "-". Put another way, the smallest cube with edges parallel to the coordinate axes and which covers the simplex has pairs of faces on opposite sides of 0. (i.e. a "+" and a "-" for each coordinate).
+The second approach is called vector labelling. It is based on the barycentric coordindates of the vertices of the simplex. The first step is to find the barycentric coordinates of the origin, and then the test that the simplex contains the origin is simply that all the barycentric coordinates are positive and the sum is less than 1.
+where
+
+
+
+
+
+
+
+
+v
+~
+
+
+
+
+i
+
+
+=
+
+{
+
+
+
+
+
+v
+
+1
+
+
++
+
+v
+
+n
+
+
+−
+
+v
+
+0
+
+
+
+
+
+i
+=
+0
+
+
+
+
+
+v
+
+i
++
+1
+
+
++
+
+v
+
+i
+−
+1
+
+
+−
+
+v
+
+i
+
+
+
+
+
+
+
+
+0
+
+
+
+
+
+v
+
+n
+−
+1
+
+
++
+
+v
+
+0
+
+
+−
+
+v
+
+n
+
+
+
+
+
+i
+=
+n
+
+
+
+
+
+
+
+
+{\displaystyle {\tilde {v}}_{i}=\left\{{\begin{array}{lcl}v_{1}+v_{n}-v_{0}&&i=0\\v_{i+1}+v_{i-1}-v_{i}&\qquad \qquad &0\\v_{n-1}+v_{0}-v_{n}&&i=n\\\end{array}}\right.}
+
+
+ 

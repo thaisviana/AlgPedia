@@ -1,0 +1,316 @@
+ABOUT
+In statistics, kernel-independent component analysis (kernel ICA) is an efficient algorithm for independent component analysis which estimates source components by optimizing a generalized variance contrast function, which is based on representations in a reproducing kernel Hilbert space.[1][2] Those contrast functions use the notion of mutual information as a measure of statistical independence.
+FULL TEXT
+In statistics, kernel-independent component analysis (kernel ICA) is an efficient algorithm for independent component analysis which estimates source components by optimizing a generalized variance contrast function, which is based on representations in a reproducing kernel Hilbert space.[1][2] Those contrast functions use the notion of mutual information as a measure of statistical independence.
+Kernel ICA is based on the idea that correlations between two random variables can be represented in a reproducing kernel Hilbert space (RKHS), denoted by 
+
+
+
+
+
+F
+
+
+
+
+{\displaystyle {\mathcal {F}}}
+
+, associated with a feature map 
+
+
+
+
+L
+
+x
+
+
+:
+
+
+F
+
+
+↦
+
+R
+
+
+
+{\displaystyle L_{x}:{\mathcal {F}}\mapsto \mathbb {R} }
+
+ defined for a fixed 
+
+
+
+x
+∈
+
+R
+
+
+
+{\displaystyle x\in \mathbb {R} }
+
+. The 
+
+
+
+
+
+F
+
+
+
+
+{\displaystyle {\mathcal {F}}}
+
+-correlation between two random variables 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ and 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+ is defined as
+where the functions 
+
+
+
+f
+,
+g
+:
+
+R
+
+→
+
+R
+
+
+
+{\displaystyle f,g:\mathbb {R} \to \mathbb {R} }
+
+ range over 
+
+
+
+
+
+F
+
+
+
+
+{\displaystyle {\mathcal {F}}}
+
+ and
+for fixed 
+
+
+
+f
+,
+g
+∈
+
+
+F
+
+
+
+
+{\displaystyle f,g\in {\mathcal {F}}}
+
+.[1] Note that the reproducing property implies that 
+
+
+
+f
+(
+x
+)
+=
+⟨
+
+L
+
+x
+
+
+,
+f
+⟩
+
+
+{\displaystyle f(x)=\langle L_{x},f\rangle }
+
+ for fixed 
+
+
+
+x
+∈
+
+R
+
+
+
+{\displaystyle x\in \mathbb {R} }
+
+ and 
+
+
+
+f
+∈
+
+
+F
+
+
+
+
+{\displaystyle f\in {\mathcal {F}}}
+
+.[3] It follows then that the 
+
+
+
+
+
+F
+
+
+
+
+{\displaystyle {\mathcal {F}}}
+
+-correlation between two independent random variables is zero.
+This notion of 
+
+
+
+
+
+F
+
+
+
+
+{\displaystyle {\mathcal {F}}}
+
+-correlations is used for defining contrast functions that are optimized in the Kernel ICA algorithm. Specifically, if 
+
+
+
+
+X
+
+:=
+(
+
+x
+
+i
+j
+
+
+)
+∈
+
+
+R
+
+
+n
+×
+m
+
+
+
+
+{\displaystyle \mathbf {X} :=(x_{ij})\in \mathbb {R} ^{n\times m}}
+
+ is a prewhitened data matrix, that is, the sample mean of each column is zero and the sample covariance of the rows is the 
+
+
+
+m
+×
+m
+
+
+{\displaystyle m\times m}
+
+ dimensional identity matrix, Kernel ICA estimates a 
+
+
+
+m
+×
+m
+
+
+{\displaystyle m\times m}
+
+ dimensional orthogonal matrix 
+
+
+
+
+A
+
+
+
+{\displaystyle \mathbf {A} }
+
+ so as to minimize finite-sample 
+
+
+
+
+
+F
+
+
+
+
+{\displaystyle {\mathcal {F}}}
+
+-correlations between the columns of 
+
+
+
+
+S
+
+:=
+
+X
+
+
+
+A
+
+
+′
+
+
+
+
+{\displaystyle \mathbf {S} :=\mathbf {X} \mathbf {A} ^{\prime }}
+
+.

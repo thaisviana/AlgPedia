@@ -1,0 +1,764 @@
+ABOUT
+In group theory, the Todd–Coxeter algorithm, created by J. A. Todd and H. S. M. Coxeter in 1936, is an algorithm for solving the coset enumeration problem. Given a presentation of a group G by generators and relations and a subgroup H of G, the algorithm enumerates the cosets of H on G and describes the permutation representation of G on the space of the cosets. If the order of a group G is relatively small and the subgroup H is known to be uncomplicated (for example, a cyclic group), then the algorithm can be carried out by hand and gives a reasonable description of the group G. Using their algorithm, Coxeter and Todd showed that certain systems of relations between generators of known groups are complete, i.e. constitute systems of defining relations.
+FULL TEXT
+In group theory, the Todd–Coxeter algorithm, created by J. A. Todd and H. S. M. Coxeter in 1936, is an algorithm for solving the coset enumeration problem. Given a presentation of a group G by generators and relations and a subgroup H of G, the algorithm enumerates the cosets of H on G and describes the permutation representation of G on the space of the cosets. If the order of a group G is relatively small and the subgroup H is known to be uncomplicated (for example, a cyclic group), then the algorithm can be carried out by hand and gives a reasonable description of the group G. Using their algorithm, Coxeter and Todd showed that certain systems of relations between generators of known groups are complete, i.e. constitute systems of defining relations.
+The Todd–Coxeter algorithm can be applied to infinite groups and is known to terminate in a finite number of steps, provided that the index of H in G is finite. On the other hand, for a general pair consisting of a group presentation and a subgroup, its running time is not bounded by any computable function of the index of the subgroup and the size of the input data.
+One implementation of the algorithm proceeds as follows. Suppose that 
+
+
+
+G
+=
+⟨
+X
+∣
+R
+⟩
+
+
+{\displaystyle G=\langle X\mid R\rangle }
+
+, where 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ is a set of generators and 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ is a set of relations and denote by 
+
+
+
+
+X
+′
+
+
+
+{\displaystyle X'}
+
+ the set of generators 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ and their inverses. Let 
+
+
+
+H
+=
+⟨
+
+h
+
+1
+
+
+,
+
+h
+
+2
+
+
+,
+…
+,
+
+h
+
+s
+
+
+⟩
+
+
+{\displaystyle H=\langle h_{1},h_{2},\ldots ,h_{s}\rangle }
+
+ where the 
+
+
+
+
+h
+
+i
+
+
+
+
+{\displaystyle h_{i}}
+
+ are words of elements of 
+
+
+
+
+X
+′
+
+
+
+{\displaystyle X'}
+
+. There are three types of tables that will be used: a coset table, a relation table for each relation in 
+
+
+
+R
+
+
+{\displaystyle R}
+
+, and a subgroup table for each generator 
+
+
+
+
+h
+
+i
+
+
+
+
+{\displaystyle h_{i}}
+
+ of 
+
+
+
+H
+
+
+{\displaystyle H}
+
+. Information is gradually added to these tables, and once they are filled in, all cosets have been enumerated and the algorithm terminates.
+The coset table is used to store the relationships between the known cosets when multiplying by a generator. It has rows representing cosets of 
+
+
+
+H
+
+
+{\displaystyle H}
+
+ and a column for each element of 
+
+
+
+
+X
+′
+
+
+
+{\displaystyle X'}
+
+. Let 
+
+
+
+
+C
+
+i
+
+
+
+
+{\displaystyle C_{i}}
+
+ denote the coset of the ith row of the coset table, and let 
+
+
+
+
+g
+
+j
+
+
+∈
+
+X
+′
+
+
+
+{\displaystyle g_{j}\in X'}
+
+ denote generator of the jth column. The entry of the coset table in row i, column j is defined to be (if known) k, where k is such that 
+
+
+
+
+C
+
+k
+
+
+=
+
+C
+
+i
+
+
+
+g
+
+j
+
+
+
+
+{\displaystyle C_{k}=C_{i}g_{j}}
+
+.
+The relation tables are used to detect when some of the cosets we have found are actually equivalent. One relation table for each relation in 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ is maintained. Let 
+
+
+
+1
+=
+
+g
+
+
+n
+
+1
+
+
+
+
+
+g
+
+
+n
+
+2
+
+
+
+
+⋯
+
+g
+
+
+n
+
+t
+
+
+
+
+
+
+{\displaystyle 1=g_{n_{1}}g_{n_{2}}\cdots g_{n_{t}}}
+
+ be a relation in 
+
+
+
+R
+
+
+{\displaystyle R}
+
+, where 
+
+
+
+
+g
+
+
+n
+
+i
+
+
+
+
+∈
+
+X
+′
+
+
+
+{\displaystyle g_{n_{i}}\in X'}
+
+. The relation table has rows representing the cosets of 
+
+
+
+H
+
+
+{\displaystyle H}
+
+, as in the coset table. It has t columns, and the entry in the ith row and jth column is defined to be (if known) k, where 
+
+
+
+
+C
+
+k
+
+
+=
+
+C
+
+i
+
+
+
+g
+
+
+n
+
+1
+
+
+
+
+
+g
+
+
+n
+
+2
+
+
+
+
+⋯
+
+g
+
+
+n
+
+j
+
+
+
+
+
+
+{\displaystyle C_{k}=C_{i}g_{n_{1}}g_{n_{2}}\cdots g_{n_{j}}}
+
+. In particular, the 
+
+
+
+(
+i
+,
+t
+)
+
+
+{\displaystyle (i,t)}
+
+'th entry is initially i, since 
+
+
+
+
+g
+
+
+n
+
+1
+
+
+
+
+
+g
+
+
+n
+
+2
+
+
+
+
+⋯
+
+g
+
+
+n
+
+t
+
+
+
+
+=
+1
+
+
+{\displaystyle g_{n_{1}}g_{n_{2}}\cdots g_{n_{t}}=1}
+
+.
+Finally, the subgroup tables are similar to the relation tables, except that they keep track of possible relations of the generators of 
+
+
+
+H
+
+
+{\displaystyle H}
+
+. For each generator 
+
+
+
+
+h
+
+n
+
+
+=
+
+g
+
+
+n
+
+1
+
+
+
+
+
+g
+
+
+n
+
+2
+
+
+
+
+⋯
+
+g
+
+
+n
+
+t
+
+
+
+
+
+
+{\displaystyle h_{n}=g_{n_{1}}g_{n_{2}}\cdots g_{n_{t}}}
+
+ of 
+
+
+
+H
+
+
+{\displaystyle H}
+
+, with 
+
+
+
+
+g
+
+
+n
+
+i
+
+
+
+
+∈
+
+X
+′
+
+
+
+{\displaystyle g_{n_{i}}\in X'}
+
+, we create a subgroup table. It has only one row, corresponding to the coset of 
+
+
+
+H
+
+
+{\displaystyle H}
+
+ itself. It has t columns, and the entry in the jth column is defined (if known) to be k, where 
+
+
+
+
+C
+
+k
+
+
+=
+H
+
+g
+
+
+n
+
+1
+
+
+
+
+
+g
+
+
+n
+
+2
+
+
+
+
+⋯
+
+g
+
+
+n
+
+j
+
+
+
+
+
+
+{\displaystyle C_{k}=Hg_{n_{1}}g_{n_{2}}\cdots g_{n_{j}}}
+
+.
+When a row of a relation or subgroup table is completed, a new piece of information 
+
+
+
+
+C
+
+i
+
+
+=
+
+C
+
+j
+
+
+g
+
+
+{\displaystyle C_{i}=C_{j}g}
+
+, 
+
+
+
+g
+∈
+
+X
+′
+
+
+
+{\displaystyle g\in X'}
+
+, is found. This is known as a deduction. From the deduction, we may be able to fill in additional entries of the relation and subgroup tables, resulting in possible additional deductions. We can fill in the entries of the coset table corresponding to the equations 
+
+
+
+
+C
+
+i
+
+
+=
+
+C
+
+j
+
+
+g
+
+
+{\displaystyle C_{i}=C_{j}g}
+
+ and 
+
+
+
+
+C
+
+j
+
+
+=
+
+C
+
+i
+
+
+
+g
+
+−
+1
+
+
+
+
+{\displaystyle C_{j}=C_{i}g^{-1}}
+
+.
+However, when filling in the coset table, it is possible that we may already have an entry for the equation, but the entry has a different value. In this case, we have discovered that two of our cosets are actually the same, known as a coincidence. Suppose 
+
+
+
+
+C
+
+i
+
+
+=
+
+C
+
+j
+
+
+
+
+{\displaystyle C_{i}=C_{j}}
+
+, with 
+
+
+
+i
+<
+j
+
+
+{\displaystyle i<j}
+
+. We replace all instances of j in the tables with i. Then, we fill in all possible entries of the tables, possibly leading to more deductions and coincidences.
+If there are empty entries in the table after all deductions and coincidences have been taken care of, add a new coset to the tables and repeat the process. We make sure that when adding cosets, if Hx is a known coset, then Hxg will be added at some point for all 
+
+
+
+g
+∈
+
+X
+′
+
+
+
+{\displaystyle g\in X'}
+
+. (This is needed to guarantee that the algorithm will terminate provided 
+
+
+
+
+|
+
+G
+:
+H
+
+|
+
+
+
+{\displaystyle |G:H|}
+
+ is finite.)
+When all the tables are filled, the algorithm terminates. We then have all needed information on the action of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ on the cosets of 
+
+
+
+H
+
+
+{\displaystyle H}
+
+.

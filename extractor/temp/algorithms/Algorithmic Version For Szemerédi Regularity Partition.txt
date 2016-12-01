@@ -1,0 +1,1502 @@
+ABOUT
+A Simple Algorithm for Constructing Szemerédi's Regularity Partition is a paper by Alan M. Frieze and Ravi Kannan giving an algorithmic version of the Szemerédi regularity lemma to find an ε-regular partition of a given graph.
+FULL TEXT
+A Simple Algorithm for Constructing Szemerédi's Regularity Partition is a paper by Alan M. Frieze and Ravi Kannan giving an algorithmic version of the Szemerédi regularity lemma to find an ε-regular partition of a given graph.
+The formal statement of Szemerédi's regularity lemma requires some definitions. Let G be a graph. The density d(X,Y) of a pair of disjoint vertex sets X, Y is defined as d(X,Y)=|E(X,Y)|/|X||Y| where E(X,Y) denotes the set of edges having one end vertex in X and one in Y. For ε>0, a pair of vertex sets X and Y is called ε-regular, if for all subsets A⊆X and B⊆Y satisfying |A| ≥ε |X| and |B| ≥ ε |Y|, we have |d(X,Y)-d(A,B)| ≤ ε.
+A partition of the vertex set of G into k sets, V1,...,Vk, is called an equitable partition if for all 
+
+
+
+i
+,
+j
+
+
+{\displaystyle i,j}
+
+, ||Vi|-|Vj||≤1. An equitable partition is an 
+
+
+
+ϵ
+
+
+{\displaystyle \epsilon }
+
+-regular partition, if for all but at most 
+
+
+
+ϵ
+
+
+k
+
+2
+
+
+
+
+
+{\displaystyle \epsilon {k^{2}}}
+
+ pairs (i,j) the pair 
+
+
+
+(
+
+V
+
+i
+
+
+,
+
+V
+
+j
+
+
+,
+)
+
+
+{\displaystyle (V_{i},V_{j},)}
+
+ is 
+
+
+
+ϵ
+
+
+{\displaystyle \epsilon }
+
+-regular.
+Now we are ready to state the regularity lemma.
+Regularity lemma. For every 
+
+
+
+ϵ
+>
+0
+
+
+{\displaystyle \epsilon >0}
+
+ and positive integer 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ there exist integers 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ and 
+
+
+
+M
+
+
+{\displaystyle M}
+
+ such that if 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ is a graph with at least 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ vertices, there exists an integer 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ in the range 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ ≤ 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ ≤ 
+
+
+
+M
+
+
+{\displaystyle M}
+
+ and an 
+
+
+
+ϵ
+
+
+{\displaystyle \epsilon }
+
+-regular partition of the vertex set of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ into 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ sets.
+It is a common variant in the definition of an 
+
+
+
+ϵ
+
+
+{\displaystyle \epsilon }
+
+-regular partition to require that the vertex sets all have the same size, while collecting the leftover vertices in an "error"-set 
+
+
+
+
+V
+
+0
+
+
+
+
+{\displaystyle V_{0}}
+
+ whose size is at most an 
+
+
+
+ϵ
+
+
+{\displaystyle \epsilon }
+
+-fraction of the size of the vertex set of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+.
+Szemerédi's regularity lemma is one of the most powerful tools of extremal graph theory. It says that, in some sense, all graphs can be approximated by random-looking graphs. Therefore the lemma helps in proving theorems for arbitrary graphs whenever the corresponding result is easy for random graphs. The first constructive version was provided by Alon, Duke, Leffman, Rödl and Yuster.[1] Subsequently Frieze and Kannan gave a different version and extended it to hypergraphs.[2] The paper [3] is a nice survey on regularity lemma and its various applications. Here we will briefly describe a different construction due to Alan Frieze and Ravi Kannan that uses singular values of matrices.
+The algorithm[4] is based on two crucial lemmas:
+Lemma 1:
+Fix k and 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+ and let 
+
+
+
+G
+=
+(
+V
+,
+E
+)
+
+
+{\displaystyle G=(V,E)}
+
+ be a graph with 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ vertices. Let 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ be an equitable partition of 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ in classes 
+
+
+
+
+V
+
+0
+
+
+,
+
+V
+
+1
+
+
+,
+.
+.
+.
+,
+
+V
+
+k
+
+
+
+
+{\displaystyle V_{0},V_{1},...,V_{k}}
+
+. Assume 
+
+
+
+
+|
+
+
+V
+
+1
+
+
+
+|
+
+>
+
+4
+
+2
+k
+
+
+
+
+{\displaystyle |V_{1}|>4^{2k}}
+
+ and 
+
+
+
+
+4
+
+k
+
+
+>
+600
+
+γ
+
+2
+
+
+
+
+{\displaystyle 4^{k}>600\gamma ^{2}}
+
+. Given proofs that more than 
+
+
+
+γ
+
+k
+
+2
+
+
+
+
+{\displaystyle \gamma k^{2}}
+
+ pairs 
+
+
+
+(
+
+V
+
+r
+
+
+,
+
+V
+
+s
+
+
+)
+
+
+{\displaystyle (V_{r},V_{s})}
+
+ are not 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+-regular, it is possible to find in O(n) time an equitable partition 
+
+
+
+
+P
+′
+
+
+
+{\displaystyle P'}
+
+ (which is a refinement of 
+
+
+
+P
+
+
+{\displaystyle P}
+
+) into 
+
+
+
+1
++
+k
+
+4
+
+k
+
+
+
+
+{\displaystyle 1+k4^{k}}
+
+ classes, with an exceptional class of cardinality at most 
+
+
+
+
+|
+
+
+V
+
+0
+
+
+
+|
+
++
+n
+
+/
+
+
+4
+
+k
+
+
+
+
+{\displaystyle |V_{0}|+n/4^{k}}
+
+ and such that 
+
+
+
+i
+n
+d
+(
+
+P
+′
+
+)
+
+
+{\displaystyle ind(P')}
+
+ ≥ 
+
+
+
+i
+n
+d
+(
+P
+)
++
+
+γ
+
+5
+
+
+
+/
+
+20
+
+
+{\displaystyle ind(P)+\gamma ^{5}/20}
+
+
+Lemma 2:
+Let 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ be a 
+
+
+
+R
+
+
+{\displaystyle R}
+
+×
+
+
+
+C
+
+
+{\displaystyle C}
+
+ matrix with 
+
+
+
+
+|
+
+R
+
+|
+
+=
+p
+
+
+{\displaystyle |R|=p}
+
+, 
+
+
+
+
+|
+
+C
+
+|
+
+=
+q
+
+
+{\displaystyle |C|=q}
+
+ and 
+
+
+
+∥
+W
+
+∥
+
+inf
+
+
+≤
+1
+
+
+{\displaystyle \|W\|_{\inf }\leq 1}
+
+ and 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+ be a positive real.
+(a) If there exist 
+
+
+
+S
+
+
+{\displaystyle S}
+
+ ⊆ 
+
+
+
+R
+
+
+{\displaystyle R}
+
+, 
+
+
+
+T
+
+
+{\displaystyle T}
+
+ ⊆ 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ such that 
+
+
+
+
+|
+
+S
+
+|
+
+
+
+{\displaystyle |S|}
+
+≥
+
+
+
+γ
+p
+
+
+{\displaystyle \gamma p}
+
+, 
+
+
+
+
+|
+
+T
+
+|
+
+
+
+{\displaystyle |T|}
+
+≥
+
+
+
+γ
+q
+
+
+{\displaystyle \gamma q}
+
+ and 
+
+
+
+
+|
+
+W
+(
+S
+,
+T
+)
+
+|
+
+
+
+{\displaystyle |W(S,T)|}
+
+≥
+
+
+
+γ
+
+|
+
+S
+
+|
+
+
+|
+
+T
+
+|
+
+
+
+{\displaystyle \gamma |S||T|}
+
+ then 
+
+
+
+
+σ
+
+1
+
+
+(
+W
+)
+≥
+
+γ
+
+3
+
+
+
+
+p
+q
+
+
+
+
+{\displaystyle \sigma _{1}(W)\geq \gamma ^{3}{\sqrt {pq}}}
+
+
+(b) If 
+
+
+
+
+σ
+
+1
+
+
+(
+W
+)
+≥
+γ
+
+
+p
+q
+
+
+
+
+{\displaystyle \sigma _{1}(W)\geq \gamma {\sqrt {pq}}}
+
+, then there exist 
+
+
+
+S
+
+
+{\displaystyle S}
+
+⊆
+
+
+
+R
+
+
+{\displaystyle R}
+
+, 
+
+
+
+T
+
+
+{\displaystyle T}
+
+⊆
+
+
+
+C
+
+
+{\displaystyle C}
+
+ such that 
+
+
+
+
+|
+
+S
+
+|
+
+
+
+{\displaystyle |S|}
+
+≥
+
+
+
+
+γ
+′
+
+p
+
+
+{\displaystyle \gamma 'p}
+
+, 
+
+
+
+
+|
+
+T
+
+|
+
+
+
+{\displaystyle |T|}
+
+≥
+
+
+
+
+γ
+′
+
+q
+
+
+{\displaystyle \gamma 'q}
+
+ and 
+
+
+
+W
+(
+S
+,
+T
+)
+
+
+{\displaystyle W(S,T)}
+
+≥
+
+
+
+
+γ
+′
+
+
+|
+
+S
+
+|
+
+
+|
+
+T
+
+|
+
+
+
+{\displaystyle \gamma '|S||T|}
+
+ where 
+
+
+
+
+γ
+′
+
+=
+
+γ
+
+3
+
+
+
+/
+
+108
+
+
+{\displaystyle \gamma '=\gamma ^{3}/108}
+
+. Furthermore 
+
+
+
+S
+
+
+{\displaystyle S}
+
+, 
+
+
+
+T
+
+
+{\displaystyle T}
+
+ can be constructed in polynomial time.
+These two lemmas are combined in the following algorithmic construction of the Szemerédi regularity lemma.
+[Step 1] Arbitrarily divide the vertices of 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ into an equitable partition 
+
+
+
+
+P
+
+1
+
+
+
+
+{\displaystyle P_{1}}
+
+ with classes 
+
+
+
+
+V
+
+0
+
+
+,
+
+V
+
+1
+
+
+,
+.
+.
+.
+,
+
+V
+
+b
+
+
+
+
+{\displaystyle V_{0},V_{1},...,V_{b}}
+
+ where 
+
+
+
+
+|
+
+
+V
+
+i
+
+
+
+|
+
+=
+⌊
+n
+
+/
+
+b
+⌋
+
+
+{\displaystyle |V_{i}|=\lfloor n/b\rfloor }
+
+ and hence 
+
+
+
+
+|
+
+
+V
+
+0
+
+
+
+|
+
+<
+b
+
+
+{\displaystyle |V_{0}|<b}
+
+. denote 
+
+
+
+
+k
+
+1
+
+
+=
+b
+
+
+{\displaystyle k_{1}=b}
+
+.
+[Step 2] For every pair 
+
+
+
+(
+
+V
+
+r
+
+
+,
+
+V
+
+s
+
+
+)
+
+
+{\displaystyle (V_{r},V_{s})}
+
+ of 
+
+
+
+
+P
+
+i
+
+
+
+
+{\displaystyle P_{i}}
+
+, compute 
+
+
+
+
+σ
+
+1
+
+
+(
+
+W
+
+r
+,
+s
+
+
+)
+
+
+{\displaystyle \sigma _{1}(W_{r,s})}
+
+. If the pair 
+
+
+
+(
+
+V
+
+r
+
+
+,
+
+V
+
+s
+
+
+)
+
+
+{\displaystyle (V_{r},V_{s})}
+
+ are not 
+
+
+
+ϵ
+−
+
+
+{\displaystyle \epsilon -}
+
+regular then by Lemma 2 we obtain a proof that they are not 
+
+
+
+γ
+=
+
+ϵ
+
+9
+
+
+
+/
+
+108
+−
+
+
+{\displaystyle \gamma =\epsilon ^{9}/108-}
+
+regular.
+[Step 3] If there are at most 
+
+
+
+ϵ
+
+
+
+(
+
+
+
+k
+
+1
+
+
+2
+
+
+)
+
+
+
+
+
+{\displaystyle \epsilon {k_{1} \choose 2}}
+
+ pairs that produce proofs of non 
+
+
+
+γ
+−
+
+
+{\displaystyle \gamma -}
+
+regularity that halt. 
+
+
+
+
+P
+
+i
+
+
+
+
+{\displaystyle P_{i}}
+
+ is 
+
+
+
+ϵ
+−
+
+
+{\displaystyle \epsilon -}
+
+regular.
+[Step 4] Apply Lemma 1 where 
+
+
+
+P
+=
+
+P
+
+i
+
+
+
+
+{\displaystyle P=P_{i}}
+
+, 
+
+
+
+k
+=
+
+k
+
+i
+
+
+
+
+{\displaystyle k=k_{i}}
+
+, 
+
+
+
+γ
+=
+
+ϵ
+
+9
+
+
+
+/
+
+108
+
+
+{\displaystyle \gamma =\epsilon ^{9}/108}
+
+ and obtain 
+
+
+
+
+P
+′
+
+
+
+{\displaystyle P'}
+
+ with 
+
+
+
+1
++
+
+k
+
+i
+
+
+
+4
+
+
+k
+
+i
+
+
+
+
+
+
+{\displaystyle 1+k_{i}4^{k_{i}}}
+
+ classes
+[Step 5] Let 
+
+
+
+
+k
+
+i
+
+
++
+1
+=
+
+k
+
+i
+
+
+
+4
+
+
+k
+
+i
+
+
+
+
+
+
+{\displaystyle k_{i}+1=k_{i}4^{k_{i}}}
+
+, 
+
+
+
+
+P
+
+i
+
+
++
+1
+=
+
+P
+′
+
+
+
+{\displaystyle P_{i}+1=P'}
+
+, 
+
+
+
+i
+=
+i
++
+1
+
+
+{\displaystyle i=i+1}
+
+ and go to Step 2.
+The algorithm will terminate with an 
+
+
+
+ϵ
+
+
+{\displaystyle \epsilon }
+
+-regular partition in 
+
+
+
+O
+(
+
+ϵ
+
+−
+45
+
+
+)
+
+
+{\displaystyle O(\epsilon ^{-45})}
+
+ steps since the improvement at each step is 
+
+
+
+
+γ
+
+5
+
+
+
+/
+
+20
+=
+O
+(
+
+ϵ
+
+45
+
+
+)
+
+
+{\displaystyle \gamma ^{5}/20=O(\epsilon ^{45})}
+
+.

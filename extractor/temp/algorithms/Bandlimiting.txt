@@ -1,0 +1,389 @@
+ABOUT
+Bandlimiting is the limiting of a signal's Fourier transform or power spectral density to zero above a certain finite frequency. A band-limited signal is one whose Fourier transform or power spectral density has bounded support.
+FULL TEXT
+Bandlimiting is the limiting of a signal's Fourier transform or power spectral density to zero above a certain finite frequency. A band-limited signal is one whose Fourier transform or power spectral density has bounded support.
+The signal may be either random (stochastic) or non-random (deterministic).
+In general, infinitely many terms are required in a continuous Fourier series representation, but if a finite number of Fourier series terms can be calculated from that signal, that signal is considered to be band-limited.
+
+
+A bandlimited signal can be fully reconstructed from its samples, provided that the sampling rate exceeds twice the maximum frequency in the bandlimited signal. This minimum sampling frequency is called the Nyquist rate. This result, usually attributed to Nyquist and Shannon, is known as the Nyquist–Shannon sampling theorem.
+An example of a simple deterministic bandlimited signal is a sinusoid of the form 
+
+
+
+x
+(
+t
+)
+=
+sin
+⁡
+(
+2
+π
+f
+t
++
+θ
+)
+ 
+
+
+{\displaystyle x(t)=\sin(2\pi ft+\theta )\ }
+
+. If this signal is sampled at a rate 
+
+
+
+
+f
+
+s
+
+
+=
+
+
+1
+T
+
+
+>
+2
+f
+
+
+{\displaystyle f_{s}={\frac {1}{T}}>2f}
+
+ so that we have the samples 
+
+
+
+x
+(
+n
+T
+)
+ 
+
+
+{\displaystyle x(nT)\ }
+
+, for all integers 
+
+
+
+n
+
+
+{\displaystyle n}
+
+, we can recover 
+
+
+
+x
+(
+t
+)
+ 
+
+
+{\displaystyle x(t)\ }
+
+ completely from these samples. Similarly, sums of sinusoids with different frequencies and phases are also bandlimited to the highest of their frequencies.
+The signal whose Fourier transform is shown in the figure is also bandlimited. Suppose 
+
+
+
+x
+(
+t
+)
+ 
+
+
+{\displaystyle x(t)\ }
+
+ is a signal whose Fourier transform is 
+
+
+
+X
+(
+f
+)
+ 
+
+
+{\displaystyle X(f)\ }
+
+, the magnitude of which is shown in the figure. The highest frequency component in 
+
+
+
+x
+(
+t
+)
+ 
+
+
+{\displaystyle x(t)\ }
+
+ is 
+
+
+
+B
+ 
+
+
+{\displaystyle B\ }
+
+. As a result, the Nyquist rate is
+or twice the highest frequency component in the signal, as shown in the figure. According to the sampling theorem, it is possible to reconstruct 
+
+
+
+x
+(
+t
+)
+ 
+
+
+{\displaystyle x(t)\ }
+
+ completely and exactly using the samples
+as long as
+The reconstruction of a signal from its samples can be accomplished using the Whittaker–Shannon interpolation formula.
+[further explanation needed]
+A bandlimited signal cannot be also timelimited. More precisely, a function and its Fourier transform cannot both have finite support. This fact can be proved by using complex analysis and properties of Fourier transform.
+Proof: Assume that a signal f(t) which has finite support in both domains exists. Let's sample it faster than the Nyquist frequency, and compute respective Fourier transform 
+
+
+
+F
+T
+(
+f
+)
+=
+
+F
+
+1
+
+
+(
+w
+)
+
+
+{\displaystyle FT(f)=F_{1}(w)}
+
+ and discrete-time fourier transform 
+
+
+
+D
+T
+F
+T
+(
+f
+)
+=
+
+F
+
+2
+
+
+(
+w
+)
+
+
+{\displaystyle DTFT(f)=F_{2}(w)}
+
+. According to properties of DTFT, 
+
+
+
+
+F
+
+2
+
+
+(
+w
+)
+=
+
+∑
+
+n
+=
+−
+∞
+
+
++
+∞
+
+
+
+F
+
+1
+
+
+(
+w
++
+n
+
+f
+
+x
+
+
+)
+
+
+{\displaystyle F_{2}(w)=\sum _{n=-\infty }^{+\infty }F_{1}(w+nf_{x})}
+
+, where 
+
+
+
+
+f
+
+x
+
+
+
+
+{\displaystyle f_{x}}
+
+ is the frequency used for discretization. If f is bandlimited, 
+
+
+
+
+F
+
+1
+
+
+
+
+{\displaystyle F_{1}}
+
+ is zero outside of a certain interval, so with large enough 
+
+
+
+
+f
+
+x
+
+
+
+
+{\displaystyle f_{x}}
+
+, 
+
+
+
+
+F
+
+2
+
+
+
+
+{\displaystyle F_{2}}
+
+ will be zero in some intervals too, since individual supports of 
+
+
+
+
+F
+
+1
+
+
+
+
+{\displaystyle F_{1}}
+
+ in sum of 
+
+
+
+
+F
+
+2
+
+
+
+
+{\displaystyle F_{2}}
+
+ won't overlap. According to DTFT definition, 
+
+
+
+
+F
+
+2
+
+
+
+
+{\displaystyle F_{2}}
+
+ is a sum of trigonometric functions, and since f(t) is time-limited, this sum will be finite, so 
+
+
+
+
+F
+
+2
+
+
+
+
+{\displaystyle F_{2}}
+
+ will be actually a trigonometric polynomial. All trigonometric polynomials are holomorphic on a whole complex plane, and there is a simple theorem in complex analysis that says that all zeros of non-constant holomorphic function are isolated. But this contradicts our earlier finding that 
+
+
+
+
+F
+
+2
+
+
+
+
+{\displaystyle F_{2}}
+
+ has intervals full of zeros, because points in such intervals are not isolated. Thus the only time- and bandwidth-limited signal is a constant zero.
+One important consequence of this result is that it is impossible to generate a truly bandlimited signal in any real-world situation, because a bandlimited signal would require infinite time to transmit. All real-world signals are, by necessity, timelimited, which means that they cannot be bandlimited. Nevertheless, the concept of a bandlimited signal is a useful idealization for theoretical and analytical purposes. Furthermore, it is possible to approximate a bandlimited signal to any arbitrary level of accuracy desired.
+A similar relationship between duration in time and bandwidth in frequency also forms the mathematical basis for the uncertainty principle in quantum mechanics. In that setting, the "width" of the time domain and frequency domain functions are evaluated with a variance-like measure. Quantitatively, the uncertainty principle imposes the following condition on any real waveform:
+where
+In time–frequency analysis, these limits are known as the Gabor limit, and are interpreted as a limit on the simultaneous time–frequency resolution one may achieve.

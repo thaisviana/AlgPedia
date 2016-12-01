@@ -1,0 +1,8 @@
+ABOUT
+The MENTOR routing algorithm is an algorithm for use in routing of mesh networks, specifically pertaining to their initial topology. It was developed in 1991 by Aaron Kershenbaum, Parviz Kermani, and George A. Grove and was published by the IEEE.
+FULL TEXT
+The MENTOR routing algorithm is an algorithm for use in routing of mesh networks, specifically pertaining to their initial topology. It was developed in 1991 by Aaron Kershenbaum, Parviz Kermani, and George A. Grove and was published by the IEEE.
+Empirical observation has shown the complexity class of this algorithm to be O(N²), or quadratic. This represents "a significant improvement over currently used algorithms, [while still yielding] solutions of a quality competitive with other, much slower procedures."
+The algorithm assumes three things are conducive to low-"cost" (that is, minimal in distance travelled and time between destinations) topology: that paths will tend to be direct, not circuitous; that links will have a "high utilization"—that is, they will be used to nearly their maximum operating capacity; and that "long, high-capacity links [will be used] whenever possible."
+The overall plan is to send traffic over a direct route between the source and destination whenever the magnitude of the requirement is sufficiently large and to send it via a path within a tree in all other cases. In the former case, we are satisfying all three of our goals--we are using a direct path of high utilization and high capacity. In the latter case we are satisfying at least the last two objectives as we are aggregating traffic as much as possible.
+The minimum spanning tree on which traffic flows in the latter case is heuristically defined by Dijkstra's algorithm and Prim's algorithm.

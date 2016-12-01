@@ -1,0 +1,5 @@
+ABOUT
+In optimization, gradient method is an algorithm to solve problems of the form
+FULL TEXT
+In optimization, gradient method is an algorithm to solve problems of the form
+with the search directions defined by the gradient of the function at the current point. Examples of gradient method are the gradient descent and the conjugate gradient.

@@ -1,0 +1,10 @@
+ABOUT
+A round-off error,[1] also called rounding error,[2] is the difference between the calculated approximation of a number and its exact mathematical value due to rounding. This is a form of quantization error.[3] One of the goals of numerical analysis is to estimate errors in calculations, including round-off error, when using approximation equations and/or algorithms, especially when using finitely many digits to represent real numbers (which in theory have infinitely many digits).[4]
+FULL TEXT
+A round-off error,[1] also called rounding error,[2] is the difference between the calculated approximation of a number and its exact mathematical value due to rounding. This is a form of quantization error.[3] One of the goals of numerical analysis is to estimate errors in calculations, including round-off error, when using approximation equations and/or algorithms, especially when using finitely many digits to represent real numbers (which in theory have infinitely many digits).[4]
+When a sequence of calculations subject to rounding error is made, errors may accumulate, sometimes dominating the calculation. In ill-conditioned problems, significant error may accumulate.[5]
+
+
+The error introduced by attempting to represent a number using a finite string of digits is a form of round-off error called representation error.[6] Here are some examples of representation error in decimal representations:
+Increasing the number of digits allowed in a representation reduces the magnitude of possible round-off errors, but any representation limited to finitely many digits will still cause some degree of round-off error for uncountably many real numbers. Additional digits used for intermediary steps of a calculation are known as guard digits.[7]
+Rounding multiple times can cause error to accumulate.[8] For example, if 9.945309 is rounded to two decimal places (9.95), then rounded again to one decimal place (10.0), the total error is 0.054691. Rounding 9.945309 to one decimal place (9.9) in a single step introduces less error (0.045309). This commonly occurs when performing arithmetic operations (See Loss of Significance).

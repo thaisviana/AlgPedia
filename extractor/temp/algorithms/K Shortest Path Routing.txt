@@ -1,0 +1,29 @@
+ABOUT
+The K shortest path routing algorithm is an extension algorithm of the shortest path routing algorithm in a given network.
+FULL TEXT
+The K shortest path routing algorithm is an extension algorithm of the shortest path routing algorithm in a given network.
+It is sometimes crucial to have more than one path between two nodes in a given network. In the event there are additional constraints, other paths different from the shortest path can be computed. To find the shortest path one can use shortest path algorithms such as Dijkstra’s algorithm or Bellman Ford algorithm and extend them to find more than one path. The K Shortest path routing algorithm is a generalization of the shortest path problem. The algorithm not only finds the shortest path, but also K-1 other paths in non-decreasing order of cost. K is the number of shortest paths to find. The problem can be restricted to have the K shortest path without loops (loopless K shortest path) or with loop.
+
+
+Since 1957 there have been many papers published on the K Shortest path routing algorithm problem. Most of the fundamental works on not just finding the single shortest path between a pair of nodes, but instead listing a sequence of the K shortest paths, were done between the 1960s and up to 2001. Since then, most of the recent research has been about the applications of the algorithm and its variants. In 2010, Michael Gunter et al. published a book on Symbolic calculation of K-shortest paths and related measures with the stochastic process algebra tool CASPA.[1]
+Important works on the K Shortest path problem:
+The BibTeX database contains more articles.
+The Dijkstra algorithm can be generalized to find the K Shortest paths.
+Algorithm:
+There are mainly two variants of the K shortest path routing algorithm:
+In the first variant, the paths are not required to be loopless (this is the simple one): David Eppstein's algorithm achieves the best running time complexity[dubious – discuss].[2]
+In the second variant, attributed to Jin Y. Yen, the paths are required to be loopless.[3] (This restriction introduced another level of complexity.) Yen's algorithm is used where only simple paths are considered, whereas Eppstein's algorithm is used when non-simple paths are allowed (e.g., paths are allowed to revisit the same node multiple times) or where loops are not possible (in directed acyclic graphs).
+In all that follows, m is the number of edges and n is the number of vertices.
+Eppstein's algorithm provides the best results[clarification needed].[2] Eppstein's model finds the K shortest paths (allowing cycles) connecting a given pair of vertices in a digraph, in time O(m+ nlogn + K).
+Eppstein's algorithm uses a graph transformation technique.
+This model can also find the K shortest paths from a given source s to each vertex in the graph, in total time O(m + n log n + kn).
+The best running time for this model is attributed to Jin. Y. Yen.[3] Yen's algorithm finds the lengths of all shortest paths from a fixed node to all other nodes in an n-node non negative-distance network. This technique only requires 2n2 additions and n2 comparisons - which is less than other available algorithms require.
+The running time complexity is O(Kn(m + n log n)), which is pseudo-polynomial. m represents the number of edges and n is the number of vertices.
+The following example makes use of Yen’s model to find the first K shortest paths between communicating end nodes. That is, it finds the first, second, third, etc. up to the Kth shortest path. More details can be found here. The code provided in this example attempts to solve the K Shortest path routing problem for a 15-nodes network containing a combination of unidirectional and bidirectional links:
+Another example is the use of K Shortest algorithm to track multiple objects. The technique implements a multiple object tracker based on the K Shortest paths routing algorithm. A set of probabilistic occupancy maps is used as input. An object detector provides the input.
+The complete details can be found at "Computer Vision Laboratory – CVLAB" .
+
+Another use of K shortest path algorithms is to design a transit network that enhances passengers' experience in public transportation systems. Such an example of a transit network can be constructed by putting traveling time under consideration. In addition to traveling time, other conditions may be taken depending upon economical and geographical limitations. Despite variations in parameters, the K shortest path algorithms finds the most optimal solutions that satisfies almost all user needs. Such applications of K shortest path algorithms are becoming common, recently Xu, He, Song, and Chaudry (2012) studied the K shortest path problems in transit network systems. [4]
+The K Shortest path routing is a good alternative for:
+There are two main variations of the K Shortest path routing algorithm as mentioned above. Other variations only fall in between these.
+Cherkassky et al.[5] provide more algorithms and associated evaluations.

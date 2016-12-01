@@ -1,0 +1,528 @@
+ABOUT
+In analytic geometry, the intersection of a line and a plane can be the empty set, a point, or a line. Distinguishing these cases, and determining equations for the point and line in the latter cases, have use in computer graphics, motion planning, and collision detection.
+FULL TEXT
+In analytic geometry, the intersection of a line and a plane can be the empty set, a point, or a line. Distinguishing these cases, and determining equations for the point and line in the latter cases, have use in computer graphics, motion planning, and collision detection.
+
+
+In vector notation, a plane can be expressed as the set of points 
+
+
+
+
+p
+
+
+
+{\displaystyle \mathbf {p} }
+
+ for which
+where 
+
+
+
+
+n
+
+
+
+{\displaystyle \mathbf {n} }
+
+ is a normal vector to the plane and 
+
+
+
+
+
+p
+
+0
+
+
+
+
+
+{\displaystyle \mathbf {p_{0}} }
+
+ is a point on the plane. (The notation 
+
+
+
+
+a
+
+⋅
+
+b
+
+
+
+{\displaystyle \mathbf {a} \cdot \mathbf {b} }
+
+ denotes the dot product of the vectors 
+
+
+
+
+a
+
+
+
+{\displaystyle \mathbf {a} }
+
+ and 
+
+
+
+
+b
+
+
+
+{\displaystyle \mathbf {b} }
+
+.)
+The vector equation for a line is
+where 
+
+
+
+
+l
+
+
+
+{\displaystyle \mathbf {l} }
+
+ is a vector in the direction of the line, 
+
+
+
+
+
+l
+
+0
+
+
+
+
+
+{\displaystyle \mathbf {l_{0}} }
+
+ is a point on the line, and 
+
+
+
+d
+
+
+{\displaystyle d}
+
+ is a scalar in the real number domain. Substituting the equation for the line into the equation for the plane gives
+Expanding gives
+And solving for 
+
+
+
+d
+
+
+{\displaystyle d}
+
+ gives
+If 
+
+
+
+
+l
+
+⋅
+
+n
+
+=
+0
+
+
+{\displaystyle \mathbf {l} \cdot \mathbf {n} =0}
+
+ then the line and plane are parallel. There will be two cases: if 
+
+
+
+(
+
+
+p
+
+0
+
+
+
+−
+
+
+l
+
+0
+
+
+
+)
+⋅
+
+n
+
+=
+0
+
+
+{\displaystyle (\mathbf {p_{0}} -\mathbf {l_{0}} )\cdot \mathbf {n} =0}
+
+ then the line is contained in the plane, that is, the line intersects the plane at each point of the line. Otherwise, the line and plane have no intersection.
+If 
+
+
+
+
+l
+
+⋅
+
+n
+
+≠
+0
+
+
+{\displaystyle \mathbf {l} \cdot \mathbf {n} \neq 0}
+
+ there is a single point of intersection. The value of 
+
+
+
+d
+
+
+{\displaystyle d}
+
+ can be calculated and the point of intersection is given by
+A line is described by all points that are a given direction from a point. Thus a general point on a line can be represented as
+where 
+
+
+
+
+
+l
+
+
+a
+
+
+=
+(
+
+x
+
+a
+
+
+,
+
+y
+
+a
+
+
+,
+
+z
+
+a
+
+
+)
+
+
+{\displaystyle \mathbf {l} _{a}=(x_{a},y_{a},z_{a})}
+
+ and 
+
+
+
+
+
+l
+
+
+b
+
+
+=
+(
+
+x
+
+b
+
+
+,
+
+y
+
+b
+
+
+,
+
+z
+
+b
+
+
+)
+
+
+{\displaystyle \mathbf {l} _{b}=(x_{b},y_{b},z_{b})}
+
+ are two distinct points along the line.
+Similarly a general point on a plane can be represented as
+where 
+
+
+
+
+
+p
+
+
+k
+
+
+=
+(
+
+x
+
+k
+
+
+,
+
+y
+
+k
+
+
+,
+
+z
+
+k
+
+
+)
+
+
+{\displaystyle \mathbf {p} _{k}=(x_{k},y_{k},z_{k})}
+
+, 
+
+
+
+k
+=
+0
+,
+1
+,
+2
+
+
+{\displaystyle k=0,1,2}
+
+ are three points in the plane which are not co-linear.
+The point at which the line intersects the plane is therefore described by setting the point on the line equal to the point on the plane, giving the parametric equation:
+This can be rewritten as
+which can be expressed in matrix form as:
+The point of intersection is then equal to
+If the line is parallel to the plane then the vectors 
+
+
+
+
+
+l
+
+
+b
+
+
+−
+
+
+l
+
+
+a
+
+
+
+
+{\displaystyle \mathbf {l} _{b}-\mathbf {l} _{a}}
+
+, 
+
+
+
+
+
+p
+
+
+1
+
+
+−
+
+
+p
+
+
+0
+
+
+
+
+{\displaystyle \mathbf {p} _{1}-\mathbf {p} _{0}}
+
+, and 
+
+
+
+
+
+p
+
+
+2
+
+
+−
+
+
+p
+
+
+0
+
+
+
+
+{\displaystyle \mathbf {p} _{2}-\mathbf {p} _{0}}
+
+ will be linearly dependent and the matrix will be singular. This situation will also occur when the line lies in the plane.
+If the solution satisfies the condition 
+
+
+
+t
+∈
+[
+0
+,
+1
+]
+,
+
+
+{\displaystyle t\in [0,1],}
+
+, then the intersection point is on the line between 
+
+
+
+
+
+l
+
+
+a
+
+
+
+
+{\displaystyle \mathbf {l} _{a}}
+
+ and 
+
+
+
+
+
+l
+
+
+b
+
+
+
+
+{\displaystyle \mathbf {l} _{b}}
+
+.
+If the solution satisfies
+then the intersection point is in the plane inside the triangle spanned by the three points 
+
+
+
+
+
+p
+
+
+0
+
+
+
+
+{\displaystyle \mathbf {p} _{0}}
+
+, 
+
+
+
+
+
+p
+
+
+1
+
+
+
+
+{\displaystyle \mathbf {p} _{1}}
+
+ and 
+
+
+
+
+
+p
+
+
+2
+
+
+
+
+{\displaystyle \mathbf {p} _{2}}
+
+.
+This problem is solved by inverting the matrix:
+In the ray tracing method of computer graphics a surface can be represented as a set of pieces of planes. The intersection of a ray of light with each plane is used to produce an image of the surface. In vision-based 3D reconstruction, a subfield of computer vision, depth values are commonly measured by so-called triangulation method, which finds the intersection between light plane and ray reflected toward camera.
+The algorithm can be generalised to cover intersection with other planar figures, in particular, the intersection of a polyhedron with a line.

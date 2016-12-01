@@ -1,0 +1,1088 @@
+ABOUT
+The Viterbi algorithm is a dynamic programming algorithm for finding the most likely sequence of hidden states – called the Viterbi path – that results in a sequence of observed events, especially in the context of Markov information sources and hidden Markov models.
+FULL TEXT
+The Viterbi algorithm is a dynamic programming algorithm for finding the most likely sequence of hidden states – called the Viterbi path – that results in a sequence of observed events, especially in the context of Markov information sources and hidden Markov models.
+The algorithm has found universal application in decoding the convolutional codes used in both CDMA and GSM digital cellular, dial-up modems, satellite, deep-space communications, and 802.11 wireless LANs. It is now also commonly used in speech recognition, speech synthesis, diarization,[1] keyword spotting, computational linguistics, and bioinformatics. For example, in speech-to-text (speech recognition), the acoustic signal is treated as the observed sequence of events, and a string of text is considered to be the "hidden cause" of the acoustic signal. The Viterbi algorithm finds the most likely string of text given the acoustic signal.
+
+
+The Viterbi algorithm is named after Andrew Viterbi, who proposed it in 1967 as a decoding algorithm for convolutional codes over noisy digital communication links.[2] It has, however, a history of multiple invention, with at least seven independent discoveries, including those by Viterbi, Needleman and Wunsch, and Wagner and Fischer.[3]
+"Viterbi path" and "Viterbi algorithm" have become standard terms for the application of dynamic programming algorithms to maximization problems involving probabilities.[3] For example, in statistical parsing a dynamic programming algorithm can be used to discover the single most likely context-free derivation (parse) of a string, which is commonly called the "Viterbi parse".[4][5][6]
+A generalization of the Viterbi algorithm, termed the max-sum algorithm (or max-product algorithm) can be used to find the most likely assignment of all or some subset of latent variables in a large number of graphical models, e.g. Bayesian networks, Markov random fields and conditional random fields. The latent variables need in general to be connected in a way somewhat similar to an HMM, with a limited number of connections between variables and some type of linear structure among the variables. The general algorithm involves message passing and is substantially similar to the belief propagation algorithm (which is the generalization of the forward-backward algorithm).
+With the algorithm called iterative Viterbi decoding one can find the subsequence of an observation that matches best (on average) to a given HMM. This algorithm is proposed by Qi Wang et al.[7] to deal with turbo code. Iterative Viterbi decoding works by iteratively invoking a modified Viterbi algorithm, reestimating the score for a filler until convergence.
+An alternative algorithm, the Lazy Viterbi algorithm, has been proposed recently.[8] For many codes of practical interest, under reasonable noise conditions, the lazy decoder (using Lazy Viterbi algorithm) is much faster than the original Viterbi decoder (using Viterbi algorithm). This algorithm works by not expanding any nodes until it really needs to, and usually manages to get away with doing a lot less work (in software) than the ordinary Viterbi algorithm for the same result - however, it is not so easy to parallelize in hardware.
+Given the observation space 
+
+
+
+O
+=
+{
+
+o
+
+1
+
+
+,
+
+o
+
+2
+
+
+,
+…
+,
+
+o
+
+N
+
+
+}
+
+
+{\displaystyle O=\{o_{1},o_{2},\dots ,o_{N}\}}
+
+, the state space 
+
+
+
+S
+=
+{
+
+s
+
+1
+
+
+,
+
+s
+
+2
+
+
+,
+…
+,
+
+s
+
+K
+
+
+}
+
+
+{\displaystyle S=\{s_{1},s_{2},\dots ,s_{K}\}}
+
+, a sequence of observations 
+
+
+
+Y
+=
+{
+
+y
+
+1
+
+
+,
+
+y
+
+2
+
+
+,
+…
+,
+
+y
+
+T
+
+
+}
+
+
+{\displaystyle Y=\{y_{1},y_{2},\ldots ,y_{T}\}}
+
+, transition matrix 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ of size 
+
+
+
+K
+⋅
+K
+
+
+{\displaystyle K\cdot K}
+
+ such that 
+
+
+
+
+A
+
+i
+j
+
+
+
+
+{\displaystyle A_{ij}}
+
+ stores the transition probability of transiting from state 
+
+
+
+
+s
+
+i
+
+
+
+
+{\displaystyle s_{i}}
+
+ to state 
+
+
+
+
+s
+
+j
+
+
+
+
+{\displaystyle s_{j}}
+
+, emission matrix 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ of size 
+
+
+
+K
+⋅
+N
+
+
+{\displaystyle K\cdot N}
+
+ such that 
+
+
+
+
+B
+
+i
+j
+
+
+
+
+{\displaystyle B_{ij}}
+
+ stores the probability of observing 
+
+
+
+
+o
+
+j
+
+
+
+
+{\displaystyle o_{j}}
+
+ from state 
+
+
+
+
+s
+
+i
+
+
+
+
+{\displaystyle s_{i}}
+
+, an array of initial probabilities 
+
+
+
+π
+
+
+{\displaystyle \pi }
+
+ of size 
+
+
+
+K
+
+
+{\displaystyle K}
+
+ such that 
+
+
+
+
+π
+
+i
+
+
+
+
+{\displaystyle \pi _{i}}
+
+ stores the probability that 
+
+
+
+
+x
+
+1
+
+
+==
+
+s
+
+i
+
+
+
+
+{\displaystyle x_{1}==s_{i}}
+
+.We say a path 
+
+
+
+X
+=
+{
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+,
+…
+,
+
+x
+
+T
+
+
+}
+
+
+{\displaystyle X=\{x_{1},x_{2},\ldots ,x_{T}\}}
+
+ is a sequence of states that generate the observations 
+
+
+
+Y
+=
+{
+
+y
+
+1
+
+
+,
+
+y
+
+2
+
+
+,
+…
+,
+
+y
+
+T
+
+
+}
+
+
+{\displaystyle Y=\{y_{1},y_{2},\ldots ,y_{T}\}}
+
+.
+In this dynamic programming problem, we construct two 2-dimensional tables 
+
+
+
+
+T
+
+1
+
+
+,
+
+T
+
+2
+
+
+
+
+{\displaystyle T_{1},T_{2}}
+
+ of size 
+
+
+
+K
+⋅
+T
+
+
+{\displaystyle K\cdot T}
+
+. Each element 
+
+
+
+
+T
+
+1
+
+
+[
+i
+,
+j
+]
+
+
+{\displaystyle T_{1}[i,j]}
+
+ of 
+
+
+
+
+T
+
+1
+
+
+
+
+{\displaystyle T_{1}}
+
+ stores the probability of the most likely path so far 
+
+
+
+
+
+
+X
+^
+
+
+
+=
+{
+
+
+
+
+x
+^
+
+
+
+
+1
+
+
+,
+
+
+
+
+x
+^
+
+
+
+
+2
+
+
+,
+…
+,
+
+
+
+
+x
+^
+
+
+
+
+j
+
+
+}
+
+
+{\displaystyle {\hat {X}}=\{{\hat {x}}_{1},{\hat {x}}_{2},\ldots ,{\hat {x}}_{j}\}}
+
+ with 
+
+
+
+
+
+
+
+x
+^
+
+
+
+
+j
+
+
+=
+
+s
+
+i
+
+
+
+
+{\displaystyle {\hat {x}}_{j}=s_{i}}
+
+ that generates 
+
+
+
+Y
+=
+{
+
+y
+
+1
+
+
+,
+
+y
+
+2
+
+
+,
+…
+,
+
+y
+
+j
+
+
+}
+
+
+{\displaystyle Y=\{y_{1},y_{2},\ldots ,y_{j}\}}
+
+. Each element 
+
+
+
+
+T
+
+2
+
+
+[
+i
+,
+j
+]
+
+
+{\displaystyle T_{2}[i,j]}
+
+ of 
+
+
+
+
+T
+
+2
+
+
+
+
+{\displaystyle T_{2}}
+
+ stores 
+
+
+
+
+
+
+
+x
+^
+
+
+
+
+j
+−
+1
+
+
+
+
+{\displaystyle {\hat {x}}_{j-1}}
+
+ of the most likely path so far 
+
+
+
+
+
+
+X
+^
+
+
+
+=
+{
+
+
+
+
+x
+^
+
+
+
+
+1
+
+
+,
+
+
+
+
+x
+^
+
+
+
+
+2
+
+
+,
+…
+,
+
+
+
+
+x
+^
+
+
+
+
+j
+−
+1
+
+
+,
+
+
+
+
+x
+^
+
+
+
+
+j
+
+
+}
+
+
+{\displaystyle {\hat {X}}=\{{\hat {x}}_{1},{\hat {x}}_{2},\ldots ,{\hat {x}}_{j-1},{\hat {x}}_{j}\}}
+
+ for 
+
+
+
+∀
+j
+,
+2
+≤
+j
+≤
+T
+
+
+{\displaystyle \forall j,2\leq j\leq T}
+
+
+We fill entries of two tables 
+
+
+
+
+T
+
+1
+
+
+[
+i
+,
+j
+]
+,
+
+T
+
+2
+
+
+[
+i
+,
+j
+]
+
+
+{\displaystyle T_{1}[i,j],T_{2}[i,j]}
+
+ by increasing order of 
+
+
+
+K
+⋅
+j
++
+i
+
+
+{\displaystyle K\cdot j+i}
+
+.
+Note that 
+
+
+
+
+B
+
+i
+
+y
+
+j
+
+
+
+
+
+
+{\displaystyle B_{iy_{j}}}
+
+ does not need to appear in the latter expression, as it's constant with i and j and does not affect the argmax.
+Suppose we are given a hidden Markov model (HMM) with state space 
+
+
+
+S
+
+
+{\displaystyle S}
+
+, initial probabilities 
+
+
+
+
+π
+
+i
+
+
+
+
+{\displaystyle \pi _{i}}
+
+ of being in state 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ and transition probabilities 
+
+
+
+
+a
+
+i
+,
+j
+
+
+
+
+{\displaystyle a_{i,j}}
+
+ of transitioning from state 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ to state 
+
+
+
+j
+
+
+{\displaystyle j}
+
+. Say we observe outputs 
+
+
+
+
+y
+
+1
+
+
+,
+…
+,
+
+y
+
+T
+
+
+
+
+{\displaystyle y_{1},\dots ,y_{T}}
+
+. The most likely state sequence 
+
+
+
+
+x
+
+1
+
+
+,
+…
+,
+
+x
+
+T
+
+
+
+
+{\displaystyle x_{1},\dots ,x_{T}}
+
+ that produces the observations is given by the recurrence relations:[9]
+Here 
+
+
+
+
+V
+
+t
+,
+k
+
+
+
+
+{\displaystyle V_{t,k}}
+
+ is the probability of the most probable state sequence 
+
+
+
+
+P
+
+
+
+(
+
+
+
+x
+
+1
+
+
+,
+…
+,
+
+x
+
+T
+
+
+,
+
+y
+
+1
+
+
+,
+…
+,
+
+y
+
+T
+
+
+
+
+)
+
+
+
+
+{\displaystyle \mathrm {P} {\big (}x_{1},\dots ,x_{T},y_{1},\dots ,y_{T}{\big )}}
+
+ responsible for the first 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ observations that have 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ as its final state. The Viterbi path can be retrieved by saving back pointers that remember which state 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ was used in the second equation. Let 
+
+
+
+
+P
+t
+r
+
+(
+k
+,
+t
+)
+
+
+{\displaystyle \mathrm {Ptr} (k,t)}
+
+ be the function that returns the value of 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ used to compute 
+
+
+
+
+V
+
+t
+,
+k
+
+
+
+
+{\displaystyle V_{t,k}}
+
+ if 
+
+
+
+t
+>
+1
+
+
+{\displaystyle t>1}
+
+, or 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ if 
+
+
+
+t
+=
+1
+
+
+{\displaystyle t=1}
+
+. Then:
+Here we're using the standard definition of arg max.
+The complexity of this algorithm is 
+
+
+
+O
+(
+T
+×
+
+
+|
+
+S
+
+|
+
+
+2
+
+
+)
+
+
+{\displaystyle O(T\times \left|{S}\right|^{2})}
+
+.
+Consider a village where all villagers are either healthy or have a fever and only the village doctor can determine whether each has a fever. The doctor diagnoses fever by asking patients how they feel. The villagers may only answer that they feel normal, dizzy, or cold.
+The doctor believes that the health condition of his patients operate as a discrete Markov chain. There are two states, "Healthy" and "Fever", but the doctor cannot observe them directly; they are hidden from him. On each day, there is a certain chance that the patient will tell the doctor he/she is "normal", "cold", or "dizzy", depending on her health condition.
+The observations (normal, cold, dizzy) along with a hidden state (healthy, fever) form a hidden Markov model (HMM), and can be represented as follows in the Python programming language:
+In this piece of code, start_probability represents the doctor's belief about which state the HMM is in when the patient first visits (all he knows is that the patient tends to be healthy). The particular probability distribution used here is not the equilibrium one, which is (given the transition probabilities) approximately {'Healthy': 0.57, 'Fever': 0.43}. The transition_probability represents the change of the health condition in the underlying Markov chain. In this example, there is only a 30% chance that tomorrow the patient will have a fever if he is healthy today. The emission_probability represents how likely the patient is to feel on each day. If he is healthy, there is a 50% chance that he feels normal; if he has a fever, there is a 60% chance that he feels dizzy.
+The patient visits three days in a row and the doctor discovers that on the first day she feels normal, on the second day she feels cold, on the third day she feels dizzy. The doctor has a question: what is the most likely sequence of health conditions of the patient that would explain these observations? This is answered by the Viterbi algorithm.
+The function viterbi takes the following arguments: obs is the sequence of observations, e.g. ['normal', 'cold', 'dizzy']; states is the set of hidden states; start_p is the start probability; trans_p are the transition probabilities; and emit_p are the emission probabilities. For simplicity of code, we assume that the observation sequence obs is non-empty and that trans_p[i][j] and emit_p[i][j] is defined for all states i,j.
+In the running example, the forward/Viterbi algorithm is used as follows:
+The output of the script is
+This reveals that the observations ['normal', 'cold', 'dizzy'] were most likely generated by states ['Healthy', 'Healthy', 'Fever']. In other words, given the observed activities, the patient was most likely to have been healthy both on the first day when she felt normal as well as on the second day when she felt cold, and then she contracted a fever the third day.
+The operation of Viterbi's algorithm can be visualized by means of a trellis diagram. The Viterbi path is essentially the shortest path through this trellis. The trellis for the clinic example is shown below; the corresponding Viterbi path is in bold:

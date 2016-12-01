@@ -1,0 +1,4 @@
+ABOUT
+In combinatorial mathematics, a picture is a bijection between skew diagrams satisfying certain properties, introduced by Zelevinsky (1981) in a generalization of the Robinson–Schensted correspondence and the Littlewood–Richardson rule.
+FULL TEXT
+In combinatorial mathematics, a picture is a bijection between skew diagrams satisfying certain properties, introduced by Zelevinsky (1981) in a generalization of the Robinson–Schensted correspondence and the Littlewood–Richardson rule.

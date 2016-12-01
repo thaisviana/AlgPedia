@@ -1,0 +1,9 @@
+ABOUT
+A ternary search algorithm is a technique in computer science for finding the minimum or maximum of a unimodal function. A ternary search determines either that the minimum or maximum cannot be in the first third of the domain or that it cannot be in the last third of the domain, then repeats on the remaining two-thirds. A ternary search is an example of a divide and conquer algorithm (see search algorithm).
+FULL TEXT
+A ternary search algorithm is a technique in computer science for finding the minimum or maximum of a unimodal function. A ternary search determines either that the minimum or maximum cannot be in the first third of the domain or that it cannot be in the last third of the domain, then repeats on the remaining two-thirds. A ternary search is an example of a divide and conquer algorithm (see search algorithm).
+
+
+Assume we are looking for a maximum of f(x) and that we know the maximum lies somewhere between A and B. For the algorithm to be applicable, there must be some value x such that
+Let a unimodal function f(x) on some interval [l; r]. Take any two points m1 and m2 in this segment: l < m1 < m2 < r. Then there are three possibilities:
+choice points m1 and m2:

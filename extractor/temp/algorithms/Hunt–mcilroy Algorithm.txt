@@ -1,0 +1,64 @@
+ABOUT
+In computer science, the Hunt–McIlroy algorithm is a solution to the longest common subsequence problem. It was one of the first non-heuristic algorithms used in diff. To this day, variations of this algorithm are found in incremental version control systems, wiki engines, and molecular phylogenetics research software.
+FULL TEXT
+In computer science, the Hunt–McIlroy algorithm is a solution to the longest common subsequence problem. It was one of the first non-heuristic algorithms used in diff. To this day, variations of this algorithm are found in incremental version control systems, wiki engines, and molecular phylogenetics research software.
+The research accompanying the final version of Unix diff, written by Douglas McIlroy, was published in the 1976 paper "An Algorithm for Differential File Comparison", co-written with James W. Hunt, who developed an initial prototype of diff.[1]
+
+
+The Hunt–McIlroy algorithm is a modification to a basic solution for the longest common subsequence problem. The solution is modified so that there are lower time and space requirements for the algorithm when it is working with typical inputs.
+Let Ai be the ith line of the first file.
+Let Bj be the jth line of the second file.
+Let Pij be the length of the longest common subsequence for the first i lines of the first file and the first j lines of the second file.
+Consider the files A and B.
+A contains three lines:
+B contains three lines:
+The steps the above algorithm would perform to determine the length of the longest common subsequence for both files are shown in the diagram. The algorithm correctly reports that the longest common subsequence of the two files is two lines long.
+The above algorithm has worst-case time and space complexities of 
+
+
+
+O
+(
+m
+n
+)
+
+
+{\displaystyle O(mn)}
+
+ (see big O notation), where m is the number of lines in file A and n is the number of lines in file B. The Hunt–McIlroy algorithm modifies this algorithm to have a worst case time complexity of 
+
+
+
+O
+(
+m
+n
+log
+⁡
+m
+)
+
+
+{\displaystyle O(mn\log m)}
+
+ and space complexity of 
+
+
+
+O
+(
+m
+n
+)
+
+
+{\displaystyle O(mn)}
+
+, though it regularly beats the worst-case with typical inputs.
+The Hunt–McIlroy algorithm only considers what the authors call essential matches, or k-candidates. k-candidates are pairs of indices (i, j) such that:
+The second point implies two properties of k-candidates:
+To create the longest common subsequence from a collection of k-candidates, a grid with each file's contents on each axis is created. The k-candidates are marked on the grid. A common subsequence can be created by joining marked coordinates of the grid such that any increase in i is accompanied by an increase in j.
+This is illustrated in the adjacent diagram.
+Black dots represent candidates that would have to be considered by the simple algorithm and the black lines are connections that create common subsequences of length 3.
+Red dots represent k-candidates that are considered by the Hunt–McIlroy algorithm and the red line is the connection that creates a common subsequence of length 3.

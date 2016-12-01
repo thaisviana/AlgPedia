@@ -1,0 +1,12 @@
+ABOUT
+In probability theory, a continuity correction is an adjustment that is made when a discrete distribution is approximated by a continuous distribution.
+FULL TEXT
+In probability theory, a continuity correction is an adjustment that is made when a discrete distribution is approximated by a continuous distribution.
+
+
+If a random variable X has a binomial distribution with parameters n and p, i.e., X is distributed as the number of "successes" in n independent Bernoulli trials with probability p of success on each trial, then
+for any x ∈ {0, 1, 2, ... n}. If np and np(1 − p) are large (sometimes taken to mean ≥ 5), then the probability above is fairly well approximated by
+where Y is a normally distributed random variable with the same expected value and the same variance as X, i.e., E(Y) = np and var(Y) = np(1 − p). This addition of 1/2 to x is a continuity correction.
+A continuity correction can also be applied when other discrete distributions supported on the integers are approximated by the normal distribution. For example, if X has a Poisson distribution with expected value λ then the variance of X is also λ, and
+if Y is normally distributed with expectation and variance both λ.
+Before the ready availability of statistical software having the ability to evaluate probability distribution functions accurately, continuity corrections played an important role in the practical application of statistical tests in which the test statistic has a discrete distribution: it was a special importance for manual calculations. A particular example of this is the binomial test, involving the binomial distribution, as in checking whether a coin is fair. Where extreme accuracy is not necessary, computer calculations for some ranges of parameters may still rely on using continuity corrections to improve accuracy while retaining simplicity.

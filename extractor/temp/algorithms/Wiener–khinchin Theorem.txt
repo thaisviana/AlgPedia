@@ -1,0 +1,339 @@
+ABOUT
+In applied mathematics, the Wiener–Khinchin theorem, also known as the Wiener–Khintchine theorem and sometimes as the Wiener–Khinchin–Einstein theorem or the Khinchin–Kolmogorov theorem, states that the autocorrelation function of a wide-sense-stationary random process has a spectral decomposition given by the power spectrum of that process.[1][2][3][4][5][6][7]
+FULL TEXT
+In applied mathematics, the Wiener–Khinchin theorem, also known as the Wiener–Khintchine theorem and sometimes as the Wiener–Khinchin–Einstein theorem or the Khinchin–Kolmogorov theorem, states that the autocorrelation function of a wide-sense-stationary random process has a spectral decomposition given by the power spectrum of that process.[1][2][3][4][5][6][7]
+
+
+Norbert Wiener proved this theorem for the case of a deterministic function in 1930;[8] Aleksandr Khinchin later formulated an analogous result for stationary stochastic processes and published that probabilistic analogue in 1934.[9][10] Albert Einstein explained, without proofs, the idea in a brief two-page memo in 1914.[11]
+For continuous time, the Wiener–Khinchin theorem says that if 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ is a wide-sense stationary process such that its autocorrelation function (sometimes called autocovariance) defined in terms of statistical expected value E, 
+
+
+
+
+r
+
+x
+x
+
+
+(
+τ
+)
+=
+E
+⁡
+
+
+[
+
+
+
+x
+(
+t
+)
+
+x
+
+∗
+
+
+(
+t
+−
+τ
+)
+
+
+
+]
+
+
+ 
+
+
+{\displaystyle r_{xx}(\tau )=\operatorname {E} {\big [}\,x(t)x^{*}(t-\tau )\,{\big ]}\ }
+
+ exists and is finite at every lag 
+
+
+
+τ
+
+
+{\displaystyle \tau }
+
+, then there exists a monotone function 
+
+
+
+F
+(
+f
+)
+
+
+{\displaystyle F(f)}
+
+ in the frequency domain 
+
+
+
+−
+∞
+<
+f
+<
+∞
+
+
+{\displaystyle -\infty <f<\infty }
+
+ such that
+where the integral is a Riemann–Stieltjes integral.[1][12] This is a kind of spectral decomposition of the auto-correlation function. F is called the power spectral distribution function, and is a statistical distribution function. It is sometimes called the integrated spectrum.
+(The asterisk denotes complex conjugate, and of course it can be omitted if the random process is real-valued.)
+Note that the Fourier transform of 
+
+
+
+x
+(
+t
+)
+
+
+
+{\displaystyle x(t)\,}
+
+ does not exist in general, because stationary random functions are not generally either square integrable or absolutely integrable. Nor is 
+
+
+
+
+r
+
+x
+x
+
+
+
+
+{\displaystyle r_{xx}}
+
+ assumed to be absolutely integrable, so it need not have a Fourier transform, either.
+But if 
+
+
+
+F
+(
+f
+)
+
+
+{\displaystyle F(f)}
+
+ is absolutely continuous, for example if the process is purely indeterministic, then 
+
+
+
+F
+
+
+{\displaystyle F}
+
+ is differentiable almost everywhere. In this case, one can define 
+
+
+
+S
+(
+f
+)
+
+
+{\displaystyle S(f)}
+
+, the power spectral density of 
+
+
+
+x
+(
+t
+)
+
+
+
+{\displaystyle x(t)\,}
+
+, by taking the averaged derivative of 
+
+
+
+F
+
+
+{\displaystyle F}
+
+. Because the left and right derivatives of 
+
+
+
+F
+
+
+{\displaystyle F}
+
+ exist everywhere, we can put 
+
+
+
+S
+(
+f
+)
+=
+
+
+1
+2
+
+
+(
+
+lim
+
+ϵ
+↓
+0
+
+
+
+
+1
+ϵ
+
+
+(
+F
+(
+f
++
+ϵ
+)
+−
+F
+(
+f
+)
+)
++
+
+lim
+
+ϵ
+↑
+0
+
+
+
+
+1
+ϵ
+
+
+(
+F
+(
+f
++
+ϵ
+)
+−
+F
+(
+f
+)
+)
+)
+
+
+{\displaystyle S(f)={\frac {1}{2}}(\lim _{\epsilon \downarrow 0}{\frac {1}{\epsilon }}(F(f+\epsilon )-F(f))+\lim _{\epsilon \uparrow 0}{\frac {1}{\epsilon }}(F(f+\epsilon )-F(f)))}
+
+ everywhere,[13] (obtaining that F is the integral of its averaged derivative[14]), and the theorem simplifies to
+If now one assumes that r and S satisfy the necessary conditions for Fourier inversion to be valid, the Wiener–Khinchin theorem takes the simple form of saying that r and S are a Fourier transform pair, and
+For the discrete-time case, the power spectral density of the function with discrete values 
+
+
+
+x
+[
+n
+]
+
+
+
+{\displaystyle x[n]\,}
+
+ is
+where
+is the discrete autocorrelation function of 
+
+
+
+x
+[
+n
+]
+
+
+
+{\displaystyle x[n]\,}
+
+, provided this is absolutely integrable. Being a sampled and discrete-time sequence, the spectral density is periodic in the frequency domain. This is due to the problem of aliasing: the contribution of any frequency higher than the Nyquist frequency seems to be equal to that of its alias between 0 and 1. For this reason, the domain of the function 
+
+
+
+S
+
+
+{\displaystyle S}
+
+ is usually restricted to lie between 0 and 1.
+The theorem is useful for analyzing linear time-invariant systems, LTI systems, when the inputs and outputs are not square integrable, so their Fourier transforms do not exist. A corollary is that the Fourier transform of the autocorrelation function of the output of an LTI system is equal to the product of the Fourier transform of the autocorrelation function of the input of the system times the squared magnitude of the Fourier transform of the system impulse response.[15] This works even when the Fourier transforms of the input and output signals do not exist because these signals are not square integrable, so the system inputs and outputs cannot be directly related by the Fourier transform of the impulse response.
+Since the Fourier transform of the autocorrelation function of a signal is the power spectrum of the signal, this corollary is equivalent to saying that the power spectrum of the output is equal to the power spectrum of the input times the energy transfer function.
+This corollary is used in the parametric method for power spectrum estimation.
+In many textbooks and in much of the technical literature it is tacitly assumed that Fourier inversion of the autocorrelation function and the power spectral density is valid, and the Wiener–Khinchin theorem is stated, very simply, as if it said that the Fourier transform of the autocorrelation function was equal to the power spectral density, ignoring all questions of convergence.[16] (Einstein is an example.) But the theorem (as stated here), was applied by Norbert Wiener and Aleksandr Khinchin to the sample functions (signals) of wide-sense-stationary random processes, signals whose Fourier transforms do not exist. The whole point of Wiener's contribution was to make sense of the spectral decomposition of the autocorrelation function of a sample function of a wide-sense-stationary random process even when the integrals for the Fourier transform and Fourier inversion do not make sense.
+Further complicating the issue is that the discrete Fourier transform always exists for digital, finite length sequences, meaning that the theorem can be blindly applied to calculate auto-correlations of numerical sequences. As mentioned earlier, the relation of this discrete sampled data to a mathematical model is often misleading and related errors can show up as a divergence when the sequence length is modified.
+Some authors refer to 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ as the autocovariance function. They then proceed to normalise it, by dividing by 
+
+
+
+R
+(
+0
+)
+
+
+{\displaystyle R(0)}
+
+, to obtain what they refer to as the autocorrelation function.

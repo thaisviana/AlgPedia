@@ -1,0 +1,88 @@
+ABOUT
+Belief propagation, also known as sum-product message passing, is a message passing algorithm for performing inference on graphical models, such as Bayesian networks and Markov random fields. It calculates the marginal distribution for each unobserved node, conditional on any observed nodes. Belief propagation is commonly used in artificial intelligence and information theory and has demonstrated empirical success in numerous applications including low-density parity-check codes, turbo codes, free energy approximation, and satisfiability.[1]
+FULL TEXT
+Belief propagation, also known as sum-product message passing, is a message passing algorithm for performing inference on graphical models, such as Bayesian networks and Markov random fields. It calculates the marginal distribution for each unobserved node, conditional on any observed nodes. Belief propagation is commonly used in artificial intelligence and information theory and has demonstrated empirical success in numerous applications including low-density parity-check codes, turbo codes, free energy approximation, and satisfiability.[1]
+The algorithm was first proposed by Judea Pearl in 1982,[2] who formulated this algorithm on trees, and was later extended to polytrees.[3] It has since been shown to be a useful approximate algorithm on general graphs.[4]
+If X={Xi} is a set of discrete random variables with a joint mass function p, the marginal distribution of a single Xi is simply the summation of p over all other variables:
+However, this quickly becomes computationally prohibitive: if there are 100 binary variables, then one needs to sum over 299 ≈ 6.338 × 1029 possible values. By exploiting the polytree structure, belief propagation allows the marginals to be computed much more efficiently.
+
+
+Variants of the belief propagation algorithm exist for several types of graphical models (Bayesian networks and Markov random fields,[5] in particular). We describe here the variant that operates on a factor graph. A factor graph is a bipartite graph containing nodes corresponding to variables V and factors F, with edges between variables and the factors in which they appear. We can write the joint mass function:
+where xa is the vector of neighbouring variable nodes to the factor node a. Any Bayesian network or Markov random field can be represented as a factor graph.
+The algorithm works by passing real valued functions called messages along with the edges between the hidden nodes. More precisely, if v is a variable node and a is a factor node connected to v in the factor graph, the messages from v to a, (denoted by 
+
+
+
+
+μ
+
+v
+→
+a
+
+
+
+
+{\displaystyle \mu _{v\to a}}
+
+) and from a to v (
+
+
+
+
+μ
+
+a
+→
+v
+
+
+
+
+{\displaystyle \mu _{a\to v}}
+
+), are real-valued functions whose domain is Dom(v), the set of values that can be taken by the random variable associated with v. These messages contain the "influence" that one variable exerts on another. The messages are computed differently depending on whether the node receiving the message is a variable node or a factor node. Keeping the same notation:
+As shown by the previous formula: the complete marginalisation is reduced to a sum of products of simpler terms than the ones appearing in the full joint distribution. This is the reason why it is called the sum-product algorithm.
+In a typical run, each message will be updated iteratively from the previous value of the neighbouring messages. Different scheduling can be used for updating the messages. In the case where the graphical model is a tree, an optimal scheduling allows to reach convergence after computing each messages only once (see next sub-section). When the factor graph has cycles, such an optimal scheduling does not exist, and a typical choice is to update all messages simultaneously at each iteration.
+Upon convergence (if convergence happened), the estimated marginal distribution of each node is proportional to the product of all messages from adjoining factors (missing the normalization constant):
+Likewise, the estimated joint marginal distribution of the set of variables belonging to one factor is proportional to the product of the factor and the messages from the variables:
+In the case where the factor graph is acyclic (i.e. is a tree or a forest), these estimated marginal actually converge to the true marginals in a finite number of iterations. This can be shown by mathematical induction.
+In the case when the factor graph is a tree, the belief propagation algorithm will compute the exact marginals. Furthermore, with proper scheduling of the message updates, it will terminate after 2 steps. This optimal scheduling can be described as follows:
+Before starting, the graph is oriented by designating one node as the root; any non-root node which is connected to only one other node is called a leaf.
+In the first step, messages are passed inwards: starting at the leaves, each node passes a message along the (unique) edge towards the root node. The tree structure guarantees that it is possible to obtain messages from all other adjoining nodes before passing the message on. This continues until the root has obtained messages from all of its adjoining nodes.
+The second step involves passing the messages back out: starting at the root, messages are passed in the reverse direction. The algorithm is completed when all leaves have received their messages.
+Curiously, although it was originally designed for acyclic graphical models, it was found that the Belief Propagation algorithm can be used in general graphs. The algorithm is then sometimes called "loopy" belief propagation, because graphs typically contain cycles, or loops. The initialization and scheduling of message updates must be adjusted slightly (compared with the previously described schedule for acyclic graphs) because graphs might not contain any leaves. Instead, one initializes all variable messages to 1 and uses the same message definitions above, updating all messages at every iteration (although messages coming from known leaves or tree-structured subgraphs may no longer need updating after sufficient iterations). It is easy to show that in a tree, the message definitions of this modified procedure will converge to the set of message definitions given above within a number of iterations equal to the diameter of the tree.
+The precise conditions under which loopy belief propagation will converge are still not well understood; it is known that on graphs containing a single loop it converges in most cases, but the probabilities obtained might be incorrect.[6] Several sufficient (but not necessary) conditions for convergence of loopy belief propagation to a unique fixed point exist.[7] There exist graphs which will fail to converge, or which will oscillate between multiple states over repeated iterations. Techniques like EXIT charts can provide an approximate visualisation of the progress of belief propagation and an approximate test for convergence.
+There are other approximate methods for marginalization including variational methods and Monte Carlo methods.
+One method of exact marginalization in general graphs is called the junction tree algorithm, which is simply belief propagation on a modified graph guaranteed to be a tree. The basic premise is to eliminate cycles by clustering them into single nodes.
+A similar algorithm is commonly referred to as the Viterbi algorithm, but also known as a special case of the max-product or min-sum algorithm, which solves the related problem of maximization, or most probable explanation. Instead of attempting to solve the marginal, the goal here is to find the values 
+
+
+
+
+x
+
+
+
+{\displaystyle \mathbf {x} }
+
+ that maximises the global function (i.e. most probable values in a probabilistic setting), and it can be defined using the arg max:
+An algorithm that solves this problem is nearly identical to belief propagation, with the sums replaced by maxima in the definitions.[8]
+It is worth noting that inference problems like marginalization and maximization are NP-hard to solve exactly and approximately (at least for relative error) in a graphical model. More precisely, the marginalization problem defined above is #P-complete and maximization is NP-complete.
+The memory usage of belief propagation can be reduced through the use of the Island algorithm (at a small cost in time complexity).
+The sum-product algorithm is related to the calculation of free energy in thermodynamics. Let Z be the partition function. A probability distribution
+(as per the factor graph representation) can be viewed as a measure of the internal energy present in a system, computed as
+The free energy of the system is then
+It can then be shown that the points of convergence of the sum-product algorithm represent the points where the free energy in such a system is minimized. Similarly, it can be shown that a fixed point of the iterative belief propagation algorithm in graphs with cycles is a stationary point of a free energy approximation.[9]
+Belief propagation algorithms are normally presented as message update equations on a factor graph, involving messages between variable nodes and their neighboring factor nodes and vice versa. Considering messages between regions in a graph is one way of generalizing the belief propagation algorithm.[9] There are several ways of defining the set of regions in a graph that can exchange messages. One method uses ideas introduced by Kikuchi in the physics literature, and is known as Kikuchi's cluster variation method.
+Improvements in the performance of belief propagation algorithms are also achievable by breaking the replicas symmetry in the distributions of the fields (messages). This generalization leads to a new kind of algorithm called survey propagation (SP), which have proved to be very efficient in NP-complete problems like satisfiability[1] and graph coloring.
+The cluster variational method and the survey propagation algorithms are two different improvements to belief propagation. The name generalized survey propagation (GSP) is waiting to be assigned to the algorithm that merges both generalizations.
+Gaussian belief propagation is a variant of the belief propagation algorithm when the underlying distributions are Gaussian. The first work analyzing this special model was the seminal work of Weiss and Freeman [10]
+The GaBP algorithm solves the following marginalization problem:
+where Z is a normalization constant, A is a symmetric positive definite matrix (inverse covariance matrix a.k.a. precision matrix) and b is the shift vector.
+Equivalently, it can be shown that using the Gaussian model, the solution of the marginalization problem is equivalent to the MAP assignment problem:
+This problem is also equivalent to the following minimization problem of the quadratic form:
+Which is also equivalent to the linear system of equations
+Convergence of the GaBP algorithm is easier to analyze (relatively to the general BP case) and there are two known sufficient convergence conditions. The first one was formulated by Weiss et al. in the year 2000, when the information matrix A is diagonally dominant. The second convergence condition was formulated by Johnson et al.[11] in 2006, when the spectral radius of the matrix
+where D = diag(A). Later, Su and Wu established the necessary and sufficient convergence conditions for synchronous GaBP and damped GaBP, as well as another sufficient convergence condition for asynchronous GaBP. For each case, the convergence condition involves verifying 1) a set (determined by A) being non-empty, 2) the spectral radius of a certain matrix being smaller than one, and 3) the singularity issue (when converting BP message into belief) does not occur.[12]
+The GaBP algorithm was linked to the linear algebra domain,[13] and it was shown that the GaBP algorithm can be viewed as an iterative algorithm for solving the linear system of equations Ax = b where A is the information matrix and b is the shift vector. Empirically, the GaBP algorithm is shown to converge faster than classical iterative methods like the Jacobi method, the Gauss–Seidel method, successive over-relaxation, and others.[14] Additionally, the GaBP algorithm is shown to be immune to numerical problems of the preconditioned conjugate gradient method [15]

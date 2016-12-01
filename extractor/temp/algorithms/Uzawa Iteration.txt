@@ -1,0 +1,225 @@
+ABOUT
+In numerical mathematics, the Uzawa iteration is an algorithm for solving saddle point problems. It is named after Hirofumi Uzawa and was originally introduced in the context of concave programming.[1]
+FULL TEXT
+In numerical mathematics, the Uzawa iteration is an algorithm for solving saddle point problems. It is named after Hirofumi Uzawa and was originally introduced in the context of concave programming.[1]
+
+
+We consider a saddle point problem of the form
+where 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ is a symmetric positive-definite matrix. Multiplying the first row by 
+
+
+
+
+B
+
+∗
+
+
+
+A
+
+−
+1
+
+
+
+
+{\displaystyle B^{*}A^{-1}}
+
+ and subtracting from the second row yields the upper-triangular system
+where 
+
+
+
+S
+:=
+
+B
+
+∗
+
+
+
+A
+
+−
+1
+
+
+B
+
+
+{\displaystyle S:=B^{*}A^{-1}B}
+
+ denotes the Schur complement. Since 
+
+
+
+S
+
+
+{\displaystyle S}
+
+ is symmetric positive-definite, we can apply standard iterative methods like the gradient descent method or the conjugate gradient method to
+in order to compute 
+
+
+
+
+x
+
+2
+
+
+
+
+{\displaystyle x_{2}}
+
+. The vector 
+
+
+
+
+x
+
+1
+
+
+
+
+{\displaystyle x_{1}}
+
+ can be reconstructed by solving
+It is possible to update 
+
+
+
+
+x
+
+1
+
+
+
+
+{\displaystyle x_{1}}
+
+ alongside 
+
+
+
+
+x
+
+2
+
+
+
+
+{\displaystyle x_{2}}
+
+ during the iteration for the Schur complement system and thus obtain an efficient algorithm.
+We start the conjugate gradient iteration by computing the residual
+of the Schur complement system, where
+denotes the upper half of the solution vector matching the initial guess 
+
+
+
+
+x
+
+2
+
+
+
+
+{\displaystyle x_{2}}
+
+ for its lower half. We complete the initialization by choosing the first search direction
+In each step, we compute
+and keep the intermediate result
+for later. The scaling factor is given by
+and leads to the updates
+Using the intermediate result 
+
+
+
+
+p
+
+1
+
+
+
+
+{\displaystyle p_{1}}
+
+ saved earlier, we can also update the upper part of the solution vector
+Now we only have to construct the new search direction by the Gram–Schmidt process, i.e.,
+The iteration terminates if the residual 
+
+
+
+
+r
+
+2
+
+
+
+
+{\displaystyle r_{2}}
+
+ has become sufficiently small or if the norm of 
+
+
+
+
+p
+
+2
+
+
+
+
+{\displaystyle p_{2}}
+
+ is significantly smaller than 
+
+
+
+
+r
+
+2
+
+
+
+
+{\displaystyle r_{2}}
+
+ indicating that the Krylov subspace has been almost exhausted.
+If solving the linear system 
+
+
+
+A
+x
+=
+b
+
+
+{\displaystyle Ax=b}
+
+ exactly is not feasible, inexact solvers can be applied.[2][3][4]
+If the Schur complement system is ill-conditioned, preconditioners can be employed to improve the speed of convergence of the underlying gradient method.[2][5]
+Inequality constraints can be incorporated, e.g., in order to handle obstacle problems.[5]

@@ -1,0 +1,6 @@
+ABOUT
+In mathematical optimization, the ordered subset expectation maximization (OSEM) method is an iterative method that is used in computed tomography.
+FULL TEXT
+In mathematical optimization, the ordered subset expectation maximization (OSEM) method is an iterative method that is used in computed tomography.
+In applications in medical imaging, the OSEM method is used for positron emission tomography, for single photon emission computed tomography, and for X-ray computed tomography.
+The OSEM method is related to the expectation maximization (EM) method of statistics. The OSEM method is also related to methods of filtered back projection.

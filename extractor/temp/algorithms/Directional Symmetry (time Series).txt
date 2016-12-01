@@ -1,0 +1,82 @@
+ABOUT
+
+In statistical analysis of time series and in signal processing, directional symmetry is a statistical measure of a model's performance in predicting the direction of change, positive or negative, of a time series from one time period to the next.
+FULL TEXT
+
+In statistical analysis of time series and in signal processing, directional symmetry is a statistical measure of a model's performance in predicting the direction of change, positive or negative, of a time series from one time period to the next.
+
+
+Given a time series 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ with values 
+
+
+
+
+t
+
+i
+
+
+
+
+{\displaystyle t_{i}}
+
+ at times 
+
+
+
+i
+=
+1
+,
+…
+,
+n
+
+
+{\displaystyle i=1,\ldots ,n}
+
+ and a model that makes predictions for those values 
+
+
+
+
+
+
+
+t
+^
+
+
+
+
+i
+
+
+
+
+{\displaystyle {\hat {t}}_{i}}
+
+, then the directional symmetry (DS) statistic is defined as
+The DS statistic gives the percentage of occurrences in which the sign of the change in value from one time period to the next is the same for both the actual and predicted time series. The DS statistic is a measure of the performance of a model in predicting the direction of value changes. The case 
+
+
+
+D
+S
+=
+100
+%
+
+
+{\displaystyle DS=100\%}
+
+ would indicate that a model perfectly predicts the direction of change of a time series from one time period to the next.

@@ -1,0 +1,539 @@
+ABOUT
+In engineering, a transfer function (also known as system function[1] or network function and, when plotted as a graph, transfer curve) is a mathematical representation for fit[2][3] or to describe inputs and outputs of black box models.
+FULL TEXT
+In engineering, a transfer function (also known as system function[1] or network function and, when plotted as a graph, transfer curve) is a mathematical representation for fit[2][3] or to describe inputs and outputs of black box models.
+Typically it is a representation in terms of spatial or temporal frequency, of the relation between the input and output of a linear time-invariant system (LTI) with zero initial conditions and zero-point equilibrium.[4] With optical imaging devices, for example, it is the Fourier transform of the point spread function (hence a function of spatial frequency) i.e., the intensity distribution caused by a point object in the field of view.[citation needed] A number of sources however use "transfer function" to mean some input-output characteristic in direct physical measures (e.g., output voltage as a function of input voltage of a two-port network) rather than its transform to the s-plane.[5][6][7]
+
+
+Transfer functions are commonly used in the analysis of systems such as single-input single-output filters, typically within the fields of signal processing, communication theory, and control theory. The term is often used exclusively to refer to linear, time-invariant systems (LTI), as covered in this article. Most real systems have non-linear input/output characteristics, but many systems, when operated within nominal parameters (not "over-driven") have behavior that is close enough to linear that LTI system theory is an acceptable representation of the input/output behavior.
+The descriptions below are given in terms of a complex variable, 
+
+
+
+s
+=
+σ
++
+j
+⋅
+ω
+
+
+{\displaystyle s=\sigma +j\cdot \omega }
+
+, which bears a brief explanation. In many applications, it is sufficient to define 
+
+
+
+σ
+=
+0
+
+
+{\displaystyle \sigma =0}
+
+ (and 
+
+
+
+s
+=
+j
+⋅
+ω
+
+
+{\displaystyle s=j\cdot \omega }
+
+), which reduces the Laplace transforms with complex arguments to Fourier transforms with real argument ω. The applications where this is common are ones where there is interest only in the steady-state response of an LTI system, not the fleeting turn-on and turn-off behaviors or stability issues. That is usually the case for signal processing and communication theory.
+Thus, for continuous-time input signal 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ and output 
+
+
+
+y
+(
+t
+)
+
+
+{\displaystyle y(t)}
+
+, the transfer function 
+
+
+
+H
+(
+s
+)
+
+
+{\displaystyle H(s)}
+
+ is the linear mapping of the Laplace transform of the input, 
+
+
+
+X
+(
+s
+)
+=
+
+
+L
+
+
+
+{
+x
+(
+t
+)
+}
+
+
+
+{\displaystyle X(s)={\mathcal {L}}\left\{x(t)\right\}}
+
+, to the Laplace transform of the output 
+
+
+
+Y
+(
+s
+)
+=
+
+
+L
+
+
+
+{
+y
+(
+t
+)
+}
+
+
+
+{\displaystyle Y(s)={\mathcal {L}}\left\{y(t)\right\}}
+
+:
+or
+In discrete-time systems, the relation between an input signal 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ and output 
+
+
+
+y
+(
+t
+)
+
+
+{\displaystyle y(t)}
+
+ is dealt with using the z-transform, and then the transfer function is similarly written as 
+
+
+
+H
+(
+z
+)
+=
+
+
+
+Y
+(
+z
+)
+
+
+X
+(
+z
+)
+
+
+
+
+
+{\displaystyle H(z)={\frac {Y(z)}{X(z)}}}
+
+ and this is often referred to as the pulse-transfer function.[citation needed]
+Consider a linear differential equation with constant coefficients
+where u and r are suitably smooth functions of t, and L is the operator defined on the relevant function space, that transforms u into r. That kind of equation can be used to constrain the output function u in terms of the forcing function r. The transfer function, written as an operator 
+
+
+
+F
+[
+r
+]
+=
+u
+
+
+{\displaystyle F[r]=u}
+
+, is the right inverse of L, since 
+
+
+
+L
+[
+F
+[
+r
+]
+]
+=
+r
+
+
+{\displaystyle L[F[r]]=r}
+
+.
+Solutions of the homogeneous, constant-coefficient differential equation 
+
+
+
+L
+[
+u
+]
+=
+0
+
+
+{\displaystyle L[u]=0}
+
+ can be found by trying 
+
+
+
+u
+=
+
+e
+
+λ
+t
+
+
+
+
+{\displaystyle u=e^{\lambda t}}
+
+. That substitution yields the characteristic polynomial
+The inhomogeneous case can be easily solved if the input function r is also of the form 
+
+
+
+r
+(
+t
+)
+=
+
+e
+
+s
+t
+
+
+
+
+{\displaystyle r(t)=e^{st}}
+
+. In that case, by substituting 
+
+
+
+u
+=
+H
+(
+s
+)
+
+e
+
+s
+t
+
+
+
+
+{\displaystyle u=H(s)e^{st}}
+
+ one finds that 
+
+
+
+L
+[
+H
+(
+s
+)
+
+e
+
+s
+t
+
+
+]
+=
+
+e
+
+s
+t
+
+
+
+
+{\displaystyle L[H(s)e^{st}]=e^{st}}
+
+ if and only if
+Taking that as the definition of the transfer function requires careful disambiguation between complex vs. real values, which is traditionally influenced by the interpretation of abs(H(s)) as the gain and -atan(H(s)) as the phase lag. Other definitions of the transfer function are used: for example 
+
+
+
+1
+
+/
+
+
+p
+
+L
+
+
+(
+i
+k
+)
+.
+
+
+{\displaystyle 1/p_{L}(ik).}
+
+[8]
+A general sinusoidal input to a system may be written exp( j ωi t ). The response of a system to a sinusoidal input beginning at time t=0 will consist of the sum of the steady-state response and a transient response. The steady-state response is the output of the system in the limit of infinite time, and the transient response is the difference between the response and the steady state response (It corresponds to the homogeneous solution of the above differential equation.) The transfer function for an LTI system may be written as the product:
+where sPi are the N roots of the characteristic polynomial and will therefore be the poles of the transfer function. Consider the case of a transfer function with a single pole: H(s)=1/(s-sP) where sP = σP+j ωP. The Laplace transform of a general sinusoid of unit amplitude will be 1/(s-j ωi ). The Laplace transform of the output will be H(s)/(s-j ωi ) and the temporal output will be the inverse Laplace transform of that function:
+The second term in the numerator is the transient response, and in the limit of infinite time it will diverge to infinity if σP is positive. In order for a system to be stable, its transfer function must have no poles whose real parts are positive. If the transfer function is strictly stable, the real parts of all poles will be negative, and the transient behavior will tend to zero in the limit of infinite time. The steady-state output will be:
+The frequency response (or "gain") G of the system is defined as the absolute value of the ratio of the input amplitude to the steady-state output amplitude:
+which is just the absolute value of the transfer function H(s) evaluated at j ωi. This result can be shown to be valid for any number of transfer function poles.
+Let 
+
+
+
+x
+(
+t
+)
+ 
+
+
+{\displaystyle x(t)\ }
+
+ be the input to a general linear time-invariant system, and 
+
+
+
+y
+(
+t
+)
+ 
+
+
+{\displaystyle y(t)\ }
+
+ be the output, and the bilateral Laplace transform of 
+
+
+
+x
+(
+t
+)
+ 
+
+
+{\displaystyle x(t)\ }
+
+ and 
+
+
+
+y
+(
+t
+)
+ 
+
+
+{\displaystyle y(t)\ }
+
+ be
+Then the output is related to the input by the transfer function 
+
+
+
+H
+(
+s
+)
+ 
+
+
+{\displaystyle H(s)\ }
+
+ as
+and the transfer function itself is therefore
+In particular, if a complex harmonic signal with a sinusoidal component with amplitude 
+
+
+
+
+|
+
+X
+
+|
+
+ 
+
+
+{\displaystyle |X|\ }
+
+, angular frequency 
+
+
+
+ω
+ 
+
+
+{\displaystyle \omega \ }
+
+ and phase 
+
+
+
+arg
+⁡
+(
+X
+)
+ 
+
+
+{\displaystyle \arg(X)\ }
+
+, where arg is the argument
+is input to a linear time-invariant system, then the corresponding component in the output is:
+Note that, in a linear time-invariant system, the input frequency 
+
+
+
+ω
+ 
+
+
+{\displaystyle \omega \ }
+
+ has not changed, only the amplitude and the phase angle of the sinusoid has been changed by the system. The frequency response 
+
+
+
+H
+(
+j
+ω
+)
+ 
+
+
+{\displaystyle H(j\omega )\ }
+
+ describes this change for every frequency 
+
+
+
+ω
+ 
+
+
+{\displaystyle \omega \ }
+
+ in terms of gain:
+and phase shift:
+The phase delay (i.e., the frequency-dependent amount of delay introduced to the sinusoid by the transfer function) is:
+The group delay (i.e., the frequency-dependent amount of delay introduced to the envelope of the sinusoid by the transfer function) is found by computing the derivative of the phase shift with respect to angular frequency 
+
+
+
+ω
+ 
+
+
+{\displaystyle \omega \ }
+
+,
+The transfer function can also be shown using the Fourier transform which is only a special case of the bilateral Laplace transform for the case where 
+
+
+
+s
+=
+j
+ω
+
+
+{\displaystyle s=j\omega }
+
+.
+While any LTI system can be described by some transfer function or another, there are certain "families" of special transfer functions that are commonly used. Typical infinite impulse response filters are designed to implement one of these special transfer functions.
+Some common transfer function families and their particular characteristics are:
+In control engineering and control theory the transfer function is derived using the Laplace transform.
+The transfer function was the primary tool used in classical control engineering. However, it has proven to be unwieldy for the analysis of multiple-input multiple-output (MIMO) systems, and has been largely supplanted by state space representations for such systems.[citation needed] In spite of this, a transfer matrix can be always obtained for any linear system, in order to analyze its dynamics and other properties: each element of a transfer matrix is a transfer function relating a particular input variable to an output variable.
+A useful representation bridging state space and transfer function methods was proposed by Howard H. Rosenbrock and it is referred to as Rosenbrock system matrix.
+In optics, modulation transfer function indicates the capability of optical contrast transmission.
+For example, when observing a series of black-white-light fringes drawn with a specific spatial frequency, the image quality may decay. White fringes fade while black ones turn brighter.
+The modulation transfer function in a specific spatial frequency is defined by:
+Where modulation (M) is computed from the following image or light brightness:
+Transfer functions do not properly exist for many non-linear systems. For example, they do not exist for relaxation oscillators;[9] however, describing functions can sometimes be used to approximate such nonlinear time-invariant systems.

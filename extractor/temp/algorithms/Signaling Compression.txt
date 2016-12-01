@@ -1,0 +1,4 @@
+ABOUT
+Signaling compression, or SigComp, is a compression method designed especially for compression of text-based communication data as SIP or RTSP. SigComp had originally been defined in RFC 3320 and was later updated with RFC 4896. A Negative Acknowledgement Mechanism for Signaling Compression is defined in RFC 4077. The SigComp work is performed in the ROHC working group in the transport area of the IETF.
+FULL TEXT
+Signaling compression, or SigComp, is a compression method designed especially for compression of text-based communication data as SIP or RTSP. SigComp had originally been defined in RFC 3320 and was later updated with RFC 4896. A Negative Acknowledgement Mechanism for Signaling Compression is defined in RFC 4077. The SigComp work is performed in the ROHC working group in the transport area of the IETF.
