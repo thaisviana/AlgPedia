@@ -33,7 +33,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         try:
             dicts = self.get_count_list()
-            # matrix = self.generate_matrix([d[1] for d in dicts])
+            matrix = self.generate_matrix([d[1] for d in dicts])
             # print matrix
         except:
             traceback.print_exc()
