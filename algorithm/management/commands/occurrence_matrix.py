@@ -7,6 +7,7 @@ import traceback
 from collections import defaultdict
 from algorithm.preprocessing import preProcessing
 
+
 class Command(BaseCommand):
     help = u"""Occurence Matrix generator"""
 

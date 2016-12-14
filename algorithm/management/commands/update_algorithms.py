@@ -14,6 +14,9 @@ class Command(BaseCommand):
             self.update_algorithm(algorithms)
             self.update_wikipedia(algorithms)
 
+            classifications = self.get_classifications()
+            self.update_classifications(classifications)
+
         except:
             traceback.print_exc()
             pass
