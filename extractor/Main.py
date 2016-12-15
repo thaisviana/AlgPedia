@@ -29,46 +29,32 @@ def extract_classification_names(classif_list):
 
 def extract_URI(line):
     uri = line.split(';')[-1]
-    return uri
+    return uri.strip()
 
 
+# Extract a classification name from a url
 def extract_classification(line):
     classification = line.split(':')[2]
     classification = classification.replace(';http', '')
     classification = classification.replace('_', ' ').title()
-    return classification
+    return classification.strip()
 
 
-def insert_classifications(filename):
+# insert all classifications from csv file in a json file.
+# each position in the json is composed by a classification name and it's link to dbpedia
+def create_classifications_json(filename):
     col_number = 0
-    print filename
-    print "Preparing extrated names for insertion..."
-
     col_extractor = ColumnExtractor(filename)
 
     col_classification = col_extractor.extractColumn(col_number)
-
-    print "Connecting to database..."
-    db = MySQLdb.connect("localhost", "root", "123mudar", "AlgPedia")
-    cursor = db.cursor()
-
+    classifications = []
     for line in col_classification:
         classification = extract_classification(line)
         uri = extract_URI(line)
-        print "Inserting ", classification, uri
-        try:
-            query = "INSERT INTO algorithm_classification VALUES (%s,%s,%s)"
-            print "Executing: ", query
+        classifications.append({'classification': classification, 'uri': uri})
 
-            # this id should be a uuid
-            # cursor.execute(query,(str(uuid.uuid4()),classification,uri))
-            cursor.execute(query, (random.randint(1, 10000000), classification, uri))
-            db.commit()
-        except MySQLdb.Error as error:
-            print "Error: {}".format(error)
-            # print "Insert failed, rollback"
-            db.rollback()
-    db.close()
+    with open('temp/classifications.json', 'w') as f:
+        json.dump(classifications, f, indent=4)
 
 
 def create_directory(path):
@@ -81,11 +67,13 @@ def save_alg_text_on_file(alg_name, alg_dict):
     print "Saving JSON for", alg_name
     create_directory(alg_path)
 
+    alg_dict['name'] = alg_name
     with open(alg_path + alg_name + '.json', 'w') as f:
         json.dump(alg_dict, f, indent=4)
 
 
-def insert_algorithms(filename):
+def save_algorithms(filename):
+    col_number_classification = 0
     col_number_dbpedia = 1
     col_number_wikipedia = 2
 
@@ -93,6 +81,7 @@ def insert_algorithms(filename):
 
     col_alg_url_wikipedia = col_extractor.extractColumn(col_number_wikipedia)
     col_alg_url_dbpedia = col_extractor.extractColumn(col_number_dbpedia)
+    col_alg_url_classification = col_extractor.extractColumn(col_number_classification)
 
     occ_matrix_extractor = OccurrenceMatrixExtractor()
 
@@ -101,7 +90,9 @@ def insert_algorithms(filename):
         if alg_url not in ban_list:
             page_info = occ_matrix_extractor.get_page_text(alg_url)
 
-            full_text = {'about': page_info[2], 'full_text': page_info[1], 'wikipedia_url': alg_url}
+            classification = col_alg_url_classification[col_alg_url_wikipedia.index(alg_url)]
+            classification = classification[len('http://dbpedia.org/resource/Category:'):]
+            full_text = {'about': page_info[2], 'full_text': page_info[1], 'wikipedia_url': alg_url, 'classification': classification.replace('_', ' ').title()}
             alg_dict[page_info[0].replace("_", " ").strip().title()] = full_text
 
     for alg_dbpedia_url in col_alg_url_dbpedia:
@@ -115,6 +106,7 @@ def insert_algorithms(filename):
         save_alg_text_on_file(alg_name, alg_dict[alg_name])
 
 
+# general extraction function used to extract classifications and algorithms.
 def extract(query, name):
     query_fetcher = QueryFetcher('csv')
 
@@ -133,7 +125,7 @@ def extract_classifications():
 
     generated_file = extract(dbpedia_master_query, "classifications")
 
-    insert_classifications(generated_file)
+    create_classifications_json(generated_file)
 
 
 def extract_algorithms():
@@ -143,14 +135,15 @@ def extract_algorithms():
             ?algorithm foaf:isPrimaryTopicOf ?wikipedia
             }'''
 
-    # generated_file = extract(dbpedia_master_query, "algorithms")
-    #
-    # insert_algorithms(generated_file)
-    insert_algorithms("temp/dbpedia_algorithms_fetch_0.csv")
+    generated_file = extract(dbpedia_master_query, "algorithms")
+
+    save_algorithms(generated_file)
+    # save_algorithms("temp/dbpedia_algorithms_fetch_0.csv")
+
 
 def doMain():
     print "Extracting classifications"
-    # extract_classifications()
+    extract_classifications()
 
     print "Extracting algorithms"
     extract_algorithms()

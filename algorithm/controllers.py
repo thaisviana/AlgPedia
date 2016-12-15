@@ -146,6 +146,14 @@ def get_classification_by_id(c_id):
 	except Classification.DoesNotExist:
 		return []
 
+# returns a	classification object
+def get_classification_by_name(c_name):
+	try:
+		classification = Classification.objects.get(name=c_name)
+		return classification
+	except Classification.DoesNotExist:
+		return []
+
 # returns a	paradigm object
 def get_paradigm_by_id(p_id):
 	try:
@@ -216,8 +224,8 @@ def insert_algorithm(alg_name, alg_about, alg_classification, alg_visible, alg_u
 	return algorithm
 
 def insert_algorithm_db(a_name, a_about, a_classif, a_uri, a_visible):
-
 	alg, created = Algorithm.objects.get_or_create(name=a_name, description=a_about, classification=a_classif, uri=a_uri, visible=a_visible, user=None)
+
 	return alg
 
 def insert_programming_langage_db(i_language):
