@@ -6,6 +6,7 @@ from django.db.models import Q
 from django.db import connection
 import itertools
 from django.shortcuts import get_object_or_404
+from tf_idf_query import *
 
 def cosine_similarity(vec1, vec2):
 	 intersection = set(vec1.keys()) & set(vec2.keys())
@@ -46,7 +47,7 @@ def get_user_univertisy(u_username):
 			return ""
 	except UserReputation.DoesNotExist:
 		return ""
-		
+
 def save_university(u_username, u_university):
 	u_user = User.objects.get(username=u_username)
 	try:
@@ -56,7 +57,7 @@ def save_university(u_username, u_university):
 	except UserReputation.DoesNotExist:
 		ur = UserReputation(user=u_user, reputation=1, university=u_university)
 		ur.save()
-	
+
 def add_user_point(u_username):
 	u_user = User.objects.get(username=u_username)
 	try:
@@ -66,7 +67,7 @@ def add_user_point(u_username):
 	except UserReputation.DoesNotExist:
 		ur = UserReputation(user=u_user, reputation=1)
 		ur.save()
-	
+
 def is_database_empty():
 	empty = 0
 
@@ -190,7 +191,7 @@ def get_all_universities():
 		return u
 	except UniversityRank.DoesNotExist:
 		return []
-		
+
 def insert_classification_db(c_name, c_uri):
 	try:
 		classif = Classification.objects.get(name=c_name)
@@ -240,14 +241,28 @@ def insert_implementation_db(i_alg, i_language_id, i_code, i_visible):
 
 	return implementation
 
+
+def filter_algorithms(name, classification):
+    filters = {}
+    filters['name__icontains'] = name
+
+    if classification:
+        filters['classification_id'] = classification
+    qs = Algorithm.objects.filter(**filters).order_by('name')
+    return qs
+
+
 def get_all_algorithms(search=None, classification_id=None):
-	filters = {}
-	if search:
-		filters['name__icontains'] = search
-	if classification_id:
-		filters['classification_id'] = classification_id
-	qs = Algorithm.objects.filter(**filters).order_by('name')
-	return qs
+    load_artifacts()
+    if search:
+        related = query(search)
+        qs = []
+        for alg in related:
+            qs.extend(filter_algorithms(alg, classification_id))
+        return qs
+    else:
+        filter_algorithms(search, classification_id)
+
 
 def get_all_userquestions():
 	return UserQuestion.objects.order_by("text")
@@ -439,12 +454,12 @@ def get_algorithm_by_id(a_id):
 
 def get_all_programming_languages():
 	return ProgrammingLanguage.objects.order_by("name")
-	
+
 def insert_user_reputation(u_username,u_reputation):
 	u_user = User.objects.get(username=u_username)
 	ur = UserReputation(user=u_user, reputation=u_reputation)
 	ur.save
-	
+
 def insert_implementation_alg_p_lang(i_alg, i_p_lang, i_code, i_visible, i_user):
 	imp = Implementation(algorithm=i_alg, programming_language=i_p_lang, code=i_code, visible=i_visible , user=i_user)
 	imp.save()
@@ -466,7 +481,7 @@ def get_implementations_by_alg_id(a_id):
 		return []
 
 
-def get_top5_users():		
+def get_top5_users():
 	try:
 		reputations = UserReputation.objects.filter(reputation__isnull=False).order_by("-reputation")[0:5]
 		reps = [ (r.reputation, r.user) for r in reputations]
@@ -474,7 +489,7 @@ def get_top5_users():
 		return l_reputation;
 	except UserReputation.DoesNotExist:
 		return []
-		
+
 def get_top5_algorithms():
 	try:
 		algorithms = Algorithm.objects.filter(reputation__isnull=False).order_by("-reputation")[0:5]
@@ -556,7 +571,7 @@ def get_users_by_actions():
 	users_aa = [ (aa.user.id) for aa in aas]
 
 	user_action['aa'] = users_aa
-	
+
 	ais = Implementation.objects.filter(~Q(user=None))
 	users_ai = [ (ai.user.id) for ai in ais]
 

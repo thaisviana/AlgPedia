@@ -1,6 +1,5 @@
 import os
 import nltk
-import sys
 import pickle
 import numpy as np
 from sklearn.decomposition import TruncatedSVD
@@ -16,6 +15,7 @@ documents_list = None
 svd_components = None
 tf_idf_transformed = None
 
+
 def score(sentence):
     words = nltk.word_tokenize(sentence)
 
@@ -25,10 +25,11 @@ def score(sentence):
         if w in words_mapper:
             query_tf[words_mapper[w]] += 1
 
-    query_tf_transformed = np.matmul(svd_components, query_tf.reshape(-1,1)).transpose()
+    query_tf_transformed = np.matmul(svd_components, query_tf.reshape(-1 , 1)).transpose()
     score_list = cosine_similarity(query_tf_transformed, tf_idf_transformed)[0]
 
     return score_list
+
 
 def query(sentence):
     score_list = score(sentence.lower())
@@ -37,6 +38,7 @@ def query(sentence):
 
     return sorted_score_list
 
+
 def load_documents():
     global documents_list
 
@@ -44,12 +46,14 @@ def load_documents():
     documents_list = pickle.load(documents_file)
     documents_file.close()
 
+
 def load_terms():
     global words_mapper
 
     terms_file = open("{}/terms".format(path_of_tfidf_output))
     words_mapper = pickle.load(terms_file)
     terms_file.close()
+
 
 def load_svd():
     global tf_idf_transformed
@@ -71,17 +75,19 @@ def load_svd():
     svd_components = pickle.load(svd_components_file)
     svd_components_file.close()
 
+
 def load_artifacts():
-  load_documents()
-  load_terms()
-  load_svd()
+    load_documents()
+    load_terms()
+    load_svd()
+
 
 ##### MAIN #####
 def main():
-  load_artifacts()
+    load_artifacts()
 
-  #Ask for input
-  while True:
+    # Ask for input
+    while True:
       n = raw_input("Digite a string para ser pesquisada ou exit para sair: ")
       if n == "exit":
           break
@@ -89,4 +95,4 @@ def main():
           print query(n)
 
 if __name__ == "__main__":
-  main()
+    main()

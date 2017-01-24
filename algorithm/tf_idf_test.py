@@ -2,7 +2,7 @@ import tf_idf
 import tf_idf_query
 import sys
 
-QUERIES = ['Dijkstra', 'Neural Evolution', 'Graph Search', 'Board Game AI']
+QUERIES = ['Dijkstra', 'Neural Evolution', 'Graph Search', 'Board Game AI', 'Shortest Path', 'Graph Painting', 'Sorting Algorithm']
 
 def test_queries(queries):
   for i in range(len(queries)):
