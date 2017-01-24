@@ -31,7 +31,7 @@ def score(sentence):
     return score_list
 
 def query(sentence):
-    score_list = score(sentence)
+    score_list = score(sentence.lower())
 
     sorted_score_list = sorted(documents_list, key=lambda x: score_list[documents_list.index(x)], reverse=True)[:5]
 
@@ -71,17 +71,22 @@ def load_svd():
     svd_components = pickle.load(svd_components_file)
     svd_components_file.close()
 
+def load_artifacts():
+  load_documents()
+  load_terms()
+  load_svd()
+
 ##### MAIN #####
+def main():
+  load_artifacts()
 
-#Load artifacts
-load_documents()
-load_terms()
-load_svd()
+  #Ask for input
+  while True:
+      n = raw_input("Digite a string para ser pesquisada ou exit para sair: ")
+      if n == "exit":
+          break
+      else:
+          print query(n)
 
-#Ask for input
-while True:
-    n = raw_input("Digite a string para ser pesquisada ou exit para sair: ")
-    if n == "exit":
-        break
-    else:
-        print query(n)
+if __name__ == "__main__":
+  main()
