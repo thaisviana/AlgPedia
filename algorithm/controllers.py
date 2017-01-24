@@ -579,10 +579,11 @@ def get_users_by_actions():
 def str_historico():
 	acoes = ['aa','ai','v','ap']
 	historico=['']
-	for i in xrange(1,len(acoes)+1):
-		historico += list(combinations(acoes,i))
-	#print "historico"
-	#print historico
+	limiteCombinacoes = len(acoes)+1
+	for i in xrange(1, 15):
+		for combination in itertools.combinations_with_replacement(acoes, i):
+			str = "_".join(list(combination))
+			historico += [str]
 	return historico
 
 #return the total of user in the database
