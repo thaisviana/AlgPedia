@@ -71,7 +71,7 @@ class Paradigm(models.Model):
 
 
 class Algorithm(models.Model):
-	name = models.CharField(max_length=30)
+	name = models.CharField(max_length=80)
 	description = models.TextField()
 	classification = models.ForeignKey(Classification, null=True, blank=True)
 	uri = models.URLField()

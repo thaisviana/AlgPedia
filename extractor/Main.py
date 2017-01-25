@@ -9,7 +9,7 @@ import json
 
 settings.configure(DEBUG=True)
 
-ban_list = ["http://en.wikipedia.org/wiki/Eagle_strategy\n", "http://en.wikipedia.org/wiki/Reactive_search_optimization\n", "http://en.wikipedia.org/wiki/List_of_regular_expression_software\n", "http://en.wikipedia.org/wiki/FSA-Red_Algorithm\n"]
+ban_list = ["http://en.wikipedia.org/wiki/Eagle_strategy\n", "http://en.wikipedia.org/wiki/Reactive_search_optimization\n", "http://en.wikipedia.org/wiki/List_of_regular_expression_software\n", "http://en.wikipedia.org/wiki/FSA-Red_Algorithm\n", "http://en.wikipedia.org/wiki/Differential_CORDIC\n"]
 
 # http://live.dbpedia.org/page/Category:Algorithms -> pegar categorias dessa pagina e procurar infoboxes de codigo na wikipedia
 
@@ -87,8 +87,8 @@ def save_algorithms(filename):
 
     alg_dict = {}
     for alg_url in col_alg_url_wikipedia:
-        if alg_url not in ban_list:
-            page_info = occ_matrix_extractor.get_page_text(alg_url)
+        if alg_url and alg_url not in ban_list:
+            page_info = occ_matrix_extractor.get_page_text(alg_url.strip()+'\n')
 
             classification = col_alg_url_classification[col_alg_url_wikipedia.index(alg_url)]
             classification = classification[len('http://dbpedia.org/resource/Category:'):]

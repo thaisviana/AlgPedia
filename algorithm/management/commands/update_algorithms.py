@@ -26,7 +26,10 @@ class Command(BaseCommand):
 
     def update_algorithms(self, algorithms):
         for algorithm in algorithms:
-            insert_algorithm_db(algorithm['name'], algorithm['about'], get_classification_by_name(algorithm['classification']), algorithm['dbpedia_url'], True)
+            print 'Updating', algorithm['name']
+            #ToDo verificar pq alguns jsons estao vindo sem dbpedia_url
+            #insert_algorithm_db(algorithm['name'], algorithm['about'], get_classification_by_name(algorithm['classification']), algorithm['dbpedia_url'], True)
+            insert_algorithm_db(algorithm['name'], algorithm['about'], get_classification_by_name(algorithm['classification']), '', True)
 
     def update_classifications(self, classifications):
         for classification in classifications:
