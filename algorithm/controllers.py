@@ -253,7 +253,7 @@ def filter_algorithms(name, classification):
 
 
 def get_all_algorithms(search=None, classification_id=None):
-    load_artifacts()
+    #load_artifacts()
     if search:
         related = query(search)
         qs = []
