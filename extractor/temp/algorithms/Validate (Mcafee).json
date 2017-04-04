@@ -1,0 +1,8 @@
+{
+    "about": "The Validate program by McAfee Associates is used to provide checksum data for computer programs and data files.", 
+    "name": "Validate (Mcafee)", 
+    "classification": "Checksum Algorithms", 
+    "full_text": "The Validate program by McAfee Associates is used to provide checksum data for computer programs and data files.\nIt is commonly used to verify that shareware applications written for MS-DOS and Microsoft Windows based platforms have not been altered during distribution, (as would be the case if somehow the files had become infected with a computer virus).", 
+    "dbpedia_url": "http://dbpedia.org/resource/Validate_(McAfee)", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Validate_(McAfee)\n"
+}

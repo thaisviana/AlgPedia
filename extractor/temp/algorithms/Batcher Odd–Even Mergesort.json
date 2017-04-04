@@ -1,0 +1,8 @@
+{
+    "about": "Batcher's odd\u2013even mergesort is a generic construction devised by Ken Batcher for sorting networks of size O(n\u00a0(log\u00a0n)2) and depth O((log\u00a0n)2), where n is the number of items to be sorted. Although it is not asymptotically optimal, Knuth concluded in 1998, with respect to the AKS network that \"Batcher's method is much better, unless n exceeds the total memory capacity of all computers on earth!\"[1]", 
+    "name": "Batcher Odd\u2013Even Mergesort", 
+    "classification": "Sorting Algorithms", 
+    "full_text": "Batcher's odd\u2013even mergesort is a generic construction devised by Ken Batcher for sorting networks of size O(n\u00a0(log\u00a0n)2) and depth O((log\u00a0n)2), where n is the number of items to be sorted. Although it is not asymptotically optimal, Knuth concluded in 1998, with respect to the AKS network that \"Batcher's method is much better, unless n exceeds the total memory capacity of all computers on earth!\"[1]\nIt is popularized by the second GPU Gems book,[2] as an easy way of doing reasonably efficient sorts on graphics-processing hardware.\n\n\nThe following is an implementation of odd\u2013even mergesort algorithm in Python. The input is a list x of length a power of 2. The output is a list sorted in ascending order.\nMore concise and non-recursive calculation of partner node is possible. Here is a Scala implementation to get the partner of an index at each step:[3]", 
+    "dbpedia_url": "http://dbpedia.org/resource/Batcher_odd\u2013even_mergesort", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Batcher_odd\u2013even_mergesort\n"
+}

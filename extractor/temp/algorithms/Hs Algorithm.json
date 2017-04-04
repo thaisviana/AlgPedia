@@ -1,0 +1,8 @@
+{
+    "about": "The HS Algorithm is named after Dan Hirschberg and J. B. Sinclair. It is a distributed algorithm designed for the Leader Election problem in a Synchronous Ring.", 
+    "name": "Hs Algorithm", 
+    "classification": "Distributed Algorithms", 
+    "full_text": "The HS Algorithm is named after Dan Hirschberg and J. B. Sinclair. It is a distributed algorithm designed for the Leader Election problem in a Synchronous Ring.\nThe algorithm requires the use of unique IDs (UID) for each process. The algorithm works in phases and sends its UID out in both directions. The message goes out a distance of 2Phase Number hops and then the message heads back to the originating process. While the messages are heading \"out\" each receiving process will compare the incoming UID to its own. If the UID is greater than its own UID then it will continue the message on. Otherwise if the UID is less than its own UID, it will not pass the information on. At the end of a phase, a process can determine if it will send out messages in the next round by if it received both of its incoming messages. Phases continue until a process receives both of its out messages, from both of its neighbors. At this time the process knows it is the largest UID in the ring and declares itself the leader.", 
+    "dbpedia_url": "http://dbpedia.org/resource/HS_algorithm", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/HS_algorithm\n"
+}

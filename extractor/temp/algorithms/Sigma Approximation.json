@@ -1,0 +1,8 @@
+{
+    "about": "In mathematics, \u03c3-approximation adjusts a Fourier summation to eliminate the Gibbs phenomenon which would otherwise occur at discontinuities.", 
+    "name": "Sigma Approximation", 
+    "classification": "Numerical Analysis", 
+    "full_text": "In mathematics, \u03c3-approximation adjusts a Fourier summation to eliminate the Gibbs phenomenon which would otherwise occur at discontinuities.\nA \u03c3-approximated summation for a series of period T can be written as follows:\nin terms of the normalized sinc function\nthe term\nis the Lanczos \u03c3 factor, which is responsible for eliminating most of the Gibbs phenomenon. It does not do so entirely, however, but one can square or even cube the expression to serially attenuate Gibbs Phenomenon in the most extreme cases.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Sigma_approximation", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Sigma_approximation\n"
+}

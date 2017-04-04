@@ -1,0 +1,8 @@
+{
+    "about": "In signal processing, the fast folding algorithm (Staelin, 1969) is an efficient algorithm for the detection of approximately-periodic events within time series data. It computes superpositions of the signal modulo various window sizes simultaneously.", 
+    "name": "Fast Folding Algorithm", 
+    "classification": "Signal Processing", 
+    "full_text": "In signal processing, the fast folding algorithm (Staelin, 1969) is an efficient algorithm for the detection of approximately-periodic events within time series data. It computes superpositions of the signal modulo various window sizes simultaneously.\nThe FFA is best known for its use in the detection of pulsars, as popularised by SETI@home and Astropulse.\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Fast_folding_algorithm", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Fast_folding_algorithm\n"
+}

@@ -1,0 +1,8 @@
+{
+    "about": "The Dijkstra\u2013Scholten algorithm (named after Edsger W. Dijkstra and Carel S. Scholten) is an algorithm for detecting termination in a distributed system.[1][2] The algorithm was proposed by Dijkstra and Scholten in 1980.[3]", 
+    "name": "Dijkstra\u2013Scholten Algorithm", 
+    "classification": "Graph Algorithms", 
+    "full_text": "The Dijkstra\u2013Scholten algorithm (named after Edsger W. Dijkstra and Carel S. Scholten) is an algorithm for detecting termination in a distributed system.[1][2] The algorithm was proposed by Dijkstra and Scholten in 1980.[3]\nFirst, let us consider the case of a simple process graph which is a tree. A distributed computation which is tree-structured is not uncommon. Such a process graph may arise when the computation is strictly a divide-and-conquer type. A node starts the computation and divides the problem in two (or more, usually a multiple of 2) roughly equal parts and distribute those parts to other processors. This process continues recursively until the problems are of sufficiently small size to solve in a single processor.\n\n\nThe Dijkstra\u2013Scholten algorithm is a tree-based algorithm which can be described by the following:", 
+    "dbpedia_url": "http://dbpedia.org/resource/Dijkstra\u2013Scholten_algorithm", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Dijkstra\u2013Scholten_algorithm\n"
+}

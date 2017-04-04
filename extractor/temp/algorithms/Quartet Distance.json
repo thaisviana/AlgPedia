@@ -1,0 +1,8 @@
+{
+    "about": "The quartet distance is a way of measuring the distance between two phylogenetic trees. It is defined as the number of subsets of four leaves that are not related by the same topology in both trees.", 
+    "name": "Quartet Distance", 
+    "classification": "Bioinformatics Algorithms", 
+    "full_text": "The quartet distance is a way of measuring the distance between two phylogenetic trees. It is defined as the number of subsets of four leaves that are not related by the same topology in both trees.\nThe most straightforward computation of the quartet distance would require \n\n\n\nO\n(\n\nN\n\n4\n\n\n)\n\n\n{\\displaystyle O(N^{4})}\n\n time, where \n\n\n\nN\n\n\n{\\displaystyle N}\n\n is the number of leaves in the trees.\nFor binary trees, better algorithms have been found to compute the distance in\nand\nBrodal et al. found an algorithm that takes \n\n\n\nO\n(\nD\nN\nlog\n\u2061\nN\n)\n\n\n{\\displaystyle O(DN\\log N)}\n\n time to compute the quartet distance between two multifurcating trees when \n\n\n\nD\n\n\n{\\displaystyle D}\n\n is the maximum degree of the trees.[4]", 
+    "dbpedia_url": "http://dbpedia.org/resource/Quartet_distance", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Quartet_distance\n"
+}

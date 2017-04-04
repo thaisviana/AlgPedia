@@ -1,0 +1,8 @@
+{
+    "about": "The Ziff\u2013Gulari\u2013Barshad (ZGB) model is a simple Monte Carlo method for catalytic reactions of oxidation of carbon monoxide to carbon dioxide on a surface using Monte-Carlo methods which captures correctly the essential dynamics: the phase transition between two poisoned states (either CO2- or O-poisoned) and a steady-state in between. It is named after Robert M. Ziff, Erdogan Gulari, and Yoav Barshad, who published it in 1986.[1]", 
+    "name": "Ziff\u2013Gulari\u2013Barshad Model", 
+    "classification": "Numerical Analysis", 
+    "full_text": "The Ziff\u2013Gulari\u2013Barshad (ZGB) model is a simple Monte Carlo method for catalytic reactions of oxidation of carbon monoxide to carbon dioxide on a surface using Monte-Carlo methods which captures correctly the essential dynamics: the phase transition between two poisoned states (either CO2- or O-poisoned) and a steady-state in between. It is named after Robert M. Ziff, Erdogan Gulari, and Yoav Barshad, who published it in 1986.[1]\nThe model consists of three steps:\nThe simplest implementation considers the catalyst as simple square two-dimensional lattice, but one can also consider other kinds of underlying lattices.[2] When a gas-phase molecule touches an empty site, adsorption occurs immediately and the chemical reaction is also instantaneous. Furthermore, assumes that the composition of the gas phase remains constant.\nThe model belongs to the universality class of directed percolation.[3] The model was modified several times.[4] [5]", 
+    "dbpedia_url": "http://dbpedia.org/resource/Ziff\u2013Gulari\u2013Barshad_model", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Ziff\u2013Gulari\u2013Barshad_model\n"
+}

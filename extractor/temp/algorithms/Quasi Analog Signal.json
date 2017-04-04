@@ -1,0 +1,7 @@
+{
+    "about": "In telecommunication, a quasi-analog signal is a digital signal that has been converted to a form suitable for transmission over a specified analog channel.", 
+    "classification": "Signal Processing", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Quasi-analog_signal\n", 
+    "full_text": "In telecommunication, a quasi-analog signal is a digital signal that has been converted to a form suitable for transmission over a specified analog channel.\nThe specification of the analog channel should include frequency range, bandwidth, signal-to-noise ratio, and envelope delay distortion. When quasi-analog form of signaling is used to convey message traffic over dial-up telephone systems, it is often referred to as voice-data. A modem may be used for the conversion process.\n\u00a0This article incorporates\u00a0public domain material from the General Services Administration document \"Federal Standard 1037C\" (in support of MIL-STD-188).", 
+    "name": "Quasi Analog Signal"
+}

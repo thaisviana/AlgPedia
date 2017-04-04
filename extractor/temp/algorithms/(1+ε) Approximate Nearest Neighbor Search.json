@@ -1,0 +1,7 @@
+{
+    "about": "(1+\u03b5)-approximate nearest neighbor search is a special case of the nearest neighbor search problem. The solution to the (1+\u03b5)-approximate nearest neighbor search is a point or multiple points within distance (1+\u03b5) R from a query point, where R is the distance between the query point and its true nearest neighbor.[1]", 
+    "classification": "Search Algorithms", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/(1+\u03b5)-approximate_nearest_neighbor_search\n", 
+    "full_text": "(1+\u03b5)-approximate nearest neighbor search is a special case of the nearest neighbor search problem. The solution to the (1+\u03b5)-approximate nearest neighbor search is a point or multiple points within distance (1+\u03b5) R from a query point, where R is the distance between the query point and its true nearest neighbor.[1]\nReasons to approximate nearest neighbor search include the space and time costs of exact solutions in high-dimensional spaces (see curse of dimensionality) and that in some domains, finding an approximate nearest neighbor is an acceptable solution.\nApproaches for solving (1+\u03b5)-approximate nearest neighbor search include kd-trees, Locality Sensitive Hashing and brute force search.\n", 
+    "name": "(1+\u03b5) Approximate Nearest Neighbor Search"
+}

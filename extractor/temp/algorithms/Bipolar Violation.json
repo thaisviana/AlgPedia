@@ -1,0 +1,8 @@
+{
+    "about": "A bipolar violation, bipolarity violation, or BPV, is a violation of the bipolar encoding rules where two pulses of the same polarity occur without an intervening pulse of the opposite polarity. This indicates an error in the transmission of the signal.", 
+    "name": "Bipolar Violation", 
+    "classification": "Error Detection And Correction", 
+    "full_text": "A bipolar violation, bipolarity violation, or BPV, is a violation of the bipolar encoding rules where two pulses of the same polarity occur without an intervening pulse of the opposite polarity. This indicates an error in the transmission of the signal.\nT-carrier and E-carrier signals are transmitted using a scheme called bipolar encoding, a.k.a. Alternate Mark Inversion (AMI), where a ONE is represented by a pulse, and a ZERO is represented by no pulse. Pulses (which represent ones) always alternate in polarity, so that if, for example two positive pulses are received in succession, the receiver knows that an error occurred (a violation) in that one or more bits were either added or deleted from the original signal.\nReliable transmission of data using this scheme requires a regular stream of pulses; too many zero bits in succession can cause a loss of synchronization between transmitter and receiver. To ensure that this is always present, there exist a number of modified AMI codes which use judiciously placed bipolar violations to encode long strings of consecutive zeroes.\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Bipolar_violation", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Bipolar_violation\n"
+}

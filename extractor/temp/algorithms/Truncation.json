@@ -1,0 +1,8 @@
+{
+    "about": "In mathematics and computer science, truncation is limiting the number of digits right of the decimal point.", 
+    "name": "Truncation", 
+    "classification": "Numerical Analysis", 
+    "full_text": "In mathematics and computer science, truncation is limiting the number of digits right of the decimal point.\n\n\nTruncation of positive real numbers can be done using the floor function. Given a number \n\n\n\nx\n\u2208\n\n\nR\n\n\n+\n\n\n\n\n{\\displaystyle x\\in \\mathbb {R} _{+}}\n\n to be truncated and \n\n\n\nn\n\u2208\n\n\nN\n\n\n0\n\n\n\n\n{\\displaystyle n\\in \\mathbb {N} _{0}}\n\n, the number of elements to be kept behind the decimal point, the truncated value of x is\nHowever, for negative numbers truncation does not round in the same direction as the floor function: truncation always rounds toward zero, the floor function rounds towards negative infinity. This function ist used instead of\nfor a given number \n\n\n\nx\n\u2208\n\n\nR\n\n\n\u2212\n\n\n\n\n{\\displaystyle x\\in \\mathbb {R} _{-}}\n\n.\nWith computers, truncation can occur when a decimal number is typecast as an integer; it is truncated to zero decimal digits because integers cannot store non-integer real numbers.\nAn analogue of truncation can be applied to polynomials. In this case, the truncation of a polynomial P to degree n can be defined as the sum of all terms of P of degree n or less. Polynomial truncations arise in the study of Taylor polynomials, for example.[1]", 
+    "dbpedia_url": "http://dbpedia.org/resource/Truncation", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Truncation\n"
+}

@@ -1,0 +1,8 @@
+{
+    "about": "GYRO is a computational plasma physics code developed and maintained at General Atomics. It solves the 5-D coupled gyrokinetic-Maxwell equations using a combination of finite difference, finite element and spectral methods. Given plasma equilibrium data, GYRO can determine the rate of turbulent transport of particles, momentum and energy.", 
+    "name": "Gyro", 
+    "classification": "Computational Physics", 
+    "full_text": "GYRO is a computational plasma physics code developed and maintained at General Atomics. It solves the 5-D coupled gyrokinetic-Maxwell equations using a combination of finite difference, finite element and spectral methods. Given plasma equilibrium data, GYRO can determine the rate of turbulent transport of particles, momentum and energy.", 
+    "dbpedia_url": "http://dbpedia.org/resource/GYRO", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/GYRO\n"
+}

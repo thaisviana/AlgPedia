@@ -1,0 +1,7 @@
+{
+    "about": "Augmented tree-based routing (ATR) protocol, first proposed in Augmented Tree-based Routing Protocol for Scalable Ad Hoc Networks, Proc. of IEEE MHWMN'07: The Third IEEE International Workshop on Heterogeneous Multi-Hop Wireless and mobile networks 2007, Pisa (Italy), October 2007, is a multi-path DHT-based routing protocol for scalable networks. ATR resorts to an augmented tree-based address space structure and a hierarchical multi-path routing protocol in order to gain scalability and good resilience against node failure/mobility and link congestion/instability.", 
+    "classification": "Routing Algorithms", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Augmented_tree-based_routing\n", 
+    "full_text": "Augmented tree-based routing (ATR) protocol, first proposed in Augmented Tree-based Routing Protocol for Scalable Ad Hoc Networks, Proc. of IEEE MHWMN'07: The Third IEEE International Workshop on Heterogeneous Multi-Hop Wireless and mobile networks 2007, Pisa (Italy), October 2007, is a multi-path DHT-based routing protocol for scalable networks. ATR resorts to an augmented tree-based address space structure and a hierarchical multi-path routing protocol in order to gain scalability and good resilience against node failure/mobility and link congestion/instability.\n", 
+    "name": "Augmented Tree Based Routing"
+}

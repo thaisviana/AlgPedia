@@ -1,0 +1,8 @@
+{
+    "about": "Oscillating merge sort or oscillating sort is a variation of merge sort used with tape drives that can read backwards. Instead of doing a complete distribution as is done in a tape merge, the distribution of the input and the merging of runs are interspersed. The oscillating merge sort does not waste rewind time or have tape drives sit idle as in the conventional tape merge.", 
+    "name": "Oscillating Merge Sort", 
+    "classification": "Sorting Algorithms", 
+    "full_text": "Oscillating merge sort or oscillating sort is a variation of merge sort used with tape drives that can read backwards. Instead of doing a complete distribution as is done in a tape merge, the distribution of the input and the merging of runs are interspersed. The oscillating merge sort does not waste rewind time or have tape drives sit idle as in the conventional tape merge.\nThe oscillating merge sort \"was designed for tapes that can be read backward and is more efficient generally than either the polyphase or cascade merges.\"[1]", 
+    "dbpedia_url": "http://dbpedia.org/resource/Oscillating_merge_sort", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Oscillating_merge_sort\n"
+}

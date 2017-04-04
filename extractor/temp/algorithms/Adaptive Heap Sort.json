@@ -1,0 +1,8 @@
+{
+    "about": "The adaptive heap sort is a sorting algorithm that is similar to heap sort, but uses a randomized binary search tree to structure the input according to any preexisting order. The randomized binary search tree is used to select candidates that are put into the heap, so the heap doesn't need to keep track of all elements. Adaptive heap sort is a part of the adaptive sorting family.", 
+    "name": "Adaptive Heap Sort", 
+    "classification": "Sorting Algorithms", 
+    "full_text": "The adaptive heap sort is a sorting algorithm that is similar to heap sort, but uses a randomized binary search tree to structure the input according to any preexisting order. The randomized binary search tree is used to select candidates that are put into the heap, so the heap doesn't need to keep track of all elements. Adaptive heap sort is a part of the adaptive sorting family.\nThe first adaptive heapsort was Dijkstra's Smoothsort.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Adaptive_heap_sort", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Adaptive_heap_sort\n"
+}

@@ -1,0 +1,8 @@
+{
+    "about": "wildmat is a pattern matching library developed by Rich Salz. Based on the wildcard syntax already used in the Bourne shell, wildmat provides a uniform mechanism for matching patterns across applications with simpler syntax than that typically offered by regular expressions. Patterns are implicitly anchored at the beginning and end of each string when testing for a match.", 
+    "name": "Wildmat", 
+    "classification": "Pattern Matching", 
+    "full_text": "wildmat is a pattern matching library developed by Rich Salz. Based on the wildcard syntax already used in the Bourne shell, wildmat provides a uniform mechanism for matching patterns across applications with simpler syntax than that typically offered by regular expressions. Patterns are implicitly anchored at the beginning and end of each string when testing for a match.\n\n\nThere are five pattern matching operations other than a strict one-to-one match between the pattern and the source to be checked for a match.\nwildmat is most commonly seen in NNTP implementations such as Salz' own INN, also in unrelated software such as GNU tar.\nThe full wildmat syntax is unable to handle multibyte character sets, and poses problems when the text being searched may contain multiple incompatible character sets. A simplified version of wildmat oriented toward UTF-8 encoding has been developed by the IETF NNTP working group, to be included in an upcoming[update] standards document.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Wildmat", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Wildmat\n"
+}

@@ -1,0 +1,8 @@
+{
+    "about": "The icophone is an instrument of speech synthesis conceived by \u00c9mile Leipp in 1964 and used for synthesizing the French language.[1] The two first icophones were made in the laboratory of physical mechanics of Saint-Cyr-l'\u00c9cole.", 
+    "name": "Icophone", 
+    "classification": "Signal Processing", 
+    "full_text": "The icophone is an instrument of speech synthesis conceived by \u00c9mile Leipp in 1964 and used for synthesizing the French language.[1] The two first icophones were made in the laboratory of physical mechanics of Saint-Cyr-l'\u00c9cole.\nThe principle of the icophone is the representation of the sound by a spectrograph. The spectrogram analyzes a word, a phrase, or more generally a sound, and shows the distribution of the different frequencies with their relative intensities. The first machines to synthesize words were made by displaying the form of the spectrogram on a transparent tape, which controls a series of oscillators following the presence or absence of a black mark on the tape. Leipp succeeded in decomposing the segments of a spoken sound phenomenon, and in synthesizing them from a very simplified display.[2]", 
+    "dbpedia_url": "http://dbpedia.org/resource/Icophone", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Icophone\n"
+}

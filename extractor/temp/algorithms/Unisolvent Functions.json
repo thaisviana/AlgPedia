@@ -1,0 +1,8 @@
+{
+    "about": "In mathematics, a collection of n functions f1, f2, ..., fn is unisolvent on domain \u03a9 if the vectors", 
+    "name": "Unisolvent Functions", 
+    "classification": "Numerical Analysis", 
+    "full_text": "In mathematics, a collection of n functions f1, f2, ..., fn is unisolvent on domain \u03a9 if the vectors\nare linearly independent for any choice of n distinct points x1, x2 ... xn in \u03a9. Equivalently, the collection is unisolvent if the matrix F with entries fi(xj) has nonzero determinant: det(F) \u2260 0 for any choice of distinct xj's in \u03a9.\nUnisolvent systems of functions are widely used in interpolation since they guarantee a unique solution to the interpolation problem. Polynomials are unisolvent by the unisolvence theorem\nSystems of unisolvent functions are much more common in 1\u00a0dimension than in higher dimensions. In dimension d = 2 and higher (\u03a9\u00a0\u2282\u00a0Rd), the functions f1, f2, ..., fn cannot be unisolvent on \u03a9 if there exists a single open set on which they are all continuous. To see this, consider moving points x1 and x2 along continuous paths in the open set until they have switched positions, such that x1 and x2 never intersect each other or any of the other xi. The determinant of the resulting system (with x1 and x2 swapped) is the negative of the determinant of the initial system. Since the functions fi are continuous, the intermediate value theorem implies that some intermediate configuration has determinant zero, hence the functions cannot be unisolvent.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Unisolvent_functions", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Unisolvent_functions\n"
+}

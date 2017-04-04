@@ -1,0 +1,8 @@
+{
+    "about": "Kronecker substitution is a technique named after Leopold Kronecker for determining the coefficients of an unknown polynomial by evaluating it at a single value. If p(x) is a polynomial with integer coefficients, and x is chosen to be a power of two larger in magnitude than any of the coefficients of p, then the coefficients of each term of can be read directly out of the binary representation of p(x).", 
+    "name": "Kronecker Substitution", 
+    "classification": "Computer Algebra", 
+    "full_text": "Kronecker substitution is a technique named after Leopold Kronecker for determining the coefficients of an unknown polynomial by evaluating it at a single value. If p(x) is a polynomial with integer coefficients, and x is chosen to be a power of two larger in magnitude than any of the coefficients of p, then the coefficients of each term of can be read directly out of the binary representation of p(x).\nOne application of this method is to reduce the computational problem of multiplying polynomials to the (potentially simpler) problem of multiplying integers. If p(x) and q(x) are polynomials with known coefficients, then one can use these coefficients to determine a value of x that is a large enough power of two for that the coefficients of the product pq(x) to be read off from the binary representation of the number p(x)q(x). Since p(x) and q(x) are themselves straightforward to determine from the coefficients of p and q, this result shows that polynomial multiplication may be performed in the time for a single binary multiplication.[1]\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Kronecker_substitution", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Kronecker_substitution\n"
+}

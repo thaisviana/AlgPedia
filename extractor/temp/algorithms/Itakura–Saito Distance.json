@@ -1,0 +1,8 @@
+{
+    "about": "The Itakura\u2013Saito distance (or Itakura\u2013Saito divergence) is a measure of the difference between an original spectrum \n\n\n\nP\n(\n\u03c9\n)\n\n\n{\\displaystyle P(\\omega )}\n\n and an approximation \n\n\n\n\n\n\nP\n^\n\n\n\n(\n\u03c9\n)\n\n\n{\\displaystyle {\\hat {P}}(\\omega )}\n\n of that spectrum. Although it is not a perceptual measure it is intended to reflect perceptual (dis)similarity. It was proposed by Fumitada Itakura and Shuzo Saito in the 1960s while they were with NTT.[1]", 
+    "name": "Itakura\u2013Saito Distance", 
+    "classification": "Signal Processing", 
+    "full_text": "The Itakura\u2013Saito distance (or Itakura\u2013Saito divergence) is a measure of the difference between an original spectrum \n\n\n\nP\n(\n\u03c9\n)\n\n\n{\\displaystyle P(\\omega )}\n\n and an approximation \n\n\n\n\n\n\nP\n^\n\n\n\n(\n\u03c9\n)\n\n\n{\\displaystyle {\\hat {P}}(\\omega )}\n\n of that spectrum. Although it is not a perceptual measure it is intended to reflect perceptual (dis)similarity. It was proposed by Fumitada Itakura and Shuzo Saito in the 1960s while they were with NTT.[1]\nThe distance is defined as:[2]\nThe Itakura\u2013Saito distance is a Bregman divergence, but is not a true metric since it is not symmetric[3] and it does not fulfil triangle inequality.\nIn Non-negative matrix factorization the Itakura-Saito divergence can be used as a measure of the quality of the factorization: this implies a meaningful statistical model of the components and can be solved through an iterative method.[4]", 
+    "dbpedia_url": "http://dbpedia.org/resource/Itakura\u2013Saito_distance", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Itakura\u2013Saito_distance\n"
+}

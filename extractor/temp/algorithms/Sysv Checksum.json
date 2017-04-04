@@ -1,0 +1,8 @@
+{
+    "about": "The SYSV checksum algorithm is a commonly used, legacy checksum algorithm. It has been implemented in UNIX System V and is also available through the GNU sum command line utility.", 
+    "name": "Sysv Checksum", 
+    "classification": "Checksum Algorithms", 
+    "full_text": "The SYSV checksum algorithm is a commonly used, legacy checksum algorithm. It has been implemented in UNIX System V and is also available through the GNU sum command line utility.\nThe manual page of the GNU sum utility program (that implements the BSD checksum algorithm) states: \"sum is provided for compatibility; the cksum program is preferable in new applications.\"\nThe main part of this algorithm is simply adding up all bytes in a 32-bit sum. As a result, this algorithm has the characteristics (disadvantages and advantages) of a simple sum:\nAs a result, many common changes to text data are not detected by this method.\nThe last two lines of the algorithm reduce the total sum to a 16-bit number.", 
+    "dbpedia_url": "http://dbpedia.org/resource/SYSV_checksum", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/SYSV_checksum\n"
+}

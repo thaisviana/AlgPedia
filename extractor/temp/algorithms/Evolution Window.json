@@ -1,0 +1,8 @@
+{
+    "about": "It was observed in evolution strategies that significant progress toward the fitness/objective function's optimum, generally, can only happen in a narrow band of the mutation step size \u03c3. That narrow band is called evolution window.", 
+    "name": "Evolution Window", 
+    "classification": "Evolutionary Algorithms", 
+    "full_text": "It was observed in evolution strategies that significant progress toward the fitness/objective function's optimum, generally, can only happen in a narrow band of the mutation step size \u03c3. That narrow band is called evolution window.\nThere are three well-known methods to adapt the mutation step size \u03c3 in evolution strategies:\nOn simple functions all of them have been empirically shown to keep the step size within the evolution window.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Evolution_window", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Evolution_window\n"
+}

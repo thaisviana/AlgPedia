@@ -1,0 +1,8 @@
+{
+    "about": "FreeFem++ is a programming language and a software focused in solving partial differential equations using the finite element method. FreeFem++ is written in C++ and developed and maintained by Universit\u00e9 Pierre et Marie Curie and Laboratoire Jacques-Louis Lions. It runs on Linux, Solaris, macOS and MS Windows systems. FreeFem++ is free software (GPL).,[1][2]", 
+    "name": "Freefem++", 
+    "classification": "Computational Physics", 
+    "full_text": "FreeFem++ is a programming language and a software focused in solving partial differential equations using the finite element method. FreeFem++ is written in C++ and developed and maintained by Universit\u00e9 Pierre et Marie Curie and Laboratoire Jacques-Louis Lions. It runs on Linux, Solaris, macOS and MS Windows systems. FreeFem++ is free software (GPL).,[1][2]\nFreeFem++ language is inspired by C++. There is an IDE called FreeFem++-cs.\n\n\nThe first version was created in 1987 by Olivier Pironneau, and it was named MacFem (it only worked on Macintosh); PCFem appeared some time later. Both were written in Pascal.\nIn 1992 it was re-written in C++ and it was named FreeFem. Later versions, FreeFem+ (1996) and FreeFem++ (1998) used that programming language too.\nDeprecated versions:", 
+    "dbpedia_url": "http://dbpedia.org/resource/FreeFem++", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/FreeFem++\n"
+}

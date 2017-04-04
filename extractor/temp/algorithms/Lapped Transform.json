@@ -1,0 +1,8 @@
+{
+    "about": "In signal processing, a lapped transform is a type of linear discrete block transformation where the basis functions of the transformation overlap the block boundaries, yet the number of coefficients overall resulting from a series of overlapping block transforms remains the same as if a non-overlapping block transform had been used.[1][2][3][4]", 
+    "name": "Lapped Transform", 
+    "classification": "Digital Signal Processing", 
+    "full_text": "In signal processing, a lapped transform is a type of linear discrete block transformation where the basis functions of the transformation overlap the block boundaries, yet the number of coefficients overall resulting from a series of overlapping block transforms remains the same as if a non-overlapping block transform had been used.[1][2][3][4]\nLapped transforms substantially reduce the blocking artifacts that otherwise occur with block transform coding techniques, in particular those using the discrete cosine transform. The best known example is the modified discrete cosine transform used in the MP3, Vorbis, AAC, and Opus audio codecs.[5]\nAlthough the best-known application of lapped transforms has been for audio coding, they have also been used for video and image coding and various other applications. They are used in video coding for coding I-frames in VC-1 and for image coding in the JPEG XR format. More recently, a form of lapped transform has also been used in the development of the Daala video coding format.[5]\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Lapped_transform", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Lapped_transform\n"
+}

@@ -1,0 +1,7 @@
+{
+    "about": "In mathematics, a bi-directional delay line is a numerical analysis technique used in computer simulation for solving ordinary differential equations by converting them to hyperbolic equations. In this way an explicit solution scheme is obtained with highly robust numerical properties. It was introduced by Auslander in 1968.", 
+    "classification": "Numerical Analysis", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Bi-directional_delay_line\n", 
+    "full_text": "In mathematics, a bi-directional delay line is a numerical analysis technique used in computer simulation for solving ordinary differential equations by converting them to hyperbolic equations. In this way an explicit solution scheme is obtained with highly robust numerical properties. It was introduced by Auslander in 1968.\nIt originates from simulation of hydraulic pipelines where wave propagation was studied. It was then found that it could be used as an efficient numerical technique for numerically insulating different parts of a simulation model in each times step. It is used in the HOPSAN simulation package (Krus et al. 1990).\nIt is also known as the Transmission Line Modelling (TLM) from an independent development by Johns and O'Brian 1980. This is also extended to partial differential equations.", 
+    "name": "Bi Directional Delay Line"
+}

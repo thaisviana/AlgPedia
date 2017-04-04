@@ -1,0 +1,8 @@
+{
+    "about": "Almeida\u2013Pineda recurrent backpropagation is an extension to the backpropagation algorithm that is applicable to recurrent neural networks. It is a type of supervised learning.", 
+    "name": "Almeida\u2013Pineda Recurrent Backpropagation", 
+    "classification": "Machine Learning Algorithms", 
+    "full_text": "Almeida\u2013Pineda recurrent backpropagation is an extension to the backpropagation algorithm that is applicable to recurrent neural networks. It is a type of supervised learning.\nA recurrent neural network for this algorithm consists of some input units, some output units and eventually some hidden units.\nFor a given set of (input, target) states, the network is trained to settle into a stable activation state with the output units in the target state, based on a given input state clamped on the input units.\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Almeida\u2013Pineda_recurrent_backpropagation", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Almeida\u2013Pineda_recurrent_backpropagation\n"
+}

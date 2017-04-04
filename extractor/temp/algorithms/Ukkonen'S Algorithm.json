@@ -1,0 +1,8 @@
+{
+    "about": "In computer science, Ukkonen's algorithm is a linear-time, online algorithm for constructing suffix trees, proposed by Esko Ukkonen in 1995.[1]", 
+    "name": "Ukkonen'S Algorithm", 
+    "classification": "Algorithms On Strings", 
+    "full_text": "In computer science, Ukkonen's algorithm is a linear-time, online algorithm for constructing suffix trees, proposed by Esko Ukkonen in 1995.[1]\nThe algorithm begins with an implicit suffix tree containing the first character of the string. Then it steps through the string adding successive characters until the tree is complete. This order addition of characters gives Ukkonen's algorithm its \"on-line\" property. The original algorithm presented by Peter Weiner proceeded backward from the last character to the first one from the shortest to the longest suffix.[2] A simpler algorithm was found by Edward M. McCreight, going from the longest to the shortest suffix.[3]\nThe naive implementation for generating a suffix tree going forward requires O(n2) or even O(n3) time complexity in big O notation, where n is the length of the string. By exploiting a number of algorithmic techniques, Ukkonen reduced this to O(n) (linear) time, for constant-size alphabets, and O(n log n) in general, matching the runtime performance of the earlier two algorithms.\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Ukkonen's_algorithm", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Ukkonen's_algorithm\n"
+}

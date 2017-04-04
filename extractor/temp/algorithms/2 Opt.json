@@ -1,0 +1,7 @@
+{
+    "about": "In optimization, 2-opt is a simple local search algorithm first proposed by Croes in 1958 for solving the traveling salesman problem. The main idea behind it is to take a route that crosses over itself and reorder it so that it does not.", 
+    "classification": "Heuristic Algorithms", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/2-opt\n", 
+    "full_text": "In optimization, 2-opt is a simple local search algorithm first proposed by Croes in 1958 for solving the traveling salesman problem. The main idea behind it is to take a route that crosses over itself and reorder it so that it does not.\nA complete 2-opt local search will compare every possible valid combination of the swapping mechanism. This technique can be applied to the travelling salesman problem as well as many related problems. These include the vehicle routing problem (VRP) as well as the capacitated VRP, which require minor modification of the algorithm.\nThis is the mechanism by which the 2-opt swap manipulates a given route:\nHere is an example of the above with arbitrary input:\nThis is the complete 2-opt swap making use of the above mechanism:\nNote: If you start/end at a particular node or depot, then you must remove this from the search as an eligible candidate for swapping, as reversing the order will cause an invalid path.\nFor example, with depot at A:\nSwapping using node[0] and node[2] would yield\nwhich is not valid (does not leave from A, the depot).", 
+    "name": "2 Opt"
+}

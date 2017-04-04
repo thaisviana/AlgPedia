@@ -1,0 +1,8 @@
+{
+    "about": "The spectral test is a statistical test for the quality of a class of pseudorandom number generators (PRNGs), the linear congruential generators (LCGs).[1] LCGs have a property that when plotted in 2 or more dimensions, lines or hyperplanes will form, on which all possible outputs can be found. The spectral test compares the distance between these planes; the further apart they are, the worse the generator is.[2] As this test is devised to study the lattice structures of LCGs, it can not be applied to other families of PRNGs.", 
+    "name": "Spectral Test", 
+    "classification": "Pseudorandom Number Generators", 
+    "full_text": "The spectral test is a statistical test for the quality of a class of pseudorandom number generators (PRNGs), the linear congruential generators (LCGs).[1] LCGs have a property that when plotted in 2 or more dimensions, lines or hyperplanes will form, on which all possible outputs can be found. The spectral test compares the distance between these planes; the further apart they are, the worse the generator is.[2] As this test is devised to study the lattice structures of LCGs, it can not be applied to other families of PRNGs.\nAccording to Donald Knuth,[3] this is by far the most powerful test known, because it can fail LCGs which pass most statistical tests. The IBM subroutine RANDU[4] LCG fails in this test for 3 dimensions and above.\n\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Spectral_test", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Spectral_test\n"
+}

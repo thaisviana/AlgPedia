@@ -1,0 +1,8 @@
+{
+    "about": "Edge disjoint shortest pair algorithm is an algorithm in computer network routing.[1] The algorithm is used for generating the shortest pair of edge disjoint paths between a given pair of vertices as follows:", 
+    "name": "Edge Disjoint Shortest Pair Algorithm", 
+    "classification": "Routing Algorithms", 
+    "full_text": "Edge disjoint shortest pair algorithm is an algorithm in computer network routing.[1] The algorithm is used for generating the shortest pair of edge disjoint paths between a given pair of vertices as follows:\nSuurballe's algorithm solves the same problem more quickly by reweighting the edges of the graph to avoid negative costs, allowing Dijkstra's algorithm to be used for both shortest path steps.\nG = (V, E) d(i) \u2013 the distance of vertex i (i\u2208V) from source vertex A; it\u2019s the sum of arcs in a possible path from vertex A to vertex i. Note that d(A)=0; P(i) \u2013 the predecessor of vertex I on the same path. Z \u2013 the destination vertex\nStep 1.\nStep 2.\nStep 3.\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Edge_disjoint_shortest_pair_algorithm", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Edge_disjoint_shortest_pair_algorithm\n"
+}

@@ -1,0 +1,8 @@
+{
+    "about": "A Sparse graph code is a code which is represented by a sparse graph.", 
+    "name": "Sparse Graph Code", 
+    "classification": "Error Detection And Correction", 
+    "full_text": "A Sparse graph code is a code which is represented by a sparse graph.\nAny linear code can be represented as a graph, where there are two sets of nodes - a set representing the transmitted bits and another set representing the constraints that the transmitted bits have to satisfy. The state of the art classical error-correcting codes are based on sparse graphs, achieving close to the Shannon limit. The archetypal sparse-graph codes are Gallager's low-density parity-check codes.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Sparse_graph_code", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Sparse_graph_code\n"
+}

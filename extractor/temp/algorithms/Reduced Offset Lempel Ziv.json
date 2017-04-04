@@ -1,0 +1,7 @@
+{
+    "about": "Reduced-offset Lempel Ziv (ROLZ) is a data compression algorithm, which was developed by Ross Williams. It is a dictionary method, building on LZ77.", 
+    "classification": "Compression Algorithms", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Reduced-offset_Lempel_Ziv\n", 
+    "full_text": "Reduced-offset Lempel Ziv (ROLZ) is a data compression algorithm, which was developed by Ross Williams. It is a dictionary method, building on LZ77.\nThe technical concept was first described by Malcolm Taylor in his data compression program RK (or WinRK). By QUAD -Compressor of Ilia Muraviev there is a free implementation (under LGPL)\n\n\nTrying to reduce the possible values of the offsets, has been made by many authors. Noteworthy are here:\nMatches are not stored as pairs of length and offset, but by a special mark, which belong to a specific line in the dictionary.\nThe LZRW4 algorithm by Ross Williams corresponds to ROLZ. Although the author undertook no useful implementation, realized his example compressor roughly the ROLZ algorithm.\nLZP is a dictionary compressor whose coding of matches operates completely without offsets. Given the length of the agreement will be saved with the following on the last occurrence of the preceding context string in a list.\nThis algorithm differs from ROLZ only in that of a match previous context may be of variable length, instead of a context specified degree.\nThese algorithms are further developments of the original ROLZ:", 
+    "name": "Reduced Offset Lempel Ziv"
+}

@@ -1,0 +1,8 @@
+{
+    "about": "The Elston\u2013Stewart algorithm is an algorithm for computing the likelihood of observed genotype data given a pedigree. It is due to Robert Elston and John Stewart. It can handle relatively large pedigrees providing they are (almost) outbred. Its computation time is exponential in the number of markers. It is used in the analysis of genetic linkage.", 
+    "name": "Elston\u2013Stewart Algorithm", 
+    "classification": "Statistical Algorithms", 
+    "full_text": "The Elston\u2013Stewart algorithm is an algorithm for computing the likelihood of observed genotype data given a pedigree. It is due to Robert Elston and John Stewart. It can handle relatively large pedigrees providing they are (almost) outbred. Its computation time is exponential in the number of markers. It is used in the analysis of genetic linkage.\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Elston\u2013Stewart_algorithm", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Elston\u2013Stewart_algorithm\n"
+}

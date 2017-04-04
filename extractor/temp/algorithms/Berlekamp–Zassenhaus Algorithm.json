@@ -1,0 +1,8 @@
+{
+    "about": "In mathematics, in particular in computational algebra, the Berlekamp\u2013Zassenhaus algorithm is an algorithm for factoring polynomials over the integers, named after Elwyn Berlekamp and Hans Zassenhaus. As a consequence of Gauss's lemma, this amounts to solving the problem also over the rationals.", 
+    "name": "Berlekamp\u2013Zassenhaus Algorithm", 
+    "classification": "Computer Algebra", 
+    "full_text": "In mathematics, in particular in computational algebra, the Berlekamp\u2013Zassenhaus algorithm is an algorithm for factoring polynomials over the integers, named after Elwyn Berlekamp and Hans Zassenhaus. As a consequence of Gauss's lemma, this amounts to solving the problem also over the rationals.\nThe algorithm starts by finding factorizations over suitable finite fields using Hensel's lemma to lift the solution from modulo a prime\u00a0p to a convenient power of\u00a0p. After this the right factors are found as a subset of these. The worst case of this algorithm is exponential in the number of factors.\nVan Hoeij (2002) improved this algorithm by using the LLL algorithm, substantially reducing the time needed to choose the right subsets of mod\u00a0p factors.\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Berlekamp\u2013Zassenhaus_algorithm", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Berlekamp\u2013Zassenhaus_algorithm\n"
+}
