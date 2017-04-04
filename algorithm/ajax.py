@@ -5,6 +5,7 @@ from django.contrib.auth.models import Group
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from inoa.http.responses import JsonResponse
+import tf_idf_query
 
 
 @login_required
@@ -62,6 +63,17 @@ def global_search_autocomplete(request):
 		url = reverse('algorithm.views.show_algorithm_by_id', args=(item.id,))
 		data.append({
 			'label': item.name,
+			'category': 'algorithms',
+			'category_label': u"Algorithms",
+			'url': url,
+		})
+
+	related = tf_idf_query.query(term)
+	for related_alg_name in related:
+		related_alg = Algorithm.objects.filter(name__icontains=related_alg_name).order_by('-reputation')[0]
+		url = reverse('algorithm.views.show_algorithm_by_id', args=(related_alg.id,))
+		data.append({
+			'label': related_alg.name,
 			'category': 'algorithms',
 			'category_label': u"Algorithms",
 			'url': url,
