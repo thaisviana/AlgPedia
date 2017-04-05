@@ -253,16 +253,26 @@ def filter_algorithms(name, classification):
 
 
 def get_all_algorithms(search=None, classification_id=None):
-    #load_artifacts()
-    if search:
-        related = query(search)
-        qs = []
-        for alg in related:
-            qs.extend(filter_algorithms(alg, classification_id))
-        return qs
-    else:
-        filter_algorithms(search, classification_id)
+	filters = {}
+	related_algorithms = []
+	qs = []
 
+	if search:
+		filters['name__icontains'] = search
+		related = query(search)
+        for alg in related:
+			related_algorithms.extend(filter_algorithms(alg, classification_id))
+
+	if classification_id:
+		filters['classification_id'] = classification_id
+
+	qs.extend(Algorithm.objects.filter(**filters).order_by('name'))
+
+	for alg in related_algorithms:
+		if not alg in qs:
+			qs.append(alg)
+
+	return qs
 
 def get_all_userquestions():
 	return UserQuestion.objects.order_by("text")
