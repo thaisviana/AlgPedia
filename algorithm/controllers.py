@@ -260,7 +260,8 @@ def get_all_algorithms(search=None, classification_id=None):
 	if search:
 		filters['name__icontains'] = search
 		related = query(search)
-        for alg in related:
+
+		for alg in related:
 			related_algorithms.extend(filter_algorithms(alg, classification_id))
 
 	if classification_id:
