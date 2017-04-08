@@ -180,7 +180,10 @@ class RDFWriter(FileWriter):
 
 	def replace_vars_in_template(self, variables):
 		if settings.LOCAL:
-			template_path = os.path.join(os.path.dirname(__file__), '../algorithm/static/rdf/rdf_modelo.xml').replace('/', '\\')
+			template_path = os.path.join(os.path.dirname(__file__), '../algorithm/static/rdf/rdf_modelo.xml')
+
+                        if os.name == 'nt':
+                                template_path = template_path.replace('/', '\\')
 		else:
 			template_path = os.path.join(os.path.dirname(__file__), '../algorithm/static/rdf/rdf_modelo.xml')
 		rdf_template = open(template_path)
