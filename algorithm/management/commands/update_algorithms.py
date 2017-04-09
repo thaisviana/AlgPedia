@@ -26,10 +26,23 @@ class Command(BaseCommand):
 
     def update_algorithms(self, algorithms):
         for algorithm in algorithms:
-            print 'Updating', algorithm['name']
-            #ToDo verificar pq alguns jsons estao vindo sem dbpedia_url
-            #insert_algorithm_db(algorithm['name'], algorithm['about'], get_classification_by_name(algorithm['classification']), algorithm['dbpedia_url'], True)
-            insert_algorithm_db(algorithm['name'], algorithm['about'], get_classification_by_name(algorithm['classification']), '', True)
+            try:
+                print 'Updating', algorithm['name']
+                alg = Algorithm.objects.get(name=algorithm['name'])
+                if alg:
+                    print 'Algorithm already exists, updating...'
+                    alg.description = algorithm['about']
+                    alg.classification = get_classification_by_name(algorithm['classification'])
+                    alg.save()
+            except Algorithm.DoesNotExist:          
+                print "Algorithm doesn't exists, creating..."
+                dbpurl = ""
+                if 'dbpedia_url' in algorithm.keys():
+                    dbpurl = algorithm['dbpedia_url']
+                Algorithm.objects.create(name=algorithm['name'], description=algorithm['about'], classification=get_classification_by_name(algorithm['classification']), uri=dbpurl, visible=True, user=None)
+            except Algorithm.MultipleObjectsReturned:
+                print "Multiple algorithms with the same name found. Skipping..."
+                continue
 
     def update_classifications(self, classifications):
         for classification in classifications:
