@@ -1,14 +1,9 @@
-'''
-Created on 01/03/2013
 
-@author: Pericolo
-'''
 
 import os
 from extractor.FileWriters import TXTWriter
 from extractor.Extractor import CSVColumnExtractor
 from extractor.DBPediaQueryFetcher import QueryFetcher
-from algorithm.models import Classification
 from algorithm.controllers import *
 
 from extractor.WikiPediaExtractors import WikiPediaAbstractExtractor
@@ -49,7 +44,6 @@ class Bootstrapper():
 
 	def insert_classification(self, classif_url):
 		(name, uri) = self.extract_name_uri(classif_url)
-		print name + ': ' + uri
 
 		classif = insert_classification_db(name, uri)
 
@@ -73,7 +67,6 @@ class Bootstrapper():
 
 			if not en_implementations and not implementations:
 				# this covers having neither a PT page nor a pseudocode
-				print "No implementation or pseudo for this algorithm.\n"
 				return None
 
 			alg = insert_algorithm_db(name, about, classif, alg_uri, True)
@@ -88,8 +81,7 @@ class Bootstrapper():
 
 			#will never be returned
 			return None
-		except Exception, e:
-			print e
+		except:
 			return None
 
 	def insert_algorithm(self, alg_url, classif):
@@ -126,8 +118,7 @@ class Bootstrapper():
 
 			#will never be returned
 			return None
-		except Exception, e:
-			print e
+		except:
 			return None
 
 	def extract_name_uri(self, classif_uri):

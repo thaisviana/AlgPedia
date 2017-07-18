@@ -13,8 +13,7 @@ class Command(BaseCommand):
                 #writer = csv.DictWriter(csvfile, fieldnames=prob_actions)
                 users_action = get_users_by_actions()
                 for action in users_action.items():
-                    print action
-                    #csvfile.write(action)
+                    csvfile.write(action)
         except:
             import traceback
             traceback.print_exc()

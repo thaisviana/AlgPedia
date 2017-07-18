@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.db import connection
 import itertools
 from django.shortcuts import get_object_or_404
-from tf_idf_query import *
+#from tf_idf_query import *
 
 def cosine_similarity(vec1, vec2):
 	 intersection = set(vec1.keys()) & set(vec2.keys())
@@ -24,14 +24,12 @@ def f_bayes(tag, id, sim_matriz, vecTag):
 	tagsEmSimilares = 0.0
 
 	for j in xrange(len(sim_matriz)):
-		if sim_matriz[id][j] > 0.2 and id <> j:
+		if sim_matriz[id][j] > 0.2 and id != j:
 			similares += 1
 			if tag in vecTag[j]:
 				tagsEmSimilares += 1
 	if similares == 0:
 		return 0.0
-	if(tagsEmSimilares / similares <> 0.0):
-		print tagsEmSimilares / similares
 	return  tagsEmSimilares / similares
 
 def get_university_by_position(u_position):
@@ -395,9 +393,6 @@ def update_programming_languages_proeficiencies(username, programming_languages_
 
 	ProgrammingLanguageProeficiencyScale.objects.filter(user__username=username, programming_language__id__in=to_remove).delete()
 
-	# print "programming_language!"
-	# print "to remove: ", to_remove
-	# print "to_insert: ", to_insert
 
 	if to_insert:
 		insert_programming_languages_proeficiencies(username, to_insert)
@@ -416,10 +411,6 @@ def update_classifications_proeficiencies(username, classifications_ids):
 	# Vou remover todas as existentes menos as que ele selecionou
 	to_remove = user_proeficiencies - classifications_ids
 	to_insert = classifications_ids - user_proeficiencies
-
-	# print "proeficiencies!"
-	# print "to remove: ", to_remove
-	# print "to_insert: ", to_insert
 
 	ClassificationProeficiencyScale.objects.filter(user__username=username, classification__id__in=to_remove).delete()
 
@@ -440,9 +431,6 @@ def update_classifications_interests(username, classifications_ids):
 	to_remove = user_interests - classifications_ids
 	to_insert = classifications_ids - user_interests
 
-	# print "interests!"
-	# print "to remove: ", to_remove
-	# print "to_insert: ", to_insert
 
 	Interest.objects.filter(user__username=username, classification__id__in=to_remove).delete()
 

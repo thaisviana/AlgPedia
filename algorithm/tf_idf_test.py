@@ -8,14 +8,9 @@ def test_queries(queries):
   for i in range(len(queries)):
     result = tf_idf_query.query(queries[i])
     
-    print ""
-    print "{}) {}".format(i+1, queries[i])
-    for j in range(len(result)):
-      print "-- {}. {}".format(j+1, result[j])
 
 def main():
   if len(sys.argv) < 2:
-    print "Uso:", sys.argv[0], "[N_COMPONENTS_SVD]"
     return
 
   n_svd_components = int(sys.argv[1])

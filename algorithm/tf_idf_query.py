@@ -2,7 +2,6 @@ import os
 import nltk
 import pickle
 import numpy as np
-from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics.pairwise import cosine_similarity
 
 
@@ -59,14 +58,6 @@ def load_svd():
     global tf_idf_transformed
     global svd_components
 
-    #tf_idf_file = open("{}/tfidf".format(path_of_tfidf_output))
-    #tf_idf_matrix = pickle.load(tf_idf_file)
-    #tf_idf_file.close()
-
-    #svd = TruncatedSVD(n_components=100, random_state=17)
-    #tf_idf_transformed = svd.fit_transform(tf_idf_matrix.transpose())
-    #svd_components = svd.components_
-
     matrix_file = open("{}/matrix".format(path_of_tfidf_output))
     tf_idf_transformed = pickle.load(matrix_file)
     matrix_file.close()
@@ -91,8 +82,6 @@ def main():
       n = raw_input("Digite a string para ser pesquisada ou exit para sair: ")
       if n == "exit":
           break
-      else:
-          print query(n)
 
 if __name__ == "__main__":
     main()

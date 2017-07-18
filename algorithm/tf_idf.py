@@ -19,7 +19,6 @@ def main():
   svd = TruncatedSVD(n_components=SVD_COMPONENTS, random_state=17)
   tf_idf_matrix = None
 
-  print "Preparando corpus..."
   corpus = []
   for document in os.listdir(path_of_extractions):
     document_list.append(document[:-4])
@@ -27,16 +26,13 @@ def main():
 
   tf_idf_vectorizer = TfidfVectorizer(input='filename')
 
-  print "Montando matriz tf-idf..."
   tf_idf_matrix = tf_idf_vectorizer.fit_transform(corpus)
 
-  print "Transformando por SVD..."
   tf_idf_transformed = svd.fit_transform(tf_idf_matrix)
 
   if not (os.path.isdir(path_of_output)):
       os.mkdir(path_of_output)
 
-  print "Salvando artefatos..."
 
   documents_file_path = "{}/documents".format(path_of_output)
   documents_file = open(documents_file_path, 'w')

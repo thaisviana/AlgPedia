@@ -14,3 +14,4 @@ class FiltersClassification(forms.Form):
 class TagForm(forms.ModelForm):
     class Meta:
         model = Tag
+        fields = '__all__'

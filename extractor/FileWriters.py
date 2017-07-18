@@ -1,9 +1,3 @@
-'''
-Created on 26/02/2013
-
-@author: Pericolo
-'''
-
 #encoding: utf-8
 
 import os
@@ -11,37 +5,37 @@ from bs4 import BeautifulSoup
 from django.conf import settings
 
 class FileWriter():
-    def __init__(self,params):
-        pass
+	def __init__(self,params):
+		pass
 
-    def writeFile(self, text, file_name):
-        pass
+	def writeFile(self, text, file_name):
+		pass
 
 class HTMLWriter(FileWriter):
-    def __init__(self, output_folder='./extractor/temp'):
-        self.base_path = output_folder
-        self.file_extension = 'html'
+	def __init__(self, output_folder='./extractor/temp'):
+		self.base_path = output_folder
+		self.file_extension = 'html'
 
-    def writeFile(self, text, file_name):
-        file_path = os.path.join(self.base_path, file_name + '.' + self.file_extension)
+	def writeFile(self, text, file_name):
+		file_path = os.path.join(self.base_path, file_name + '.' + self.file_extension)
 
-        F_HANDLE = open(file_path, 'w')
+		F_HANDLE = open(file_path, 'w')
 
-        F_HANDLE.write(text)
+		F_HANDLE.write(text)
 
-        F_HANDLE.close()
+		F_HANDLE.close()
 
-        return file_path
+		return file_path
 
-    def updateOutputFolderPath(self, new_folder_path):
-        self.base_path = new_folder_path
+	def updateOutputFolderPath(self, new_folder_path):
+		self.base_path = new_folder_path
 
 class CSVWriter(FileWriter):
-    def __init__(self, output_folder='./extractor/temp'):
-        self.base_path = os.path.abspath(output_folder)
-        self.file_extension = 'csv'
+	def __init__(self, output_folder='./extractor/temp'):
+		self.base_path = os.path.abspath(output_folder)
+		self.file_extension = 'csv'
 
-    def writeFile(self, html, file_name):
+	def writeFile(self, html, file_name):
 		file_path = os.path.join(self.base_path, file_name + '.' + self.file_extension)
 
 		file_converter = HTMLToCSV(html)
@@ -62,7 +56,7 @@ class CSVWriter(FileWriter):
 
 		return file_path
 
-    def appendFile(self, html, file_name):
+	def appendFile(self, html, file_name):
 		file_path = os.path.join(self.base_path, file_name + '.' + self.file_extension)
 
 		file_converter = HTMLToCSV(html)
@@ -147,12 +141,12 @@ class TXTWriter(FileWriter):
 		return file_path
 
 class XMLWriter(FileWriter):
-    def __init__(self, params):
-        pass
+	def __init__(self, params):
+		pass
 
 class JSONWriter(FileWriter):
-    def __init__(self, params):
-        pass
+	def __init__(self, params):
+		pass
 
 # testar
 class RDFWriter(FileWriter):
@@ -182,8 +176,8 @@ class RDFWriter(FileWriter):
 		if settings.LOCAL:
 			template_path = os.path.join(os.path.dirname(__file__), '../algorithm/static/rdf/rdf_modelo.xml')
 
-                        if os.name == 'nt':
-                                template_path = template_path.replace('/', '\\')
+			if os.name == 'nt':
+				template_path = template_path.replace('/', '\\')
 		else:
 			template_path = os.path.join(os.path.dirname(__file__), '../algorithm/static/rdf/rdf_modelo.xml')
 		rdf_template = open(template_path)
@@ -213,22 +207,22 @@ class RDFWriter(FileWriter):
 
 # HTMLToXXX converter Classes
 class HTMLToCSV:
-    def __init__(self, html):
-        self.html = html
+	def __init__(self, html):
+		self.html = html
 
-    def convert(self):
-        table = BeautifulSoup(self.html)
-        converted = list()
+	def convert(self):
+		table = BeautifulSoup(self.html)
+		converted = list()
 
-        for row in table.findAll('tr'):
-            aux = list()
-            for col in row.findAll('td'):
-                aux.append(col.string)
-            line = ';'.join(aux)
-            if(line != ''):
+		for row in table.findAll('tr'):
+			aux = list()
+			for col in row.findAll('td'):
+				aux.append(col.string)
+			line = ';'.join(aux)
+			if(line != ''):
 				converted.append(line.encode(encoding='UTF-8'))
 
-        return converted
+		return converted
 
 class HTMLToXML:
 	pass

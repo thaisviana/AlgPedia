@@ -78,8 +78,8 @@
 					<input type="hidden" id="logged" name="logged" value="false" />
 					{% endif %}
 					<li>
-						<form name="global-search" class="global-search" action="{% url 'algorithm.views.show_all_algorithms' %}" method="GET">
-							<div class="input-append">
+						<form name="global-search" class="global-search" action="{% url 'show_all_algorithms' %}" method="GET">
+                            <div class="input-append">
 								<input name="search" id="global_search_input" class="search-input" type="text" placeholder="Search for algorithms..." />
 								<span class="add-on"><i class="icon-search"></i></span>
 							</div>

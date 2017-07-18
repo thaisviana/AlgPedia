@@ -7,18 +7,15 @@ from algorithm.forms import FiltersAlgorithm, FiltersClassification
 from algorithm.models import Paradigm, Classification, Implementation, Algorithm, ProgrammingLanguage, UniversityRank, UserReputation
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.core.context_processors import csrf
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response, redirect
 from django.template import Context, RequestContext
 from django.template.loader import get_template
-from django.views.decorators.csrf import csrf_exempt
 from extractor.Bootstrapping import Bootstrapper
-import htmlentitydefs
+import html.entities as htmlentitydefs
 import json
 import re
 import sys
-import unicodedata
 
 # get_all_classifications_name_link, wipe_database, is_database_empty, get_classification_by_id
 
@@ -66,11 +63,11 @@ def signin(request):
 			return redirect(profile)
 		else:
 			c = {'logged':  request.user.is_authenticated(), 'form' : form}
-			c.update(csrf(request))
+			c.update(request)
 			return render(request, 'accounts/signin.html', c)
 	else:
 		c = {'logged':  request.user.is_authenticated(), 'form' : UserCreateForm()}
-		c.update(csrf(request))
+		c.update(request)
 		return render(request, "accounts/signin.html", c)
 
 def logout(request):
@@ -95,12 +92,7 @@ def ontoviz(request):
 
 def contact(request):
 	if request.method == 'POST':
-		print("Aqui")
 		recipients = ['thaisnviana@gmail.com']
-		print(request.POST['subject'])
-		print(request.POST['message'])
-		print(request.POST['sender'])
-		print(recipients)
 		# try:
 		# 	send_mail(request.POST['subject'], request.POST['message'], request.POST['sender'], recipients, fail_silently=False)
 		# except BadHeaderError:
@@ -108,7 +100,7 @@ def contact(request):
 		return render(request, 'default_debug.html', {'logged':  request.user.is_authenticated()})
 	else:
 		c = {'logged':  request.user.is_authenticated(), 'form' : ContactForm()}
-		c.update(csrf(request))
+		c.update(request)
 		return render(request, "contact.html", c)
 
 @login_required
@@ -137,7 +129,6 @@ def profile(request):
 					int_q_answer_id = int(q_data)
 					insert_user_question_answer(username, q.id, int_q_answer_id)
 			else:
-				#print 'aaa'
 				delete_user_question_answer(username, q.id)
 
 		data = request.POST.getlist("classifications_interest")
@@ -198,7 +189,7 @@ def profile(request):
 		'user_university' : get_user_univertisy(request.user.username),
 		'questions': get_all_userquestions()})
 
-	c.update(csrf(request))
+	c.update(request)
 
 	return render(request, 'accounts/profile.html', c)
 
@@ -334,7 +325,7 @@ def show_algorithm_by_id(request, id):
 	ctx_variables['impl_question_answers'] = impl_question_answers
 	ctx_variables['user_votes'] = user_votes
 
-	ctx_variables.update(csrf(request))
+	ctx_variables.update(request)
 
 	return render(request, 'display_algorithm_by_id.html', ctx_variables)
 
@@ -349,7 +340,7 @@ def insert_implementation(request, id):
 		return HttpResponseRedirect(algorithm.get_show_url())
 	else:
 		c = {'logged':  request.user.is_authenticated(), 'programming_languages' : get_all_programming_languages(), 'algorithm' : get_algorithm_by_id(int(id))}
-		c.update(csrf(request))
+		c.update(request)
 		return render(request, "add_algorithm_implementation.html", c)
 
 def show_classification_by_id(request, id):
@@ -399,7 +390,7 @@ def insert_algorithm(request, id=None):
 			'programming_languages' : get_all_programming_languages(),
 			'logged':  request.user.is_authenticated()
 		}
-		c.update(csrf(request))
+		c.update(request)
 
 		return render(request, "add_algorithm.html", c)
 

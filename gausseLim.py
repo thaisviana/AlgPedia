@@ -20,17 +20,11 @@ def gausselim(A,B):
     :param B: dependent variable in Ax = B
     :type B: numpy.ndarray of size (m, 1)
     """
-    print "A.size = ", A.size, "B.size = ", B.size
     # LU decomposition with pivot
     pl, u = lu(A, permute_l=True)
     # forward substitution to solve for Ly = B
     y = np.zeros(B.size)
     for m, b in enumerate(B.flatten()):
-        print ##########################
-        print "y.size = ", y.size, 
-        print "m = ", m
-        print "pl.size = ", pl.size
-        print "pl[m,m] = ", pl[m,m]
         y[m] = b
         # skip for loop if m == 0
         if m:
@@ -95,4 +89,3 @@ if __name__ == '__main__':
 
 
     x = gausselim(np.array(P), np.array(D))
-    print x

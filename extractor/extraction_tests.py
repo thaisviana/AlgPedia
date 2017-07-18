@@ -40,14 +40,13 @@ class WikiPediaAbstractExtractor:
 		try:
 			response = urllib2.urlopen(request)
 		#except urllib2.HTTPError, e:
-		except Exception, e:
+		except:
 			raise ExtractionError("Error retreiving: " + str(url))
 		
 		data = self.decode(response)
 		
 		#self.pool = BeautifulSoup(response.read())
 		self.pool = BeautifulSoup(data)
-		print "Fetched : " + str(self.url)
 		
 	def get_alg_about(self):
 		#div = self.pool.find("div", {"id" : 'mw-content-text' })
@@ -79,15 +78,14 @@ class UserAgentHtmlScraper:
 		try:
 			response = urllib2.urlopen(request)
 		#except urllib2.HTTPError, e:
-		except Exception, e:
+		except:
 			raise ExtractionError("Error retreiving: " + str(url))
 		
 		data = self.decode(response)
 		
 		#self.pool = BeautifulSoup(response.read())
 		self.pool = BeautifulSoup(data)
-		print "Fetched : " + str(self.url)
-		
+
 	def get_alg_about(self):
 		#div = self.pool.find("div", {"id" : 'mw-content-text' })
 		div = self.pool.find("div", {"class" : "mw-content-ltr" })
@@ -110,9 +108,7 @@ class UserAgentHtmlScraper:
 		
 def getNameFromLink(link):
 	page_name = re.split('/', link)[-1]
-	print page_name
 	words = re.split('[-_]', page_name)
-	print words
 	words = map(lambda x: x.capitalize(), words)
 	
 	beautiful_name = ' '.join(words)
@@ -161,8 +157,7 @@ def doMain():
 			file.write('\n')
 			file.write('\n')
 			
-		except Exception, e:
-			print e
+		except:
 			file.write(str(e))
 		
 		

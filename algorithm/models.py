@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.aggregates import Avg, Max
 from datetime import datetime
 
 
-class CustomUser(User):
+class User(AbstractUser):
 	class Meta:
-		proxy = True
+		verbose_name = "user"
+		verbose_name_plural = "users"
+
 	def is_moderator(self):
 		count = self.groups.filter(name='Moderator').count()
 		if count:
@@ -192,7 +194,7 @@ class ImplementationQuestionAnswer(models.Model):
 		user_profile_value /= float(10)
 
 		user_weight = ((PROFILE_WEIGHT * user_profile_value) + (LANGUAGE_WEIGHT * language_value) + (KNOWLEDGE_WEIGHT * classification_value)) \
-						/ (PROFILE_WEIGHT + LANGUAGE_WEIGHT + KNOWLEDGE_WEIGHT)
+					  / (PROFILE_WEIGHT + LANGUAGE_WEIGHT + KNOWLEDGE_WEIGHT)
 		return user_weight
 
 	def calculate_reputation(self):

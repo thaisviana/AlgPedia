@@ -1,11 +1,11 @@
--r requirements-bin.txt
-
-Django==1.5.1
-South==0.7.6
-dj-database-url==0.2.1
+Django==1.11.1
+dj-database-url==0.4.2
 django-inoa==0.2.3
-django-endless-pagination==2.0
 beautifulsoup4
 numpy
+scikit-learn==0.18.2
+scipy==0.19.1
 nltk
 simplejson
+psycopg2==2.7.1
+whitenoise==3.3.0

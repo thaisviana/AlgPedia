@@ -13,7 +13,6 @@ class Command(BaseCommand):
 				paradigms = json.load(jsonfile)	
 			for paradigm in paradigms['results']['bindings']:
 				insert_paradigm(paradigm['label']['value'],paradigm['abstract']['value'],paradigm['wpage']['value'],paradigm['paradigm']['value'])
-				print paradigm['label']['value']
 		except:
 			traceback.print_exc()
 			pass

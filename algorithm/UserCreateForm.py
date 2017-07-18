@@ -1,18 +1,8 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.forms.util import flatatt
-from django.template import loader
-from django.utils.datastructures import SortedDict
-from django.utils.http import int_to_base36
-from django.utils.safestring import mark_safe
-from django.utils.text import capfirst
 from django.utils.translation import ugettext, ugettext_lazy as _
-
-from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from django.contrib.auth.tokens import default_token_generator
-from django.contrib.sites.models import get_current_site
 
 class UserCreateForm(forms.ModelForm):
 	email = forms.EmailField(required=True)

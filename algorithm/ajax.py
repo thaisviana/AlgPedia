@@ -4,16 +4,15 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import Group
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
-from inoa.http.responses import JsonResponse
-import tf_idf_query
-
+from .tf_idf_query import query
+import json
 
 @login_required
 def moderator_add(request):
 	user = request.user
 	g = Group.objects.get(name='Moderator')
 	g.user_set.add(user)
-	return JsonResponse({'success': True})
+	return json.dumps({'success': True})
 
 @login_required
 @user_passes_test(lambda u: u.is_moderator(), login_url='/access_denied/')
@@ -29,7 +28,7 @@ def moderator_action(request):
 	elif action == 'refuse':
 		implementation.delete()
 
-	return JsonResponse({'success': True})
+	return json.dumps({'success': True})
 
 @login_required
 def tag_add(request):
@@ -42,7 +41,7 @@ def tag_add(request):
 		ctx['success'] = False
 		ctx['errors'] = form.errors
 
-	return JsonResponse(ctx)
+	return json.dumps(ctx)
 
 def global_search_autocomplete(request):
 	data = []
@@ -68,7 +67,7 @@ def global_search_autocomplete(request):
 			'url': url,
 		})
 
-	related = tf_idf_query.query(term)
+	related = query(term)
 	for related_alg_name in related:
 		related_alg = Algorithm.objects.filter(name__icontains=related_alg_name).order_by('-reputation')[0]
 		url = reverse('algorithm.views.show_algorithm_by_id', args=(related_alg.id,))
@@ -79,4 +78,4 @@ def global_search_autocomplete(request):
 			'url': url,
 		})
 
-	return JsonResponse(data)
+	return json.dumps(data)

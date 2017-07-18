@@ -47,4 +47,3 @@ def gausselim(A,B):
 
 if __name__ == '__main__':
     x = gausselim(np.array([[3, 2], [1, -4]]), np.array([[5], [10]]))
-    print x

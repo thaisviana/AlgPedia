@@ -2,9 +2,7 @@
 import urllib
 import sys
 import simplejson
-import unicodedata
 from algorithm.models import Algorithm, Tag
-from pprint import pprint
 from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):

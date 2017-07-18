@@ -7,7 +7,6 @@ class Command(BaseCommand):
     help = u"""generate owl."""
 
     def handle(self, *args, **options):
-		print "a"
 		reload(sys)
 		sys.setdefaultencoding("utf-8")
 		algorithms = Algorithm.objects.all()
