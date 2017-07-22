@@ -1,145 +1,144 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+{% load staticfiles %}
 <html>
-	<head>
-		<!--<link rel="stylesheet"	href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />-->
-		<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css" />
-		<link rel="stylesheet" href="{{ STATIC_URL }}css/util.css" />
-		<link rel="stylesheet" href="{{ STATIC_URL }}css/algpedia.css" />
-		<link rel="stylesheet" href="{{ STATIC_URL }}js/plugins/chosen/chosen.min.css">
-		<link rel="stylesheet" href="{{ STATIC_URL }}js/plugins/jquery-ui/css/themes/cupertino/jquery-ui.css" />
-		<link rel="stylesheet" href="{{ STATIC_URL }}js/plugins/jquery-ui/css/themes/cupertino/jquery.ui.theme.css" />
-		<link href="{{ STATIC_URL }}css/prettify.css" type="text/css" rel="stylesheet" />
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" href="{% static 'css/algpedia.css' %}">
+
+    <link rel="stylesheet" href="{% static 'js/plugins/chosen/chosen.min.css' %}">
+    <link rel="stylesheet" href="{% static 'js/plugins/jquery-ui/css/themes/cupertino/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'js/plugins/jquery-ui/css/themes/cupertino/jquery.ui.theme.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/prettify.css' %}">
+
+    <link rel="stylesheet"	href="{% static 'css/bootstrap-wysihtml5.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/teal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
 
-		<!--<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">-->
-		<link rel="stylesheet" href="{{ STATIC_URL }}css/homepage.css"><!-- homepage stylesheet -->
-		<link rel="stylesheet" href="{{ STATIC_URL }}css/teal.css"><!-- skin color -->
-		<link rel="stylesheet" href="{{ STATIC_URL }}css/responsive.css">
+    <!--<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"	type="text/javascript"></script>-->
+    <script type="text/javascript">
+        var STATIC_URL = '{{ STATIC_URL }}';
+        var url_global_search_autocomplete = '{% url "ajax-global_search_autocomplete" %}';
+    </script>
+
+    <script src="{% static 'js/jquery-1.9.1.js' %}"></script>
+    <script src="{% static 'js/plugins/jquery-ui/js/jquery-ui-1.10.1.min.js' %}"></script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>AlgPedia</title>
+
+    {% block extra-head %}
+    {% endblock %}
+</head>
+<body>
+<header>
+    <div class="navigation-bar pull-right">
+        <ul class="nav nav-pills">
+            <!--<li ><a href="/admin">Admin Page</a></li>-->
+            <li >
+                <a href="/show/cat/all">Classifications</a>
+            </li>
+            <li >
+                <a href="/show/alg/all">Algorithms</a>
+            </li>
+            <li >
+                <a href="/show/para/all">Paradigms</a>
+            </li>
+            <li >
+                <a href="/ontoviz">Onto Viz</a>
+            </li>
+            <li >
+                <a href="/about">AlgPedians</a>
+            </li>
+            <li >
+                <a href="/rules">Rules</a>
+            </li>
+
+            {% if user.is_moderator %}
+                <li >
+                    <a href="{% url 'moderator_dashboard' %}">Moderation</a>
+                </li>
+            {% endif %}
+
+            {% if logged %}
+                <li>
+                    <a id="logout" href="/accounts/logout">Logout</a>
+                </li>
+                <input type="hidden" id="logged" name="logged" value="true" />
+                <li>
+                    <a id="profile" href="/accounts/profile">Profile</a>
+                </li>
+                <input type="hidden" id="logged" name="logged" value="true" />
+            {% else %}
+                <li>
+                    <a href="/accounts/login" class="js-login-link">Login</a>
+                </li>
+                <input type="hidden" id="logged" name="logged" value="false" />
+            {% endif %}
+
+        </ul>
+    </div>
+    <a href="/">
+        <h3><img class="logo" src="{% static "images/logo-text-transparent.png" %}" /></h3>
+    </a>
+</header>
+<!--div class="contents">-->
+<div>
+    {% block content %}{% endblock %}
+</div>
+<div id="footer">
+    <div class="footer-inner">
+        <div class="footer-description">
+            <div class="trademark">AlgPedia - 2014</div>
+            <div>A project made by Computer Science students of UFRJ.</div>
+        </div>
+        <div class="sponsors">
+            <div class="inline-block">
+                <a href="http://dcc.ufrj.br">
+                    <img src="{% static "images/dcc.png" %}" class="img-rounded" style="border-style:solid;" alt="IM" />
+                </a>
+            </div>
+            <div class="inline-block">
+                <a href="http://www.ufrj.br/">
+                    <img src="{""%}" class="img-rounded" style="border-style:solid;" alt="UFRJ" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-		<!--<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"	type="text/javascript"></script>-->
-		<script type="text/javascript">
-			var STATIC_URL = '{{ STATIC_URL }}';
-			var url_global_search_autocomplete = '{% url "ajax-global_search_autocomplete" %}';
-		</script>
+<script type="text/javascript" src="{% static 'js/jquery.csrf-token.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/plugins/chosen/chosen.jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootbox.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/wysihtml5.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap-wysihtml5.js' %}"></script>
 
-		<script src="{{ STATIC_URL }}js/jquery-1.9.1.js"></script>
-		<script src="{{ STATIC_URL }}js/plugins/jquery-ui/js/jquery-ui-1.10.1.min.js"></script>
 
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>AlgPedia</title>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
-		{% block extra-head %}
-		{% endblock %}
-	</head>
-	<body>
-		<header>
-			<div class="navigation-bar pull-right">
-				<ul class="nav nav-pills">
-					<!--<li ><a href="/admin">Admin Page</a></li>-->
-					<li >
-						<a href="/show/cat/all">Classifications</a>
-					</li>
-					<li >
-						<a href="/show/alg/all">Algorithms</a>
-					</li>
-					<li >
-						<a href="/show/para/all">Paradigms</a>
-					</li>
-					<li >
-						<a href="/ontoviz">Onto Viz</a>
-					</li>
-					<li >
-						<a href="/about">AlgPedians</a>
-					</li>
-					<li >
-						<a href="/rules">Rules</a>
-					</li>
 
-					{% if user.is_moderator %}
-					<li >
-						<a href="{% url 'moderator_dashboard' %}">Moderation</a>
-					</li>
-					{% endif %}
+<script type="text/javascript" src="{% static 'js/network.js' %}"></script>
+<script type="text/javascript" src="{% static 'tiny_mce/tiny_mce.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/algpedia.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/overlib.js' %}"></script>
 
-					{% if logged %}
-					<li>
-						<a id="logout" href="/accounts/logout">Logout</a>
-					</li>
-					<input type="hidden" id="logged" name="logged" value="true" />
-					<li>
-						<a id="profile" href="/accounts/profile">Profile</a>
-					</li>
-					<input type="hidden" id="logged" name="logged" value="true" />
-					{% else %}
-					<li>
-						<a href="/accounts/login" class="js-login-link">Login</a>
-					</li>
-					<input type="hidden" id="logged" name="logged" value="false" />
-					{% endif %}
-					<li>
-						<form name="global-search" class="global-search" action="{% url 'show_all_algorithms' %}" method="GET">
-                            <div class="input-append">
-								<input name="search" id="global_search_input" class="search-input" type="text" placeholder="Search for algorithms..." />
-								<span class="add-on"><i class="icon-search"></i></span>
-							</div>
-						</form>
-					</li>
-				</ul>
-			</div>
-			<a href="/">
-				<h3><img class="logo" src="{{ STATIC_URL }}images/logo-text-transparent.png" /></h3>
-			</a>
-		</header>
-		<!--div class="contents">-->
-		<div>
-			{% block content %}{% endblock %}
-		</div>
-		<div id="footer">
-			<div class="footer-inner">
-				<div class="footer-description">
-					<div class="trademark">AlgPedia - 2014</div>
-					<div>A project made by Computer Science students of UFRJ.</div>
-				</div>
-				<div class="sponsors">
-					<div class="inline-block">
-						<a href="http://dcc.ufrj.br">
-							<img src="{{ STATIC_URL }}images/dcc.png" class="img-rounded" style="border-style:solid;" alt="IM" />
-						</a>
-					</div>
-					<div class="inline-block">
-						<a href="http://www.ufrj.br/">
-							<img src="{{ STATIC_URL }}images/logo_ufrj.jpg" class="img-rounded" style="border-style:solid;" alt="UFRJ" />
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
+<script type="text/javascript" src="{% static 'js/plugins/google-code-prettify/prettify.js' %}"></script>
 
-	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.csrf-token.js"></script>
-	<script src="{{ STATIC_URL }}js/plugins/chosen/chosen.jquery.min.js" type="text/javascript"></script>
-	<script	src="{{ STATIC_URL }}js/bootbox.js"	type="text/javascript"></script>
-	<link rel="stylesheet"	href="{{ STATIC_URL }}css/bootstrap-wysihtml5.css" />
-	<script	src="{{ STATIC_URL }}js/wysihtml5.js" type="text/javascript"></script>
-	<script	src="{{ STATIC_URL }}js/bootstrap-wysihtml5.js"	type="text/javascript"></script>
-	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}js/network.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}js/algpedia.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}js/overlib.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}js/plugins/google-code-prettify/prettify.js"></script>
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	  ga('create', 'UA-31800465-1', 'auto');
-	  ga('send', 'pageview');
-	</script>
+    ga('create', 'UA-31800465-1', 'auto');
+    ga('send', 'pageview');
+</script>
 
-	{% block extra_js %}{% endblock %}
+{% block extra_js %}{% endblock %}
 
-	</body>
+</body>
 </html>

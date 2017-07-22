@@ -7,7 +7,8 @@ import json
 
 
 class Command(BaseCommand):
-    help = u"""Command to update algorithms on the database. Requires that either the extractor was used previously
+    help = u"""Command to update algorithms on the database.
+    Requires that either the extractor was used previously
                 or that the classifications are updated"""
 
     def get_algorithms(self):

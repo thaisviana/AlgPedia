@@ -1,5 +1,5 @@
 from algorithm.ajax import *
-from algorithm.views import *
+import algorithm.views
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
@@ -10,30 +10,30 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^$', show_main_page),
-    url(r'^sync/$', sync_database),
-    url(r'^clearDB/$', clear_database),
-    url(r'^accounts/profile/$', profile),
+    url(r'^$', algorithm.views.show_main_page),
+    url(r'^sync/$', algorithm.views.sync_database),
+    url(r'^clearDB/$', algorithm.views.clear_database),
+    url(r'^accounts/profile/$', algorithm.views.profile),
     url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^ontoviz/$', ontoviz),
-    url(r'^signin/$', signin),
-    url(r'^contact/$', contact),
-    url(r'^rules/$', rules),
-    url(r'^about/$', about),
-    url(r'^advanced_search/$', advanced_search),
-    url(r'^show/cat/all$', show_all_classifications),
-    url(r'^show/cat/id/(\d+)', show_classification_by_id),
-    url(r'^add/cat/id/(\d+)', insert_algorithm),  # shows the page where we can add an algorithm by category
-    url(r'^show/alg/id/(\d+)', show_algorithm_by_id),
-    url(r'^show/alg/all$', show_all_algorithms, name='show_all_algorithms'),
+    url(r'^ontoviz/$', algorithm.views.ontoviz),
+    url(r'^signin/$', algorithm.views.signin),
+    url(r'^contact/$', algorithm.views.contact),
+    url(r'^rules/$', algorithm.views.rules),
+    url(r'^about/$', algorithm.views.about),
+    url(r'^advanced_search/$', algorithm.views.advanced_search),
+    url(r'^show/cat/all$', algorithm.views.show_all_classifications),
+    url(r'^show/cat/id/(\d+)', algorithm.views.show_classification_by_id),
+    url(r'^add/cat/id/(\d+)', algorithm.views.insert_algorithm),  # shows the page where we can add an algorithm by category
+    url(r'^show/alg/id/(\d+)', algorithm.views.show_algorithm_by_id),
+    url(r'^show/alg/all$', algorithm.views.show_all_algorithms),
 
-    url(r'^show/para/id/(\d+)', show_paradigm_by_id),
-    url(r'^show/para/all$', show_all_paradigms),
+    url(r'^show/para/id/(\d+)', algorithm.views.show_paradigm_by_id),
+    url(r'^show/para/all$', algorithm.views.show_all_paradigms),
 
-    url(r'^add/alg/id/(\d+)$', insert_implementation),
-    url(r'^moderator/$', moderator_dashboard, name='moderator_dashboard'),
+    url(r'^add/alg/id/(\d+)$', algorithm.views.insert_implementation),
+    url(r'^moderator/$', algorithm.views.moderator_dashboard, name='moderator_dashboard'),
 
-    url(r'^algorithm/add/$', insert_algorithm),
+    url(r'^algorithm/add/$', algorithm.views.insert_algorithm),
 
     # ajax
     url(r'^ajax/moderator_action/$', moderator_action, name='moderator_action'),

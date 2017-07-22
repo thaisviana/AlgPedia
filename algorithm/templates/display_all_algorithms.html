@@ -11,7 +11,6 @@ $(document).ready(function(){
 {% endblock %}
 
 {% block content %}
-{% load endless %}
 
 <div id="algorithms">
 
@@ -46,8 +45,7 @@ $(document).ready(function(){
 				</form>
 			</div>
 			<table id="classifications_uri" class="table table-bordered">
-				{% paginate algorithms %}
-				{% for algorithm in algorithms %}	
+				{% for algorithm in algorithms %}
 					<tr>
 						<td>
 							<a href="{{algorithm.link}}"/>
@@ -60,9 +58,6 @@ $(document).ready(function(){
 					<p> There are no algorithms available. </p>
 				{% endfor %}
 			</table>
-			<div class="pagination-wrapper">
-			{% show_pages %}
-			</div>
 		</div>
 		<div class="span2"></div>
 	</div>

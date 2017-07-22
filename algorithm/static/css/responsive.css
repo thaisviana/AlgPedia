@@ -241,7 +241,6 @@ SUPERFISH
 *************************************************************************************/
 @media screen and (max-width: 600px) {
 	#nav-wrap { position: relative;}
-	#menu-icon {background: url("../img/menu-icon.png") no-repeat scroll 10px center #333; color: #fff; cursor: pointer; display: block; height: 40px; padding: 12px 10px 15px 26px;}
 	#menu-icon:hover {}
 	#menu-icon.active {background-color: #333;}
    a > .sf-sub-indicator { top: 0;}

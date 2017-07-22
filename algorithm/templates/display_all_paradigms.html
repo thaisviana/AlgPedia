@@ -1,7 +1,6 @@
 {% extends "main_template.html" %}
 
 {% block content %}
-{% load endless %}
 
 <div>
 
@@ -26,11 +25,10 @@
 		<div class="span8">
 			
 			<table id="classifications_uri" class="table table-bordered">
-				{% paginate paradigms %}
-				{% for paradigm in paradigms %}	
+				{% for paradigm in paradigms %}
 					<tr>
 						<td>
-							<a href="{{paradigm.link}}">
+							<a href="{{paradigm.link}}"/>
 								{{ paradigm.label }}
 						</td>
 					</tr>
@@ -38,10 +36,7 @@
 					<p> There are no algorithms available. </p>
 				{% endfor %}
 			</table>
-			
-			<div class="pagination-wrapper">
-			{% show_pages %}
-			</div>
+
 		</div>
 		<div class="span2"></div>
 	</div>
