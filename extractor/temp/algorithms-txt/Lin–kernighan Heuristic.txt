@@ -1,4 +1,0 @@
-ABOUT
-In combinatorial optimization, Lin–Kernighan is one of the best heuristics for solving the symmetric travelling salesman problem. Briefly, it involves swapping pairs of sub-tours to make a new tour. It is a generalization of 2-opt and 3-opt. 2-opt and 3-opt work by switching two or three paths to make the tour shorter. Lin–Kernighan is adaptive and at each step decides how many paths between cities need to be switched to find a shorter tour.
-FULL TEXT
-In combinatorial optimization, Lin–Kernighan is one of the best heuristics for solving the symmetric travelling salesman problem. Briefly, it involves swapping pairs of sub-tours to make a new tour. It is a generalization of 2-opt and 3-opt. 2-opt and 3-opt work by switching two or three paths to make the tour shorter. Lin–Kernighan is adaptive and at each step decides how many paths between cities need to be switched to find a shorter tour.

@@ -1,8 +1,0 @@
-{
-    "about": "A logical clock is a mechanism for capturing chronological and causal relationships in a distributed system. Distributed systems may have no physically synchronous global clock, so a logical clock allows global ordering on events from different processes in such systems. The first implementation, the Lamport timestamps, was proposed by Leslie Lamport in 1978 (Turing Award in 2013).", 
-    "name": "Logical Clock", 
-    "classification": "Distributed Algorithms", 
-    "full_text": "A logical clock is a mechanism for capturing chronological and causal relationships in a distributed system. Distributed systems may have no physically synchronous global clock, so a logical clock allows global ordering on events from different processes in such systems. The first implementation, the Lamport timestamps, was proposed by Leslie Lamport in 1978 (Turing Award in 2013).\nIn logical clock systems each process has two data structures: logical local time and logical global time. Logical local time is used by the process to mark its own events, and logical global time is the local information about global time. A special protocol is used to update logical local time after each local event, and logical global time when processes exchange data.[1]\nLogical clocks are useful in computation analysis, distributed algorithm design, individual event tracking, and exploring computational progress.\nSome noteworthy logical clock algorithms are:\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Logical_clock", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Logical_clock\n"
-}

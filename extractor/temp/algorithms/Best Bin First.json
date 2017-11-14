@@ -1,8 +1,0 @@
-{
-    "about": "Best bin first is a search algorithm that is designed to efficiently find an approximate solution to the nearest neighbor search problem in very-high-dimensional spaces. The algorithm is based on a variant of the kd-tree search algorithm which makes indexing higher-dimensional spaces possible. Best bin first is an approximate algorithm which returns the nearest neighbor for a large fraction of queries and a very close neighbor otherwise.[1]", 
-    "name": "Best Bin First", 
-    "classification": "Search Algorithms", 
-    "full_text": "Best bin first is a search algorithm that is designed to efficiently find an approximate solution to the nearest neighbor search problem in very-high-dimensional spaces. The algorithm is based on a variant of the kd-tree search algorithm which makes indexing higher-dimensional spaces possible. Best bin first is an approximate algorithm which returns the nearest neighbor for a large fraction of queries and a very close neighbor otherwise.[1]\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Best_bin_first", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Best_bin_first\n"
-}

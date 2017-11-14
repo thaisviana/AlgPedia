@@ -1,8 +1,0 @@
-{
-    "about": "In signal processing, effective resolution bandwidth is the frequency band of a signal converter where ENOB is still guaranteed. It is limited by dynamic quantization problems.", 
-    "name": "Effective Resolution Bandwidth", 
-    "classification": "Signal Processing", 
-    "full_text": "In signal processing, effective resolution bandwidth is the frequency band of a signal converter where ENOB is still guaranteed. It is limited by dynamic quantization problems.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Effective_resolution_bandwidth", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Effective_resolution_bandwidth\n"
-}

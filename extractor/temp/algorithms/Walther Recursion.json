@@ -1,8 +1,0 @@
-{
-    "about": "In computer programming, Walther recursion (named after Christoph Walther) is a method of analysing recursive functions that can determine if the function is definitely terminating, given finite inputs. It allows a more natural style of expressing computation than simply using primitive recursive functions.", 
-    "name": "Walther Recursion", 
-    "classification": "Recursion", 
-    "full_text": "In computer programming, Walther recursion (named after Christoph Walther) is a method of analysing recursive functions that can determine if the function is definitely terminating, given finite inputs. It allows a more natural style of expressing computation than simply using primitive recursive functions.\nSince the halting problem cannot be solved in general, there need to be still programs that will terminate, but which Walther recursion cannot prove to terminate. Walther recursion may be used in total functional languages in order to allow a more liberal style of showing primitive recursion.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Walther_recursion", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Walther_recursion\n"
-}

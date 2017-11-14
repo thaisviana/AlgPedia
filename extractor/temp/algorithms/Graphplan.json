@@ -1,8 +1,0 @@
-{
-    "about": "Graphplan is an algorithm for automated planning developed by Avrim Blum and Merrick Furst in 1995. Graphplan takes as input a planning problem expressed in STRIPS and produces, if one is possible, a sequence of operations for reaching a goal state.", 
-    "name": "Graphplan", 
-    "classification": "Search Algorithms", 
-    "full_text": "Graphplan is an algorithm for automated planning developed by Avrim Blum and Merrick Furst in 1995. Graphplan takes as input a planning problem expressed in STRIPS and produces, if one is possible, a sequence of operations for reaching a goal state.\nThe name graphplan is due to the use of a novel planning graph, to reduce the amount of search needed to find the solution from straightforward exploration of the state space graph.\nIn the state space graph:\nOn the contrary, in Graphplan's planning graph:\nthe first level contains true atomic facts identifying the initial state.\nLists of incompatible facts that cannot be true at the same time and incompatible actions that cannot be executed together are also maintained.\nThe algorithm then iteratively extends the planning graph, proving that there are no solutions of length l-1 before looking for plans of length l by backward chaining: supposing the goals are true, Graphplan looks for the actions and previous states from which the goals can be reached, pruning as many of them as possible thanks to incompatibility information.\nA closely related approach to planning is the Planning as Satisfiability (Satplan). Both reduce the automated planning problem to search for plans of different fixed horizon lengths.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Graphplan", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Graphplan\n"
-}

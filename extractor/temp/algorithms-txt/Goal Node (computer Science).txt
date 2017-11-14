@@ -1,5 +1,0 @@
-ABOUT
-In computer science, a goal node is a node in a graph that meets defined criteria for success or termination.
-FULL TEXT
-In computer science, a goal node is a node in a graph that meets defined criteria for success or termination.
-Heuristical artificial intelligence algorithms, like A* and B*, attempt to reach such nodes in optimal time by defining the distance to the goal node. When the goal node is reached, A* defines the distance to the goal node as 0 and all other nodes' distances as positive values.

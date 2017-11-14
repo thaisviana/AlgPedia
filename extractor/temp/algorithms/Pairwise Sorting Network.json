@@ -1,8 +1,0 @@
-{
-    "about": "The pairwise sorting network is a sorting network discovered and published by Ian Parberry in 1992 in Parallel Processing Letters.[1] The pairwise sorting network has the same cost (number of comparators) and delay as the odd-even mergesort network. It requires \n\n\n\nn\n(\nlog\n\u2061\nn\n)\n(\nlog\n\u2061\nn\n\u2212\n1\n)\n\n/\n\n4\n+\nn\n\u2212\n1\n\n\n{\\displaystyle n(\\log n)(\\log n-1)/4+n-1}\n\n comparators and has depth \n\n\n\n(\nlog\n\u2061\nn\n)\n(\nlog\n\u2061\nn\n+\n1\n)\n\n/\n\n2\n\n\n{\\displaystyle (\\log n)(\\log n+1)/2}\n\n.", 
-    "name": "Pairwise Sorting Network", 
-    "classification": "Sorting Algorithms", 
-    "full_text": "The pairwise sorting network is a sorting network discovered and published by Ian Parberry in 1992 in Parallel Processing Letters.[1] The pairwise sorting network has the same cost (number of comparators) and delay as the odd-even mergesort network. It requires \n\n\n\nn\n(\nlog\n\u2061\nn\n)\n(\nlog\n\u2061\nn\n\u2212\n1\n)\n\n/\n\n4\n+\nn\n\u2212\n1\n\n\n{\\displaystyle n(\\log n)(\\log n-1)/4+n-1}\n\n comparators and has depth \n\n\n\n(\nlog\n\u2061\nn\n)\n(\nlog\n\u2061\nn\n+\n1\n)\n\n/\n\n2\n\n\n{\\displaystyle (\\log n)(\\log n+1)/2}\n\n.\n\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Pairwise_sorting_network", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Pairwise_sorting_network\n"
-}

@@ -1,6 +1,0 @@
-ABOUT
-In telecommunications, signal regeneration is signal processing that restores a signal, recovering its original characteristics.[1]
-FULL TEXT
-In telecommunications, signal regeneration is signal processing that restores a signal, recovering its original characteristics.[1]
-The signal may be electrical, as in a repeater on a T-carrier line, or optical, as in an OEO optical cross-connect.
-The process is used when it is necessary to change the signal type in order to transmit it via different media. Once it comes back to the original medium the signal is usually required to be regenerated so as to bring it back to its original state.

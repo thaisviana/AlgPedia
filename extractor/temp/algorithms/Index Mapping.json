@@ -1,8 +1,0 @@
-{
-    "about": "Index mapping (or direct addressing, or a trivial hash function) in computer science describes using an array, in which each position corresponds to a key in the universe of possible values.[1] The technique is most effective when the universe of keys is reasonably small, such that allocating an array with one position for every possible key is affordable. Its effectiveness comes from the fact that an arbitrary position in an array can be examined in constant time.", 
-    "name": "Index Mapping", 
-    "classification": "Search Algorithms", 
-    "full_text": "Index mapping (or direct addressing, or a trivial hash function) in computer science describes using an array, in which each position corresponds to a key in the universe of possible values.[1] The technique is most effective when the universe of keys is reasonably small, such that allocating an array with one position for every possible key is affordable. Its effectiveness comes from the fact that an arbitrary position in an array can be examined in constant time.\n\n\nThere are many practical examples of data whose valid values are restricted within a small range. A trivial hash function is a suitable choice when such data needs to act as a lookup key. Some examples include:\nUsing a trivial hash function, in a non-iterative table lookup, can eliminate conditional testing and branching completely, reducing the instruction path length of a computer program.\nRoger Sayle gives an example[2] of eliminating a multiway branch caused by a switch statement:\nWhich can be replaced with a table lookup:", 
-    "dbpedia_url": "http://dbpedia.org/resource/Index_mapping", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Index_mapping\n"
-}

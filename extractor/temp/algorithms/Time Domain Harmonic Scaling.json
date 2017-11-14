@@ -1,7 +1,0 @@
-{
-    "about": "Time-domain harmonic scaling (TDHS) is a method for time-scale modification of speech (or other audio signals),[1] allowing the apparent rate of speech articulation to be changed without affecting the pitch-contour and the time-evolution of the formant structure.[2] TDHS differs from other time-scale modification algorithms in that time-scaling operations are performed in the time domain (not the frequency domain).[3]", 
-    "classification": "Digital Signal Processing", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Time-domain_harmonic_scaling\n", 
-    "full_text": "Time-domain harmonic scaling (TDHS) is a method for time-scale modification of speech (or other audio signals),[1] allowing the apparent rate of speech articulation to be changed without affecting the pitch-contour and the time-evolution of the formant structure.[2] TDHS differs from other time-scale modification algorithms in that time-scaling operations are performed in the time domain (not the frequency domain).[3]\nproposed by D. Malah in 1979[4]\n", 
-    "name": "Time Domain Harmonic Scaling"
-}

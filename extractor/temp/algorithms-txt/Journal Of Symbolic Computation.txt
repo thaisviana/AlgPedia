@@ -1,6 +1,0 @@
-ABOUT
-The Journal of Symbolic Computation is a peer-reviewed monthly scientific journal covering all aspects of symbolic computation published by Academic Press and then by Elsevier. It is targeted to both mathematicians and computer scientists. It was established in 1985 by Bruno Buchberger, who served as its editor until 1994.
-FULL TEXT
-The Journal of Symbolic Computation is a peer-reviewed monthly scientific journal covering all aspects of symbolic computation published by Academic Press and then by Elsevier. It is targeted to both mathematicians and computer scientists. It was established in 1985 by Bruno Buchberger, who served as its editor until 1994.
-The journal covers a wide variety of topics, including:
-According to the Journal Citation Reports, its 2009 impact factor is 0.853.[2] The journal is abstracted and indexed by Scopus and the Science Citation Index.

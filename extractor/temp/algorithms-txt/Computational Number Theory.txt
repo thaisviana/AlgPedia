@@ -1,4 +1,0 @@
-ABOUT
-In mathematics and computer science, computational number theory, also known as algorithmic number theory, is the study of algorithms for performing number theoretic computations.
-FULL TEXT
-In mathematics and computer science, computational number theory, also known as algorithmic number theory, is the study of algorithms for performing number theoretic computations.

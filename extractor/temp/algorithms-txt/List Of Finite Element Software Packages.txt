@@ -1,7 +1,0 @@
-ABOUT
-This is a list of software packages that implement the finite element method for solving partial differential equations.
-FULL TEXT
-This is a list of software packages that implement the finite element method for solving partial differential equations.
-Customized later versions have been developed by UNSW Canberra including Creep elements for Soft Soils.
-Free student version available up to 1000 nodes.
-Windows

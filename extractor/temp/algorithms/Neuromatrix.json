@@ -1,8 +1,0 @@
-{
-    "about": "NeuroMatrix is a digital signal processor (DSP) series developed by NTC Module. The DSP has a VLIW/SIMD architecture. It consists of a 32-bit RISC core and a 64-bit vector co-processor. The vector co-processor supports vector operations with elements of variable bit length (US Pat. 6539368 B1) and is optimized to support the implementation of artificial neural networks.[1] From this derives the name NeuroMatrix Core (NMC). Newer devices contain multiple DSP cores and an additional ARM11 core.", 
-    "name": "Neuromatrix", 
-    "classification": "Digital Signal Processing", 
-    "full_text": "NeuroMatrix is a digital signal processor (DSP) series developed by NTC Module. The DSP has a VLIW/SIMD architecture. It consists of a 32-bit RISC core and a 64-bit vector co-processor. The vector co-processor supports vector operations with elements of variable bit length (US Pat. 6539368 B1) and is optimized to support the implementation of artificial neural networks.[1] From this derives the name NeuroMatrix Core (NMC). Newer devices contain multiple DSP cores and an additional ARM11 core.", 
-    "dbpedia_url": "http://dbpedia.org/resource/NeuroMatrix", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/NeuroMatrix\n"
-}

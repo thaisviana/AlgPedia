@@ -1,8 +1,0 @@
-{
-    "about": "In numerical analysis, a blossom is a functional that can be applied to any polynomial, but is mostly used for B\u00e9zier and spline curves and surfaces.", 
-    "name": "Blossom (Functional)", 
-    "classification": "Numerical Analysis", 
-    "full_text": "In numerical analysis, a blossom is a functional that can be applied to any polynomial, but is mostly used for B\u00e9zier and spline curves and surfaces.\nThe blossom of a polynomial \u0192, often denoted \n\n\n\n\n\nB\n\n\n[\nf\n]\n,\n\n\n{\\displaystyle {\\mathcal {B}}[f],}\n\n is completely characterised by the three properties:", 
-    "dbpedia_url": "http://dbpedia.org/resource/Blossom_(functional)", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Blossom_(functional)\n"
-}

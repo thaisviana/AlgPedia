@@ -1,8 +1,0 @@
-ABOUT
-In mathematics, σ-approximation adjusts a Fourier summation to eliminate the Gibbs phenomenon which would otherwise occur at discontinuities.
-FULL TEXT
-In mathematics, σ-approximation adjusts a Fourier summation to eliminate the Gibbs phenomenon which would otherwise occur at discontinuities.
-A σ-approximated summation for a series of period T can be written as follows:
-in terms of the normalized sinc function
-the term
-is the Lanczos σ factor, which is responsible for eliminating most of the Gibbs phenomenon. It does not do so entirely, however, but one can square or even cube the expression to serially attenuate Gibbs Phenomenon in the most extreme cases.

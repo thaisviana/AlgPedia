@@ -1,4 +1,0 @@
-ABOUT
-In signal processing, the half time is the time it takes for the amplitude of a pulse to drop from 100% to 50% of its peak value.
-FULL TEXT
-In signal processing, the half time is the time it takes for the amplitude of a pulse to drop from 100% to 50% of its peak value.

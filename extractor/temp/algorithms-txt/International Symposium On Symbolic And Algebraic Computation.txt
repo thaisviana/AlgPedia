@@ -1,8 +1,0 @@
-ABOUT
-ISSAC, the International Symposium on Symbolic and Algebraic Computation, is an academic conference in the field of computer algebra. ISSAC has been organized annually since 1988,[1] typically in July. The conference is regularly sponsored by the Association for Computing Machinery special interest group SIGSAM, and the proceedings since 1989 have been published by ACM.[2] ISSAC is considered as being one of the most influential conferences for the publication of scientific computing research.[3]
-FULL TEXT
-ISSAC, the International Symposium on Symbolic and Algebraic Computation, is an academic conference in the field of computer algebra. ISSAC has been organized annually since 1988,[1] typically in July. The conference is regularly sponsored by the Association for Computing Machinery special interest group SIGSAM, and the proceedings since 1989 have been published by ACM.[2] ISSAC is considered as being one of the most influential conferences for the publication of scientific computing research.[3]
-
-
-The first ISSAC took place in Rome on 4–8 July 1988. It succeeded a series of meetings held between 1966 and 1987 under the names SYMSAM, SYMSAC, EUROCAL, EUROSAM and EUROCAM.[4] The Richard D. Jenks Memorial Prize for excellence in software engineering applied to computer algebra is awarded at ISSAC every other year since 2004.
-Typical topics include:[5]

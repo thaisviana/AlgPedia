@@ -1,7 +1,0 @@
-ABOUT
-NTC Module (Research Center "Module") is a Russian scientific technological center (R&D production enterprise), founded in 1990 by the two enterprises of Russian military-industrial complex: NPO Vympel and NII Radiopriborostroyeniye.
-FULL TEXT
-NTC Module (Research Center "Module") is a Russian scientific technological center (R&D production enterprise), founded in 1990 by the two enterprises of Russian military-industrial complex: NPO Vympel and NII Radiopriborostroyeniye.
-Conducting an applied researches in the field of digital pattern recognition technologies and the development of DSP and DIP hardware, constructing functionally complete computing complexes on this basis.
-Developer of a well-known microprocessor series NeuroMatrix.
-The embedded computers designed by NTC Module are used in the industrial, avionics and space applications including International Space Station. In particular, the MBC186 is installed at "Zarya" module and the service module of ISS; "Yamal" telecommunication satellite.

@@ -1,5 +1,0 @@
-ABOUT
-In signal processing and electrical engineering, phase response is the relationship between the phase of a sinusoidal input and the output signal passing through any device that accepts input and produces an output signal, such as an amplifier or a filter.
-FULL TEXT
-In signal processing and electrical engineering, phase response is the relationship between the phase of a sinusoidal input and the output signal passing through any device that accepts input and produces an output signal, such as an amplifier or a filter.
-Amplifiers, filters, and other devices are often categorized by their amplitude and/or phase response. The amplitude response is the ratio of output amplitude to input, usually a function of the frequency. Similarly, phase response is the phase of the output with the input as reference. The input is defined as zero phase. A phase response is not limited to lying between 0° and 360°, as phase can accumulate to any amount of time.

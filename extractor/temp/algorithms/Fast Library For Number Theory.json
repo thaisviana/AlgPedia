@@ -1,8 +1,0 @@
-{
-    "about": "The Fast Library for Number Theory (FLINT) is a C library for number theory applications. The two major areas of functionality currently implemented in FLINT are polynomial arithmetic over the integers and a quadratic sieve. The library is designed to be compiled with the GNU Multi-Precision Library (GMP) and is released under the GNU General Public License. It is developed by William Hart of the University of Kaiserslautern (formerly University of Warwick) and David Harvey of University of New South Wales (formerly Harvard University) to address the speed limitations of the PARI and NTL libraries.[1]", 
-    "name": "Fast Library For Number Theory", 
-    "classification": "Computational Number Theory", 
-    "full_text": "The Fast Library for Number Theory (FLINT) is a C library for number theory applications. The two major areas of functionality currently implemented in FLINT are polynomial arithmetic over the integers and a quadratic sieve. The library is designed to be compiled with the GNU Multi-Precision Library (GMP) and is released under the GNU General Public License. It is developed by William Hart of the University of Kaiserslautern (formerly University of Warwick) and David Harvey of University of New South Wales (formerly Harvard University) to address the speed limitations of the PARI and NTL libraries.[1]", 
-    "dbpedia_url": "http://dbpedia.org/resource/Fast_Library_for_Number_Theory", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Fast_Library_for_Number_Theory\n"
-}

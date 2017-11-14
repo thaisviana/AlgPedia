@@ -1,8 +1,0 @@
-{
-    "about": "A local algorithm is a distributed algorithm that runs in constant time, independently of the size of the network.[1]", 
-    "name": "Local Algorithm", 
-    "classification": "Distributed Algorithms", 
-    "full_text": "A local algorithm is a distributed algorithm that runs in constant time, independently of the size of the network.[1]\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Local_algorithm", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Local_algorithm\n"
-}

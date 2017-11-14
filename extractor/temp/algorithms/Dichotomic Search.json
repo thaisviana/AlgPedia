@@ -1,8 +1,0 @@
-{
-    "about": "In computer science, a dichotomic search is a search algorithm that operates by selecting between two distinct alternatives (dichotomies) at each step. It is a specific type of divide and conquer algorithm. A well-known example is binary search.", 
-    "name": "Dichotomic Search", 
-    "classification": "Search Algorithms", 
-    "full_text": "In computer science, a dichotomic search is a search algorithm that operates by selecting between two distinct alternatives (dichotomies) at each step. It is a specific type of divide and conquer algorithm. A well-known example is binary search.\nAbstractly, a dichotomic search can be viewed as following edges of an implicit binary tree structure until it reaches a leaf (a goal or final state). This creates a theoretical tradeoff between the number of possible states and the running time: given k comparisons, the algorithm can only reach O(2k) possible states and/or possible goals.\nSome dichotomic searches only have results at the leaves of the tree, such as the Huffman tree used in Huffman compression, or the implicit classification tree used in Twenty Questions. Other dichotomic searches also have results in at least some internal nodes of the tree, such as a dichotomic search table for Morse code. There is thus some looseness in the definition. Though there may indeed be only two paths from any node, there are thus three possibilities at each step: choose one onwards path or the other, or stop at this node.\nDichotomic searches are often used in repair manuals, sometimes graphically illustrated with a flowchart similar to a fault tree.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Dichotomic_search", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Dichotomic_search\n"
-}

@@ -1,7 +1,0 @@
-ABOUT
-The Tompkins–Paige algorithm[1] is a computer algorithm for generating all permutations of a finite set of objects.
-FULL TEXT
-The Tompkins–Paige algorithm[1] is a computer algorithm for generating all permutations of a finite set of objects.
-Let P and c be arrays of length n with 1-based indexing (i.e. the first entry of an array has index 1). The algorithm for generating all n! permutations of the set {1,2,...,n} is given by the following pseudocode:
-In the above pseudocode, the statement "yield P" means to output or record the set of permuted indices P. If the algorithm is implemented correctly, P will be yielded exactly n! times, each with a different set of permuted indices.
-This algorithm is not the most efficient one among all existing permutation generation methods.[2] Not only does it have to keep track of an auxiliary counting array (c), redundant permutations are also produced and ignored (because P is not yielded after left-rotation if c[i] ≥ i) in the course of generation. For instance, when n = 4, the algorithm will first yield P = [1,2,3,4] and then generate the other 23 permutations in 40 iterations (i.e. in 17 iterations, there are redundant permutations and P is not yielded). The following lists, in the order of generation, all 41 values of P, where the parenthesized ones are redundant:

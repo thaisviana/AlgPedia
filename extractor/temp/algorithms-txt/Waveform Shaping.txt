@@ -1,5 +1,0 @@
-ABOUT
-Waveform shaping in electronics is the modification of the shape of an electronic waveform. It is in close connection with waveform diversity[1] and waveform design,[2] which are extensively studied in signal processing. Shaping the waveforms are of particular interest in active sensing (radar, sonar) for better detection performance, as well as communication schemes (CDMA, frequency hopping), and biology (for animal stimuli design).
-FULL TEXT
-Waveform shaping in electronics is the modification of the shape of an electronic waveform. It is in close connection with waveform diversity[1] and waveform design,[2] which are extensively studied in signal processing. Shaping the waveforms are of particular interest in active sensing (radar, sonar) for better detection performance, as well as communication schemes (CDMA, frequency hopping), and biology (for animal stimuli design).
-See also Modulation, Pulse compression, Spread spectrum, Transmit diversity, Ambiguity function, Autocorrelation, and Cross-correlation.

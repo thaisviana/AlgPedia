@@ -1,8 +1,0 @@
-{
-    "about": "In natural evolution and artificial evolution (e.g. artificial life and evolutionary computation) the fitness (or performance or objective measure) of a schema is rescaled to give its effective fitness which takes into account crossover and mutation. That is effective fitness can be thought of as the fitness that the schema would need to have in order to increase or decrease as a fraction of the population as it actually does with crossover and mutation present but as if they were not.", 
-    "name": "Effective Fitness", 
-    "classification": "Evolutionary Algorithms", 
-    "full_text": "In natural evolution and artificial evolution (e.g. artificial life and evolutionary computation) the fitness (or performance or objective measure) of a schema is rescaled to give its effective fitness which takes into account crossover and mutation. That is effective fitness can be thought of as the fitness that the schema would need to have in order to increase or decrease as a fraction of the population as it actually does with crossover and mutation present but as if they were not.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Effective_fitness", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Effective_fitness\n"
-}

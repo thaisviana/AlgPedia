@@ -1,9 +1,0 @@
-ABOUT
-In cryptography, the shrinking generator is a form of pseudorandom number generator intended to be used in a stream cipher. It was published in Crypto 1993 by Don Coppersmith, Hugo Krawczyk, and Yishay Mansour.
-FULL TEXT
-In cryptography, the shrinking generator is a form of pseudorandom number generator intended to be used in a stream cipher. It was published in Crypto 1993 by Don Coppersmith, Hugo Krawczyk, and Yishay Mansour.
-The shrinking generator uses two linear feedback shift registers. One, called the A sequence, generates output bits, while the other, called the S sequence, controls their output. Both A and S are clocked; if the S bit is 1, then the A bit is output; if the S bit is 0, the A bit is discarded, nothing is output, and we clock the registers again. This has the disadvantage that the generator's output rate varies irregularly, and in a way that hints at the state of S; this problem can be overcome by buffering the output.
-Despite this simplicity, there are currently no known attacks better than exhaustive search when the feedback polynomials are secret. If the feedback polynomials are known, however, the best known attack requires less than A•S bits of output.[1]
-An interesting variant is the self-shrinking generator.
-This example uses two Galois LFRSs to produce the output pseudorandom bitstream. The python code can be used to encrypt and decrypt a file or any bytestream.
-The C code is also available, see External links.

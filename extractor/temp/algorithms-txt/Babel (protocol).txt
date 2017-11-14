@@ -1,8 +1,0 @@
-ABOUT
-The Babel routing protocol is a distance-vector routing protocol for Internet Protocol packet-switched networks that is designed to be robust and efficient on both wireless mesh networks and wired networks.
-FULL TEXT
-The Babel routing protocol is a distance-vector routing protocol for Internet Protocol packet-switched networks that is designed to be robust and efficient on both wireless mesh networks and wired networks.
-Babel is based on the ideas in Destination-Sequenced Distance Vector routing (DSDV), Ad hoc On-Demand Distance Vector Routing (AODV), and Cisco's Enhanced Interior Gateway Routing Protocol (EIGRP), but uses different techniques for loop avoidance. Babel has provisions for using multiple dynamically computed metrics; by default, it uses hop-count on wired networks and a variant of ETX on wireless links, but can be configured to take radio diversity into account [1] or to automatically compute a link's latency and include it in the metric.[2]
-Babel operates on IPv4 and IPv6 networks. It has been reported to be a robust protocol and to have fast convergence properties.[3][4]
-Four implementations of Babel are freely available: the standalone "reference" implementation, a version that used to be[5] integrated into the Quagga routing suite,[6][7] a minimal reimplemantation in Python[8] and one that is an extension to the BIRD routing platform.[9] The version that was integrated into Quagga allowed for authentication,[10] while the reference version has support for Source-specific routing.[11]
-In October 2015, Babel was chosen as the mandatory-to-implement protocol by the IETF Homenet working group, albeit on an Experimental basis.[12]

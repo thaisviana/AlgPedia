@@ -1,9 +1,0 @@
-ABOUT
-In digital communications shaping codes are a method of encoding that changes the distribution of signals to improve efficiency.
-FULL TEXT
-In digital communications shaping codes are a method of encoding that changes the distribution of signals to improve efficiency.
-Typical digital communication systems uses M-Quadrature Amplitude Modulation(QAM) to communicate through an analog channel (specifically a channel with Gaussian noise). For Higher bit rates(M) the minimum Signal to Noise ratio (SNR) required by a QAM system with Error Correcting Codes is about 1.53 dB higher than minimum SNR required by a Gaussian source(>30% more transmitter power) as given in Shannon–Hartley theorem
-where
-This 1.53 dB difference is called the shaping gap. Typically digital system will encode bits with uniform probability to maximize the entropy. Shaping code act as buffer between digital sources and modulator communication system. They will receive uniformly distributed data and convert it to Gaussian like distribution before presenting to the modulator. Shaping codes are helpful in reducing transmit power and thus reduce the cost of Power amplifier and the interference caused to other users in the vicinity.
-Some of the methods used for shaping are described in the trellis shaping paper by Dr. G. D. Forney Jr.[1]
-Shell mapping[2] is used in V.34 modems to get a shaping gain of .8 dB. All the shaping schemes in the literature try to reduce the transmitted signal power. In future this may have find application in wireless networks where the interference from other nodes are becoming the major issue.

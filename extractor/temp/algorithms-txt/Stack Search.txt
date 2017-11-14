@@ -1,7 +1,0 @@
-ABOUT
-Stack search (also known as Stack decoding algorithm) is a search algorithm similar to beam search. It can be used to explore tree-structured search spaces and is often employed in Natural language processing applications, such as parsing of natural languages, or for decoding of error correcting codes where the technique goes under the name of sequential decoding.
-FULL TEXT
-Stack search (also known as Stack decoding algorithm) is a search algorithm similar to beam search. It can be used to explore tree-structured search spaces and is often employed in Natural language processing applications, such as parsing of natural languages, or for decoding of error correcting codes where the technique goes under the name of sequential decoding.
-Stack search keeps a list of the best n candidates seen so far. These candidates are incomplete solutions to the search problems, e.g. partial parse trees. It then iteratively expands the best partial solution, putting all resulting partial solutions onto the stack and then trimming the resulting list of partial solutions to the top n candidates, until a real solution (i.e. complete parse tree) has been found.
-Stack search is not guaranteed to find the optimal solution to the search problem. The quality of the result depends on the quality of the search heuristic.
-Example applications of the stack search algorithm can be found in the literature:

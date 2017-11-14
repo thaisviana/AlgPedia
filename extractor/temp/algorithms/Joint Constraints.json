@@ -1,8 +1,0 @@
-{
-    "about": "Joint constraints are rotational constraints on the joints of an artificial bone system. They are used in an inverse kinematics chain, for such things as 3D animation or robotics. Joint constraints can be implemented in a number of ways, but the most common method is to limit rotation about the X, Y and Z axis independently. An elbow, for instance, could be represented by limiting rotation on Y and Z axis to 0 degrees, and constraining the X-axis rotation to 130 degrees.", 
-    "name": "Joint Constraints", 
-    "classification": "Computational Physics", 
-    "full_text": "Joint constraints are rotational constraints on the joints of an artificial bone system. They are used in an inverse kinematics chain, for such things as 3D animation or robotics. Joint constraints can be implemented in a number of ways, but the most common method is to limit rotation about the X, Y and Z axis independently. An elbow, for instance, could be represented by limiting rotation on Y and Z axis to 0 degrees, and constraining the X-axis rotation to 130 degrees.\nTo simulate joint constraints more accurately, dot-products can be used with an independent axis to repulse the child bones orientation from the unreachable axis. Limiting the orientation of the child bone to a border of vectors tangent to the surface of the joint, repulsing the child bone away from the border, can also be useful in the precise restriction of shoulder movement.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Joint_constraints", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Joint_constraints\n"
-}

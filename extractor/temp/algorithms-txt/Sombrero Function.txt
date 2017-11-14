@@ -1,5 +1,0 @@
-ABOUT
-A sombrero function (sometimes called besinc function or jinc function[1]) is the 2-dimensional polar coordinate analog of the sinc function, and is so-called because it is shaped like a sombrero hat. This function is frequently used in image processing.[2] It can be defined through the Bessel function of the first kind
-FULL TEXT
-A sombrero function (sometimes called besinc function or jinc function[1]) is the 2-dimensional polar coordinate analog of the sinc function, and is so-called because it is shaped like a sombrero hat. This function is frequently used in image processing.[2] It can be defined through the Bessel function of the first kind
-where ρ2 = x2 + y2. The normalization factor 2 makes somb(0) = 1. Sometimes the π factor is omitted, giving the following alternative definition:

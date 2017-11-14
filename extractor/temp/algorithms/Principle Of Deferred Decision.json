@@ -1,8 +1,0 @@
-{
-    "about": "Principle of Deferred Decisions is a technique used in analysis of randomized algorithms.", 
-    "name": "Principle Of Deferred Decision", 
-    "classification": "Randomized Algorithms", 
-    "full_text": "Principle of Deferred Decisions is a technique used in analysis of randomized algorithms.\n\n\nA randomized algorithm makes a set of random choices. These random choices may be intricately related making it difficult to analyze it. In many of these cases Principle of Deferred Decisions is used. The idea behind the principle is that the entire set of random choices are not made in advance, but rather fixed only as they are revealed to the algorithm.\nThe principle is used to evaluate and determine the probability of \"win\" from a deck of cards. The idea is to let the random choices unfold, until the iteration ends at 52, where if the fourth card is drawn out of a group labeled \"K\", the game terminates.[citation needed]\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Principle_of_deferred_decision", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Principle_of_deferred_decision\n"
-}

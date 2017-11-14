@@ -1,7 +1,0 @@
-{
-    "about": "Industrial-grade primes (the term is apparently due to Henri Cohen[1]) are integers for which primality has not been certified (i.e. rigorously proven), but they have undergone probable prime tests such as the Miller-Rabin primality test, which has a positive, but negligible, failure rate, or the Baillie-PSW primality test, which no composites are known to pass.", 
-    "classification": "Cryptographic Algorithms", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Industrial-grade_prime\n", 
-    "full_text": "Industrial-grade primes (the term is apparently due to Henri Cohen[1]) are integers for which primality has not been certified (i.e. rigorously proven), but they have undergone probable prime tests such as the Miller-Rabin primality test, which has a positive, but negligible, failure rate, or the Baillie-PSW primality test, which no composites are known to pass.\nIndustrial-grade primes are sometimes used instead of certified primes in algorithms such as RSA encryption, which require the user to generate large prime numbers. Certifying the primality of large numbers (over 100 digits for instance) is significantly harder than showing they are industrial-grade primes. The latter can be done almost instantly with a failure rate so low that it is highly unlikely to ever fail in practice. In other words, the number is believed to be prime with very high, but not absolute, confidence.", 
-    "name": "Industrial Grade Prime"
-}

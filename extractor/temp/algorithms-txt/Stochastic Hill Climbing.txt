@@ -1,4 +1,0 @@
-ABOUT
-Stochastic hill climbing is a variant of the basic hill climbing method. While basic hill climbing always chooses the steepest uphill move, "stochastic hill climbing chooses at random from among the uphill moves; the probability of selection can vary with the steepness of the uphill move."[1]
-FULL TEXT
-Stochastic hill climbing is a variant of the basic hill climbing method. While basic hill climbing always chooses the steepest uphill move, "stochastic hill climbing chooses at random from among the uphill moves; the probability of selection can vary with the steepness of the uphill move."[1]

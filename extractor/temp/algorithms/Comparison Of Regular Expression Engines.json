@@ -1,8 +1,0 @@
-{
-    "about": "This is a comparison of regular expression engines.", 
-    "name": "Comparison Of Regular Expression Engines", 
-    "classification": "Pattern Matching", 
-    "full_text": "This is a comparison of regular expression engines.\n\n\nQt GNU LGPL v. 2.1, Qt Commercial\nNOTE: An application using a library for regular expression support does not necessarily offer the full set of features of the library, e.g. GNU grep which uses PCRE does not offer lookahead support, though PCRE does.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Comparison_of_regular_expression_engines", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Comparison_of_regular_expression_engines\n"
-}

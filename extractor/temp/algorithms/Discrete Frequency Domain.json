@@ -1,8 +1,0 @@
-{
-    "about": "A discrete frequency domain is a frequency domain that is discrete rather than continuous.", 
-    "name": "Discrete Frequency Domain", 
-    "classification": "Digital Signal Processing", 
-    "full_text": "A discrete frequency domain is a frequency domain that is discrete rather than continuous.\nFor example, the discrete Fourier transform maps a function having a discrete time domain into one having a discrete frequency domain. The discrete-time Fourier transform, on the other hand, maps functions with discrete time (discrete-time signals) to functions that have a continuous frequency domain.[1][2]", 
-    "dbpedia_url": "http://dbpedia.org/resource/Discrete_frequency_domain", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Discrete_frequency_domain\n"
-}

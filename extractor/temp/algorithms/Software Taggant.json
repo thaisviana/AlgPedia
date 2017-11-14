@@ -1,8 +1,0 @@
-{
-    "about": "A software taggant is a cryptographic signature added to software that enables positive origin identification and integrity of programs. Software taggants are using standard PKI techniques (see Public key infrastructure) and were introduced by the Industry Connections Security Group of IEEE in an attempt to control proliferation of malware obfuscated via executable compression (runtime packer).", 
-    "name": "Software Taggant", 
-    "classification": "Cryptographic Algorithms", 
-    "full_text": "A software taggant is a cryptographic signature added to software that enables positive origin identification and integrity of programs. Software taggants are using standard PKI techniques (see Public key infrastructure) and were introduced by the Industry Connections Security Group of IEEE in an attempt to control proliferation of malware obfuscated via executable compression (runtime packer).\nThe concept of a PKI-based system to mitigate runtime packer abuse was introduced in 2010[1][2] and described in a Black Hat Briefings presentation[3] by Mark Kennedy and Igor Muttik. The software taggant term was proposed by Arun Lakhotia (due to its similarities with chemical taggants) who also analyzed the economics of a packer ecosystem.[4]\nA software taggant is a form of code signing somewhat similar to Authenticode (which is used for programs operating under Microsoft Windows). The key differences between a software taggant and Authenticode are:\nThe software taggant project is run by IEEE ICSG and has open-source nature - it is hosted on GitHub[5] and relies on OpenSSL.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Software_taggant", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Software_taggant\n"
-}

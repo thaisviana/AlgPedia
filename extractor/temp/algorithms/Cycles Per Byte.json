@@ -1,8 +1,0 @@
-{
-    "about": "Cycles per byte (sometimes abbreviated cpb) is a unit of measurement which indicates the number of clock cycles a microprocessor will perform per byte (usually of octet size) of data processed in an algorithm.[1] It is commonly used as a partial indicator of real-world performance in cryptographic functions.[2]", 
-    "name": "Cycles Per Byte", 
-    "classification": "Cryptographic Algorithms", 
-    "full_text": "Cycles per byte (sometimes abbreviated cpb) is a unit of measurement which indicates the number of clock cycles a microprocessor will perform per byte (usually of octet size) of data processed in an algorithm.[1] It is commonly used as a partial indicator of real-world performance in cryptographic functions.[2]", 
-    "dbpedia_url": "http://dbpedia.org/resource/Cycles_per_byte", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Cycles_per_byte\n"
-}

@@ -1,8 +1,0 @@
-ABOUT
-In mathematics, computational group theory is the study of groups by means of computers. It is concerned with designing and analysing algorithms and data structures to compute information about groups. The subject has attracted interest because for many interesting groups (including most of the sporadic groups) it is impractical to perform calculations by hand.
-FULL TEXT
-In mathematics, computational group theory is the study of groups by means of computers. It is concerned with designing and analysing algorithms and data structures to compute information about groups. The subject has attracted interest because for many interesting groups (including most of the sporadic groups) it is impractical to perform calculations by hand.
-Important algorithms in computational group theory include:
-Two important computer algebra systems (CAS) used for group theory are GAP and Magma. Historically, other systems such as CAS (for character theory) and Cayley (a predecessor of Magma) were important.
-Some achievements of the field include:
-There are three books covering various parts of the subject:

@@ -1,8 +1,0 @@
-{
-    "about": "Stooge sort is a recursive sorting algorithm with a time complexity of O(nlog 3 / log 1.5 ) = O(n2.7095...). The running time of the algorithm is thus slower compared to efficient sorting algorithms, such as Merge sort, and is even slower than Bubble sort, a canonical example of a fairly inefficient and simple sort.", 
-    "name": "Stooge Sort", 
-    "classification": "Sorting Algorithms", 
-    "full_text": "Stooge sort is a recursive sorting algorithm with a time complexity of O(nlog 3 / log 1.5 ) = O(n2.7095...). The running time of the algorithm is thus slower compared to efficient sorting algorithms, such as Merge sort, and is even slower than Bubble sort, a canonical example of a fairly inefficient and simple sort.\nThe algorithm is defined as follows:\nIt is important to get the integer sort size used in the recursive calls by rounding the 2/3 upwards, e.g. rounding 2/3 of 5 should give 4 rather than 3, as otherwise the sort can fail on certain data. However, if the code is written to end on a base case of size 1, rather than terminating on either size 1 or size 2, rounding the 2/3 of 2 upwards gives an infinite number of calls.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Stooge_sort", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Stooge_sort\n"
-}

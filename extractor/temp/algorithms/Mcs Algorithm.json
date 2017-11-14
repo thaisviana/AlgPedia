@@ -1,8 +1,0 @@
-{
-    "about": "Multilevel Coordinate Search (MCS) is an algorithm for bound constrained global optimization using function values only.", 
-    "name": "Mcs Algorithm", 
-    "classification": "Optimization Algorithms And Methods", 
-    "full_text": "Multilevel Coordinate Search (MCS) is an algorithm for bound constrained global optimization using function values only.\nTo do so, the n-dimensional search space is represented by a set of non-intersecting hypercubes (boxes). The boxes are then iteratively split along an axis plane according to the value of the function at a representative point of the box and the box's size. These two splitting criteria combine to form a global search by splitting large boxes and a local search by splitting areas for which the function value is good.\nAdditionally a local search combining a quadratic interpolant of the function and line searches can be used to augment performance of the algorithm.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/MCS_algorithm", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/MCS_algorithm\n"
-}

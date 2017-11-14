@@ -1,6 +1,0 @@
-ABOUT
-A discrete signal or discrete-time signal is a time series consisting of a sequence of quantities. In other words, it is a time series that is a function over a domain of integers.
-FULL TEXT
-A discrete signal or discrete-time signal is a time series consisting of a sequence of quantities. In other words, it is a time series that is a function over a domain of integers.
-Unlike a continuous-time signal, a discrete-time signal is not a function of a continuous argument; however, it may have been obtained by sampling from a continuous-time signal, and then each value in the sequence is called a sample. When a discrete-time signal obtained by sampling a sequence corresponds to uniformly spaced times, it has an associated sampling rate; the sampling rate is not apparent in the data sequence, and so needs to be associated as a characteristic unit of the system.
-Discrete-time signals may have several origins, but can usually be classified into one of two groups:[1]

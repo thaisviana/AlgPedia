@@ -1,8 +1,0 @@
-{
-    "about": "In coding theory, the Preparata codes form a class of non-linear double-error-correcting codes. They are named after Franco P. Preparata who first described them in 1968.", 
-    "name": "Preparata Code", 
-    "classification": "Error Detection And Correction", 
-    "full_text": "In coding theory, the Preparata codes form a class of non-linear double-error-correcting codes. They are named after Franco P. Preparata who first described them in 1968.\nAlthough non-linear over GF(2) the Preparata codes are linear over Z4 with the Lee distance.\nLet m be an odd number, and \n\n\n\nn\n=\n\n2\n\nm\n\n\n\u2212\n1\n\n\n{\\displaystyle n=2^{m}-1}\n\n. We first describe the extended Preparata code of length \n\n\n\n2\nn\n+\n2\n=\n\n2\n\nm\n+\n1\n\n\n\n\n{\\displaystyle 2n+2=2^{m+1}}\n\n: the Preparata code is then derived by deleting one position. The words of the extended code are regarded as pairs (X,\u00a0Y) of 2m-tuples, each corresponding to subsets of the finite field GF(2m) in some fixed way.\nThe extended code contains the words (X,\u00a0Y) satisfying three conditions\nThe Peparata code is obtained by deleting the position in X corresponding to 0 in GF(2m).\nThe Preparata code is of length 2m+1\u00a0\u2212\u00a01, size 2k where k = 2m\u00a0+\u00a01\u00a0\u2212\u00a02m\u00a0\u2212\u00a02, and minimum distance 5.\nWhen m = 3, the Preparata code of length 15 is also called the Nordstrom\u2013Robinson code.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Preparata_code", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Preparata_code\n"
-}

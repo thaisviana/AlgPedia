@@ -1,8 +1,0 @@
-{
-    "about": "In computer science a segmented scan is modification of a prefix sum with an equal sized array of flag bits to denote segment boundaries on which the scan should be performed.[1]", 
-    "name": "Segmented Scan", 
-    "classification": "Concurrent Algorithms", 
-    "full_text": "In computer science a segmented scan is modification of a prefix sum with an equal sized array of flag bits to denote segment boundaries on which the scan should be performed.[1]", 
-    "dbpedia_url": "http://dbpedia.org/resource/Segmented_scan", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Segmented_scan\n"
-}

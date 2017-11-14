@@ -1,5 +1,0 @@
-ABOUT
-Credit-based fair queuing is a computationally efficient alternative to fair queueing. Credit is accumulated to queues as they wait for service. Credit is spent by queues while they are being serviced. Queues with positive credit are eligible for service. The rate of credit accumulation and release can be adjusted on a queue-by-queue basis to produce a weighted queuing behavior.
-FULL TEXT
-Credit-based fair queuing is a computationally efficient alternative to fair queueing. Credit is accumulated to queues as they wait for service. Credit is spent by queues while they are being serviced. Queues with positive credit are eligible for service. The rate of credit accumulation and release can be adjusted on a queue-by-queue basis to produce a weighted queuing behavior.
-Credit-based queuing is used in Resilient Packet Ring networks and in the IEEE 802.1Qav component of Audio Video Bridging.

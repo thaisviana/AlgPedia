@@ -1,6 +1,0 @@
-ABOUT
-An analog feedback shift register (AFSR) is a generalization of the (binary, digital) linear feedback shift register (LFSR).
-FULL TEXT
-An analog feedback shift register (AFSR) is a generalization of the (binary, digital) linear feedback shift register (LFSR).
-While binary LFSRs require less power to generate spread-spectrum signals than AFSRs, AFSR receivers require less power (in theory) to synchronize to those signals than binary LFSR receivers.
-As of 2005, AFSRs are still in research. AFSR techniques could make spread-spectrum receivers (such as GPS receivers and cell phones and WiFi receivers and RFIDs) cost less and have longer battery lifetimes.

@@ -1,8 +1,0 @@
-{
-    "about": "In telecommunication, a Hagelbarger code is a convolutional code that enables error bursts to be corrected provided that there are relatively long error-free intervals between the error bursts.", 
-    "name": "Hagelbarger Code", 
-    "classification": "Error Detection And Correction", 
-    "full_text": "In telecommunication, a Hagelbarger code is a convolutional code that enables error bursts to be corrected provided that there are relatively long error-free intervals between the error bursts.\nIn the Hagelbarger code, inserted parity check bits are spread out in time so that an error burst is not likely to affect more than one of the groups in which parity is checked.\n\u00a0This article incorporates\u00a0public domain material from the General Services Administration document \"Federal Standard 1037C\".", 
-    "dbpedia_url": "http://dbpedia.org/resource/Hagelbarger_code", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Hagelbarger_code\n"
-}

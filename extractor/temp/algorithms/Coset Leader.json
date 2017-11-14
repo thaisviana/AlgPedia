@@ -1,8 +1,0 @@
-{
-    "about": "In coding theory, a coset leader is a word of minimum weight in any particular coset - that is, a word with the lowest amount of non-zero entries. Sometimes there are several words of equal minimum weight in a coset, and in that case, any one of those words may be chosen to be the coset leader.", 
-    "name": "Coset Leader", 
-    "classification": "Error Detection And Correction", 
-    "full_text": "In coding theory, a coset leader is a word of minimum weight in any particular coset - that is, a word with the lowest amount of non-zero entries. Sometimes there are several words of equal minimum weight in a coset, and in that case, any one of those words may be chosen to be the coset leader.\nCoset leaders are used in the construction of a standard array for a linear code, which can then be used to decode received vectors. For a received vector y, the decoded message is y - e, where e is the coset leader of y. Coset leaders can also be used to construct a fast decoding strategy. For each coset leader u we calculate the syndrome uH\u2032. When we receive v we evaluate vH\u2032 and find the matching syndrome. The corresponding coset leader is the most likely error pattern and we assume that v+u was the codeword sent.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Coset_leader", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Coset_leader\n"
-}

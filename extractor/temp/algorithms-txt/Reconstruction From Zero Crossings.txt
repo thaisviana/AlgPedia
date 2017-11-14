@@ -1,6 +1,0 @@
-ABOUT
-The problem of reconstruction from zero crossings can be stated as: given the zero crossings of a continuous signal, is it possible to reconstruct the signal (to within a constant factor)? Worded differently, what are the conditions under which a signal can be reconstructed from its zero crossings?
-FULL TEXT
-The problem of reconstruction from zero crossings can be stated as: given the zero crossings of a continuous signal, is it possible to reconstruct the signal (to within a constant factor)? Worded differently, what are the conditions under which a signal can be reconstructed from its zero crossings?
-This problem has two parts. Firstly proving that there is a unique reconstruction of the signal from the zero crossings and secondly how to actually go about reconstructing the signal. Though there have been quite a few attempts, no conclusive solution has yet been found. Ben Logan from Bell Labs wrote a paper in 1977 in the Bell System Technical Journal giving some criteria under which unique reconstruction is possible. Though this has been a major step towards the solution, many people are dissatisfied with the type of condition which results from his paper.
-According to Logan a signal is uniquely reconstructible from its zero crossings if:

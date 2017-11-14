@@ -1,8 +1,0 @@
-{
-    "about": "Spectral layout is a class of algorithm for drawing graphs. The layout uses the eigenvectors of a matrix, such as the Laplace matrix of the graph, as Cartesian coordinates of the graph's vertices.", 
-    "name": "Spectral Layout", 
-    "classification": "Graph Algorithms", 
-    "full_text": "Spectral layout is a class of algorithm for drawing graphs. The layout uses the eigenvectors of a matrix, such as the Laplace matrix of the graph, as Cartesian coordinates of the graph's vertices.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Spectral_layout", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Spectral_layout\n"
-}

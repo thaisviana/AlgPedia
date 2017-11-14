@@ -1,5 +1,0 @@
-ABOUT
-The Sogitec 4X was a digital sound processing workstation developed by Giuseppe di Giugno at IRCAM (Paris) in the 1980s. It was the last large hardware processor before the development of the ISPW. Later solutions combined control and audio processing in the same computer like Max/MSP. 4X built on the achievements of the earlier Halaphone, capable of timbre alteration and sound localization.[1]
-FULL TEXT
-The Sogitec 4X was a digital sound processing workstation developed by Giuseppe di Giugno at IRCAM (Paris) in the 1980s. It was the last large hardware processor before the development of the ISPW. Later solutions combined control and audio processing in the same computer like Max/MSP. 4X built on the achievements of the earlier Halaphone, capable of timbre alteration and sound localization.[1]
-Nicolas Schöffer was one of the first users to build his composition method[2] with this computer.

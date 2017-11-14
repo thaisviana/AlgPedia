@@ -1,8 +1,0 @@
-{
-    "about": "A discrete system is a system with a countable number of states. Discrete systems may be contrasted with continuous systems, which may also be called analog systems. A final discrete system is often modeled with a directed graph and is analyzed for correctness and complexity according to computational theory. Because discrete systems have a countable number of states, they may be described in precise mathematical models.", 
-    "name": "Discrete System", 
-    "classification": "Signal Processing", 
-    "full_text": "A discrete system is a system with a countable number of states. Discrete systems may be contrasted with continuous systems, which may also be called analog systems. A final discrete system is often modeled with a directed graph and is analyzed for correctness and complexity according to computational theory. Because discrete systems have a countable number of states, they may be described in precise mathematical models.\nA computer is a finite state machine that may be viewed as a discrete system. Because computers are often used to model not only other discrete systems but continuous systems as well, methods have been developed to represent real-world continuous systems as discrete systems. One such method involves sampling a continuous signal at discrete time intervals.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Discrete_system", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Discrete_system\n"
-}

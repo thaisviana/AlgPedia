@@ -1,8 +1,0 @@
-{
-    "about": "Pseudo bit error ratio (PBER) in adaptive high-frequency (HF) radio, is a bit error ratio derived by a majority decoder that processes redundant transmissions.", 
-    "name": "Pseudo Bit Error Ratio", 
-    "classification": "Error Detection And Correction", 
-    "full_text": "Pseudo bit error ratio (PBER) in adaptive high-frequency (HF) radio, is a bit error ratio derived by a majority decoder that processes redundant transmissions.\nNote: In adaptive HF radio automatic link establishment, PBER is determined by the extent of error correction, such as by using the fraction of non-unanimous votes in the 2-of-3 majority decoder.\n\u00a0This article incorporates\u00a0public domain material from the General Services Administration document \"Federal Standard 1037C\" (in support of MIL-STD-188).", 
-    "dbpedia_url": "http://dbpedia.org/resource/Pseudo_bit_error_ratio", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Pseudo_bit_error_ratio\n"
-}

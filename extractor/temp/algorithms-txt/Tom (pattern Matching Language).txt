@@ -1,5 +1,0 @@
-ABOUT
-Tom is a programming language[1] particularly well-suited for programming various transformations[2] on tree structures and XML based documents. Tom is a language extension which adds new matching primitives to C and Java[3] as well as support for rewrite rules systems.[4] The rules can be controlled using a strategy[5] language.
-FULL TEXT
-Tom is a programming language[1] particularly well-suited for programming various transformations[2] on tree structures and XML based documents. Tom is a language extension which adds new matching primitives to C and Java[3] as well as support for rewrite rules systems.[4] The rules can be controlled using a strategy[5] language.
-Tom is good for:

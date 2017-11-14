@@ -1,8 +1,0 @@
-ABOUT
-CompHEP is a software package for automatic computations in High Energy Physics from Lagrangians to collision events or particle decays.
-FULL TEXT
-CompHEP is a software package for automatic computations in High Energy Physics from Lagrangians to collision events or particle decays.
-CompHEP is based on quantum theory of gauge fields, namely it uses the technique of squared Feynman diagrams at the tree level approximation. By default, CompHEP includes the Standard Model Lagrangian in the unitarity and 't Hooft-Feynman gauges and several MSSM models. However users can create new physical models, based on different Lagrangians. There is a special tool for that - LanHEP. CompHEP is able to compute basically the LO cross sections and distributions with several particles in the final state (up to 6-7). It can take into account, if necessary, all QCD and EW diagrams, masses of fermions and bosons and widths of unstable particles. Processes computed by means of CompHEP can be interfaced to the Monte-Carlo generators PYTHIA and HERWIG as new external processes.
-The CompHEP project started in 1989 in Skobeltsyn Institute of Nuclear Physics (SINP) of Moscow State University. During the 90’s this package was developed, and now it is a powerful tool for automatic computations of collision processes. The CompHEP program has been used in the past for lots of different studies in many experimental groups as shown schematically in the scheme
-
-Due to an intuitive graphical interface CompHEP is a very useful tool for education in particle and nuclear physics.

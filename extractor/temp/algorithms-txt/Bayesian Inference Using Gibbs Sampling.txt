@@ -1,5 +1,0 @@
-ABOUT
-Bayesian inference using Gibbs sampling (BUGs) is a software package for performing Bayesian inference using Markov chain Monte Carlo (based on Gibbs sampling).
-FULL TEXT
-Bayesian inference using Gibbs sampling (BUGs) is a software package for performing Bayesian inference using Markov chain Monte Carlo (based on Gibbs sampling).
-BUGs is used in the following software:[1]

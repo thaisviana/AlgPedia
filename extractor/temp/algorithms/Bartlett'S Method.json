@@ -1,8 +1,0 @@
-{
-    "about": "In time series analysis, Bartlett's method (also known as the method of averaged periodograms[1]), is used for estimating power spectra. It provides a way to reduce the variance of the periodogram in exchange for a reduction of resolution, compared to standard periodograms.[2][3] A final estimate of the spectrum at a given frequency is obtained by averaging the estimates from the periodograms (at the same frequency) derived from a non-overlapping portions of the original series.", 
-    "name": "Bartlett'S Method", 
-    "classification": "Digital Signal Processing", 
-    "full_text": "In time series analysis, Bartlett's method (also known as the method of averaged periodograms[1]), is used for estimating power spectra. It provides a way to reduce the variance of the periodogram in exchange for a reduction of resolution, compared to standard periodograms.[2][3] A final estimate of the spectrum at a given frequency is obtained by averaging the estimates from the periodograms (at the same frequency) derived from a non-overlapping portions of the original series.\nThe method is used in physics, engineering, and applied mathematics. Common applications of Bartlett's method are frequency response measurements and general spectrum analysis.\nThe method is named after M. S. Bartlett who first proposed it.[2][3]\n\n\nBartlett\u2019s method consists of the following steps:\nThe end result is an array of power measurements vs. frequency \"bin\".", 
-    "dbpedia_url": "http://dbpedia.org/resource/Bartlett's_method", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Bartlett's_method\n"
-}

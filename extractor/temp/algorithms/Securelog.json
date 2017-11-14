@@ -1,8 +1,0 @@
-{
-    "about": "In cryptology, SecureLog is an algorithm used to convert digital data into trusted data that can be verified if the authencity is questioned. SecureLog is used in IT solutions that generates data to support compliance regulations like SOX.", 
-    "name": "Securelog", 
-    "classification": "Cryptographic Algorithms", 
-    "full_text": "In cryptology, SecureLog is an algorithm used to convert digital data into trusted data that can be verified if the authencity is questioned. SecureLog is used in IT solutions that generates data to support compliance regulations like SOX.\n\n\nAn algorithm used to make datalogs secure from manipulation. The first infrastructure supporting the algorithm was available on the Internet in 2006.\nSecureLog involves an active key provider, a managed data store and a verification provider.\nThe algorithm is used in several different use cases:", 
-    "dbpedia_url": "http://dbpedia.org/resource/SecureLog", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/SecureLog\n"
-}

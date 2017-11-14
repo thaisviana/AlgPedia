@@ -1,5 +1,0 @@
-ABOUT
-A header check sequence (HCS) is an error checking feature for various header data structures, such as in the Media Access Control (MAC) header of Ethernet. It may consist of a cyclic redundancy check (CRC) of the frame, obtained as the remainder of the division (modulo 2) by the generator polynomial multiplied by the content of the header excluding the HCS field.
-FULL TEXT
-A header check sequence (HCS) is an error checking feature for various header data structures, such as in the Media Access Control (MAC) header of Ethernet. It may consist of a cyclic redundancy check (CRC) of the frame, obtained as the remainder of the division (modulo 2) by the generator polynomial multiplied by the content of the header excluding the HCS field.
-The HCS can be one octet long, as in Wimax,[1] or a 16-bit value for cable modems.[2]

@@ -1,8 +1,0 @@
-{
-    "about": "The transmission curve or transmission characteristic[1] is the mathematical function or graph that describes the transmission fraction of an optical or electronic filter as a function of frequency or wavelength.[2] It is an instance of a transfer function but, unlike the case of, for example, an amplifier, output never exceeds input (maximum transmission is 100%). The term is often used in commerce,[3] science,[4] and technology[5] to characterise filters.", 
-    "name": "Transmission Curve", 
-    "classification": "Signal Processing", 
-    "full_text": "The transmission curve or transmission characteristic[1] is the mathematical function or graph that describes the transmission fraction of an optical or electronic filter as a function of frequency or wavelength.[2] It is an instance of a transfer function but, unlike the case of, for example, an amplifier, output never exceeds input (maximum transmission is 100%). The term is often used in commerce,[3] science,[4] and technology[5] to characterise filters.\nThe term has also long been used in fields such as geophysics and astronomy to characterise the properties of regions through which radiation passes, such as the ionosphere.[6][7]\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Transmission_curve", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Transmission_curve\n"
-}

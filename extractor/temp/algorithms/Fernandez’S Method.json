@@ -1,8 +1,0 @@
-{
-    "about": "Fernandez's method (FB) is a method which is used in the multiprocessor scheduling algorithm. It is actually used to improve the quality of the lower bounding schemes which are adopted by branch and bound algorithms for solving multiprocessor scheduling problem. Fernandez's problem derives a better lower bound than HF[disambiguation needed],and propose a quadratic-time algorithm from calculating the bound. It is known that a straightforward calculation of FB takes O\n\n\n\n(\n\nn\n\n3\n\n\n)\n\n\n{\\displaystyle (n^{3})}\n\n time, since it must examine O\n\n\n\n(\n\nn\n\n2\n\n\n)\n\n\n{\\displaystyle (n^{2})}\n\n combinations each of which takes O\n\n\n\n(\nn\n)\n\n\n{\\displaystyle (n)}\n\n time in the worst case.", 
-    "name": "Fernandez\u2019S Method", 
-    "classification": "Optimization Algorithms And Methods", 
-    "full_text": "Fernandez's method (FB) is a method which is used in the multiprocessor scheduling algorithm. It is actually used to improve the quality of the lower bounding schemes which are adopted by branch and bound algorithms for solving multiprocessor scheduling problem. Fernandez's problem derives a better lower bound than HF[disambiguation needed],and propose a quadratic-time algorithm from calculating the bound. It is known that a straightforward calculation of FB takes O\n\n\n\n(\n\nn\n\n3\n\n\n)\n\n\n{\\displaystyle (n^{3})}\n\n time, since it must examine O\n\n\n\n(\n\nn\n\n2\n\n\n)\n\n\n{\\displaystyle (n^{2})}\n\n combinations each of which takes O\n\n\n\n(\nn\n)\n\n\n{\\displaystyle (n)}\n\n time in the worst case.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Fernandez\u2019s_method", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Fernandez\u2019s_method\n"
-}

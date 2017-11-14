@@ -1,5 +1,0 @@
-ABOUT
-PSI Protein Classifier is a program generalizing the results of both successive and independent iterations of the PSI-BLAST program. PSI Protein Classifier determines belonging of the found by PSI-BLAST proteins to the known families. The unclassified proteins are grouped according to similarity. PSI Protein Classifier allows to measure evolutionary distances between families of homologous proteins by the number of PSI-BLAST iterations.
-FULL TEXT
-PSI Protein Classifier is a program generalizing the results of both successive and independent iterations of the PSI-BLAST program. PSI Protein Classifier determines belonging of the found by PSI-BLAST proteins to the known families. The unclassified proteins are grouped according to similarity. PSI Protein Classifier allows to measure evolutionary distances between families of homologous proteins by the number of PSI-BLAST iterations.
-PSI Protein Classifier

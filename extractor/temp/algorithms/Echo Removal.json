@@ -1,8 +1,0 @@
-{
-    "about": "Echo removal is the process of removing echo and reverberation artifacts from audio signals. The reverberation is typically modeled as the convolution of a (sometimes time-varying) impulse response with a hypothetical clean input signal, where both the clean input signal (which is to be recovered) and the impulse response are unknown. This is an example of an inverse problem. In almost all cases, there is insufficient information in the input signal to uniquely determine a plausible original image, making it an ill-posed problem. This is generally solved by the use of a regularization term to attempt to eliminate implausible solutions.", 
-    "name": "Echo Removal", 
-    "classification": "Signal Processing", 
-    "full_text": "Echo removal is the process of removing echo and reverberation artifacts from audio signals. The reverberation is typically modeled as the convolution of a (sometimes time-varying) impulse response with a hypothetical clean input signal, where both the clean input signal (which is to be recovered) and the impulse response are unknown. This is an example of an inverse problem. In almost all cases, there is insufficient information in the input signal to uniquely determine a plausible original image, making it an ill-posed problem. This is generally solved by the use of a regularization term to attempt to eliminate implausible solutions.\nThis problem is analogous to deblurring in the image processing domain.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Echo_removal", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Echo_removal\n"
-}

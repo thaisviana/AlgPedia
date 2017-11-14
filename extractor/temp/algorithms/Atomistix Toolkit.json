@@ -1,8 +1,0 @@
-{
-    "about": "Atomistix ToolKit (ATK) is a commercial software for atomic-scale modeling and simulation of nanosystems. The software was originally developed by Atomistix A/S, and was later acquired by QuantumWise A/S following the Atomistix bankruptcy.[1]", 
-    "name": "Atomistix Toolkit", 
-    "classification": "Computational Physics", 
-    "full_text": "Atomistix ToolKit (ATK) is a commercial software for atomic-scale modeling and simulation of nanosystems. The software was originally developed by Atomistix A/S, and was later acquired by QuantumWise A/S following the Atomistix bankruptcy.[1]\nAtomistix ToolKit is a further development of TranSIESTA-C, which in turn in based on the technology, models, and algorithms developed in the academic codes TranSIESTA[2] and McDCal,[3] employing localized basis sets as developed in SIESTA.[4]\n\n\nAtomistix ToolKit combines density functional theory with non-equilibrium Green's functions for first principles electronic structure and transport calculations of\nThe key features are", 
-    "dbpedia_url": "http://dbpedia.org/resource/Atomistix_ToolKit", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Atomistix_ToolKit\n"
-}

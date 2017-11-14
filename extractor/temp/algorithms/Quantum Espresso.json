@@ -1,8 +1,0 @@
-{
-    "about": "Quantum ESPRESSO is a software suite for ab initio quantum chemistry methods of electronic-structure calculation and materials modeling, distributed for free under the GNU General Public License. It is based on Density Functional Theory, plane wave basis sets, and pseudopotentials (both norm-conserving and ultrasoft). ESPRESSO is an acronym for opEn-Source Package for Research in Electronic Structure, Simulation, and Optimization.[1]", 
-    "name": "Quantum Espresso", 
-    "classification": "Computational Physics", 
-    "full_text": "Quantum ESPRESSO is a software suite for ab initio quantum chemistry methods of electronic-structure calculation and materials modeling, distributed for free under the GNU General Public License. It is based on Density Functional Theory, plane wave basis sets, and pseudopotentials (both norm-conserving and ultrasoft). ESPRESSO is an acronym for opEn-Source Package for Research in Electronic Structure, Simulation, and Optimization.[1]\nThe core plane wave DFT functions of QE are provided by the PWscf component, PWscf previously existed as an independent project. PWscf (Plane-Wave Self-Consistent Field) is a set of programs for electronic structure calculations within density functional theory and density functional perturbation theory, using plane wave basis sets and pseudopotentials. The software is released under the GNU General Public License.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Quantum_ESPRESSO", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Quantum_ESPRESSO\n"
-}

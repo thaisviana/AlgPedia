@@ -1,6 +1,0 @@
-ABOUT
-The matched Z-transform method, also called the pole–zero mapping[1][2] or pole–zero matching method,[3] is a technique for converting a continuous-time filter design to a discrete-time filter (digital filter) design.
-FULL TEXT
-The matched Z-transform method, also called the pole–zero mapping[1][2] or pole–zero matching method,[3] is a technique for converting a continuous-time filter design to a discrete-time filter (digital filter) design.
-The method works by mapping all poles and zeros of the s-plane design to z-plane locations z=esT, for a sample interval T.[4]
-Alternative methods include the bilinear transform and impulse invariance methods.

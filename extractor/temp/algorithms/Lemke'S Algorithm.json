@@ -1,8 +1,0 @@
-{
-    "about": "In mathematical optimization, Lemke's algorithm is a procedure for solving linear complementarity problems, and more generally mixed linear complementarity problems. It is named after Carlton E. Lemke.", 
-    "name": "Lemke'S Algorithm", 
-    "classification": "Optimization Algorithms And Methods", 
-    "full_text": "In mathematical optimization, Lemke's algorithm is a procedure for solving linear complementarity problems, and more generally mixed linear complementarity problems. It is named after Carlton E. Lemke.\nLemke's algorithm is of pivoting or basis-exchange type. Similar algorithms can compute Nash equilibria for two-person matrix and bimatrix games.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Lemke's_algorithm", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Lemke's_algorithm\n"
-}

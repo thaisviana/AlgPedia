@@ -1,8 +1,0 @@
-{
-    "about": "A vector clock is an algorithm for generating a partial ordering of events in a distributed system and detecting causality violations. Just as in Lamport timestamps, interprocess messages contain the state of the sending process's logical clock. A vector clock of a system of N processes is an array/vector of N logical clocks, one clock per process; a local \"smallest possible values\" copy of the global clock-array is kept in each process, with the following rules for clock updates:", 
-    "name": "Vector Clock", 
-    "classification": "Distributed Algorithms", 
-    "full_text": "A vector clock is an algorithm for generating a partial ordering of events in a distributed system and detecting causality violations. Just as in Lamport timestamps, interprocess messages contain the state of the sending process's logical clock. A vector clock of a system of N processes is an array/vector of N logical clocks, one clock per process; a local \"smallest possible values\" copy of the global clock-array is kept in each process, with the following rules for clock updates:\nThe vector clocks algorithm was independently developed by Colin Fidge and Friedemann Mattern in 1988.[1][2]\n\n\nVector clocks allow for the partial causal ordering of events. Defining the following:\nProperties:\nRelation with other orders:", 
-    "dbpedia_url": "http://dbpedia.org/resource/Vector_clock", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Vector_clock\n"
-}

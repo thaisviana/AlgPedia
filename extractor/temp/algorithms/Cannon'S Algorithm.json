@@ -1,8 +1,0 @@
-{
-    "about": "In computer science, Cannon's algorithm is a distributed algorithm for matrix multiplication for two-dimensional meshes first described in 1969 by Lynn Elliot Cannon.[1][2]", 
-    "name": "Cannon'S Algorithm", 
-    "classification": "Distributed Algorithms", 
-    "full_text": "In computer science, Cannon's algorithm is a distributed algorithm for matrix multiplication for two-dimensional meshes first described in 1969 by Lynn Elliot Cannon.[1][2]\nIt is especially suitable for computers laid out in an N \u00d7 N mesh.[3] While Cannon's algorithm works well in homogeneous 2D grids, extending it to heterogeneous 2D grids has been shown to be difficult.[4]\nThe main advantage of the algorithm is that its storage requirements remain constant and are independent of the number of processors.[2]\nThe Scalable Universal Matrix Multiplication Algorithm (SUMMA)[5] is a more practical algorithm that requires less workspace and overcomes the need for a square 2D grid. It is used by the ScaLAPACK, PLAPACK, and Elemental libraries.\n\n\nWhen multiplying two N\u00d7N matrices A and B, we need N\u00d7N processing nodes P arranged in a 2d grid. Initially pi,j is responsible for ai,j and bi,j.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Cannon's_algorithm", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Cannon's_algorithm\n"
-}

@@ -1,6 +1,0 @@
-ABOUT
-In mathematics, specifically in linear algebra, the spark of a matrix A is the smallest number n such that there exists a set of n columns in A which are linearly dependent. Formally,
-FULL TEXT
-In mathematics, specifically in linear algebra, the spark of a matrix A is the smallest number n such that there exists a set of n columns in A which are linearly dependent. Formally,
-By contrast, the rank of a matrix is the largest number k such that some set of k columns of A is linearly independent.
-The concept of the spark is of use in the theory of compressive sensing, where requirements on the spark of the measurement matrix are used to ensure stability and consistency of various estimation techniques.[1] It is also known in matroid theory as the girth of the vector matroid associated with the columns of the matrix. The spark of a matrix is NP-hard to compute.[2]

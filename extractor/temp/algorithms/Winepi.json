@@ -1,8 +1,0 @@
-{
-    "about": "In data mining, the WINEPI algorithm is an influential algorithm for episode mining, which helps discover the knowledge hidden in an event sequence.", 
-    "name": "Winepi", 
-    "classification": "Data Mining Algorithms", 
-    "full_text": "In data mining, the WINEPI algorithm is an influential algorithm for episode mining, which helps discover the knowledge hidden in an event sequence.\nWINEPI derives part of its name from the fact that it uses a sliding window to go through the event sequence.\nThe outcome of the algorithm are episode rules describe temporal relationships between events and form an extension of association rules.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/WINEPI", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/WINEPI\n"
-}

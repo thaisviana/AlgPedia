@@ -1,5 +1,0 @@
-ABOUT
-Noiselets are a family of functions which are related to wavelets, analogously to the way that the Fourier basis is related to a time domain signal. In other words, if a signal is compact in the wavelet domain then it will be spread out in the noiselet domain, and vice versa.[1]
-FULL TEXT
-Noiselets are a family of functions which are related to wavelets, analogously to the way that the Fourier basis is related to a time domain signal. In other words, if a signal is compact in the wavelet domain then it will be spread out in the noiselet domain, and vice versa.[1]
-The complementarity of wavelets and noiselets means that noiselets can be used in compressed sensing to reconstruct a signal (such as an image) which has a compact representation in wavelets.[2]

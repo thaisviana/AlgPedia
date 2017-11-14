@@ -1,6 +1,0 @@
-ABOUT
-Speciation is a process that occurs naturally in evolution and is modeled explicitly in some genetic algorithms.
-FULL TEXT
-Speciation is a process that occurs naturally in evolution and is modeled explicitly in some genetic algorithms.
-Speciation in nature occurs when two similar reproducing beings evolve to become too dissimilar to share genetic information effectively or correctly. In the case of living organisms, they are incapable of mating to produce offspring. Interesting special cases of different species being able to breed exist, such as a horse and a donkey mating to produce a mule. However in this case the Mule is usually infertile, and so the genetic isolation of the two parent species is maintained.
-In implementations of genetic search algorithms, the event of speciation is defined by some mathematical function that describes the similarity between two candidate solutions (usually described as individuals) in the population. If the result of the similarity is too low, the crossover operator is disallowed between those individuals.

@@ -1,8 +1,0 @@
-{
-    "about": "Stan is a probabilistic programming language for statistical inference written in C++.[1] The Stan language is used to specify a (Bayesian) statistical model with an imperative program calculating the log probability density function.[1]:2", 
-    "name": "Stan (Software)", 
-    "classification": "Computational Statistics", 
-    "full_text": "Stan is a probabilistic programming language for statistical inference written in C++.[1] The Stan language is used to specify a (Bayesian) statistical model with an imperative program calculating the log probability density function.[1]:2\nStan is licensed under the New BSD License. Stan is named in honour of Stanislaw Ulam, pioneer of the Monte Carlo method.[1]:xii\n\n\nStan can be accessed through several interfaces:\nStan implements gradient-based Markov chain Monte Carlo (MCMC) algorithms for Bayesian inference, stochastic, gradient-based variational Bayesian methods for approximate Bayesian inference, and gradient-based optimization for penalized maximum likelihood estimation.\nStan implements reverse-mode automatic differentiation to calculate gradients of the model, which is required by HMC, NUTS, L-BFGS, BFGS, and variational inference.[1]:199 The automatic differentiation within Stan can be used outside of the probabilistic programming language.\nStan is used in fields including social science[4] and pharmaceutical statistics.[5]", 
-    "dbpedia_url": "http://dbpedia.org/resource/Stan_(software)", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Stan_(software)\n"
-}

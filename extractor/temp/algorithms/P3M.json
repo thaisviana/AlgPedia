@@ -1,8 +1,0 @@
-{
-    "about": "Particle\u2013Particle-Particle\u2013Mesh (P3M) is a Fourier-based Ewald summation method[1][2] to calculate potentials in N-body simulations.[3][4][5]", 
-    "name": "P3M", 
-    "classification": "Computational Physics", 
-    "full_text": "Particle\u2013Particle-Particle\u2013Mesh (P3M) is a Fourier-based Ewald summation method[1][2] to calculate potentials in N-body simulations.[3][4][5]\nThe potential could be the electrostatic potential among N point charges i.e. molecular dynamics, the gravitational potential among N gas particles in e.g. smoothed particle hydrodynamics, or any other useful function. It is based on the particle mesh method, where particles are interpolated onto a grid, and the potential is solved for this grid (e.g. by solving the discrete Poisson equation). This interpolation introduces errors in the force calculation, particularly for particles that are close together. Essentially, the particles are forced to have a lower spatial resolution during the force calculation. The P3M algorithm attempts to remedy this by calculating the potential through a direct sum for particles that are close, and through the particle mesh method for particles that are separated by some distance.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/P3M", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/P3M\n"
-}

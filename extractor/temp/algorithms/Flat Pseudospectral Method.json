@@ -1,8 +1,0 @@
-{
-    "about": "The flat pseudospectral method is part of the family of the Ross\u2013Fahroo pseudospectral methods introduced by Ross and Fahroo.[1] [2] The method combines the concept of differential flatness[3] [4] with pseudospectral method to generate outputs in the so-called flat space.", 
-    "name": "Flat Pseudospectral Method", 
-    "classification": "Numerical Analysis", 
-    "full_text": "The flat pseudospectral method is part of the family of the Ross\u2013Fahroo pseudospectral methods introduced by Ross and Fahroo.[1] [2] The method combines the concept of differential flatness[3] [4] with pseudospectral method to generate outputs in the so-called flat space.\nBecause the differentiation matrix, \n\n\n\nD\n\n\n{\\displaystyle D}\n\n, in a pseudospectral method is square, higher-order derivatives of any polynomial, \n\n\n\ny\n\n\n{\\displaystyle y}\n\n, can be obtained by powers of \n\n\n\nD\n\n\n{\\displaystyle D}\n\n,\nwhere \n\n\n\nY\n\n\n{\\displaystyle Y}\n\n is the pseudospectral variable and \n\n\n\n\u03b2\n\n\n{\\displaystyle \\beta }\n\n is a finite positive integer. By differential flatness, there exists functions \n\n\n\na\n\n\n{\\displaystyle a}\n\n and \n\n\n\nb\n\n\n{\\displaystyle b}\n\n such that the state and control variables can be written as,\nThe combination of these concepts generates the flat pseudospectral method; that is, x and u are written as,\nThus, an optimal control problem can be quickly and easily transformed to a problem with just the Y pseudospectral variable.[1]", 
-    "dbpedia_url": "http://dbpedia.org/resource/Flat_pseudospectral_method", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Flat_pseudospectral_method\n"
-}

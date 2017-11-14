@@ -1,5 +1,0 @@
-ABOUT
-ReteOO is an improved version of the Rete algorithm.
-FULL TEXT
-ReteOO is an improved version of the Rete algorithm.
-Rete supports only boolean, first order logic. [1]

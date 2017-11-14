@@ -1,9 +1,0 @@
-ABOUT
-In electronics, a norator is a theoretical linear, time-invariant one-port which can have an arbitrary current and voltage between its terminals. A norator represents a controlled voltage or current source with infinite gain.[1]
-FULL TEXT
-In electronics, a norator is a theoretical linear, time-invariant one-port which can have an arbitrary current and voltage between its terminals. A norator represents a controlled voltage or current source with infinite gain.[1]
-Inserting a norator in a circuit schematic provides whatever current and voltage the outside circuit demands, in particular, the demands of Kirchhoff's circuit laws. For example, the output of an ideal opamp behaves as a norator, producing nonzero output voltage and current that meet circuit requirements despite a zero input.
-A norator is often paired with a nullator to form a nullor.
-Two trivial cases are worth noting: A nullator in parallel with a norator is equivalent to a short (zero voltage any current) and a nullator in series with a norator is an open circuit (zero current, any voltage).
-[1] P. Kumar and Raj Senani, `Bibliography on nullors and their use in circuit analysis, synthesis and design', Analog Integrated Circuits and Signal Processing, Vol. 33, No.1, pp. 65–76, October 2002.
-[2] Raj Senani, A. K. Singh, Pragati Kumar, R. K. Sharma,`Nullors, Their Bipolar and CMOS Implementations and Applications in Analog Circuit Synthesis and Design', pp. 31–59, Chapter 2 in `Integrated Circuits for Analog Signal Processing', Springer, 2013.

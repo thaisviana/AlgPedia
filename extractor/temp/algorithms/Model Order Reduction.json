@@ -1,8 +1,0 @@
-{
-    "about": "Model order reduction (MOR) is a technique for reducing the computational complexity of mathematical models in numerical simulations.", 
-    "name": "Model Order Reduction", 
-    "classification": "Numerical Analysis", 
-    "full_text": "Model order reduction (MOR) is a technique for reducing the computational complexity of mathematical models in numerical simulations.\n\n\nMany modern mathematical models of real-life processes pose challenges when used in numerical simulations, due to complexity and large size (dimension). Model order reduction aims to lower the computational complexity of such problems, for example, in simulations of large-scale dynamical systems and control systems. By a reduction of the model's associated state space dimension or degrees of freedom, an approximation to the original model is computed. This reduced-order model (ROM) can then be evaluated with lower accuracy but in significantly less time.\nA common approach for model order reduction is projection-based reduction. The following methods fall into this class:", 
-    "dbpedia_url": "http://dbpedia.org/resource/Model_order_reduction", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Model_order_reduction\n"
-}

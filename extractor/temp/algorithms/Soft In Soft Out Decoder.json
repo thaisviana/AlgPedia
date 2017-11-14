@@ -1,7 +1,0 @@
-{
-    "about": "A soft-in soft-out (SISO) decoder is a type of soft-decision decoder used with error correcting codes. \"Soft-in\" refers to the fact that the incoming data may take on values other than 0 or 1, in order to indicate reliability. \"Soft-out\" refers to the fact that each bit in the decoded output also takes on a value indicating reliability. Typically, the soft output is used as the soft input to an outer decoder in a system using concatenated codes, or to modify the input to a further decoding iteration such as in the decoding of turbo codes.", 
-    "classification": "Error Detection And Correction", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Soft-in_soft-out_decoder\n", 
-    "full_text": "A soft-in soft-out (SISO) decoder is a type of soft-decision decoder used with error correcting codes. \"Soft-in\" refers to the fact that the incoming data may take on values other than 0 or 1, in order to indicate reliability. \"Soft-out\" refers to the fact that each bit in the decoded output also takes on a value indicating reliability. Typically, the soft output is used as the soft input to an outer decoder in a system using concatenated codes, or to modify the input to a further decoding iteration such as in the decoding of turbo codes.\nExamples include the BCJR algorithm and the soft output Viterbi algorithm.", 
-    "name": "Soft In Soft Out Decoder"
-}

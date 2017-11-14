@@ -1,8 +1,0 @@
-{
-    "about": "A sensor hub is a microcontroller unit/coprocessor/DSP that helps to integrate data from different sensors and process them.[1] This technology can help off-load these jobs from a product's main central processing unit, thus saving battery consumption[2] and providing a performance improvement.[3]", 
-    "name": "Sensor Hub", 
-    "classification": "Digital Signal Processing", 
-    "full_text": "A sensor hub is a microcontroller unit/coprocessor/DSP that helps to integrate data from different sensors and process them.[1] This technology can help off-load these jobs from a product's main central processing unit, thus saving battery consumption[2] and providing a performance improvement.[3]\nStarting from Cherrytrail, multiple generation of Intel processors offers on package sensor hub.\nIntel have the Intel Integrated Sensor Hub.\nSome devices with Snapdragon 800 series chips, including HTC One (M8), Sony Xperia Z1, LG G2, and on, have a sensor hub, the Qualcomm Snapdragon Sensor Core,[4] and all HiSilicon Kirin 920 devices have sensor hub embedded in the chipset with its successor Kirin 925 integrated an i3 chip with same function into it.[5] Some other devices that are not using these chips but with a sensor hub integrated are listed below:\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Sensor_hub", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Sensor_hub\n"
-}

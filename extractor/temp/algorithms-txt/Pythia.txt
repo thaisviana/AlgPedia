@@ -1,8 +1,0 @@
-ABOUT
-PYTHIA is a computer simulation program for particle collisions at very high energies (see event (particle physics)) in particle accelerators.
-FULL TEXT
-PYTHIA is a computer simulation program for particle collisions at very high energies (see event (particle physics)) in particle accelerators.
-
-
-PYTHIA was originally written in FORTRAN 77, until the 2007 release of PYTHIA 8.1 which was rewritten in C++. Both the Fortran and C++ versions are being maintained because not all components were merged into the 8.1 version. However, the latest version already includes new features not available in the Fortran release. Torbjörn Sjöstrand, Stefan Ask, Richard Corke, Stephen Mrenna, Stefan Prestel, and Peter Skands are the main contributors to PYTHIA.
-The following is a list of some of the features PYTHIA is capable of simulating:

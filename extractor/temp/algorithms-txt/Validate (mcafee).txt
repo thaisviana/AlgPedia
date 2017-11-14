@@ -1,5 +1,0 @@
-ABOUT
-The Validate program by McAfee Associates is used to provide checksum data for computer programs and data files.
-FULL TEXT
-The Validate program by McAfee Associates is used to provide checksum data for computer programs and data files.
-It is commonly used to verify that shareware applications written for MS-DOS and Microsoft Windows based platforms have not been altered during distribution, (as would be the case if somehow the files had become infected with a computer virus).

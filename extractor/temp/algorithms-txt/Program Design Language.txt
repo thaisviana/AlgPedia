@@ -1,5 +1,0 @@
-ABOUT
-Program Design Language (or PDL, for short) is a method for designing and documenting methods and procedures in software. It is related to pseudocode, but unlike pseudocode, it is written in plain language without any terms that could suggest the use of any programming language or library.
-FULL TEXT
-Program Design Language (or PDL, for short) is a method for designing and documenting methods and procedures in software. It is related to pseudocode, but unlike pseudocode, it is written in plain language without any terms that could suggest the use of any programming language or library.
-PDL was originally developed by the company Caine, Farber & Gordon and has been modified substantially since they published their initial paper on it in 1975. It has been described in some detail by Steve McConnell in his book Code Complete.

@@ -1,8 +1,0 @@
-{
-    "about": "ND4J is a scientific computing library, written in the programming language C++, operating on the Java virtual machine (JVM), and compatible with the languages Java, Scala, and Clojure.[2][3]", 
-    "name": "Nd4J (Software)", 
-    "classification": "Computational Statistics", 
-    "full_text": "ND4J is a scientific computing library, written in the programming language C++, operating on the Java virtual machine (JVM), and compatible with the languages Java, Scala, and Clojure.[2][3]\nND4J is for performing linear algebra and matrix manipulation in a production environment, integrating with Apache Hadoop and Spark to work with distributed central processing units (CPUs) or graphics processing units (GPUs). It supports n-dimensional arrays for JVM-based languages.\nND4J is free and open-source software, released under Apache License 2.0, and developed mostly by the group in San Francisco that built Deeplearning4j, led by Adam Gibson.[4] It was created under an Apache Software Foundation license.\n\n\nND4J's operations include distributed parallel versions. Operation can occur in a cluster and process massive amounts of data. Matrix manipulation occurs in parallel on CPUs or GPUs over cloud computing, and can work in Spark or Hadoop clusters.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/ND4J_(software)", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/ND4J_(software)\n"
-}

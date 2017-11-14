@@ -1,7 +1,0 @@
-ABOUT
-A non-recursive filter only uses input values like x[n − i], unlike recursive filter where it uses previous output values. Non-recursive digital filters are often known as Finite Impulse Response (FIR) Filters as a non-recursive digital filter has a finite number of coefficients in the impulse response h[n].
-FULL TEXT
-A non-recursive filter only uses input values like x[n − i], unlike recursive filter where it uses previous output values. Non-recursive digital filters are often known as Finite Impulse Response (FIR) Filters as a non-recursive digital filter has a finite number of coefficients in the impulse response h[n].
-
-Non-recursive Filter Example: y[n] = 0.5x[n − 1] + 0.5x[n].
-Recursive Filter Example: y[n] = 0.5y[n − 1] + 0.5x[n].

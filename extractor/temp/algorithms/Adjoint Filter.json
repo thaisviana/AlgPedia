@@ -1,8 +1,0 @@
-{
-    "about": "In signal processing, the adjoint filter mask \n\n\n\n\nh\n\n\u2217\n\n\n\n\n{\\displaystyle h^{*}}\n\n of a filter mask \n\n\n\nh\n\n\n{\\displaystyle h}\n\n is reversed in time and the elements are complex conjugated.", 
-    "name": "Adjoint Filter", 
-    "classification": "Digital Signal Processing", 
-    "full_text": "In signal processing, the adjoint filter mask \n\n\n\n\nh\n\n\u2217\n\n\n\n\n{\\displaystyle h^{*}}\n\n of a filter mask \n\n\n\nh\n\n\n{\\displaystyle h}\n\n is reversed in time and the elements are complex conjugated.\nIts name is derived from the fact, that the convolution with the adjoint filter is the adjoint operator of the original filter with respect to the Hilbert space \n\n\n\n\n\u2113\n\n2\n\n\n\n\n{\\displaystyle \\ell _{2}}\n\n of the sequences with respect to the Euclidean norm.\nThe autocorrelation of a signal \n\n\n\nx\n\n\n{\\displaystyle x}\n\n can be written as \n\n\n\n\nx\n\n\u2217\n\n\n\u2217\nx\n\n\n{\\displaystyle x^{*}*x}\n\n.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Adjoint_filter", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Adjoint_filter\n"
-}

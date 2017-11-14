@@ -1,8 +1,0 @@
-{
-    "about": "A minimax approximation algorithm (or L\u221e approximation[1] or uniform approximation[2]) is a method to find an approximation of a mathematical function that minimizes maximum error.", 
-    "name": "Minimax Approximation Algorithm", 
-    "classification": "Numerical Analysis", 
-    "full_text": "A minimax approximation algorithm (or L\u221e approximation[1] or uniform approximation[2]) is a method to find an approximation of a mathematical function that minimizes maximum error.\nFor example, given a function \n\n\n\nf\n\n\n{\\displaystyle f}\n\n defined on the interval \n\n\n\n[\na\n,\nb\n]\n\n\n{\\displaystyle [a,b]}\n\n and a degree bound \n\n\n\nn\n\n\n{\\displaystyle n}\n\n, a minimax polynomial approximation algorithm will find a polynomial \n\n\n\np\n\n\n{\\displaystyle p}\n\n of degree at most \n\n\n\nn\n\n\n{\\displaystyle n}\n\n to minimize[3]\nThe Weierstrass approximation theorem states that every continuous function defined on a closed interval [a,b] can be uniformly approximated as closely as desired by a polynomial function.[2] For practical work it is often desirable to minimize the maximum absolute or relative error of a polynomial fit for any given number of terms in an effort to reduce computational expense of repeated evaluation.\nPolynomial expansions such as the Taylor series expansion are often convenient for theoretical work but less useful for practical applications. Truncated Chebyshev series, however, closely approximate the minimax polynomial.\nOne popular minimax approximation algorithm is the Remez algorithm.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Minimax_approximation_algorithm", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Minimax_approximation_algorithm\n"
-}

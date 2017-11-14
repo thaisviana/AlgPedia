@@ -1,8 +1,0 @@
-{
-    "about": "BOBYQA (Bound Optimization BY Quadratic Approximation)[1] is a numerical optimization algorithm by Michael J. D. Powell. It is also the name of Powell's Fortran 77 implementation of the algorithm.", 
-    "name": "Bobyqa", 
-    "classification": "Optimization Algorithms And Methods", 
-    "full_text": "BOBYQA (Bound Optimization BY Quadratic Approximation)[1] is a numerical optimization algorithm by Michael J. D. Powell. It is also the name of Powell's Fortran 77 implementation of the algorithm.\nBOBYQA solves bound constrained optimization problems without using derivatives of the objective function, which makes it a derivative-free algorithm. The algorithm solves the problem using a trust region method that forms quadratic models by interpolation. One new point is computed on each iteration, usually by solving a trust region subproblem subject to the bound constraints, or alternatively, by choosing a point to replace an interpolation point so as to promote good linear independence in the interpolation conditions.\nThe same as NEWUOA, BOBYQA constructs the quadratic models by the least Frobenius norm updating [2] technique.\nBOBYQA software was released on January 5, 2009.[3]\nIn the comment of the software's source code,[4] it is said that the name BOBYQA denotes \"Bound Approximation BY Quadratic Approximation\", which seems to be a typo of \"Bound Optimization BY Quadratic Approximation\".\nThe BOBYQA software is distributed under The GNU Lesser General Public License (LGPL).[4]", 
-    "dbpedia_url": "http://dbpedia.org/resource/BOBYQA", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/BOBYQA\n"
-}

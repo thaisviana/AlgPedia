@@ -1,8 +1,0 @@
-{
-    "about": "Lag windowing is a technique that consists of windowing the autocorrelation coefficients prior to estimating linear prediction coefficients (LPC). The windowing in the autocorrelation domain has the same effect as a convolution (smoothing) in the power spectral domain and helps in stabilizing the result of the Levinson-Durbin algorithm. The window function is typically a Gaussian function.", 
-    "name": "Lag Windowing", 
-    "classification": "Signal Processing", 
-    "full_text": "Lag windowing is a technique that consists of windowing the autocorrelation coefficients prior to estimating linear prediction coefficients (LPC). The windowing in the autocorrelation domain has the same effect as a convolution (smoothing) in the power spectral domain and helps in stabilizing the result of the Levinson-Durbin algorithm. The window function is typically a Gaussian function.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Lag_windowing", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Lag_windowing\n"
-}

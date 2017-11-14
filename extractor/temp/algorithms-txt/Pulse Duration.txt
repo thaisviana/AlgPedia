@@ -1,6 +1,0 @@
-ABOUT
-In signal processing and telecommunication, pulse duration is the interval between the time, during the first transition, that the amplitude of the pulse reaches a specified fraction (level) of its final amplitude, and the time the pulse amplitude drops, on the last transition, to the same level.
-FULL TEXT
-In signal processing and telecommunication, pulse duration is the interval between the time, during the first transition, that the amplitude of the pulse reaches a specified fraction (level) of its final amplitude, and the time the pulse amplitude drops, on the last transition, to the same level.
-The interval between the 50% points of the final amplitude is usually used to determine or define pulse duration, and this is understood to be the case unless otherwise specified. Other fractions of the final amplitude, e.g., 90% or 1/e, may also be used, as may the root mean square (rms) value of the pulse amplitude.
-In radar, the pulse duration is the time the radar's transmitter is energized during each cycle.

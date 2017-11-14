@@ -1,9 +1,0 @@
-ABOUT
-cksum is a command in Unix-like operating systems that generates a checksum value for a file or stream of data. The cksum command reads each file given in its arguments, or standard input if no arguments are provided, and outputs the file's CRC checksum and byte count.
-FULL TEXT
-cksum is a command in Unix-like operating systems that generates a checksum value for a file or stream of data. The cksum command reads each file given in its arguments, or standard input if no arguments are provided, and outputs the file's CRC checksum and byte count.
-The cksum command can be used to verify that files transferred by unreliable means arrived intact.[1] However, the CRC checksum calculated by the cksum command is not cryptographically secure: While it guards against accidental corruption (it is unlikely that the corrupted data will have the same checksum as the intended data), it is not difficult for an attacker to deliberately corrupt the file in a specific way that its checksum is unchanged. Unix-like systems typically include other commands for cryptographically secure checksums, such as sha1sum.
-
-
-The standard cksum command, as found on most UNIX-like operating systems (including GNU/Linux, *BSD, Mac OS X, and Solaris) uses a CRC algorithm based on the ethernet standard frame check and is therefore interoperable between implementations. This is in contrast to the sum command, which is not as interoperable. It is however not compatible with the CRC-32 calculation. On Tru64 operating systems, the cksum command returns a different CRC value, unless the environment variable CMD_ENV is set to xpg4.
-where 4038471504 represents the checksum value and 75 represents the file size of test.txt.

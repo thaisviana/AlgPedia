@@ -1,4 +1,0 @@
-ABOUT
-In numerical analysis, a superconvergent or supraconvergent method is one which converges faster than generally expected (superconvergence or supraconvergence). For example, in the Finite Element Method approximation to Poisson's equation in two dimensions, using piecewise linear elements, the average error in the gradient is first order. However under certain conditions it's possible to recover the gradient at certain locations within each element to second order.
-FULL TEXT
-In numerical analysis, a superconvergent or supraconvergent method is one which converges faster than generally expected (superconvergence or supraconvergence). For example, in the Finite Element Method approximation to Poisson's equation in two dimensions, using piecewise linear elements, the average error in the gradient is first order. However under certain conditions it's possible to recover the gradient at certain locations within each element to second order.

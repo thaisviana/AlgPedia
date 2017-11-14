@@ -1,5 +1,0 @@
-ABOUT
-Multi-Constrained Optimal Path Selection or MCOP is a network path selection problem.
-FULL TEXT
-Multi-Constrained Optimal Path Selection or MCOP is a network path selection problem.
-H_MCOP was designed to offer a (non-optimal) solution to the RSP and MCP problems which are otherwise NP-complete for an optimal solution algorithm. H_MCOP defining feature is that it uses heuristics to short-cut some of the complexity.

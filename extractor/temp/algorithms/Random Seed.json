@@ -1,8 +1,0 @@
-{
-    "about": "A random seed (or seed state, or just seed) is a number (or vector) used to initialize a pseudorandom number generator.", 
-    "name": "Random Seed", 
-    "classification": "Pseudorandom Number Generators", 
-    "full_text": "A random seed (or seed state, or just seed) is a number (or vector) used to initialize a pseudorandom number generator.\nFor a seed to be used in a pseudorandom number generator, it does not need to be random. Because of the nature of number generating algorithms, so long as the original seed is ignored, the rest of the values that the algorithm generates will follow probability distribution in a pseudorandom manner.\nThe choice of a good random seed is crucial in the field of computer security. When a secret encryption key is pseudorandomly generated, having the seed will allow one to obtain the key. High entropy is important for selecting good random seed data.[1]\nIf the same random seed is deliberately shared, it becomes a secret key, so two or more systems using matching pseudorandom number algorithms and matching seeds can generate matching sequences of non-repeating numbers which can be used to synchronize remote systems, such as GPS satellites and receivers.\nRandom seeds are often generated from the state of the computer system (such as the time), a cryptographically secure pseudorandom number generator or from a hardware random number generator.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Random_seed", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Random_seed\n"
-}

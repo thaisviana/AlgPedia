@@ -1,8 +1,0 @@
-{
-    "about": "Symbolic data analysis (SDA) is an extension of standard data analysis where symbolic data tables are used as input and symbolic objects are outputted as a result. The data units are called symbolic since they are more complex than standard ones, as they not only contain values or categories, but also include internal variation and structure. SDA is based on four spaces: the space of individuals, the space of concepts, the space of descriptions, and the space of symbolic objects. The space of descriptions models individuals, while the space of symbolic objects models concepts[1] .[2]", 
-    "name": "Symbolic Data Analysis", 
-    "classification": "Computational Statistics", 
-    "full_text": "Symbolic data analysis (SDA) is an extension of standard data analysis where symbolic data tables are used as input and symbolic objects are outputted as a result. The data units are called symbolic since they are more complex than standard ones, as they not only contain values or categories, but also include internal variation and structure. SDA is based on four spaces: the space of individuals, the space of concepts, the space of descriptions, and the space of symbolic objects. The space of descriptions models individuals, while the space of symbolic objects models concepts[1] .[2]\nR2S \u00a0: An R package to transform relational data into symbolic data\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Symbolic_data_analysis", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Symbolic_data_analysis\n"
-}

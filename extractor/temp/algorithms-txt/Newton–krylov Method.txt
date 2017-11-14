@@ -1,4 +1,0 @@
-ABOUT
-Newton–Krylov methods are numerical methods for solving non-linear problems using Krylov subspace linear solvers.[1][2]
-FULL TEXT
-Newton–Krylov methods are numerical methods for solving non-linear problems using Krylov subspace linear solvers.[1][2]

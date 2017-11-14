@@ -1,8 +1,0 @@
-{
-    "about": "In signal processing, the term multiplicative noise refers to an unwanted random signal that gets multiplied into some relevant signal during capture, transmission, or other processing.", 
-    "name": "Multiplicative Noise", 
-    "classification": "Signal Processing", 
-    "full_text": "In signal processing, the term multiplicative noise refers to an unwanted random signal that gets multiplied into some relevant signal during capture, transmission, or other processing.\nAn important example is the speckle noise commonly observed in radar imagery. Examples of multiplicative noise affecting digital photographs are proper shadows due to undulations on the surface of the imaged objects, shadows cast by complex objects like foliage and Venetian blinds, dark spots caused by dust in the lens or image sensor, and variations in the gain of individual elements of the image sensor array.[1]", 
-    "dbpedia_url": "http://dbpedia.org/resource/Multiplicative_noise", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Multiplicative_noise\n"
-}

@@ -1,8 +1,0 @@
-{
-    "about": "Super Bit Mapping (SBM) is a noise shaping process, developed by Sony for CD mastering.[1]", 
-    "name": "Super Bit Mapping", 
-    "classification": "Digital Signal Processing", 
-    "full_text": "Super Bit Mapping (SBM) is a noise shaping process, developed by Sony for CD mastering.[1]\nSony claims that the Super Bit Mapping process converts a 20-bit signal from master recording into a 16-bit signal nearly without sound quality loss, using noise shaping to improve signal to noise ratio over the frequency bands most acutely perceived by human hearing.[2]\nAudible quantization error is reduced by noise shaping the error according to an equal-loudness contour.[3]\nThis processing takes place in dedicated hardware inside the recording device. A similar process is used in Sony's DSD to PCM conversion and is called SBM Direct.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Super_Bit_Mapping", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Super_Bit_Mapping\n"
-}

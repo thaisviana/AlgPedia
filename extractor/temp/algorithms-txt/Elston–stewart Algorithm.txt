@@ -1,4 +1,0 @@
-ABOUT
-The Elston–Stewart algorithm is an algorithm for computing the likelihood of observed genotype data given a pedigree. It is due to Robert Elston and John Stewart. It can handle relatively large pedigrees providing they are (almost) outbred. Its computation time is exponential in the number of markers. It is used in the analysis of genetic linkage.
-FULL TEXT
-The Elston–Stewart algorithm is an algorithm for computing the likelihood of observed genotype data given a pedigree. It is due to Robert Elston and John Stewart. It can handle relatively large pedigrees providing they are (almost) outbred. Its computation time is exponential in the number of markers. It is used in the analysis of genetic linkage.

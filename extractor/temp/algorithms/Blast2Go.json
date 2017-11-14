@@ -1,8 +1,0 @@
-{
-    "about": "Blast2GO, first published in 2005,[1][2][3][4] is a bioinformatics software tool for the automatic, high-throughput functional annotation of novel sequence data (genes proteins). It makes use of the BLAST[5] algorithm to identify similar sequences to then transfers existing functional annotation from yet characterised sequences to the novel one. The functional information is represented via the Gene Ontology (GO), a controlled vocabulary of functional attributes. The Gene Ontology, or GO, is a major bioinformatics initiative to unify the representation of gene and gene product attributes across all species.[6]", 
-    "name": "Blast2Go", 
-    "classification": "Bioinformatics Algorithms", 
-    "full_text": "Blast2GO, first published in 2005,[1][2][3][4] is a bioinformatics software tool for the automatic, high-throughput functional annotation of novel sequence data (genes proteins). It makes use of the BLAST[5] algorithm to identify similar sequences to then transfers existing functional annotation from yet characterised sequences to the novel one. The functional information is represented via the Gene Ontology (GO), a controlled vocabulary of functional attributes. The Gene Ontology, or GO, is a major bioinformatics initiative to unify the representation of gene and gene product attributes across all species.[6]\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Blast2GO", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Blast2GO\n"
-}

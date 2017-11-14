@@ -1,9 +1,0 @@
-ABOUT
-IPOPT, short for "Interior Point OPTimizer, pronounced I-P-Opt", is a software library for large scale nonlinear optimization of continuous systems. It is written in Fortran and C and is released under the EPL (formerly CPL). IPOPT implements a primal-dual interior point method, and uses line searches based on Filter methods (Fletcher and Leyffer). IPOPT can be called from various modeling environments and C.
-FULL TEXT
-IPOPT, short for "Interior Point OPTimizer, pronounced I-P-Opt", is a software library for large scale nonlinear optimization of continuous systems. It is written in Fortran and C and is released under the EPL (formerly CPL). IPOPT implements a primal-dual interior point method, and uses line searches based on Filter methods (Fletcher and Leyffer). IPOPT can be called from various modeling environments and C.
-IPOPT is part of the COIN-OR project.
-IPOPT is designed to exploit 1st and 2nd derivative (Hessians) information if provided (usually via automatic differentiation routines in modeling environments such as AMPL). If no Hessians are provided, IPOPT will approximate them using a quasi-Newton methods, specifically a BFGS update.
-It was originally developed by Andreas Wächter, a former Ph.D. student in department of chemical engineering at Carnegie Mellon University, under the supervision of Lorenz T. Biegler.
-Arvind Raghunathan later created an extension to IPOPT for Mathematical programming with equilibrium constraints (MPEC) [1]. This version of IPOPT is generally known as IPOPT-C (with the 'C' standing for 'complementarity'). While in theory any mixed-integer program can be recast as an MPEC, it may or may not be solvable with IPOPT-C. Solution of MINLPs (Mixed-Integer Nonlinear Programs) using IPOPT is still being explored [2] [3].
-Carl Laird and Andreas Wächter are the developers of IPOPT 3.0, which is a re-implementation of IPOPT in C++.

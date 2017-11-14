@@ -1,8 +1,0 @@
-{
-    "about": "Adjacent Channel Power Ratio (ACPR) is ratio between the total power of adjacent channel (intermodulation signal) to the main channel's power (useful signal).", 
-    "name": "Adjacent Channel Power Ratio", 
-    "classification": "Signal Processing", 
-    "full_text": "Adjacent Channel Power Ratio (ACPR) is ratio between the total power of adjacent channel (intermodulation signal) to the main channel's power (useful signal).\nThe ratio between the total power adjacent channel (intermodulation signal) to the main channel's power (useful signal). There are two ways of measuring ACPR. The first way is by finding 10*log of the ratio of the total output power to the power in adjacent channel. The second (and much more popular method) is to find the ratio of the output power in a smaller bandwidth around the center of carrier to the power in the adjacent channel. The smaller bandwidth is equal to the bandwidth of the adjacent channel signal. Second way is more popular, because it can be measured easily.\nACPR is desired to be as low as possible. A high ACPR indicates that significant spectral spreading has occurred.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Adjacent_channel_power_ratio", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Adjacent_channel_power_ratio\n"
-}

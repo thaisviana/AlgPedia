@@ -1,8 +1,0 @@
-{
-    "about": "ISO 7064 define algorithms for calculating check digit characters.", 
-    "name": "Iso 7064", 
-    "classification": "Checksum Algorithms", 
-    "full_text": "ISO 7064 define algorithms for calculating check digit characters.\nIt is referred to by other ISO standards:\nand by other systems:\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/ISO_7064", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/ISO_7064\n"
-}

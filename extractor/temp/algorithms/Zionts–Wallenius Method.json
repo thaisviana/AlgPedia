@@ -1,8 +1,0 @@
-{
-    "about": "The Zionts\u2013Wallenius method is an interactive method used to find a best solution to a multi-criteria optimization problem.", 
-    "name": "Zionts\u2013Wallenius Method", 
-    "classification": "Optimization Algorithms And Methods", 
-    "full_text": "The Zionts\u2013Wallenius method is an interactive method used to find a best solution to a multi-criteria optimization problem.\nSpecifically it can help a user solve a linear programming problem having more than one (linear) objective. A user is asked to respond to comparisons between feasible solutions or to choose directions of change desired in each iteration. Providing certain mathematical assumptions hold, the method finds an optimal solution.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Zionts\u2013Wallenius_method", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Zionts\u2013Wallenius_method\n"
-}

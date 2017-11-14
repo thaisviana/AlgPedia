@@ -1,8 +1,0 @@
-{
-    "about": "In computer science, a synchronizer is an algorithm that can be used to run a synchronous algorithm on top of an asynchronous processor network, so enabling the asynchronous system to run as a synchronous network.", 
-    "name": "Synchronizer (Algorithm)", 
-    "classification": "Distributed Algorithms", 
-    "full_text": "In computer science, a synchronizer is an algorithm that can be used to run a synchronous algorithm on top of an asynchronous processor network, so enabling the asynchronous system to run as a synchronous network.\nThe concept was originally proposed in (Awerbuch, 1985) along with three synchronizer algorithms named alpha, beta and gamma which provided different tradeoffs in terms of time and message complexity. Essentially, they are a solution to the problem of asynchronous algorithms (which operate in a network with no global clock) being harder to design and often less efficient than the equivalent synchronous algorithms. By using a synchronizer, algorithm designers can deal with the simplified \"ideal network\" and then later mechanically produce a version that operates in more realistic asynchronous cases.\nThe three algorithms that Awerbuch provided in his original paper are as follows:\nSince the original paper, other synchronizer algorithms have been proposed in the literature.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Synchronizer_(algorithm)", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Synchronizer_(algorithm)\n"
-}

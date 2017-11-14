@@ -1,5 +1,0 @@
-ABOUT
-In computing, a waveform buffer is a technique for digital synthesis of repeating waveforms. It is common in PC sound cards.
-FULL TEXT
-In computing, a waveform buffer is a technique for digital synthesis of repeating waveforms. It is common in PC sound cards.
-The waveform amplitude values are stored in a buffer memory, which is addressed from a phase generator, with the retrieved value then used as the basis of the synthesized signal. In the phase generator, a value proportional to the desired signal frequence is periodically added to an accumulator. The high order bits of the accumulator form the output address, while the typically larger number of bits in the accumulator and addition value results in an arbitrarily high frequency resolution.

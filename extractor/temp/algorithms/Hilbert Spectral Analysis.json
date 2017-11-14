@@ -1,8 +1,0 @@
-{
-    "about": "Hilbert spectral analysis is a signal analysis method applying the Hilbert transform to compute the instantaneous frequency of signals according to", 
-    "name": "Hilbert Spectral Analysis", 
-    "classification": "Signal Processing", 
-    "full_text": "Hilbert spectral analysis is a signal analysis method applying the Hilbert transform to compute the instantaneous frequency of signals according to\nAfter performing the Hilbert transform on each signal, we can express the data in the following form:\nThis equation gives both the amplitude and the frequency of each component as functions of time. It also enables us to represent the amplitude and the instantaneous frequency as functions of time in a three-dimensional plot, in which the amplitude can be contoured on the frequency-time plane. This frequency-time distribution of the amplitude is designated as the Hilbert amplitude spectrum, or simply Hilbert spectrum.\nHilbert spectral analysis method is an important part of Hilbert\u2013Huang transform.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Hilbert_spectral_analysis", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Hilbert_spectral_analysis\n"
-}

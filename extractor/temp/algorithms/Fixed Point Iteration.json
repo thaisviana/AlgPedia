@@ -1,7 +1,0 @@
-{
-    "about": "In numerical analysis, fixed-point iteration is a method of computing fixed points of iterated functions.", 
-    "classification": "Root-Finding Algorithms", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Fixed-point_iteration\n", 
-    "full_text": "In numerical analysis, fixed-point iteration is a method of computing fixed points of iterated functions.\nMore specifically, given a function \n\n\n\nf\n\n\n{\\displaystyle f}\n\n defined on the real numbers with real values and given a point \n\n\n\n\nx\n\n0\n\n\n\n\n{\\displaystyle x_{0}}\n\n in the domain of \n\n\n\nf\n\n\n{\\displaystyle f}\n\n, the fixed point iteration is\nwhich gives rise to the sequence \n\n\n\n\nx\n\n0\n\n\n,\n\nx\n\n1\n\n\n,\n\nx\n\n2\n\n\n,\n\u2026\n\n\n{\\displaystyle x_{0},x_{1},x_{2},\\dots }\n\n which is hoped to converge to a point \n\n\n\nx\n\n\n{\\displaystyle x}\n\n. If \n\n\n\nf\n\n\n{\\displaystyle f}\n\n is continuous, then one can prove that the obtained \n\n\n\nx\n\n\n{\\displaystyle x}\n\n is a fixed point of \n\n\n\nf\n\n\n{\\displaystyle f}\n\n, i.e.,\nMore generally, the function \n\n\n\nf\n\n\n{\\displaystyle f}\n\n can be defined on any metric space with values in that same space.\n\n\nconverges to 0 for all values of \n\n\n\n\nx\n\n0\n\n\n\n\n{\\displaystyle x_{0}}\n\n. However, 0 is not a fixed point of the function\nas this function is not continuous at \n\n\n\nx\n=\n0\n\n\n{\\displaystyle x=0}\n\n, and in fact has no fixed points.", 
-    "name": "Fixed Point Iteration"
-}

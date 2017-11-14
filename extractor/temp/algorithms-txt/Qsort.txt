@@ -1,7 +1,0 @@
-ABOUT
-qsort is a C standard library function that implements a polymorphic sorting algorithm for arrays of arbitrary objects according to a user-provided comparison function. It is named after the "quicker sort" algorithm (a quicksort variant due to R. S. Scowen), which was originally used to implement it in the Unix C library, although the C standard does not require it to implement quicksort.[1]
-FULL TEXT
-qsort is a C standard library function that implements a polymorphic sorting algorithm for arrays of arbitrary objects according to a user-provided comparison function. It is named after the "quicker sort" algorithm (a quicksort variant due to R. S. Scowen), which was originally used to implement it in the Unix C library, although the C standard does not require it to implement quicksort.[1]
-Implementations of the qsort function achieve polymorphism, the ability to sort different kinds of data, by taking a function pointer to a three-way comparison function, as well as a parameter that specifies the size of its individual input objects. The C standard requires the comparison function to implement a total order on the items in the input array.[2]
-A qsort function was in place in Version 3 Unix of 1973, but was then an assembler subroutine.[3] A C version, with roughly the interface of the standard C version, was in-place in Version 6 Unix.[4] It was rewritten in 1983 at Berkeley.[1] The function was standardized in ANSI C (1989).
-The following piece of C code shows how to sort a list of integers using qsort.

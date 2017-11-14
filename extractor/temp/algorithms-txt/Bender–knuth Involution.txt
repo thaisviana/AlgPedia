@@ -1,7 +1,0 @@
-ABOUT
-In algebraic combinatorics, a Bender–Knuth involution is an involution on the set of semistandard tableaux, introduced by Bender & Knuth (1972, pp. 46–47) in their study of plane partitions.
-FULL TEXT
-In algebraic combinatorics, a Bender–Knuth involution is an involution on the set of semistandard tableaux, introduced by Bender & Knuth (1972, pp. 46–47) in their study of plane partitions.
-The Bender–Knuth involutions σk are defined for integers k, and act on the set of semistandard skew Young tableaux of some fixed shape μ/ν, where μ and ν are partitions. It acts by changing some of the elements k of the tableau to k + 1, and some of the entries k + 1 to k, in such a way that the numbers of elements with values k or k + 1 are exchanged. Call an entry of the tableau free if it is k or k + 1 and there is no other element with value k or k + 1 in the same column. For any i, the free entries of row i are all in consecutive columns, and consist of ai copies of k followed by bi copies of k + 1, for some ai and bi. The Bender–Knuth involution σk replaces them by bi copies of k followed by ai copies of k + 1.
-Bender–Knuth involutions can be used to show that the number of semistandard skew tableaux of given shape and weight is unchanged under permutations of the weight. In turn this implies that the Schur function of a partition is a symmetric function.
-Bender–Knuth involutions were used by Stembridge (2002) to give a short proof of the Littlewood–Richardson rule.

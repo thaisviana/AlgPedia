@@ -1,5 +1,0 @@
-ABOUT
-Warped linear predictive coding (warped LPC or WLPC) is a variant of linear predictive coding in which the spectral representation of the system is modified, for example by replacing the unit delays used in an LPC implementation with first-order allpass filters. This can have advantages in reducing the bitrate required for a given level of perceived audio quality/intelligibility, especially in wideband audio coding.
-FULL TEXT
-Warped linear predictive coding (warped LPC or WLPC) is a variant of linear predictive coding in which the spectral representation of the system is modified, for example by replacing the unit delays used in an LPC implementation with first-order allpass filters. This can have advantages in reducing the bitrate required for a given level of perceived audio quality/intelligibility, especially in wideband audio coding.
-Warped LPC was first proposed in 1980 by Hans Werner Strube.

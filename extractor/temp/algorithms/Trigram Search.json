@@ -1,8 +1,0 @@
-{
-    "about": "Trigram search is a method of searching for text when the exact syntax or spelling of the target object is not precisely known. It finds objects which match the maximum number of three-character strings in the entered search terms, i.e., near matches. A threshold can be specified as a cutoff point, after which a result is no longer regarded as a match.", 
-    "name": "Trigram Search", 
-    "classification": "Search Algorithms", 
-    "full_text": "Trigram search is a method of searching for text when the exact syntax or spelling of the target object is not precisely known. It finds objects which match the maximum number of three-character strings in the entered search terms, i.e., near matches. A threshold can be specified as a cutoff point, after which a result is no longer regarded as a match.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Trigram_search", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Trigram_search\n"
-}

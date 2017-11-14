@@ -1,8 +1,0 @@
-{
-    "about": "In signal processing, a recursive filter is a type of filter which re-uses one or more of its outputs as an input. This feedback typically results in an unending impulse response (commonly referred to as infinite impulse response (IIR)), characterised by either exponentially growing, decaying, or sinusoidal signal output components.", 
-    "name": "Recursive Filter", 
-    "classification": "Signal Processing", 
-    "full_text": "In signal processing, a recursive filter is a type of filter which re-uses one or more of its outputs as an input. This feedback typically results in an unending impulse response (commonly referred to as infinite impulse response (IIR)), characterised by either exponentially growing, decaying, or sinusoidal signal output components.\nHowever, a recursive filter does not always have an infinite impulse response. Some implementations of moving average filter are recursive filters but with a finite impulse response.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Recursive_filter", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Recursive_filter\n"
-}

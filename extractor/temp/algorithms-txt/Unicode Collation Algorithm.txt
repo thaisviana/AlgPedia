@@ -1,6 +1,0 @@
-ABOUT
-The Unicode collation algorithm (UCA) is an algorithm defined in Unicode Technical Report #10, which defines a customizable method to compare two strings. These comparisons can then be used to collate or sort text in any writing system and language that can be represented with Unicode.
-FULL TEXT
-The Unicode collation algorithm (UCA) is an algorithm defined in Unicode Technical Report #10, which defines a customizable method to compare two strings. These comparisons can then be used to collate or sort text in any writing system and language that can be represented with Unicode.
-Unicode Technical Report #10 also specifies the Default Unicode Collation Element Table (DUCET). This datafile specifies the default collation ordering. The DUCET is customizable for different languages. Some such customisations can be found in Common Locale Data Repository (CLDR).
-An important open source implementation of UCA is included with the International Components for Unicode, ICU. ICU also supports tailoring and the collation tailorings from CLDR are included in ICU. You can see the effects of tailoring and a large number of language specific tailorings in the on-line ICU Locale Explorer.

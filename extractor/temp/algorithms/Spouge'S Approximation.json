@@ -1,8 +1,0 @@
-{
-    "about": "In mathematics, the Spouge's approximation is a formula for computing an approximation of the gamma function. It was named after John L. Spouge who defined the formula in a 1994 paper.[1] The formula is a modification of Stirling's approximation, and has the form", 
-    "name": "Spouge'S Approximation", 
-    "classification": "Computer Arithmetic Algorithms", 
-    "full_text": "In mathematics, the Spouge's approximation is a formula for computing an approximation of the gamma function. It was named after John L. Spouge who defined the formula in a 1994 paper.[1] The formula is a modification of Stirling's approximation, and has the form\nwhere a is an arbitrary positive integer and the coefficients are given by\nSpouge has proved that, if Re(z)\u00a0>\u00a00 and a\u00a0>\u00a02, the relative error in discarding \u03b5a(z) is bounded by\nThe formula is similar to the Lanczos approximation, but has some distinct features. Whereas the Lanczos formula exhibits faster convergence, Spouge's coefficients are much easier to calculate and the error can be set arbitrarily low. The formula is therefore feasible for arbitrary-precision evaluation of the gamma function. However, special care must be taken to use sufficient precision when computing the sum due to the large size of the coefficients ck, as well as their alternating sign. For example, for a\u00a0=\u00a049, one must compute the sum using about 65 decimal digits of precision in order to obtain the promised 40 decimal digits of accuracy.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Spouge's_approximation", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Spouge's_approximation\n"
-}

@@ -1,8 +1,0 @@
-{
-    "about": "Evolutionary programming is one of the four major evolutionary algorithm paradigms. It is similar to genetic programming, but the structure of the program to be optimized is fixed, while its numerical parameters are allowed to evolve.", 
-    "name": "Evolutionary Programming", 
-    "classification": "Evolutionary Algorithms", 
-    "full_text": "Evolutionary programming is one of the four major evolutionary algorithm paradigms. It is similar to genetic programming, but the structure of the program to be optimized is fixed, while its numerical parameters are allowed to evolve.\nIt was first used by Lawrence J. Fogel in the US in 1960 in order to use simulated evolution as a learning process aiming to generate artificial intelligence. Fogel used finite-state machines as predictors and evolved them. Currently evolutionary programming is a wide evolutionary computing dialect with no fixed structure or (representation), in contrast with some of the other dialects. It is becoming harder to distinguish from evolutionary strategies.\nIts main variation operator is mutation; members of the population are viewed as part of a specific species rather than members of the same species therefore each parent generates an offspring, using a (\u03bc + \u03bc) survivor selection.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Evolutionary_programming", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Evolutionary_programming\n"
-}

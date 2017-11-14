@@ -1,8 +1,0 @@
-{
-    "about": "In signal processing, delay equalization corresponds to adjusting the relative phases of different frequencies to achieve a constant group delay, using by adding an all-pass filter in series with an uncompensated filter.[1] Clever machine-learning techniques are now being applied to the design of such filters.[2]", 
-    "name": "Delay Equalization", 
-    "classification": "Digital Signal Processing", 
-    "full_text": "In signal processing, delay equalization corresponds to adjusting the relative phases of different frequencies to achieve a constant group delay, using by adding an all-pass filter in series with an uncompensated filter.[1] Clever machine-learning techniques are now being applied to the design of such filters.[2]\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Delay_equalization", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Delay_equalization\n"
-}

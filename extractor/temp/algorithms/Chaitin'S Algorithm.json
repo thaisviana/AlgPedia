@@ -1,8 +1,0 @@
-{
-    "about": "Chaitin's algorithm is a bottom-up, graph coloring register allocation algorithm that uses cost/degree as its spill metric. It is named after its designer, Gregory Chaitin. Chaitin's algorithm was the first register allocation algorithm that made use of coloring of the interference graph for both register allocations and spilling.", 
-    "name": "Chaitin'S Algorithm", 
-    "classification": "Graph Algorithms", 
-    "full_text": "Chaitin's algorithm is a bottom-up, graph coloring register allocation algorithm that uses cost/degree as its spill metric. It is named after its designer, Gregory Chaitin. Chaitin's algorithm was the first register allocation algorithm that made use of coloring of the interference graph for both register allocations and spilling.\nChaitin's algorithm was presented on the 1982 SIGPLAN Symposium on Compiler Construction, and published in the symposium proceedings. It was extension of an earlier 1981 paper on the use of graph coloring for register allocation. Chaitin's algorithm formed the basis of a large section of research into register allocators.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Chaitin's_algorithm", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Chaitin's_algorithm\n"
-}

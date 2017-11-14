@@ -1,5 +1,0 @@
-ABOUT
-Astronomical algorithms are the algorithms used to calculate ephemerides, calendars, and positions (as in celestial navigation or satellite navigation). Examples of large and complex astronomical algorithms are those used to calculate the position of the Moon. A simple example is the calculation of the Julian day.
-FULL TEXT
-Astronomical algorithms are the algorithms used to calculate ephemerides, calendars, and positions (as in celestial navigation or satellite navigation). Examples of large and complex astronomical algorithms are those used to calculate the position of the Moon. A simple example is the calculation of the Julian day.
-Numerical model of solar system discusses a generalized approach to local astronomical modeling. The variations séculaires des orbites planétaires describes an often used model.

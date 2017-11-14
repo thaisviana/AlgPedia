@@ -1,8 +1,0 @@
-{
-    "about": "Memory ProteXion, found in IBM xSeries servers, is a form of \"redundant bit steering\". This technology uses redundant bits in a data packet to recover from a DIMM failure.", 
-    "name": "Memory Protexion", 
-    "classification": "Error Detection And Correction", 
-    "full_text": "Memory ProteXion, found in IBM xSeries servers, is a form of \"redundant bit steering\". This technology uses redundant bits in a data packet to recover from a DIMM failure.\nMemory ProteXion is different from normal ECC error correction in that it uses only 6 bits for ECC, leaving 2 bits behind. These 2 bits can be used to re-route data from failed memory, much like hot spare on a raid. The ECC is used to reconstruct the data, and the extra bits to store it.\nMemory ProteXion, also known as \u201credundant bit steering\u201d, is the technology behind using redundant bits in a data packet to provide backup in the event of a DIMM failure. One failure does not cause a predictive failure analysis to be issued on the DIMM, but 2 failures and more will issue a PFA to inform the system administrator that a replacement is needed.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Memory_ProteXion", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Memory_ProteXion\n"
-}

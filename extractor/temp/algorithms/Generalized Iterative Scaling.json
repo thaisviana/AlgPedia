@@ -1,8 +1,0 @@
-{
-    "about": "In statistics, generalized iterative scaling (GIS) and improved iterative scaling (IIS) are two early algorithms used to fit log-linear models,[1] notably multinomial logistic regression (MaxEnt) classifiers and extensions of it such as MaxEnt Markov models[2] and conditional random fields. These algorithms have been largely surpassed by gradient-based methods such as L-BFGS[3] and coordinate descent algorithms.[4]", 
-    "name": "Generalized Iterative Scaling", 
-    "classification": "Optimization Algorithms And Methods", 
-    "full_text": "In statistics, generalized iterative scaling (GIS) and improved iterative scaling (IIS) are two early algorithms used to fit log-linear models,[1] notably multinomial logistic regression (MaxEnt) classifiers and extensions of it such as MaxEnt Markov models[2] and conditional random fields. These algorithms have been largely surpassed by gradient-based methods such as L-BFGS[3] and coordinate descent algorithms.[4]\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Generalized_iterative_scaling", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Generalized_iterative_scaling\n"
-}

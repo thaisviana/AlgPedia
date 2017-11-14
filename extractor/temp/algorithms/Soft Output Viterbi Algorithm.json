@@ -1,8 +1,0 @@
-{
-    "about": "The soft output Viterbi algorithm (SOVA) is a variant of the classical Viterbi algorithm.", 
-    "name": "Soft Output Viterbi Algorithm", 
-    "classification": "Error Detection And Correction", 
-    "full_text": "The soft output Viterbi algorithm (SOVA) is a variant of the classical Viterbi algorithm.\nSOVA differs from the classical Viterbi algorithm in that it uses a modified path metric which takes into account the a priori probabilities of the input symbols, and produces a soft output indicating the reliability of the decision.\nThe first step in the SOVA is the selection of the survivor path, passing through one unique node at each time instant, t. Since each node has 2 branches converging at it (with one branch being chosen to form the Survivor Path, and the other being discarded), the difference in the branch metrics (or cost) between the chosen and discarded branches indicate the amount of error in the choice.\nThis cost is accumulated over the entire sliding window (usually equals at least five constraint lengths), to indicate the soft output measure of reliability of the hard bit decision of the Viterbi algorithm.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Soft_output_Viterbi_algorithm", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Soft_output_Viterbi_algorithm\n"
-}

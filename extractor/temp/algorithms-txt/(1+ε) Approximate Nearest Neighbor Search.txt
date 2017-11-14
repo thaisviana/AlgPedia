@@ -1,7 +1,0 @@
-ABOUT
-(1+ε)-approximate nearest neighbor search is a special case of the nearest neighbor search problem. The solution to the (1+ε)-approximate nearest neighbor search is a point or multiple points within distance (1+ε) R from a query point, where R is the distance between the query point and its true nearest neighbor.
-FULL TEXT
-(1+ε)-approximate nearest neighbor search is a special case of the nearest neighbor search problem. The solution to the (1+ε)-approximate nearest neighbor search is a point or multiple points within distance (1+ε) R from a query point, where R is the distance between the query point and its true nearest neighbor.
-Reasons to approximate nearest neighbor search include the space and time costs of exact solutions in high-dimensional spaces (see curse of dimensionality) and that in some domains, finding an approximate nearest neighbor is an acceptable solution.
-Approaches for solving (1+ε)-approximate nearest neighbor search include kd-trees, Locality Sensitive Hashing and brute force search.
-

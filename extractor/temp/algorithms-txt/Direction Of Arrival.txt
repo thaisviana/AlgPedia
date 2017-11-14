@@ -1,4 +1,0 @@
-ABOUT
-In signal processing literature, direction of arrival denotes the direction from which usually a propagating wave arrives at a point, where usually a set of sensors are located. These set of sensors forms what is called a sensor array. Often there is the associated technique of beamforming which is estimating the signal from a given direction. Various engineering problems addressed in the associated literature are:
-FULL TEXT
-In signal processing literature, direction of arrival denotes the direction from which usually a propagating wave arrives at a point, where usually a set of sensors are located. These set of sensors forms what is called a sensor array. Often there is the associated technique of beamforming which is estimating the signal from a given direction. Various engineering problems addressed in the associated literature are:

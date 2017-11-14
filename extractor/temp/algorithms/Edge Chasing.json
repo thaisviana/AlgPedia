@@ -1,8 +1,0 @@
-{
-    "about": "In computer science, edge-chasing is an algorithm for deadlock detection in distributed systems. Developed by Chandy Mishra Hass. Whenever a process A is blocked for some resource, a probe message is sent to all processes A may depend on. The probe message contains the process id of A along with the path that the message has followed through the distributed system. If a blocked process receives the probe it will update the path information and forward the probe to all the processes it depends on. Non-blocked processes may discard the probe.", 
-    "name": "Edge Chasing", 
-    "classification": "Distributed Algorithms", 
-    "full_text": "In computer science, edge-chasing is an algorithm for deadlock detection in distributed systems. Developed by Chandy Mishra Hass. Whenever a process A is blocked for some resource, a probe message is sent to all processes A may depend on. The probe message contains the process id of A along with the path that the message has followed through the distributed system. If a blocked process receives the probe it will update the path information and forward the probe to all the processes it depends on. Non-blocked processes may discard the probe.\nIf eventually the probe returns to process A, there is a circular waiting loop of blocked processes, and a deadlock is detected. Efficiently detecting such cycles in the \u201cwait-for graph\u201d of blocked processes is an important implementation problem.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Edge_chasing", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Edge_chasing\n"
-}

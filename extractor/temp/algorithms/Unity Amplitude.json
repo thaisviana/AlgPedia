@@ -1,8 +1,0 @@
-{
-    "about": "A sinusoidal waveform is said to have a unity amplitude when the amplitude of the wave is equal to 1.", 
-    "name": "Unity Amplitude", 
-    "classification": "Digital Signal Processing", 
-    "full_text": "A sinusoidal waveform is said to have a unity amplitude when the amplitude of the wave is equal to 1.\n\n\n\n\nx\n(\nt\n)\n=\nA\ns\ni\nn\n(\nw\nt\n)\n\n\n{\\displaystyle x(t)=Asin(wt)}\n\n where A = 1.\nThis terminology is most commonly used in Digital Signal Processing and is usually associated with the Fourier series and Fourier Transform sinusoids that involve a duty cycle, \u03b1, and a defined fundamental period, To.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Unity_amplitude", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Unity_amplitude\n"
-}

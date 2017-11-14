@@ -1,4 +1,0 @@
-ABOUT
-Disruptor is a library for the Java programming language that provides a concurrent ring buffer data structure of the same name, developed at LMAX Exchange. It is designed to provide a low-latency, high-throughput work queue in asynchronous event processing architectures. It ensures that any data is owned by only one thread for write access, therefore reducing write contention compared to other structures.[1][third-party source needed]
-FULL TEXT
-Disruptor is a library for the Java programming language that provides a concurrent ring buffer data structure of the same name, developed at LMAX Exchange. It is designed to provide a low-latency, high-throughput work queue in asynchronous event processing architectures. It ensures that any data is owned by only one thread for write access, therefore reducing write contention compared to other structures.[1][third-party source needed]

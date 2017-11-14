@@ -1,8 +1,0 @@
-{
-    "about": "In cryptography, the Rip van Winkle cipher is a provably secure cipher with a finite key, assuming the attacker has only finite storage.", 
-    "name": "Rip Van Winkle Cipher", 
-    "classification": "Cryptographic Algorithms", 
-    "full_text": "In cryptography, the Rip van Winkle cipher is a provably secure cipher with a finite key, assuming the attacker has only finite storage.\nThe cipher requires a broadcaster (perhaps a numbers station) publicly transmitting a series of random numbers.\nThe sender encrypts a plaintext message by XORing it with the random numbers, then holding it some length of time T. At the end of that time, the sender finally transmits the encrypted message.\nThe receiver holds the random numbers the same length of time T. As soon as the receiver gets the encrypted message, he XORs it with the random numbers he remembers were transmitted T ago, to recover the original plaintext message.\nThe delay T represents the \"key\" and must be securely communicated only once. [1]\nUeli Maurer says the original Rip van Winkle cipher is completely impractical, but it motivated a new approach to provable security.[2]\nJ.L. Massey and I. Ingemarsson. The Rip van Winkle cipher - a simple and provably computationally secure cipher with a finite key. In Proc. IEEE Int. Symp. Information Theory (Abstracts), page 146, 1985.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Rip_van_Winkle_cipher", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Rip_van_Winkle_cipher\n"
-}

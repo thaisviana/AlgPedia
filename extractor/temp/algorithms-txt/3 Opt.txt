@@ -1,5 +1,0 @@
-ABOUT
-In optimization, 3-opt is a simple local search algorithm for solving the travelling salesman problem and related network optimization problems.
-FULL TEXT
-In optimization, 3-opt is a simple local search algorithm for solving the travelling salesman problem and related network optimization problems.
-3-opt analysis involves deleting 3 connections (or edges) in a network (or tour), reconnecting the network in all other possible ways, and then evaluating each reconnection method to find the optimum one. This process is then repeated for a different set of 3 connections.

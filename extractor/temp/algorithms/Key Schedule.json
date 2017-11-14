@@ -1,8 +1,0 @@
-{
-    "about": "In cryptography, the so-called product ciphers are a certain kind of ciphers, where the (de-)ciphering of data is done in \"rounds\". The general setup of each round is the same, except for some hard-coded parameters and a part of the cipher key, called a subkey. A key schedule is an algorithm that, given the key, calculates the subkeys for these rounds.", 
-    "name": "Key Schedule", 
-    "classification": "Cryptographic Algorithms", 
-    "full_text": "In cryptography, the so-called product ciphers are a certain kind of ciphers, where the (de-)ciphering of data is done in \"rounds\". The general setup of each round is the same, except for some hard-coded parameters and a part of the cipher key, called a subkey. A key schedule is an algorithm that, given the key, calculates the subkeys for these rounds.\nKnudsen and Mathiassen (2004) give some experimental evidence that indicate that the key schedule plays a part in providing strength against linear and differential cryptanalysis. For toy Feistel ciphers, it was observed that those with complex and well-designed key schedules can reach a uniform distribution for the probabilities of differentials and linear hulls faster than those with poorly designed key schedules.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Key_schedule", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Key_schedule\n"
-}

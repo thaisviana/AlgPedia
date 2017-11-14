@@ -1,8 +1,0 @@
-{
-    "about": "The Linde\u2013Buzo\u2013Gray algorithm (introduced by Yoseph Linde, Andr\u00e9s Buzo and Robert M. Gray in 1980) is a vector quantization algorithm to derive a good codebook.", 
-    "name": "Linde\u2013Buzo\u2013Gray Algorithm", 
-    "classification": "Machine Learning Algorithms", 
-    "full_text": "The Linde\u2013Buzo\u2013Gray algorithm (introduced by Yoseph Linde, Andr\u00e9s Buzo and Robert M. Gray in 1980) is a vector quantization algorithm to derive a good codebook.\nIt is similar to the k-means method in data clustering.\nAt each iteration, each vector is split into two new vectors.", 
-    "dbpedia_url": "http://dbpedia.org/resource/Linde\u2013Buzo\u2013Gray_algorithm", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Linde\u2013Buzo\u2013Gray_algorithm\n"
-}

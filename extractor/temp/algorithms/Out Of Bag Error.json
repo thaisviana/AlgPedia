@@ -1,7 +1,0 @@
-{
-    "about": "Out-of-bag (OOB) error, also called out-of-bag estimate, is a method of measuring the prediction error of random forests, boosted decision trees, and other machine learning models utilizing bootstrap aggregating to sub-sample data sampled used for training. OOB is the mean prediction error on each training sample x\u1d62, using only the trees that did not have x\u1d62 in their bootstrap sample.[1]", 
-    "classification": "Computational Statistics", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Out-of-bag_error\n", 
-    "full_text": "Out-of-bag (OOB) error, also called out-of-bag estimate, is a method of measuring the prediction error of random forests, boosted decision trees, and other machine learning models utilizing bootstrap aggregating to sub-sample data sampled used for training. OOB is the mean prediction error on each training sample x\u1d62, using only the trees that did not have x\u1d62 in their bootstrap sample.[1]\nSubsampling allows one to define an out-of-bag estimate of the prediction performance improvement by evaluating predictions on those observations which were not used in the building of the next base learner. Out-of-bag estimates help avoid the need for an independent validation dataset, but often underestimate actual performance improvement and the optimal number of iterations.[2]\n", 
-    "name": "Out Of Bag Error"
-}

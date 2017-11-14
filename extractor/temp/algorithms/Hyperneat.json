@@ -1,8 +1,0 @@
-{
-    "about": "Hypercube-based NEAT, or HyperNEAT,[1] is a generative encoding that evolves artificial neural networks (ANNs) with the principles of the widely used NeuroEvolution of Augmented Topologies (NEAT) algorithm.[2] It is a novel technique for evolving large-scale neural networks using the geometric regularities of the task domain. It uses Compositional Pattern Producing Networks [3] (CPPNs), which are used to generate the images for Picbreeder.org and shapes for EndlessForms.com. HyperNEAT has recently been extended to also evolve plastic ANNs [4] and to evolve the location of every neuron in the network.[5]", 
-    "name": "Hyperneat", 
-    "classification": "Evolutionary Algorithms", 
-    "full_text": "Hypercube-based NEAT, or HyperNEAT,[1] is a generative encoding that evolves artificial neural networks (ANNs) with the principles of the widely used NeuroEvolution of Augmented Topologies (NEAT) algorithm.[2] It is a novel technique for evolving large-scale neural networks using the geometric regularities of the task domain. It uses Compositional Pattern Producing Networks [3] (CPPNs), which are used to generate the images for Picbreeder.org and shapes for EndlessForms.com. HyperNEAT has recently been extended to also evolve plastic ANNs [4] and to evolve the location of every neuron in the network.[5]", 
-    "dbpedia_url": "http://dbpedia.org/resource/HyperNEAT", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/HyperNEAT\n"
-}

@@ -1,4 +1,0 @@
-ABOUT
-WRF-SFIRE is a coupled atmosphere-wildfire model, which combines the Weather Research and Forecasting model (WRF) with a fire spread model, implemented by the level set method. A version from 2010 was released based on the WRF 3.2 as WRF-Fire.
-FULL TEXT
-WRF-SFIRE is a coupled atmosphere-wildfire model, which combines the Weather Research and Forecasting model (WRF) with a fire spread model, implemented by the level set method. A version from 2010 was released based on the WRF 3.2 as WRF-Fire.

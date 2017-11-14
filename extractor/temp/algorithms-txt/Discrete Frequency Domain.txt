@@ -1,5 +1,0 @@
-ABOUT
-A discrete frequency domain is a frequency domain that is discrete rather than continuous.
-FULL TEXT
-A discrete frequency domain is a frequency domain that is discrete rather than continuous.
-For example, the discrete Fourier transform maps a function having a discrete time domain into one having a discrete frequency domain. The discrete-time Fourier transform, on the other hand, maps functions with discrete time (discrete-time signals) to functions that have a continuous frequency domain.[1][2]

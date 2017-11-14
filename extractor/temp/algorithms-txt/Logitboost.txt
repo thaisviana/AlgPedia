@@ -1,6 +1,0 @@
-ABOUT
-In machine learning and computational learning theory, LogitBoost is a boosting algorithm formulated by Jerome Friedman, Trevor Hastie, and Robert Tibshirani. The original paper[1] casts the AdaBoost algorithm into a statistical framework. Specifically, if one considers AdaBoost as a generalized additive model and then applies the cost functional of logistic regression, one can derive the LogitBoost algorithm.
-FULL TEXT
-In machine learning and computational learning theory, LogitBoost is a boosting algorithm formulated by Jerome Friedman, Trevor Hastie, and Robert Tibshirani. The original paper[1] casts the AdaBoost algorithm into a statistical framework. Specifically, if one considers AdaBoost as a generalized additive model and then applies the cost functional of logistic regression, one can derive the LogitBoost algorithm.
-LogitBoost can be seen as a convex optimization. Specifically, given that we seek an additive model of the form
-the LogitBoost algorithm minimizes the logistic loss:

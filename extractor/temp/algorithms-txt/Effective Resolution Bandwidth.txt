@@ -1,4 +1,0 @@
-ABOUT
-In signal processing, effective resolution bandwidth is the frequency band of a signal converter where ENOB is still guaranteed. It is limited by dynamic quantization problems.
-FULL TEXT
-In signal processing, effective resolution bandwidth is the frequency band of a signal converter where ENOB is still guaranteed. It is limited by dynamic quantization problems.

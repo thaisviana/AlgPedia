@@ -1,8 +1,0 @@
-{
-    "about": "In signal processing, a Constant Amplitude Zero AutoCorrelation waveform (CAZAC) is a periodic complex-valued signal with modulus one and out-of-phase periodic (cyclic) autocorrelations equal to zero. CAZAC sequences find application in wireless communication systems, for example in 3GPP Long Term Evolution for synchronization of mobile phones with base stations. Zadoff\u2013Chu sequences are well-known CAZAC sequences with special properties.", 
-    "name": "Constant Amplitude Zero Autocorrelation Waveform", 
-    "classification": "Signal Processing", 
-    "full_text": "In signal processing, a Constant Amplitude Zero AutoCorrelation waveform (CAZAC) is a periodic complex-valued signal with modulus one and out-of-phase periodic (cyclic) autocorrelations equal to zero. CAZAC sequences find application in wireless communication systems, for example in 3GPP Long Term Evolution for synchronization of mobile phones with base stations. Zadoff\u2013Chu sequences are well-known CAZAC sequences with special properties.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Constant_amplitude_zero_autocorrelation_waveform", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Constant_amplitude_zero_autocorrelation_waveform\n"
-}

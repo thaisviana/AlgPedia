@@ -1,4 +1,0 @@
-ABOUT
-O'Connell defines join selection factor as "[t]he percentage (or fraction) of records in one file that will be joined with records of another file".[1] This can be calculated when two database tables are to be joined. It is primarily concerned with query optimisation.
-FULL TEXT
-O'Connell defines join selection factor as "[t]he percentage (or fraction) of records in one file that will be joined with records of another file".[1] This can be calculated when two database tables are to be joined. It is primarily concerned with query optimisation.

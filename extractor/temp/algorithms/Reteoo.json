@@ -1,8 +1,0 @@
-{
-    "about": "ReteOO is an improved version of the Rete algorithm.", 
-    "name": "Reteoo", 
-    "classification": "Pattern Matching", 
-    "full_text": "ReteOO is an improved version of the Rete algorithm.\nRete supports only boolean, first order logic. [1]\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/ReteOO", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/ReteOO\n"
-}

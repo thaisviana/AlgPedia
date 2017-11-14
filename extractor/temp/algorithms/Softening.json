@@ -1,8 +1,0 @@
-{
-    "about": "Softening is a numerical trick used in N-body techniques to prevent numerical divergences when a particle comes too close to another (and the force goes to infinity). This is obtained by modifying the gravitational potential of each particle as", 
-    "name": "Softening", 
-    "classification": "Computational Physics", 
-    "full_text": "Softening is a numerical trick used in N-body techniques to prevent numerical divergences when a particle comes too close to another (and the force goes to infinity). This is obtained by modifying the gravitational potential of each particle as\nwhere \n\n\n\n\u03f5\n\n\n{\\displaystyle \\epsilon }\n\n is the softening parameter. The value of the softening parameter should be set small enough to keep simulations realistic.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Softening", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Softening\n"
-}

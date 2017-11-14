@@ -1,8 +1,0 @@
-{
-    "about": "Bernstein's constant, usually denoted by the Greek letter \u03b2 (beta), is a mathematical constant named after Sergei Natanovich Bernstein and is approximately equal to 0.2801694990.", 
-    "name": "Bernstein'S Constant", 
-    "classification": "Numerical Analysis", 
-    "full_text": "Bernstein's constant, usually denoted by the Greek letter \u03b2 (beta), is a mathematical constant named after Sergei Natanovich Bernstein and is approximately equal to 0.2801694990.\nLet En(\u0192) be the error of the best uniform approximation to a real function \u0192(x) on the interval [\u22121,\u00a01] by real polynomials of no more than degree n. In the case of \u0192(x)\u00a0=\u00a0|x|, Bernstein (1914) showed that the limit\ncalled Bernstein's constant, exists and is between 0.278 and 0.286. His conjecture that the limit is:\nwas disproven by Varga & Carpenter (1987), who calculated", 
-    "dbpedia_url": "http://dbpedia.org/resource/Bernstein's_constant", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Bernstein's_constant\n"
-}

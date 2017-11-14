@@ -1,8 +1,0 @@
-{
-    "about": "A digital delay line is a discrete element in digital filter theory, which allows a signal to be delayed by a number of samples. If the delay is an integer multiple of samples, digital delay lines are often implemented as circular buffers. This means that integer delays can be computed very efficiently.", 
-    "name": "Digital Delay Line", 
-    "classification": "Digital Signal Processing", 
-    "full_text": "A digital delay line is a discrete element in digital filter theory, which allows a signal to be delayed by a number of samples. If the delay is an integer multiple of samples, digital delay lines are often implemented as circular buffers. This means that integer delays can be computed very efficiently.\nThe delay by one sample is notated \n\n\n\n\n\nz\n\n\n\u2212\n1\n\n\n\n\n{\\displaystyle \\mathrm {z} ^{-1}}\n\n and delays of \n\n\n\nN\n\n\n{\\displaystyle N}\n\n samples is notated as \n\n\n\n\n\nz\n\n\n\u2212\nN\n\n\n\n\n{\\displaystyle \\mathrm {z} ^{-N}}\n\n motivated by the role the z-transform plays in describing digital filter structures.\nIf a delay is not an integer of a sample additional filters are applied to account for the fraction of delay different from an integer. Hence delay lines with non-integer delay are called fractional delay lines.[1]\nDigital delay lines are widely used building blocks in methods to simulate room acoustics, musical instruments and digital audio effects.[2] Digital waveguide synthesis shows how digital delay lines can be used as sound synthesis methods for various musical instruments such as string instruments and wind instruments.\n", 
-    "dbpedia_url": "http://dbpedia.org/resource/Digital_delay_line", 
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Digital_delay_line\n"
-}

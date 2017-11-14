@@ -1,7 +1,0 @@
-ABOUT
-A matrix clock is a mechanism for capturing chronological and causal relationships in a distributed system.
-FULL TEXT
-A matrix clock is a mechanism for capturing chronological and causal relationships in a distributed system.
-Matrix clocks are a generalization of the notion of vector clocks.[1] A matrix clock maintains a vector of the vector clocks for each communicating host.
-Every time a message is exchanged, the sending host sends not only what it knows about the global state of time, but also the state of time that it received from other hosts.
-This allows establishing a lower bound on what other hosts know, and is useful in applications such as checkpointing and garbage collection.

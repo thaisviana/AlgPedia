@@ -1,4 +1,0 @@
-ABOUT
-The Space allocation problem (SAP) is the process in architecture or in any kind of Space Planning (SP) technique, of determining the position and size of several elements, according to the input specified design program requirements, mainly topological and geometric constraints, and the positioning of openings according to their geometric dimensions, in a two- or three-dimensional space.
-FULL TEXT
-The Space allocation problem (SAP) is the process in architecture or in any kind of Space Planning (SP) technique, of determining the position and size of several elements, according to the input specified design program requirements, mainly topological and geometric constraints, and the positioning of openings according to their geometric dimensions, in a two- or three-dimensional space.

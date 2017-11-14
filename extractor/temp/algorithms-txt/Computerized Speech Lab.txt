@@ -1,6 +1,0 @@
-ABOUT
-The Computerized Speech Lab (CSL) is a speech and signal processing computer workstation (software and hardware) used for research and clinical speech therapy.
-FULL TEXT
-The Computerized Speech Lab (CSL) is a speech and signal processing computer workstation (software and hardware) used for research and clinical speech therapy.
-The Computerized Speech Lab suite of software covers speech analysis, teaching, research, voice measurement, clinical feedback, acoustic phonetics, and forensic work. KayPENTAX, a division of PENTAX medical, offers two CSL models, 4500 and 4150B. The latest generation CSL hardware, is an input/output recording device for a PC.
-CSL, is an integrated hardware and software product, and as such offers input signal-to-noise performance typically 20-30 dB superior to generic, plug-in sound cards.[citation needed]
