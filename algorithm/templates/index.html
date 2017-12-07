@@ -8,7 +8,7 @@
 		<p>AlgPedia's goal is to become a reference for programmers, providing relevant information about algorithms and their implementations. </p>
 
 		<div class="dataset-links">
-			<p> Download AlgPedia dataset in : <a href='{{ STATIC_URL }}ontology/algorithm.owl'> owl</a> or <a href='{{ STATIC_URL }}ontology/algpedia-rdf.rdf'> rdf</a>&nbsp;&nbsp;</p>
+			<p> Download AlgPedia dataset in : <a href='{% static "ontology/algorithm.owl" %}'> owl</a> or <a href='{% static "ontology/algpedia-rdf.rdf" %}'> rdf</a>&nbsp;&nbsp;</p>
 		</div>
 
 	</div>
@@ -26,7 +26,7 @@
 			<div class="row-fluid">
 				<div class="offset2  margin-top-40" style="text-align: center;">
 					<div class="span2">
-					<h5><img src="{{ STATIC_URL }}images/django_girls.png" height="64"  width="64"/></h5>
+					<h5><img src="{% static "images/django_girls.png" %}" height="64"  width="64"/></h5>
 						<p>
 							 Algpedia talk in Django Girls Sao Jose dos Campos
 							 <br><a href="https://djangogirls.org/saojosedoscampos/">Django Girls</a> November 8, 2015
@@ -35,26 +35,26 @@
 
 
 					<div class="span2">
-						<h5><img src="{{ STATIC_URL }}images/analytics.png" height="64"  width="64"/></h5>
+						<h5><img src="{% static "images/analytics.png" %}" height="64"  width="64"/></h5>
 						<p>
 							 Pages visualizations<br> #60 000<br>November 3, 2015
 						</p>
 					</div>
 					<div class="span2">
-						<h5><img src="{{ STATIC_URL }}images/analytics.png" height="64"  width="64"/></h5>
+						<h5><img src="{% static "images/analytics.png" %}" height="64"  width="64"/></h5>
 						<p>
 							User #1400<br>August 30, 2015
 						</p>
 					</div>
 
 					<div class="span3">
-						<h5><img src="{{ STATIC_URL }}images/brain.png" height="64"  width="64"/></h5>
+						<h5><img src="{% static "images/brain.png" %}" height="64"  width="64"/></h5>
 						<p>
 							We had a perfect grade in our presentation  for concluding Bachelor degree in Computer Science at UFRJ.<br>October 22, 2014
 						</p>
 					</div>
 					<div class="span2">
-						<h5><img src="{{ STATIC_URL }}images/infow.jpeg" height="64"  width="64"/></h5>
+						<h5><img src="{% static "images/infow.jpeg" %}" height="64"  width="64"/></h5>
 						<p>
 							<a href="http://www.infoworld.com/article/2825055/application-development/5-sites-to-help-developers-make-a-cross-language-leap.html?fb_action_ids=720300761352055&fb_action_types=og.likes">
 							Learning a second programming language? Try these 5 sites</a><br>October 13, 2014
@@ -82,7 +82,7 @@
 
 						<li>
 						<a href="{{alg.link}}">
-						<span class="ca-icon"><img src="{{ STATIC_URL }}images/Metal-silver-green.png" alt="{{alg.link}}" /></span>
+						<span class="ca-icon"><img src="{% static "images/Metal-silver-green.png" %}" alt="{{alg.link}}" /></span>
 						<div class="ca-content">
 							<h2 class="ca-main">{{ alg.name }} </h2>
 							<h3 class="ca-sub impl-reputation" id="impl-reputation-{{ alg.reputation }}" data-reputation_value="#{{ alg.reputation|default_if_none:'' }}">{{ alg.reputation }}</h3>
@@ -94,7 +94,7 @@
 						{% if forloop.first %}
 						<li>
 						<a href="{{alg.link}}">
-						<span class="ca-icon"><img src="{{ STATIC_URL }}images/Metal-gold-green.png" alt="{{alg.link}}" /></span>
+						<span class="ca-icon"><img src="{% static "images/Metal-gold-green.png" %}" alt="{{alg.link}}" /></span>
 						<div class="ca-content">
 							<h2 class="ca-main">{{ alg.name }}</h2>
 							<h3 class="ca-sub impl-reputation" id="impl-reputation-{{ alg.reputation }}" data-reputation_value="#{{ alg.reputation|default_if_none:'' }}">{{ alg.reputation }}</h3>
@@ -105,7 +105,7 @@
 						{% if forloop.counter0 == 2 %}
 						<li>
 						<a href="{{alg.link}}">
-						<span class="ca-icon"><img src="{{ STATIC_URL }}images/Metal-bronze-green.png" alt="{{alg.link}}" /></span>
+						<span class="ca-icon"><img src="{% static "images/Metal-bronze-green.png" %}" alt="{{alg.link}}" /></span>
 						<div class="ca-content">
 							<h2 class="ca-main">{{ alg.name }}</h2>
 							<h3 class="ca-sub impl-reputation" id="impl-reputation-{{ alg.reputation }}" data-reputation_value="#{{ alg.reputation|default_if_none:'' }}">{{ alg.reputation }}</h3>
@@ -139,31 +139,31 @@
 				{% for user in top5_users %}
 					{% if forloop.counter0 == 3 %}
 					<div class="span2">
-					<h5><img src="{{ STATIC_URL }}images/hero/circle-lantern.png" height="64"  width="64"/></h5>
+					<h5><img src="{% static "images/hero/circle-lantern.png" %}" height="64"  width="64"/></h5>
 						<h4 class="user-reputation" data-reputation_value="#{{ user.reputation|default_if_none:'' }}">{{user.username}}<h4>
 					</div>
 					{% endif %}
 					{% if forloop.counter0 == 1 %}
 					<div class="span2">
-						<h5><img src="{{ STATIC_URL }}images/hero/circle-flash.png" height="64"  width="64"/></h5>
+						<h5><img src="{% static "images/hero/circle-flash.png" %}" height="64"  width="64"/></h5>
 						<h4 class="user-reputation" data-reputation_value="#{{ user.reputation|default_if_none:'' }}">{{user.username}}<h4>
 					</div>
 					{% endif %}
 					{% if forloop.first %}
 					<div class="span2">
-						<h5><img src="{{ STATIC_URL }}images/hero/circle-batman.png" height="64"  width="64"/></h5>
+						<h5><img src="{% static "images/hero/circle-batman.png" %}" height="64"  width="64"/></h5>
 						<h4 class="user-reputation" data-reputation_value="#{{ user.reputation|default_if_none:'' }}">{{user.username}}<h4>
 					</div>
 					{% endif %}
 					{% if forloop.counter0 == 2 %}
 					<div class="span2">
-						<h5><img src="{{ STATIC_URL }}images/hero/circle-superman.png" height="64"  width="64"/></h5>
+						<h5><img src="{% static "images/hero/circle-superman.png" %}" height="64"  width="64"/></h5>
 						<h4 class="user-reputation" data-reputation_value="#{{ user.reputation|default_if_none:'' }}">{{user.username}}<h4>
 					</div>
 					{% endif %}
 					{% if forloop.counter0 == 4 %}
 					<div class="span2">
-						<h5><img src="{{ STATIC_URL }}images/hero/circle-hulk.png" height="64"  width="64"/></h5>
+						<h5><img src="{% static "images/hero/circle-hulk.png" %}" height="64"  width="64"/></h5>
 						<h4 class="user-reputation" data-reputation_value="#{{ user.reputation|default_if_none:'' }}">{{user.username}}<h4>
 					</div>
 					{% endif %}

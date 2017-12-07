@@ -1,5 +1,5 @@
 {% extends "main_template.html" %}
-
+{% load staticfiles %}
 {% block extra-head %}
 <script type="text/javascript">
 $(document).ready(function(){
@@ -21,7 +21,7 @@ $(document).ready(function(){
 			<h2>Algorithms</h2>
 		</div>
 		<div class="span2 text-right actions">
-			<a href="/algorithm/add/"><img src="{{ STATIC_URL }}images/add.png" height="100%"/>
+			<a href="/algorithm/add/"><img src="{% static "images/add.png" %}" height="100%"/>
 				Add an algorithm
 			</a>
 		</div>
@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 <div class="container-fluid">
 	<div class="row-fluid">
-	
+
 		<div class="span2"></div>
 		<div class="span8">
 			<div class="filters cf">

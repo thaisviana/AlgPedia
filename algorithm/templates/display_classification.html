@@ -1,5 +1,5 @@
 {% extends "main_template.html" %}
-
+{% load staticfiles %}
 {% block content %}
 <div class="container-fluid">
 	<div class="row-fluid">
@@ -8,7 +8,7 @@
 			<h2>{{ classif.name }}</h2>
 		</div>
 		<div class="span2 text-right actions">
-			<a href="/add/cat/id/{{classif.id}}"><img src="{{ STATIC_URL }}images/add.png" height="100%"/>
+			<a href="/add/cat/id/{{classif.id}}"><img src="{% static "images/add.png" %}" height="100%"/>
 				Add an algorithm
 			</a>
 		</div>
@@ -22,12 +22,12 @@
 			&nbsp;
 		</div>
 		<div class="span8">
-			
+
 			<!--Página-->
 				<div id="classification">
 					&nbsp;&nbsp;&nbsp;<a href="{{ classif.uri }}" target="_blank"> [More Information] </a></td>
 					<!-- table containing algorithms with such classification -->
-				</div> 
+				</div>
 				<div class="container-fluid">
 
 	<div class="row-fluid">
@@ -35,39 +35,39 @@
 			&nbsp;
 		</div>
 		<div class="span8 text-center">
-			
+
 			<h5>Below, the top 3 algorithms:</h5>
-			<div class="row-fluid">		
-				
-				
+			<div class="row-fluid">
+
+
 			{% for alg in top5_algorithms %}
 			{% if forloop.first %}
-				<div class="span4 text-center"><img class="thumbnail img-center" src="{{ STATIC_URL }}images/star_gold.png" alt="{{alg.link}}" />
+				<div class="span4 text-center"><img class="thumbnail img-center" src="{% static "images/star_gold.png" %}" alt="{{alg.link}}" />
 					<a href="{{alg.link}}"> {{ alg.name }} </a>
 				</div>
-			{% endif %}	
+			{% endif %}
 			{% if forloop.counter0 == 1 %}
-				<div class="span4 text-center"><img class="thumbnail img-center" src="{{ STATIC_URL }}images/star_silver.png" alt="{{alg.link}}" />
+				<div class="span4 text-center"><img class="thumbnail img-center" src="{% static "images/star_silver.png" %}" alt="{{alg.link}}" />
 					<a href="{{alg.link}}"> {{ alg.name }} </a>
 				</div>
-			{% endif %}	
+			{% endif %}
 			{% if forloop.counter0 == 2 %}
-				<div class="span4 text-center"><img class="thumbnail img-center" src="{{ STATIC_URL }}images/star_bronze.png" alt="{{alg.link}}" />
+				<div class="span4 text-center"><img class="thumbnail img-center" src="{% static "images/star_bronze.png" %}" alt="{{alg.link}}" />
 					<a href="{{alg.link}}"> {{ alg.name }} </a>
 				</div>
-			{% endif %}	
+			{% endif %}
 			{% empty %}
 				<p>
 					We have no votes yet for the algorithms. <a href="/accounts/login">Be the first to vote!</a> You just need to be logged in.
 				</p>
 			{% endfor %}
-			
+
 		</div>
 		<div class="span2">
 			&nbsp;
 		</div>
 	</div>
-</div>		
+</div>
 				{% if algorithms %}
 				<table id="algorithms" class="table table-bordered">
 					<tr>
@@ -78,7 +78,7 @@
 						<td><a href="{{alg.link}}"> {{ alg.name }}- <!-- Reputation: {{ alg.reputation }} -->
 							<span class="impl-reputation" style="float: right;" id="impl-reputation-{{ alg.reputation }}" data-reputation_value="#{{ alg.reputation }}">
 					</span>
-							
+
 						</td>
 					</tr>
 					{% endfor %}
@@ -92,4 +92,3 @@
 	</div>
 </div>
 {% endblock %}
-

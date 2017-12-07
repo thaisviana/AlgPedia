@@ -1,5 +1,5 @@
 {% extends "main_template.html" %}
-
+{% load staticfiles %}
 {% block content %}
 
 <script type="text/javascript">
@@ -7,14 +7,14 @@ $(document).ready(function(){
 	$('.actions a').click(function(){
 		var $imp = $(this).parents('.implementation-wrapper');
 		var imp_id = $imp.data('implementation_id');
-		
+
 		var action;
 		if($(this).hasClass('js-accept')){
 			action = 'accept';
 		} else if($(this).hasClass('js-refuse')) {
 			action = 'refuse';
 		}
-		var data = {'implementation_id': imp_id, 'action': action}; 
+		var data = {'implementation_id': imp_id, 'action': action};
 		$.post('{% url "moderator_action" %}', data, function(response){
 			if(action == 'accept'){
 				alert("Implementation accepted!");
@@ -43,10 +43,10 @@ $(document).ready(function(){
 			</div>
 			<div id="collapse{{ imp.id }}" class="accordion-body collapse in implementation-wrapper" data-implementation_id="{{ imp.id }}">
 				<div class="actions">
-					<a class="js-refuse"><img src="{{ STATIC_URL }}images/glyphicons/glyphicons_207_remove_2.png" alt="Refuse" style="float: right;"/></a>
+					<a class="js-refuse"><img src="{% static "images/glyphicons/glyphicons_207_remove_2.png" %}" alt="Refuse" style="float: right;"/></a>
 					 &nbsp; &nbsp; &nbsp;
-					<a class="js-accept"><img src="{{ STATIC_URL }}images/glyphicons/glyphicons_206_ok_2.png" alt="Accept" style="float: right;"/></a>
-					
+					<a class="js-accept"><img src="{% static "images/glyphicons/glyphicons_206_ok_2.png" %}" alt="Accept" style="float: right;"/></a>
+
 				</div>
 				<div class="span2"></div>
 				<div class="accordion-inner align-center" style="overflow:auto; max-height:275px;">
@@ -54,7 +54,7 @@ $(document).ready(function(){
 				</div>
 			</div>
 			{% endfor %}
-			
+
 		</div>
 	</div>
 	{% endfor %}
