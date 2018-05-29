@@ -14,7 +14,7 @@
 	<div id="login" class="span4">
 	{{message}}
 	
-<form class="form-horizontal" method="POST" action="{% url 'django.contrib.auth.views.login' %}">
+<form class="form-horizontal" method="POST">
 	{% csrf_token %}
 	<input type="hidden" name="next" value="{{ request.GET.next }}" />
 	{% if form.errors %}

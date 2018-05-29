@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+from django.contrib.auth import views as auth_views
+
 # Uncomment the next two lines to enable the admin:
 admin.autodiscover()
 
@@ -15,6 +17,8 @@ urlpatterns = [
     url(r'^clearDB/$', algorithm.views.clear_database),
     url(r'^accounts/profile/$', algorithm.views.profile),
     url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^accounts/login/$', auth_views.login, name='login'),
+    url(r'^accounts/logout/$', auth_views.logout, name='logout'),
     url(r'^ontoviz/$', algorithm.views.ontoviz),
     url(r'^signin/$', algorithm.views.signin),
     url(r'^contact/$', algorithm.views.contact),

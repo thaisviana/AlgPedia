@@ -72,13 +72,13 @@ WSGI_APPLICATION = 'AlgPedia.wsgi.application'
 # Database
 #DATABASES = {'default': dj_database_url.config()}
 
-DATABASE_URL='postgresql://postgres:postgres5432@localhost/algpedia'
+DATABASE_URL='postgresql://postgres:96217156@localhost/algpedia'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'algpedia',
         'USER': 'postgres',
-        'PASSWORD': 'postgres5432',
+        'PASSWORD': '96217156',
         'HOST': 'localhost',
         'PORT': '5432',
     }

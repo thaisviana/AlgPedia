@@ -4,7 +4,7 @@ from algorithm.UserCreateForm import UserCreateForm
 from algorithm.algorithmForm import AlgorithmForm
 from algorithm.controllers import *
 from algorithm.forms import FiltersAlgorithm, FiltersClassification
-from algorithm.models import Paradigm, Classification, Implementation, Algorithm, ProgrammingLanguage, UniversityRank, UserReputation
+from algorithm.models import Paradigm, Implementation, Algorithm
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponse, HttpResponseRedirect
@@ -12,10 +12,8 @@ from django.shortcuts import render, redirect
 from django.template import Context, RequestContext
 from django.template.loader import get_template
 from extractor.Bootstrapping import Bootstrapper
-import html.entities as htmlentitydefs
 import json
 import re
-import sys
 
 # get_all_classifications_name_link, wipe_database, is_database_empty, get_classification_by_id
 
@@ -176,20 +174,21 @@ def profile(request):
     # Recupero todas as classificacoes que o usuario tem interesse
     u_c_i = get_user_classifications_interests_ids(username)
 
-    c = Context({
+    c = {
         'logged':  request.user.is_authenticated(),
-        'name' : request.user.username,
-        'question_answers' :  question_answers,
-        'classifications' : classifications,
+        'name': request.user.username,
+        'question_answers':  question_answers,
+        'classifications': classifications,
         'user_classifications_interests': u_c_i,
-        'user_classification_proeficiencies' : u_c_p,
-        'user_programming_languages_proeficiencies' : u_p_l_p,
-        'programming_languages' : programming_languages,
-        'universities' : get_all_universities(),
-        'user_university' : get_user_univertisy(request.user.username),
-        'questions': get_all_userquestions()})
+        'user_classification_proeficiencies': u_c_p,
+        'user_programming_languages_proeficiencies': u_p_l_p,
+        'programming_languages': programming_languages,
+        'universities': get_all_universities(),
+        #'user_university' : get_user_univertisy(request.user.username),
+        'user_university': '',
+        'questions': get_all_userquestions()}
 
-    c.update(request)
+    #c.update(request)
 
     return render(request, 'accounts/profile.html', c)
 

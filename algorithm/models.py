@@ -35,7 +35,7 @@ class UserReputation(models.Model):
 class ProgrammingLanguage(models.Model):
 	name = models.CharField(max_length=10)
 
-	def __unicode__(self):
+	def __str__(self):
 		return u'%s' % self.name
 
 class Classification(models.Model):
@@ -45,7 +45,7 @@ class Classification(models.Model):
 	def get_show_url(self):
 		return "/show/cat/id/%i" % self.id
 
-	def __unicode__(self):
+	def __str__(self):
 		return u'%s' % self.name
 
 	class Meta:
@@ -54,7 +54,7 @@ class Classification(models.Model):
 class Tag(models.Model):
 	name = models.CharField(max_length=50)
 
-	def __unicode__(self):
+	def __str__(self):
 		return u'%s' % self.name.lower().title()
 
 class Paradigm(models.Model):
@@ -67,7 +67,7 @@ class Paradigm(models.Model):
 	def get_show_url(self):
 		return "/show/para/id/%i" % self.id
 
-	def __unicode__(self):
+	def __str__(self):
 		return u'%s' % self.label
 
 
@@ -88,7 +88,7 @@ class Algorithm(models.Model):
 	def get_show_url(self):
 		return "/show/alg/id/%i" % self.id
 
-	def __unicode__(self):
+	def __str__(self):
 		return u'%s' % self.name.lower().title()
 
 	def calculate_reputation(self):
@@ -108,7 +108,7 @@ class Implementation(models.Model):
 	accumulated_weight = models.FloatField(default=0)
 	user = models.ForeignKey(User, null=True, blank=True, verbose_name=u"Creator")
 
-	def __unicode__(self):
+	def __str__(self):
 		return u'%s' % self.code
 
 	def get_show_url(self):
