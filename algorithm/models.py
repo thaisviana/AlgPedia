@@ -2,7 +2,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.aggregates import Avg, Max
-from datetime import datetime
 
 
 class User(AbstractUser):
@@ -35,7 +34,7 @@ class UserReputation(models.Model):
 class ProgrammingLanguage(models.Model):
 	name = models.CharField(max_length=10)
 
-	def __unicode__(self):
+	def __str__(self):
 		return u'%s' % self.name
 
 class Classification(models.Model):
@@ -45,7 +44,7 @@ class Classification(models.Model):
 	def get_show_url(self):
 		return "/show/cat/id/%i" % self.id
 
-	def __unicode__(self):
+	def __str__(self):
 		return u'%s' % self.name
 
 	class Meta:
@@ -54,7 +53,7 @@ class Classification(models.Model):
 class Tag(models.Model):
 	name = models.CharField(max_length=50)
 
-	def __unicode__(self):
+	def __str__(self):
 		return u'%s' % self.name.lower().title()
 
 class Paradigm(models.Model):
@@ -67,7 +66,7 @@ class Paradigm(models.Model):
 	def get_show_url(self):
 		return "/show/para/id/%i" % self.id
 
-	def __unicode__(self):
+	def __str__(self):
 		return u'%s' % self.label
 
 
@@ -79,7 +78,7 @@ class Algorithm(models.Model):
 	uri = models.URLField()
 	visible = models.BooleanField()
 	reputation = models.FloatField(default=0)
-	date = models.DateField(blank=False, default=datetime.now())
+	date = models.DateField(blank=False, auto_created=True, auto_now_add=True)
 
 	tags = models.ManyToManyField(Tag, blank=True, null=True)
 
@@ -88,7 +87,7 @@ class Algorithm(models.Model):
 	def get_show_url(self):
 		return "/show/alg/id/%i" % self.id
 
-	def __unicode__(self):
+	def __str__(self):
 		return u'%s' % self.name.lower().title()
 
 	def calculate_reputation(self):
@@ -103,12 +102,12 @@ class Implementation(models.Model):
 	code = models.TextField()
 	programming_language = models.ForeignKey(ProgrammingLanguage)
 	visible = models.BooleanField()
-	date = models.DateField(blank=False, default=datetime.now())
+	date = models.DateField(blank=False, auto_created=True, auto_now_add=True)
 	reputation = models.FloatField(default=0)
 	accumulated_weight = models.FloatField(default=0)
 	user = models.ForeignKey(User, null=True, blank=True, verbose_name=u"Creator")
 
-	def __unicode__(self):
+	def __str__(self):
 		return u'%s' % self.code
 
 	def get_show_url(self):
@@ -129,7 +128,7 @@ class Implementation(models.Model):
 class Interest(models.Model):
 	classification = models.ForeignKey(Classification)
 	user = models.ForeignKey(User)
-	date = models.DateField(blank=False, default=datetime.now())
+	date = models.DateField(blank=False, auto_created=True, auto_now_add=True)
 # Classe base de proeficiencia do usuario em algo
 class ProeficiencyScale(models.Model):
 	user = models.ForeignKey(User)
@@ -161,7 +160,7 @@ class UserQuestionAnswer(models.Model):
 	user = models.ForeignKey(User)
 	user_question = models.ForeignKey(UserQuestion)
 	question_option = models.ForeignKey(QuestionOption)
-	date = models.DateField(blank=False, default=datetime.now())
+	date = models.DateField(blank=False, auto_created=True, auto_now_add=True)
 # Pergunta em relacao a uma implementacao
 class ImplementationQuestion(Question):
 	pass
@@ -173,7 +172,7 @@ class ImplementationQuestionAnswer(models.Model):
 	implementation = models.ForeignKey(Implementation)
 	implementation_question = models.ForeignKey(ImplementationQuestion)
 	question_option = models.ForeignKey(QuestionOption)
-	date = models.DateField(blank=False, default=datetime.now())
+	date = models.DateField(blank=False, auto_created=True, auto_now_add=True)
 	def save(self, *args, **kwargs):
 		super(ImplementationQuestionAnswer, self).save(*args, **kwargs)
 

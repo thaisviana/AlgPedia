@@ -2,17 +2,43 @@
 {% load staticfiles %}
 {% block content %}
 
-<div class="cointainer description">
-	<div class="description-content">
-		<img src="{% static "images/logo-transparent.png" %}">
-		<p>AlgPedia's goal is to become a reference for programmers, providing relevant information about algorithms and their implementations. </p>
+    <header id="gtco-header" class="gtco-cover gtco-cover-xs gtco-inner" role="banner">
+			<div class="gtco-container">
+				<div class="row">
+					<div class="col-md-12 col-md-offset-0 text-left">
+						<div class="display-t">
+							<div class="display-tc">
+								<div class="row">
+									<div class="col-md-8">
+										<h1 class="no-margin">AlgPedia</h1>
+										<p>AlgPedia's goal is to become a reference for programmers, providing relevant information about algorithms and their implementations. </p>
+									</div>
+								</div>
 
-		<div class="dataset-links">
-			<p> Download AlgPedia dataset in : <a href='{% static "ontology/algorithm.owl" %}'> owl</a> or <a href='{% static "ontology/algpedia-rdf.rdf" %}'> rdf</a>&nbsp;&nbsp;</p>
-		</div>
+                                <div >
+                                    <div class="dataset-links">
+                                        <p style="font-size: medium"> Download AlgPedia dataset in : <a href='{{ STATIC_URL }}ontology/algorithm.owl'> owl</a> or <a href='{{ STATIC_URL }}ontology/algpedia-rdf.rdf'> rdf</a>&nbsp;&nbsp;</p>
+                                    </div>
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-	</div>
-</div>
+			</div>
+		</header>
+{##}
+{#<div class="cointainer description">#}
+{#	<div class="description-content">#}
+{#		<img src="{% static "images/logo-transparent.png" %}">#}
+{#		<p>AlgPedia's goal is to become a reference for programmers, providing relevant information about algorithms and their implementations. </p>#}
+{##}
+{#		<div class="dataset-links">#}
+{#			<p> Download AlgPedia dataset in : <a href='{{ STATIC_URL }}ontology/algorithm.owl'> owl</a> or <a href='{{ STATIC_URL }}ontology/algpedia-rdf.rdf'> rdf</a>&nbsp;&nbsp;</p>#}
+{#		</div>#}
+{##}
+{#	</div>#}
+{#</div>#}
 
 	<!-- DESCRIPTION-->
 

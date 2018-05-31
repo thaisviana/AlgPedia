@@ -1,7 +1,7 @@
 import os, math
 from algorithm.models import Paradigm,UserReputation,Classification,UniversityRank, Implementation, Algorithm, ProgrammingLanguage, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, ClassificationProeficiencyScale, Question, QuestionOption, UserQuestion, ImplementationQuestion, ImplementationQuestionAnswer, UserQuestionAnswer
 from extractor.FileWriters import RDFWriter
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db.models import Q
 from django.db import connection
 import itertools
@@ -23,7 +23,7 @@ def f_bayes(tag, id, sim_matriz, vecTag):
 	similares = 0.0
 	tagsEmSimilares = 0.0
 
-	for j in xrange(len(sim_matriz)):
+	for j in range(len(sim_matriz)):
 		if sim_matriz[id][j] > 0.2 and id != j:
 			similares += 1
 			if tag in vecTag[j]:
@@ -36,17 +36,19 @@ def get_university_by_position(u_position):
 	return UniversityRank.objects.get(position=u_position)
 
 def get_user_univertisy(u_username):
-	u_user = User.objects.get(username=u_username)
-	try:
-		ur = UserReputation.objects.get(user=u_user)
-		if(ur.university is not None):
-			return ur.university.position
-		else:
-			return ""
-	except UserReputation.DoesNotExist:
-		return ""
+    User = get_user_model()
+    u_user = User.objects.get(username=u_username)
+    try:
+        ur = UserReputation.objects.get(user=u_user)
+        if(ur.university is not None):
+            return ur.university.position
+        else:
+            return ""
+    except UserReputation.DoesNotExist:
+        return ""
 
 def save_university(u_username, u_university):
+	User = get_user_model()
 	u_user = User.objects.get(username=u_username)
 	try:
 		ur = UserReputation.objects.get(user=u_user)
@@ -57,6 +59,7 @@ def save_university(u_username, u_university):
 		ur.save()
 
 def add_user_point(u_username):
+	User = get_user_model()
 	u_user = User.objects.get(username=u_username)
 	try:
 		ur = UserReputation.objects.get(user=u_user)
@@ -89,6 +92,8 @@ def get_user_interested_classifications(username=None):
 
 	names = []
 	links = []
+
+	User = get_user_model()
 
 	user = User.objects.get(username=username)
 	user_interests = Interest.objects.filter(user=user).only("classification").order_by("classification__name")
@@ -277,6 +282,7 @@ def get_all_userquestions():
 	return UserQuestion.objects.order_by("text")
 
 def insert_user_question_answer(username, question_id, question_answer_id):
+	User = get_user_model()
 	user = User.objects.get(username=username)
 
 	try:
@@ -304,6 +310,7 @@ def exec_sp_update_user_evaluation_contribution(implementation_id, user_id):
 	cursor.close()
 
 def insert_user_impl_question_answer(username, impl_id, question_id, question_answer_id):
+	User = get_user_model()
 	user = User.objects.get(username=username)
 
 	try:
@@ -324,6 +331,7 @@ def insert_user_impl_question_answer(username, impl_id, question_id, question_an
 		return result
 
 def get_user_votes_by_algorithm(username, algorithm_id):
+	User = get_user_model()
 	user = User.objects.get(username=username)
 	algorithm = Algorithm.objects.get(id=algorithm_id)
 
@@ -398,11 +406,12 @@ def update_programming_languages_proeficiencies(username, programming_languages_
 		insert_programming_languages_proeficiencies(username, to_insert)
 
 def insert_programming_languages_proeficiencies(username, programming_languages_ids):
-	user = User.objects.get(username=username)
+    User = get_user_model()
+    user = User.objects.get(username=username)
 
-	for programming_language_id in programming_languages_ids:
-		programming_language = ProgrammingLanguage.objects.get(id=programming_language_id)
-		ProgrammingLanguageProeficiencyScale.objects.get_or_create(user=user, programming_language=programming_language, value=1)
+    for programming_language_id in programming_languages_ids:
+        programming_language = ProgrammingLanguage.objects.get(id=programming_language_id)
+        ProgrammingLanguageProeficiencyScale.objects.get_or_create(user=user, programming_language=programming_language, value=1)
 
 def update_classifications_proeficiencies(username, classifications_ids):
 	user_proeficiencies = set(get_user_classifications_proeficiencies_ids(username))
@@ -418,11 +427,12 @@ def update_classifications_proeficiencies(username, classifications_ids):
 		insert_classifications_proeficiencies(username, to_insert)
 
 def insert_classifications_proeficiencies(username, classifications_ids):
-	user = User.objects.get(username=username)
+    User = get_user_model()
+    user = User.objects.get(username=username)
 
-	for classification_id in classifications_ids:
-		classification = Classification.objects.get(id=classification_id)
-		ClassificationProeficiencyScale.objects.get_or_create(user=user, classification=classification, value=1)
+    for classification_id in classifications_ids:
+        classification = Classification.objects.get(id=classification_id)
+        ClassificationProeficiencyScale.objects.get_or_create(user=user, classification=classification, value=1)
 
 def update_classifications_interests(username, classifications_ids):
 	user_interests = set(get_user_classifications_interests_ids(username))
@@ -438,11 +448,12 @@ def update_classifications_interests(username, classifications_ids):
 		insert_classifications_interests(username, to_insert)
 
 def insert_classifications_interests(username, classifications_ids):
-	user = User.objects.get(username=username)
+    User = get_user_model()
+    user = User.objects.get(username=username)
 
-	for classification_id in classifications_ids:
-		classification = Classification.objects.get(id=classification_id)
-		Interest.objects.get_or_create(user=user, classification=classification)
+    for classification_id in classifications_ids:
+        classification = Classification.objects.get(id=classification_id)
+        Interest.objects.get_or_create(user=user, classification=classification)
 
 def get_all_implementationquestions():
 	return ImplementationQuestion.objects.order_by("text")
@@ -455,9 +466,10 @@ def get_all_programming_languages():
 	return ProgrammingLanguage.objects.order_by("name")
 
 def insert_user_reputation(u_username,u_reputation):
-	u_user = User.objects.get(username=u_username)
-	ur = UserReputation(user=u_user, reputation=u_reputation)
-	ur.save
+    User = get_user_model()
+    u_user = User.objects.get(username=u_username)
+    ur = UserReputation(user=u_user, reputation=u_reputation)
+    ur.save
 
 def insert_implementation_alg_p_lang(i_alg, i_p_lang, i_code, i_visible, i_user):
 	imp = Implementation(algorithm=i_alg, programming_language=i_p_lang, code=i_code, visible=i_visible , user=i_user)
@@ -594,7 +606,7 @@ def str_historico():
 	acoes = ['aa','ai','v','ap']
 	historico=['']
 	limiteCombinacoes = len(acoes)+1
-	for i in xrange(1, 15):
+	for i in range(1, 15):
 		for combination in itertools.combinations_with_replacement(acoes, i):
 			str = "_".join(list(combination))
 			historico += [str]
@@ -602,6 +614,7 @@ def str_historico():
 
 #return the total of user in the database
 def get_n_users():
+    User = get_user_model()
     count_user = User.objects.all().count()
     return float(count_user)
 
