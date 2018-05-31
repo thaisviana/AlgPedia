@@ -2,7 +2,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.aggregates import Avg, Max
-from datetime import datetime
 
 
 class User(AbstractUser):
@@ -79,7 +78,7 @@ class Algorithm(models.Model):
 	uri = models.URLField()
 	visible = models.BooleanField()
 	reputation = models.FloatField(default=0)
-	date = models.DateField(blank=False, default=datetime.now())
+	date = models.DateField(blank=False, auto_created=True, auto_now_add=True)
 
 	tags = models.ManyToManyField(Tag, blank=True, null=True)
 
@@ -103,7 +102,7 @@ class Implementation(models.Model):
 	code = models.TextField()
 	programming_language = models.ForeignKey(ProgrammingLanguage)
 	visible = models.BooleanField()
-	date = models.DateField(blank=False, default=datetime.now())
+	date = models.DateField(blank=False, auto_created=True, auto_now_add=True)
 	reputation = models.FloatField(default=0)
 	accumulated_weight = models.FloatField(default=0)
 	user = models.ForeignKey(User, null=True, blank=True, verbose_name=u"Creator")
@@ -129,7 +128,7 @@ class Implementation(models.Model):
 class Interest(models.Model):
 	classification = models.ForeignKey(Classification)
 	user = models.ForeignKey(User)
-	date = models.DateField(blank=False, default=datetime.now())
+	date = models.DateField(blank=False, auto_created=True, auto_now_add=True)
 # Classe base de proeficiencia do usuario em algo
 class ProeficiencyScale(models.Model):
 	user = models.ForeignKey(User)
@@ -161,7 +160,7 @@ class UserQuestionAnswer(models.Model):
 	user = models.ForeignKey(User)
 	user_question = models.ForeignKey(UserQuestion)
 	question_option = models.ForeignKey(QuestionOption)
-	date = models.DateField(blank=False, default=datetime.now())
+	date = models.DateField(blank=False, auto_created=True, auto_now_add=True)
 # Pergunta em relacao a uma implementacao
 class ImplementationQuestion(Question):
 	pass
@@ -173,7 +172,7 @@ class ImplementationQuestionAnswer(models.Model):
 	implementation = models.ForeignKey(Implementation)
 	implementation_question = models.ForeignKey(ImplementationQuestion)
 	question_option = models.ForeignKey(QuestionOption)
-	date = models.DateField(blank=False, default=datetime.now())
+	date = models.DateField(blank=False, auto_created=True, auto_now_add=True)
 	def save(self, *args, **kwargs):
 		super(ImplementationQuestionAnswer, self).save(*args, **kwargs)
 

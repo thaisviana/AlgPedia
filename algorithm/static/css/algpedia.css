@@ -1,5 +1,5 @@
 h2 { margin-bottom: 30px; }
-header { border-bottom: 1px solid #CCC; margin-bottom: 20px; padding: 2pt; background-color: #F0F0F0; }
+header { border-bottom: 1px solid #CCC; padding: 2pt; background-color: #F0F0F0; }
 header .navigation-bar { margin-top: 3pt; margin-right: 15pt; }
 header .logo { max-height: 25pt; margin-left: 25pt; }
 a { cursor: pointer; }
