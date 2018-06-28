@@ -46,9 +46,9 @@ class Command(BaseCommand):
                 vecTag.append( alg.tags.all())
             
             
-            for i in xrange(len(algorithms)):
+            for i in range(0, len(algorithms)):
                 linha = []
-                for j in xrange(len(algorithms)):
+                for j in range(0, len(algorithms)):
                     linha += [ cosine_similarity(vecBag[i], vecBag[j]) ]
                 sim_matriz += [linha]
                  

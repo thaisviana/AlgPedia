@@ -258,7 +258,7 @@ def show_algorithm_by_id(request, id):
     imps = get_implementations_by_alg_id(int(id))
     for imp in imps:
         imp.code = re.sub('<[^>]*>', '', imp.code)
-        imp.code = re.sub('&([^;]+);', imp.code)
+        imp.code = re.sub('&([^;]+);', '', imp.code)
 
     impl_question_answers = []
 

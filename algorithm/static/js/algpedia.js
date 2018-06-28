@@ -44,8 +44,8 @@ $(function() {
 
 
 
-		var star_0 = "<img src='/algorithm/static/images/glyphicons/starOff.png' alt='"+$rep+"' width='22' height='22'/>";
-		var star_1 = "<img src='/algorithm/static/images/glyphicons/star.png' alt='"+$rep+"' width='22' height='22'/>";
+		var star_0 = "<img src='{% static 'images/glyphicons/glyphicons_150_edit.png' %}' alt='"+$rep+"' width='22' height='22'/>";
+		var star_1 = "<img src='{% static 'images/glyphicons/glyphicons_150_edit.png' %}' alt='"+$rep+"' width='22' height='22'/>";
 		var img;
 		$rep = parseFloat($rep);
 		if($rep == 0 || isNaN($rep)){
@@ -64,14 +64,14 @@ $(function() {
 		$(this).html(img);
 	});
 
-	tinyMCE.init({
-		// General options
-		mode : "textareas",
-		plugins : "",
-
-		// Theme options
-		theme_advanced_buttons1 : "",
-	});
+	// tinyMCE.init({
+	// 	// General options
+	// 	mode : "textareas",
+	// 	plugins : "",
+    //
+	// 	// Theme options
+	// 	theme_advanced_buttons1 : "",
+	// });
 
 	$("#logout").click(function(event) {
 		event.preventDefault();

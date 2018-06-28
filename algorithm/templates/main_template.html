@@ -55,57 +55,98 @@
     {% endblock %}
 </head>
 <body>
-<header>
-    <div class="navigation-bar pull-right">
-        <ul class="nav nav-pills">
-            <!--<li ><a href="/admin">Admin Page</a></li>-->
-            <li >
-                <a href="/show/cat/all">Classifications</a>
-            </li>
-            <li >
-                <a href="/show/alg/all">Algorithms</a>
-            </li>
-            <li >
-                <a href="/show/para/all">Paradigms</a>
-            </li>
-            <li >
-                <a href="/ontoviz">Onto Viz</a>
-            </li>
-            <li >
-                <a href="/about">AlgPedians</a>
-            </li>
-            <li >
-                <a href="/rules">Rules</a>
-            </li>
+<nav class="gtco-nav" role="navigation">
+			<div class="gtco-container">
 
-            {% if user.is_moderator %}
-                <li >
-                    <a href="{% url 'moderator_dashboard' %}">Moderation</a>
-                </li>
-            {% endif %}
+				<div class="row">
+{#					<div class="col-sm-3 col-xs-12">#}
+{#						<div id="gtco-logo"><a href="/">AlgPedia</a></div>#}
+{#					</div>#}
+					<div class="col-xs-9 text-right menu-1">
+						<ul>
+							<li ><a href="/">Home</a></li>
+							<li ><a href="/show/cat/all">Classifications</a></li>
+						    <li ><a href="/show/alg/all">Algorithms</a></li>
+                            <li ><a href="/show/para/all">Paradigms</a></li>
+                            <li ><a href="/ontoviz">Onto Viz</a></li>
+                            <li ><a href="/about">AlgPedians</a></li>
+                            <li ><a href="/rules">Rules</a></li>
+                            {% if user.is_moderator %}
+                                <li >
+                                    <a href="{% url 'moderator_dashboard' %}">Moderation</a>
+                                </li>
+                            {% endif %}
 
-            {% if logged %}
-                <li>
-                    <a id="logout" href="/accounts/logout">Logout</a>
-                </li>
-                <input type="hidden" id="logged" name="logged" value="true" />
-                <li>
-                    <a id="profile" href="/accounts/profile">Profile</a>
-                </li>
-                <input type="hidden" id="logged" name="logged" value="true" />
-            {% else %}
-                <li>
-                    <a href="/accounts/login" class="js-login-link">Login</a>
-                </li>
-                <input type="hidden" id="logged" name="logged" value="false" />
-            {% endif %}
+                            {% if logged %}
+                                <li>
+                                    <a id="logout" href="/accounts/logout">Logout</a>
+                                </li>
+                                <input type="hidden" id="logged" name="logged" value="true" />
+                                <li>
+                                    <a id="profile" href="/accounts/profile">Profile</a>
+                                </li>
+                                <input type="hidden" id="logged" name="logged" value="true" />
+                            {% else %}
+                                <li>
+                                    <a href="/accounts/login" class="js-login-link">Login</a>
+                                </li>
+                                <input type="hidden" id="logged" name="logged" value="false" />
+                            {% endif %}
 
-        </ul>
-    </div>
-    <a href="/">
-        <h3><img class="logo" src="{% static "images/logo-text-transparent.png" %}" /></h3>
-    </a>
-</header>
+                        </ul>
+                    </div>
+				</div>
+
+			</div>
+		</nav>
+
+{#    <div class="navigation-bar pull-right">#}
+{#        <ul class="nav nav-pills">#}
+{#            <!--<li ><a href="/admin">Admin Page</a></li>-->#}
+{#            <li ><a href="/show/cat/all">Classifications</a></li>#}
+{#            <li >#}
+{#                <a href="/show/alg/all">Algorithms</a>#}
+{#            </li>#}
+{#            <li >#}
+{#                <a href="/show/para/all">Paradigms</a>#}
+{#            </li>#}
+{#            <li >#}
+{#                <a href="/ontoviz">Onto Viz</a>#}
+{#            </li>#}
+{#            <li >#}
+{#                <a href="/about">AlgPedians</a>#}
+{#            </li>#}
+{#            <li >#}
+{#                <a href="/rules">Rules</a>#}
+{#            </li>#}
+{##}
+{#            {% if user.is_moderator %}#}
+{#                <li >#}
+{#                    <a href="{% url 'moderator_dashboard' %}">Moderation</a>#}
+{#                </li>#}
+{#            {% endif %}#}
+{##}
+{#            {% if logged %}#}
+{#                <li>#}
+{#                    <a id="logout" href="/accounts/logout">Logout</a>#}
+{#                </li>#}
+{#                <input type="hidden" id="logged" name="logged" value="true" />#}
+{#                <li>#}
+{#                    <a id="profile" href="/accounts/profile">Profile</a>#}
+{#                </li>#}
+{#                <input type="hidden" id="logged" name="logged" value="true" />#}
+{#            {% else %}#}
+{#                <li>#}
+{#                    <a href="/accounts/login" class="js-login-link">Login</a>#}
+{#                </li>#}
+{#                <input type="hidden" id="logged" name="logged" value="false" />#}
+{#            {% endif %}#}
+{##}
+{#        </ul>#}
+{#    </div>#}
+{#    <a href="/">#}
+{#        <h3><img class="logo" src="{% static "images/logo-text-transparent.png" %}" /></h3>#}
+{#    </a>#}
 <!--div class="contents">-->
 <div>
     {% block content %}{% endblock %}
