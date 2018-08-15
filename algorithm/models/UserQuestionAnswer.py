@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.db.models.aggregates import Avg, Max
+from .user import User
+from .userQuestion import UserQuestion
+from .questionOption import QuestionOption
 
 # Resposta do usuário a uma pergunta sobre seu perfil
 class UserQuestionAnswer(models.Model):

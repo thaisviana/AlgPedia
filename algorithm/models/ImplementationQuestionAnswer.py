@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.db.models.aggregates import Avg, Max
+from .user import User
+from .implementation import Implementation
+from .implementationQuestion import ImplementationQuestion
+from .questionOption import QuestionOption
+from django.db.models.aggregates import Max
 
 # Resposta de um usuario a uma determinada pergunta sobre uma determinada implementacao
 class ImplementationQuestionAnswer(models.Model):

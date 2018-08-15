@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.db.models.aggregates import Avg, Max
+from .classification import Classification
+from .tag import Tag
+from .user import User
+from django.db.models.aggregates import Avg
 
 class Algorithm(models.Model):
 	name = models.CharField(max_length=80)
