@@ -39,13 +39,10 @@ $(function() {
 		$(this).mouseout(function () {
 			return nd();
 		});
-			//var star_0 = "<img src='/algorithm/static/images/glyphicons/glyphicons_048_dislikes.png' alt='"+$rep+"'  width='22' height='22'/>";
-			//var star_1 = "<img src='/algorithm/static/images/glyphicons/glyphicons_049_star.png' alt='"+$rep+"' width='22' height='22' />";
+		var star_0 = "<img src='/algorithm/static/images/glyphicons/starOff.png' alt='"+$rep+"'  width='22px' height='22px'/>";
+		var star_1 = "<img src='/algorithm/static/images/glyphicons/star.png' alt='"+$rep+"' width='22px' height='22px' />";
 
 
-
-		var star_0 = "<img src='{% static 'images/glyphicons/glyphicons_150_edit.png' %}' alt='"+$rep+"' width='22' height='22'/>";
-		var star_1 = "<img src='{% static 'images/glyphicons/glyphicons_150_edit.png' %}' alt='"+$rep+"' width='22' height='22'/>";
 		var img;
 		$rep = parseFloat($rep);
 		if($rep == 0 || isNaN($rep)){

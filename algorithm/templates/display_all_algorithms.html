@@ -21,7 +21,8 @@ $(document).ready(function(){
 			<h2>Algorithms</h2>
 		</div>
 		<div class="span2 text-right actions">
-			<a href="/algorithm/add/"><img src="{% static "images/add.png" %}" height="100%"/>
+			<a href="/algorithm/add/">
+                <img src="{% static "images/glyphicons/glyphicons_190_circle_plus.png" %}" height="24px" width="24px" alt="Add algorithm" />
 				Add an algorithm
 			</a>
 		</div>
@@ -50,7 +51,7 @@ $(document).ready(function(){
 						<td>
 							<a href="{{algorithm.link}}"/>
 								{{ algorithm.name }}
-								<span class="impl-reputation pull-right" id="impl-reputation-{{ algorithm.reputation }}" data-reputation_value="#{{ algorithm.reputation|default_if_none:'' }}">
+{#								<span class="impl-reputation pull-right" id="impl-reputation-{{ algorithm.reputation }}" data-reputation_value="#{{ algorithm.reputation|default_if_none:'' }}">#}
 								</span>
 						</td>
 					</tr>

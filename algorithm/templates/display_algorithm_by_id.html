@@ -30,7 +30,9 @@
 		<span class="label label-success">{{ tag.name }}</span>
 		{% endfor %}
 
-		<label class="control-label" for="inputName"><strong>Implementations :&nbsp;&nbsp;</strong><a id="add_implementation" href="/add/alg/id/{{algorithm_id}}"><img src="{% static "images/glyphicons/glyphicons_190_circle_plus.png" %}" height="100%" alt="Add implementation" />	</a>
+		<label class="control-label" for="inputName"><strong>Implementations :&nbsp;&nbsp;</strong>
+            <a id="add_implementation" href="/add/alg/id/{{algorithm_id}}">
+                <img src="{% static "images/glyphicons/glyphicons_190_circle_plus.png" %}" height="24px" width="24px" alt="Add implementation" />	</a>
 		<!--<input type="button" value="Add Implementation" id="add_implementation" ></input><i class="icon-plus"></i>-->
 		</label>
 		<div>
@@ -46,8 +48,8 @@
 							</div>
 							<div class="add_evaluation-container">
 								<a class="add_evaluation" id="evaluate-{{implementation.id}}">
-									<img src="{% static "images/glyphicons/glyphicons_150_edit.png" %}" height="100%" alt="" />
-								</a>
+{#									<img src="{% static "images/glyphicons/glyphicons_150_edit.png" %}" height="100%" alt="" />#}
+								</a>x
 							</div>
 						</div>
 
