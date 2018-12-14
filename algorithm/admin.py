@@ -1,5 +1,5 @@
 from django.contrib import admin
-from algorithm.models import ProgrammingLanguage, Classification, Algorithm, Implementation, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, ClassificationProeficiencyScale, Question,QuestionOption,UserQuestion,ImplementationQuestion,ImplementationQuestionAnswer,UserQuestionAnswer
+from algorithm.models import ProgrammingLanguage, classification, algorithm, Implementation, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, classificationProeficiencyScale, question,questionOption,UserQuestion,ImplementationQuestion,ImplementationQuestionAnswer,UserQuestionAnswer
 
 class ClassificationAdmin(admin.ModelAdmin):
 	list_display = ('name', 'uri')
@@ -17,17 +17,18 @@ class ImplementationAdmin(admin.ModelAdmin):
 ###################ALGPEDIA_PERFIL###################
 	
 ###################REGISTER###################
-admin.site.register(ProgrammingLanguage)
-admin.site.register(UserQuestionAnswer)
-admin.site.register(Classification, ClassificationAdmin)
-admin.site.register(Algorithm, AlgorithmAdmin)
-admin.site.register(Implementation, ImplementationAdmin)
-admin.site.register(Interest)
-admin.site.register(ProeficiencyScale)
-admin.site.register(ProgrammingLanguageProeficiencyScale)
-admin.site.register(ClassificationProeficiencyScale)
-admin.site.register(Question)
-admin.site.register(QuestionOption)
-admin.site.register(UserQuestion)
-admin.site.register(ImplementationQuestion)
-admin.site.register(ImplementationQuestionAnswer)
+# admin.site.register(ProgrammingLanguage)
+# admin.site.register(UserQuestionAnswer)
+# admin.site.register(ClassificationAdmin)
+# admin.site.register(AlgorithmAdmin)
+# admin.site.register(ImplementationAdmin)
+# admin.site.register(Implementation)
+# admin.site.register(Interest)
+# admin.site.register(ProeficiencyScale)
+# admin.site.register(ProgrammingLanguageProeficiencyScale)
+# admin.site.register(classificationProeficiencyScale)
+# admin.site.register(question)
+# admin.site.register(questionOption)
+# admin.site.register(UserQuestion)
+# admin.site.register(ImplementationQuestion)
+# admin.site.register(ImplementationQuestionAnswer)

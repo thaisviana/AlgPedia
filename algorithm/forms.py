@@ -1,4 +1,4 @@
-from algorithm.models import Classification, Tag
+from algorithm.models import Classification, tag
 from django import forms
 
 
@@ -9,9 +9,9 @@ class FiltersAlgorithm(forms.Form):
 
 class FiltersClassification(forms.Form):
     search = forms.CharField()
-
-
-class TagForm(forms.ModelForm):
-    class Meta:
-        model = Tag
-        fields = '__all__'
+#
+#
+# class TagForm(forms.ModelForm):
+#     class Meta:
+#         model = Tag
+#         fields = ['name',]

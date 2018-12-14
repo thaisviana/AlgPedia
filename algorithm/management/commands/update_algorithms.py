@@ -28,17 +28,17 @@ class Command(BaseCommand):
     def update_algorithms(self, algorithms):
         for algorithm in algorithms:
             try:
-                alg = Algorithm.objects.get(name=algorithm['name'])
+                alg = algorithm.objects.get(name=algorithm['name'])
                 if alg:
                     alg.description = algorithm['about']
                     alg.classification = get_classification_by_name(algorithm['classification'])
                     alg.save()
-            except Algorithm.DoesNotExist:          
+            except algorithm.DoesNotExist:          
                 dbpurl = ""
                 if 'dbpedia_url' in algorithm.keys():
                     dbpurl = algorithm['dbpedia_url']
-                Algorithm.objects.create(name=algorithm['name'], description=algorithm['about'], classification=get_classification_by_name(algorithm['classification']), uri=dbpurl, visible=True, user=None)
-            except Algorithm.MultipleObjectsReturned:
+                algorithm.objects.create(name=algorithm['name'], description=algorithm['about'], classification=get_classification_by_name(algorithm['classification']), uri=dbpurl, visible=True, user=None)
+            except algorithm.MultipleObjectsReturned:
                 continue
 
     def update_classifications(self, classifications):

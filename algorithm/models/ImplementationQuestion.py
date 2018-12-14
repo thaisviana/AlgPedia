@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .question import Question
+from ..models.question import Question
 
 # Pergunta em relacao a uma implementacao
 class ImplementationQuestion(Question):

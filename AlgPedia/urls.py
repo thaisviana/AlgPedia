@@ -42,7 +42,7 @@ urlpatterns = [
     # ajax
     url(r'^ajax/moderator_action/$', moderator_action, name='moderator_action'),
     url(r'^ajax/moderator_add/$', moderator_add, name='moderator_add'),
-    url(r'^ajax/tag_add/$', tag_add, name='ajax-tag_add'),
+    #url(r'^ajax/tag_add/$', tag_add, name='ajax-tag_add'),
     url(r'^ajax/global_search_autocomplete/$', global_search_autocomplete, name='ajax-global_search_autocomplete'),
 
     # serving static files in development

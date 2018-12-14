@@ -1,4 +1,4 @@
-from algorithm.models import Algorithm
+from algorithm.models import algorithm
 from algorithm.controllers import *
 from django.core.management.base import BaseCommand
 import csv

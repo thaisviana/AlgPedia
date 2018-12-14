@@ -1,5 +1,8 @@
 import os, math
-from algorithm.models import Paradigm,UserReputation,Classification,UniversityRank, Implementation, Algorithm, ProgrammingLanguage, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, ClassificationProeficiencyScale, Question, QuestionOption, UserQuestion, ImplementationQuestion, ImplementationQuestionAnswer, UserQuestionAnswer
+from algorithm.models import Paradigm, UserReputation,Classification,UniversityRank, Implementation, Algorithm, \
+	ProgrammingLanguage, Interest, ProeficiencyScale, ProgrammingLanguageProeficiencyScale, \
+	ClassificationProeficiencyScale, Question, QuestionOption, UserQuestion, ImplementationQuestion, \
+	ImplementationQuestionAnswer, UserQuestionAnswer
 from extractor.FileWriters import RDFWriter
 from django.contrib.auth import get_user_model
 from django.db.models import Q
@@ -147,7 +150,7 @@ def get_classification_by_id(c_id):
 	try:
 		classification = Classification.objects.get(id=c_id)
 		return classification
-	except Classification.DoesNotExist:
+	except classification.DoesNotExist:
 		return []
 
 # returns a	classification object
@@ -155,7 +158,7 @@ def get_classification_by_name(c_name):
 	try:
 		classification = Classification.objects.get(name=c_name)
 		return classification
-	except Classification.DoesNotExist:
+	except classification.DoesNotExist:
 		return []
 
 # returns a	paradigm object
@@ -262,10 +265,10 @@ def get_all_algorithms(search=None, classification_id=None):
 
 	if search:
 		filters['name__icontains'] = search
-		related = query(search)
-
-		for alg in related:
-			related_algorithms.extend(filter_algorithms(alg, classification_id))
+		# related = query(search)
+        #
+		# for alg in related:
+		# 	related_algorithms.extend(filter_algorithms(alg, classification_id))
 
 	if classification_id:
 		filters['classification_id'] = classification_id
@@ -431,7 +434,7 @@ def insert_classifications_proeficiencies(username, classifications_ids):
     user = User.objects.get(username=username)
 
     for classification_id in classifications_ids:
-        classification = Classification.objects.get(id=classification_id)
+        classification = classification.objects.get(id=classification_id)
         ClassificationProeficiencyScale.objects.get_or_create(user=user, classification=classification, value=1)
 
 def update_classifications_interests(username, classifications_ids):
@@ -452,7 +455,7 @@ def insert_classifications_interests(username, classifications_ids):
     user = User.objects.get(username=username)
 
     for classification_id in classifications_ids:
-        classification = Classification.objects.get(id=classification_id)
+        classification = classification.objects.get(id=classification_id)
         Interest.objects.get_or_create(user=user, classification=classification)
 
 def get_all_implementationquestions():

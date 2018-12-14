@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.models import AbstractUser
-from django.db import models
 
 class User(AbstractUser):
 	class Meta:
@@ -15,4 +14,5 @@ class User(AbstractUser):
 			return False
 
 	def programming_languages(self):
+		from ..models import ProgrammingLanguageProeficiencyScale
 		return ProgrammingLanguageProeficiencyScale.objects.filter(user=self).only("programming_language")

@@ -140,7 +140,7 @@ class Bootstrapper():
 		classifications = [{'name' : t[0], 'uris' : t[1]} for t in zip(names, uris)]
 
 		for classification in classifications:
-			aux_classification = Classification(name=classification['name'], uri=classification['uris'])
+			aux_classification = classification(name=classification['name'], uri=classification['uris'])
 			aux_classification.save()
 
 	def extract_names(self, classif_list):
@@ -172,7 +172,7 @@ class Bootstrapper():
 
 		for key, val in classif_names.iteritems():
 			#print str(key) + ': ' + str(val)
-			aux_classification = Classification(name=key, uri=val)
+			aux_classification = classification(name=key, uri=val)
 			aux_classification.save()
 
 	# deprecated!!

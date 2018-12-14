@@ -1,19 +1,17 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from .programmingLanguage import ProgrammingLanguage
-from .algorithm import Algorithm
-from .user import User
+
 
 class Implementation(models.Model):
 	# an algorithm can have many implementations
-	algorithm = models.ForeignKey(Algorithm, related_name='implementation_set')
+	algorithm = models.ForeignKey('Algorithm', related_name='implementation_set')
 	code = models.TextField()
-	programming_language = models.ForeignKey(ProgrammingLanguage)
+	programming_language = models.ForeignKey('ProgrammingLanguage')
 	visible = models.BooleanField()
 	date = models.DateField(blank=False, auto_created=True, auto_now_add=True)
 	reputation = models.FloatField(default=0)
 	accumulated_weight = models.FloatField(default=0)
-	user = models.ForeignKey(User, null=True, blank=True, verbose_name=u"Creator")
+	user = models.ForeignKey('User', null=True, blank=True, verbose_name=u"Creator")
 
 	def __str__(self):
 		return u'%s' % self.code

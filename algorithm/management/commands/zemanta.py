@@ -2,7 +2,7 @@
 import urllib
 import sys
 import simplejson
-from algorithm.models import Algorithm, Tag
+from algorithm.models import algorithm, tag
 from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
@@ -13,7 +13,7 @@ class Command(BaseCommand):
             reload(sys)
             sys.setdefaultencoding("utf-8")
                 
-            algorithms = Algorithm.objects.all()
+            algorithms = algorithm.objects.all()
             for alg in algorithms:
                 gateway = 'http://api.zemanta.com/services/rest/0.0/'
                 args = {'method': 'zemanta.suggest',
@@ -33,9 +33,9 @@ class Command(BaseCommand):
                     if float(key['confidence']) > 0.1:
                         key_name = key['name'].encode('cp850','replace').decode('cp850')
                         try:
-                            tag = Tag.objects.get(name=key_name)
-                        except Tag.DoesNotExist:
-                            tag = Tag(name=key_name)
+                            tag = tag.objects.get(name=key_name)
+                        except tag.DoesNotExist:
+                            tag = tag(name=key_name)
                             tag.save() 
                        
                         alg.tags.add(tag)

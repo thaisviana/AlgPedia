@@ -1,5 +1,5 @@
-from algorithm.forms import TagForm
-from algorithm.models import Implementation, Algorithm, Classification
+# from algorithm.forms import TagForm
+from algorithm.models import Implementation, algorithm, classification
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import Group
 from django.core.urlresolvers import reverse
@@ -29,25 +29,25 @@ def moderator_action(request):
 		implementation.delete()
 
 	return json.dumps({'success': True})
-
-@login_required
-def tag_add(request):
-	ctx = {'success': True}
-	form = TagForm(request.POST)
-	if form.is_valid():
-		tag = form.save()
-		ctx['tag'] = {'id': tag.id, 'name': tag.name}
-	else:
-		ctx['success'] = False
-		ctx['errors'] = form.errors
-
-	return json.dumps(ctx)
+#
+# @login_required
+# def tag_add(request):
+# 	ctx = {'success': True}
+# 	form = TagForm(request.POST)
+# 	if form.is_valid():
+# 		tag = form.save()
+# 		ctx['tag'] = {'id': tag.id, 'name': tag.name}
+# 	else:
+# 		ctx['success'] = False
+# 		ctx['errors'] = form.errors
+#
+# 	return json.dumps(ctx)
 
 def global_search_autocomplete(request):
 	data = []
 	term = request.GET.get('term', None)
 
-	classifications = Classification.objects.filter(name__icontains=term).order_by('name')[:10]
+	classifications = classification.objects.filter(name__icontains=term).order_by('name')[:10]
 	for item in classifications:
 		url = reverse('algorithm.views.show_classification_by_id', args=(item.id,))
 		data.append({
@@ -57,7 +57,7 @@ def global_search_autocomplete(request):
 			'url': url,
 		})
 
-	algorithms = Algorithm.objects.filter(name__icontains=term).order_by('-reputation')[:10]
+	algorithms = algorithm.objects.filter(name__icontains=term).order_by('-reputation')[:10]
 	for item in algorithms:
 		url = reverse('algorithm.views.show_algorithm_by_id', args=(item.id,))
 		data.append({
@@ -69,7 +69,7 @@ def global_search_autocomplete(request):
 
 	related = query(term)
 	for related_alg_name in related:
-		related_alg = Algorithm.objects.filter(name__icontains=related_alg_name).order_by('-reputation')[0]
+		related_alg = algorithm.objects.filter(name__icontains=related_alg_name).order_by('-reputation')[0]
 		url = reverse('algorithm.views.show_algorithm_by_id', args=(related_alg.id,))
 		data.append({
 			'label': related_alg.name,

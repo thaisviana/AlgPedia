@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from algorithm.models import Algorithm, Tag , Classification, ProgrammingLanguage, Implementation
+from algorithm.models import algorithm, tag , classification, ProgrammingLanguage, Implementation
 from django.core.management.base import BaseCommand
 import sys
 
@@ -9,7 +9,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
 		reload(sys)
 		sys.setdefaultencoding("utf-8")
-		algorithms = Algorithm.objects.all()
+		algorithms = algorithm.objects.all()
 		a = open("owl.txt", 'w')
 		
 		#DECLARA ALGORITMOS
@@ -28,7 +28,7 @@ class Command(BaseCommand):
 		a.write("</Declaration> \n")
 		
 		#DECLARA INDIVIDUOS DE ALGORITMOS
-		algorithms = Algorithm.objects.all()
+		algorithms = algorithm.objects.all()
 		for algorithm in algorithms :
 			a.write("<Declaration> \n")
 			a.write('''<NamedIndividual IRI="#'''+algorithm.name.strip().replace(" ", "_")+'''"/> \n''')
@@ -36,7 +36,7 @@ class Command(BaseCommand):
 		
 		
 		#DECLARA INDIVIDUOS DE CLASSIFICACOES
-		for classification in Classification.objects.all():
+		for classification in classification.objects.all():
 			a.write("<Declaration> \n")
 			a.write('''<NamedIndividual IRI="#'''+classification.name.strip().replace(" ", "_")+'''"/> \n''')
 			a.write("</Declaration> \n")
@@ -55,7 +55,7 @@ class Command(BaseCommand):
 			a.write("</ClassAssertion> \n")
 			
 		#DECLARA INDIVIDUOS DE CLASSIFICACOES PERTENCEM A CLASSE CLASSIFICACOES
-		for classification in Classification.objects.all():
+		for classification in classification.objects.all():
 			a.write("<ClassAssertion> \n")
 			a.write('''<Class IRI="#CLASSIFICATION"/> \n''')
 			a.write('''<NamedIndividual IRI="#'''+classification.name.strip().replace(" ", "_")+'''"/> \n''')

@@ -1,17 +1,14 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from .user import User
-from .implementation import Implementation
-from .implementationQuestion import ImplementationQuestion
-from .questionOption import QuestionOption
+from ..models import classificationProeficiencyScale, ProgrammingLanguageProeficiencyScale
 from django.db.models.aggregates import Max
 
 # Resposta de um usuario a uma determinada pergunta sobre uma determinada implementacao
 class ImplementationQuestionAnswer(models.Model):
-	user = models.ForeignKey(User)
-	implementation = models.ForeignKey(Implementation)
-	implementation_question = models.ForeignKey(ImplementationQuestion)
-	question_option = models.ForeignKey(QuestionOption)
+	user = models.ForeignKey('User')
+	implementation = models.ForeignKey('Implementation')
+	implementation_question = models.ForeignKey('ImplementationQuestion')
+	question_option = models.ForeignKey('QuestionOption')
 	date = models.DateField(blank=False, auto_created=True, auto_now_add=True)
 	def save(self, *args, **kwargs):
 		super(ImplementationQuestionAnswer, self).save(*args, **kwargs)
@@ -21,7 +18,7 @@ class ImplementationQuestionAnswer(models.Model):
 		LANGUAGE_WEIGHT = 3
 		KNOWLEDGE_WEIGHT = 5
 
-		classifications_proeficiency = ClassificationProeficiencyScale.objects.filter(user=self.user).values_list('classification_id', flat=True)
+		classifications_proeficiency = classificationProeficiencyScale.objects.filter(user=self.user).values_list('classification_id', flat=True)
 		programminglanguage_proeficiency = ProgrammingLanguageProeficiencyScale.objects.filter(user=self.user).values_list('programming_language_id', flat=True)
 
 		classification_value = 1 if self.implementation.algorithm.classification.id in classifications_proeficiency else 0.5
