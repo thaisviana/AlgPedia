@@ -1,0 +1,291 @@
+ABOUT
+In mathematics and statistics, a stationary process (or strict(ly) stationary process or strong(ly) stationary process) is a stochastic process whose joint probability distribution does not change when shifted in time. Consequently, parameters such as mean and variance, if they are present, also do not change over time.
+FULL TEXT
+In mathematics and statistics, a stationary process (or strict(ly) stationary process or strong(ly) stationary process) is a stochastic process whose joint probability distribution does not change when shifted in time. Consequently, parameters such as mean and variance, if they are present, also do not change over time.
+Since stationarity is an assumption underlying many statistical procedures used in time series analysis, non-stationary data is often transformed to become stationary. The most common cause of violation of Stationarity are trends in mean, which can be due either to the presence of a unit root or of a deterministic trend. In the latter case the process is called trend stationary process, stochastic shocks have only transitory effects, and the process is mean-reverting (on a mean which changes deterministically over time). On the contrary, in the first case stochastic shocks have permanent effects and the process is not mean-reverting. A trend stationary process is not strictly stationary, but can easily be made such by removing the underlying trend (function solely of time). Similarly, processes with one or more unit roots can be made stationary through differencing. An important type of non-stationary process that does not include a trend-like behavior is the cyclostationary process.
+A "stationary process" is not the same thing as a "process with a stationary distribution".[clarification needed] Indeed, there are further possibilities for confusion with the use of "stationary" in the context of stochastic processes; for example a "time-homogeneous" Markov chain is sometimes said to have "stationary transition probabilities". Besides, all stationary Markov random processes are time-homogeneous.
+
+
+Formally, let 
+
+
+
+
+{
+
+X
+
+t
+
+
+}
+
+
+
+{\displaystyle \left\{X_{t}\right\}}
+
+ be a stochastic process and let 
+
+
+
+
+F
+
+X
+
+
+(
+
+x
+
+
+t
+
+1
+
+
++
+τ
+
+
+,
+…
+,
+
+x
+
+
+t
+
+k
+
+
++
+τ
+
+
+)
+
+
+{\displaystyle F_{X}(x_{t_{1}+\tau },\ldots ,x_{t_{k}+\tau })}
+
+ represent the cumulative distribution function of the joint distribution of 
+
+
+
+
+{
+
+X
+
+t
+
+
+}
+
+
+
+{\displaystyle \left\{X_{t}\right\}}
+
+ at times 
+
+
+
+
+t
+
+1
+
+
++
+τ
+,
+…
+,
+
+t
+
+k
+
+
++
+τ
+
+
+{\displaystyle t_{1}+\tau ,\ldots ,t_{k}+\tau }
+
+. Then, 
+
+
+
+
+{
+
+X
+
+t
+
+
+}
+
+
+
+{\displaystyle \left\{X_{t}\right\}}
+
+ is said to be strictly (or strongly) stationary if, for all 
+
+
+
+
+k
+
+
+
+{\displaystyle {k}}
+
+, for all 
+
+
+
+
+τ
+
+
+
+{\displaystyle {\tau }}
+
+, and for all 
+
+
+
+
+t
+
+1
+
+
+,
+…
+,
+
+t
+
+k
+
+
+
+
+{\displaystyle t_{1},\ldots ,t_{k}}
+
+,
+Since 
+
+
+
+τ
+
+
+{\displaystyle \tau }
+
+ does not affect 
+
+
+
+
+F
+
+X
+
+
+(
+⋅
+)
+
+
+{\displaystyle F_{X}(\cdot )}
+
+, 
+
+
+
+
+F
+
+X
+
+
+
+
+{\displaystyle F_{X}}
+
+ is not a function of time.
+As an example, white noise is stationary. The sound of a cymbal clashing, if hit only once, is not stationary because the acoustic power of the clash (and hence its variance) diminishes with time. However, it would be possible to invent a stochastic process describing when the cymbal is hit, such that the overall response would form a stationary process. For example, if the cymbal were hit at moments in time corresponding to a homogeneous Poisson Process, the overall response would be stationary.
+An example of a discrete-time stationary process where the sample space is also discrete (so that the random variable may take one of N possible values) is a Bernoulli scheme. Other examples of a discrete-time stationary process with continuous sample space include some autoregressive and moving average processes which are both subsets of the autoregressive moving average model. Models with a non-trivial autoregressive component may be either stationary or non-stationary, depending on the parameter values, and important non-stationary special cases are where unit roots exist in the model.
+Let Y be any scalar random variable, and define a time-series { Xt }, by
+Then { Xt } is a stationary time series, for which realisations consist of a series of constant values, with a different constant value for each realisation. A law of large numbers does not apply on this case, as the limiting value of an average from a single realisation takes the random value determined by Y, rather than taking the expected value of Y.
+As a further example of a stationary process for which any single realisation has an apparently noise-free structure, let Y have a uniform distribution on (0,2π] and define the time series { Xt } by
+Then { Xt } is strictly stationary.
+A weaker form of stationarity commonly employed in signal processing is known as weak-sense stationarity, wide-sense stationarity (WSS), covariance stationarity, or second-order stationarity. WSS random processes only require that 1st moment (i.e. the mean) and autocovariance do not vary with respect to time. Any strictly stationary process which has a mean and a covariance is also WSS.
+So, a continuous time random process x(t) which is WSS has the following restrictions on its mean function
+and autocovariance function
+The first property implies that the mean function mx(t) must be constant. The second property implies that the covariance function depends only on the difference between 
+
+
+
+
+t
+
+1
+
+
+
+
+{\displaystyle t_{1}}
+
+ and 
+
+
+
+
+t
+
+2
+
+
+
+
+{\displaystyle t_{2}}
+
+ and only needs to be indexed by one variable rather than two variables. Thus, instead of writing,
+the notation is often abbreviated and written as:
+This also implies that the autocorrelation depends only on 
+
+
+
+τ
+=
+
+t
+
+1
+
+
+−
+
+t
+
+2
+
+
+
+
+{\displaystyle \tau =t_{1}-t_{2}}
+
+, that is
+The main advantage of wide-sense stationarity is that it places the time-series in the context of Hilbert spaces. Let H be the Hilbert space generated by {x(t)} (that is, the closure of the set of all linear combinations of these random variables in the Hilbert space of all square-integrable random variables on the given probability space). By the positive definiteness of the autocovariance function, it follows from Bochner's theorem that there exists a positive measure μ on the real line such that H is isomorphic to the Hilbert subspace of L2(μ) generated by {e−2πiξ⋅t}. This then gives the following Fourier-type decomposition for continuous time stationary stochastic process: there exists a stochastic process ωξ with orthogonal increments such that, for all t
+where the integral on the right hand side is interpreted in a suitable (Riemann) sense. Same result holds for a discrete-time stationary process, with the spectral measure now defined on the unit circle.
+When processing WSS random signals with linear, time-invariant (LTI) filters, it is helpful to think of the correlation function as a linear operator. Since it is a circulant operator (depends only on the difference between the two arguments), its eigenfunctions are the Fourier complex exponentials. Additionally, since the eigenfunctions of LTI operators are also complex exponentials, LTI processing of WSS random signals is highly tractable—all computations can be performed in the frequency domain. Thus, the WSS assumption is widely employed in signal processing algorithms.
+The terminology used for types of stationarity other than strict stationarity can be rather mixed. Some examples follow.
+One way to make a time series stationary is to compute the differences between consecutive observations. This is known as differencing.
+Transformations such as logarithms can help to stabilize the variance of a time series. Differencing can help stabilize the mean of a time series by removing changes in the level of a time series, and so eliminating trend and seasonality.
+One of the ways for identifying non-stationary times series is the ACF plot. For a stationary time series, the ACF will drop to zero relatively quickly, while the ACF of non-stationary data decreases slowly.[5]

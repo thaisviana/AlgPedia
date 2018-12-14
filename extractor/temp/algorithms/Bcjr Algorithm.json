@@ -1,0 +1,8 @@
+{
+    "about": "The BCJR algorithm is an algorithm for maximum a posteriori decoding of error correcting codes defined on trellises (principally convolutional codes). The algorithm is named after its inventors: Bahl, Cocke, Jelinek and Raviv.[1] This algorithm is critical to modern iteratively-decoded error-correcting codes including turbo codes and low-density parity-check codes.", 
+    "name": "Bcjr Algorithm", 
+    "classification": "Error Detection And Correction", 
+    "full_text": "The BCJR algorithm is an algorithm for maximum a posteriori decoding of error correcting codes defined on trellises (principally convolutional codes). The algorithm is named after its inventors: Bahl, Cocke, Jelinek and Raviv.[1] This algorithm is critical to modern iteratively-decoded error-correcting codes including turbo codes and low-density parity-check codes.\n\n\nBased on the trellis:\nBerrou, Glavieux and Thitimajshima simplification.[2]\n[3]", 
+    "dbpedia_url": "http://dbpedia.org/resource/BCJR_algorithm", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/BCJR_algorithm\n"
+}

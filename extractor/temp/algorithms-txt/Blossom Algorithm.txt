@@ -1,0 +1,118 @@
+ABOUT
+The blossom algorithm is an algorithm in graph theory for constructing maximum matchings on graphs. The algorithm was developed by Jack Edmonds in 1961,[1] and published in 1965.[2] Given a general graph G = (V, E), the algorithm finds a matching M such that each vertex in V is incident with at most one edge in M and |M| is maximized. The matching is constructed by iteratively improving an initial empty matching along augmenting paths in the graph. Unlike bipartite matching, the key new idea is that an odd-length cycle in the graph (blossom) is contracted to a single vertex, with the search continuing iteratively in the contracted graph.
+FULL TEXT
+The blossom algorithm is an algorithm in graph theory for constructing maximum matchings on graphs. The algorithm was developed by Jack Edmonds in 1961,[1] and published in 1965.[2] Given a general graph G = (V, E), the algorithm finds a matching M such that each vertex in V is incident with at most one edge in M and |M| is maximized. The matching is constructed by iteratively improving an initial empty matching along augmenting paths in the graph. Unlike bipartite matching, the key new idea is that an odd-length cycle in the graph (blossom) is contracted to a single vertex, with the search continuing iteratively in the contracted graph.
+A major reason that the blossom algorithm is important is that it gave the first proof that a maximum-size matching could be found using a polynomial amount of computation time. Another reason is that it led to a linear programming polyhedral description of the matching polytope, yielding an algorithm for min-weight matching.[3] As elaborated by Alexander Schrijver, further significance of the result comes from the fact that this was the first polytope whose proof of integrality "does not simply follow just from total unimodularity, and its description was a breakthrough in polyhedral combinatorics."[4]
+
+
+Given G = (V, E) and a matching M of G, a vertex v is exposed if no edge of M is incident with v. A path in G is an alternating path, if its edges are alternately not in M and in M (or in M and not in M). An augmenting path P is an alternating path that starts and ends at two distinct exposed vertices. A matching augmentation along an augmenting path P is the operation of replacing M with a new matching 
+
+
+
+
+M
+
+1
+
+
+=
+M
+⊕
+P
+=
+(
+M
+∖
+P
+)
+∪
+(
+P
+∖
+M
+)
+
+
+{\displaystyle M_{1}=M\oplus P=(M\setminus P)\cup (P\setminus M)}
+
+.
+
+By Berge's lemma, matching M is maximum if and only if there is no M-augmenting path in G.[5][6] Hence, either a matching is maximum, or it can be augmented. Thus, starting from an initial matching, we can compute a maximum matching by augmenting the current matching with augmenting paths as long as we can find them, and return whenever no augmenting paths are left. We can formalize the algorithm as follows:
+We still have to describe how augmenting paths can be found efficiently. The subroutine to find them uses blossoms and contractions.
+Given G = (V, E) and a matching M of G, a blossom B is a cycle in G consisting of 2k + 1 edges of which exactly k belong to M, and where one of the vertices v of the cycle (the base) is such that there exists an alternating path of even length (the stem) from v to an exposed vertex w.
+Define the contracted graph G’ as the graph obtained from G by contracting every edge of B, and define the contracted matching M’ as the matching of G’ corresponding to M.
+
+G’ has an M’-augmenting path iff G has an M-augmenting path, and that any M’-augmenting path P’ in G’ can be lifted to an M-augmenting path in G by undoing the contraction by B so that the segment of P’ (if any) traversing through vB is replaced by an appropriate segment traversing through B.[7] In more detail:
+
+
+Thus blossoms can be contracted and search performed in the contracted graphs. This reduction is at the heart of Edmonds' algorithm.
+The search for an augmenting path uses an auxiliary data structure consisting of a forest F whose individual trees correspond to specific portions of the graph G. In fact, the forest F is the same that would be used to find maximum matchings in bipartite graphs (without need for shrinking blossoms). In each iteration the algorithm either (1) finds an augmenting path, (2) finds a blossom and recurses onto the corresponding contracted graph, or (3) concludes there are no augmenting paths. The auxiliary structure is built by an incremental procedure discussed next.[7]
+The construction procedure considers vertices v and edges e in G and incrementally updates F as appropriate. If v is in a tree T of the forest, we let root(v) denote the root of T. If both u and v are in the same tree T in F, we let distance(u,v) denote the length of the unique path from u to v in T.
+The following four figures illustrate the execution of the algorithm. Dashed lines indicate edges that are currently not present in the forest. First, the algorithm processes an out-of-forest edge that causes the expansion of the current forest (lines B10 – B12).
+
+Next, it detects a blossom and contracts the graph (lines B20 – B21).
+
+Finally, it locates an augmenting path P′ in the contracted graph (line B22) and lifts it to the original graph (line B23). Note that the ability of the algorithm to contract blossoms is crucial here; the algorithm cannot find P in the original graph directly because only out-of-forest edges between vertices at even distances from the roots are considered on line B17 of the algorithm.
+
+
+The forest F constructed by the find_augmenting_path() function is an alternating forest.[8]
+Each iteration of the loop starting at line B09 either adds to a tree T in F (line B10) or finds an augmenting path (line B17) or finds a blossom (line B20). It is easy to see that the running time is 
+
+
+
+O
+(
+
+|
+
+V
+
+
+|
+
+
+4
+
+
+)
+
+
+{\displaystyle O(|V|^{4})}
+
+. Micali and Vazirani[9] show an algorithm that constructs maximum matching in 
+
+
+
+O
+(
+
+|
+
+E
+
+|
+
+
+|
+
+V
+
+
+|
+
+
+1
+
+/
+
+2
+
+
+)
+
+
+{\displaystyle O(|E||V|^{1/2})}
+
+ time.
+The algorithm reduces to the standard algorithm for matching in bipartite graphs[6] when G is bipartite. As there are no odd cycles in G in that case, blossoms will never be found and one can simply remove lines B20 – B24 of the algorithm.
+The matching problem can be generalized by assigning weights to edges in G and asking for a set M that produces a matching of maximum (minimum) total weight. The weighted matching problem can be solved by a combinatorial algorithm that uses the unweighted Edmonds's algorithm as a subroutine.[5] Kolmogorov provides an efficient C++ implementation of this.[10]

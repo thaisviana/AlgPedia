@@ -1,0 +1,88 @@
+ABOUT
+Kruskal's algorithm is a minimum-spanning-tree algorithm which finds an edge of the least possible weight that connects any two trees in the forest.[1] It is a greedy algorithm in graph theory as it finds a minimum spanning tree for a connected weighted graph adding increasing cost arcs at each step.[1] This means it finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in the tree is minimized. If the graph is not connected, then it finds a minimum spanning forest (a minimum spanning tree for each connected component).
+FULL TEXT
+Kruskal's algorithm is a minimum-spanning-tree algorithm which finds an edge of the least possible weight that connects any two trees in the forest.[1] It is a greedy algorithm in graph theory as it finds a minimum spanning tree for a connected weighted graph adding increasing cost arcs at each step.[1] This means it finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in the tree is minimized. If the graph is not connected, then it finds a minimum spanning forest (a minimum spanning tree for each connected component).
+This algorithm first appeared in Proceedings of the American Mathematical Society, pp. 48–50 in 1956, and was written by Joseph Kruskal.[2]
+Other algorithms for this problem include Prim's algorithm, Reverse-delete algorithm, and Borůvka's algorithm.
+
+
+At the termination of the algorithm, the forest forms a minimum spanning forest of the graph. If the graph is connected, the forest has a single component and forms a minimum spanning tree.
+The following code is implemented with disjoint-set data structure:
+Where E is the number of edges in the graph and V is the number of vertices, Kruskal's algorithm can be shown to run in O(E log E) time, or equivalently, O(E log V) time, all with simple data structures. These running times are equivalent because:
+We can achieve this bound as follows: first sort the edges by weight using a comparison sort in O(E log E) time; this allows the step "remove an edge with minimum weight from S" to operate in constant time. Next, we use a disjoint-set data structure (Union&Find) to keep track of which vertices are in which components. We need to perform O(V) operations, as in each iteration we connect a vertex to the spanning tree, two 'find' operations and possibly one union for each edge. Even a simple disjoint-set data structure such as disjoint-set forests with union by rank can perform O(V) operations in O(V log V) time. Thus the total time is O(E log E) = O(E log V).
+Provided that the edges are either already sorted or can be sorted in linear time (for example with counting sort or radix sort), the algorithm can use more sophisticated disjoint-set data structure to run in O(E α(V)) time, where α is the extremely slowly growing inverse of the single-valued Ackermann function.
+The proof consists of two parts. First, it is proved that the algorithm produces a spanning tree. Second, it is proved that the constructed spanning tree is of minimal weight.
+Let 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ be a connected, weighted graph and let 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+ be the subgraph of 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ produced by the algorithm. 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+ cannot have a cycle, being within one subtree and not between two different trees. 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+ cannot be disconnected, since the first encountered edge that joins two components of 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+ would have been added by the algorithm. Thus, 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+ is a spanning tree of 
+
+
+
+P
+
+
+{\displaystyle P}
+
+.
+We show that the following proposition P is true by induction: If F is the set of edges chosen at any stage of the algorithm, then there is some minimum spanning tree that contains F.

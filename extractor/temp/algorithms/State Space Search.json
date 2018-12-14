@@ -1,0 +1,8 @@
+{
+    "about": "State space search is a process used in the field of computer science, including artificial intelligence (AI), in which successive configurations or states of an instance are considered, with the goal of finding a goal state with a desired property.", 
+    "name": "State Space Search", 
+    "classification": "Search Algorithms", 
+    "full_text": "State space search is a process used in the field of computer science, including artificial intelligence (AI), in which successive configurations or states of an instance are considered, with the goal of finding a goal state with a desired property.\nProblems are often modelled as a state space, a set of states that a problem can be in. The set of states forms a graph where two states are connected if there is an operation that can be performed to transform the first state into the second.\nState space search often differs from traditional computer science search methods because the state space is implicit: the typical state space graph is much too large to generate and store in memory. Instead, nodes are generated as they are explored, and typically discarded thereafter. A solution to a combinatorial search instance may consist of the goal state itself, or of a path from some initial state to the goal state.\nIn state space search a state space is formally represented as a tuple \n\n\n\nS\n:<\nS\n,\nA\n,\nA\nc\nt\ni\no\nn\n(\ns\n)\n,\nR\ne\ns\nu\nl\nt\n(\ns\n,\na\n)\n,\nC\no\ns\nt\n(\ns\n,\na\n)\n>\n\n\n{\\displaystyle S:<S,A,Action(s),Result(s,a),Cost(s,a)>}\n\n, in which:", 
+    "dbpedia_url": "http://dbpedia.org/resource/State_space_search", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/State_space_search\n"
+}

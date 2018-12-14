@@ -1,0 +1,8 @@
+{
+    "about": "In computer science, Atropos is a real-time scheduling algorithm developed at Cambridge University. It combines the earliest deadline first algorithm with a best effort scheduler to make use of slack time, while exercising strict admission control.", 
+    "name": "Atropos Scheduler", 
+    "classification": "Scheduling Algorithms", 
+    "full_text": "In computer science, Atropos is a real-time scheduling algorithm developed at Cambridge University. It combines the earliest deadline first algorithm with a best effort scheduler to make use of slack time, while exercising strict admission control.\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Atropos_scheduler", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Atropos_scheduler\n"
+}

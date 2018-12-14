@@ -1,0 +1,65 @@
+ABOUT
+Linear phase is a property of a filter, where the phase response of the filter is a linear function of frequency. The result is that all frequency components of the input signal are shifted in time (usually delayed) by the same constant amount, which is referred to as the phase delay. And consequently, there is no phase distortion due to the time delay of frequencies relative to one another.
+FULL TEXT
+Linear phase is a property of a filter, where the phase response of the filter is a linear function of frequency. The result is that all frequency components of the input signal are shifted in time (usually delayed) by the same constant amount, which is referred to as the phase delay. And consequently, there is no phase distortion due to the time delay of frequencies relative to one another.
+For discrete-time signals, perfect linear phase is easily achieved with a finite impulse response (FIR) filter.  Approximations can be achieved with infinite impulse response (IIR) designs, which are more computationally efficient.  Several techniques are:
+
+
+When a sinusoid
+
+
+
+,
+ 
+sin
+⁡
+(
+ω
+t
++
+θ
+)
+,
+
+
+{\displaystyle ,\ \sin(\omega t+\theta ),}
+
+  passes through a filter with group delay 
+
+
+
+τ
+,
+
+
+{\displaystyle \tau ,}
+
+  the result is:
+where:
+For linear phase, it is sufficient to have that property only in the passband(s) of the filter, where |A(ω)| has relatively large values. Therefore both magnitude and phase graphs (Bode plots) are customarily used to examine a filter's linearity. A "linear" phase graph may contain discontinuities of π and/or 2π radians. The smaller ones happen where A(ω) changes sign. Since |A(ω)| cannot be negative, the changes are reflected in the phase plot. The 2π discontinuities happen because of plotting the principal value of 
+
+
+
+ω
+τ
+,
+
+
+{\displaystyle \omega \tau ,}
+
+  instead of the actual value.
+In discrete-time applications, one only examines the region of frequencies between 0 and the Nyquist frequency, because of periodicity and symmetry. Depending on the frequency units, the Nyquist frequency may be 0.5, 1.0, π, or ½ of the actual sample-rate.  Some examples of linear and non-linear phase are shown below.
+A filter with linear phase may be achieved by an FIR filter which is either symmetric or anti-symmetric.[1]  A necessary but not sufficient condition is:
+for some 
+
+
+
+α
+,
+β
+
+
+{\displaystyle \alpha ,\beta }
+
+.[2]
+Systems with generalized linear phase have an additional frequency-independent constant added to the phase. Because of this constant, the phase of the system is not a strictly linear function of frequency, but it retains many of the useful properties of linear phase systems. [3]

@@ -1,0 +1,71 @@
+ABOUT
+Interval scheduling is a class of problems in computer science, particularly in the area of algorithm design. The problems consider a set of tasks. Each task is represented by an interval describing the time in which it needs to be executed. For instance, task A might run from 2:00 to 5:00, task B might run from 4:00 to 10:00 and task C might run from 9:00 to 11:00. A subset of intervals is compatible if no two intervals overlap. For example, the subset {A,C} is compatible, as is the subset {B}; but neither {A,B} nor {B,C} are compatible subsets, because the corresponding intervals within each subset overlap.
+FULL TEXT
+Interval scheduling is a class of problems in computer science, particularly in the area of algorithm design. The problems consider a set of tasks. Each task is represented by an interval describing the time in which it needs to be executed. For instance, task A might run from 2:00 to 5:00, task B might run from 4:00 to 10:00 and task C might run from 9:00 to 11:00. A subset of intervals is compatible if no two intervals overlap. For example, the subset {A,C} is compatible, as is the subset {B}; but neither {A,B} nor {B,C} are compatible subsets, because the corresponding intervals within each subset overlap.
+The interval scheduling maximization problem (ISMP) is to find a largest compatible set - a set of non-overlapping intervals of maximum size. The goal here is to execute as many tasks as possible.
+In an upgraded version of the problem, the intervals are partitioned into groups. A subset of intervals is compatible if no two intervals overlap, and moreover, no two intervals belong to the same group (i.e. the subset contains at most a single representative interval of each group).
+The group interval scheduling decision problem (GISDP) is to decide whether there exists a compatible set in which all groups are represented. The goal here is to execute a single representative task from each group. GISDPk is a restricted version of GISDP in which the number of intervals in each group is at most k.
+The group interval scheduling maximization problem (GISMP) is to find a largest compatible set - a set of non-overlapping representatives of maximum size. The goal here is to execute a representative task from as many groups as possible. GISMPk is a restricted version of GISMP in which the number of intervals in each group is at most k. This problem is often called JISPk, where J stands for Job.
+GISMP is the most general problem; the other two problems can be seen as special cases of it:
+
+
+[1]
+Several algorithms, that may look promising at first sight, actually do not find the optimal solution:
+The following greedy algorithm does find the optimal solution:
+Whenever we select an interval at step 1, we may have to remove many intervals in step 2. However, all these intervals necessarily cross the finishing time of x, and thus they all cross each other (see figure). Hence, at most 1 of these intervals can be in the optimal solution. Hence, for every interval in the optimal solution, there is an interval in the greedy solution. This proves that the greedy algorithm indeed finds an optimal solution.
+A more formal explanation is given by a Charging argument.
+The greedy algorithm can be executed in time O(n log n), where n is the number of tasks, using a preprocessing step in which the tasks are sorted by their finishing times.
+GISDPk is NP-complete when 
+
+
+
+k
+≥
+3
+
+
+{\displaystyle k\geq 3}
+
+,[2] even when all intervals have the same length.[3] This can be shown by a reduction from the following version of the Boolean satisfiability problem:
+clauses over X such that (1) each clause in C has at most three literals and (2) each variable is restricted to appear once or twice positively and once negatively overall in C. Decide whether there is an assignment to variables of X such that each clause in C has at least one true literal.
+This version was shown to be NP-complete likewise to the unrestricted version.
+Given an instance of this satisfiability problem, construct the following instance of GISDP. All intervals have a length of 3, so it is sufficient to represent each interval by its starting time:
+Note that there is no overlap between intervals in groups associated with different clauses. This is ensured since a variable appears at most twice positively and once negatively.
+The constructed GISDP has a feasible solution (i.e. a scheduling in which each group is represented), if and only if the given set of boolean clauses has a satisfying assignment. Hence GISDP3 is NP-complete, and so is GISDPk for every 
+
+
+
+k
+≥
+3
+
+
+{\displaystyle k\geq 3}
+
+.
+GISDP2 can be solved at polynomial time by the following reduction to the 2-satisfiability problem:[3]
+This construction contains at most O(n2) clauses (one for each intersection between intervals, plus two for each group). Each clause contains 2 literals. The satisfiability of such formulas can be decided in time linear in the number of clauses (see 2-SAT). Therefore, the GISDP2 can be solved in polynomial time.
+GISMPk is NP-complete even when 
+
+
+
+k
+≥
+2
+
+
+{\displaystyle k\geq 2}
+
+.[4]
+Moreover, GISMPk is MaxSNP-complete, i.e., it does not have a PTAS unless P=NP. This can be proved by showing an approximation-preserving reduction from MAX 3-SAT-3 to GISMP2.[4]
+The following greedy algorithm finds a solution that contains at least 1/2 of the optimal number of intervals:[4]
+A formal explanation is given by a Charging argument.
+The approximation factor of 2 is tight. For example, in the following instance of GISMP2:
+The greedy algorithm selects only 1 interval [0..2] from group #1, while an optimal scheduling is to select [1..3] from group #2 and then [4..6] from group #1.
+Using the technique of Linear programming relaxation, it is possible to approximate the optimal scheduling with slightly better approximation factors. The approximation ratio of the first such algorithm is asymptotically 2 when k is large, but when k=2 the algorithm achieves an approximation ratio of 5/3.[4] The approximation factor for arbitrary k was later improved to 1.582.[5]
+An interval scheduling problem can be described by an intersection graph, where each vertex is an interval, and there is an edge between two vertices if and only if their intervals overlap. In this representation, the interval scheduling problem is equivalent to finding the maximum independent set in this intersection graph. In general graphs, finding a maximum independent set is NP-hard. Therefore, it is interesting that in interval intersection graphs it can be done exactly in polynomial time.[citation needed]
+A group-interval scheduling problem, i.e. GISMPk, can be described by a similar interval-intersection graph, with additional edges between each two intervals of the same group, i.e., this is the edge union of an interval graph and a graph consisting of n disjoint cliques of size k.
+An important class of scheduling algorithms is the class of dynamic priority algorithms. When none of the intervals overlap the optimum solution is trivial. The optimum for the non-weighted version can found with the earliest deadline first scheduling. Weighted interval scheduling is a generalization where a value is assigned to each executed task and the goal is to maximize the total value. The solution need not be unique.
+The interval scheduling problem is 1-dimensional – only the time dimension is relevant. The Maximum disjoint set problem is a generalization to 2 or more dimensions. This generalization, too, is NP-complete.
+Another variation is resource allocation, in which a set of intervals s are scheduled using resources k such that k is minimized. That is, all the intervals must be scheduled, but the objective is to reduce the number of resources as much as possible.
+Another variation is when there are m processors instead of a single processor. I.e., m different tasks can run in parallel.[2]

@@ -1,0 +1,96 @@
+ABOUT
+In coding theory, the weight enumerator polynomial of a binary linear code specifies the number of words of each possible Hamming weight.
+FULL TEXT
+In coding theory, the weight enumerator polynomial of a binary linear code specifies the number of words of each possible Hamming weight.
+Let 
+
+
+
+C
+⊂
+
+
+F
+
+
+2
+
+
+n
+
+
+
+
+{\displaystyle C\subset \mathbb {F} _{2}^{n}}
+
+ be a binary linear code length 
+
+
+
+n
+
+
+{\displaystyle n}
+
+. The weight distribution is the sequence of numbers
+giving the number of codewords c in C having weight t as t ranges from 0 to n. The weight enumerator is the bivariate polynomial
+
+
+Denote the dual code of 
+
+
+
+C
+⊂
+
+
+F
+
+
+2
+
+
+n
+
+
+
+
+{\displaystyle C\subset \mathbb {F} _{2}^{n}}
+
+ by
+(where 
+
+
+
+<
+,
+>
+
+
+{\displaystyle <,>}
+
+ denotes the vector dot product and which is taken over 
+
+
+
+
+
+F
+
+
+2
+
+
+
+
+{\displaystyle \mathbb {F} _{2}}
+
+).
+The MacWilliams identity states that
+The identity is named after Jessie MacWilliams.
+The distance distribution or inner distribution of a code C of size M and length n is the sequence of numbers
+where i ranges from 0 to n. The distance enumerator polynomial is
+and when C is linear this is equal to the weight enumerator.
+The outer distribution of C is the 2n-by-n+1 matrix B with rows indexed by elements of GF(2)n and columns indexed by integers 0...n, and entries
+The sum of the rows of B is M times the inner distribution vector (A0,...,An).
+A code C is regular if the rows of B corresponding to the codewords of C are all equal.

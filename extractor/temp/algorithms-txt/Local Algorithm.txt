@@ -1,0 +1,4 @@
+ABOUT
+A local algorithm is a distributed algorithm that runs in constant time, independently of the size of the network.[1]
+FULL TEXT
+A local algorithm is a distributed algorithm that runs in constant time, independently of the size of the network.[1]

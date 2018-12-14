@@ -1,0 +1,8 @@
+{
+    "about": "Multiple Precision Integers and Rationals (MPIR) is an open-source software multiprecision integer library forked from the GNU Multiple Precision Arithmetic Library (GMP) project. It consists of much code from past GMP releases, and some original contributed code.[1]", 
+    "name": "Mpir (Mathematics Software)", 
+    "classification": "Computer Arithmetic Algorithms", 
+    "full_text": "Multiple Precision Integers and Rationals (MPIR) is an open-source software multiprecision integer library forked from the GNU Multiple Precision Arithmetic Library (GMP) project. It consists of much code from past GMP releases, and some original contributed code.[1]\nAccording to the MPIR developers, some of the main goals of the MPIR project are:\nMPIR is optimised for many processors (CPUs). Assembly language code exists for these as of 2012[update]: ARM, DEC Alpha 21064, 21164, and 21264, AMD K6, K6-2, Athlon, K8 and K10, Intel Pentium, Pentium Pro-II-III, Pentium 4, generic x86, Intel IA-64, Core 2, i7, Atom, Motorola-IBM PowerPC 32 and 64, MIPS R3000, R4000, SPARCv7, SuperSPARC, generic SPARCv8, UltraSPARC.\n\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/MPIR_(mathematics_software)", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/MPIR_(mathematics_software)\n"
+}

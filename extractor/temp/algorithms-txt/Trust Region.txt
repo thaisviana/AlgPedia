@@ -1,0 +1,189 @@
+ABOUT
+Trust region is a term used in mathematical optimization to denote the subset of the region of the objective function that is approximated using a model function (often a quadratic). If an adequate model of the objective function is found within the trust region then the region is expanded; conversely, if the approximation is poor then the region is contracted. Trust region methods are also known as restricted step methods.
+FULL TEXT
+Trust region is a term used in mathematical optimization to denote the subset of the region of the objective function that is approximated using a model function (often a quadratic). If an adequate model of the objective function is found within the trust region then the region is expanded; conversely, if the approximation is poor then the region is contracted. Trust region methods are also known as restricted step methods.
+The fit is evaluated by comparing the ratio of expected improvement from the model approximation with the actual improvement observed in the objective function. Simple thresholding of the ratio is used as the criterion for expansion and contraction—a model function is "trusted" only in the region where it provides a reasonable approximation.
+Trust region methods are in some sense dual to line search methods: trust region methods first choose a step size (the size of the trust region) and then a step direction while line search methods first choose a step direction and then a step size.
+The earliest use of the term seems to be by Sorensen (1982).
+Conceptually, in the Levenberg–Marquardt algorithm, the objective function is iteratively approximated by a quadratic surface, then using a linear solve, the estimate is updated. This alone may not converge nicely if the initial guess is too far from the optimum. For this reason, the algorithm instead restricts each step, preventing it from stepping "too far". It operationalizes "too far" as follows. Rather than solving 
+
+
+
+A
+Δ
+x
+=
+b
+
+
+{\displaystyle A\Delta x=b}
+
+ for 
+
+
+
+Δ
+x
+
+
+{\displaystyle \Delta x}
+
+, it solves 
+
+
+
+(
+A
++
+λ
+diag
+⁡
+(
+A
+)
+)
+Δ
+x
+=
+b
+
+
+{\displaystyle (A+\lambda \operatorname {diag} (A))\Delta x=b}
+
+ where 
+
+
+
+diag
+⁡
+(
+A
+)
+
+
+{\displaystyle \operatorname {diag} (A)}
+
+ is the diagonal matrix with the same diagonal as A and λ is a parameter that controls the trust-region size. Geometrically, this adds a paraboloid centered at 
+
+
+
+Δ
+x
+=
+0
+
+
+{\displaystyle \Delta x=0}
+
+ to the quadratic form, resulting in a smaller step.
+The trick is to change the trust-region size (λ). At each iteration, the damped quadratic fit predicts a certain reduction in the cost function, 
+
+
+
+Δ
+
+f
+
+
+p
+r
+e
+d
+
+
+
+
+
+{\displaystyle \Delta f_{\mathrm {pred} }}
+
+, which we would expect to be a smaller reduction than the true reduction. Given 
+
+
+
+Δ
+x
+
+
+{\displaystyle \Delta x}
+
+ we can evaluate
+By looking at the ratio 
+
+
+
+Δ
+
+f
+
+
+p
+r
+e
+d
+
+
+
+
+/
+
+Δ
+
+f
+
+
+a
+c
+t
+u
+a
+l
+
+
+
+
+
+{\displaystyle \Delta f_{\mathrm {pred} }/\Delta f_{\mathrm {actual} }}
+
+ we can adjust the trust-region size. In general, we expect 
+
+
+
+Δ
+
+f
+
+
+p
+r
+e
+d
+
+
+
+
+
+{\displaystyle \Delta f_{\mathrm {pred} }}
+
+ to be a bit less than 
+
+
+
+Δ
+
+f
+
+
+a
+c
+t
+u
+a
+l
+
+
+
+
+
+{\displaystyle \Delta f_{\mathrm {actual} }}
+
+ and so the ratio would be between, say, 0.25 and 0.5. If the ratio is more than 0.5, then we aren't damping the step much, so expand the trust region (decrease λ), and iterate. If the ratio is smaller than 0.25, then the true function is diverging "too much" from the trust-region approximation, so shrink the trust region (increase λ) and try again.

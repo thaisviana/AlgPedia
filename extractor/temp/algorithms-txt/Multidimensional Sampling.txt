@@ -1,0 +1,1008 @@
+ABOUT
+In digital signal processing, multidimensional sampling is the process of converting a function of a multidimensional variable into a discrete collection of values of the function measured on a discrete set of points. This article presents the basic result due to Petersen and Middleton[1] on conditions for perfectly reconstructing a wavenumber-limited function from its measurements on a discrete lattice of points. This result, also known as the Petersen–Middleton theorem, is a generalization of the Nyquist–Shannon sampling theorem for sampling one-dimensional band-limited functions to higher-dimensional Euclidean spaces.
+FULL TEXT
+In digital signal processing, multidimensional sampling is the process of converting a function of a multidimensional variable into a discrete collection of values of the function measured on a discrete set of points. This article presents the basic result due to Petersen and Middleton[1] on conditions for perfectly reconstructing a wavenumber-limited function from its measurements on a discrete lattice of points. This result, also known as the Petersen–Middleton theorem, is a generalization of the Nyquist–Shannon sampling theorem for sampling one-dimensional band-limited functions to higher-dimensional Euclidean spaces.
+In essence, the Petersen–Middleton theorem shows that a wavenumber-limited function can be perfectly reconstructed from its values on an infinite lattice of points, provided the lattice is fine enough. The theorem provides conditions on the lattice under which perfect reconstruction is possible.
+As with the Nyquist–Shannon sampling theorem, this theorem also assumes an idealization of any real-world situation, as it only applies to functions that are sampled over an infinitude of points. Perfect reconstruction is mathematically possible for the idealized model but only an approximation for real-world functions and sampling techniques, albeit in practice often a very good one.
+
+
+The concept of a bandlimited function in one dimension can be generalized to the notion of a wavenumber-limited function in higher dimensions. Recall that the Fourier transform of an integrable function 
+
+
+
+f
+(
+⋅
+)
+
+
+{\displaystyle f(\cdot )}
+
+ on n-dimensional Euclidean space is defined as:
+where x and ξ are n-dimensional vectors, and 
+
+
+
+⟨
+x
+,
+ξ
+⟩
+
+
+{\displaystyle \langle x,\xi \rangle }
+
+ is the inner product of the vectors. The function 
+
+
+
+f
+(
+⋅
+)
+
+
+{\displaystyle f(\cdot )}
+
+ is said to be wavenumber-limited to a set 
+
+
+
+Ω
+
+
+{\displaystyle \Omega }
+
+ if the Fourier transform satisfies 
+
+
+
+
+
+
+f
+^
+
+
+
+(
+ξ
+)
+=
+0
+
+
+{\displaystyle {\hat {f}}(\xi )=0}
+
+ for 
+
+
+
+ξ
+∉
+Ω
+
+
+{\displaystyle \xi \notin \Omega }
+
+.
+Similarly, the configuration of uniformly spaced sampling points in one-dimension can be generalized to a lattice in higher dimensions. A lattice is a collection of points 
+
+
+
+Λ
+⊂
+
+ℜ
+
+n
+
+
+
+
+{\displaystyle \Lambda \subset \Re ^{n}}
+
+ of the form 
+
+
+
+Λ
+=
+
+{
+
+∑
+
+i
+=
+1
+
+
+n
+
+
+
+a
+
+i
+
+
+
+v
+
+i
+
+
+
+
+|
+
+
+
+a
+
+i
+
+
+∈
+
+
+Z
+
+
+}
+
+
+
+{\displaystyle \Lambda =\left\{\sum _{i=1}^{n}a_{i}v_{i}\;|\;a_{i}\in {\mathbb {Z}}\right\}}
+
+ where {v1, ..., vn} is a basis for 
+
+
+
+
+ℜ
+
+n
+
+
+
+
+{\displaystyle \Re ^{n}}
+
+. The reciprocal lattice 
+
+
+
+Γ
+
+
+{\displaystyle \Gamma }
+
+ corresponding to 
+
+
+
+Λ
+
+
+{\displaystyle \Lambda }
+
+ is defined by
+where the vectors 
+
+
+
+
+u
+
+i
+
+
+
+
+{\displaystyle u_{i}}
+
+ are chosen to satisfy 
+
+
+
+⟨
+
+u
+
+i
+
+
+,
+
+v
+
+j
+
+
+⟩
+=
+
+δ
+
+i
+j
+
+
+
+
+{\displaystyle \langle u_{i},v_{j}\rangle =\delta _{ij}}
+
+. That is, if the vectors 
+
+
+
+
+u
+
+i
+
+
+
+
+{\displaystyle u_{i}}
+
+ form columns of a matrix 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ and 
+
+
+
+
+v
+
+i
+
+
+
+
+{\displaystyle v_{i}}
+
+ the columns of a matrix 
+
+
+
+B
+
+
+{\displaystyle B}
+
+, then 
+
+
+
+A
+=
+
+B
+
+−
+T
+
+
+
+
+{\displaystyle A=B^{-T}}
+
+. An example of a sampling lattice in two dimensional space is a hexagonal lattice depicted in Figure 1. The corresponding reciprocal lattice is shown in Figure 2. The reciprocal lattice of a square lattice in two dimensions is another square lattice. In three dimensional space the reciprocal lattice of a face-centered cubic (FCC) lattice is a hexagonal close-packed (HCP) lattice or a body centered cubic (BCC) lattice.
+Let 
+
+
+
+Λ
+
+
+{\displaystyle \Lambda }
+
+ denote a lattice in 
+
+
+
+
+ℜ
+
+n
+
+
+
+
+{\displaystyle \Re ^{n}}
+
+ and 
+
+
+
+Γ
+
+
+{\displaystyle \Gamma }
+
+ the corresponding reciprocal lattice. The theorem of Petersen and Middleton[1] states that a function 
+
+
+
+f
+(
+⋅
+)
+
+
+{\displaystyle f(\cdot )}
+
+ that is wavenumber-limited to a set 
+
+
+
+Ω
+⊂
+
+ℜ
+
+n
+
+
+
+
+{\displaystyle \Omega \subset \Re ^{n}}
+
+ can be exactly reconstructed from its measurements on 
+
+
+
+Λ
+
+
+{\displaystyle \Lambda }
+
+ provided that the set 
+
+
+
+Ω
+
+
+{\displaystyle \Omega }
+
+ does not overlap with any of its shifted versions 
+
+
+
+Ω
++
+x
+
+
+{\displaystyle \Omega +x}
+
+ where the shift x is any nonzero element of the reciprocal lattice 
+
+
+
+Γ
+
+
+{\displaystyle \Gamma }
+
+. In other words, 
+
+
+
+f
+(
+⋅
+)
+
+
+{\displaystyle f(\cdot )}
+
+ can be exactly reconstructed from its measurements on 
+
+
+
+Λ
+
+
+{\displaystyle \Lambda }
+
+ provided that 
+
+
+
+Ω
+∩
+{
+x
++
+y
+:
+y
+∈
+Ω
+}
+=
+ϕ
+
+
+{\displaystyle \Omega \cap \{x+y:y\in \Omega \}=\phi }
+
+ for all 
+
+
+
+x
+∈
+Γ
+∖
+{
+0
+}
+
+
+{\displaystyle x\in \Gamma \setminus \{0\}}
+
+.
+The generalization of the Poisson summation formula to higher dimensions [2] can be used to show that the samples, 
+
+
+
+{
+f
+(
+x
+)
+:
+x
+∈
+Λ
+}
+
+
+{\displaystyle \{f(x):x\in \Lambda \}}
+
+, of the function 
+
+
+
+f
+(
+⋅
+)
+
+
+{\displaystyle f(\cdot )}
+
+ on the lattice 
+
+
+
+Λ
+
+
+{\displaystyle \Lambda }
+
+ are sufficient to create a periodic summation of the function 
+
+
+
+
+
+
+f
+^
+
+
+
+(
+⋅
+)
+
+
+{\displaystyle {\hat {f}}(\cdot )}
+
+. The result is:
+
+
+
+
+
+
+
+
+f
+^
+
+
+
+
+s
+
+
+(
+ξ
+)
+ 
+
+
+
+
+=
+
+
+
+d
+e
+f
+
+
+
+
+
+
+∑
+
+y
+∈
+Γ
+
+
+
+
+
+f
+^
+
+
+
+
+(
+ξ
+−
+y
+)
+
+=
+
+∑
+
+x
+∈
+Λ
+
+
+
+|
+
+Λ
+
+|
+
+f
+(
+x
+)
+ 
+
+e
+
+−
+i
+2
+π
+⟨
+x
+,
+ξ
+⟩
+
+
+,
+
+
+{\displaystyle {\hat {f}}_{s}(\xi )\ {\stackrel {\mathrm {def} }{=}}\sum _{y\in \Gamma }{\hat {f}}\left(\xi -y\right)=\sum _{x\in \Lambda }|\Lambda |f(x)\ e^{-i2\pi \langle x,\xi \rangle },}
+
+
+
+ 
+ 
+ 
+ 
+(Eq.1)
+where 
+
+
+
+
+|
+
+Λ
+
+|
+
+
+
+{\displaystyle |\Lambda |}
+
+ represents the volume of the parallelepiped formed by the vectors {v1, ..., vn}. This periodic function is often referred to as the sampled spectrum and can be interpreted as the analogue of the discrete-time Fourier transform (DTFT) in higher dimensions. If the original wavenumber-limited spectrum 
+
+
+
+
+
+
+f
+^
+
+
+
+(
+⋅
+)
+
+
+{\displaystyle {\hat {f}}(\cdot )}
+
+ is supported on the set 
+
+
+
+Ω
+
+
+{\displaystyle \Omega }
+
+ then the function 
+
+
+
+
+
+
+
+f
+^
+
+
+
+
+s
+
+
+(
+⋅
+)
+
+
+{\displaystyle {\hat {f}}_{s}(\cdot )}
+
+ is supported on periodic repetitions of 
+
+
+
+Ω
+
+
+{\displaystyle \Omega }
+
+ shifted by points on the reciprocal lattice 
+
+
+
+Γ
+
+
+{\displaystyle \Gamma }
+
+. If the conditions of the Petersen-Middleton theorem are met, then the function 
+
+
+
+
+
+
+
+f
+^
+
+
+
+
+s
+
+
+(
+ξ
+)
+
+
+{\displaystyle {\hat {f}}_{s}(\xi )}
+
+ is equal to 
+
+
+
+
+
+
+f
+^
+
+
+
+(
+ξ
+)
+
+
+{\displaystyle {\hat {f}}(\xi )}
+
+ for all 
+
+
+
+ξ
+∈
+Ω
+
+
+{\displaystyle \xi \in \Omega }
+
+, and hence the original field can be exactly reconstructed from the samples. In this case the reconstructed field matches the original field and can be expressed in terms of the samples as
+
+
+
+
+f
+(
+x
+)
+=
+
+∑
+
+y
+∈
+Λ
+
+
+
+|
+
+Λ
+
+|
+
+f
+(
+y
+)
+
+
+
+
+χ
+ˇ
+
+
+
+
+Ω
+
+
+(
+y
+−
+x
+)
+
+
+{\displaystyle f(x)=\sum _{y\in \Lambda }|\Lambda |f(y){\check {\chi }}_{\Omega }(y-x)}
+
+,
+
+ 
+ 
+ 
+ 
+(Eq.2)
+where 
+
+
+
+
+
+
+
+χ
+ˇ
+
+
+
+
+Ω
+
+
+(
+⋅
+)
+
+
+{\displaystyle {\check {\chi }}_{\Omega }(\cdot )}
+
+ is the inverse Fourier transform of the characteristic function of the set 
+
+
+
+Ω
+
+
+{\displaystyle \Omega }
+
+. This interpolation formula is the higher-dimensional equivalent of the Whittaker–Shannon interpolation formula.
+As an example suppose that 
+
+
+
+Ω
+
+
+{\displaystyle \Omega }
+
+ is a circular disc. Figure 3 illustrates the support of 
+
+
+
+
+
+
+
+f
+^
+
+
+
+
+s
+
+
+(
+⋅
+)
+
+
+{\displaystyle {\hat {f}}_{s}(\cdot )}
+
+ when the conditions of the Petersen-Middleton theorem are met. We see that the spectral repetitions do not overlap and hence the original spectrum can be exactly recovered.
+The theorem gives conditions on sampling lattices for perfect reconstruction of the sampled. If the lattices are not fine enough to satisfy the Petersen-Middleton condition, then the field cannot be reconstructed exactly from the samples in general. In this case we say that the samples may be aliased. Again, consider the example in which 
+
+
+
+Ω
+
+
+{\displaystyle \Omega }
+
+ is a circular disc. If the Petersen-Middleton conditions do not hold, the support of the sampled spectrum will be as shown in Figure 4. In this case the spectral repetitions overlap leading to aliasing in the reconstruction.
+A simple illustration of aliasing can be obtained by studying low-resolution images. A gray-scale image can be interpreted as a function in two-dimensional space. An example of aliasing is shown in the images of brick patterns in Figure 5. The image shows the effects of aliasing when the sampling theorem's condition is not satisfied. If the lattice of pixels is not fine enough for the scene, aliasing occurs as evidenced by the appearance of the Moiré pattern in the image obtained. The image in Figure 6 is obtained when a smoothened version of the scene is sampled with the same lattice. In this case the conditions of the theorem are satisfied and no aliasing occurs.
+One of the objects of interest in designing a sampling scheme for wavenumber-limited fields is to identify the configuration of points that leads to the minimum sampling density, i.e., the density of sampling points per unit spatial volume in 
+
+
+
+
+ℜ
+
+n
+
+
+
+
+{\displaystyle \Re ^{n}}
+
+. Typically the cost for taking and storing the measurements is proportional to the sampling density employed. Often in practice, the natural approach to sample two-dimensional fields is to sample it at points on a rectangular lattice. However, this is not always the ideal choice in terms of the sampling density. The theorem of Petersen and Middleton can be used to identify the optimal lattice for sampling fields that are wavenumber-limited to a given set 
+
+
+
+Ω
+⊂
+
+ℜ
+
+d
+
+
+
+
+{\displaystyle \Omega \subset \Re ^{d}}
+
+. For example, it can be shown that the lattice in 
+
+
+
+
+ℜ
+
+2
+
+
+
+
+{\displaystyle \Re ^{2}}
+
+ with minimum spatial density of points that admits perfect reconstructions of fields wavenumber-limited to a circular disc in 
+
+
+
+
+ℜ
+
+2
+
+
+
+
+{\displaystyle \Re ^{2}}
+
+ is the hexagonal lattice.[3] As a consequence, hexagonal lattices are preferred for sampling isotropic fields in 
+
+
+
+
+ℜ
+
+2
+
+
+
+
+{\displaystyle \Re ^{2}}
+
+.
+Optimal sampling lattices have been studied in higher dimensions.[4] Generally, optimal sphere packing lattices are ideal for sampling smooth stochastic processes while optimal sphere covering lattices[5] are ideal for sampling rough stochastic processes.
+Since optimal lattices, in general, are non-separable, designing interpolation and reconstruction filters requires non-tensor-product (i.e., non-separable) filter design mechanisms. Box splines provide a flexible framework for designing such non-separable reconstruction FIR filters that can be geometrically tailored for each lattice.[6][7] Hex-splines[8] are the generalization of B-splines for 2-D hexagonal lattices. Similarly, in 3-D and higher dimensions, Voronoi splines[9] provide a generalization of B-splines that can be used to design non-separable FIR filters which are geometrically tailored for any lattice, including optimal lattices.
+Explicit construction of ideal low-pass filters (i.e., sinc functions) generalized to optimal lattices is possible by studying the geometric properties of Brillouin zones (i.e., 
+
+
+
+Ω
+
+
+{\displaystyle \Omega }
+
+ in above) of these lattices (which are zonotopes).[10] This approach provides a closed-form explicit representation of 
+
+
+
+
+
+
+
+χ
+ˇ
+
+
+
+
+Ω
+
+
+(
+⋅
+)
+
+
+{\displaystyle {\check {\chi }}_{\Omega }(\cdot )}
+
+ for general lattices, including optimal sampling lattices. This construction provides a generalization of the Lanczos filter in 1-D to the multidimensional setting for optimal lattices.[10]
+The Petersen–Middleton theorem is useful in designing efficient sensor placement strategies in applications involving measurement of spatial phenomena such as seismic surveys, environment monitoring and spatial audio-field measurements.

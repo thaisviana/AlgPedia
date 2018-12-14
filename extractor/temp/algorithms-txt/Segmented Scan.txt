@@ -1,0 +1,4 @@
+ABOUT
+In computer science a segmented scan is modification of a prefix sum with an equal sized array of flag bits to denote segment boundaries on which the scan should be performed.[1]
+FULL TEXT
+In computer science a segmented scan is modification of a prefix sum with an equal sized array of flag bits to denote segment boundaries on which the scan should be performed.[1]

@@ -1,0 +1,240 @@
+ABOUT
+In quantum computing, the quantum phase estimation algorithm is a quantum algorithm that finds many applications as a subroutine in other algorithms. The quantum phase estimation algorithm allows one to estimate the eigenphase of an eigenvector of a unitary gate, given access to a quantum state proportional to the eigenvector and a procedure to implement the unitary conditionally.
+FULL TEXT
+In quantum computing, the quantum phase estimation algorithm is a quantum algorithm that finds many applications as a subroutine in other algorithms. The quantum phase estimation algorithm allows one to estimate the eigenphase of an eigenvector of a unitary gate, given access to a quantum state proportional to the eigenvector and a procedure to implement the unitary conditionally.
+
+
+Let U be a unitary operator that operates on m qubits. Then all of the eigenvalues of U have absolute value 1. Thus the spectrum of a unitary operator consists of phases 
+
+
+
+
+e
+
+i
+θ
+
+
+
+
+{\displaystyle e^{i\theta }}
+
+. Given an eigenvector 
+
+
+
+
+|
+ψ
+⟩
+
+
+
+{\displaystyle \left|\psi \right\rangle }
+
+, such that 
+
+
+
+U
+
+|
+ψ
+⟩
+
+=
+
+e
+
+i
+θ
+
+
+
+|
+ψ
+⟩
+
+
+
+{\displaystyle U\left|\psi \right\rangle =e^{i\theta }\left|\psi \right\rangle }
+
+, the objective is to estimate 
+
+
+
+θ
+
+
+{\displaystyle \theta }
+
+. The phase estimation algorithm solves this problem.
+Suppose we wish to compute the phases to an accuracy of n bits. We achieve this by subjecting our eigenvector 
+
+
+
+
+|
+ψ
+⟩
+
+
+
+{\displaystyle \left|\psi \right\rangle }
+
+ of 
+
+
+
+U
+
+
+{\displaystyle U}
+
+ to a succession of n controlled operators, followed by the inverse of the quantum Fourier transform. The controlled operators are the powers of 
+
+
+
+U
+
+
+{\displaystyle U}
+
+ from 
+
+
+
+U
+
+
+{\displaystyle U}
+
+ to controlled 
+
+
+
+
+U
+
+
+2
+
+n
+−
+1
+
+
+
+
+
+
+{\displaystyle U^{2^{n-1}}}
+
+.
+After putting the control lines into the Hadamard state, we have
+After the controlled application of 
+
+
+
+U
+
+
+{\displaystyle U}
+
+, we have
+Applying the inverse of the quantum Fourier transform upon the n qubits yields
+If the phase is exactly a 
+
+
+
+
+2
+
+n
+
+
+
+
+{\displaystyle 2^{n}}
+
+-th root of unity, the quantum Fourier transform will single out that phase in binary expansion. If not, there will be a probability distribution clustered around the correct phase.
+If 
+
+
+
+
+|
+ψ
+⟩
+
+
+
+{\displaystyle \left|\psi \right\rangle }
+
+ is really a superposition of eigenstates, there is a weighted probability distribution over the individual eigenstates, with the weight given by the Born probabilities. This is because eigenstates corresponding to different eigenvalues are orthogonal.
+Note that this algorithm is only efficient if we can compute 
+
+
+
+
+U
+
+
+2
+
+n
+
+
+
+
+
+
+{\displaystyle U^{2^{n}}}
+
+ in some time polynomial in 
+
+
+
+n
+
+
+{\displaystyle n}
+
+. There are unitary operators for which this is the case, and there are those for which this isn't. If we only have access to 
+
+
+
+U
+
+
+{\displaystyle U}
+
+ as an oracle, then we need exponentially many calls to 
+
+
+
+U
+
+
+{\displaystyle U}
+
+ to compute 
+
+
+
+
+U
+
+
+2
+
+n
+
+
+
+
+
+
+{\displaystyle U^{2^{n}}}
+
+.

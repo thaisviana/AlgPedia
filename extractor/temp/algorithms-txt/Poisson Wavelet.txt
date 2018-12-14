@@ -1,0 +1,392 @@
+ABOUT
+In mathematics, in functional analysis, several different wavelets are known by the name Poisson wavelet. In one context, the term "Poisson wavelet" is used to denote a family of wavelets labeled by the set of positive integers, the members of which are associated with the Poisson probability distribution. These wavelets were first defined and studied by Karlene A. Kosanovich, Allan R. Moser and Michael J. Piovoso in 1995–96.[1][2] In another context, the term refers to a certain wavelet which involves a form of the Poisson integral kernel.[3] In a still another context, the terminology is used to describe a family of complex wavelets indexed by positive integers which are connected with the derivatives of the Poisson integral kernel.[4]
+FULL TEXT
+In mathematics, in functional analysis, several different wavelets are known by the name Poisson wavelet. In one context, the term "Poisson wavelet" is used to denote a family of wavelets labeled by the set of positive integers, the members of which are associated with the Poisson probability distribution. These wavelets were first defined and studied by Karlene A. Kosanovich, Allan R. Moser and Michael J. Piovoso in 1995–96.[1][2] In another context, the term refers to a certain wavelet which involves a form of the Poisson integral kernel.[3] In a still another context, the terminology is used to describe a family of complex wavelets indexed by positive integers which are connected with the derivatives of the Poisson integral kernel.[4]
+
+
+For each positive integer n the Poisson wavelet 
+
+
+
+
+ψ
+
+n
+
+
+(
+t
+)
+
+
+{\displaystyle \psi _{n}(t)}
+
+ is defined by
+To see the relation between the Poisson wavelet and the Poisson distribution let X be a discrete random variable having the Poisson distribution with parameter (mean) t and, for each non-negative integer n, let Prob(X = n) = pn(t). Then we have
+The Poisson wavelet 
+
+
+
+
+ψ
+
+n
+
+
+(
+t
+)
+
+
+{\displaystyle \psi _{n}(t)}
+
+ is now given by
+The Poisson wavelet family can be used to construct the family of Poisson wavelet transforms of functions defined the time domain. Since the Poisson wavelets satisfy the admissibility condition also, functions in the time domain can be reconstructed from their Poisson wavelet transforms using the formula for inverse continuous-time wavelet transforms.
+If f(t) is a function in the time domain its n-th Poisson wavelet transform is given by
+In the reverse direction, given the n-th Poisson wavelet transform 
+
+
+
+(
+
+W
+
+n
+
+
+f
+)
+(
+a
+,
+b
+)
+
+
+{\displaystyle (W_{n}f)(a,b)}
+
+ of a function f(t) in the time domain, the function f(t) can be reconstructed as follows:
+Poisson wavelet transforms have been applied in multi-resolution analysis, system identification, and parameter estimation. They are particularly useful in studying problems in which the functions in the time domain consist of linear combinations of decaying exponentials with time delay.
+The Poisson wavelet is defined by the function[3]
+This can be expressed in the form
+The function 
+
+
+
+P
+(
+t
+)
+
+
+{\displaystyle P(t)}
+
+ appears as an integral kernel in the solution of a certain initial value problem of the Laplace operator.
+This is the initial value problem: Given any 
+
+
+
+s
+(
+x
+)
+
+
+{\displaystyle s(x)}
+
+ in 
+
+
+
+
+L
+
+p
+
+
+(
+
+R
+
+)
+
+
+{\displaystyle L^{p}(\mathbb {R} )}
+
+, find a harmonic function 
+
+
+
+ϕ
+(
+x
+,
+y
+)
+
+
+{\displaystyle \phi (x,y)}
+
+ defined in the upper half-plane satisfying the following conditions:
+The problem has the following solution: There is exactly one function 
+
+
+
+ϕ
+(
+x
+,
+y
+)
+
+
+{\displaystyle \phi (x,y)}
+
+ satisfying the two conditions and it is given by
+where 
+
+
+
+
+P
+
+y
+
+
+(
+t
+)
+=
+
+
+1
+y
+
+
+P
+
+(
+
+
+t
+y
+
+
+)
+
+=
+
+
+1
+π
+
+
+
+
+y
+
+
+t
+
+2
+
+
++
+
+y
+
+2
+
+
+
+
+
+
+
+{\displaystyle P_{y}(t)={\frac {1}{y}}P\left({\frac {t}{y}}\right)={\frac {1}{\pi }}{\frac {y}{t^{2}+y^{2}}}}
+
+ and where "
+
+
+
+⋆
+
+
+{\displaystyle \star }
+
+" denotes the convolution operation. The function 
+
+
+
+
+P
+
+y
+
+
+(
+t
+)
+
+
+{\displaystyle P_{y}(t)}
+
+ is the integral kernel for the function 
+
+
+
+ϕ
+(
+x
+,
+y
+)
+
+
+{\displaystyle \phi (x,y)}
+
+. The function 
+
+
+
+ϕ
+(
+x
+,
+y
+)
+
+
+{\displaystyle \phi (x,y)}
+
+ is the harmonic continuation of 
+
+
+
+s
+(
+x
+)
+
+
+{\displaystyle s(x)}
+
+ into the upper half plane.
+The Poisson wavelet is a family of complex valued functions indexed by the set of positive integers and defined by[4][5]
+The function 
+
+
+
+
+ψ
+
+n
+
+
+(
+t
+)
+
+
+{\displaystyle \psi _{n}(t)}
+
+ can be expressed as an n-th derivative as follows:
+Writing the function 
+
+
+
+(
+1
+−
+i
+t
+
+)
+
+−
+1
+
+
+
+
+{\displaystyle (1-it)^{-1}}
+
+ in terms of the Poisson integral kernel 
+
+
+
+P
+(
+t
+)
+=
+
+
+1
+
+1
++
+
+t
+
+2
+
+
+
+
+
+
+
+{\displaystyle P(t)={\frac {1}{1+t^{2}}}}
+
+ as
+we have
+Thus 
+
+
+
+
+ψ
+
+n
+
+
+(
+t
+)
+
+
+{\displaystyle \psi _{n}(t)}
+
+ can be interpreted as a function proportional to the derivatives of the Poisson integral kernel.
+The Fourier transform of 
+
+
+
+
+ψ
+
+n
+
+
+(
+t
+)
+
+
+{\displaystyle \psi _{n}(t)}
+
+ is given by
+where 
+
+
+
+u
+(
+ω
+)
+
+
+{\displaystyle u(\omega )}
+
+ is the unit step function.

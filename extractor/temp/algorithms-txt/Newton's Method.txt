@@ -1,0 +1,1898 @@
+ABOUT
+In numerical analysis, Newton's method (also known as the Newton–Raphson method), named after Isaac Newton and Joseph Raphson, is a method for finding successively better approximations to the roots (or zeroes) of a real-valued function.
+FULL TEXT
+In numerical analysis, Newton's method (also known as the Newton–Raphson method), named after Isaac Newton and Joseph Raphson, is a method for finding successively better approximations to the roots (or zeroes) of a real-valued function.
+The Newton–Raphson method in one variable is implemented as follows:
+The method starts with a function f defined over the real numbers x, the function's derivative f', and an initial guess x0 for a root of the function f. If the function satisfies the assumptions made in the derivation of the formula and the initial guess is close, then a better approximation x1 is
+Geometrically, (x1, 0) is the intersection of the x-axis and the tangent of the graph of f at (x0, f(x0)).
+The process is repeated as
+until a sufficiently accurate value is reached.
+This algorithm is first in the class of Householder's methods, succeeded by Halley's method. The method can also be extended to complex functions and to systems of equations.
+
+
+The idea of the method is as follows: one starts with an initial guess which is reasonably close to the true root, then the function is approximated by its tangent line (which can be computed using the tools of calculus), and one computes the x-intercept of this tangent line (which is easily done with elementary algebra). This x-intercept will typically be a better approximation to the function's root than the original guess, and the method can be iterated.
+Suppose ƒ : [a, b] → R is a differentiable function defined on the interval [a, b] with values in the real numbers R. The formula for converging on the root can be easily derived. Suppose we have some current approximation xn. Then we can derive the formula for a better approximation, xn+1 by referring to the diagram on the right. The equation of the tangent line to the curve y = ƒ(x) at the point x=xn is
+where ƒ' denotes the derivative of the function ƒ.
+The x-intercept of this line (the value of x such that y=0) is then used as the next approximation to the root, xn+1. In other words, setting y to zero and x to xn+1 gives
+Solving for xn+1 gives
+We start the process off with some arbitrary initial value x0. (The closer to the zero, the better. But, in the absence of any intuition about where the zero might lie, a "guess and check" method might narrow the possibilities to a reasonably small interval by appealing to the intermediate value theorem.) The method will usually converge, provided this initial guess is close enough to the unknown zero, and that ƒ'(x0) ≠ 0. Furthermore, for a zero of multiplicity 1, the convergence is at least quadratic (see rate of convergence) in a neighbourhood of the zero, which intuitively means that the number of correct digits roughly at least doubles in every step. More details can be found in the analysis section below.
+The Householder's methods are similar but have higher order for even faster convergence. However, the extra computations required for each step can slow down the overall performance relative to Newton's method, particularly if f or its derivatives are computationally expensive to evaluate.
+The name "Newton's method" is derived from Isaac Newton's description of a special case of the method in De analysi per aequationes numero terminorum infinitas (written in 1669, published in 1711 by William Jones) and in De metodis fluxionum et serierum infinitarum (written in 1671, translated and published as Method of Fluxions in 1736 by John Colson). However, his method differs substantially from the modern method given above: Newton applies the method only to polynomials. He does not compute the successive approximations 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+, but computes a sequence of polynomials, and only at the end arrives at an approximation for the root x. Finally, Newton views the method as purely algebraic and makes no mention of the connection with calculus. Newton may have derived his method from a similar but less precise method by Vieta. The essence of Vieta's method can be found in the work of the Persian mathematician Sharaf al-Din al-Tusi, while his successor Jamshīd al-Kāshī used a form of Newton's method to solve 
+
+
+
+
+x
+
+P
+
+
+−
+N
+=
+0
+
+
+{\displaystyle x^{P}-N=0}
+
+ to find roots of N (Ypma 1995). A special case of Newton's method for calculating square roots was known much earlier and is often called the Babylonian method.
+Newton's method was used by 17th-century Japanese mathematician Seki Kōwa to solve single-variable equations, though the connection with calculus was missing.
+Newton's method was first published in 1685 in A Treatise of Algebra both Historical and Practical by John Wallis. In 1690, Joseph Raphson published a simplified description in Analysis aequationum universalis. Raphson again viewed Newton's method purely as an algebraic method and restricted its use to polynomials, but he describes the method in terms of the successive approximations xn instead of the more complicated sequence of polynomials used by Newton. Finally, in 1740, Thomas Simpson described Newton's method as an iterative method for solving general nonlinear equations using calculus, essentially giving the description above. In the same publication, Simpson also gives the generalization to systems of two equations and notes that Newton's method can be used for solving optimization problems by setting the gradient to zero.
+Arthur Cayley in 1879 in The Newton-Fourier imaginary problem was the first to notice the difficulties in generalizing Newton's method to complex roots of polynomials with degree greater than 2 and complex initial values. This opened the way to the study of the theory of iterations of rational functions.
+Newton's method is an extremely powerful technique—in general the convergence is quadratic: as the method converges on the root, the difference between the root and the approximation is squared (the number of accurate digits roughly doubles) at each step. However, there are some difficulties with the method.
+Newton's method requires that the derivative be calculated directly. An analytical expression for the derivative may not be easily obtainable and could be expensive to evaluate. In these situations, it may be appropriate to approximate the derivative by using the slope of a line through two nearby points on the function. Using this approximation would result in something like the secant method whose convergence is slower than that of Newton's method.
+It is important to review the proof of quadratic convergence of Newton's Method before implementing it. Specifically, one should review the assumptions made in the proof. For situations where the method fails to converge, it is because the assumptions made in this proof are not met.
+If the first derivative is not well behaved in the neighborhood of a particular root, the method may overshoot, and diverge from that root. An example of a function with one root, for which the derivative is not well behaved in the neighborhood of the root, is
+for which the root will be overshot and the sequence of x will diverge. For a = 1/2, the root will still be overshot, but the sequence will oscillate between two values. For 1/2 < a < 1, the root will still be overshot but the sequence will converge, and for a ≥ 1 the root will not be overshot at all.
+In some cases, Newton's method can be stabilized by using successive over-relaxation, or the speed of convergence can be increased by using the same method.
+If a stationary point of the function is encountered, the derivative is zero and the method will terminate due to division by zero.
+A large error in the initial estimate can contribute to non-convergence of the algorithm. To overcome this problem one can often linearise the function that is being optimized using calculus, logs, differentials, or even using evolutionary algorithms, such as the Stochastic Funnel Algorithm. Good initial estimates lie close to the final globally optimal parameter estimate. In Nonlinear Regression the SSE equation is only "close to" parabolic in the region of the final parameter estimates. Initial estimates found here will allow the Newton-Raphson method to quickly converge. It is only here that the Hessian of the SSE is positive and the first derivative of the SSE is close to zero.
+In a robust implementation of Newton's method, it is common to place limits on the number of iterations, bound the solution to an interval known to contain the root, and combine the method with a more robust root finding method.
+If the root being sought has multiplicity greater than one, the convergence rate is merely linear (errors reduced by a constant factor at each step) unless special steps are taken. When there are two or more roots that are close together then it may take many iterations before the iterates get close enough to one of them for the quadratic convergence to be apparent. However, if the multiplicity 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ of the root is known, one can use the following modified algorithm that preserves the quadratic convergence rate:
+This is equivalent to using successive over-relaxation. On the other hand, if the multiplicity 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ of the root is not known, it is possible to estimate 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ after carrying out one or two iterations, and then use that value to increase the rate of convergence.
+Suppose that the function ƒ has a zero at α, i.e., ƒ(α) = 0, and ƒ is differentiable in a neighborhood of α.
+If f  is continuously differentiable and its derivative is nonzero at α, then there exists a neighborhood of α such that for all starting values x0 in that neighborhood, the sequence {xn} will converge to α.[2]
+If the function is continuously differentiable and its derivative is not 0 at α and it has a second derivative at α then the convergence is quadratic or faster. If the second derivative is not 0 at α then the convergence is merely quadratic. If the third derivative exists and is bounded in a neighborhood of α, then:
+where 
+
+
+
+Δ
+
+x
+
+i
+
+
+≜
+
+x
+
+i
+
+
+−
+α
+
+.
+
+
+{\displaystyle \Delta x_{i}\triangleq x_{i}-\alpha \,.}
+
+
+If the derivative is 0 at α, then the convergence is usually only linear. Specifically, if ƒ is twice continuously differentiable, ƒ '(α) = 0 and ƒ ''(α) ≠ 0, then there exists a neighborhood of α such that for all starting values x0 in that neighborhood, the sequence of iterates converges linearly, with rate log10 2 (Süli & Mayers, Exercise 1.6). Alternatively if ƒ '(α) = 0 and ƒ '(x) ≠ 0 for x ≠ α, x in a neighborhood U of α, α being a zero of multiplicity r, and if ƒ ∈ Cr(U) then there exists a neighborhood of α such that for all starting values x0 in that neighborhood, the sequence of iterates converges linearly.
+However, even linear convergence is not guaranteed in pathological situations.
+In practice these results are local, and the neighborhood of convergence is not known in advance. But there are also some results on global convergence: for instance, given a right neighborhood U+ of α, if f is twice differentiable in U+ and if 
+
+
+
+
+f
+′
+
+≠
+0
+
+
+
+{\displaystyle f'\neq 0\!}
+
+, 
+
+
+
+f
+⋅
+
+f
+″
+
+>
+0
+
+
+
+{\displaystyle f\cdot f''>0\!}
+
+ in U+, then, for each x0 in U+ the sequence xk is monotonically decreasing to α.
+According to Taylor's theorem, any function f(x) which has a continuous second derivative can be represented by an expansion about a point that is close to a root of f(x). Suppose this root is 
+
+
+
+α
+
+.
+
+
+{\displaystyle \alpha \,.}
+
+ Then the expansion of f(α) about xn is:
+
+
+
+
+f
+(
+α
+)
+=
+f
+(
+
+x
+
+n
+
+
+)
++
+
+f
+
+′
+
+
+(
+
+x
+
+n
+
+
+)
+(
+α
+−
+
+x
+
+n
+
+
+)
++
+
+R
+
+1
+
+
+
+
+
+{\displaystyle f(\alpha )=f(x_{n})+f^{\prime }(x_{n})(\alpha -x_{n})+R_{1}\,}
+
+
+
+ 
+ 
+ 
+ 
+(1)
+where the Lagrange form of the Taylor series expansion remainder is
+where ξn is in between xn and 
+
+
+
+α
+
+.
+
+
+{\displaystyle \alpha \,.}
+
+
+Since 
+
+
+
+α
+
+
+
+{\displaystyle \alpha \,}
+
+ is the root, (1) becomes:
+
+
+
+
+0
+=
+f
+(
+α
+)
+=
+f
+(
+
+x
+
+n
+
+
+)
++
+
+f
+
+′
+
+
+(
+
+x
+
+n
+
+
+)
+(
+α
+−
+
+x
+
+n
+
+
+)
++
+
+
+1
+2
+
+
+
+f
+
+′
+′
+
+
+(
+
+ξ
+
+n
+
+
+)
+(
+α
+−
+
+x
+
+n
+
+
+
+)
+
+2
+
+
+
+
+
+{\displaystyle 0=f(\alpha )=f(x_{n})+f^{\prime }(x_{n})(\alpha -x_{n})+{\frac {1}{2}}f^{\prime \prime }(\xi _{n})(\alpha -x_{n})^{2}\,}
+
+
+
+ 
+ 
+ 
+ 
+(2)
+Dividing equation (2) by 
+
+
+
+
+f
+
+′
+
+
+(
+
+x
+
+n
+
+
+)
+
+
+
+{\displaystyle f^{\prime }(x_{n})\,}
+
+ and rearranging gives
+
+
+
+
+
+
+
+f
+(
+
+x
+
+n
+
+
+)
+
+
+
+f
+
+′
+
+
+(
+
+x
+
+n
+
+
+)
+
+
+
++
+
+(
+α
+−
+
+x
+
+n
+
+
+)
+
+=
+
+
+
+−
+
+f
+
+′
+′
+
+
+(
+
+ξ
+
+n
+
+
+)
+
+
+2
+
+f
+
+′
+
+
+(
+
+x
+
+n
+
+
+)
+
+
+
+
+
+(
+α
+−
+
+x
+
+n
+
+
+)
+
+
+2
+
+
+
+
+{\displaystyle {\frac {f(x_{n})}{f^{\prime }(x_{n})}}+\left(\alpha -x_{n}\right)={\frac {-f^{\prime \prime }(\xi _{n})}{2f^{\prime }(x_{n})}}\left(\alpha -x_{n}\right)^{2}}
+
+
+
+ 
+ 
+ 
+ 
+(3)
+Remembering that xn+1 is defined by
+
+
+
+
+
+x
+
+n
++
+1
+
+
+=
+
+x
+
+n
+
+
+−
+
+
+
+f
+(
+
+x
+
+n
+
+
+)
+
+
+
+f
+
+′
+
+
+(
+
+x
+
+n
+
+
+)
+
+
+
+
+,
+
+
+{\displaystyle x_{n+1}=x_{n}-{\frac {f(x_{n})}{f^{\prime }(x_{n})}}\,,}
+
+
+
+ 
+ 
+ 
+ 
+(4)
+one finds that
+That is,
+
+
+
+
+
+ϵ
+
+n
++
+1
+
+
+=
+
+
+
+−
+
+f
+
+′
+′
+
+
+(
+
+ξ
+
+n
+
+
+)
+
+
+2
+
+f
+
+′
+
+
+(
+
+x
+
+n
+
+
+)
+
+
+
+
+
+
+
+ϵ
+
+n
+
+
+
+
+2
+
+
+
+.
+
+
+{\displaystyle \epsilon _{n+1}={\frac {-f^{\prime \prime }(\xi _{n})}{2f^{\prime }(x_{n})}}\,{\epsilon _{n}}^{2}\,.}
+
+
+
+ 
+ 
+ 
+ 
+(5)
+Taking absolute value of both sides gives
+
+
+
+
+
+|
+
+
+ϵ
+
+n
++
+1
+
+
+
+|
+
+=
+
+
+
+|
+
+f
+
+′
+′
+
+
+(
+
+ξ
+
+n
+
+
+)
+|
+
+
+2
+
+|
+
+f
+
+′
+
+
+(
+
+x
+
+n
+
+
+)
+|
+
+
+
+
+
+
+
+
+ϵ
+
+n
+
+
+
+
+2
+
+
+
+
+
+{\displaystyle \left|{\epsilon _{n+1}}\right|={\frac {\left|f^{\prime \prime }(\xi _{n})\right|}{2\left|f^{\prime }(x_{n})\right|}}\,{\epsilon _{n}}^{2}\,}
+
+
+
+ 
+ 
+ 
+ 
+(6)
+Equation (6) shows that the rate of convergence is quadratic if the following conditions are satisfied:
+The term sufficiently close in this context means the following:
+(a) Taylor approximation is accurate enough such that we can ignore higher order terms,
+(b) 
+
+
+
+
+
+1
+2
+
+
+
+|
+
+
+
+
+f
+
+′
+′
+
+
+(
+
+x
+
+n
+
+
+)
+
+
+
+f
+
+′
+
+
+(
+
+x
+
+n
+
+
+)
+
+
+
+|
+
+<
+C
+
+|
+
+
+
+
+f
+
+′
+′
+
+
+(
+α
+)
+
+
+
+f
+
+′
+
+
+(
+α
+)
+
+
+
+|
+
+,
+
+ for some 
+
+C
+<
+∞
+,
+
+
+
+{\displaystyle {\frac {1}{2}}\left|{\frac {f^{\prime \prime }(x_{n})}{f^{\prime }(x_{n})}}\right|<C\left|{\frac {f^{\prime \prime }(\alpha )}{f^{\prime }(\alpha )}}\right|,{\text{ for some }}C<\infty ,\,}
+
+
+(c) 
+
+
+
+C
+
+|
+
+
+
+
+f
+
+′
+′
+
+
+(
+α
+)
+
+
+
+f
+
+′
+
+
+(
+α
+)
+
+
+
+|
+
+
+ϵ
+
+n
+
+
+<
+1
+,
+
+ for 
+
+n
+∈
+
+
+Z
+
+
++
+
+
+∪
+{
+0
+}
+
+ and 
+
+C
+
+ satisfying condition (b) 
+
+.
+
+
+
+{\displaystyle C\left|{\frac {f^{\prime \prime }(\alpha )}{f^{\prime }(\alpha )}}\right|\epsilon _{n}<1,{\text{ for }}n\in \mathrm {Z} ^{+}\cup \{0\}{\text{ and }}C{\text{ satisfying condition (b) }}.\,}
+
+
+Finally, (6) can be expressed in the following way:
+where M is the supremum of the variable coefficient of 
+
+
+
+
+
+
+ϵ
+
+n
+
+
+
+
+2
+
+
+
+
+
+{\displaystyle {\epsilon _{n}}^{2}\,}
+
+ on the interval 
+
+
+
+I
+
+
+
+{\displaystyle I\,}
+
+ defined in the condition 1, that is:
+The initial point 
+
+
+
+
+x
+
+0
+
+
+
+
+
+{\displaystyle x_{0}\,}
+
+ has to be chosen such that conditions 1 through 3 are satisfied, where the third condition requires that 
+
+
+
+M
+
+|
+
+ϵ
+
+0
+
+
+|
+
+<
+1.
+
+
+
+{\displaystyle M\left|\epsilon _{0}\right|<1.\,}
+
+
+The basins of attraction—the regions of the real number line such that within each region iteration from any point leads to one particular root—can be infinite in number and arbitrarily small. For example,[3] for the function 
+
+
+
+f
+(
+x
+)
+=
+
+x
+
+3
+
+
+−
+2
+
+x
+
+2
+
+
+−
+11
+x
++
+12
+=
+(
+x
+−
+4
+)
+(
+x
+−
+1
+)
+(
+x
++
+3
+)
+
+
+{\displaystyle f(x)=x^{3}-2x^{2}-11x+12=(x-4)(x-1)(x+3)}
+
+, the following initial conditions are in successive basins of attraction:
+Newton's method is only guaranteed to converge if certain conditions are satisfied. If the assumptions made in the proof of quadratic convergence are met, the method will converge. For the following subsections, failure of the method to converge indicates that the assumptions made in the proof were not met.
+In some cases the conditions on the function that are necessary for convergence are satisfied, but the point chosen as the initial point is not in the interval where the method converges. This can happen, for example, if the function whose root is sought approaches zero asymptotically as x goes to 
+
+
+
+∞
+
+
+{\displaystyle \infty }
+
+ or 
+
+
+
+−
+∞
+
+
+{\displaystyle -\infty }
+
+. In such cases a different method, such as bisection, should be used to obtain a better estimate for the zero to use as an initial point.
+Consider the function:
+It has a maximum at x = 0 and solutions of f(x) = 0 at x = ±1. If we start iterating from the stationary point x0 = 0 (where the derivative is zero), x1 will be undefined, since the tangent at (0,1) is parallel to the x-axis:
+The same issue occurs if, instead of the starting point, any iteration point is stationary. Even if the derivative is small but not zero, the next iteration will be a far worse approximation.
+For some functions, some starting points may enter an infinite cycle, preventing convergence. Let
+and take 0 as the starting point. The first iteration produces 1 and the second iteration returns to 0 so the sequence will alternate between the two without converging to a root. In fact, this 2-cycle is stable: there are neighborhoods around 0 and around 1 from which all points iterate asymptotically to the 2-cycle (and hence not to the root of the function). In general, the behavior of the sequence can be very complex (see Newton fractal).The real solution of this equation is -1.76929235...
+If the function is not continuously differentiable in a neighborhood of the root then it is possible that Newton's method will always diverge and fail, unless the solution is guessed on the first try.
+A simple example of a function where Newton's method diverges is trying to find the cube root of zero. The cube root is continuous and infinitely differentiable, except for x = 0, where its derivative is undefined:
+For any iteration point xn, the next iteration point will be:
+The algorithm overshoots the solution and lands on the other side of the y-axis, farther away than it initially was; applying Newton's method actually doubles the distances from the solution at each iteration.
+In fact, the iterations diverge to infinity for every 
+
+
+
+f
+(
+x
+)
+=
+
+|
+
+x
+
+
+|
+
+
+α
+
+
+
+
+{\displaystyle f(x)=|x|^{\alpha }}
+
+, where 
+
+
+
+0
+<
+α
+<
+
+
+
+1
+2
+
+
+
+
+
+{\displaystyle 0<\alpha <{\tfrac {1}{2}}}
+
+. In the limiting case of 
+
+
+
+α
+=
+
+
+
+1
+2
+
+
+
+
+
+{\displaystyle \alpha ={\tfrac {1}{2}}}
+
+ (square root), the iterations will alternate indefinitely between points x0 and −x0, so they do not converge in this case either.
+If the derivative is not continuous at the root, then convergence may fail to occur in any neighborhood of the root. Consider the function
+Its derivative is:
+Within any neighborhood of the root, this derivative keeps changing sign as x approaches 0 from the right (or from the left) while f(x) ≥ x − x2 > 0 for 0 < x < 1.
+So f(x)/f'(x) is unbounded near the root, and Newton's method will diverge almost everywhere in any neighborhood of it, even though:
+In some cases the iterates converge but do not converge as quickly as promised. In these cases simpler methods converge just as quickly as Newton's method.
+If the first derivative is zero at the root, then convergence will not be quadratic. Let
+then 
+
+
+
+
+f
+′
+
+(
+x
+)
+=
+2
+x
+
+
+
+{\displaystyle f'(x)=2x\!}
+
+ and consequently 
+
+
+
+x
+−
+f
+(
+x
+)
+
+/
+
+
+f
+′
+
+(
+x
+)
+=
+x
+
+/
+
+2
+
+
+
+{\displaystyle x-f(x)/f'(x)=x/2\!}
+
+. So convergence is not quadratic, even though the function is infinitely differentiable everywhere.
+Similar problems occur even when the root is only "nearly" double. For example, let
+Then the first few iterates starting at x0 = 1 are 1, 0.500250376, 0.251062828, 0.127507934, 0.067671976, 0.041224176, 0.032741218, 0.031642362; it takes six iterations to reach a point where the convergence appears to be quadratic.
+If there is no second derivative at the root, then convergence may fail to be quadratic. Let
+Then
+And
+except when 
+
+
+
+x
+=
+0
+
+
+
+{\displaystyle x=0\!}
+
+ where it is undefined. Given 
+
+
+
+
+x
+
+n
+
+
+
+
+
+{\displaystyle x_{n}\!}
+
+,
+which has approximately 4/3 times as many bits of precision as 
+
+
+
+
+x
+
+n
+
+
+
+
+
+{\displaystyle x_{n}\!}
+
+ has. This is less than the 2 times as many which would be required for quadratic convergence. So the convergence of Newton's method (in this case) is not quadratic, even though: the function is continuously differentiable everywhere; the derivative is not zero at the root; and 
+
+
+
+f
+
+
+
+{\displaystyle f\!}
+
+ is infinitely differentiable except at the desired root.
+When dealing with complex functions, Newton's method can be directly applied to find their zeroes. Each zero has a basin of attraction in the complex plane, the set of all starting values that cause the method to converge to that particular zero. These sets can be mapped as in the image shown. For many complex functions, the boundaries of the basins of attraction are fractals.
+In some cases there are regions in the complex plane which are not in any of these basins of attraction, meaning the iterates do not converge. For example,[4] if one uses a real initial condition to seek a root of 
+
+
+
+
+x
+
+2
+
+
++
+1
+
+
+{\displaystyle x^{2}+1}
+
+, all subsequent iterates will be real numbers and so the iterations cannot converge to either root, since both roots are non-real. In this case almost all real initial conditions lead to chaotic behavior, while some initial conditions iterate either to infinity or to repeating cycles of any finite length.
+Curt McMullen has shown that for any possible purely iterative algorithm similar to Newton's Method, the algorithm will diverge on some open regions of the complex plane when applied to some polynomial of degree d ≥ 4. However, McMullen gave a generally convergent algorithm for polynomials of degree d = 3.[5]
+One may also use Newton's method to solve systems of k (non-linear) equations, which amounts to finding the zeroes of continuously differentiable functions F : Rk → Rk. In the formulation given above, one then has to left multiply with the inverse of the k-by-k Jacobian matrix JF(xn) instead of dividing by f '(xn).
+Rather than actually computing the inverse of this matrix, one can save time by solving the system of linear equations
+for the unknown xn+1 − xn.
+The k-dimensional Newton's method can be used to solve systems of >k (non-linear) equations as well if the algorithm uses the generalized inverse of the non-square Jacobian matrix J+ = (JTJ)−1JT instead of the inverse of J. If the nonlinear system has no solution, the method attempts to find a solution in the non-linear least squares sense. See Gauss–Newton algorithm for more information.
+Another generalization is Newton's method to find a root of a functional F defined in a Banach space. In this case the formulation is
+where 
+
+
+
+
+F
+
+′
+
+
+(
+
+X
+
+n
+
+
+)
+
+
+{\displaystyle F^{\prime }(X_{n})}
+
+ is the Fréchet derivative computed at 
+
+
+
+
+X
+
+n
+
+
+
+
+{\displaystyle X_{n}}
+
+. One needs the Fréchet derivative to be boundedly invertible at each 
+
+
+
+
+X
+
+n
+
+
+
+
+{\displaystyle X_{n}}
+
+ in order for the method to be applicable. A condition for existence of and convergence to a root is given by the Newton–Kantorovich theorem.
+In p-adic analysis, the standard method to show a polynomial equation in one variable has a p-adic root is Hensel's lemma, which uses the recursion from Newton's method on the p-adic numbers. Because of the more stable behavior of addition and multiplication in the p-adic numbers compared to the real numbers (specifically, the unit ball in the p-adics is a ring), convergence in Hensel's lemma can be guaranteed under much simpler hypotheses than in the classical Newton's method on the real line.
+The Newton-Fourier method is Joseph Fourier's extension of Newton's method to provide bounds on the absolute error of the root approximation, while still providing quadratic convergence.
+Assume that 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ is twice continuously differentiable on 
+
+
+
+[
+a
+,
+b
+]
+
+
+{\displaystyle [a,b]}
+
+ and that 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ contains a root in this interval. Assume that 
+
+
+
+
+f
+′
+
+(
+x
+)
+
+f
+″
+
+(
+x
+)
+≠
+0
+
+
+{\displaystyle f'(x)f''(x)\neq 0}
+
+ on this interval (this is the case for instance if 
+
+
+
+f
+(
+a
+)
+<
+0
+
+
+{\displaystyle f(a)<0}
+
+, 
+
+
+
+f
+(
+b
+)
+>
+0
+
+
+{\displaystyle f(b)>0}
+
+, and 
+
+
+
+
+f
+′
+
+(
+x
+)
+>
+0
+
+
+{\displaystyle f'(x)>0}
+
+, and 
+
+
+
+
+f
+″
+
+(
+x
+)
+>
+0
+
+
+{\displaystyle f''(x)>0}
+
+ on this interval). This guarantees that there is a unique root on this interval, call it 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+. If it is concave down instead of concave up then replace 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ by 
+
+
+
+−
+f
+(
+x
+)
+
+
+{\displaystyle -f(x)}
+
+ since they have the same roots.
+Let 
+
+
+
+
+x
+
+0
+
+
+=
+b
+
+
+{\displaystyle x_{0}=b}
+
+ be the right endpoint of the interval and let 
+
+
+
+
+z
+
+0
+
+
+=
+a
+
+
+{\displaystyle z_{0}=a}
+
+ be the left endpoint of the interval. Given 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+, define 
+
+
+
+
+x
+
+n
++
+1
+
+
+=
+
+x
+
+n
+
+
+−
+
+
+
+f
+(
+
+x
+
+n
+
+
+)
+
+
+
+f
+′
+
+(
+
+x
+
+n
+
+
+)
+
+
+
+
+
+{\displaystyle x_{n+1}=x_{n}-{\frac {f(x_{n})}{f'(x_{n})}}}
+
+, which is just Newton's method as before. Then define 
+
+
+
+
+z
+
+n
++
+1
+
+
+=
+
+z
+
+n
+
+
+−
+
+
+
+f
+(
+
+z
+
+n
+
+
+)
+
+
+
+f
+′
+
+(
+
+x
+
+n
+
+
+)
+
+
+
+
+
+{\displaystyle z_{n+1}=z_{n}-{\frac {f(z_{n})}{f'(x_{n})}}}
+
+, where the denominator is 
+
+
+
+
+f
+′
+
+(
+
+x
+
+n
+
+
+)
+
+
+{\displaystyle f'(x_{n})}
+
+ and not 
+
+
+
+
+f
+′
+
+(
+
+z
+
+n
+
+
+)
+
+
+{\displaystyle f'(z_{n})}
+
+. The iterates 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+ will be strictly decreasing to the root while the iterates 
+
+
+
+
+z
+
+n
+
+
+
+
+{\displaystyle z_{n}}
+
+ will be strictly increasing to the root. Also, 
+
+
+
+
+lim
+
+n
+→
+∞
+
+
+
+
+
+
+x
+
+n
++
+1
+
+
+−
+
+z
+
+n
++
+1
+
+
+
+
+(
+
+x
+
+n
+
+
+−
+
+z
+
+n
+
+
+
+)
+
+2
+
+
+
+
+
+=
+
+
+
+
+f
+″
+
+(
+α
+)
+
+
+2
+
+f
+′
+
+(
+α
+)
+
+
+
+
+
+{\displaystyle \lim _{n\to \infty }{\frac {x_{n+1}-z_{n+1}}{(x_{n}-z_{n})^{2}}}={\frac {f''(\alpha )}{2f'(\alpha )}}}
+
+ so that distance between 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+ and 
+
+
+
+
+z
+
+n
+
+
+
+
+{\displaystyle z_{n}}
+
+ decreases quadratically.
+When the Jacobian is unavailable or too expensive to compute at every iteration, a Quasi-Newton method can be used.
+Newton's method can be used to find a minimum or maximum of a function. The derivative is zero at a minimum or maximum, so minima and maxima can be found by applying Newton's method to the derivative. The iteration becomes:
+An important application is Newton–Raphson division, which can be used to quickly find the reciprocal of a number, using only multiplication and subtraction.
+Finding the reciprocal of a amounts to finding the root of the function
+Newton's iteration is
+Therefore, Newton's iteration needs only two multiplications and one subtraction.
+This method is also very efficient to compute the multiplicative inverse of a power series.
+Many transcendental equations can be solved using Newton's method. Given the equation
+with g(x) and/or h(x) a transcendental function, one writes
+The values of x that solves the original equation are then the roots of f(x), which may be found via Newton's method.
+Consider the problem of finding the square root of a number. Newton's method is one of many methods of computing square roots.
+For example, if one wishes to find the square root of 612, this is equivalent to finding the solution to
+The function to use in Newton's method is then,
+with derivative,
+With an initial guess of 10, the sequence given by Newton's method is
+where the correct digits are underlined. With only a few iterations one can obtain a solution accurate to many decimal places.
+Consider the problem of finding the positive number x with cos(x) = x3. We can rephrase that as finding the zero of f(x) = cos(x) − x3. We have f'(x) = −sin(x) − 3x2. Since cos(x) ≤ 1 for all x and x3 > 1 for x > 1, we know that our solution lies between 0 and 1. We try a starting value of x0 = 0.5. (Note that a starting value of 0 will lead to an undefined result, showing the importance of using a starting point that is close to the solution.)
+The correct digits are underlined in the above example. In particular, x6 is correct to the number of decimal places given. We see that the number of correct digits after the decimal point increases from 2 (for x3) to 5 and 10, illustrating the quadratic convergence.
+The following is an example of using the Newton's Method to help find a root of a function f which has derivative fprime.
+The initial guess will be 
+
+
+
+
+x
+
+0
+
+
+=
+1
+
+
+{\displaystyle x_{0}=1}
+
+ and the function will be 
+
+
+
+f
+(
+x
+)
+=
+
+x
+
+2
+
+
+−
+2
+
+
+{\displaystyle f(x)=x^{2}-2}
+
+ so that 
+
+
+
+
+f
+′
+
+(
+x
+)
+=
+2
+x
+
+
+{\displaystyle f'(x)=2x}
+
+.
+Each new iterative of Newton's method will be denoted by x1. We will check during the computation whether the denominator (yprime) becomes too small (smaller than epsilon), which would be the case if 
+
+
+
+
+f
+′
+
+(
+
+x
+
+n
+
+
+)
+≈
+0
+
+
+{\displaystyle f'(x_{n})\approx 0}
+
+, since otherwise a large amount of error could be introduced.

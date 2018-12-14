@@ -1,0 +1,8 @@
+{
+    "about": "Native processing can have a general, wider meaning (any processing that is performed in the CPU's instruction set, rather than in some higher-level intermediate code that is specific to the given application). However, it is specifically used in digital audio to indicate processing that is done by the computer's CPU (rather than by DSP or outboard processing, which is done by additional 3rd party DSP chips located on extension cards or external hardware boxes or racks).", 
+    "name": "Native Processing", 
+    "classification": "Digital Signal Processing", 
+    "full_text": "Native processing can have a general, wider meaning (any processing that is performed in the CPU's instruction set, rather than in some higher-level intermediate code that is specific to the given application). However, it is specifically used in digital audio to indicate processing that is done by the computer's CPU (rather than by DSP or outboard processing, which is done by additional 3rd party DSP chips located on extension cards or external hardware boxes or racks).\nA lot of Digital Audio Workstations such as Logic Pro, Cubase, Digital Performer and Pro Tools LE use native processing.\nOthers, such as Pro Tools HD, Universal Audio's UAD-1 and TC Electronic's Powercore use DSP processing.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Native_processing", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Native_processing\n"
+}

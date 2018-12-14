@@ -1,0 +1,751 @@
+ABOUT
+Free convolution is the free probability analog of the classical notion of convolution of probability measures. Due to the non-commutative nature of free probability theory, one has to talk separately about additive and multiplicative free convolution, which arise from addition and multiplication of free random variables (see below; in the classical case, what would be the analog of free multiplicative convolution can be reduced to additive convolution by passing to logarithms of random variables). These operations have some interpretations in terms of empirical spectral measures of random matrices.[1]
+FULL TEXT
+Free convolution is the free probability analog of the classical notion of convolution of probability measures. Due to the non-commutative nature of free probability theory, one has to talk separately about additive and multiplicative free convolution, which arise from addition and multiplication of free random variables (see below; in the classical case, what would be the analog of free multiplicative convolution can be reduced to additive convolution by passing to logarithms of random variables). These operations have some interpretations in terms of empirical spectral measures of random matrices.[1]
+The notion of free convolution was introduced by Voiculescu.[2][3]
+
+
+Let 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ and 
+
+
+
+ν
+
+
+{\displaystyle \nu }
+
+ be two probability measures on the real line, and assume that 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ is a random variable in a non commutative probability space with law 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ and 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+ is a random variable in the same non commutative probability space with law 
+
+
+
+ν
+
+
+{\displaystyle \nu }
+
+. Assume finally that 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ and 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+ are freely independent. Then the free additive convolution 
+
+
+
+μ
+⊞
+ν
+
+
+{\displaystyle \mu \boxplus \nu }
+
+ is the law of 
+
+
+
+X
++
+Y
+
+
+{\displaystyle X+Y}
+
+. Random matrices interpretation: if 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ and 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ are some independent 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ by 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ Hermitian (resp. real symmetric) random matrices such that at least one of them is invariant, in law, under conjugation by any unitary (resp. orthogonal) matrix and such that the empirical spectral measures of 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ and 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ tend respectively to 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ and 
+
+
+
+ν
+
+
+{\displaystyle \nu }
+
+ as 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ tends to infinity, then the empirical spectral measure of 
+
+
+
+A
++
+B
+
+
+{\displaystyle A+B}
+
+ tends to 
+
+
+
+μ
+⊞
+ν
+
+
+{\displaystyle \mu \boxplus \nu }
+
+.[4]
+In many cases, it is possible to compute the probability measure 
+
+
+
+μ
+⊞
+ν
+
+
+{\displaystyle \mu \boxplus \nu }
+
+ explicitly by using complex-analytic techniques and the R-transform of the measures 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ and 
+
+
+
+ν
+
+
+{\displaystyle \nu }
+
+.
+The rectangular free additive convolution (with ratio 
+
+
+
+c
+
+
+{\displaystyle c}
+
+) 
+
+
+
+
+⊞
+
+c
+
+
+
+
+{\displaystyle \boxplus _{c}}
+
+ has also been defined in the non commutative probability framework by Benaych-Georges[5] and admits the following random matrices interpretation. For 
+
+
+
+c
+∈
+[
+0
+,
+1
+]
+
+
+{\displaystyle c\in [0,1]}
+
+, for 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ and 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ are some independent 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ by 
+
+
+
+p
+
+
+{\displaystyle p}
+
+ complex (resp. real) random matrices such that at least one of them is invariant, in law, under multiplication on the left and on the right by any unitary (resp. orthogonal) matrix and such that the empirical singular values distribution of 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ and 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ tend respectively to 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ and 
+
+
+
+ν
+
+
+{\displaystyle \nu }
+
+ as 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ and 
+
+
+
+p
+
+
+{\displaystyle p}
+
+ tend to infinity in such a way that 
+
+
+
+n
+
+/
+
+p
+
+
+{\displaystyle n/p}
+
+ tends to 
+
+
+
+c
+
+
+{\displaystyle c}
+
+, then the empirical singular values distribution of 
+
+
+
+A
++
+B
+
+
+{\displaystyle A+B}
+
+ tends to 
+
+
+
+μ
+
+⊞
+
+c
+
+
+ν
+
+
+{\displaystyle \mu \boxplus _{c}\nu }
+
+.[6]
+In many cases, it is possible to compute the probability measure 
+
+
+
+μ
+
+⊞
+
+c
+
+
+ν
+
+
+{\displaystyle \mu \boxplus _{c}\nu }
+
+ explicitly by using complex-analytic techniques and the rectangular R-transform with ratio 
+
+
+
+c
+
+
+{\displaystyle c}
+
+ of the measures 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ and 
+
+
+
+ν
+
+
+{\displaystyle \nu }
+
+.
+Let 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ and 
+
+
+
+ν
+
+
+{\displaystyle \nu }
+
+ be two probability measures on the interval 
+
+
+
+[
+0
+,
++
+∞
+)
+
+
+{\displaystyle [0,+\infty )}
+
+, and assume that 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ is a random variable in a non commutative probability space with law 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ and 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+ is a random variable in the same non commutative probability space with law 
+
+
+
+ν
+
+
+{\displaystyle \nu }
+
+. Assume finally that 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ and 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+ are freely independent. Then the free multiplicative convolution 
+
+
+
+μ
+⊠
+ν
+
+
+{\displaystyle \mu \boxtimes \nu }
+
+ is the law of 
+
+
+
+
+X
+
+1
+
+/
+
+2
+
+
+Y
+
+X
+
+1
+
+/
+
+2
+
+
+
+
+{\displaystyle X^{1/2}YX^{1/2}}
+
+ (or, equivalently, the law of 
+
+
+
+
+Y
+
+1
+
+/
+
+2
+
+
+X
+
+Y
+
+1
+
+/
+
+2
+
+
+
+
+{\displaystyle Y^{1/2}XY^{1/2}}
+
+. Random matrices interpretation: if 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ and 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ are some independent 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ by 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ non negative Hermitian (resp. real symmetric) random matrices such that at least one of them is invariant, in law, under conjugation by any unitary (resp. orthogonal) matrix and such that the empirical spectral measures of 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ and 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ tend respectively to 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ and 
+
+
+
+ν
+
+
+{\displaystyle \nu }
+
+ as 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ tends to infinity, then the empirical spectral measure of 
+
+
+
+A
+B
+
+
+{\displaystyle AB}
+
+ tends to 
+
+
+
+μ
+⊠
+ν
+
+
+{\displaystyle \mu \boxtimes \nu }
+
+.[7]
+A similar definition can be made in the case of laws 
+
+
+
+μ
+,
+ν
+
+
+{\displaystyle \mu ,\nu }
+
+ supported on the unit circle 
+
+
+
+{
+z
+:
+
+|
+
+z
+
+|
+
+=
+1
+}
+
+
+{\displaystyle \{z:|z|=1\}}
+
+, with an orthogonal or unitary random matrices interpretation.
+Explicit computations of multiplicative free convolution can be carried out using complex-analytic techniques and the S-transform.
+Through its applications to random matrices, free convolution has some strong connections with other works on G-estimation of Girko.
+The applications in wireless communications, finance and biology have provided a useful framework when the number of observations is of the same order as the dimensions of the system.

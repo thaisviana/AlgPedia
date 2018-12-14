@@ -1,0 +1,171 @@
+ABOUT
+In complexity theory the class APX (an abbreviation of "approximable") is the set of NP optimization problems that allow polynomial-time approximation algorithms with approximation ratio bounded by a constant (or constant-factor approximation algorithms for short). In simple terms, problems in this class have efficient algorithms that can find an answer within some fixed multiplicative factor of the optimal answer.
+FULL TEXT
+In complexity theory the class APX (an abbreviation of "approximable") is the set of NP optimization problems that allow polynomial-time approximation algorithms with approximation ratio bounded by a constant (or constant-factor approximation algorithms for short). In simple terms, problems in this class have efficient algorithms that can find an answer within some fixed multiplicative factor of the optimal answer.
+An approximation algorithm is called a 
+
+
+
+f
+(
+n
+)
+
+
+{\displaystyle f(n)}
+
+-approximation algorithm for input size 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ if it can be proven that the solution that the algorithm finds is at most a multiplicative factor of 
+
+
+
+f
+(
+n
+)
+
+
+{\displaystyle f(n)}
+
+ times worse than the optimal solution. Here, 
+
+
+
+f
+(
+n
+)
+
+
+{\displaystyle f(n)}
+
+ is called the approximation ratio. Problems in APX are those with algorithms for which the approximation ratio 
+
+
+
+f
+(
+n
+)
+
+
+{\displaystyle f(n)}
+
+ is a constant 
+
+
+
+c
+
+
+{\displaystyle c}
+
+. The approximation ratio is conventionally stated greater than 1. In the case of minimization problems, 
+
+
+
+f
+(
+n
+)
+
+
+{\displaystyle f(n)}
+
+ is the found solution's score divided by the optimum solution's score, while for maximization problems the reverse is the case. For maximization problems, where an inferior solution has a smaller score, 
+
+
+
+f
+(
+n
+)
+
+
+{\displaystyle f(n)}
+
+ is sometimes stated as less than 1; in such cases, the reciprocal of 
+
+
+
+f
+(
+n
+)
+
+
+{\displaystyle f(n)}
+
+ is the ratio of the score of the found solution to the score of the optimum solution.
+If there is a polynomial-time algorithm to solve a problem to within every multiplicative factor of the optimum other than 1, then the problem is said to have a polynomial-time approximation scheme (PTAS). Unless P=NP there exist problems that are in APX but without a PTAS, so the class of problems with a PTAS is strictly contained in APX. One such problem is the bin packing problem.
+
+
+A problem is said to be APX-hard if there is a PTAS reduction from every problem in APX to that problem, and to be APX-complete if the problem is APX-hard and also in APX. As a consequence of P ≠ NP ⇒ PTAS ≠ APX, the fact P ≠ NP implies that no APX-hard problem has a PTAS. In practice, reducing one problem to another to demonstrate APX-completeness is often done using other reduction schemes, such as L-reductions, which imply PTAS reductions.
+One of the simplest APX-complete problems is MAX-3SAT-3, a variation of the boolean satisfiability problem. In this problem, we have a boolean formula in conjunctive normal form where each variable appears at most 3 times, and we wish to know the maximum number of clauses that can be simultaneously satisfied by a single assignment of true/false values to the variables.
+Other APX-complete problems include:
+PTAS (Polynomial Time Approximation Scheme) consists of problems that can be approximated to within any constant factor besides 1 in time that is polynomial to the input size, but the polynomial depends on such factor. This class is a subset of APX.
+Unless P = NP, there exist problems in APX that are neither in PTAS nor APX-complete. Such problems can be thought of as having a hardness between PTAS problems and APX-complete problems, and may be called APX-intermediate. The bin packing problem is thought to be APX-intermediate. Despite not having a known PTAS, the bin packing problem has several "asymptotic PTAS" algorithms, which behave like a PTAS when the optimum solution is large, so intuitively it may be easier than problems that are APX-hard.
+One other example of a potentially APX-intermediate problem is Min Edge Coloring.
+One can also define a family of complexity classes 
+
+
+
+f
+(
+n
+)
+
+
+{\displaystyle f(n)}
+
+-APX, where 
+
+
+
+f
+(
+n
+)
+
+
+{\displaystyle f(n)}
+
+-APX contains problems with a polynomial time approximation algorithm with a 
+
+
+
+O
+(
+f
+(
+n
+)
+)
+
+
+{\displaystyle O(f(n))}
+
+ approximation ratio. One can analogously define 
+
+
+
+f
+(
+n
+)
+
+
+{\displaystyle f(n)}
+
+-APX-complete classes; some such classes contain well-known optimization problems. Log-APX-completeness and Poly-APX-completeness are defined in terms of AP-reductions rather than PTAS-reductions; this is because PTAS-reductions are not strong enough to preserve membership in Log-APX and Poly-APX, even though they suffice for APX.
+Log-APX-complete, consisting of the hardest problems that can be approximated efficiently to within a factor logarithmic in the input size, includes Min Dominating Set when degree is unbounded.
+Poly-APX-complete, consisting of the hardest problems that can be approximated efficiently to within a factor polynomial in the input size, includes Max Independent Set in the general case.
+There also exist problems that are Exp-APX-complete, where the approximation ratio is exponential in the input size. This may occur when the approximation is dependent on the value of numbers within the problem instance; these numbers may be expressed in space logarithmic in their value, hence the exponential factor.

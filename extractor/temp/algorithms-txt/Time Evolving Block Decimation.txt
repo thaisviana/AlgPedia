@@ -1,0 +1,3138 @@
+ABOUT
+The time-evolving block decimation (TEBD) algorithm is a numerical scheme used to simulate one-dimensional quantum many-body systems, characterized by at most nearest-neighbour interactions. It is dubbed Time-evolving Block Decimation because it dynamically identifies the relevant low-dimensional Hilbert subspaces of an exponentially larger original Hilbert space. The algorithm, based on the Matrix Product States formalism, is highly efficient when the amount of entanglement in the system is limited, a requirement fulfilled by a large class of quantum many-body systems in one dimension.
+FULL TEXT
+The time-evolving block decimation (TEBD) algorithm is a numerical scheme used to simulate one-dimensional quantum many-body systems, characterized by at most nearest-neighbour interactions. It is dubbed Time-evolving Block Decimation because it dynamically identifies the relevant low-dimensional Hilbert subspaces of an exponentially larger original Hilbert space. The algorithm, based on the Matrix Product States formalism, is highly efficient when the amount of entanglement in the system is limited, a requirement fulfilled by a large class of quantum many-body systems in one dimension.
+
+
+There is nowadays a considerable interest in the field of quantum theory for computational methods well-suited to the physics of many-body systems. Considering the inherent difficulties of simulating general quantum many-body systems, the exponential increase in parameters with the size of the system, and correspondingly, the high computational costs, one solution would be to look for numerical methods that deal with special cases, where one can profit from the physics of the system. The raw approach, by directly dealing with all the parameters used to fully characterize a quantum many-body system is seriously impeded by the lavishly exponential buildup with the system size of the amount of variables needed for simulation, which leads, in the best cases, to unreasonably long computational times and extended use of memory. To get around this problem a number of various methods have been developed and put into practice in the course of time, one of the most successful ones being the quantum Monte Carlo method (QMC). Also the density matrix renormalization group (DMRG) method, next to QMC, is a very reliable method, with an expanding community of users and an increasing number of applications to physical systems.
+When the first quantum computer will be plugged in and functioning, the perspectives for the field of computational physics will look rather promising, but until that day one has to restrict oneself to the mundane tools offered by classical computers. While experimental physicists are putting a lot of effort in trying to build the first quantum computer, theoretical physicists are searching, in the field of quantum information theory (QIT), for genuine quantum algorithms, appropriate for problems that would perform badly when trying to be solved on a classical computer, but pretty fast and successful on a quantum one. The search for such algorithms is still going, the best-known (and almost the only ones found) being the Shor's algorithm, for factoring large numbers, and Grover's search algorithm.
+In the field of QIT one has to identify the primary resources necessary for genuine quantum computation. Such a resource may be responsible for the speedup gain in quantum versus classical, identifying them means also identifying systems that can be simulated in a reasonably efficient manner on a classical computer. Such a resource is quantum entanglement; hence, it is possible to establish a distinct lower bound for the entanglement needed for quantum computational speedups.
+Guifré Vidal, then at the Institute for Quantum Information, Caltech, has recently proposed a scheme useful for simulating a certain category of quantum[1] systems. He asserts that "any quantum computation with pure states can be efficiently simulated with a classical computer provided the amount of entanglement involved is sufficiently restricted" . This happens to be the case with generic Hamiltonians displaying local interactions, as for example, Hubbard-like Hamiltonians. The method exhibits a low-degree polynomial behavior in the increase of computational time with respect to the amount of entanglement present in the system. The algorithm is based on a scheme that exploits the fact that in these one-dimensional systems the eigenvalues of the reduced density matrix on a bipartite split of the system are exponentially decaying, thus allowing us to work in a re-sized space spanned by the eigenvectors corresponding to the eigenvalues we selected.
+One can also estimate the amount of computational resources required for the simulation of a quantum system on a classical computer, knowing how the entanglement contained in the system scales with the size of the system. The classically (and quantum, as well) feasible simulations are those that involve systems only a trifle entangled—the strongly entangled ones being, on the other hand, good candidates only for genuine quantum computations.
+The numerical method is efficient in simulating real-time dynamics or calculations of ground states using imaginary-time evolution or isentropic interpolations between a target Hamiltonian and a Hamiltonian with an already-known ground state. The computational time scales linearly with the system size, hence many-particles systems in 1D can be investigated.
+A useful feature of the TEBD algorithm is that it can be reliably employed for time evolution simulations of time-dependent Hamiltonians, describing systems that can be realized with cold atoms in optical lattices, or in systems far from equilibrium in quantum transport. From this point of view, TEBD had a certain ascendance over DMRG, a very powerful technique, but until recently not very well suited for simulating time-evolutions. With the Matrix Product States formalism being at the mathematical heart of DMRG, the TEBD scheme was adopted by the DMRG community, thus giving birth to the time dependent DMRG [6], t-DMRG for short.
+Around the same time, other groups have developed similar approaches in which quantum information plays a predominant role as, for example, in DMRG implementations for periodic boundary conditions [7], and for studying mixed-state dynamics in one-dimensional quantum lattice systems,.[2][3] Those last approaches actually provide a formalism that is more general than the original TEBD approach, as it also allows to deal with evolutions with matrix product operators; this enables the simulation of nontrivial non-infinitesimal evolutions as opposed to the TEBD case, and is a crucial ingredient to deal with higher-dimensional analogues of matrix product states.
+Let us consider a chain of N qubits, described by the function 
+
+
+
+
+|
+
+Ψ
+⟩
+∈
+
+H
+
+
+⊗
+
+N
+
+
+
+
+{\displaystyle |\Psi \rangle \in H^{{\otimes }N}}
+
+. The most natural way of describing 
+
+
+
+
+|
+
+Ψ
+⟩
+
+
+{\displaystyle |\Psi \rangle }
+
+ would be using the local 
+
+
+
+
+M
+
+N
+
+
+
+
+{\displaystyle M^{N}}
+
+-dimensional basis 
+
+
+
+
+|
+
+
+i
+
+1
+
+
+,
+
+i
+
+2
+
+
+,
+.
+.
+,
+
+i
+
+N
+−
+1
+
+
+,
+
+i
+
+N
+
+
+⟩
+
+
+{\displaystyle |i_{1},i_{2},..,i_{N-1},i_{N}\rangle }
+
+:
+where M is the on-site dimension.
+The trick of TEBD is to re-write the coefficients 
+
+
+
+
+c
+
+
+i
+
+1
+
+
+
+i
+
+2
+
+
+.
+.
+
+i
+
+N
+
+
+
+
+
+
+{\displaystyle c_{i_{1}i_{2}..i_{N}}}
+
+:
+This may seem rather esoteric in the beginning but let's try take a look at how this decomposition is obtained and what it is good for.
+For this we have to make use of another piece of mathematics called the Schmidt decomposition of a state, or singular value decomposition.
+Let us consider the state of a bipartite system 
+
+
+
+|
+Ψ
+⟩
+∈
+
+
+H
+
+A
+
+
+⊗
+
+H
+
+B
+
+
+
+
+
+{\displaystyle \vert \Psi \rangle \in {H_{A}\otimes H_{B}}}
+
+. Every such state 
+
+
+
+
+|
+
+
+Ψ
+
+⟩
+
+
+{\displaystyle |{\Psi }\rangle }
+
+ can be represented in an appropriately chosen basis as:
+where 
+
+
+
+
+|
+
+
+
+Φ
+
+i
+
+
+A
+
+
+
+Φ
+
+i
+
+
+B
+
+
+
+⟩
+=
+
+|
+
+
+
+Φ
+
+i
+
+
+A
+
+
+
+⟩
+⊗
+
+|
+
+
+
+Φ
+
+i
+
+
+B
+
+
+
+⟩
+
+
+{\displaystyle |{\Phi _{i}^{A}\Phi _{i}^{B}}\rangle =|{\Phi _{i}^{A}}\rangle \otimes |{\Phi _{i}^{B}}\rangle }
+
+ are formed with vectors 
+
+
+
+
+|
+
+
+
+Φ
+
+i
+
+
+A
+
+
+
+⟩
+
+
+{\displaystyle |{\Phi _{i}^{A}}\rangle }
+
+ that make an orthonormal basis in 
+
+
+
+
+H
+
+A
+
+
+
+
+{\displaystyle H_{A}}
+
+ and, correspondingly, vectors 
+
+
+
+
+|
+
+
+
+Φ
+
+i
+
+
+B
+
+
+
+⟩
+
+
+{\displaystyle |{\Phi _{i}^{B}}\rangle }
+
+, which form an orthonormal basis in 
+
+
+
+
+
+H
+
+B
+
+
+
+
+
+{\displaystyle {H_{B}}}
+
+, with the coefficients 
+
+
+
+
+a
+
+i
+
+
+
+
+{\displaystyle a_{i}}
+
+ being real and positive, 
+
+
+
+
+∑
+
+i
+=
+1
+
+
+M
+
+
+
+a
+
+i
+
+
+2
+
+
+=
+1
+
+
+{\displaystyle \sum \limits _{i=1}^{M}a_{i}^{2}=1}
+
+. This is called the Schmidt decomposition (SD) of a state. The summation can go up to 
+
+
+
+
+M
+
+max
+
+
+=
+min
+(
+dim
+⁡
+(
+
+
+H
+
+A
+
+
+
+)
+,
+dim
+⁡
+(
+
+
+H
+
+B
+
+
+
+)
+)
+
+
+{\displaystyle M_{\max }=\min(\dim({H_{A}}),\dim({H_{B}}))}
+
+, the lowest of the two Hilbert spaces. The Schmidt rank of a bipartite split is given by the number of non-zero Schmidt coefficients. If the Schmidt rank is one, the split is characterized by a product state. The vectors of the SD are determined up to a phase and the eigenvalues and the Schmidt rank are unique.
+For example, the two-qubit state:
+has the following SD:
+with
+On the other hand, the state:
+is a product state:
+At this point we probably know enough to try to see how we explicitly build the decomposition (let's call it D).
+Consider the bipartite splitting 
+
+
+
+[
+1
+]
+:
+[
+2..
+N
+]
+
+
+{\displaystyle [1]:[2..N]}
+
+. The SD has the coefficients 
+
+
+
+
+λ
+
+
+
+α
+
+
+1
+
+
+
+
+[
+1
+]
+
+
+
+
+{\displaystyle \lambda _{{\alpha }_{1}}^{[1]}}
+
+ and eigenvectors 
+
+
+
+
+|
+
+
+
+Φ
+
+
+α
+
+1
+
+
+
+
+[
+1
+]
+
+
+
+⟩
+
+|
+
+
+
+Φ
+
+
+α
+
+1
+
+
+
+
+[
+2..
+N
+]
+
+
+
+⟩
+
+
+{\displaystyle |{\Phi _{\alpha _{1}}^{[1]}}\rangle |{\Phi _{\alpha _{1}}^{[2..N]}}\rangle }
+
+. By expanding the 
+
+
+
+
+|
+
+
+
+Φ
+
+
+α
+
+1
+
+
+
+
+[
+1
+]
+
+
+
+⟩
+
+
+{\displaystyle |{\Phi _{\alpha _{1}}^{[1]}}\rangle }
+
+'s in the local basis, one can write:
+The process can be decomposed in three steps, iterated for each bond (and, correspondingly, SD) in the chain:
+Step 1: express the 
+
+
+
+
+|
+
+
+
+Φ
+
+
+α
+
+1
+
+
+
+
+[
+2..
+N
+]
+
+
+
+⟩
+
+
+{\displaystyle |{\Phi _{\alpha _{1}}^{[2..N]}}\rangle }
+
+'s in a local basis for qubit 2:
+The vectors 
+
+
+
+
+|
+
+
+
+τ
+
+
+α
+
+1
+
+
+
+i
+
+2
+
+
+
+
+[
+3..
+N
+]
+
+
+
+⟩
+
+
+{\displaystyle |{\tau _{\alpha _{1}i_{2}}^{[3..N]}}\rangle }
+
+ are not necessarily normalized.
+Step 2: write each vector 
+
+
+
+
+|
+
+
+
+τ
+
+
+α
+
+1
+
+
+
+i
+
+2
+
+
+
+
+[
+3..
+N
+]
+
+
+
+⟩
+
+
+{\displaystyle |{\tau _{\alpha _{1}i_{2}}^{[3..N]}}\rangle }
+
+ in terms of the at most (Vidal's emphasis) 
+
+
+
+χ
+
+
+{\displaystyle \chi }
+
+ Schmidt vectors 
+
+
+
+
+|
+
+
+
+Φ
+
+
+α
+
+2
+
+
+
+
+[
+3..
+N
+]
+
+
+
+⟩
+
+
+{\displaystyle |{\Phi _{\alpha _{2}}^{[3..N]}}\rangle }
+
+ and, correspondingly, coefficients 
+
+
+
+
+λ
+
+
+
+α
+
+
+2
+
+
+
+
+[
+2
+]
+
+
+
+
+{\displaystyle \lambda _{{\alpha }_{2}}^{[2]}}
+
+:
+Step 3: make the substitutions and obtain:
+Repeating the steps 1 to 3, one can construct the whole decomposition of state D. The last 
+
+
+
+Γ
+
+
+{\displaystyle \Gamma }
+
+'s are a special case, like the first ones, expressing the right-hand Schmidt vectors at the 
+
+
+
+(
+N
+−
+1
+
+)
+
+t
+h
+
+
+
+
+{\displaystyle (N-1)^{th}}
+
+ bond in terms of the local basis at the 
+
+
+
+
+N
+
+t
+h
+
+
+
+
+{\displaystyle N^{th}}
+
+ lattice place. As shown in,[1] it is straightforward to obtain the Schmidt decomposition at 
+
+
+
+
+k
+
+t
+h
+
+
+
+
+{\displaystyle k^{th}}
+
+ bond, i.e. 
+
+
+
+[
+1..
+k
+]
+:
+[
+k
++
+1..
+N
+]
+
+
+{\displaystyle [1..k]:[k+1..N]}
+
+, from D.
+The Schmidt eigenvalues, are given explicitly in D:
+The Schmidt eigenvectors are simply:
+and
+Now, looking at D, instead of 
+
+
+
+
+M
+
+N
+
+
+
+
+{\displaystyle M^{N}}
+
+ initial terms, there are 
+
+
+
+
+
+χ
+
+
+2
+
+
+
+⋅
+
+M
+(
+N
+−
+2
+)
++
+2
+
+χ
+
+M
++
+(
+N
+−
+1
+)
+χ
+
+
+{\displaystyle {\chi }^{2}{\cdot }M(N-2)+2{\chi }M+(N-1)\chi }
+
+. Apparently this is just a fancy way of rewriting the coefficients 
+
+
+
+
+c
+
+
+i
+
+1
+
+
+
+i
+
+2
+
+
+.
+.
+
+i
+
+N
+
+
+
+
+
+
+{\displaystyle c_{i_{1}i_{2}..i_{N}}}
+
+, but in fact there is more to it than that. Assuming that N is even, the Schmidt rank 
+
+
+
+χ
+
+
+{\displaystyle \chi }
+
+ for a bipartite cut in the middle of the chain can have a maximal value of 
+
+
+
+
+M
+
+N
+
+/
+
+2
+
+
+
+
+{\displaystyle M^{N/2}}
+
+; in this case we end up with at least 
+
+
+
+
+M
+
+N
++
+1
+
+
+
+⋅
+
+(
+N
+−
+2
+)
+
+
+{\displaystyle M^{N+1}{\cdot }(N-2)}
+
+ coefficients, considering only the 
+
+
+
+
+
+χ
+
+
+2
+
+
+
+
+{\displaystyle {\chi }^{2}}
+
+ ones, slightly more than the initial 
+
+
+
+
+M
+
+N
+
+
+
+
+{\displaystyle M^{N}}
+
+! The truth is that the decomposition D is useful when dealing with systems that exhibit a low degree of entanglement, which fortunately is the case with many 1D systems, where the Schmidt coefficients of the ground state decay in an exponential manner with 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+:
+Therefore, it is possible to take into account only some of the Schmidt coefficients (namely the largest ones), dropping the others and consequently normalizing again the state:
+where 
+
+
+
+
+χ
+
+c
+
+
+
+
+{\displaystyle \chi _{c}}
+
+ is the number of kept Schmidt coefficients.
+Let's get away from this abstract picture and refresh ourselves with a concrete example, to emphasize the advantage of making this decomposition. Consider for instance the case of 50 fermions in a ferromagnetic chain, for the sake of simplicity. A dimension of 12, let's say, for the 
+
+
+
+
+χ
+
+c
+
+
+
+
+{\displaystyle \chi _{c}}
+
+ would be a reasonable choice, keeping the discarded eigenvalues at 
+
+
+
+0.0001
+
+
+{\displaystyle 0.0001}
+
+% of the total, as shown by numerical studies,[4] meaning roughly 
+
+
+
+
+2
+
+14
+
+
+
+
+{\displaystyle 2^{14}}
+
+ coefficients, as compared to the originally 
+
+
+
+
+2
+
+50
+
+
+
+
+{\displaystyle 2^{50}}
+
+ ones.
+Even if the Schmidt eigenvalues don't have this exponential decay, but they show an algebraic decrease, we can still use D to describe our state 
+
+
+
+ψ
+
+
+{\displaystyle \psi }
+
+. The number of coefficients to account for a faithful description of 
+
+
+
+ψ
+
+
+{\displaystyle \psi }
+
+ may be sensibly larger, but still within reach of eventual numerical simulations.
+One can proceed now to investigate the behaviour of the decomposition D when acted upon with one-qubit gates (OQG) and two-qubit gates (TQG) acting on neighbouring qubits. Instead of updating all the 
+
+
+
+
+M
+
+N
+
+
+
+
+{\displaystyle M^{N}}
+
+ coefficients 
+
+
+
+
+c
+
+
+i
+
+1
+
+
+
+i
+
+2
+
+
+.
+.
+
+i
+
+N
+
+
+
+
+
+
+{\displaystyle c_{i_{1}i_{2}..i_{N}}}
+
+, we will restrict ourselves to a number of operations that increase in 
+
+
+
+χ
+
+
+{\displaystyle \chi }
+
+ as a polynomial of low degree, thus saving computational time.
+The OQGs are affecting only the qubit they are acting upon, the update of the state 
+
+
+
+
+|
+
+
+ψ
+
+⟩
+
+
+{\displaystyle |{\psi }\rangle }
+
+ after an unitary operator at qubit k does not modify the Schmidt eigenvalues or vectors on the left, consequently the 
+
+
+
+
+Γ
+
+[
+k
+−
+1
+]
+
+
+
+
+{\displaystyle \Gamma ^{[k-1]}}
+
+'s, or on the right, hence the 
+
+
+
+
+Γ
+
+[
+k
++
+1
+]
+
+
+
+
+{\displaystyle \Gamma ^{[k+1]}}
+
+'s. The only 
+
+
+
+Γ
+
+
+{\displaystyle \Gamma }
+
+'s that will be updated are the 
+
+
+
+
+Γ
+
+[
+k
+]
+
+
+
+
+{\displaystyle \Gamma ^{[k]}}
+
+'s (requiring only at most 
+
+
+
+
+O
+
+(
+
+M
+
+2
+
+
+⋅
+
+χ
+
+2
+
+
+)
+
+
+{\displaystyle {O}(M^{2}\cdot \chi ^{2})}
+
+ operations), as
+The changes required to update the 
+
+
+
+Γ
+
+
+{\displaystyle \Gamma }
+
+'s and the 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+'s, following a unitary operation V on qubits k, k+1, concern only 
+
+
+
+
+Γ
+
+[
+k
+]
+
+
+
+
+{\displaystyle \Gamma ^{[k]}}
+
+, and 
+
+
+
+
+Γ
+
+[
+k
++
+1
+]
+
+
+
+
+{\displaystyle \Gamma ^{[k+1]}}
+
+. They consist of a number of 
+
+
+
+
+O
+
+(
+
+
+M
+⋅
+χ
+
+
+3
+
+
+)
+
+
+{\displaystyle {O}({M\cdot \chi }^{3})}
+
+ basic operations.
+Following Vidal's original approach, 
+
+
+
+
+|
+
+
+ψ
+
+⟩
+
+
+{\displaystyle |{\psi }\rangle }
+
+ can be regarded as belonging to only four subsystems:
+The subspace J is spanned by the eigenvectors of the reduced density matrix 
+
+
+
+
+ρ
+
+J
+
+
+=
+T
+
+r
+
+C
+D
+K
+
+
+
+|
+
+ψ
+⟩
+⟨
+ψ
+
+|
+
+
+
+{\displaystyle \rho ^{J}=Tr_{CDK}|\psi \rangle \langle \psi |}
+
+:
+In a similar way, the subspace K is spanned by the eigenvectors of the reduced density matrix:
+The subspaces 
+
+
+
+
+H
+
+C
+
+
+
+
+{\displaystyle H_{C}}
+
+ and 
+
+
+
+
+H
+
+D
+
+
+
+
+{\displaystyle H_{D}}
+
+ belong to the qubits k and k + 1. Using this basis and the decomposition D, 
+
+
+
+
+|
+
+
+ψ
+
+⟩
+
+
+{\displaystyle |{\psi }\rangle }
+
+ can be written as:
+Using the same reasoning as for the OQG, the applying the TQG V to qubits k, k + 1 one needs only to update
+We can write 
+
+
+
+
+|
+
+
+
+ψ
+′
+
+
+⟩
+=
+V
+
+|
+
+
+ψ
+
+⟩
+
+
+{\displaystyle |{\psi '}\rangle =V|{\psi }\rangle }
+
+ as:
+where
+To find out the new decomposition, the new 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+'s at the bond k and their corresponding Schmidt eigenvectors must be computed and expressed in terms of the 
+
+
+
+
+Γ
+
+
+
+{\displaystyle {\Gamma }}
+
+'s of the decomposition D. The reduced density matrix 
+
+
+
+
+ρ
+
+
+
+′
+
+[
+D
+K
+]
+
+
+
+
+{\displaystyle \rho ^{'[DK]}}
+
+ is therefore diagonalized:
+The square roots of its eigenvalues are the new 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+'s. Expressing the eigenvectors of the diagonalized matrix in the basis :
+
+
+
+{
+
+|
+
+
+j
+γ
+
+⟩
+}
+
+
+{\displaystyle \{|{j\gamma }\rangle \}}
+
+ the 
+
+
+
+
+Γ
+
+[
+
+D
+]
+
+
+
+
+
+{\displaystyle \Gamma ^{[{D]}}}
+
+'s are obtained as well:
+From the left-hand eigenvectors,
+after expressing them in the basis 
+
+
+
+{
+
+|
+
+
+i
+α
+
+⟩
+}
+
+
+{\displaystyle \{|{i\alpha }\rangle \}}
+
+, the 
+
+
+
+
+Γ
+
+[
+
+C
+
+]
+
+
+
+
+{\displaystyle \Gamma ^{[{C}]}}
+
+'s are:
+The dimension of the largest tensors in D is of the order 
+
+
+
+
+O
+
+(
+M
+
+⋅
+
+
+
+χ
+
+
+2
+
+
+)
+
+
+{\displaystyle {O}(M{\cdot }{\chi }^{2})}
+
+; when constructing the 
+
+
+
+
+Θ
+
+α
+γ
+
+
+i
+j
+
+
+
+
+{\displaystyle \Theta _{\alpha \gamma }^{ij}}
+
+ one makes the summation over 
+
+
+
+β
+
+
+{\displaystyle \beta }
+
+, 
+
+
+
+
+
+m
+
+
+
+
+{\displaystyle {\it {m}}}
+
+ and 
+
+
+
+
+
+n
+
+
+
+
+{\displaystyle {\it {n}}}
+
+ for each 
+
+
+
+γ
+,
+α
+,
+
+
+i
+,
+j
+
+
+
+
+{\displaystyle \gamma ,\alpha ,{\it {i,j}}}
+
+, adding up to a total of 
+
+
+
+
+O
+
+(
+
+M
+
+4
+
+
+
+⋅
+
+
+
+χ
+
+
+3
+
+
+)
+
+
+{\displaystyle {O}(M^{4}{\cdot }{\chi }^{3})}
+
+ operations. The same holds for the formation of the elements 
+
+
+
+
+ρ
+
+γ
+
+γ
+′
+
+
+
+j
+
+j
+′
+
+
+
+
+
+{\displaystyle \rho _{\gamma \gamma '}^{jj'}}
+
+, or for computing the left-hand eigenvectors 
+
+
+
+
+λ
+
+β
+
+
+
+
+′
+
+
+
+
+|
+
+
+
+Φ
+
+β
+
+
+
+
+′
+
+[
+
+
+J
+C
+
+
+]
+
+
+
+⟩
+
+
+{\displaystyle \lambda _{\beta }^{'}|{\Phi _{\beta }^{'[{\it {JC}}]}}\rangle }
+
+, a maximum of 
+
+
+
+
+
+O
+
+
+(
+
+M
+
+3
+
+
+
+⋅
+
+
+
+χ
+
+
+3
+
+
+)
+
+
+{\displaystyle {\it {O}}(M^{3}{\cdot }{\chi }^{3})}
+
+, respectively 
+
+
+
+
+
+O
+
+
+(
+
+M
+
+2
+
+
+
+⋅
+
+
+
+χ
+
+
+3
+
+
+)
+
+
+{\displaystyle {\it {O}}(M^{2}{\cdot }{\chi }^{3})}
+
+ basic operations. In the case of qubits, 
+
+
+
+
+
+M
+
+
+=
+2
+
+
+{\displaystyle {\it {M}}=2}
+
+, hence its role is not very relevant for the order of magnitude of the number of basic operations, but in the case when the on-site dimension is higher than two it has a rather decisive contribution.
+The numerical simulation is targeting (possibly time-dependent) Hamiltonians of a system of 
+
+
+
+
+
+N
+
+
+
+
+{\displaystyle {\it {N}}}
+
+ particles, which are composed of arbitrary OQGs and TQGs:
+It is useful to decompose 
+
+
+
+
+H
+
+n
+
+
+
+
+{\displaystyle H_{n}}
+
+ as a sum of two possibly non-commuting terms, 
+
+
+
+
+H
+
+n
+
+
+=
+F
++
+G
+
+
+{\displaystyle H_{n}=F+G}
+
+, where
+Any two-body terms commute: 
+
+
+
+[
+
+F
+
+[
+l
+]
+
+
+,
+
+F
+
+[
+
+l
+′
+
+]
+
+
+]
+=
+0
+
+
+{\displaystyle [F^{[l]},F^{[l']}]=0}
+
+, 
+
+
+
+[
+
+G
+
+[
+l
+]
+
+
+,
+
+G
+
+[
+
+l
+′
+
+]
+
+
+]
+=
+0
+
+
+{\displaystyle [G^{[l]},G^{[l']}]=0}
+
+ This is done to make the Suzuki-Trotter expansion (ST)[5] of the exponential operator.
+The Suzuki-Trotter expansion of the first order (ST1) represents a general way of writing exponential operators:
+or, equivalently
+The correction term vanishes in the limit 
+
+
+
+δ
+→
+0
+
+
+{\displaystyle \delta \rightarrow 0}
+
+
+For simulations of quantum dynamics it is useful to use operators that are unitary, conserving the norm (unlike power series expansions), and there's where the Trotter-Suzuki expansion comes in. In problems of quantum dynamics the unitarity of the operators in the ST expansion proves quite practical, since the error tends to concentrate in the overall phase, thus allowing us to faithfully compute expectation values and conserved quantities. Because the ST conserves the phase-space volume, it is also called a symplectic integrator.
+The trick of the ST2 is to write the unitary operators 
+
+
+
+
+e
+
+−
+i
+H
+t
+
+
+
+
+{\displaystyle e^{-iHt}}
+
+ as:
+where 
+
+
+
+n
+=
+
+
+T
+δ
+
+
+
+
+{\displaystyle n={\frac {T}{\delta }}}
+
+. The number 
+
+
+
+
+
+n
+
+
+
+
+{\displaystyle {\it {n}}}
+
+ is called the Trotter number.
+The operators 
+
+
+
+
+e
+
+
+
+δ
+2
+
+
+F
+
+
+
+
+{\displaystyle e^{{\frac {\delta }{2}}F}}
+
+, 
+
+
+
+
+e
+
+
+δ
+
+G
+
+
+
+
+{\displaystyle e^{{\delta }G}}
+
+ are easy to express, as:
+since any two operators 
+
+
+
+
+F
+
+[
+l
+]
+
+
+
+
+{\displaystyle F^{[l]}}
+
+,
+
+
+
+
+F
+
+[
+
+l
+′
+
+]
+
+
+
+
+{\displaystyle F^{[l']}}
+
+ (respectively, 
+
+
+
+
+G
+
+[
+l
+]
+
+
+
+
+{\displaystyle G^{[l]}}
+
+,
+
+
+
+
+G
+
+[
+
+l
+′
+
+]
+
+
+
+
+{\displaystyle G^{[l']}}
+
+) commute for 
+
+
+
+l
+
+≠
+
+
+l
+′
+
+
+
+{\displaystyle l{\neq }l'}
+
+ and an ST expansion of the first order keeps only the product of the exponentials, the approximation becoming, in this case, exact.
+The time-evolution can be made according to
+For each "time-step" 
+
+
+
+δ
+
+
+{\displaystyle \delta }
+
+, 
+
+
+
+
+e
+
+−
+i
+
+
+δ
+2
+
+
+
+F
+
+[
+l
+]
+
+
+
+
+
+
+{\displaystyle e^{-i{\frac {\delta }{2}}F^{[l]}}}
+
+ are applied successively to all odd sites, then 
+
+
+
+
+e
+
+
+−
+i
+δ
+
+
+G
+
+[
+l
+]
+
+
+
+
+
+
+{\displaystyle e^{{-i\delta }G^{[l]}}}
+
+ to the even ones, and 
+
+
+
+
+e
+
+−
+i
+
+
+δ
+2
+
+
+
+F
+
+[
+l
+]
+
+
+
+
+
+
+{\displaystyle e^{-i{\frac {\delta }{2}}F^{[l]}}}
+
+ again to the odd ones; this is basically a sequence of TQG's, and it has been explained above how to update the decomposition 
+
+
+
+
+
+D
+
+
+
+
+{\displaystyle {\it {D}}}
+
+ when applying them.
+Our goal is to make the time evolution of a state 
+
+
+
+
+|
+
+
+
+ψ
+
+0
+
+
+
+⟩
+
+
+{\displaystyle |{\psi _{0}}\rangle }
+
+ for a time T, towards the state 
+
+
+
+
+|
+
+
+
+ψ
+
+T
+
+
+
+⟩
+
+
+{\displaystyle |{\psi _{T}}\rangle }
+
+ using the n-particle Hamiltonian 
+
+
+
+
+H
+
+n
+
+
+
+
+{\displaystyle H_{n}}
+
+.
+It is rather troublesome, if at all possible, to construct the decomposition 
+
+
+
+
+
+D
+
+
+
+
+{\displaystyle {\it {D}}}
+
+ for an arbitrary n-particle state, since this would mean one has to compute the Schmidt decomposition at each bond, to arrange the Schmidt eigenvalues in decreasing order and to choose the first 
+
+
+
+
+χ
+
+c
+
+
+
+
+{\displaystyle \chi _{c}}
+
+ and the appropriate Schmidt eigenvectors. Mind this would imply diagonalizing somewhat generous reduced density matrices, which, depending on the system one has to simulate, might be a task beyond our reach and patience. Instead, one can try to do the following:
+i) construct the decomposition 
+
+
+
+
+
+D
+
+
+
+
+{\displaystyle {\it {D}}}
+
+ for a simple initial state, let us say, some product state 
+
+
+
+
+|
+
+
+
+ψ
+
+P
+
+
+
+⟩
+
+
+{\displaystyle |{\psi _{P}}\rangle }
+
+, for which the decomposition is straightforward.
+ii) relate 
+
+
+
+
+|
+
+
+
+ψ
+
+0
+
+
+
+⟩
+
+
+{\displaystyle |{\psi _{0}}\rangle }
+
+ to the ground state 
+
+
+
+
+|
+
+
+
+ψ
+
+g
+r
+
+
+
+⟩
+
+
+{\displaystyle |{\psi _{gr}}\rangle }
+
+ of a Hamiltonian 
+
+
+
+
+
+
+H
+~
+
+
+
+
+
+{\displaystyle {\tilde {H}}}
+
+ by a sufficiently local transformation Q (one that can be expressed as a product of TQGs, for example) 
+
+
+
+
+|
+
+
+
+ψ
+
+0
+
+
+
+⟩
+=
+Q
+
+|
+
+
+
+ψ
+
+g
+r
+
+
+
+⟩
+
+
+{\displaystyle |{\psi _{0}}\rangle =Q|{\psi _{gr}}\rangle }
+
+
+iii) make an imaginary-time evolution towards the ground state of the Hamiltonian 
+
+
+
+
+
+
+H
+~
+
+
+
+
+
+{\displaystyle {\tilde {H}}}
+
+, 
+
+
+
+
+|
+
+
+
+ψ
+
+g
+r
+
+
+
+⟩
+
+
+{\displaystyle |{\psi _{gr}}\rangle }
+
+ according to:
+or, alternatively, simulate an isentropic evolution using a time-dependent Hamiltonian, which interpolates between the Hamiltonian 
+
+
+
+
+H
+
+1
+
+
+
+
+{\displaystyle H_{1}}
+
+, which has the product state 
+
+
+
+
+|
+
+
+
+ψ
+
+P
+
+
+
+⟩
+
+
+{\displaystyle |{\psi _{P}}\rangle }
+
+ as its ground state, and the Hamiltonian 
+
+
+
+
+
+
+H
+~
+
+
+
+
+
+{\displaystyle {\tilde {H}}}
+
+; the evolution must be done slow enough, such that the system is always in the ground state or, at least, very close to it.
+iv)finally, make the time-evolution of the state 
+
+
+
+
+|
+
+
+
+ψ
+
+0
+
+
+
+⟩
+
+
+{\displaystyle |{\psi _{0}}\rangle }
+
+ towards 
+
+
+
+
+|
+
+
+
+ψ
+
+T
+
+
+
+⟩
+
+
+{\displaystyle |{\psi _{T}}\rangle }
+
+ using the Hamiltonian 
+
+
+
+
+H
+
+n
+
+
+
+
+{\displaystyle H_{n}}
+
+:
+The errors in the simulation are resulting from the Suzuki-Trotter approximation and the involved truncation of the Hilbert space.
+In the case of a Trotter approximation of 
+
+
+
+
+
+
+p
+
+t
+h
+
+
+
+
+
+
+{\displaystyle {\it {p^{th}}}}
+
+ order, the error is of order 
+
+
+
+
+
+δ
+
+
+p
++
+1
+
+
+
+
+{\displaystyle {\delta }^{p+1}}
+
+. Taking into account 
+
+
+
+n
+=
+
+
+T
+δ
+
+
+
+
+{\displaystyle n={\frac {T}{\delta }}}
+
+ steps, the error after the time T is:
+The unapproximated state 
+
+
+
+
+|
+
+
+
+
+
+
+ψ
+~
+
+
+
+
+T
+r
+
+
+
+⟩
+
+
+{\displaystyle |{{\tilde {\psi }}_{Tr}}\rangle }
+
+ is:
+where 
+
+
+
+
+|
+
+
+
+ψ
+
+T
+r
+
+
+
+⟩
+
+
+{\displaystyle |{\psi _{Tr}}\rangle }
+
+ is the state kept after the Trotter expansion and 
+
+
+
+
+|
+
+
+
+ψ
+
+T
+r
+
+
+⊥
+
+
+
+⟩
+
+
+{\displaystyle |{\psi _{Tr}^{\bot }}\rangle }
+
+ accounts for the part that is neglected when doing the expansion.
+The total error scales with time 
+
+
+
+
+
+T
+
+
+
+
+{\displaystyle {\it {T}}}
+
+ as:
+One should notice that the Trotter error is independent of the dimension of the chain.
+Considering the errors arising from the truncation of the Hilbert space comprised in the decomposition D, they are twofold.
+First, as we have seen above, the smallest contributions to the Schmidt spectrum are left away, the state being faithfully represented up to:
+where 
+
+
+
+
+ϵ
+
+n
+
+
+=
+
+∑
+
+α
+=
+
+χ
+
+c
+
+
+
+
+χ
+
+
+(
+
+λ
+
+α
+
+
+[
+n
+]
+
+
+
+)
+
+2
+
+
+
+
+{\displaystyle \epsilon _{n}=\sum \limits _{\alpha =\chi _{c}}^{\chi }(\lambda _{\alpha }^{[n]})^{2}}
+
+ is the sum of all the discarded eigenvalues of the reduced density matrix, at the bond 
+
+
+
+
+
+n
+
+
+
+
+{\displaystyle {\it {n}}}
+
+. The state 
+
+
+
+
+|
+
+
+ψ
+
+⟩
+
+
+{\displaystyle |{\psi }\rangle }
+
+ is, at a given bond 
+
+
+
+
+
+n
+
+
+
+
+{\displaystyle {\it {n}}}
+
+, described by the Schmidt decomposition:
+where
+is the state kept after the truncation and
+is the state formed by the eigenfunctions corresponding to the smallest, irrelevant Schmidt coefficients, which are neglected. Now, 
+
+
+
+⟨
+
+ψ
+
+D
+
+
+⊥
+
+
+
+|
+
+
+ψ
+
+D
+
+
+⟩
+=
+0
+
+
+{\displaystyle \langle \psi _{D}^{\bot }|\psi _{D}\rangle =0}
+
+ because they are spanned by vectors corresponding to orthogonal spaces. Using the same argument as for the Trotter expansion, the error after the truncation is:
+After moving to the next bond, the state is, similarly:
+The error, after the second truncation, is:
+and so on, as we move from bond to bond.
+The second error source enfolded in the decomposition 
+
+
+
+
+
+D
+
+
+
+
+{\displaystyle {\it {D}}}
+
+ is more subtle and requires a little bit of calculation.
+As we calculated before, the normalization constant after making the truncation at bond 
+
+
+
+
+
+l
+
+
+
+
+{\displaystyle {\it {l}}}
+
+ 
+
+
+
+(
+[
+1..
+l
+]
+:
+[
+l
++
+1..
+N
+]
+)
+
+
+{\displaystyle ([1..l]:[l+1..N])}
+
+ is:
+Now let us go to the bond 
+
+
+
+
+
+l
+
+
+−
+1
+
+
+{\displaystyle {\it {l}}-1}
+
+ and calculate the norm of the right-hand Schmidt vectors 
+
+
+
+
+|
+
+
+|
+
+
+
+Φ
+
+
+α
+
+l
+−
+1
+
+
+
+
+[
+l
+−
+1..
+N
+]
+
+
+
+
+|
+
+
+|
+
+
+
+{\displaystyle ||{\Phi _{\alpha _{l-1}}^{[l-1..N]}}||}
+
+; taking into account the full Schmidt dimension, the norm is:
+where 
+
+
+
+(
+
+c
+
+
+α
+
+l
+−
+1
+
+
+
+α
+
+l
+
+
+
+
+
+)
+
+2
+
+
+=
+
+∑
+
+
+i
+
+l
+
+
+=
+1
+
+
+d
+
+
+(
+
+Γ
+
+
+α
+
+l
+−
+1
+
+
+
+α
+
+l
+
+
+
+
+[
+l
+]
+
+i
+
+l
+
+
+
+
+
+)
+
+∗
+
+
+
+Γ
+
+
+α
+
+l
+−
+1
+
+
+
+α
+
+l
+
+
+
+
+[
+l
+]
+
+i
+
+l
+
+
+
+
+
+
+{\displaystyle (c_{\alpha _{l-1}\alpha _{l}})^{2}=\sum \limits _{i_{l}=1}^{d}(\Gamma _{\alpha _{l-1}\alpha _{l}}^{[l]i_{l}})^{*}\Gamma _{\alpha _{l-1}\alpha _{l}}^{[l]i_{l}}}
+
+.
+Taking into account the truncated space, the norm is:
+Taking the difference, 
+
+
+
+ϵ
+=
+
+n
+
+2
+
+
+−
+
+n
+
+1
+
+
+=
+
+n
+
+2
+
+
+−
+1
+
+
+{\displaystyle \epsilon =n_{2}-n_{1}=n_{2}-1}
+
+, we get:
+Hence, when constructing the reduced density matrix, the trace of the matrix is multiplied by the factor:
+The total truncation error, considering both sources, is upper bounded by:
+When using the Trotter expansion, we do not move from bond to bond, but between bonds of same parity; moreover, for the ST2, we make a sweep of the even ones and two for the odd. But nevertheless, the calculation presented above still holds. The error is evaluated by successively multiplying with the normalization constant, each time we build the reduced density matrix and select its relevant eigenvalues.
+One thing that can save a lot of computational time without loss of accuracy is to use a different Schmidt dimension for each bond instead of a fixed one for all bonds, keeping only the necessary amount of relevant coefficients, as usual. For example, taking the first bond, in the case of qubits, the Schmidt dimension is just two. Hence, at the first bond, instead of futilely diagonalizing, let us say, 10 by 10 or 20 by 20 matrices, we can just restrict ourselves to ordinary 2 by 2 ones, thus making the algorithm generally faster. What we can do instead is set a threshold for the eigenvalues of the SD, keeping only those that are above the threshold.
+TEBD also offers the possibility of straightforward parallelization due to the factorization of the exponential time-evolution operator using the Suzuki-Trotter expansion. A parallel-TEBD has the same mathematics as its non-parallelized counterpart, the only difference is in the numerical implementation.

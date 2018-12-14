@@ -1,0 +1,134 @@
+ABOUT
+Disparity filter[1] is a network reduction algorithm to extract the backbone structure of undirected weighted network. Many real world networks such as citation networks, food web, airport networks display heavy tailed statistical distribution of nodes' weight and strength. Disparity filter can sufficiently reduce the network without destroying the multi-scale nature of the network. The algorithm is developed by M. Angeles Serrano, Marian Boguna and Alessandro Vespignani.
+FULL TEXT
+Disparity filter[1] is a network reduction algorithm to extract the backbone structure of undirected weighted network. Many real world networks such as citation networks, food web, airport networks display heavy tailed statistical distribution of nodes' weight and strength. Disparity filter can sufficiently reduce the network without destroying the multi-scale nature of the network. The algorithm is developed by M. Angeles Serrano, Marian Boguna and Alessandro Vespignani.
+
+
+k-core decomposition is an algorithm that reduce a graph into a maximal connected subgraph of vertices with at least degree k. This algorithm can only be applied to unweighted graphs.
+A minimum spanning tree is a tree-like subgraph of a given graph G, in which it keeps all the nodes of graph G but minimize the total weight of the subgraph. A minimum spanning tree is the least expensive way to maintain the size of connected component. The significant limitation of this algorithm is it overly simplify the structure of the network(graph). Minimum spanning tree destroys local cycles, clustering coefficient which usually present in real networks and are considered as important network measurement.
+A weighted graph can be easily reduced to a subgraph in which any of the edges' weight is larger than a given threshold wc. This technic has been applied to study the resistance of food web[2] and functional networks that connect correlated human brain sites.[3] The short come of this method is that it overpass the nodes with small strength. However, in real network, both strength and weight distribution in general follows heavy tailed distribution which spans several degree of order. Applying a simple cutoff on weight will removes all the information below the cut-off.
+In network science, the strength si of a node i is defined as si = ∑jwij, where wij is the weight of link between i and j. In order to apply disparity filter algorithm without overlooking nodes with low strength, a normalized weight pij is defined as pij = wij/si. In the null model, the normalized weights of a certain node with degree k is generated like this: k − 1 pins are randomly assigned between the interval 0 and 1. The interval is divide into k subintervals. The length of the subinterval represents the normalized weight of each link in the null model. Based on this model, we can derive that the normalized weight distribution of a node with degree k follows 
+
+
+
+ρ
+(
+x
+)
+
+d
+x
+=
+(
+k
+−
+1
+)
+(
+1
+−
+x
+
+)
+
+k
+−
+2
+
+
+
+d
+x
+
+
+{\displaystyle \rho (x)\,dx=(k-1)(1-x)^{k-2}\,dx}
+
+.[1]
+The disparity filter algorithm is based on p-value[4] statistical significance test[5] of the null model: For a given normalized weight pij, the p-value αij of pij based on the null model is given by 
+
+
+
+
+α
+
+i
+j
+
+
+=
+1
+−
+(
+k
+−
+1
+)
+
+∫
+
+0
+
+
+
+p
+
+i
+j
+
+
+
+
+(
+1
+−
+x
+
+)
+
+k
+−
+2
+
+
+
+d
+x
+
+
+{\displaystyle \alpha _{ij}=1-(k-1)\int _{0}^{p_{ij}}(1-x)^{k-2}\,dx}
+
+ which reduces to 
+
+
+
+
+α
+
+i
+j
+
+
+=
+(
+1
+−
+
+p
+
+i
+j
+
+
+
+)
+
+k
+−
+1
+
+
+
+
+{\displaystyle \alpha _{ij}=(1-p_{ij})^{k-1}}
+
+. The meaning of αij is the probability of having normalized weight larger or equal to pij in the framework of the given null model. By setting a significance level α (between 0 and 1), for any link of normalized weight pij, if αij is larger than α, it will be filtered out. Changing α we can progressively remove irrelevant links thus effectively extracting the backbone structure of the weighted network.[1]

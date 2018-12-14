@@ -1,0 +1,132 @@
+ABOUT
+Maximum entropy spectral estimation is a method of spectral density estimation. The goal is to improve the spectral quality based on the principle of maximum entropy. The method is based on choosing the spectrum which corresponds to the most random or the most unpredictable time series whose autocorrelation function agrees with the known values. This assumption, which corresponds to the concept of maximum entropy as used in both statistical mechanics and information theory, is maximally non-committal with regard to the unknown values of the autocorrelation function of the time series. It is simply the application of maximum entropy modeling to any type of spectrum and is used in all fields where data is presented in spectral form. The usefulness of the technique varies based on the source of the spectral data since it is dependent on the amount of assumed knowledge about the spectrum that can be applied to the model.
+FULL TEXT
+Maximum entropy spectral estimation is a method of spectral density estimation. The goal is to improve the spectral quality based on the principle of maximum entropy. The method is based on choosing the spectrum which corresponds to the most random or the most unpredictable time series whose autocorrelation function agrees with the known values. This assumption, which corresponds to the concept of maximum entropy as used in both statistical mechanics and information theory, is maximally non-committal with regard to the unknown values of the autocorrelation function of the time series. It is simply the application of maximum entropy modeling to any type of spectrum and is used in all fields where data is presented in spectral form. The usefulness of the technique varies based on the source of the spectral data since it is dependent on the amount of assumed knowledge about the spectrum that can be applied to the model.
+In maximum entropy modeling, probability distributions are created on the basis of that which is known, leading to a type of statistical inference about the missing information which is called the maximum entropy estimate. For example, in spectral analysis the expected peak shape is often known, but in a noisy spectrum the center of the peak may not be clear. In such a case, inputting the known information allows the maximum entropy model to derive a better estimate of the center of the peak, thus improving spectral accuracy.
+
+
+The overall idea is that the maximum entropy rate stochastic process that satisfies the given constant autocorrelation and variance constraints, is a linear Gauss-Markov process with i.i.d. zero-mean, Gaussian input.
+The maximum entropy rate, strongly stationary stochastic process 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+ with autocorrelation sequence 
+
+
+
+
+R
+
+x
+x
+
+
+(
+k
+)
+,
+k
+=
+0
+,
+1
+,
+…
+P
+
+
+{\displaystyle R_{xx}(k),k=0,1,\dots P}
+
+ satisfying the constraints:
+for arbitrary constants 
+
+
+
+
+α
+
+k
+
+
+
+
+{\displaystyle \alpha _{k}}
+
+ is the 
+
+
+
+P
+
+
+{\displaystyle P}
+
+-th order, linear Markov chain of the form:
+where the 
+
+
+
+
+y
+
+i
+
+
+
+
+{\displaystyle y_{i}}
+
+ are zero mean, i.i.d. and normally-distributed of finite variance 
+
+
+
+
+σ
+
+2
+
+
+
+
+{\displaystyle \sigma ^{2}}
+
+.
+Given the 
+
+
+
+
+a
+
+k
+
+
+
+
+{\displaystyle a_{k}}
+
+, the square of the absolute value of the transfer function of the linear Markov chain model can be evaluated at any required frequency in order to find the power spectrum of 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+.

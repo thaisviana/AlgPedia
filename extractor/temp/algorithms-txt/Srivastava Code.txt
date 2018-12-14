@@ -1,0 +1,7 @@
+ABOUT
+In coding theory, Srivastava codes, formulated by Professor J. N. Srivastava, form a class of parameterised error-correcting codes which are a special case of alternant codes.
+FULL TEXT
+In coding theory, Srivastava codes, formulated by Professor J. N. Srivastava, form a class of parameterised error-correcting codes which are a special case of alternant codes.
+The original Srivastava code over GF(q) of length n is defined by a parity check matrix H of alternant form
+where the αi and zi are elements of GF(qm)
+The parameters of this code are length n, dimension ≥ n − ms and minimum distance ≥ s + 1.

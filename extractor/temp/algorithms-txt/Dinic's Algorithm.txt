@@ -1,0 +1,463 @@
+ABOUT
+Dinic's algorithm or Dinitz's algorithm is a strongly polynomial algorithm for computing the maximum flow in a flow network, conceived in 1970 by Israeli (formerly Soviet) computer scientist Yefim (Chaim) A. Dinitz.[1] The algorithm runs in 
+
+
+
+O
+(
+
+V
+
+2
+
+
+E
+)
+
+
+{\displaystyle O(V^{2}E)}
+
+ time and is similar to the Edmonds–Karp algorithm, which runs in 
+
+
+
+O
+(
+V
+
+E
+
+2
+
+
+)
+
+
+{\displaystyle O(VE^{2})}
+
+ time, in that it uses shortest augmenting paths. The introduction of the concepts of the level graph and blocking flow enable Dinic's algorithm to achieve its performance.
+FULL TEXT
+Dinic's algorithm or Dinitz's algorithm is a strongly polynomial algorithm for computing the maximum flow in a flow network, conceived in 1970 by Israeli (formerly Soviet) computer scientist Yefim (Chaim) A. Dinitz.[1] The algorithm runs in 
+
+
+
+O
+(
+
+V
+
+2
+
+
+E
+)
+
+
+{\displaystyle O(V^{2}E)}
+
+ time and is similar to the Edmonds–Karp algorithm, which runs in 
+
+
+
+O
+(
+V
+
+E
+
+2
+
+
+)
+
+
+{\displaystyle O(VE^{2})}
+
+ time, in that it uses shortest augmenting paths. The introduction of the concepts of the level graph and blocking flow enable Dinic's algorithm to achieve its performance.
+
+
+Yefim Dinitz invented this algorithm in response to a pre-class exercise in Adel'son-Vel'sky's (co-inventor of AVL trees) Algorithm class. At the time he was not aware of the basic facts regarding Ford-Fulkerson algorithm.[2]
+Dinitz mentions inventing his algorithm in January 1969, which was published in 1970 in journal Doklady Akademii nauk SSSR. In 1974, Shimon Even and (his then Ph.D. student) Alon Itai at the Technion in Haifa were very curious and intrigued by the Dinitz's algorithm as well as Alexander Karzanov's idea of blocking flow. However it was hard to decipher these two papers for them, each being limited to four pages to meet the restrictions of journal Doklady Akademii nauk SSSR. However Even did not give up and after three days of effort managed to understand both papers except for the layered network maintenance issue. Over the next couple of years, Even gave lectures on "Dinic's algorithm" mispronouncing the name of the author while popularizing it. Even and Itai also contributed to this algorithm by combining BFS and DFS, which is the current version of algorithm[3]
+For about 10 years of time after Ford–Fulkerson algorithm was invented, it was unknown if it can be made to terminate in polynomial time in the generic case of irrational edge capacities. This caused lack of any known polynomial time algorithm that solved max flow problem in generic case. Dinitz algorithm and the Edmonds–Karp algorithm, which was published in 1972, independently showed that in the Ford–Fulkerson algorithm, if each augmenting path is the shortest one, the length of the augmenting paths is non-decreasing and it always terminated.
+Let 
+
+
+
+G
+=
+(
+(
+V
+,
+E
+)
+,
+c
+,
+s
+,
+t
+)
+
+
+{\displaystyle G=((V,E),c,s,t)}
+
+ be a network with 
+
+
+
+c
+(
+u
+,
+v
+)
+
+
+{\displaystyle c(u,v)}
+
+ and 
+
+
+
+f
+(
+u
+,
+v
+)
+
+
+{\displaystyle f(u,v)}
+
+ the capacity and the flow of the edge 
+
+
+
+(
+u
+,
+v
+)
+
+
+{\displaystyle (u,v)}
+
+ respectively.
+Dinic's Algorithm
+It can be shown that the number of layers in each blocking flow increases by at least 1 each time and thus there are at most 
+
+
+
+n
+−
+1
+
+
+{\displaystyle n-1}
+
+ blocking flows in the algorithm, where 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ is the number of vertices in the network. The level graph 
+
+
+
+
+G
+
+L
+
+
+
+
+{\displaystyle G_{L}}
+
+ can be constructed by Breadth-first search in 
+
+
+
+O
+(
+E
+)
+
+
+{\displaystyle O(E)}
+
+ time and a blocking flow in each level graph can be found in 
+
+
+
+O
+(
+V
+E
+)
+
+
+{\displaystyle O(VE)}
+
+ time. Hence, the running time of Dinic's algorithm is 
+
+
+
+O
+(
+
+V
+
+2
+
+
+E
+)
+
+
+{\displaystyle O(V^{2}E)}
+
+.
+Using a data structure called dynamic trees, the running time of finding a blocking flow in each phase can be reduced to 
+
+
+
+O
+(
+E
+log
+⁡
+V
+)
+
+
+{\displaystyle O(E\log V)}
+
+ and therefore the running time of Dinic's algorithm can be improved to 
+
+
+
+O
+(
+V
+E
+log
+⁡
+V
+)
+
+
+{\displaystyle O(VE\log V)}
+
+.
+In networks with unit capacities, a much stronger time bound holds. Each blocking flow can be found in 
+
+
+
+O
+(
+E
+)
+
+
+{\displaystyle O(E)}
+
+ time, and it can be shown that the number of phases does not exceed 
+
+
+
+O
+(
+
+
+E
+
+
+)
+
+
+{\displaystyle O({\sqrt {E}})}
+
+ and 
+
+
+
+O
+(
+
+V
+
+2
+
+/
+
+3
+
+
+)
+
+
+{\displaystyle O(V^{2/3})}
+
+. Thus the algorithm runs in 
+
+
+
+O
+(
+min
+{
+
+V
+
+2
+
+/
+
+3
+
+
+,
+
+E
+
+1
+
+/
+
+2
+
+
+}
+E
+)
+
+
+{\displaystyle O(\min\{V^{2/3},E^{1/2}\}E)}
+
+ time.[4]
+In networks arising during the solution of bipartite matching problem, the number of phases is bounded by 
+
+
+
+O
+(
+
+
+V
+
+
+)
+
+
+{\displaystyle O({\sqrt {V}})}
+
+, therefore leading to the 
+
+
+
+O
+(
+
+
+V
+
+
+E
+)
+
+
+{\displaystyle O({\sqrt {V}}E)}
+
+ time bound. The resulting algorithm is also known as Hopcroft–Karp algorithm. More generally, this bound holds for any unit network — a network in which each vertex, except for source and sink, either has a single entering edge of capacity one, or a single outgoing edge of capacity one, and all other capacities are arbitrary integers.[5]
+The following is a simulation of Dinic's algorithm. In the level graph 
+
+
+
+
+G
+
+L
+
+
+
+
+{\displaystyle G_{L}}
+
+, the vertices with labels in red are the values 
+
+
+
+dist
+⁡
+(
+v
+)
+
+
+{\displaystyle \operatorname {dist} (v)}
+
+. The paths in blue form a blocking flow.
+The blocking flow consists of
+Therefore, the blocking flow is of 14 units and the value of flow 
+
+
+
+
+|
+
+f
+
+|
+
+
+
+{\displaystyle |f|}
+
+ is 14. Note that each augmenting path in the blocking flow has 3 edges.
+The blocking flow consists of
+Therefore, the blocking flow is of 5 units and the value of flow 
+
+
+
+
+|
+
+f
+
+|
+
+
+
+{\displaystyle |f|}
+
+ is 14 + 5 = 19. Note that each augmenting path has 4 edges.
+Since 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ cannot be reached in 
+
+
+
+
+G
+
+f
+
+
+
+
+{\displaystyle G_{f}}
+
+, the algorithm terminates and returns a flow with maximum value of 19. Note that in each blocking flow, the number of edges in the augmenting path increases by at least 1.

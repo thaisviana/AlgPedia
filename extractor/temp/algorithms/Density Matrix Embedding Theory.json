@@ -1,0 +1,8 @@
+{
+    "about": "The density matrix embedding theory (DMET) is a numerical technique to solve strongly correlated electronic structure problems. By mapping the system to a fragment plus its entangled quantum bath, the local electron correlation effects on the fragment can be accurately modelled by a post-Hartree\u2013Fock solver. This method has shown high-quality results in 1D- and 2D- Hubbard models.[1]", 
+    "name": "Density Matrix Embedding Theory", 
+    "classification": "Numerical Analysis", 
+    "full_text": "The density matrix embedding theory (DMET) is a numerical technique to solve strongly correlated electronic structure problems. By mapping the system to a fragment plus its entangled quantum bath, the local electron correlation effects on the fragment can be accurately modelled by a post-Hartree\u2013Fock solver. This method has shown high-quality results in 1D- and 2D- Hubbard models.[1]", 
+    "dbpedia_url": "http://dbpedia.org/resource/Density_matrix_embedding_theory", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Density_matrix_embedding_theory\n"
+}

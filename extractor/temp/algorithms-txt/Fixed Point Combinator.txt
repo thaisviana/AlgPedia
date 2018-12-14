@@ -1,0 +1,197 @@
+ABOUT
+In computer science, a fixed-point combinator (or fixpoint combinator[1]) is a higher-order function y that satisfies the equation
+FULL TEXT
+In computer science, a fixed-point combinator (or fixpoint combinator[1]) is a higher-order function y that satisfies the equation
+or in words: y, when applied to an arbitrary function f, yields the same result as f applied to the result of applying y to f. It is so named because, by setting 
+
+
+
+x
+=
+y
+ 
+f
+
+
+{\displaystyle x=y\ f}
+
+, it represents a solution to the fixed point equation,
+A fixed point of a function f is a value that doesn't change under the application of the function f.
+Functions that satisfy the equation for y expand as,
+A particular implementation of y is Curry's paradoxical combinator Y, represented in lambda calculus by
+This combinator may be used in implementing Curry's paradox. The heart of Curry's paradox is that untyped lambda calculus is unsound as a deductive system, and the Y combinator demonstrates that by allowing an anonymous expression to represent zero, or even many values. This is inconsistent in mathematical logic.
+Applied to a function with one variable the Y combinator usually does not terminate. More interesting results are obtained by applying the Y combinator to functions of two or more variables. The second variable may be used as a counter, or index. The resulting function behaves like a while or a for loop in an imperative language.
+Used in this way the Y combinator implements simple recursion. In the lambda calculus it is not possible to refer to the definition of a function in a function body. Recursion may only be achieved by passing in a function as a parameter. The Y combinator demonstrates this style of programming.
+
+
+The Y combinator is an implementation of the fixed-point combinator in lambda calculus. Fixed-point combinators may also be easily defined in other functional and imperative languages. The implementation in lambda calculus is more difficult due to limitations in lambda calculus.
+The fixed combinator may be used in a number of different areas,
+Fixed point combinators may be applied to a range of different functions, but normally will not terminate unless there is an extra parameter. Even with lazy evaluation when the function to be fixed refers to its parameter, another call to the function is invoked. The calculation never gets started. The extra parameter is needed to trigger the start of the calculation.
+The type of the fixed point is the return type of the function being fixed. This may be a real or a function or any other type.
+In the untyped lambda calculus, the function to apply the fix point combinator to may be expressed using an encoding, like Church encoding. In this case particular lambda terms (which define functions) are considered as values. "Running" (beta reducing) the fixed point combinator on the encoding gives a lambda term for the result which may then be interpreted as fixed point value.
+Alternately a function may be considered as a lambda term defined purely in lambda calculus.
+These different approaches affect how a mathematician and a programmer may regard a fixed point combinator. A lambda calculus mathematician may see the Y combinator applied to a function as being an expression satisfying the fixed point equation, and therefore a solution.
+In contrast a person only wanting to apply a fixed point combinator to some general programming task may see it only as a means of implementing recursion.
+Every expression has one value. This is true in general mathematics and it must be true in lambda calculus. This means that in lambda calculus, applying a fixed point combinator to a function gives you an expression whose value is the fixed point of the function.
+However this is a value in the lambda calculus domain, it may not correspond to any value in the domain of the function, so in a practical sense it is not necessarily a fixed point of the function, and only in the lambda calculus domain is it a fixed point of the equation.
+For example, consider,
+Division of Signed numbers may be implemented in the Church encoding, so f may be represented by a lambda term. This equation has no solution in the real numbers. But in the domain of the complex numbers i and -i are solutions. This demonstrates that there may be solutions to an equation in another domain. However the lambda term for the solution for the above equation is weirder than that. The lambda term 
+
+
+
+Y
+ 
+f
+
+
+{\displaystyle Y\ f}
+
+ represents the state where x could be either i or -i, as one value. The information distinguishing these two values has been lost, in the change of domain.
+For the lambda calculus mathematician, this is a consequence of the definition of lambda calculus. For the programmer, it means that the beta reduction of the lambda term will loop forever, never reaching a normal form.
+The fixed-point combinator may be defined in mathematics and then implemented in other languages. General mathematics defines a function based on its extensional properties.[2] That is, two functions are equal if they perform the same mapping. Lambda calculus and programming languages regard function identity as an intensional property. A functions identity is based on its implementation.
+A lambda calculus function (or term) is an implementation of a mathematical function. In the lambda calculus there are a number of combinator (implementations) that satisfy the mathematical definition of a fixed-point combinator.
+A combinator is a particular type of higher-order function that may be used in defining functions without using variables. The combinators may be combined to direct values to their correct places in the expression without ever naming them as variables.
+Usually when applied to functions of one parameter, implementations of the fixed point combinator fail to terminate. Functions with extra parameters are more interesting.
+The Y combinator is an example of what makes the Lambda calculus inconsistent. So it should be regarded with suspicion. However it is safe to consider the Y combinator when defined in mathematic logic only. The definition is,
+It is easy to see how f may be applied to one variable. Applying it to two or more variables requires adding them to the equation,
+This version of the equation must be shown consistent with the previous by the definition for equality of functions,
+This definition allows the two equations for y to be regarded as equivalent, provided that the domain of x is well defined. So if f has multiple parameters the y f may still be regarded as a fixed point, with some restrictions.
+The factorial function provides a good example of how the fixed point combinator may be applied to functions of two variables. The result demonstrates simple recursion, as would be implemented in a single loop, in an imperative language. The definition of numbers used is explained in Church encoding. The fixed point function is,
+so y F is,
+or
+Setting 
+
+
+
+y
+ 
+F
+=
+fact
+
+
+{\displaystyle y\ F=\operatorname {fact} }
+
+ gives,
+this definition is equivalent to the mathematical definition of factorial,
+This definition puts F in the role of the body of a loop to be iterated.
+The Y combinator, discovered by Haskell B. Curry, is defined as:
+Beta reduction of this gives,
+By repeatedly applying this equality we get,
+This fixed-point combinator may be defined as y in,
+An expression for y may be derived using rules from the definition of a let expression. Firstly using the rule,
+gives,
+Also using,
+gives
+Then using the eta reduction rule,
+gives,
+Curry's Y combinator may be readily obtained from the definition of y.[3] Starting with,
+A lambda abstraction does not support reference to the variable name, in the applied expression, so x must be passed in as a parameter to x. We can think of this as replacing x by x x, but formally this is not correct. Instead defining y by 
+
+
+
+∀
+z
+,
+y
+ 
+z
+=
+x
+
+
+{\displaystyle \forall z,y\ z=x}
+
+ gives,
+The let expression may be regarded as the definition of the function y, where z is the parameter. Instantiation z as y in the call gives,
+And because the parameter z always passes the function y.
+Using the eta reduction rule,
+gives,
+A let expression may be expressed as a lambda abstraction using,
+gives,
+This is possibly the simplest implementation of a fixed point combinator in lambda calculus. However one beta reduction gives the more symmetrical form of Curry's Y combinator.
+See also translating between let and lambda expressions.
+In untyped lambda calculus fixed-point combinators are not especially rare. In fact there are infinitely many of them.[4] In 2005 Mayer Goldberg showed that the set of fixed-point combinators of untyped lambda calculus is recursively enumerable.[5]
+The Y combinator can be expressed in the SKI-calculus as
+The simplest fixed point combinator in the SK-calculus, found by John Tromp, is
+although note that it is not in normal form, which is longer. This combinator corresponds to the lambda expression
+The following fixed-point combinator is simpler than the Y combinator, and β-reduces into the Y combinator; it is sometimes cited as the Y combinator itself:
+Another common fixed point combinator is the Turing fixed-point combinator (named after its discoverer, Alan Turing):
+It also has a simple call-by-value form:
+The analog for mutual recursion is a polyvariadic fix-point combinator, [6][7][8] which may be denoted Y*.
+The Z combinator will work in strict languages (or where normal order is applied). The Z combinator has the next argument defined explicitly, preventing the expansion of Z g in the right hand side of the definition:
+and in lambda calculus is an eta-expansion:
+In untyped lambda calculus there are terms that have the same Böhm tree as a fixed-point combinator, that is they have the same infinite extension λx.x (x (x ... )). These are called non-standard fixed-point combinators. Any fixed-point combinator is also a non-standard one, but not all non-standard fixed-point combinators are fixed-point combinators because some of them fail to satisfy the equation that defines the "standard" ones. These strange combinators are called strictly non-standard fixed-point combinators; an example is the following combinator;
+where,
+The set of non-standard fixed-point combinators is not recursively enumerable.[5]
+Note that the Y combinator is a particular implementation of a fixed point combinator in lambda calculus. Its structure is determined by the limitations of lambda calculus. It is not necessary or helpful to use this structure in implementing the fixed point combinator in other languages.
+Simple examples of fixed point combinators implemented in some programming paradigms are given below.
+For examples of implementations of the fixed point combinators in various languages see,
+In a language that supports lazy evaluation, like in Haskell, it is possible to define a fixed-point combinator using the defining equation of the fixed-point combinator which is conventionally named fix. The definition is given here, followed by some usage examples.
+In a strict functional language the argument to f is expanded beforehand, yielding an infinite call sequence,
+This may be resolved by defining fix with an extra parameter.
+This example is a slightly interpretive implementation of a fixed point combinator. A class is used to contain the fix function, called fixer. The function to be fixed is contained in a class that inherits from fixer. The fix function accesses the function to be fixed as a virtual function. As for the strict functional definition, fix is explicitly given an extra parameter x, which means that lazy evaluation is not needed.
+In polymorphic lambda calculus (System F) a polymorphic fixed-point combinator has type;
+where a is a type variable. That is, fix takes a function, which maps a → a and uses it to return a value of type a.
+In the simply typed lambda calculus extended with recursive types, fixed-point operators can be written, but the type of a "useful" fixed-point operator (one whose application always returns) may be restricted.
+In the simply typed lambda calculus, the fixed-point combinator Y cannot be assigned a type[9] because at some point it would deal with the self-application sub-term 
+
+
+
+x
+ 
+x
+
+
+{\displaystyle x~x}
+
+ by the application rule:
+where 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ has the infinite type 
+
+
+
+
+t
+
+1
+
+
+=
+
+t
+
+1
+
+
+→
+
+t
+
+2
+
+
+
+
+{\displaystyle t_{1}=t_{1}\to t_{2}}
+
+. No fixed-point combinator can in fact be typed, in those systems any support for recursion must be explicitly added to the language.
+In programming languages that support recursive types, it is possible to type the Y combinator by appropriately accounting for the recursion at the type level. The need to self-apply the variable x can be managed using a type (Rec a), which is defined so as to be isomorphic to (Rec a -> a).
+For example, in the following Haskell code, we have In and out being the names of the two directions of the isomorphism, with types:[10]
+which lets us write:
+Or equivalently in OCaml:
+The function for which any input is a fixed point is called the identity function. Formally:
+Other functions have the special property that after being applied once, further applications don't have any effect. More formally:
+Such functions are called idempotent (see also projection). An example of such a function is the function that returns 0 for all even integers, and 1 for all odd integers. This is akin to projection
+Fixed-point combinators do not necessarily exist in more restrictive models of computation. For instance, they do not exist in simply typed lambda calculus.
+The Y combinator allows recursion to be defined as a set of rewrite rules,[11] without requiring native recursion support in the language.[12]
+The recursive join in relational databases implements a fixed point, by recursively adding records to a set until no more may be added.
+In programming languages that support anonymous functions, fixed-point combinators allow the definition and use of anonymous recursive functions, i.e. without having to bind such functions to identifiers. In this setting, the use of fixed-point combinators is sometimes called anonymous recursion.[13][14]

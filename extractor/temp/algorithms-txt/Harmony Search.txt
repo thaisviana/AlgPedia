@@ -1,0 +1,184 @@
+ABOUT
+In operations research, harmony search is a phenomenon-mimicking metaheuristic introduced in 2001 by Zong Woo Geem, Joong Hoon Kim, and G. V. Loganathan.[1] Harmony search is inspired by the improvisation process of jazz musicians.
+FULL TEXT
+In operations research, harmony search is a phenomenon-mimicking metaheuristic introduced in 2001 by Zong Woo Geem, Joong Hoon Kim, and G. V. Loganathan.[1] Harmony search is inspired by the improvisation process of jazz musicians.
+
+
+In the HS algorithm, each musician (= decision variable) plays (= generates) a note (= a value) for finding a best harmony (= global optimum) all together.
+Harmony search tries to find a vector 
+
+
+
+
+x
+
+
+
+{\displaystyle \mathbf {x} }
+
+ which optimizes (minimizes or maximizes) a certain objective function.
+The algorithm has the following steps:
+Step 1: Generate random vectors (
+
+
+
+
+
+x
+
+
+1
+
+
+,
+…
+,
+
+
+x
+
+
+h
+m
+s
+
+
+
+
+{\displaystyle \mathbf {x} ^{1},\ldots ,\mathbf {x} ^{hms}}
+
+) as many as 
+
+
+
+h
+m
+s
+
+
+{\displaystyle hms}
+
+ (harmony memory size), then store them in harmony memory (HM).
+Step 2: Generate a new vector 
+
+
+
+
+
+x
+
+′
+
+
+
+{\displaystyle \mathbf {x} '}
+
+. For each component 
+
+
+
+
+x
+
+i
+
+
+
+
+′
+
+
+
+
+
+{\displaystyle x_{i}^{'}}
+
+,
+Step 3: Perform additional work if the value in Step 2 came from HM.
+Step 4: If 
+
+
+
+
+
+x
+
+
+
+
+′
+
+
+
+
+
+{\displaystyle \mathbf {x} ^{'}}
+
+ is better than the worst vector 
+
+
+
+
+
+x
+
+
+W
+o
+r
+s
+t
+
+
+
+
+{\displaystyle \mathbf {x} ^{Worst}}
+
+ in HM, replace 
+
+
+
+
+
+x
+
+
+W
+o
+r
+s
+t
+
+
+
+
+{\displaystyle \mathbf {x} ^{Worst}}
+
+ with 
+
+
+
+
+
+x
+
+′
+
+
+
+{\displaystyle \mathbf {x} '}
+
+.
+Step 5: Repeat from Step 2 to Step 4 until termination criterion (e.g. maximum iterations) is satisfied.
+The parameters of the algorithm are
+It is possible to vary the parameter values as the search progresses, which gives an effect similar to simulated annealing.
+Parameter-setting-free researches have been also performed. In the researches, algorithm users do not need tedious parameter setting process.
+Metaphor-inspired metaheuristics in general have attracted criticism in the research community for hiding their lack of novelty behind an elaborate metaphor. In 2010, Dennis Weyland, a PhD student at the Dalle Molle Institute for Artificial Intelligence Research in Switzerland published an article titled "A Rigorous Analysis of the Harmony Search Algorithm: How the Research Community can be Misled by a 'Novel' Methodology" in the International Journal of Applied Metaheuristic Computing (IJAMC),[2] stating that:
+It turns out that Harmony Search is a special case of Evolution Strategies. We give compelling evidence for the thesis that research in Harmony Search, although undoubtedly conducted with the best of intentions, is fundamentally misguided, marred by a preoccupation with retracing paths already well traveled, and we conclude that future research effort could better be devoted to more promising areas.
+A rebuttal was published by Geem in a later issue of the same journal,[3] (updated manuscript) but Kenneth Sörensen, professor of operations research at Antwerp University, called it "less than fully convincing".[4]
+Independent of the work of Weyland, Miriam Padberg has shown in 2011 that for binary optimization problems the Harmony Search algorithm is equivalent to a certain evolutionary algorithm.[5] In fact, the reasoning is similar to that used in the work of Weyland, but this time explicitly stated in a rigorous mathematical way.
+Saka, Hasançebi and Geem have provided ample evidence to show Harmony Search is not a special case of (μ+1)-Differential Evolution.[6] The rebuttal in [6] starts by quoting the following paragraph from.[2]
+"The HS algorithm uses the so called memory consideration with a probability of HMCR .In this case it sets the value of the decision variable to the value of the corresponding decision variable of uniformly selected solution in the HM, and performs a small modification of that value afterwards with a probability of PAR. Otherwise (with a probability of 1-HMCR), the value of the decision variable is set to a completely random value. The ES discussed here performs a population wide uniform crossover and therefore sets the value of each decision variable to the value of the corresponding decision variable of a uniformly selected solution in the current population. Then with probability p1 first mutation operator modifies the value of the decision variable slightly. After that a second mutation operator sets the value of the decision variable to a completely random value with probability p2. It is easy to see that the methods used to create the new solutions in both algorithms are equivalent. Given parameters HMCR and PAR for the HS algorithm ,we can set p1=PAR and p2= HMCR to obtain the same method of creating solutions for the ES. On the other hand, given parameters p1 and p2 for the ES,we can set HMCR=1-p2 and PAR=p1 and in this case we obtain the same method of creating solutions for the HS algorithm. This means that Harmony Search is a special case of the (μ+1) Evolution Strategy."
+The rebuttal paragraph to the above claim is directly quoted from [6]
+"After reading the above passage some questions arise. The first one is about existence of two parameters p1 and p2 in evolution strategies , as no mention is made about these parameters in the detailed algorithm presented above for (μ+1) -ES, which is quoted from very reliable sources ,i.e, Bäck and Schwefel,[7] Bäck.[8] On the other side, six publications are cited by Weyland [2] as a reference for realization of the mutation operator in (μ+1)-ES in conjunction with p1 and p2 parameters. The two of these publications, which are also repeated in this article from Refs. Schwefel,[9][10] are the published books on evolution strategies, whereas the other four; namely by Fogel and Atmar,[11] Michalewicz etal.,[12] BäckandSchwefel [13] Michalewicz [14] refer to some selected articles on evolutionary algorithms. Excluding Schwefel,[9] which is in German language, a detailed inspection concerning the other five publications turns up no evidence of the use of p1 and p2 parameters in any evolution strategy method. The inspection further reveals that none of these publications indeed addresses algorithmic formulation and details of (μ+1)-ES except by Rechenberg.[15] What is more, a literature survey on the use of parameters p1 and p2 in evolution strategies does not yield any information which verifies the use of these parameters. In this case one wonders how Weyland[2] has reached to the conclusion that evolution strategies inherently use these two parameters. The presence of any evolutionary computation method which uses p1 and p2 parameters in its search algorithm is out of the knowledge of the authors, but the fact remains that evolution strategies do not incorporate these two parameters in their search methodologies. It seems that these two parameters are misleadingly introduced as the standard components of (μ+1)-ES by Weyland [2] because presumably a stronger proof is needed to reinforce the assertion that harmony search algorithm is a special case of evolution strategies."
+Despite the similarity between HS and (μ+1)-ES on some levels, there are a sufficient number of strong evidences to substantiate the fact that the two algorithms are completely different methods both conceptually and operationally. Firstly HS used Pitch adjustment probabilistic ally second, the local search strategies implemented by these techniques are completely dissimilar. In the harmony search method, if PAR test gives the answer of “yes,” the new value of a design variable is taken as the value available in the harmony matrix either one row up or down, or few rows up or down. On the other hand in evolution strategies the new value of a design variable is obtained by applying a normally distributed based mutation to the design variable. This mutation will not generate a value which may be in the one or more rows up or down. Naturally, the new value of a particular design variable will be different in this operation. Even if no mutation is applied to the design variable and one of the parent vectors is selected for the new design variable, this vector will be different from the one selected in the harmony search algorithm. This means harmony search method differs from the evolution strategies in its local search strategy.

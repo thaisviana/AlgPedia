@@ -1,0 +1,4 @@
+ABOUT
+In signal processing, a passthrough is a logic gate which enables a signal to "pass through" unaltered, sometimes with little alteration. Sometimes the concept of a "passthrough" can also involve daisy chain logic.
+FULL TEXT
+In signal processing, a passthrough is a logic gate which enables a signal to "pass through" unaltered, sometimes with little alteration. Sometimes the concept of a "passthrough" can also involve daisy chain logic.

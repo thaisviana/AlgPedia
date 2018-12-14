@@ -1,0 +1,64 @@
+ABOUT
+In mathematical optimization, the network simplex algorithm is a graph theoretic specialization of the simplex algorithm. The algorithm is usually formulated in terms of a standard problem, minimum-cost flow problem and can be efficiently solved in polynomial time. The network simplex method works very well in practice, typically 200 to 300 times faster than the simplex method applied to general linear program of same dimensions.[citation needed]
+FULL TEXT
+In mathematical optimization, the network simplex algorithm is a graph theoretic specialization of the simplex algorithm. The algorithm is usually formulated in terms of a standard problem, minimum-cost flow problem and can be efficiently solved in polynomial time. The network simplex method works very well in practice, typically 200 to 300 times faster than the simplex method applied to general linear program of same dimensions.[citation needed]
+
+
+For a long time, the existence of a provably efficient network simplex algorithm was one of the major open problems in complexity theory, even though efficient in practice versions were available. In 1995 Orlin provided the first polynomial algorithm with runtime of 
+
+
+
+O
+(
+
+V
+
+2
+
+
+E
+log
+⁡
+(
+V
+C
+)
+)
+
+
+{\displaystyle O(V^{2}E\log(VC))}
+
+ where 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ is maximum cost of any edges.[1] Later Tarjan improved this to 
+
+
+
+O
+(
+V
+E
+log
+⁡
+V
+log
+⁡
+(
+V
+C
+)
+)
+
+
+{\displaystyle O(VE\log V\log(VC))}
+
+ using dynamic trees in 1997.[2] Strongly polynomial dual network simplex algorithms for the same problem, but with a higher dependence on the numbers of edges and vertices in the graph, have been known for longer.[3]
+The network simplex method is an adaptation of the bounded variable primal simplex algorithm. The basis is represented as a rooted spanning tree of the underlying network, in which variables are represented by arcs, and the simplex multipliers by node potentials. At each iteration, an entering variable is selected by some pricing strategy, based on the dual multipliers (node potentials), and forms a cycle with the arcs of the tree. The leaving variable is the arc of the cycle with the least augmenting flow. The substitution of entering for leaving arc, and the reconstruction of the tree is called a pivot. When no non-basic arc remains eligible to enter, the optimal solution has been reached.
+The network simplex algorithm can be used to solve many practical problems including,[4]

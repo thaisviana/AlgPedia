@@ -1,0 +1,20 @@
+ABOUT
+The return ratio of a dependent source in a linear electrical circuit is the negative of the ratio of the current (voltage) returned to the site of the dependent source to the current (voltage) of a replacement independent source. The terms loop gain and return ratio are often used interchangeably; however, they are necessarily equivalent only in the case of a single feedback loop system with unilateral blocks.[1]
+FULL TEXT
+The return ratio of a dependent source in a linear electrical circuit is the negative of the ratio of the current (voltage) returned to the site of the dependent source to the current (voltage) of a replacement independent source. The terms loop gain and return ratio are often used interchangeably; however, they are necessarily equivalent only in the case of a single feedback loop system with unilateral blocks.[1]
+
+
+The steps for calculating the return ratio of a source are as follows:[2]
+These steps may not be feasible when the dependent sources inside the devices are not directly accessible, for example when using built-in "black box" SPICE models or when measuring the return ratio experimentally. For SPICE simulations, one potential workaround is to manually replace non-linear devices by their small-signal equivalent model, with exposed dependent sources. However this will have to be redone if the bias point changes.
+A result by Rosenstark shows that return ratio can be calculated by breaking the loop at any unilateral point in the circuit. The problem is now finding how to break the loop without affecting the bias point and altering the results. Middlebrook[3] and Rosenstark[4] have proposed several methods for experimental evaluation of return ratio (loosely referred to by these authors as simply loop gain), and similar methods have been adapted for use in SPICE by Hurst.[5] See Spectrum user note or Roberts, or Sedra, and especially Tuinenga.[6][7][8]
+Figure 1 (top right) shows a bipolar amplifier with feedback bias resistor Rf driven by a Norton signal source. Figure 2 (left panel) shows the corresponding small-signal circuit obtained by replacing the transistor with its hybrid-pi model. The objective is to find the return ratio of the dependent current source in this amplifier.[9] To reach the objective, the steps outlined above are followed. Figure 2 (center panel) shows the application of these steps up to Step 4, with the dependent source moved to the left of the inserted source of value it, and the leads targeted for cutting marked with an x. Figure 2 (right panel) shows the circuit set up for calculation of the return ratio T, which is
+The return current is
+The feedback current in Rf is found by current division to be:
+The base-emitter voltage vπ is then, from Ohm's law:
+Consequently,
+The overall transresistance gain of this amplifier can be shown to be:
+with R1 = RS || rπ and R2 = RD || rO.
+This expression can be rewritten in the form used by the asymptotic gain model, which expresses the overall gain of a feedback amplifier in terms of several independent factors that are often more easily derived separately than the overall gain itself, and that often provide insight into the circuit. This form is:
+where the so-called asymptotic gain G∞ is the gain at infinite gm, namely:
+and the so-called feed forward or direct feedthrough G0 is the gain for zero gm, namely:
+For additional applications of this method, see asymptotic gain model and Blackman's theorem.

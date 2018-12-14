@@ -1,0 +1,170 @@
+ABOUT
+In computer science, a substring index is a data structure which gives substring search in a text or text collection in sublinear time. If you have a document 
+
+
+
+S
+
+
+{\displaystyle S}
+
+ of length 
+
+
+
+n
+
+
+{\displaystyle n}
+
+, or a set of documents 
+
+
+
+D
+=
+{
+
+S
+
+1
+
+
+,
+
+S
+
+2
+
+
+,
+…
+,
+
+S
+
+d
+
+
+}
+
+
+{\displaystyle D=\{S^{1},S^{2},\dots ,S^{d}\}}
+
+ of total length 
+
+
+
+n
+
+
+{\displaystyle n}
+
+, you can locate all occurrences of a pattern 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ in 
+
+
+
+o
+(
+n
+)
+
+
+{\displaystyle o(n)}
+
+ time. (See Big O notation.)
+FULL TEXT
+In computer science, a substring index is a data structure which gives substring search in a text or text collection in sublinear time. If you have a document 
+
+
+
+S
+
+
+{\displaystyle S}
+
+ of length 
+
+
+
+n
+
+
+{\displaystyle n}
+
+, or a set of documents 
+
+
+
+D
+=
+{
+
+S
+
+1
+
+
+,
+
+S
+
+2
+
+
+,
+…
+,
+
+S
+
+d
+
+
+}
+
+
+{\displaystyle D=\{S^{1},S^{2},\dots ,S^{d}\}}
+
+ of total length 
+
+
+
+n
+
+
+{\displaystyle n}
+
+, you can locate all occurrences of a pattern 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ in 
+
+
+
+o
+(
+n
+)
+
+
+{\displaystyle o(n)}
+
+ time. (See Big O notation.)
+The phrase full-text index is also often used for an index of all substrings of a text. But is ambiguous, as it is also used for regular word indexes such as inverted files and document retrieval. See full text search.
+Substring indexes include:

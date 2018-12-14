@@ -1,0 +1,8 @@
+{
+    "about": "Let \n\n\n\nG\n\n\n{\\displaystyle G}\n\n be a finite permutation group acting on a set \n\n\n\n\u03a9\n\n\n{\\displaystyle \\Omega }\n\n. A sequence", 
+    "name": "Base (Group Theory)", 
+    "classification": "Computational Group Theory", 
+    "full_text": "Let \n\n\n\nG\n\n\n{\\displaystyle G}\n\n be a finite permutation group acting on a set \n\n\n\n\u03a9\n\n\n{\\displaystyle \\Omega }\n\n. A sequence\nof k distinct elements of \n\n\n\n\u03a9\n\n\n{\\displaystyle \\Omega }\n\n is a base for G if the only element of \n\n\n\nG\n\n\n{\\displaystyle G}\n\n which fixes every \n\n\n\n\n\u03b2\n\ni\n\n\n\u2208\nB\n\n\n{\\displaystyle \\beta _{i}\\in B}\n\n pointwise is the identity element of \n\n\n\nG\n\n\n{\\displaystyle G}\n\n.[1]\nBases and strong generating sets are concepts of importance in computational group theory. A base and a strong generating set (together often called a BSGS) for a group can be obtained using the Schreier\u2013Sims algorithm.[2]\nIt is often beneficial to deal with bases and strong generating sets as these may be easier to work with than the entire group. A group may have a small base compared to the set it acts on. In the \"worst case\", the symmetric groups and alternating groups have large bases (the symmetric group Sn has base size n \u2212 1), and there are often specialized algorithms that deal with these cases.\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Base_(group_theory)", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Base_(group_theory)\n"
+}

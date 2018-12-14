@@ -1,0 +1,306 @@
+ABOUT
+Upsampling is interpolation, applied in the context of digital signal processing and sample rate conversion. When upsampling is performed on a sequence of samples of a continuous function or signal, it produces an approximation of the sequence that would have been obtained by sampling the signal at a higher rate (or density, as in the case of a photograph). For example, if compact disc audio is upsampled by a factor of 5/4, the resulting sample-rate increases from 44,100 Hz to 55,125 Hz.
+FULL TEXT
+Upsampling is interpolation, applied in the context of digital signal processing and sample rate conversion. When upsampling is performed on a sequence of samples of a continuous function or signal, it produces an approximation of the sequence that would have been obtained by sampling the signal at a higher rate (or density, as in the case of a photograph). For example, if compact disc audio is upsampled by a factor of 5/4, the resulting sample-rate increases from 44,100 Hz to 55,125 Hz.
+
+
+Interpolation by an integer factor L can be explained as a 2-step process, with an equivalent implementation that is more efficient:
+In this application the filter is called an interpolation filter, and its design is discussed below. When the interpolation filter is an FIR type, its efficiency can be improved, because the zeros contribute nothing to its dot product calculations. It is an easy matter to omit them from both the data stream and the calculations. The calculation performed by an efficient interpolating FIR filter for each output sample is a dot product:
+where the h[•] sequence is the impulse response, and K is the largest value of k for which h[j + kL] is non-zero. In the case L = 2, h[•] can be designed as a half-band filter, where almost half of the coefficients are zero and need not be included in the dot products. Impulse response coefficients taken at intervals of L form a subsequence, and there are L such subsequences (called phases) multiplexed together. Each of L phases of the impulse response is filtering the same sequential values of the x[•] data stream and producing one of L sequential output values. In some multi-processor architectures, these dot products are performed simultaneously, in which case it is called a polyphase filter.
+For completeness, we now mention that a possible, but unlikely, implementation of each phase is to replace the coefficients of the other phases with zeros in a copy of the h[•] array, and process the 
+
+
+
+
+
+x
+
+L
+
+
+[
+n
+]
+,
+
+
+
+{\displaystyle \scriptstyle x_{L}[n],}
+
+ sequence at L times faster than the original input rate. L − 1 of every L outputs are zero, and the real values are supplied by the other phases. Adding them all together produces the desired y[•] sequence. Adding a zero is equivalent to discarding it. The equivalence of computing and discarding L − 1 zeros vs computing just every Lth output is known as the second Noble identity.[1]
+Let X(f) be the Fourier transform of any function, x(t), whose samples at some interval, T, equal the x[n] sequence. Then the discrete-time Fourier transform (DTFT) of the x[n] sequence is the Fourier series representation of a periodic summation of X(f):
+
+
+
+
+
+
+
+
+
+∑
+
+n
+=
+−
+∞
+
+
+∞
+
+
+
+
+
+
+x
+(
+n
+T
+)
+
+⏞
+
+
+
+x
+[
+n
+]
+
+
+ 
+
+e
+
+−
+i
+2
+π
+f
+n
+T
+
+
+
+⏟
+
+
+
+DTFT
+
+
+=
+
+
+1
+T
+
+
+
+∑
+
+k
+=
+−
+∞
+
+
+∞
+
+
+X
+(
+f
+−
+k
+
+/
+
+T
+)
+.
+
+
+{\displaystyle \underbrace {\sum _{n=-\infty }^{\infty }\overbrace {x(nT)} ^{x[n]}\ e^{-i2\pi fnT}} _{\text{DTFT}}={\frac {1}{T}}\sum _{k=-\infty }^{\infty }X(f-k/T).}
+
+
+
+ 
+ 
+ 
+ 
+(Eq.1)
+When T has units of seconds, 
+
+
+
+
+f
+
+
+
+{\displaystyle \scriptstyle f}
+
+ has units of hertz. Sampling L times faster (at interval T/L) increases the periodicity by a factor of L:
+
+
+
+
+
+
+L
+T
+
+
+
+∑
+
+k
+=
+−
+∞
+
+
+∞
+
+
+X
+
+(
+f
+−
+k
+⋅
+
+
+L
+T
+
+
+)
+
+,
+
+
+{\displaystyle {\frac {L}{T}}\sum _{k=-\infty }^{\infty }X\left(f-k\cdot {\frac {L}{T}}\right),}
+
+
+
+ 
+ 
+ 
+ 
+(Eq.2)
+which is also the desired result of interpolation. An example of both these distributions is depicted in the top two graphs of Fig.1.
+When the additional samples are inserted zeros, they increase the data rate, but they have no effect on the frequency distribution until the zeros are replaced by the interpolation filter. Many filter design programs use frequency units of cycles/sample, which is achieved by normalizing the frequency axis, based on the new data rate (L/T). The result is shown in the third graph of Fig.1. Also shown is the passband of the interpolation filter needed to make the third graph resemble the second one. Its cutoff frequency is  
+
+
+
+
+
+
+0.5
+L
+
+
+
+.
+
+
+{\displaystyle {\tfrac {0.5}{L}}.}
+
+[note 1] In terms of actual frequency, the cutoff is  
+
+
+
+
+
+
+0.5
+T
+
+
+
+
+
+{\displaystyle {\tfrac {0.5}{T}}}
+
+ Hz, which is the Nyquist frequency of the original x[n] sequence.
+The same result can be obtained from Z-transforms, constrained to values of complex-variable, z, of the form 
+
+
+
+z
+=
+
+e
+
+i
+ω
+
+
+.
+
+
+{\displaystyle z=e^{i\omega }.}
+
+  Then the transform is the same Fourier series with different frequency normalization. By comparison with Eq.1, we deduce:
+which is depicted by the fourth graph in Fig.1.  When the zeros are inserted, the transform becomes:
+depicted by the bottom graph. In these normalizations, the effective data-rate is always represented by the constant 2π (radians/sample) instead of 1.  In those units, the interpolation filter bandwidth is π/L, as show on the bottom graph. The corresponding physical frequency is  
+
+
+
+
+
+
+π
+L
+
+
+
+⋅
+
+
+
+L
+
+2
+π
+T
+
+
+
+
+=
+
+
+
+0.5
+T
+
+
+
+
+
+{\displaystyle {\tfrac {\pi }{L}}\cdot {\tfrac {L}{2\pi T}}={\tfrac {0.5}{T}}}
+
+  Hz, the original Nyquist frequency.
+Let L/M denote the upsampling factor, where L > M.
+Upsampling requires a lowpass filter after increasing the data rate, and downsampling requires a lowpass filter before decimation. Therefore, both operations can be accomplished by a single filter with the lower of the two cutoff frequencies. For the L > M case, the interpolation filter cutoff,  
+
+
+
+
+
+
+0.5
+L
+
+
+
+
+
+{\displaystyle {\tfrac {0.5}{L}}}
+
+ cycles per intermediate sample, is the lower frequency.

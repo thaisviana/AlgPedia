@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import urllib2
 import re
 import gzip, StringIO
+#from FileWriters import RDFWriter
 
 def doMain():
 
@@ -16,7 +17,7 @@ def doMain():
 	try:
 		response = urllib2.urlopen(request)
 	#except urllib2.HTTPError, e:
-	except:
+	except Exception, e:
 		raise ExtractionError("Error retreiving: " + str(url))
 	
 	data = decode(response)
@@ -58,7 +59,7 @@ def doMain():
 	try:
 		response = urllib2.urlopen(request)
 	#except urllib2.HTTPError, e:
-	except:
+	except Exception, e:
 		raise ExtractionError("Error retreiving: " + str(url))
 	
 	data = decode(response)

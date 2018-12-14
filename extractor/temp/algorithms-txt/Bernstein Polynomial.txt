@@ -1,0 +1,67 @@
+ABOUT
+In the mathematical field of numerical analysis, a Bernstein polynomial, named after Sergei Natanovich Bernstein, is a polynomial in the Bernstein form, that is a linear combination of Bernstein basis polynomials.
+FULL TEXT
+In the mathematical field of numerical analysis, a Bernstein polynomial, named after Sergei Natanovich Bernstein, is a polynomial in the Bernstein form, that is a linear combination of Bernstein basis polynomials.
+A numerically stable way to evaluate polynomials in Bernstein form is de Casteljau's algorithm.
+Polynomials in Bernstein form were first used by Bernstein in a constructive proof for the Stone–Weierstrass approximation theorem. With the advent of computer graphics, Bernstein polynomials, restricted to the interval [0, 1], became important in the form of Bézier curves.
+
+
+The n + 1 Bernstein basis polynomials of degree n are defined as
+where 
+
+
+
+
+
+
+(
+
+
+n
+ν
+
+
+)
+
+
+
+
+
+{\displaystyle {n \choose \nu }}
+
+ is a binomial coefficient.
+The Bernstein basis polynomials of degree n form a basis for the vector space Πn of polynomials of degree at most n.
+A linear combination of Bernstein basis polynomials
+is called a Bernstein polynomial or polynomial in Bernstein form of degree n.[1]
+The coefficients 
+
+
+
+
+β
+
+ν
+
+
+
+
+{\displaystyle \beta _{\nu }}
+
+ are called Bernstein coefficients or Bézier coefficients.
+The first few Bernstein basis polynomials are:
+The Bernstein basis polynomials have the following properties:
+Let ƒ be a continuous function on the interval [0, 1]. Consider the Bernstein polynomial
+It can be shown that
+uniformly on the interval [0, 1].[2] This is a stronger statement than the proposition that the limit holds for each value of x separately; that would be pointwise convergence rather than uniform convergence. Specifically, the word uniformly signifies that
+Bernstein polynomials thus afford one way to prove the Weierstrass approximation theorem that every real-valued continuous function on a real interval [a, b] can be uniformly approximated by polynomial functions over R.[3]
+A more general statement for a function with continuous kth derivative is
+where additionally
+is an eigenvalue of Bn; the corresponding eigenfunction is a polynomial of degree k.
+Suppose K is a random variable distributed as the number of successes in n independent Bernoulli trials with probability x of success on each trial; in other words, K has a binomial distribution with parameters n and x. Then we have the expected value E(K/n) = x.
+By the weak law of large numbers of probability theory,
+for every δ > 0. Moreover, this relation holds uniformly in x, which can be seen from its proof via Chebyshev's inequality, taking into account that the variance of K/n, equal to x(1-x)/n, is bounded from above by 1/(4n) irrespective of x.
+Because ƒ, being continuous on a closed bounded interval, must be uniformly continuous on that interval, one infers a statement of the form
+uniformly in x. Taking into account that ƒ is bounded (on the given interval) one gets for the expectation
+uniformly in x. To this end one splits the sum for the expectation in two parts. On one part the difference does not exceed ε; this part cannot contribute more than ε. On the other part the difference exceeds ε, but does not exceed 2M, where M is an upper bound for |ƒ(x)|; this part cannot contribute more than 2M times the small probability that the difference exceeds ε.
+Finally, one observes that the absolute value of the difference between expectations never exceeds the expectation of the absolute value of the difference, and that E(ƒ(K/n)) is just the Bernstein polynomial Bn(ƒ, x).
+See for instance.[4]

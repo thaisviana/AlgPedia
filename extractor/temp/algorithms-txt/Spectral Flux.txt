@@ -1,0 +1,9 @@
+ABOUT
+Spectral flux is a measure of how quickly the power spectrum of a signal is changing, calculated by comparing the power spectrum for one frame against the power spectrum from the previous frame.[1] More precisely, it is usually calculated as the 2-norm (also known as the Euclidean distance) between the two normalised spectra.
+FULL TEXT
+Spectral flux is a measure of how quickly the power spectrum of a signal is changing, calculated by comparing the power spectrum for one frame against the power spectrum from the previous frame.[1] More precisely, it is usually calculated as the 2-norm (also known as the Euclidean distance) between the two normalised spectra.
+Calculated this way, the spectral flux is not dependent upon overall power (since the spectra are normalised), nor on phase considerations (since only the magnitudes are compared).
+The spectral flux can be used to determine the timbre of an audio signal, or in onset detection,[2] among other things.
+Some implementations use the 1-norm rather than the 2-norm (i.e. the sum rather than the Euclidean distance).
+Some implementations do not normalise the spectra.
+For onset detection, increases in energy are important (not decreases), so some algorithms only include values calculated from bins in which the energy is increasing.

@@ -1,0 +1,13 @@
+ABOUT
+Computer random number generators are important in mathematics, cryptography and gambling (on game servers).
+FULL TEXT
+Computer random number generators are important in mathematics, cryptography and gambling (on game servers).
+This list includes many common types, regardless of quality.
+
+
+The following algorithms are pseudorandom number generators:
+The following is a list of companies that produce hardware random number generators:
+You may download true random numbers from these sites:
+You may generate pseudo-random numbers from these sites:
+Note: random numbers transferred over the public internet are not cryptographically secure for most purposes.
+Cipher algorithms and cryptographic hashes can also be used as pseudorandom number generators. These include:

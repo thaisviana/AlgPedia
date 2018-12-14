@@ -1,0 +1,1235 @@
+ABOUT
+The knapsack problem or rucksack problem is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine the number of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible. It derives its name from the problem faced by someone who is constrained by a fixed-size knapsack and must fill it with the most valuable items.
+FULL TEXT
+The knapsack problem or rucksack problem is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine the number of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible. It derives its name from the problem faced by someone who is constrained by a fixed-size knapsack and must fill it with the most valuable items.
+The problem often arises in resource allocation where there are financial constraints and is studied in fields such as combinatorics, computer science, complexity theory, cryptography, applied mathematics, and daily fantasy sports.
+The knapsack problem has been studied for more than a century, with early works dating as far back as 1897.[1] The name "knapsack problem" dates back to the early works of mathematician Tobias Dantzig (1884–1956),[2] and refers to the commonplace problem of packing your most valuable or useful items without overloading your luggage.
+
+
+A 1998 study of the Stony Brook University Algorithm Repository showed that, out of 75 algorithmic problems, the knapsack problem was the 18th most popular and the 4th most needed after kd-trees, suffix trees, and the bin packing problem.[3]
+Knapsack problems appear in real-world decision-making processes in a wide variety of fields, such as finding the least wasteful way to cut raw materials,[4] selection of investments and portfolios,[5] selection of assets for asset-backed securitization,[6] and generating keys for the Merkle–Hellman[7] and other knapsack cryptosystems.
+One early application of knapsack algorithms was in the construction and scoring of tests in which the test-takers have a choice as to which questions they answer. For small examples it is a fairly simple process to provide the test-takers with such a choice. For example, if an exam contains 12 questions each worth 10 points, the test-taker need only answer 10 questions to achieve a maximum possible score of 100 points. However, on tests with a heterogeneous distribution of point values—i.e. different questions are worth different point values— it is more difficult to provide choices. Feuerman and Weiss proposed a system in which students are given a heterogeneous test with a total of 125 possible points. The students are asked to answer all of the questions to the best of their abilities. Of the possible subsets of problems whose total point values add up to 100, a knapsack algorithm would determine which subset gives each student the highest possible score.[8]
+The most common problem being solved is the 0-1 knapsack problem, which restricts the number xi of copies of each kind of item to zero or one. Given a set of n items numbered from 1 up to n, each with a weight wi and a value vi, along with a maximum weight capacity W,
+Here xi represents the number of instances of item i to include in the knapsack. Informally, the problem is to maximize the sum of the values of the items in the knapsack so that the sum of the weights is less than or equal to the knapsack's capacity.
+The bounded knapsack problem (BKP) removes the restriction that there is only one of each item, but restricts the number 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+ of copies of each kind of item to a maximum non-negative integer value 
+
+
+
+c
+
+
+{\displaystyle c}
+
+:
+The unbounded knapsack problem (UKP) places no upper bound on the number of copies of each kind of item and can be formulated as above except for that the only restriction on 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+ is that it is a non-negative integer.
+One example of the unbounded knapsack problem is given using the figure shown at the beginning of this article and the text "if any number of each box is available" in the caption of that figure.
+The knapsack problem is interesting from the perspective of computer science for many reasons:
+There is a link between the "decision" and "optimization" problems in that if there exists a polynomial algorithm that solves the "decision" problem, then one can find the maximum value for the optimization problem in polynomial time by applying this algorithm iteratively while increasing the value of k . On the other hand, if an algorithm finds the optimal value of optimization problem in polynomial time, then the decision problem can be solved in polynomial time by comparing the value of the solution output by this algorithm with the value of k . Thus, both versions of the problem are of similar difficulty.
+One theme in research literature is to identify what the "hard" instances of the knapsack problem look like,[9][10] or viewed another way, to identify what properties of instances in practice might make them more amenable than their worst-case NP-complete behaviour suggests.[11] The goal in finding these "hard" instances is for their use in public key cryptography systems, such as the Merkle-Hellman knapsack cryptosystem.
+Several algorithms are available to solve knapsack problems, based on dynamic programming approach,[12] branch and bound approach[13] or hybridizations of both approaches.[11][14][15][16]
+If all weights (
+
+
+
+
+w
+
+1
+
+
+,
+…
+,
+
+w
+
+n
+
+
+
+
+{\displaystyle w_{1},\ldots ,w_{n}}
+
+) are nonnegative integers, the knapsack problem can be solved in pseudo-polynomial time using dynamic programming. The following describes a dynamic programming solution for the unbounded knapsack problem.
+To simplify things, assume all weights are strictly positive (
+
+
+
+
+w
+
+i
+
+
+>
+0
+
+
+{\displaystyle w_{i}>0}
+
+). We wish to maximize total value subject to the constraint that total weight is less than or equal to 
+
+
+
+W
+
+
+{\displaystyle W}
+
+. Then for each 
+
+
+
+w
+≤
+W
+
+
+{\displaystyle w\leq W}
+
+, define 
+
+
+
+m
+[
+w
+]
+
+
+{\displaystyle m[w]}
+
+ to be the maximum value that can be attained with total weight less than or equal to 
+
+
+
+w
+
+
+{\displaystyle w}
+
+. Then, 
+
+
+
+m
+[
+W
+]
+
+
+{\displaystyle m[W]}
+
+ is the solution to the problem.
+Observe that 
+
+
+
+m
+[
+w
+]
+
+
+{\displaystyle m[w]}
+
+ has the following properties:
+where 
+
+
+
+
+v
+
+i
+
+
+
+
+{\displaystyle v_{i}}
+
+ is the value of the i-th kind of item.
+(To formulate the equation above, the idea used is that the solution for a knapsack is the same as the value of one correct item plus the solution for a knapsack with smaller capacity, specifically one with the capacity reduced by the weight of that chosen item.)
+Here the maximum of the empty set is taken to be zero. Tabulating the results from 
+
+
+
+m
+[
+0
+]
+
+
+{\displaystyle m[0]}
+
+ up through 
+
+
+
+m
+[
+W
+]
+
+
+{\displaystyle m[W]}
+
+ gives the solution. Since the calculation of each 
+
+
+
+m
+[
+w
+]
+
+
+{\displaystyle m[w]}
+
+ involves examining 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ items, and there are 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ values of 
+
+
+
+m
+[
+w
+]
+
+
+{\displaystyle m[w]}
+
+ to calculate, the running time of the dynamic programming solution is 
+
+
+
+O
+(
+n
+W
+)
+
+
+{\displaystyle O(nW)}
+
+. Dividing 
+
+
+
+
+w
+
+1
+
+
+,
+
+
+w
+
+2
+
+
+,
+
+…
+,
+
+
+w
+
+n
+
+
+,
+
+W
+
+
+{\displaystyle w_{1},\,w_{2},\,\ldots ,\,w_{n},\,W}
+
+ by their greatest common divisor is a way to improve the running time.
+The 
+
+
+
+O
+(
+n
+W
+)
+
+
+{\displaystyle O(nW)}
+
+ complexity does not contradict the fact that the knapsack problem is NP-complete, since 
+
+
+
+W
+
+
+{\displaystyle W}
+
+, unlike 
+
+
+
+n
+
+
+{\displaystyle n}
+
+, is not polynomial in the length of the input to the problem. The length of the 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ input to the problem is proportional to the number of bits in 
+
+
+
+W
+
+
+{\displaystyle W}
+
+, 
+
+
+
+log
+⁡
+W
+
+
+{\displaystyle \log W}
+
+, not to 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ itself.
+A similar dynamic programming solution for the 0/1 knapsack problem also runs in pseudo-polynomial time. Assume 
+
+
+
+
+w
+
+1
+
+
+,
+
+
+w
+
+2
+
+
+,
+
+…
+,
+
+
+w
+
+n
+
+
+,
+
+W
+
+
+{\displaystyle w_{1},\,w_{2},\,\ldots ,\,w_{n},\,W}
+
+ are strictly positive integers. Define 
+
+
+
+m
+[
+i
+,
+w
+]
+
+
+{\displaystyle m[i,w]}
+
+ to be the maximum value that can be attained with weight less than or equal to 
+
+
+
+w
+
+
+{\displaystyle w}
+
+ using items up to 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ (first 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ items).
+We can define 
+
+
+
+m
+[
+i
+,
+w
+]
+
+
+{\displaystyle m[i,w]}
+
+ recursively as follows:
+The solution can then be found by calculating 
+
+
+
+m
+[
+n
+,
+W
+]
+
+
+{\displaystyle m[n,W]}
+
+. To do this efficiently we can use a table to store previous computations.
+The following is pseudo code for the dynamic program:
+This solution will therefore run in 
+
+
+
+O
+(
+n
+W
+)
+
+
+{\displaystyle O(nW)}
+
+ time and 
+
+
+
+O
+(
+n
+W
+)
+
+
+{\displaystyle O(nW)}
+
+ space. Additionally, if we use only a 1-dimensional array 
+
+
+
+m
+[
+w
+]
+
+
+{\displaystyle m[w]}
+
+ to store the current optimal values and pass over this array 
+
+
+
+i
++
+1
+
+
+{\displaystyle i+1}
+
+ times, rewriting from 
+
+
+
+m
+[
+W
+]
+
+
+{\displaystyle m[W]}
+
+ to 
+
+
+
+m
+[
+1
+]
+
+
+{\displaystyle m[1]}
+
+ every time, we get the same result for only 
+
+
+
+O
+(
+W
+)
+
+
+{\displaystyle O(W)}
+
+ space.[citation needed]
+Another algorithm for 0-1 knapsack, discovered in 1974 [17] and sometimes called "meet-in-the-middle" due to parallels to a similarly named algorithm in cryptography, is exponential in the number of different items but may be preferable to the DP algorithm when 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ is large compared to n. In particular, if the 
+
+
+
+
+w
+
+i
+
+
+
+
+{\displaystyle w_{i}}
+
+ are nonnegative but not integers, we could still use the dynamic programming algorithm by scaling and rounding (i.e. using fixed-point arithmetic), but if the problem requires 
+
+
+
+d
+
+
+{\displaystyle d}
+
+ fractional digits of precision to arrive at the correct answer, 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ will need to be scaled by 
+
+
+
+
+10
+
+d
+
+
+
+
+{\displaystyle 10^{d}}
+
+, and the DP algorithm will require 
+
+
+
+O
+(
+W
+
+10
+
+d
+
+
+)
+
+
+{\displaystyle O(W10^{d})}
+
+ space and 
+
+
+
+O
+(
+n
+W
+
+10
+
+d
+
+
+)
+
+
+{\displaystyle O(nW10^{d})}
+
+ time.
+The algorithm takes 
+
+
+
+O
+(
+
+2
+
+n
+
+/
+
+2
+
+
+)
+
+
+{\displaystyle O(2^{n/2})}
+
+ space, and efficient implementations of step 3 (for instance, sorting the subsets of B by weight, discarding subsets of B which weigh more than other subsets of B of greater or equal value, and using binary search to find the best match) result in a runtime of 
+
+
+
+O
+(
+n
+
+2
+
+n
+
+/
+
+2
+
+
+)
+
+
+{\displaystyle O(n2^{n/2})}
+
+. As with the meet in the middle attack in cryptography, this improves on the 
+
+
+
+O
+(
+n
+∗
+
+2
+
+n
+
+
+)
+
+
+{\displaystyle O(n*2^{n})}
+
+ runtime of a naive brute force approach (examining all subsets of {1...n}), at the cost of using exponential rather than constant space (see also baby-step giant-step).
+As for most NP-complete problems, it may be enough to find workable solutions even if they are not optimal. Preferably, however, the approximation comes with a guarantee on the difference between the value of the solution found and the value of the optimal solution.
+As with many useful but computationally complex algorithms, there has been substantial research on creating and analyzing algorithms that approximate a solution. The knapsack problem, though NP-Hard, is one of a collection of algorithms that can still be approximated to any specified degree. This means that the problem has a polynomial time approximation scheme. To be exact, the knapsack problem has a fully polynomial time approximation scheme (FPTAS).[18]
+George Dantzig proposed a greedy approximation algorithm to solve the unbounded knapsack problem.[19] His version sorts the items in decreasing order of value per unit of weight, 
+
+
+
+
+v
+
+i
+
+
+
+/
+
+
+w
+
+i
+
+
+
+
+{\displaystyle v_{i}/w_{i}}
+
+. It then proceeds to insert them into the sack, starting with as many copies as possible of the first kind of item until there is no longer space in the sack for more. Provided that there is an unlimited supply of each kind of item, if 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ is the maximum value of items that fit into the sack, then the greedy algorithm is guaranteed to achieve at least a value of 
+
+
+
+m
+
+/
+
+2
+
+
+{\displaystyle m/2}
+
+. However, for the bounded problem, where the supply of each kind of item is limited, the algorithm may be far from optimal.
+The fully polynomial time approximation scheme (FPTAS) for the knapsack problem takes advantage of the fact that the reason the problem has no known polynomial time solutions is because the profits associated with the items are not restricted. If one rounds off some of the least significant digits of the profit values then they will be bounded by a polynomial and 1/ε where ε is a bound on the correctness of the solution. This restriction then means that an algorithm can find a solution in polynomial time that is correct within a factor of (1-ε) of the optimal solution.[18]
+Theorem: The set 
+
+
+
+
+S
+′
+
+
+
+{\displaystyle S'}
+
+ computed by the algorithm above satisfies 
+
+
+
+
+p
+r
+o
+f
+i
+t
+
+(
+
+S
+′
+
+)
+≥
+(
+1
+−
+ε
+)
+⋅
+
+p
+r
+o
+f
+i
+t
+
+(
+
+S
+
+∗
+
+
+)
+
+
+{\displaystyle \mathrm {profit} (S')\geq (1-\varepsilon )\cdot \mathrm {profit} (S^{*})}
+
+, where 
+
+
+
+
+S
+
+∗
+
+
+
+
+{\displaystyle S^{*}}
+
+ is an optimal solution.
+Solving the unbounded knapsack problem can be made easier by throwing away items which will never be needed. For a given item i, suppose we could find a set of items J such that their total weight is less than the weight of i, and their total value is greater than the value of i. Then i cannot appear in the optimal solution, because we could always improve any potential solution containing i by replacing i with the set J. Therefore, we can disregard the i-th item altogether. In such cases, J is said to dominate i. (Note that this does not apply to bounded knapsack problems, since we may have already used up the items in J.)
+Finding dominance relations allows us to significantly reduce the size of the search space. There are several different types of dominance relations,[11] which all satisfy an inequality of the form:
+
+
+
+
+
+
+∑
+
+j
+∈
+J
+
+
+
+w
+
+j
+
+
+
+
+x
+
+j
+
+
+ 
+≤
+α
+
+
+w
+
+i
+
+
+
+
+{\displaystyle \qquad \sum _{j\in J}w_{j}\,x_{j}\ \leq \alpha \,w_{i}}
+
+, and 
+
+
+
+
+∑
+
+j
+∈
+J
+
+
+
+v
+
+j
+
+
+
+
+x
+
+j
+
+
+ 
+≥
+α
+
+
+v
+
+i
+
+
+
+
+
+{\displaystyle \sum _{j\in J}v_{j}\,x_{j}\ \geq \alpha \,v_{i}\,}
+
+ for some 
+
+
+
+x
+∈
+
+Z
+
++
+
+
+n
+
+
+
+
+{\displaystyle x\in Z_{+}^{n}}
+
+
+where 
+
+
+
+α
+∈
+
+Z
+
++
+
+
+
+,
+J
+⊊
+N
+
+
+{\displaystyle \alpha \in Z_{+}\,,J\subsetneq N}
+
+ and 
+
+
+
+i
+∉
+J
+
+
+{\displaystyle i\not \in J}
+
+. The vector 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ denotes the number of copies of each member of J.
+There are many variations of the knapsack problem that have arisen from the vast number of applications of the basic problem. The main variations occur by changing the number of some problem parameter such as the number of items, number of objectives, or even the number of knapsacks.
+This variation changes the goal of the individual filling the knapsack. Instead of one objective, such as maximizing the monetary profit, the objective could have several dimensions. For example, there could be environmental or social concerns as well as economic goals. Problems frequently addressed include portfolio and transportation logistics optimizations.[20][21]
+As a concrete example, suppose you ran a cruise ship. You have to decide how many famous comedians to hire. This boat can handle no more than one ton of passengers and the entertainers must weigh less than 1000 lbs. Each comedian has a weight, brings in business based on their popularity and asks for a specific salary. In this example you have multiple objectives. You want, of course, to maximize the popularity of your entertainers while minimizing their salaries. Also, you want to have as many entertainers as possible.
+In this variation, the weight of knapsack item 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ is given by a D-dimensional vector 
+
+
+
+
+
+
+w
+
+i
+
+
+¯
+
+
+=
+(
+
+w
+
+i
+1
+
+
+,
+…
+,
+
+w
+
+i
+D
+
+
+)
+
+
+{\displaystyle {\overline {w_{i}}}=(w_{i1},\ldots ,w_{iD})}
+
+ and the knapsack has a D-dimensional capacity vector 
+
+
+
+(
+
+W
+
+1
+
+
+,
+…
+,
+
+W
+
+D
+
+
+)
+
+
+{\displaystyle (W_{1},\ldots ,W_{D})}
+
+. The target is to maximize the sum of the values of the items in the knapsack so that the sum of weights in each dimension 
+
+
+
+d
+
+
+{\displaystyle d}
+
+ does not exceed 
+
+
+
+
+W
+
+d
+
+
+
+
+{\displaystyle W_{d}}
+
+.
+Multi-dimensional knapsack is computationally harder than knapsack; even for 
+
+
+
+D
+=
+2
+
+
+{\displaystyle D=2}
+
+, the problem does not have EPTAS unless P
+
+
+
+=
+
+
+{\displaystyle =}
+
+NP.[22] However, the algorithm in [23] is shown to solve sparse instances efficiently. An instance of multi-dimensional knapsack is sparse if there is a set 
+
+
+
+J
+=
+{
+1
+,
+2
+,
+…
+,
+m
+}
+
+
+{\displaystyle J=\{1,2,\ldots ,m\}}
+
+ for 
+
+
+
+m
+<
+D
+
+
+{\displaystyle m<D}
+
+ such that for every knapsack item 
+
+
+
+i
+
+
+{\displaystyle i}
+
+, 
+
+
+
+∃
+z
+>
+m
+
+
+{\displaystyle \exists z>m}
+
+ such that 
+
+
+
+∀
+j
+∈
+J
+∪
+{
+z
+}
+,
+ 
+
+w
+
+i
+j
+
+
+≥
+0
+
+
+{\displaystyle \forall j\in J\cup \{z\},\ w_{ij}\geq 0}
+
+ and 
+
+
+
+∀
+y
+∉
+J
+∪
+{
+z
+}
+,
+
+w
+
+i
+y
+
+
+=
+0
+
+
+{\displaystyle \forall y\notin J\cup \{z\},w_{iy}=0}
+
+. Such instances occur, for example, when scheduling packets in a wireless network with relay nodes.[23] The algorithm from [23] also solves sparse instances of the multiple choice variant, multiple-choice multi-dimensional knapsack.
+The IHS (Increasing Height Shelf) algorithm is optimal for 2D knapsack (packing squares into a two-dimensional unit size square): when there are at most five square in an optimal packing.[24]
+This variation is similar to the Bin Packing Problem. It differs from the Bin Packing Problem in that a subset of items can be selected, whereas, in the Bin Packing Problem, all items have to be packed to certain bins. The concept is that there are multiple knapsacks. This may seem like a trivial change, but it is not equivalent to adding to the capacity of the initial knapsack. This variation is used in many loading and scheduling problems in Operations Research and has a PTAS[25]
+As described by Wu et al.:
+The quadratic knapsack problem (QKP) maximizes a quadratic objective function subject to a binary and linear capacity constraint.[26]
+The quadratic knapsack problem was discussed under that title by Gallo, Hammer, and Simeone in 1980.[27] However, Gallo and Simeone[28] attribute the first treatment of the problem to Witzgall[29] in 1975.
+The subset sum problem is a special case of the decision and 0-1 problems where each kind of item, the weight equals the value: 
+
+
+
+
+w
+
+i
+
+
+=
+
+v
+
+i
+
+
+
+
+{\displaystyle w_{i}=v_{i}}
+
+. In the field of cryptography, the term knapsack problem is often used to refer specifically to the subset sum problem and is commonly known as one of Karp's 21 NP-complete problems.[30]
+The generalization of subset sum problem is called multiple subset-sum problem, in which multiple bins exist with the same capacity. It has been shown that the generalization does not have an FPTAS.[31]

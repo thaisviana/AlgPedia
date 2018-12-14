@@ -1,0 +1,22 @@
+ABOUT
+In numerical analysis, a blossom is a functional that can be applied to any polynomial, but is mostly used for Bézier and spline curves and surfaces.
+FULL TEXT
+In numerical analysis, a blossom is a functional that can be applied to any polynomial, but is mostly used for Bézier and spline curves and surfaces.
+The blossom of a polynomial ƒ, often denoted 
+
+
+
+
+
+B
+
+
+[
+f
+]
+,
+
+
+{\displaystyle {\mathcal {B}}[f],}
+
+ is completely characterised by the three properties:

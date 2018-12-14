@@ -1,0 +1,372 @@
+ABOUT
+Interior point methods (also referred to as barrier methods) are a certain class of algorithms that solves linear and nonlinear convex optimization problems.
+FULL TEXT
+Interior point methods (also referred to as barrier methods) are a certain class of algorithms that solves linear and nonlinear convex optimization problems.
+John von Neumann[1] suggested an interior point method of linear programming which was neither a polynomial time method nor an efficient method in practice. In fact, it turned out to be slower in practice compared to simplex method which is not a polynomial time method. In 1984, Narendra Karmarkar developed a method for linear programming called Karmarkar's algorithm which runs in probably polynomial time and is also very efficient in practice. It enabled solutions of linear programming problems which were beyond the capabilities of the simplex method. Contrary to the simplex method, it reaches a best solution by traversing the interior of the feasible region. The method can be generalized to convex programming based on a self-concordant barrier function used to encode the convex set.
+Any convex optimization problem can be transformed into minimizing (or maximizing) a linear function over a convex set by converting to the epigraph form.[2] The idea of encoding the feasible set using a barrier and designing barrier methods was studied by Anthony V. Fiacco, Garth P. McCormick, and others in the early 1960s. These ideas were mainly developed for general nonlinear programming, but they were later abandoned due to the presence of more competitive methods for this class of problems (e.g. sequential quadratic programming).
+Yurii Nesterov and Arkadi Nemirovski came up with a special class of such barriers that can be used to encode any convex set. They guarantee that the number of iterations of the algorithm is bounded by a polynomial in the dimension and accuracy of the solution.[3]
+Karmarkar's breakthrough revitalized the study of interior point methods and barrier problems, showing that it was possible to create an algorithm for linear programming characterized by polynomial complexity and, moreover, that was competitive with the simplex method. Already Khachiyan's ellipsoid method was a polynomial time algorithm; however, it was too slow to be of practical interest.
+The class of primal-dual path-following interior point methods is considered the most successful. Mehrotra's predictor-corrector algorithm provides the basis for most implementations of this class of methods.[4]
+
+
+The primal-dual method's idea is easy to demonstrate for constrained nonlinear optimization. For simplicity consider the all-inequality version of a nonlinear optimization problem:
+The logarithmic barrier function associated with (1) is
+Here 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ is a small positive scalar, sometimes called the "barrier parameter". As 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ converges to zero the minimum of 
+
+
+
+B
+(
+x
+,
+μ
+)
+
+
+{\displaystyle B(x,\mu )}
+
+ should converge to a solution of (1).
+The barrier function gradient is
+where 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ is the gradient of the original function 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ and 
+
+
+
+∇
+
+c
+
+i
+
+
+
+
+{\displaystyle \nabla c_{i}}
+
+ is the gradient of 
+
+
+
+
+c
+
+i
+
+
+
+
+{\displaystyle c_{i}}
+
+.
+In addition to the original ("primal") variable 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ we introduce a Lagrange multiplier inspired dual variable 
+
+
+
+λ
+∈
+
+
+R
+
+
+m
+
+
+
+
+{\displaystyle \lambda \in \mathbb {R} ^{m}}
+
+
+(4) is sometimes called the "perturbed complementarity" condition, for its resemblance to "complementary slackness" in KKT conditions.
+We try to find those 
+
+
+
+(
+
+x
+
+μ
+
+
+,
+
+λ
+
+μ
+
+
+)
+
+
+{\displaystyle (x_{\mu },\lambda _{\mu })}
+
+ for which the gradient of the barrier function is zero.
+Applying (4) to (3) we get an equation for the gradient:
+where the matrix 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ is the constraint 
+
+
+
+c
+(
+x
+)
+
+
+{\displaystyle c(x)}
+
+ Jacobian.
+The intuition behind (5) is that the gradient of 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ should lie in the subspace spanned by the constraints' gradients. The "perturbed complementarity" with small 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ (4) can be understood as the condition that the solution should either lie near the boundary 
+
+
+
+
+c
+
+i
+
+
+(
+x
+)
+=
+0
+
+
+{\displaystyle c_{i}(x)=0}
+
+ or that the projection of the gradient 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ on the constraint component 
+
+
+
+
+c
+
+i
+
+
+(
+x
+)
+
+
+{\displaystyle c_{i}(x)}
+
+ normal should be almost zero.
+Applying Newton's method to (4) and (5) we get an equation for 
+
+
+
+(
+x
+,
+λ
+)
+
+
+{\displaystyle (x,\lambda )}
+
+ update 
+
+
+
+(
+
+p
+
+x
+
+
+,
+
+p
+
+λ
+
+
+)
+
+
+{\displaystyle (p_{x},p_{\lambda })}
+
+:
+where 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ is the Hessian matrix of 
+
+
+
+B
+(
+x
+,
+μ
+)
+
+
+{\displaystyle B(x,\mu )}
+
+ and 
+
+
+
+Λ
+
+
+{\displaystyle \Lambda }
+
+ is a diagonal matrix of 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+ and 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ is a diagonal matrix where 
+
+
+
+
+C
+
+i
+i
+
+
+
+
+{\displaystyle C_{ii}}
+
+ is 
+
+
+
+
+c
+
+i
+
+
+(
+x
+)
+
+
+{\displaystyle c_{i}(x)}
+
+.
+Because of (1), (4) the condition
+should be enforced at each step. This can be done by choosing appropriate 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+:

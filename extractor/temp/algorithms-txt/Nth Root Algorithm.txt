@@ -1,0 +1,104 @@
+ABOUT
+The principal nth root 
+
+
+
+
+
+A
+
+n
+
+
+
+
+
+{\displaystyle {\sqrt[{n}]{A}}}
+
+ of a positive real number A, is the positive real solution of the equation
+FULL TEXT
+The principal nth root 
+
+
+
+
+
+A
+
+n
+
+
+
+
+
+{\displaystyle {\sqrt[{n}]{A}}}
+
+ of a positive real number A, is the positive real solution of the equation
+(for integer n there are n distinct complex solutions to this equation if 
+
+
+
+A
+>
+0
+
+
+{\displaystyle A>0}
+
+, but only one is positive and real).
+There is a very fast-converging nth root algorithm for finding 
+
+
+
+
+
+A
+
+n
+
+
+
+
+
+{\displaystyle {\sqrt[{n}]{A}}}
+
+:
+A special case is the familiar square-root algorithm. By setting n = 2, the iteration rule in step 2 becomes the square root iteration rule:
+Several different derivations of this algorithm are possible. One derivation shows it is a special case of Newton's method (also called the Newton-Raphson method) for finding zeros of a function 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ beginning with an initial guess. Although Newton's method is iterative, meaning it approaches the solution through a series of increasingly accurate guesses, it converges very quickly. The rate of convergence is quadratic, meaning roughly that the number of bits of accuracy doubles on each iteration (so improving a guess from 1 bit to 64 bits of precision requires only 6 iterations). For this reason, this algorithm is often used in computers as a very fast method to calculate square roots.
+For large n, the nth root algorithm is somewhat less efficient since it requires the computation of 
+
+
+
+
+x
+
+k
+
+
+n
+−
+1
+
+
+
+
+{\displaystyle x_{k}^{n-1}}
+
+ at each step, but can be efficiently implemented with a good exponentiation algorithm.
+Newton's method is a method for finding a zero of a function f(x). The general iteration scheme is:
+The nth root problem can be viewed as searching for a zero of the function
+So the derivative is
+and the iteration rule is
+leading to the general nth root algorithm.

@@ -1,0 +1,929 @@
+ABOUT
+The Recursive least squares (RLS) is an adaptive filter which recursively finds the coefficients that minimize a weighted linear least squares cost function relating to the input signals. This is in contrast to other algorithms such as the least mean squares (LMS) that aim to reduce the mean square error. In the derivation of the RLS, the input signals are considered deterministic, while for the LMS and similar algorithm they are considered stochastic. Compared to most of its competitors, the RLS exhibits extremely fast convergence. However, this benefit comes at the cost of high computational complexity.
+FULL TEXT
+The Recursive least squares (RLS) is an adaptive filter which recursively finds the coefficients that minimize a weighted linear least squares cost function relating to the input signals. This is in contrast to other algorithms such as the least mean squares (LMS) that aim to reduce the mean square error. In the derivation of the RLS, the input signals are considered deterministic, while for the LMS and similar algorithm they are considered stochastic. Compared to most of its competitors, the RLS exhibits extremely fast convergence. However, this benefit comes at the cost of high computational complexity.
+
+
+RLS was discovered by Gauss but laid unused or ignored until 1950 when Plackett rediscovered the original work of Gauss from 1821. In general, the RLS can be used to solve any problem that can be solved by adaptive filters. For example, suppose that a signal d(n) is transmitted over an echoey, noisy channel that causes it to be received as
+where 
+
+
+
+v
+(
+n
+)
+
+
+{\displaystyle v(n)}
+
+ represents additive noise. We will attempt to recover the desired signal 
+
+
+
+d
+(
+n
+)
+
+
+{\displaystyle d(n)}
+
+ by use of a 
+
+
+
+p
++
+1
+
+
+{\displaystyle p+1}
+
+-tap FIR filter, 
+
+
+
+
+w
+
+
+
+{\displaystyle \mathbf {w} }
+
+:
+where 
+
+
+
+
+
+x
+
+
+n
+
+
+=
+[
+x
+(
+n
+)
+
+x
+(
+n
+−
+1
+)
+
+…
+
+x
+(
+n
+−
+p
+)
+
+]
+
+T
+
+
+
+
+{\displaystyle \mathbf {x} _{n}=[x(n)\quad x(n-1)\quad \ldots \quad x(n-p)]^{T}}
+
+ is the vector containing the 
+
+
+
+p
++
+1
+
+
+{\displaystyle p+1}
+
+ most recent samples of 
+
+
+
+x
+(
+n
+)
+
+
+{\displaystyle x(n)}
+
+. Our goal is to estimate the parameters of the filter 
+
+
+
+
+w
+
+
+
+{\displaystyle \mathbf {w} }
+
+, and at each time n we refer to the new least squares estimate by 
+
+
+
+
+
+w
+
+
+n
+
+
+
+
+{\displaystyle \mathbf {w} _{n}}
+
+. As time evolves, we would like to avoid completely redoing the least squares algorithm to find the new estimate for 
+
+
+
+
+
+w
+
+
+n
++
+1
+
+
+
+
+{\displaystyle \mathbf {w} _{n+1}}
+
+, in terms of 
+
+
+
+
+
+w
+
+
+n
+
+
+
+
+{\displaystyle \mathbf {w} _{n}}
+
+.
+The benefit of the RLS algorithm is that there is no need to invert matrices, thereby saving computational power. Another advantage is that it provides intuition behind such results as the Kalman filter.
+The idea behind RLS filters is to minimize a cost function 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ by appropriately selecting the filter coefficients 
+
+
+
+
+
+w
+
+
+n
+
+
+
+
+{\displaystyle \mathbf {w} _{n}}
+
+, updating the filter as new data arrives. The error signal 
+
+
+
+e
+(
+n
+)
+
+
+{\displaystyle e(n)}
+
+ and desired signal 
+
+
+
+d
+(
+n
+)
+
+
+{\displaystyle d(n)}
+
+ are defined in the negative feedback diagram below:
+
+The error implicitly depends on the filter coefficients through the estimate 
+
+
+
+
+
+
+d
+^
+
+
+
+(
+n
+)
+
+
+{\displaystyle {\hat {d}}(n)}
+
+:
+The weighted least squares error function 
+
+
+
+C
+
+
+{\displaystyle C}
+
+—the cost function we desire to minimize—being a function of e(n) is therefore also dependent on the filter coefficients:
+where 
+
+
+
+0
+<
+λ
+≤
+1
+
+
+{\displaystyle 0<\lambda \leq 1}
+
+ is the "forgetting factor" which gives exponentially less weight to older error samples.
+The cost function is minimized by taking the partial derivatives for all entries 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ of the coefficient vector 
+
+
+
+
+
+w
+
+
+n
+
+
+
+
+{\displaystyle \mathbf {w} _{n}}
+
+ and setting the results to zero
+Next, replace 
+
+
+
+e
+(
+n
+)
+
+
+{\displaystyle e(n)}
+
+ with the definition of the error signal
+Rearranging the equation yields
+This form can be expressed in terms of matrices
+where 
+
+
+
+
+
+R
+
+
+x
+
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {R} _{x}(n)}
+
+ is the weighted sample covariance matrix for 
+
+
+
+x
+(
+n
+)
+
+
+{\displaystyle x(n)}
+
+, and 
+
+
+
+
+
+r
+
+
+d
+x
+
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {r} _{dx}(n)}
+
+ is the equivalent estimate for the cross-covariance between 
+
+
+
+d
+(
+n
+)
+
+
+{\displaystyle d(n)}
+
+ and 
+
+
+
+x
+(
+n
+)
+
+
+{\displaystyle x(n)}
+
+. Based on this expression we find the coefficients which minimize the cost function as
+This is the main result of the discussion.
+The smaller 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+ is, the smaller is the contribution of previous samples to the covariance matrix. This makes the filter more sensitive to recent samples, which means more fluctuations in the filter co-efficients. The 
+
+
+
+λ
+=
+1
+
+
+{\displaystyle \lambda =1}
+
+ case is referred to as the growing window RLS algorithm. In practice, 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+ is usually chosen between 0.98 and 1.[1] By using type-II maximum likelihood estimation the optimal 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+ can be estimated from a set of data.[2]
+The discussion resulted in a single equation to determine a coefficient vector which minimizes the cost function. In this section we want to derive a recursive solution of the form
+where 
+
+
+
+Δ
+
+
+w
+
+
+n
+−
+1
+
+
+
+
+{\displaystyle \Delta \mathbf {w} _{n-1}}
+
+ is a correction factor at time 
+
+
+
+
+n
+−
+1
+
+
+
+{\displaystyle {n-1}}
+
+. We start the derivation of the recursive algorithm by expressing the cross covariance 
+
+
+
+
+
+r
+
+
+d
+x
+
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {r} _{dx}(n)}
+
+ in terms of 
+
+
+
+
+
+r
+
+
+d
+x
+
+
+(
+n
+−
+1
+)
+
+
+{\displaystyle \mathbf {r} _{dx}(n-1)}
+
+
+where 
+
+
+
+
+x
+
+(
+i
+)
+
+
+{\displaystyle \mathbf {x} (i)}
+
+ is the 
+
+
+
+
+p
++
+1
+
+
+
+{\displaystyle {p+1}}
+
+ dimensional data vector
+Similarly we express 
+
+
+
+
+
+R
+
+
+x
+
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {R} _{x}(n)}
+
+ in terms of 
+
+
+
+
+
+R
+
+
+x
+
+
+(
+n
+−
+1
+)
+
+
+{\displaystyle \mathbf {R} _{x}(n-1)}
+
+ by
+In order to generate the coefficient vector we are interested in the inverse of the deterministic auto-covariance matrix. For that task the Woodbury matrix identity comes in handy. With
+The Woodbury matrix identity follows
+To come in line with the standard literature, we define
+where the gain vector 
+
+
+
+g
+(
+n
+)
+
+
+{\displaystyle g(n)}
+
+ is
+Before we move on, it is necessary to bring 
+
+
+
+
+g
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {g} (n)}
+
+ into another form
+Subtracting the second term on the left side yields
+With the recursive definition of 
+
+
+
+
+P
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {P} (n)}
+
+ the desired form follows
+Now we are ready to complete the recursion. As discussed
+The second step follows from the recursive definition of 
+
+
+
+
+
+r
+
+
+d
+x
+
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {r} _{dx}(n)}
+
+. Next we incorporate the recursive definition of 
+
+
+
+
+P
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {P} (n)}
+
+ together with the alternate form of 
+
+
+
+
+g
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {g} (n)}
+
+ and get
+With 
+
+
+
+
+
+w
+
+
+n
+−
+1
+
+
+=
+
+P
+
+(
+n
+−
+1
+)
+
+
+r
+
+
+d
+x
+
+
+(
+n
+−
+1
+)
+
+
+{\displaystyle \mathbf {w} _{n-1}=\mathbf {P} (n-1)\mathbf {r} _{dx}(n-1)}
+
+ we arrive at the update equation
+where 
+
+
+
+α
+(
+n
+)
+=
+d
+(
+n
+)
+−
+
+
+x
+
+
+T
+
+
+(
+n
+)
+
+
+w
+
+
+n
+−
+1
+
+
+
+
+{\displaystyle \alpha (n)=d(n)-\mathbf {x} ^{T}(n)\mathbf {w} _{n-1}}
+
+ is the a priori error. Compare this with the a posteriori error; the error calculated after the filter is updated:
+That means we found the correction factor
+This intuitively satisfying result indicates that the correction factor is directly proportional to both the error and the gain vector, which controls how much sensitivity is desired, through the weighting factor, 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+.
+The RLS algorithm for a p-th order RLS filter can be summarized as
+
+
+
+
+
+x
+
+(
+n
+)
+=
+
+[
+
+
+
+
+x
+(
+n
+)
+
+
+
+
+x
+(
+n
+−
+1
+)
+
+
+
+
+⋮
+
+
+
+
+x
+(
+n
+−
+p
+)
+
+
+
+
+]
+
+
+
+{\displaystyle \mathbf {x} (n)=\left[{\begin{matrix}x(n)\\x(n-1)\\\vdots \\x(n-p)\end{matrix}}\right]}
+
+
+Note that the recursion for 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ follows an Algebraic Riccati equation and thus draws parallels to the Kalman filter.[3]
+The Lattice Recursive Least Squares adaptive filter is related to the standard RLS except that it requires fewer arithmetic operations (order N). It offers additional advantages over conventional LMS algorithms such as faster convergence rates, modular structure, and insensitivity to variations in eigenvalue spread of the input correlation matrix. The LRLS algorithm described is based on a posteriori errors and includes the normalized form. The derivation is similar to the standard RLS algorithm and is based on the definition of 
+
+
+
+d
+(
+k
+)
+
+
+
+
+{\displaystyle d(k)\,\!}
+
+. In the forward prediction case, we have 
+
+
+
+d
+(
+k
+)
+=
+x
+(
+k
+)
+
+
+
+
+{\displaystyle d(k)=x(k)\,\!}
+
+ with the input signal 
+
+
+
+x
+(
+k
+−
+1
+)
+
+
+
+
+{\displaystyle x(k-1)\,\!}
+
+ as the most up to date sample. The backward prediction case is 
+
+
+
+d
+(
+k
+)
+=
+x
+(
+k
+−
+i
+−
+1
+)
+
+
+
+
+{\displaystyle d(k)=x(k-i-1)\,\!}
+
+, where i is the index of the sample in the past we want to predict, and the input signal 
+
+
+
+x
+(
+k
+)
+
+
+
+
+{\displaystyle x(k)\,\!}
+
+ is the most recent sample.[4]
+The algorithm for a LRLS filter can be summarized as
+The normalized form of the LRLS has fewer recursions and variables. It can be calculated by applying a normalization to the internal variables of the algorithm which will keep their magnitude bounded by one. This is generally not used in real-time applications because of the number of division and square-root operations which comes with a high computational load.
+The algorithm for a NLRLS filter can be summarized as

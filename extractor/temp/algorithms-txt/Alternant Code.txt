@@ -1,0 +1,7 @@
+ABOUT
+In coding theory, alternant codes form a class of parameterised error-correcting codes which generalise the BCH codes.
+FULL TEXT
+In coding theory, alternant codes form a class of parameterised error-correcting codes which generalise the BCH codes.
+An alternant code over GF(q) of length n is defined by a parity check matrix H of alternant form Hi,j = αjiyi, where the αj are distinct elements of the extension GF(qm), the yi are further non-zero parameters again in the extension GF(qm) and the indices range as i from 0 to δ − 1, j from 1 to n.
+The parameters of this alternant code are length n, dimension ≥ n − mδ and minimum distance ≥ δ + 1. There exist long alternant codes which meet the Gilbert-Varshamov bound.
+The class of alternant codes includes

@@ -1,0 +1,339 @@
+ABOUT
+In numerical analysis, one or more guard digits can be used to reduce the amount of roundoff error.
+FULL TEXT
+In numerical analysis, one or more guard digits can be used to reduce the amount of roundoff error.
+For example, suppose that the final result of a long, multi-step calculation can be safely rounded off to N decimal places. That is to say, the roundoff error introduced by this final roundoff makes a negligible contribution to the overall uncertainty.
+However, it is quite likely that it is not safe to round off the intermediate steps in the calculation to the same number of digits. Be aware that roundoff errors can accumulate. If M decimal places are used in the intermediate calculation, we say there are M−N guard digits.
+Guard digits are also used in floating point operations in most computer systems. Given 
+
+
+
+
+2
+
+1
+
+
+×
+
+0.100
+
+2
+
+
+−
+
+2
+
+0
+
+
+×
+
+0.111
+
+2
+
+
+
+
+{\displaystyle 2^{1}\times 0.100_{2}-2^{0}\times 0.111_{2}}
+
+ we have to line up the binary points. This means we must add an extra digit to the first operand—a guard digit. This gives us 
+
+
+
+
+2
+
+1
+
+
+×
+
+0.1000
+
+2
+
+
+−
+
+2
+
+1
+
+
+×
+
+0.0111
+
+2
+
+
+
+
+{\displaystyle 2^{1}\times 0.1000_{2}-2^{1}\times 0.0111_{2}}
+
+. Performing this operation gives us 
+
+
+
+
+2
+
+1
+
+
+×
+
+0.0001
+
+2
+
+
+
+
+{\displaystyle 2^{1}\times 0.0001_{2}}
+
+ or 
+
+
+
+
+2
+
+−
+2
+
+
+×
+
+0.100
+
+2
+
+
+
+
+{\displaystyle 2^{-2}\times 0.100_{2}}
+
+. Without using a guard digit we have 
+
+
+
+
+2
+
+1
+
+
+×
+
+0.100
+
+2
+
+
+−
+
+2
+
+1
+
+
+×
+
+0.011
+
+2
+
+
+
+
+{\displaystyle 2^{1}\times 0.100_{2}-2^{1}\times 0.011_{2}}
+
+, yielding 
+
+
+
+
+2
+
+1
+
+
+×
+
+0.001
+
+2
+
+
+=
+
+
+{\displaystyle 2^{1}\times 0.001_{2}=}
+
+ or 
+
+
+
+
+2
+
+−
+1
+
+
+×
+
+0.100
+
+2
+
+
+
+
+{\displaystyle 2^{-1}\times 0.100_{2}}
+
+. This gives us a relative error of 1. Therefore, we can see how important guard digits can be.
+An example of the error caused by floating point roundoff is illustrated in the following C code.
+It appears that the program should not terminate. Yet the output is :
+Another example is:
+Take 2 numbers:
+
+
+
+
+2.56
+∗
+
+10
+
+0
+
+
+
+
+{\displaystyle 2.56*10^{0}}
+
+ and 
+
+
+
+2.34
+∗
+
+10
+
+2
+
+
+
+
+{\displaystyle 2.34*10^{2}}
+
+
+we bring the first number to the same power of 
+
+
+
+10
+
+
+{\displaystyle 10}
+
+ as the second one:
+
+
+
+
+0.0256
+∗
+
+10
+
+2
+
+
+
+
+{\displaystyle 0.0256*10^{2}}
+
+
+The addition of the 2 numbers is:
+After padding the second number (i.e., 
+
+
+
+2.34
+∗
+
+10
+
+2
+
+
+
+
+{\displaystyle 2.34*10^{2}}
+
+) with two 
+
+
+
+0
+
+
+{\displaystyle 0}
+
+s, the bit after 
+
+
+
+4
+
+
+{\displaystyle 4}
+
+ is the guard digit, and the bit after is the round digit. The result after rounding is 
+
+
+
+2.37
+
+
+{\displaystyle 2.37}
+
+ as opposed to 
+
+
+
+2.36
+
+
+{\displaystyle 2.36}
+
+, without the extra bits (guard and round bits), i.e., by considering only 
+
+
+
+0.02
++
+2.34
+=
+2.36
+
+
+{\displaystyle 0.02+2.34=2.36}
+
+. The error therefore is 
+
+
+
+0.01
+
+
+{\displaystyle 0.01}
+
+.

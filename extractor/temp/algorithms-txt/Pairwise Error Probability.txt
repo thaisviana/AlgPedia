@@ -1,0 +1,236 @@
+ABOUT
+Pairwise error probability is the error probability that for a transmitted signal (
+
+
+
+X
+
+
+{\displaystyle X}
+
+) its corresponding but distorted version (
+
+
+
+
+
+
+X
+^
+
+
+
+
+
+{\displaystyle {\widehat {X}}}
+
+) will be received. This type of probability is called ″pair-wise error probability″ because the probability exists with a pair of signal vectors in a signal constellation.[1] It's mainly used in communication systems.[1]
+FULL TEXT
+Pairwise error probability is the error probability that for a transmitted signal (
+
+
+
+X
+
+
+{\displaystyle X}
+
+) its corresponding but distorted version (
+
+
+
+
+
+
+X
+^
+
+
+
+
+
+{\displaystyle {\widehat {X}}}
+
+) will be received. This type of probability is called ″pair-wise error probability″ because the probability exists with a pair of signal vectors in a signal constellation.[1] It's mainly used in communication systems.[1]
+
+
+In general, the received signal is a distorted version of the transmitted signal. Thus, we introduce the symbol error probability, which is the probability 
+
+
+
+P
+(
+e
+)
+
+
+{\displaystyle P(e)}
+
+ that the demodulator will make a wrong estimation 
+
+
+
+(
+
+
+
+X
+^
+
+
+
+)
+
+
+{\displaystyle ({\widehat {X}})}
+
+ of the transmitted symbol 
+
+
+
+(
+X
+)
+
+
+{\displaystyle (X)}
+
+ based on the received symbol, which is defined as follows:
+where M is the size of signal constellation.
+The pairwise error probability 
+
+
+
+P
+(
+X
+→
+
+
+
+X
+^
+
+
+
+)
+
+
+{\displaystyle P(X\to {\widehat {X}})}
+
+ is defined as the probability that, when 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ is transmitted, 
+
+
+
+
+
+
+X
+^
+
+
+
+
+
+{\displaystyle {\widehat {X}}}
+
+ is received.
+Using the upper bound to the probability of a union of events, it can be written:
+Finally:
+For the simple case of the additive white Gaussian noise (AWGN) channel:
+The PEP can be computed in closed form as follows:
+
+
+
+
+(
+Z
+,
+X
+−
+
+
+
+X
+^
+
+
+
+)
+
+
+{\displaystyle (Z,X-{\widehat {X}})}
+
+ is a Gaussian random variable with mean 0 and variance 
+
+
+
+
+N
+
+0
+
+
+
+|
+
+
+|
+
+X
+−
+
+
+
+X
+^
+
+
+
+
+|
+
+
+
+|
+
+
+2
+
+
+
+/
+
+2
+
+
+{\displaystyle N_{0}||X-{\widehat {X}}||^{2}/2}
+
+.
+For a zero mean, variance 
+
+
+
+
+σ
+
+2
+
+
+=
+1
+
+
+{\displaystyle \sigma ^{2}=1}
+
+ Gaussian random variable:
+Hence,

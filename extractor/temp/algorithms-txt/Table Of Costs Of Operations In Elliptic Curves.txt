@@ -1,0 +1,236 @@
+ABOUT
+Elliptic curve cryptography is a popular form of public key encryption that is based on the mathematical theory of elliptic curves. Points on an elliptic curve can be added and form a group under this addition operation. This article describes the computational costs for this group addition and certain related operations that are used in elliptic curve cryptography algorithms.
+FULL TEXT
+Elliptic curve cryptography is a popular form of public key encryption that is based on the mathematical theory of elliptic curves. Points on an elliptic curve can be added and form a group under this addition operation. This article describes the computational costs for this group addition and certain related operations that are used in elliptic curve cryptography algorithms.
+
+
+The next section presents a table of all the time-costs of some of the possible operations in elliptic curves. The columns of the table are labelled by various computational operations. The rows of the table are for different models of elliptic curves. These are the operations considered :
+DBL - Doubling
+ADD - Addition
+mADD - Mixed addition: addition of an input that has been scaled to have Z-coordinate 1.
+mDBL - Mixed doubling: doubling of an input that has been scaled to have Z coordinate 1.
+TPL - Tripling.
+DBL+ADD - Combined double and add step
+To see how adding (ADD) and doubling (DBL) points on elliptic curves are defined, see The group law. The importance of doubling to speed scaler multiplication is discussed after the table. For information about other possible operations on elliptic curves see http://hyperelliptic.org/EFD/g1p/index.html.
+Under different assumptions on the multiplication, addition, inversion for the elements in some fixed field, the time-cost of these operations varies. In this table it is assumed that:
+This means that 100 multiplications (M) are required to invert (I) an element; one multiplication is required to compute the square (S) of an element; no multiplication is needed to multiply an element by a parameter (*param), by a constant (*const), or to add two elements.
+For more information about other results obtained with different assumptions, see http://hyperelliptic.org/EFD/g1p/index.html
+In some applications of elliptic curve cryptography and the elliptic curve method of factorization (ECM) it is necessary to consider the scalar multiplication [n]P. One way to do this is to compute successively:
+But it is faster to use double-and-add method, e.g. [5]P = [2]([2]P) + P. In general to compute [k]P, write
+
+
+
+
+k
+=
+
+∑
+
+i
+≤
+l
+
+
+
+k
+
+i
+
+
+
+2
+
+i
+
+
+
+
+{\displaystyle k=\sum _{i\leq l}k_{i}2^{i}}
+
+
+with ki in {0,1} and 
+
+
+
+l
+=
+[
+l
+o
+
+g
+
+2
+
+
+k
+]
+
+
+{\displaystyle l=[log_{2}k]}
+
+, kl = 1, then:
+
+
+
+
+[
+2
+]
+(
+.
+.
+.
+.
+(
+[
+2
+]
+(
+[
+2
+]
+(
+[
+2
+]
+(
+[
+2
+]
+(
+[
+2
+]
+P
++
+[
+
+k
+
+(
+l
+−
+1
+)
+
+
+]
+P
+)
++
+[
+
+k
+
+(
+l
+−
+2
+)
+
+
+]
+P
+)
++
+[
+
+k
+
+(
+l
+−
+3
+)
+
+
+]
+P
+)
++
+…
+)
+⋯
++
+[
+
+k
+
+1
+
+
+]
+P
+)
++
+[
+
+k
+
+0
+
+
+]
+P
+=
+[
+
+2
+
+l
+
+
+]
+P
++
+[
+
+k
+
+(
+l
+−
+1
+)
+
+
+
+2
+
+l
+−
+1
+
+
+]
+P
++
+⋯
++
+[
+
+k
+
+1
+
+
+2
+]
+P
++
+[
+
+k
+
+0
+
+
+]
+P
+
+
+{\displaystyle [2](....([2]([2]([2]([2]([2]P+[k_{(l-1)}]P)+[k_{(l-2)}]P)+[k_{(l-3)}]P)+\dots )\dots +[k_{1}]P)+[k_{0}]P=[2^{l}]P+[k_{(l-1)}2^{l-1}]P+\dots +[k_{1}2]P+[k_{0}]P}
+
+.
+Note that, this simple algorithm takes at most 2l steps and each step consists of a doubling and (if ki ≠ 0) adding two points. So, this is one of the reasons why addition and doubling formulas are defined. Furthermore, this method is applicable to any group and if the group law is written multiplicatively, the double-and-add algorithm is instead called square-and-multiply algorithm.

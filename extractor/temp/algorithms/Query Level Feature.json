@@ -1,0 +1,8 @@
+{
+    "about": "A query level feature or QLF is a ranking feature utilized in a machine-learned ranking algorithm.", 
+    "name": "Query Level Feature", 
+    "classification": "Machine Learning Algorithms", 
+    "full_text": "A query level feature or QLF is a ranking feature utilized in a machine-learned ranking algorithm.\nExample QLFs:\n\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Query_level_feature", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Query_level_feature\n"
+}

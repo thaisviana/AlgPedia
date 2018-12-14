@@ -1,0 +1,4 @@
+ABOUT
+In the algebraic theory of linear signal processing, a set of filters is treated as an algebra and a set of signals is treated as a module and the z-transform is generalized to linear maps.
+FULL TEXT
+In the algebraic theory of linear signal processing, a set of filters is treated as an algebra and a set of signals is treated as a module and the z-transform is generalized to linear maps.

@@ -1,0 +1,8 @@
+{
+    "about": "In mathematics, Owen's T function T(h,\u00a0a), named after statistician Donald Bruce Owen, is defined by", 
+    "name": "Owen'S T Function", 
+    "classification": "Computational Statistics", 
+    "full_text": "In mathematics, Owen's T function T(h,\u00a0a), named after statistician Donald Bruce Owen, is defined by\nThe function was first introduced by Owen in 1956.[1]\n\n\nThe function T(h,\u00a0a) gives the probability of the event (X>h and 0<Y<a*X) where X and Y are independent standard normal random variables.\nThis function can be used to calculate bivariate normal distribution probabilities[2][3] and, from there, in the calculation of multivariate normal distribution probabilities.[4] It also frequently appears in various integrals involving Gaussian functions.\nComputer algorithms for the accurate calculation of this function are available;[5] quadrature having been employed since the 1970s. [6]\nHere \u03a6(x) is the standard normal cumulative density function\nMore properties can be found in the literature.[7]\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Owen's_T_function", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Owen's_T_function\n"
+}

@@ -1,0 +1,9 @@
+ABOUT
+Bowtie is a software package commonly used for sequence alignment and sequence analysis in bioinformatics.[1]
+FULL TEXT
+Bowtie is a software package commonly used for sequence alignment and sequence analysis in bioinformatics.[1]
+
+
+The Bowtie sequence aligner was originally developed by Ben Langmead et al. at the University of Maryland in 2009.[1] The aligner is typically used with short reads and a large reference genome, or for whole genome analysis. Bowtie is promoted as "an ultrafast, memory-efficient short aligner for short DNA sequences." The speed increase of Bowtie is partly due to implementing the Burrows–Wheeler transform for aligning, which reduces the memory footprint (typically to around 2.2GB for the human genome);[2] a similar method is used by the BWA[3] and SOAP2[4] alignment methods. The latest version of Bowtie (1.1.2) was released on June 23, 2015.[2] As of 2015, the Genome Biology paper describing the original Bowtie method has been cited more than 6,000 times.[1] Bowtie is open-source software and is currently maintained by Johns Hopkins University.
+Bowtie is used as a sequence aligner by a number of other related bioinformatics algorithms, including TopHat,[5] Cufflinks[6] and the CummeRbund Bioconductor package.[7]
+On 16 October 2011, the developers released a beta fork of the project called Bowtie 2.[8] In addition to the Burrows-Wheeler transform, Bowtie 2 also uses an FM-index (similar to a suffix array) to keep its memory footprint small. Due to its implementation, Bowtie 2 is more suited to finding longer, gapped alignments in comparison with the original Bowtie method. The latest version (2.2.6) was released on July 22, 2015.[9]

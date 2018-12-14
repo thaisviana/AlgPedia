@@ -1,0 +1,144 @@
+ABOUT
+The alpha max plus beta min algorithm is a high-speed approximation of the square root of the sum of two squares. The square root of the sum of two squares, also known as Pythagorean addition, is a useful function, because it finds the hypotenuse of a right triangle given the two side lengths, the norm of a 2-D vector, or the magnitude of a complex number z=a+bi given the real and imaginary parts.
+FULL TEXT
+The alpha max plus beta min algorithm is a high-speed approximation of the square root of the sum of two squares. The square root of the sum of two squares, also known as Pythagorean addition, is a useful function, because it finds the hypotenuse of a right triangle given the two side lengths, the norm of a 2-D vector, or the magnitude of a complex number z=a+bi given the real and imaginary parts.
+The algorithm avoids performing the square and square-root operations, instead using simple operations such as comparison, multiplication, and addition. Some choices of the α and β parameters of the algorithm allow the multiplication operation to be reduced to a simple shift of binary digits that is particularly well suited to implementation in high-speed digital circuitry.
+The approximation is expressed as:
+Where 
+
+
+
+
+M
+a
+x
+
+
+
+{\displaystyle \mathbf {Max} }
+
+ is the maximum absolute value of a and b and 
+
+
+
+
+M
+i
+n
+
+
+
+{\displaystyle \mathbf {Min} }
+
+ is the minimum absolute value of a and b.
+For the closest approximation, the optimum values for 
+
+
+
+α
+
+
+
+
+{\displaystyle \alpha \,\!}
+
+ and 
+
+
+
+β
+
+
+
+
+{\displaystyle \beta \,\!}
+
+ are 
+
+
+
+
+α
+
+0
+
+
+=
+
+
+
+2
+cos
+⁡
+
+
+π
+8
+
+
+
+
+1
++
+cos
+⁡
+
+
+π
+8
+
+
+
+
+
+=
+0.96043387...
+
+
+{\displaystyle \alpha _{0}={\frac {2\cos {\frac {\pi }{8}}}{1+\cos {\frac {\pi }{8}}}}=0.96043387...}
+
+ and 
+
+
+
+
+β
+
+0
+
+
+=
+
+
+
+2
+sin
+⁡
+
+
+π
+8
+
+
+
+
+1
++
+cos
+⁡
+
+
+π
+8
+
+
+
+
+
+=
+0.39782473...
+
+
+{\displaystyle \beta _{0}={\frac {2\sin {\frac {\pi }{8}}}{1+\cos {\frac {\pi }{8}}}}=0.39782473...}
+
+, giving a maximum error of 3.96%.

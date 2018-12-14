@@ -1,0 +1,266 @@
+ABOUT
+The Nichols plot is a plot used in signal processing and control design, named after American engineer Nathaniel B. Nichols.[1][2][3]
+FULL TEXT
+The Nichols plot is a plot used in signal processing and control design, named after American engineer Nathaniel B. Nichols.[1][2][3]
+
+
+Given a transfer function,
+
+
+
+
+G
+(
+s
+)
+=
+
+
+
+Y
+(
+s
+)
+
+
+X
+(
+s
+)
+
+
+
+
+
+{\displaystyle G(s)={\frac {Y(s)}{X(s)}}}
+
+
+with the closed-loop transfer function defined as,
+
+
+
+
+M
+(
+s
+)
+=
+
+
+
+G
+(
+s
+)
+
+
+1
++
+G
+(
+s
+)
+
+
+
+
+
+{\displaystyle M(s)={\frac {G(s)}{1+G(s)}}}
+
+
+the Nichols plots displays 
+
+
+
+20
+
+log
+
+10
+
+
+⁡
+(
+
+|
+
+G
+(
+s
+)
+
+|
+
+)
+
+
+{\displaystyle 20\log _{10}(|G(s)|)}
+
+ versus 
+
+
+
+arg
+⁡
+(
+G
+(
+s
+)
+)
+
+
+{\displaystyle \arg(G(s))}
+
+. Loci of constant 
+
+
+
+20
+
+log
+
+10
+
+
+⁡
+(
+
+|
+
+M
+(
+s
+)
+
+|
+
+)
+
+
+{\displaystyle 20\log _{10}(|M(s)|)}
+
+ and 
+
+
+
+arg
+⁡
+(
+M
+(
+s
+)
+)
+
+
+{\displaystyle \arg(M(s))}
+
+ are overlaid to allow the designer to obtain the closed loop transfer function directly from the open loop transfer function. Thus, the frequency 
+
+
+
+ω
+
+
+{\displaystyle \omega }
+
+ is the parameter along the curve. This plot may be compared to the Bode plot in which the two inter-related graphs - 
+
+
+
+20
+
+log
+
+10
+
+
+⁡
+(
+
+|
+
+G
+(
+s
+)
+
+|
+
+)
+
+
+{\displaystyle 20\log _{10}(|G(s)|)}
+
+ versus 
+
+
+
+
+log
+
+10
+
+
+⁡
+(
+ω
+)
+
+
+{\displaystyle \log _{10}(\omega )}
+
+ and 
+
+
+
+arg
+⁡
+(
+G
+(
+s
+)
+)
+
+
+{\displaystyle \arg(G(s))}
+
+ versus 
+
+
+
+
+log
+
+10
+
+
+⁡
+(
+ω
+)
+
+
+{\displaystyle \log _{10}(\omega )}
+
+) - are plotted.
+In feedback control design, the plot is useful for assessing the stability and robustness of a linear system. This application of the Nichols plot is central to the Quantitative feedback theory (QFT) of Horowitz and Sidi, which is a well known method for robust control system design.
+In most cases, 
+
+
+
+arg
+⁡
+(
+G
+(
+s
+)
+)
+
+
+{\displaystyle \arg(G(s))}
+
+ refers to the phase of the system's response. Although similar to a Nyquist plot, a Nichols plot is plotted in a Cartesian coordinate system while a Nyquist plot is plotted in a polar coordinate system.

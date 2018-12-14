@@ -1,0 +1,10 @@
+ABOUT
+In mathematical optimization, Bland's rule (also known as Bland's algorithm or Bland's anti-cycling rule) is an algorithmic refinement of the simplex method for linear optimization.
+FULL TEXT
+In mathematical optimization, Bland's rule (also known as Bland's algorithm or Bland's anti-cycling rule) is an algorithmic refinement of the simplex method for linear optimization.
+With Bland's rule, the simplex algorithm solves feasible linear optimization problems without cycling.[1][2][3] There are examples of degenerate linear optimization problems on which the original simplex algorithm would cycle forever. Such cycles are avoided by Bland's rule for choosing a column to enter the basis.
+Bland's rule was developed by Robert G. Bland, now a professor of operations research at Cornell University, while he was a research fellow at the Center for Operations Research and Econometrics in Belgium.[1]
+
+
+One uses Bland's rule during an iteration of the simplex method to decide first what column (known as the entering variable) and then row (known as the leaving variable) in the tableau to pivot on. Assuming that the problem is to minimize the objective function, the algorithm is loosely defined as follows:
+In the abstract setting of oriented matroids, Bland's rule cycles on some examples. A restricted class of oriented matroids on which Bland's rule avoids cycling has been termed "Bland oriented matroids" by Jack Edmonds. Another pivoting rule, the criss-cross algorithm, avoids cycles on all oriented-matroid linear-programs.[4]

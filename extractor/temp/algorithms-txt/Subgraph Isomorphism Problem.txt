@@ -1,0 +1,222 @@
+ABOUT
+In theoretical computer science, the subgraph isomorphism problem is a computational task in which two graphs G and H are given as input, and one must determine whether G contains a subgraph that is isomorphic to H. Subgraph isomorphism is a generalization of both the maximum clique problem and the problem of testing whether a graph contains a Hamiltonian cycle, and is therefore NP-complete.[1] However certain other cases of subgraph isomorphism may be solved in polynomial time.[2]
+FULL TEXT
+In theoretical computer science, the subgraph isomorphism problem is a computational task in which two graphs G and H are given as input, and one must determine whether G contains a subgraph that is isomorphic to H. Subgraph isomorphism is a generalization of both the maximum clique problem and the problem of testing whether a graph contains a Hamiltonian cycle, and is therefore NP-complete.[1] However certain other cases of subgraph isomorphism may be solved in polynomial time.[2]
+Sometimes the name subgraph matching is also used for the same problem. This name puts emphasis on finding such a subgraph as opposed to the bare decision problem.
+
+
+To prove subgraph isomorphism is NP-complete, it must be formulated as a decision problem. The input to the decision problem is a pair of graphs G and H. The answer to the problem is positive if H is isomorphic to a subgraph of G, and negative otherwise.
+Formal question:
+Let 
+
+
+
+G
+=
+(
+V
+,
+E
+)
+
+
+{\displaystyle G=(V,E)}
+
+, 
+
+
+
+H
+=
+(
+
+V
+
+′
+
+
+,
+
+E
+
+′
+
+
+)
+
+
+{\displaystyle H=(V^{\prime },E^{\prime })}
+
+ be graphs. Is there a subgraph 
+
+
+
+
+G
+
+0
+
+
+=
+(
+
+V
+
+0
+
+
+,
+
+E
+
+0
+
+
+)
+:
+
+V
+
+0
+
+
+⊆
+V
+,
+
+E
+
+0
+
+
+⊆
+E
+∩
+(
+
+V
+
+0
+
+
+×
+
+V
+
+0
+
+
+)
+
+
+{\displaystyle G_{0}=(V_{0},E_{0}):V_{0}\subseteq V,E_{0}\subseteq E\cap (V_{0}\times V_{0})}
+
+ such that 
+
+
+
+
+G
+
+0
+
+
+≅
+H
+
+
+{\displaystyle G_{0}\cong H}
+
+? I.e., does there exist an 
+
+
+
+f
+:
+
+V
+
+0
+
+
+→
+
+V
+
+′
+
+
+
+
+{\displaystyle f\colon V_{0}\rightarrow V^{\prime }}
+
+ such that 
+
+
+
+(
+
+v
+
+1
+
+
+,
+
+v
+
+2
+
+
+)
+∈
+
+E
+
+0
+
+
+⇔
+(
+f
+(
+
+v
+
+1
+
+
+)
+,
+f
+(
+
+v
+
+2
+
+
+)
+)
+∈
+
+E
+
+′
+
+
+
+
+{\displaystyle (v_{1},v_{2})\in E_{0}\Leftrightarrow (f(v_{1}),f(v_{2}))\in E^{\prime }}
+
+?
+The proof of subgraph isomorphism being NP-complete is simple and based on reduction of the clique problem, an NP-complete decision problem in which the input is a single graph G and a number k, and the question is whether G contains a complete subgraph with k vertices. To translate this to a subgraph isomorphism problem, simply let H be the complete graph Kk; then the answer to the subgraph isomorphism problem for G and H is equal to the answer to the clique problem for G and k. Since the clique problem is NP-complete, this polynomial-time many-one reduction shows that subgraph isomorphism is also NP-complete.[3]
+An alternative reduction from the Hamiltonian cycle problem translates a graph G which is to be tested for Hamiltonicity into the pair of graphs G and H, where H is a cycle having the same number of vertices as G. Because the Hamiltonian cycle problem is NP-complete even for planar graphs, this shows that subgraph isomorphism remains NP-complete even in the planar case.[4]
+Subgraph isomorphism is a generalization of the graph isomorphism problem, which asks whether G is isomorphic to H: the answer to the graph isomorphism problem is true if and only if G and H both have the same numbers of vertices and edges and the subgraph isomorphism problem for G and H is true. However the complexity-theoretic status of graph isomorphism remains an open question.
+In the context of the Aanderaa–Karp–Rosenberg conjecture on the query complexity of monotone graph properties, Gröger (1992) showed that any subgraph isomorphism problem has query complexity Ω(n3/2); that is, solving the subgraph isomorphism requires an algorithm to check the presence or absence in the input of Ω(n3/2) different edges in the graph.[5]
+Ullmann (1976) describes a recursive backtracking procedure for solving the subgraph isomorphism problem. Although its running time is, in general, exponential, it takes polynomial time for any fixed choice of H (with a polynomial that depends on the choice of H). When G is a planar graph (or more generally a graph of bounded expansion) and H is fixed, the running time of subgraph isomorphism can be reduced to linear time.[2]
+Ullmann (2010) is a substantial update to the 1976 subgraph isomorphism algorithm paper.
+As subgraph isomorphism has been applied in the area of cheminformatics to find similarities between chemical compounds from their structural formula; often in this area the term substructure search is used.[6] Typically a query structure is defined as SMARTS, a SMILES extension.
+The closely related problem of counting the number of isomorphic copies of a graph H in a larger graph G has been applied to pattern discovery in databases,[7] the bioinformatics of protein-protein interaction networks,[8] and in exponential random graph methods for mathematically modeling social networks.[9]
+Ohlrich et al. (1993) describe an application of subgraph isomorphism in the computer-aided design of electronic circuits. Subgraph matching is also a substep in graph rewriting (the most runtime-intensive), and thus offered by graph rewrite tools.
+The problem is also of interest in artificial intelligence, where it is considered part of an array of pattern matching in graphs problems; an extension of subgraph isomorphism known as graph mining is also of interest in that area.[10]

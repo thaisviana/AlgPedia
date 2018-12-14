@@ -1,0 +1,319 @@
+ABOUT
+The closest point method (CPM) is an embedding method for solving partial differential equations on surfaces. The closest point method uses standard numerical approaches such as finite differences, finite element or spectral methods in order to solve the embedding partial differential equation (PDE) which is equal to the original PDE on the surface. The solution is computed in a band surrounding the surface in order to be computationally efficient. In order to extend the data off the surface, the closest point method uses a closest point representation. This representation extends function values to be constant along directions normal to the surface.
+FULL TEXT
+The closest point method (CPM) is an embedding method for solving partial differential equations on surfaces. The closest point method uses standard numerical approaches such as finite differences, finite element or spectral methods in order to solve the embedding partial differential equation (PDE) which is equal to the original PDE on the surface. The solution is computed in a band surrounding the surface in order to be computationally efficient. In order to extend the data off the surface, the closest point method uses a closest point representation. This representation extends function values to be constant along directions normal to the surface.
+
+
+Closest Point function: Given a surface 
+
+
+
+
+
+S
+
+
+,
+c
+p
+(
+
+
+x
+
+
+)
+
+
+{\displaystyle {\mathcal {S}},cp({\mathbf {x}})}
+
+ refers to a (possibly non-unique) point belonging to 
+
+
+
+
+
+S
+
+
+
+
+{\displaystyle {\mathcal {S}}}
+
+, which is closest to 
+
+
+
+
+
+x
+
+
+
+
+{\displaystyle {\mathbf {x}}}
+
+ [SE].
+Closest point extension: Let 
+
+
+
+
+
+S
+
+
+
+
+{\displaystyle {\mathcal {S}}}
+
+, be a smooth surface in 
+
+
+
+
+
+R
+
+
+d
+
+
+
+
+{\displaystyle \mathbb {R} ^{d}}
+
+. The closest point extension of a function 
+
+
+
+u
+:
+
+
+S
+
+
+→
+
+R
+
+
+
+{\displaystyle u:{\mathcal {S}}\rightarrow \mathbb {R} }
+
+, to a neighborhood 
+
+
+
+Ω
+
+
+{\displaystyle \Omega }
+
+ of 
+
+
+
+
+
+S
+
+
+
+
+{\displaystyle {\mathcal {S}}}
+
+, is the function 
+
+
+
+v
+:
+Ω
+→
+
+R
+
+
+
+{\displaystyle v:\Omega \rightarrow \mathbb {R} }
+
+, defined by 
+
+
+
+v
+(
+
+
+x
+
+
+)
+=
+u
+(
+c
+p
+(
+
+
+x
+
+
+)
+)
+
+
+{\displaystyle v({\mathbf {x}})=u(cp({\mathbf {x}}))}
+
+.
+Initialization consists of these steps [EW]:
+After initialization, alternate between the following two steps:
+The surface PDE is extended into 
+
+
+
+
+
+R
+
+
+3
+
+
+
+
+{\displaystyle \mathbb {R} ^{3}}
+
+ however it is only necessary to solve this new PDE near the surface. Hence, we solve the PDE in a band surrounding the surface for efficient computational purposes. 
+
+
+
+
+Ω
+
+c
+
+
+
+x
+:
+∥
+x
+−
+c
+p
+(
+x
+)
+
+∥
+
+2
+
+
+≤
+λ
+
+
+
+{\displaystyle \Omega _{c}{x:\|x-cp(x)\|_{2}\leq \lambda }}
+
+ where 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+ is the bandwidth.
+Using initial profile 
+
+
+
+
+u
+
+S
+
+
+(
+θ
+,
+t
+)
+=
+sin
+⁡
+(
+θ
+)
+
+
+{\displaystyle u_{S}(\theta ,t)=\sin(\theta )}
+
+ leads to the solution 
+
+
+
+
+u
+
+S
+
+
+(
+θ
+,
+t
+)
+=
+exp
+⁡
+(
+−
+t
+)
+sin
+⁡
+(
+θ
+)
+
+
+{\displaystyle u_{S}(\theta ,t)=\exp(-t)\sin(\theta )}
+
+ for the heat equation. Forward Euler time-stepping is used with relation 
+
+
+
+Δ
+t
+=
+0.1
+Δ
+
+x
+
+2
+
+
+
+
+{\displaystyle \Delta t=0.1\Delta x^{2}}
+
+ and degree-four interpolation polynomials for the interpolations. Second-order centered differences are used for the spatial discretization. The CPM results in the expected second order error in the solution 
+
+
+
+u
+
+
+{\displaystyle u}
+
+.
+The closest point method can be applied to various PDEs on surfaces. Reaction–diffusion problems on point clouds [RD], eigenvalue problems [EV], and level set equations [LS] are a few examples.

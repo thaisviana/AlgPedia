@@ -1,0 +1,110 @@
+ABOUT
+Pisarenko harmonic decomposition, also referred to as Pisarenko's method, is a method of frequency estimation.[1] This method assumes that a signal, 
+
+
+
+x
+(
+n
+)
+
+
+{\displaystyle x(n)}
+
+, consists of 
+
+
+
+p
+
+
+{\displaystyle p}
+
+ complex exponentials in the presence of white noise. Because the number of complex exponentials must be known a priori, it is somewhat limited in its usefulness.
+FULL TEXT
+Pisarenko harmonic decomposition, also referred to as Pisarenko's method, is a method of frequency estimation.[1] This method assumes that a signal, 
+
+
+
+x
+(
+n
+)
+
+
+{\displaystyle x(n)}
+
+, consists of 
+
+
+
+p
+
+
+{\displaystyle p}
+
+ complex exponentials in the presence of white noise. Because the number of complex exponentials must be known a priori, it is somewhat limited in its usefulness.
+Pisarenko's method also assumes that 
+
+
+
+p
++
+1
+
+
+{\displaystyle p+1}
+
+ values of the 
+
+
+
+M
+×
+M
+
+
+{\displaystyle M\times M}
+
+ autocorrelation matrix are either known or estimated. Hence, given the 
+
+
+
+(
+p
++
+1
+)
+×
+(
+p
++
+1
+)
+
+
+{\displaystyle (p+1)\times (p+1)}
+
+ autocorrelation matrix, the dimension of the noise subspace is equal to one and is spanned by the eigenvector corresponding to the minimum eigenvalue. This eigenvector is orthogonal to each of the signal vectors.
+The frequency estimates may be determined by setting the frequencies equal to the angles of the roots of the eigenfilter
+or the location of the peaks in the frequency estimation function
+where 
+
+
+
+
+
+v
+
+
+m
+i
+n
+
+
+
+
+{\displaystyle \mathbf {v} _{min}}
+
+ is the noise eigenvector and
+Vladilen Fedorovich Pisarenko originated this method in 1973 while examining the problem of estimating the frequencies of complex signals in white noise. He found that the frequencies could be derived from the eigenvector corresponding to the minimum eigenvalue of the autocorrelation matrix.[2]

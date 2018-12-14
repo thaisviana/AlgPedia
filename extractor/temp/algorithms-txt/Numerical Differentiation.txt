@@ -1,0 +1,172 @@
+ABOUT
+In numerical analysis, numerical differentiation describes algorithms for estimating the derivative of a mathematical function or function subroutine using values of the function and perhaps other knowledge about the function.
+FULL TEXT
+In numerical analysis, numerical differentiation describes algorithms for estimating the derivative of a mathematical function or function subroutine using values of the function and perhaps other knowledge about the function.
+
+
+The simplest method is to use finite difference approximations.
+A simple two-point estimation is to compute the slope of a nearby secant line through the points (x,f(x)) and (x+h,f(x+h)).[1] Choosing a small number h, h represents a small change in x, and it can be either positive or negative. The slope of this line is
+This expression is Newton's difference quotient (also known as a first-order divided difference.)
+The slope of this secant line differs from the slope of the tangent line by an amount that is approximately proportional to h. As h approaches zero, the slope of the secant line approaches the slope of the tangent line. Therefore, the true derivative of f at x is the limit of the value of the difference quotient as the secant lines get closer and closer to being a tangent line:
+Since immediately substituting 0 for h results in division by zero, calculating the derivative directly can be unintuitive.
+Equivalently, the slope could be estimated by employing positions (x - h) and x.
+Another two-point formula is to compute the slope of a nearby secant line through the points (x-h,f(x-h)) and (x+h,f(x+h)). The slope of this line is
+This formula is known as the symmetric difference quotient. In this case the first-order errors cancel, so the slope of these secant lines differ from the slope of the tangent line by an amount that is approximately proportional to 
+
+
+
+
+h
+
+2
+
+
+
+
+{\displaystyle h^{2}}
+
+. Hence for small values of h this is a more accurate approximation to the tangent line than the one-sided estimation. Note however that although the slope is being computed at x, the value of the function at x is not involved.
+The estimation error is given by:
+where 
+
+
+
+c
+
+
+{\displaystyle c}
+
+ is some point between 
+
+
+
+x
+−
+h
+
+
+{\displaystyle x-h}
+
+ and 
+
+
+
+x
++
+h
+
+
+{\displaystyle x+h}
+
+. This error does not include the rounding error due to numbers being represented and calculations being performed in limited precision.
+The symmetric difference quotient is employed as the method of approximating the derivative in a number of calculators, including TI-82, TI-83, TI-84, TI-85 all of which use this method with h=0.001.[2][3]
+Despite their practical popularity, finite difference formulas like the above two have been harshly criticized by some researchers, in particular by proponents of automatic differentiation.[4][why?] because their simplicity must be set against the fact that their accuracy is low - in rough terms, calculations in six digit precision will produce a slope of only three-digit precision whereas evaluating a function that calculates the slope may still deliver nearly six-digit precision. For example, given f(x) = x2, calculating the slope from 2x will give near full precision, whereas the finite difference approximation will have difficulties as described below.
+An important consideration in practice when the function is calculated using floating point arithmetic is how small a value of h to choose. If chosen too small, the subtraction will yield a large rounding error. In fact all the finite difference formulae are ill-conditioned[5] and due to cancellation will produce a value of zero if h is small enough. [6] If too large, the calculation of the slope of the secant line will be more accurately calculated, but the estimate of the slope of the tangent by using the secant could be worse.
+A choice for h which is small without producing a large rounding error is 
+
+
+
+
+
+ε
+
+
+x
+
+
+{\displaystyle {\sqrt {\varepsilon }}x}
+
+ (though not when x = 0!) where the machine epsilon ε is typically of the order 2.2×10−16. [7] A formula for h that balances the rounding error against the secant error for optimum accuracy is
+
+
+
+
+h
+=
+2
+
+
+ε
+
+|
+
+
+
+
+f
+(
+x
+)
+
+
+
+f
+″
+
+(
+x
+)
+
+
+
+
+|
+
+
+
+
+
+{\displaystyle h=2{\sqrt {\varepsilon |{f(x) \over f''(x)}|}}}
+
+ [8] (though not when f"(x) = 0) and to employ it will require knowledge of the function.
+This epsilon is for double precision (64-bit) variables: such calculations in single precision are rarely useful. The resulting value is unlikely to be a "round" number in binary, so it is important to realise that although x is a machine-representable number, x + h almost certainly will not be. This means that x + h will be changed (via rounding or truncation) to a nearby machine-representable number, with the consequence that (x + h) - x will not equal h; the two function evaluations will not be exactly h apart. In this regard, since most decimal fractions are recurring sequences in binary (just as 1/3 is in decimal) a seemingly round step such as h = 0.1 will not be a round number in binary; it is 0.000110011001100... A possible approach is as follows:
+However, with computers, compiler optimization facilities may fail to attend to the details of actual computer arithmetic, and instead apply the axioms of mathematics to deduce that dx and h are the same. With C and similar languages, a directive that xph is a volatile variable will prevent this.
+Higher-order methods for approximating the derivative, as well as methods for higher derivatives exist.
+Given below is the five point method for the first derivative (five-point stencil in one dimension).[9]
+where 
+
+
+
+c
+∈
+[
+x
+−
+2
+h
+,
+x
++
+2
+h
+]
+
+
+{\displaystyle c\in [x-2h,x+2h]}
+
+.
+For other stencil configurations and derivative orders, the Finite Difference Coefficients Calculator is a tool which can be used to generate derivative approximation methods for any stencil with any derivative order (provided a solution exists).
+Differential quadrature is the approximation of derivatives by using weighted sums of function values.[10][11] The name is in analogy with quadrature meaning Numerical integration where weighted sums are used in methods such as Simpson's method or the Trapezium rule. There are various methods for determining the weight coefficients. Differential quadrature is used to solve partial differential equations.
+The classical finite difference approximations for numerical differentiation are ill-conditioned. However, if 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is a holomorphic function, real-valued on the real line, which can be evaluated at points in the complex plane near 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ then there are stable methods. For example,[6] the first derivative can be calculated by the complex-step derivative formula:[12]
+The above formula is only valid for calculating a first-order derivative. A generalization of the above for calculating derivatives of any order derivatives employ multicomplex numbers, resulting in multicomplex derivatives.[13]
+In general, derivatives of any order can be calculated using Cauchy's integral formula:
+where the integration is done numerically.
+Using complex variables for numerical differentiation was started by Lyness and Moler in 1967.[14] A method based on numerical inversion of a complex Laplace transform was developed by Abate and Dubner.[15] An algorithm which can be used without requiring knowledge about the method or the character of the function was developed by Fornberg.[5]

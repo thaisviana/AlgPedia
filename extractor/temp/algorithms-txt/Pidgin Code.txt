@@ -1,0 +1,8 @@
+ABOUT
+In computer programming, pidgin code is a mixture of several programming languages in the same program, or pseudocode that is a mixture of a programming language with natural language descriptions. Hence the name: the mixture is a programming language analogous to a pidgin in natural languages.
+FULL TEXT
+In computer programming, pidgin code is a mixture of several programming languages in the same program, or pseudocode that is a mixture of a programming language with natural language descriptions. Hence the name: the mixture is a programming language analogous to a pidgin in natural languages.
+In numerical computation, mathematical style pseudocode is sometimes called pidgin code, for example pidgin ALGOL (the origin of the concept), pidgin Fortran, pidgin BASIC, pidgin Pascal, and pidgin C. It is a compact and often informal notation that blends syntax taken from a conventional programming language with mathematical notation, typically using set theory and matrix operations, and perhaps also natural language descriptions.
+It can be understood by a wide range of mathematically trained people, and is used as a way to describe algorithms where the control structure is made explicit at a rather high level of detail, while some data structures are still left at an abstract level, independent of any specific programming language.
+Normally non-ASCII typesetting is used for the mathematical equations, for example by means of TeX or MathML markup, or proprietary Formula editor formats.
+These are examples of articles that contain mathematical style pseudo code:

@@ -1,0 +1,8 @@
+{
+    "about": "Uniform binary search is an optimization of the classic binary search algorithm invented by Donald Knuth and given in Knuth's The Art of Computer Programming. It uses a lookup table to update a single array index, rather than taking the midpoint of an upper and a lower bound on each iteration; therefore, it is optimized for architectures (such as Knuth's MIX) on which", 
+    "name": "Uniform Binary Search", 
+    "classification": "Search Algorithms", 
+    "full_text": "Uniform binary search is an optimization of the classic binary search algorithm invented by Donald Knuth and given in Knuth's The Art of Computer Programming. It uses a lookup table to update a single array index, rather than taking the midpoint of an upper and a lower bound on each iteration; therefore, it is optimized for architectures (such as Knuth's MIX) on which\nThe uniform binary search algorithm looks like this, when implemented in C.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Uniform_binary_search", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Uniform_binary_search\n"
+}

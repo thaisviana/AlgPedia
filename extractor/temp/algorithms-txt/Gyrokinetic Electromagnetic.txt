@@ -1,0 +1,29 @@
+ABOUT
+GEM is short for Gyrokinetic ElectroMagnetic. GEM is a gyrokinetic plasma turbulence simulation that uses the 
+
+
+
+δ
+f
+
+
+{\displaystyle \delta f}
+
+ particle-in-cell method. It is used to study waves, instabilities and nonlinear behavior of tokamak fusion plasmas. Information about GEM can be found at the GEM web page. [1] There are two versions of GEM, one is a flux-tube version [2] and the other one is a global general geometry version.[3] Both versions of GEM use a field-aligned coordinate system. Ions are treated kinetically, but averaged over their gyro-obits and electrons are treated as drift-kinetic.
+FULL TEXT
+GEM is short for Gyrokinetic ElectroMagnetic. GEM is a gyrokinetic plasma turbulence simulation that uses the 
+
+
+
+δ
+f
+
+
+{\displaystyle \delta f}
+
+ particle-in-cell method. It is used to study waves, instabilities and nonlinear behavior of tokamak fusion plasmas. Information about GEM can be found at the GEM web page. [1] There are two versions of GEM, one is a flux-tube version [2] and the other one is a global general geometry version.[3] Both versions of GEM use a field-aligned coordinate system. Ions are treated kinetically, but averaged over their gyro-obits and electrons are treated as drift-kinetic.
+
+
+GEM solves the electromagnetic gyrokinetic equations which are the appropriate equations for well magnetized plasmas. The plasma is treated statistically as a kinetic distribution function. The distribution function depends on the three-dimensional position, the energy and magnetic moment. The time evolution of the distribution function is described by gyrokinetic theory which simply averages the Vlasov-Maxwell system of equations over the fast gyromotion associated with particles exhibiting cyclotron motion about the magnetic field lines. This eliminates fast time scales associated with the gyromotion and reduces the dimensionality of the problem from six down to five.
+GEM uses the delta-f particle-in-cell (PIC) plasma simulation method. An expansion about an adiabatic response is made for electrons to overcome the limit of small time step, which is caused by the fast motion of electrons. GEM uses a novel electromagnetic algorithm allowing direct numerical simulation of the electromagnetic problem at high plasma pressures. GEM uses a two-dimensional domain decomposition (see domain decomposition method) of the grid and particles to obtain good performance on massively parallel computers. A Monte Carlo method is used to model small angle Coulomb collisions.
+GEM is used to study nonlinear physics associated with tokamak plasma turbulence and transport. Tokamak turbulence driven by ion-temperature-gradient modes, electron-temperature gradient modes, trapped electron modes and micro-tearing modes has been investigated using GEM. It is also being used to look at energetic particle driven magnetohydrodynamic (see magnetohydrodynamics) eigenmodes.

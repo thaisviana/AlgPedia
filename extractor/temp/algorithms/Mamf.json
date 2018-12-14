@@ -1,0 +1,8 @@
+{
+    "about": "MaMF, or Mammalian Motif Finder, is an algorithm for identifying motifs to which transcription factors bind.", 
+    "name": "Mamf", 
+    "classification": "Search Algorithms", 
+    "full_text": "MaMF, or Mammalian Motif Finder, is an algorithm for identifying motifs to which transcription factors bind.\nThe algorithm takes as input a set of promoter sequences, and a motif width(w), and as output, produces a ranked list of 30 predicted motifs(each motif is defined by a set of N sequences, where N is a parameter).\nThe algorithm firstly indexes each sub-sequence of length n, where n is a parameter around 4-6 base pairs, in each promoter, so they can be looked up efficiently. This index is then used to build a list of all pairs of sequences of length w, such that each sequence shares an n-mer, and each sequence forms an ungapped alignment with a substring of length w from the string of length 2w around the match, with a score exceeding a cut-off.\nThe pairs of sequences are then scored. The scoring function favours pairs which are very similar, but disfavours sequences which are very common in the target genome. The 1000 highest scoring pairs are kept, and the others are discarded. Each of these 1000 'seed' motifs are then used to search iteratively search for further sequences of length which maximise the score(a greedy algorithm), until N sequences for that motif are reached.\nVery similar motifs are discarded, and the 30 highest scoring motifs are returned as output.", 
+    "dbpedia_url": "http://dbpedia.org/resource/MaMF", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/MaMF\n"
+}

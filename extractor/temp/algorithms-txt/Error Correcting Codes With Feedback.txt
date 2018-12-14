@@ -1,0 +1,12 @@
+ABOUT
+In mathematics, computer science, telecommunication, information theory, and searching theory, error-correcting codes with feedback refers to error correcting codes designed to work in the presence of feedback from the receiver to the sender.[1]
+FULL TEXT
+In mathematics, computer science, telecommunication, information theory, and searching theory, error-correcting codes with feedback refers to error correcting codes designed to work in the presence of feedback from the receiver to the sender.[1]
+
+
+Alice (the sender) wishes to send a value x to Bob (the receiver). The communication channel between Alice and Bob is imperfect, and can introduce errors.
+An error-correcting code is a way of encoding x as a message such that Bob will successfully understand the value x as intended by Alice, even if the message Alice sends and the message Bob receives differ. In an error-correcting code with feedback, the channel is two-way: Bob can send feedback to Alice about the message he received.
+In an error-correcting code without noisy feedback, the feedback received by the sender is always free of errors. In an error-correcting code with noisy feedback, errors can occur in the feedback, as well as in the message.
+An error-correcting code with noiseless feedback is equivalent to an adaptive search strategy with errors.[1]
+In 1956, Claude Shannon introduced the discrete memoryless channel with noiseless feedback. In 1961, Alfréd Rényi introduced the Bar-Kochba game (also known as Twenty questions), with a given percentage of wrong answers, and calculated the minimum number of randomly chosen questions to determine the answer.
+In his 1964 dissertation, Elwyn Berlekamp considered error correcting codes with noiseless feedback.[2] In Berlekamp's scenario, the receiver chose a subset of possible messages and asked the sender whether the given message was in this subset, a 'yes' or 'no' answer. Based on this answer, the receiver then chose a new subset and repeated the process. The game is further complicated due to noise; some of the answers will be wrong.

@@ -1,0 +1,1255 @@
+ABOUT
+In control theory and stability theory, the Nyquist stability criterion, discovered by Swedish-American electrical engineer Harry Nyquist at Bell Telephone Laboratories in 1932,[1] is a graphical technique for determining the stability of a dynamical system. Because it only looks at the Nyquist plot of the open loop systems, it can be applied without explicitly computing the poles and zeros of either the closed-loop or open-loop system (although the number of each type of right-half-plane singularities must be known). As a result, it can be applied to systems defined by non-rational functions, such as systems with delays. In contrast to Bode plots, it can handle transfer functions with right half-plane singularities. In addition, there is a natural generalization to more complex systems with multiple inputs and multiple outputs, such as control systems for airplanes.
+FULL TEXT
+In control theory and stability theory, the Nyquist stability criterion, discovered by Swedish-American electrical engineer Harry Nyquist at Bell Telephone Laboratories in 1932,[1] is a graphical technique for determining the stability of a dynamical system. Because it only looks at the Nyquist plot of the open loop systems, it can be applied without explicitly computing the poles and zeros of either the closed-loop or open-loop system (although the number of each type of right-half-plane singularities must be known). As a result, it can be applied to systems defined by non-rational functions, such as systems with delays. In contrast to Bode plots, it can handle transfer functions with right half-plane singularities. In addition, there is a natural generalization to more complex systems with multiple inputs and multiple outputs, such as control systems for airplanes.
+The Nyquist criterion is widely used in electronics and control system engineering, as well as other fields, for designing and analyzing systems with feedback. While Nyquist is one of the most general stability tests, it is still restricted to linear, time-invariant (LTI) systems. Non-linear systems must use more complex stability criteria, such as Lyapunov or the circle criterion. While Nyquist is a graphical technique, it only provides a limited amount of intuition for why a system is stable or unstable, or how to modify an unstable system to be stable. Techniques like Bode plots, while less general, are sometimes a more useful design tool.
+
+
+We consider a system whose open loop transfer function (OLTF) is 
+
+
+
+G
+(
+s
+)
+
+
+{\displaystyle G(s)}
+
+; when placed in a closed loop with negative feedback 
+
+
+
+H
+(
+s
+)
+
+
+{\displaystyle H(s)}
+
+, the closed loop transfer function (CLTF) then becomes 
+
+
+
+
+
+G
+
+1
++
+G
+H
+
+
+
+
+
+{\displaystyle {\frac {G}{1+GH}}}
+
+. Stability can be determined by examining the roots of the desensitivity factor polynomial 
+
+
+
+1
++
+G
+H
+
+
+{\displaystyle 1+GH}
+
+, e.g. using the Routh array, but this method is somewhat tedious. Conclusions can also be reached by examining the OLTF, using its Bode plots or, as here, polar plot of the OLTF using the Nyquist criterion, as follows.
+Any Laplace domain transfer function 
+
+
+
+
+
+T
+
+
+(
+s
+)
+
+
+{\displaystyle {\mathcal {T}}(s)}
+
+ can be expressed as the ratio of two polynomials: 
+
+
+
+
+
+T
+
+
+(
+s
+)
+=
+
+
+
+N
+(
+s
+)
+
+
+D
+(
+s
+)
+
+
+
+.
+
+
+{\displaystyle {\mathcal {T}}(s)={\frac {N(s)}{D(s)}}.}
+
+
+The roots of 
+
+
+
+N
+(
+s
+)
+
+
+{\displaystyle N(s)}
+
+ are called the zeros of 
+
+
+
+
+
+T
+
+
+(
+s
+)
+
+
+{\displaystyle {\mathcal {T}}(s)}
+
+, and the roots of
+
+
+
+D
+(
+s
+)
+
+
+{\displaystyle D(s)}
+
+ are the poles of 
+
+
+
+
+
+T
+
+
+(
+s
+)
+
+
+{\displaystyle {\mathcal {T}}(s)}
+
+. The poles of 
+
+
+
+
+
+T
+
+
+(
+s
+)
+
+
+{\displaystyle {\mathcal {T}}(s)}
+
+ are also said to be the roots of the "characteristic equation" 
+
+
+
+D
+(
+s
+)
+=
+0
+
+
+{\displaystyle D(s)=0}
+
+.
+The stability of 
+
+
+
+
+
+T
+
+
+(
+s
+)
+
+
+{\displaystyle {\mathcal {T}}(s)}
+
+ is determined by the values of its poles: for stability, the real part of every pole must be negative. If 
+
+
+
+
+
+T
+
+
+(
+s
+)
+
+
+{\displaystyle {\mathcal {T}}(s)}
+
+ is formed by closing a negative unity feedback loop around the open-loop transfer function 
+
+
+
+G
+(
+s
+)
+=
+
+
+
+A
+(
+s
+)
+
+
+B
+(
+s
+)
+
+
+
+
+
+{\displaystyle G(s)={\frac {A(s)}{B(s)}}}
+
+, then the roots of the characteristic equation are also the zeros of 
+
+
+
+1
++
+G
+(
+s
+)
+
+
+{\displaystyle 1+G(s)}
+
+, or simply the roots of 
+
+
+
+A
+(
+s
+)
++
+B
+(
+s
+)
+=
+0
+
+
+{\displaystyle A(s)+B(s)=0}
+
+.
+From complex analysis, specifically the argument principle, we know that a contour 
+
+
+
+
+Γ
+
+s
+
+
+
+
+{\displaystyle \Gamma _{s}}
+
+ drawn in the complex 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ plane, encompassing but not passing through any number of zeros and poles of a function 
+
+
+
+F
+(
+s
+)
+
+
+{\displaystyle F(s)}
+
+, can be mapped to another plane (the 
+
+
+
+F
+(
+s
+)
+
+
+{\displaystyle F(s)}
+
+ plane) by the function 
+
+
+
+F
+(
+s
+)
+
+
+{\displaystyle F(s)}
+
+. The Nyquist plot of 
+
+
+
+F
+(
+s
+)
+
+
+{\displaystyle F(s)}
+
+, which is the contour 
+
+
+
+
+Γ
+
+F
+(
+s
+)
+
+
+=
+F
+(
+
+Γ
+
+s
+
+
+)
+
+
+{\displaystyle \Gamma _{F(s)}=F(\Gamma _{s})}
+
+ will encircle the point 
+
+
+
+s
+=
+
+−
+1
+
+/
+
+k
+
+
+
+{\displaystyle s={-1/k}}
+
+ of the 
+
+
+
+F
+(
+s
+)
+
+
+{\displaystyle F(s)}
+
+ plane 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ times, where 
+
+
+
+N
+=
+Z
+−
+P
+
+
+{\displaystyle N=Z-P}
+
+. Here are 
+
+
+
+Z
+
+
+{\displaystyle Z}
+
+ and 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ respectively the number of zeros of 
+
+
+
+1
++
+k
+F
+(
+s
+)
+
+
+{\displaystyle 1+kF(s)}
+
+ and poles of 
+
+
+
+F
+(
+s
+)
+
+
+{\displaystyle F(s)}
+
+ inside the contour 
+
+
+
+
+Γ
+
+s
+
+
+
+
+{\displaystyle \Gamma _{s}}
+
+. Note that we count encirclements in the 
+
+
+
+F
+(
+s
+)
+
+
+{\displaystyle F(s)}
+
+ plane in the same sense as the contour 
+
+
+
+
+Γ
+
+s
+
+
+
+
+{\displaystyle \Gamma _{s}}
+
+ and that encirclements in the opposite direction are negative encirclements. That is, we consider clockwise encirclements to be negative and counterclockwise encirclements to be positive.
+Instead of Cauchy's argument principle, the original paper by Harry Nyquist in 1932 uses a less elegant approach. The approach explained here is similar to the approach used by Leroy MacColl (Fundamental theory of servomechanisms 1945) or by Hendrik Bode (Network analysis and feedback amplifier design 1945), both of whom also worked for Bell Laboratories. This approach appears in most modern textbooks on control theory.
+We first construct the Nyquist contour, a contour that encompasses the right-half of the complex plane:
+The Nyquist contour mapped through the function 
+
+
+
+1
++
+G
+(
+s
+)
+
+
+{\displaystyle 1+G(s)}
+
+ yields a plot of 
+
+
+
+1
++
+G
+(
+s
+)
+
+
+{\displaystyle 1+G(s)}
+
+ in the complex plane. By the Argument Principle, the number of clock-wise encirclements of the origin must be the number of zeros of 
+
+
+
+1
++
+G
+(
+s
+)
+
+
+{\displaystyle 1+G(s)}
+
+ in the right-half complex plane minus the poles of 
+
+
+
+1
++
+G
+(
+s
+)
+
+
+{\displaystyle 1+G(s)}
+
+ in the right-half complex plane. If instead, the contour is mapped through the open-loop transfer function 
+
+
+
+G
+(
+s
+)
+
+
+{\displaystyle G(s)}
+
+, the result is the Nyquist Plot of 
+
+
+
+G
+(
+s
+)
+
+
+{\displaystyle G(s)}
+
+. By counting the resulting contour's encirclements of -1, we find the difference between the number of poles and zeros in the right-half complex plane of 
+
+
+
+1
++
+G
+(
+s
+)
+
+
+{\displaystyle 1+G(s)}
+
+. Recalling that the zeros of 
+
+
+
+1
++
+G
+(
+s
+)
+
+
+{\displaystyle 1+G(s)}
+
+ are the poles of the closed-loop system, and noting that the poles of 
+
+
+
+1
++
+G
+(
+s
+)
+
+
+{\displaystyle 1+G(s)}
+
+ are same as the poles of 
+
+
+
+G
+(
+s
+)
+
+
+{\displaystyle G(s)}
+
+, we now state The Nyquist Criterion:
+Given a Nyquist contour 
+
+
+
+
+Γ
+
+s
+
+
+
+
+{\displaystyle \Gamma _{s}}
+
+, let 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ be the number of poles of 
+
+
+
+G
+(
+s
+)
+
+
+{\displaystyle G(s)}
+
+ encircled by 
+
+
+
+
+Γ
+
+s
+
+
+
+
+{\displaystyle \Gamma _{s}}
+
+, and 
+
+
+
+Z
+
+
+{\displaystyle Z}
+
+ be the number of zeros of 
+
+
+
+1
++
+G
+(
+s
+)
+
+
+{\displaystyle 1+G(s)}
+
+ encircled by 
+
+
+
+
+Γ
+
+s
+
+
+
+
+{\displaystyle \Gamma _{s}}
+
+. Alternatively, and more importantly, 
+
+
+
+Z
+
+
+{\displaystyle Z}
+
+ is the number of poles of the closed loop system in the right half plane. The resultant contour in the 
+
+
+
+G
+(
+s
+)
+
+
+{\displaystyle G(s)}
+
+-plane, 
+
+
+
+
+Γ
+
+G
+(
+s
+)
+
+
+
+
+{\displaystyle \Gamma _{G(s)}}
+
+ shall encircle (clock-wise) the point 
+
+
+
+(
+−
+1
++
+j
+0
+)
+
+
+{\displaystyle (-1+j0)}
+
+ 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ times such that 
+
+
+
+N
+=
+Z
+−
+P
+
+
+{\displaystyle N=Z-P}
+
+.
+If the system is originally open-loop unstable, feedback is necessary to stabilize the system. Right-half-plane (RHP) poles represent that instability. For closed-loop stability of a system, the number of closed-loop roots in the right half of the s-plane must be zero. Hence, the number of counter-clockwise encirclements about 
+
+
+
+−
+1
++
+j
+0
+
+
+{\displaystyle -1+j0}
+
+ must be equal to the number of open-loop poles in the RHP. Any clockwise encirclements of the critical point by the open-loop frequency response (when judged from low frequency to high frequency) would indicate that the feedback control system would be destabilizing if the loop were closed. (Using RHP zeros to "cancel out" RHP poles does not remove the instability, but rather ensures that the system will remain unstable even in the presence of feedback, since the closed-loop roots travel between open-loop poles and zeros in the presence of feedback. In fact, the RHP zero can make the unstable pole unobservable and therefore not stabilizable through feedback.)
+The above consideration was conducted with an assumption that the open-loop transfer function 
+
+
+
+G
+(
+s
+)
+
+
+{\displaystyle G(s)}
+
+ does not have any pole on the imaginary axis (i.e. poles of the form 
+
+
+
+0
++
+j
+ω
+
+
+{\displaystyle 0+j\omega }
+
+). This results from the requirement of the argument principle that the contour cannot pass through any pole of the mapping function. The most common case are systems with integrators (poles at zero).
+To be able to analyze systems with poles on the imaginary axis, the Nyquist Contour can be modified to avoid passing through the point 
+
+
+
+0
++
+j
+ω
+
+
+{\displaystyle 0+j\omega }
+
+. One way to do it is to construct a semicircular arc with radius 
+
+
+
+r
+→
+0
+
+
+{\displaystyle r\to 0}
+
+ around 
+
+
+
+0
++
+j
+ω
+
+
+{\displaystyle 0+j\omega }
+
+, that starts at 
+
+
+
+0
++
+j
+(
+ω
+−
+r
+)
+
+
+{\displaystyle 0+j(\omega -r)}
+
+ and travels anticlockwise to 
+
+
+
+0
++
+j
+(
+ω
++
+r
+)
+
+
+{\displaystyle 0+j(\omega +r)}
+
+. Such a modification implies that the phasor 
+
+
+
+G
+(
+s
+)
+
+
+{\displaystyle G(s)}
+
+ travels along an arc of infinite radius by 
+
+
+
+−
+l
+π
+
+
+{\displaystyle -l\pi }
+
+, where 
+
+
+
+l
+
+
+{\displaystyle l}
+
+ is the multiplicity of the pole on the imaginary axis.
+Our goal is to, through this process, check for the stability of the transfer function of our unity feedback system with gain k, which is given by
+That is, we would like to check whether the characteristic equation of the above transfer function, given by
+has zeros outside the open left-half-plane (commonly initialized as the OLHP).
+We suppose that we have a clockwise (i.e. negatively oriented) contour 
+
+
+
+
+Γ
+
+s
+
+
+
+
+{\displaystyle \Gamma _{s}}
+
+ enclosing the right hand plane, with indentations as needed to avoid passing through zeros or poles of the function 
+
+
+
+G
+(
+s
+)
+
+
+{\displaystyle G(s)}
+
+. Cauchy's argument principle states that
+Where 
+
+
+
+Z
+
+
+{\displaystyle Z}
+
+ denotes the number of zeros of 
+
+
+
+D
+(
+s
+)
+
+
+{\displaystyle D(s)}
+
+ enclosed by the contour and 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ denotes the number of poles of 
+
+
+
+D
+(
+s
+)
+
+
+{\displaystyle D(s)}
+
+ by the same contour. Rearranging, we have 
+
+
+
+Z
+=
+N
++
+P
+
+
+{\displaystyle Z=N+P}
+
+, which is to say
+We then note that 
+
+
+
+D
+(
+s
+)
+=
+1
++
+k
+G
+(
+s
+)
+
+
+{\displaystyle D(s)=1+kG(s)}
+
+ has exactly the same poles as 
+
+
+
+G
+(
+s
+)
+
+
+{\displaystyle G(s)}
+
+. Thus, we may find 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ by counting the poles of 
+
+
+
+G
+(
+s
+)
+
+
+{\displaystyle G(s)}
+
+ that appear within the contour, that is, within the open right half plane (ORHP).
+We will now rearrange the above integral via substitution. That is, setting 
+
+
+
+u
+(
+s
+)
+=
+D
+(
+s
+)
+
+
+{\displaystyle u(s)=D(s)}
+
+, we have
+We then make a further substitution, setting 
+
+
+
+v
+(
+u
+)
+=
+
+
+
+u
+−
+1
+
+
+k
+
+
+
+
+
+{\displaystyle v(u)={{u-1} \over {k}}}
+
+. This gives us
+We now note that 
+
+
+
+v
+(
+u
+(
+
+Γ
+
+s
+
+
+)
+)
+=
+
+
+
+D
+(
+
+Γ
+
+s
+
+
+)
+−
+1
+
+
+k
+
+
+
+=
+G
+(
+
+Γ
+
+s
+
+
+)
+
+
+{\displaystyle v(u(\Gamma _{s}))={{D(\Gamma _{s})-1} \over {k}}=G(\Gamma _{s})}
+
+ gives us the image of our contour under 
+
+
+
+G
+(
+s
+)
+
+
+{\displaystyle G(s)}
+
+, which is to say our Nyquist Plot. We may further reduce the integral
+by applying Cauchy's integral formula. In fact, we find that the above integral corresponds precisely to the number of times the Nyquist Plot encircles the point 
+
+
+
+−
+1
+
+/
+
+k
+
+
+{\displaystyle -1/k}
+
+ clockwise. Thus, we may finally state that
+We thus find that 
+
+
+
+T
+(
+s
+)
+
+
+{\displaystyle T(s)}
+
+ as defined above corresponds to a stable unity-feedback system when 
+
+
+
+Z
+
+
+{\displaystyle Z}
+
+, as evaluated above, is equal to 0.

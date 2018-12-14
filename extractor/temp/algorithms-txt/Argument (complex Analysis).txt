@@ -1,0 +1,28 @@
+ABOUT
+In mathematics, arg is a function operating on complex numbers (visualized in a complex plane). It gives the angle between the positive real axis to the line joining the point to the origin, shown as φ in figure 1, known as an argument of the point.
+FULL TEXT
+In mathematics, arg is a function operating on complex numbers (visualized in a complex plane). It gives the angle between the positive real axis to the line joining the point to the origin, shown as φ in figure 1, known as an argument of the point.
+
+
+An argument of the complex number z = x + iy, denoted arg z, is defined in two equivalent ways:
+The names magnitude for the modulus and phase[1] (or amplitude[2]) for the argument are sometimes used equivalently.
+Under both definitions, it can be seen that the argument of any (non-zero) complex number has many possible values: firstly, as a geometrical angle, it is clear that whole circle rotations do not change the point, so angles differing by an integer multiple of 2π radians (a complete circle) are the same. Similarly, from the periodicity of sin and cos, the second definition also has this property.
+Because a complete rotation around 0 leaves a complex number unchanged, there are many choices which could be made for φ by circling the origin any number of times. This is shown in figure 3, a representation of the multi-valued (set-valued) function, where a vertical line cuts the surface at heights representing all the possible choices of angle for that point.
+When a well-defined function is required then the usual choice, known as the principal value, is the value in the open-closed interval (−π rad, π rad], that is from −π to π radians, excluding −π rad itself (equivalently from −180 to +180 degrees, excluding −180° itself). This represents an angle of up to half a complete circle from the positive real axis in either direction.
+Some authors define the range of the principal value as being in the closed-open interval [0, 2π).
+The principal value sometimes has the initial letter capitalized as in Arg z, especially when a general version of the argument is also being considered. Note that notation varies, so arg and Arg may be interchanged in different texts.
+The set of all possible values of the argument can be written in terms of Arg as:
+In informal situations, arg may be left not well-defined, for instance arg z(t) where z depends on a parameter t may change by 2π every time z goes around the origin. This idea can be made more precise by considering z(t) as being defined not on the complex plane but on a covering space. Polar coordinates excluding the origin and with an unconstrained angle provide such a space, in this case arg is defined by
+The covering space is equivalent to the punctured complex plane:
+and has as base space the product of a positive non-zero radius and an angle on the unit circle:
+The principal value Arg then maps the covering space of this representation to the interval (−π, π]:
+The principal value Arg of a complex number given as x + iy is normally available in math libraries of many programming languages using the function atan2 or some language-specific variant. The value of atan2(y, x) is the principal value in the range (−π, π].
+Many texts say the value is given by arctan(y/x), as y/x is slope, and arctan converts slope to angle. This is correct only when x > 0, so the quotient is defined and the angle lies between −π/2 and π/2, but extending this definition to cases where x is not positive is relatively involved. Specifically, one may define the principal value of the argument separately on the two half-planes x > 0 and x < 0 (separated into two quadrants if one wishes a branch cut on the negative x-axis), y > 0, y < 0, and then patch together.
+For the variant where Arg is defined to lie in the interval [0, 2π), the value can be found by adding 2π to the value above when it is negative.
+Alternatively, the principal value can be calculated in a uniform way using the tangent half-angle formula, the function being defined over the complex plane but excluding the origin:
+This is based on a parametrization of the circle (except for the negative x-axis) by rational functions. This version of Arg is not stable enough for floating point computational use (it may overflow near the region x < 0, y = 0) but can be used in symbolic calculation.
+A variant of the last formula which avoids overflow is sometimes used in high precision computation:
+One of the main motivations for defining the principal value Arg is to be able to write complex numbers in modulus-argument form. Hence for any complex number z,
+This is only really valid if z is non-zero but can be considered as valid also for z = 0 if Arg(0) is considered as being an indeterminate form rather than as being undefined.
+Some further identities follow. If z1 and z2 are two non-zero complex numbers, then
+If z ≠ 0 and n is any integer, then

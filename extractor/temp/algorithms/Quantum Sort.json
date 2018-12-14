@@ -1,0 +1,8 @@
+{
+    "about": "A quantum sort is any sorting algorithm that runs on a quantum computer. Any comparison-based quantum sorting algorithm would take at least \n\n\n\n\u03a9\n(\nn\nlog\n\u2061\nn\n)\n\n\n{\\displaystyle \\Omega (n\\log n)}\n\n steps,[1] which is already achievable by classical algorithms. Thus, for this task, quantum computers are no better than classical ones. However, in space-bounded sorts, quantum algorithms outperform their classical counterparts.[2]", 
+    "name": "Quantum Sort", 
+    "classification": "Sorting Algorithms", 
+    "full_text": "A quantum sort is any sorting algorithm that runs on a quantum computer. Any comparison-based quantum sorting algorithm would take at least \n\n\n\n\u03a9\n(\nn\nlog\n\u2061\nn\n)\n\n\n{\\displaystyle \\Omega (n\\log n)}\n\n steps,[1] which is already achievable by classical algorithms. Thus, for this task, quantum computers are no better than classical ones. However, in space-bounded sorts, quantum algorithms outperform their classical counterparts.[2]\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Quantum_sort", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Quantum_sort\n"
+}

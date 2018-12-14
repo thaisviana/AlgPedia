@@ -1,0 +1,52 @@
+ABOUT
+The ETX metric, or expected transmission count, is a measure of the quality of a path between two nodes in a wireless packet data network. It is used extensively in mesh networking algorithms.
+FULL TEXT
+The ETX metric, or expected transmission count, is a measure of the quality of a path between two nodes in a wireless packet data network. It is used extensively in mesh networking algorithms.
+Douglas S.J. De Couto was the first to describe ETX in his 2004 doctoral dissertation at MIT.[1] Subsequently, it has been implemented in RoofNet/Meraki and OLSR mesh networking protocols, among others.
+ETX is the number of expected transmissions of a packet necessary for it to be received without error at its destination. This number varies from one to infinity. An ETX of one indicates a perfect transmission medium, where an ETX of infinity represents a completely non-functional link. Note that ETX is an expected transmission count for a future event, as opposed to an actual count of a past event. It is hence a real number, and not an integer. For example, if it took 1898 transmissions to transfer 1024 packets without error, the ETX on the link is 1898/1024, or approximately 1.85. Due to varying characteristics of the transmission medium, the number may vary widely.
+It is often useful to convert between ETX and the packet error probability 
+
+
+
+
+e
+
+p
+t
+
+
+
+
+{\displaystyle e_{pt}}
+
+:
+
+
+
+
+
+E
+T
+X
+
+=
+
+
+1
+
+1
+−
+
+e
+
+p
+t
+
+
+
+
+
+
+
+{\displaystyle \mathrm {ETX} ={\frac {1}{1-e_{pt}}}}
+

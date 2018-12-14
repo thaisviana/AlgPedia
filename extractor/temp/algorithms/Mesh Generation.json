@@ -1,0 +1,8 @@
+{
+    "about": "Mesh generation is the practice of generating a polygonal or polyhedral mesh that approximates a geometric domain. The term \"grid generation\" is often used interchangeably. Typical uses are for rendering to a computer screen or for physical simulation such as finite element analysis or computational fluid dynamics. The input model form can vary greatly but common sources are CAD, NURBS, B-rep, STL or a point cloud. The field is highly interdisciplinary, with contributions found in mathematics, computer science, and engineering.", 
+    "name": "Mesh Generation", 
+    "classification": "Numerical Analysis", 
+    "full_text": "Mesh generation is the practice of generating a polygonal or polyhedral mesh that approximates a geometric domain. The term \"grid generation\" is often used interchangeably. Typical uses are for rendering to a computer screen or for physical simulation such as finite element analysis or computational fluid dynamics. The input model form can vary greatly but common sources are CAD, NURBS, B-rep, STL or a point cloud. The field is highly interdisciplinary, with contributions found in mathematics, computer science, and engineering.\nThree-dimensional meshes created for finite element analysis need to consist of tetrahedra, pyramids, prisms or hexahedra. Those used for the finite volume method can consist of arbitrary polyhedra. Those used for finite difference methods usually need to consist of piecewise structured arrays of hexahedra known as multi-block structured meshes. A mesh is otherwise a discretization of a domain existing in one, two or three dimensions.\n\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Mesh_generation", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Mesh_generation\n"
+}

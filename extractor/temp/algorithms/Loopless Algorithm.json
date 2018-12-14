@@ -1,0 +1,8 @@
+{
+    "about": "In computational combinatorics, a loopless algorithm or loopless imperative algorithm is an imperative algorithm that generates successive combinatorial objects, such as partitions, permutations, and combinations, in constant time and the first object in linear time.[1][2] The objects must be immediately available in simple form without requiring any additional steps.[1]", 
+    "name": "Loopless Algorithm", 
+    "classification": "Combinatorial Algorithms", 
+    "full_text": "In computational combinatorics, a loopless algorithm or loopless imperative algorithm is an imperative algorithm that generates successive combinatorial objects, such as partitions, permutations, and combinations, in constant time and the first object in linear time.[1][2] The objects must be immediately available in simple form without requiring any additional steps.[1]\nA loopless functional algorithm is a functional algorithm that takes the form unfoldr step \u2022 prolog where step takes constant time and prolog takes linear time in the size of the input.[3][4] The standard function unfoldr is a right-associative Bird unfold.[3]\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Loopless_algorithm", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Loopless_algorithm\n"
+}

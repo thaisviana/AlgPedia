@@ -1,0 +1,2814 @@
+ABOUT
+In numerical analysis, a branch of mathematics, there are several square root algorithms or methods of computing the principal square root of a non-negative real number. For the square roots of a negative or complex number, see below.
+FULL TEXT
+In numerical analysis, a branch of mathematics, there are several square root algorithms or methods of computing the principal square root of a non-negative real number. For the square roots of a negative or complex number, see below.
+Finding 
+
+
+
+
+
+S
+
+
+
+
+{\displaystyle {\sqrt {S}}}
+
+ is the same as solving the equation 
+
+
+
+f
+(
+x
+)
+=
+
+x
+
+2
+
+
+−
+S
+=
+0
+
+
+
+
+{\displaystyle f(x)=x^{2}-S=0\,\!}
+
+ for a positive 
+
+
+
+x
+
+
+{\displaystyle x}
+
+. Therefore, any general numerical root-finding algorithm can be used. Newton's method, for example, reduces in this case to the so-called Babylonian method:
+These methods generally yield approximate results, but can be made arbitrarily precise by increasing the number of calculation steps.
+
+
+Many square root algorithms require an initial seed value. If the initial seed value is far away from the actual square root, the algorithm will be slowed down. It is therefore useful to have a rough estimate, which may be very inaccurate but easy to calculate. With 
+
+
+
+S
+
+
+{\displaystyle S}
+
+ expressed in scientific notation as 
+
+
+
+a
+×
+
+10
+
+2
+n
+
+
+
+
+{\displaystyle a\times 10^{2n}}
+
+ where 
+
+
+
+1
+≤
+a
+<
+100
+
+
+{\displaystyle 1\leq a<100}
+
+ and n is an integer, the square root 
+
+
+
+
+
+S
+
+
+=
+
+
+a
+
+
+×
+
+10
+
+n
+
+
+
+
+{\displaystyle {\sqrt {S}}={\sqrt {a}}\times 10^{n}}
+
+ can be estimated as
+The factors two and six are used because they approximate the geometric means of the lowest and highest possible values with the given number of digits: 
+
+
+
+
+
+
+
+1
+
+
+⋅
+
+
+10
+
+
+
+
+=
+
+
+10
+
+4
+
+
+
+≈
+2
+
+
+
+{\displaystyle {\sqrt {{\sqrt {1}}\cdot {\sqrt {10}}}}={\sqrt[{4}]{10}}\approx 2\,}
+
+ and 
+
+
+
+
+
+
+
+10
+
+
+⋅
+
+
+100
+
+
+
+
+=
+
+
+1000
+
+4
+
+
+
+≈
+6
+
+
+
+{\displaystyle {\sqrt {{\sqrt {10}}\cdot {\sqrt {100}}}}={\sqrt[{4}]{1000}}\approx 6\,}
+
+.
+For 
+
+
+
+S
+=
+125348
+=
+12.5348
+×
+
+10
+
+4
+
+
+
+
+{\displaystyle S=125348=12.5348\times 10^{4}}
+
+, the estimate is 
+
+
+
+
+
+S
+
+
+≈
+6
+⋅
+
+10
+
+2
+
+
+=
+600
+
+
+{\displaystyle {\sqrt {S}}\approx 6\cdot 10^{2}=600}
+
+.
+When working in the binary numeral system (as computers do internally), by expressing 
+
+
+
+S
+
+
+{\displaystyle S}
+
+ as 
+
+
+
+a
+×
+
+2
+
+2
+n
+
+
+
+
+{\displaystyle a\times 2^{2n}}
+
+ where 
+
+
+
+
+0.1
+
+2
+
+
+≤
+a
+<
+
+10
+
+2
+
+
+
+
+{\displaystyle 0.1_{2}\leq a<10_{2}}
+
+, the square root 
+
+
+
+
+
+S
+
+
+=
+
+
+a
+
+
+×
+
+2
+
+n
+
+
+
+
+{\displaystyle {\sqrt {S}}={\sqrt {a}}\times 2^{n}}
+
+ can be estimated as 
+
+
+
+
+
+S
+
+
+≈
+
+2
+
+n
+
+
+
+
+{\displaystyle {\sqrt {S}}\approx 2^{n}}
+
+, since the geometric mean of the lowest and highest possible values is 
+
+
+
+
+
+
+
+
+0.1
+
+2
+
+
+
+
+⋅
+
+
+
+10
+
+2
+
+
+
+
+
+
+=
+
+
+1
+
+4
+
+
+
+=
+1
+
+
+{\displaystyle {\sqrt {{\sqrt {0.1_{2}}}\cdot {\sqrt {10_{2}}}}}={\sqrt[{4}]{1}}=1}
+
+.
+For 
+
+
+
+S
+=
+125348
+=
+1
+
+1110
+
+1001
+
+1010
+
+
+0100
+
+2
+
+
+=
+1.1110
+
+1001
+
+1010
+
+
+0100
+
+2
+
+
+×
+
+2
+
+16
+
+
+
+
+
+{\displaystyle S=125348=1\;1110\;1001\;1010\;0100_{2}=1.1110\;1001\;1010\;0100_{2}\times 2^{16}\,}
+
+ the binary approximation gives 
+
+
+
+
+
+S
+
+
+≈
+
+2
+
+8
+
+
+=
+1
+
+0000
+
+
+0000
+
+2
+
+
+=
+256
+
+.
+
+
+{\displaystyle {\sqrt {S}}\approx 2^{8}=1\;0000\;0000_{2}=256\,.}
+
+
+These approximations are useful to find better seeds for iterative algorithms, which results in faster convergence.
+Perhaps the first algorithm used for approximating √S is known as the Babylonian method, named after the Babylonians,[1] or "Hero's method", named after the first-century Greek mathematician Hero of Alexandria who gave the first explicit description of the method.[2] It can be derived from (but predates by 16 centuries) Newton's method. The basic idea is that if x is an overestimate to the square root of a non-negative real number S then S/x will be an underestimate and so the average of these two numbers may reasonably be expected to provide a better approximation (though the formal proof of that assertion depends on the inequality of arithmetic and geometric means that shows this average is always an overestimate of the square root, as noted in the article on square roots, thus assuring convergence).
+More precisely, if x is our initial guess of √S and e is the error in our estimate such that S = (x+ e)2, then we can expand the binomial and solve for
+Therefore, we can compensate for the error and update our old estimate as
+Since the computed error was not exact, this becomes our next best guess. The process of updating is iterated until desired accuracy is obtained. This is a quadratically convergent algorithm, which means that the number of correct digits of the approximation roughly doubles with each iteration. It proceeds as follows:
+It can also be represented as:
+This algorithm works equally well in the p-adic numbers, but cannot be used to identify real square roots with p-adic square roots; one can, for example, construct a sequence of rational numbers by this method that converges to +3 in the reals, but to −3 in the 2-adics.
+To calculate √S, where S = 125348, to six significant figures, use the rough estimation method above to get
+Therefore, √125348 ≈ 354.045.
+Let the relative error in xn be defined by
+and thus
+Then it can be shown that
+and thus that
+and consequently that convergence is assured provided that x0 and S are both positive.
+If using the rough estimate above with the Babylonian method, then the least accurate cases in ascending order are as follows:
+Thus in any case,
+Rounding errors will slow the convergence. It is recommended to keep at least one extra digit beyond the desired accuracy of the xn being calculated to minimize round off error.
+This is a method to find each digit of the square root in a sequence. It is slower than the Babylonian method (if you have a calculator that can divide in one operation), but it has several advantages:
+Napier's bones include an aid for the execution of this algorithm. The shifting nth root algorithm is a generalization of this method.
+First, let's consider the simplest possible case of finding the square root of a number Z, that is the square of a 2 digit number XY, where X is the ten's digit and Y is the unit's digit. Specifically:
+Z = (10X + Y)2 = 100X2 + 20XY + Y2
+Now using the Digit-by-Digit algorithm, we first determine the value of X. X is the largest digit such that X2 is less or equal to Z from which we removed the 2 rightmost digits.
+In the next iteration, we pair the digits, multiply X by 2, and place it in the tenth's place while we try to figure out what the value of Y is.
+Since this is a simple case where the answer is a perfect square root XY, the algorithm stops here.
+The same idea can be extended to any arbitrary square root computation next. Suppose we are able to find the square root of N by expressing it as a sum of n positive numbers such that
+By repeatedly applying the basic identity
+the right-hand-side term can be expanded as
+This expression allows us to find the square root by sequentially guessing the values of 
+
+
+
+
+a
+
+i
+
+
+
+
+{\displaystyle a_{i}}
+
+s. Suppose that the numbers 
+
+
+
+
+a
+
+1
+
+
+,
+…
+,
+
+a
+
+m
+−
+1
+
+
+
+
+{\displaystyle a_{1},\ldots ,a_{m-1}}
+
+ have already been guessed, then the m-th term of the right-hand-side of above summation is given by 
+
+
+
+
+Y
+
+m
+
+
+=
+[
+2
+
+P
+
+m
+−
+1
+
+
++
+
+a
+
+m
+
+
+]
+
+a
+
+m
+
+
+,
+
+
+{\displaystyle Y_{m}=[2P_{m-1}+a_{m}]a_{m},}
+
+ where 
+
+
+
+
+P
+
+m
+−
+1
+
+
+=
+
+∑
+
+i
+=
+1
+
+
+m
+−
+1
+
+
+
+a
+
+i
+
+
+
+
+{\displaystyle P_{m-1}=\sum _{i=1}^{m-1}a_{i}}
+
+ is the approximate square root found so far. Now each new guess 
+
+
+
+
+a
+
+m
+
+
+
+
+{\displaystyle a_{m}}
+
+ should satisfy the recursion
+such that 
+
+
+
+
+X
+
+m
+
+
+≥
+0
+
+
+{\displaystyle X_{m}\geq 0}
+
+ for all 
+
+
+
+1
+≤
+m
+≤
+n
+,
+
+
+{\displaystyle 1\leq m\leq n,}
+
+ with initialization 
+
+
+
+
+X
+
+0
+
+
+=
+N
+.
+
+
+{\displaystyle X_{0}=N.}
+
+ When 
+
+
+
+
+X
+
+n
+
+
+=
+0
+,
+
+
+{\displaystyle X_{n}=0,}
+
+ the exact square root has been found; if not, then the sum of 
+
+
+
+
+a
+
+i
+
+
+
+
+{\displaystyle a_{i}}
+
+s gives a suitable approximation of the square root, with 
+
+
+
+
+X
+
+n
+
+
+
+
+{\displaystyle X_{n}}
+
+ being the approximation error.
+For example, in the decimal number system we have
+where 
+
+
+
+
+10
+
+n
+−
+i
+
+
+
+
+{\displaystyle 10^{n-i}}
+
+ are place holders and the coefficients 
+
+
+
+
+a
+
+i
+
+
+∈
+{
+0
+,
+1
+,
+2
+,
+…
+,
+9
+}
+
+
+{\displaystyle a_{i}\in \{0,1,2,\ldots ,9\}}
+
+. At any m-th stage of the square root calculation, the approximate root found so far, 
+
+
+
+
+P
+
+m
+−
+1
+
+
+
+
+{\displaystyle P_{m-1}}
+
+ and the summation term 
+
+
+
+
+Y
+
+m
+
+
+
+
+{\displaystyle Y_{m}}
+
+ are given by
+Here since the place value of 
+
+
+
+
+Y
+
+m
+
+
+
+
+{\displaystyle Y_{m}}
+
+ is an even power of 10, we only need to work with the pair of most significant digits of the remaining term 
+
+
+
+
+X
+
+m
+−
+1
+
+
+
+
+{\displaystyle X_{m-1}}
+
+ at any m-th stage. The section below codifies this procedure.
+It is obvious that a similar method can be used to compute the square root in number systems other than the decimal number system. For instance, finding the digit-by-digit square root in the binary number system is quite efficient since the value of 
+
+
+
+
+a
+
+i
+
+
+
+
+{\displaystyle a_{i}}
+
+ is searched from a smaller set of binary digits {0,1}. This makes the computation faster since at each stage the value of 
+
+
+
+
+Y
+
+m
+
+
+
+
+{\displaystyle Y_{m}}
+
+ is either 
+
+
+
+
+Y
+
+m
+
+
+=
+0
+
+
+{\displaystyle Y_{m}=0}
+
+ for 
+
+
+
+
+a
+
+m
+
+
+=
+0
+
+
+{\displaystyle a_{m}=0}
+
+ or 
+
+
+
+
+Y
+
+m
+
+
+=
+2
+
+P
+
+m
+−
+1
+
+
++
+1
+
+
+{\displaystyle Y_{m}=2P_{m-1}+1}
+
+ for 
+
+
+
+
+a
+
+m
+
+
+=
+1
+
+
+{\displaystyle a_{m}=1}
+
+. The fact that we have only two possible options for 
+
+
+
+
+a
+
+m
+
+
+
+
+{\displaystyle a_{m}}
+
+ also makes the process of deciding the value of 
+
+
+
+
+a
+
+m
+
+
+
+
+{\displaystyle a_{m}}
+
+ at m-th stage of calculation easier. This is because we only need to check if 
+
+
+
+
+Y
+
+m
+
+
+≤
+
+X
+
+m
+−
+1
+
+
+
+
+{\displaystyle Y_{m}\leq X_{m-1}}
+
+ for 
+
+
+
+
+a
+
+m
+
+
+=
+1.
+
+
+{\displaystyle a_{m}=1.}
+
+ If this condition is satisfied, then we take 
+
+
+
+
+a
+
+m
+
+
+=
+1
+
+
+{\displaystyle a_{m}=1}
+
+; if not then 
+
+
+
+
+a
+
+m
+
+
+=
+0.
+
+
+{\displaystyle a_{m}=0.}
+
+ Also, the fact that multiplication by 2 is done by left bit-shifts helps in the computation.
+Write the original number in decimal form. The numbers are written similar to the long division algorithm, and, as in long division, the root will be written on the line above. Now separate the digits into pairs, starting from the decimal point and going both left and right. The decimal point of the root will be above the decimal point of the square. One digit of the root will appear above each pair of digits of the square.
+Beginning with the left-most pair of digits, do the following procedure for each pair:
+Find the square root of 152.2756.
+Find the square root of 2.
+Inherent to digit-by-digit algorithms is a search and test step: find a digit, 
+
+
+
+
+e
+
+
+{\displaystyle \,e}
+
+, when added to the right of a current solution 
+
+
+
+
+r
+
+
+{\displaystyle \,r}
+
+, such that 
+
+
+
+
+(
+r
++
+e
+)
+⋅
+(
+r
++
+e
+)
+≤
+x
+
+
+{\displaystyle \,(r+e)\cdot (r+e)\leq x}
+
+, where 
+
+
+
+
+x
+
+
+{\displaystyle \,x}
+
+ is the value for which a root is desired. Expanding: 
+
+
+
+
+r
+⋅
+r
++
+2
+r
+e
++
+e
+⋅
+e
+≤
+x
+
+
+{\displaystyle \,r\cdot r+2re+e\cdot e\leq x}
+
+. The current value of 
+
+
+
+
+r
+⋅
+r
+
+
+{\displaystyle \,r\cdot r}
+
+—or, usually, the remainder—can be incrementally updated efficiently when working in binary, as the value of 
+
+
+
+
+e
+
+
+{\displaystyle \,e}
+
+ will have a single bit set (a power of 2), and the operations needed to compute 
+
+
+
+
+2
+⋅
+r
+⋅
+e
+
+
+{\displaystyle \,2\cdot r\cdot e}
+
+ and 
+
+
+
+
+e
+⋅
+e
+
+
+{\displaystyle \,e\cdot e}
+
+ can be replaced with faster bit shift operations.
+Here we obtain the square root of 81, which when converted into binary gives 1010001. The numbers in the left column gives the option between that number or zero to be used for subtraction at that stage of computation. The final answer is 1001, which in decimal is 9.
+This gives rise to simple computer implementations:[3]
+Using the notation above, the variable "bit" corresponds to 
+
+
+
+
+e
+
+m
+
+
+2
+
+
+
+
+{\displaystyle e_{m}^{2}}
+
+ which is 
+
+
+
+(
+
+2
+
+m
+
+
+
+)
+
+2
+
+
+=
+
+4
+
+m
+
+
+
+
+{\displaystyle (2^{m})^{2}=4^{m}}
+
+, the variable "res" is equal to 
+
+
+
+2
+r
+
+e
+
+m
+
+
+
+
+{\displaystyle 2re_{m}}
+
+, and the variable "num" is equal to the current 
+
+
+
+
+X
+
+m
+
+
+
+
+{\displaystyle X_{m}}
+
+ which is the difference of the number we want the square root of and the square of our current approximation with all bits set up to 
+
+
+
+
+2
+
+m
++
+1
+
+
+
+
+{\displaystyle 2^{m+1}}
+
+. Thus in the first loop, we want to find the highest power of 4 in "bit" to find the highest power of 2 in 
+
+
+
+e
+
+
+{\displaystyle e}
+
+. In the second loop, if num is greater than res + bit, then 
+
+
+
+
+X
+
+m
+
+
+
+
+{\displaystyle X_{m}}
+
+ is greater than 
+
+
+
+2
+r
+
+e
+
+m
+
+
++
+
+e
+
+m
+
+
+2
+
+
+
+
+{\displaystyle 2re_{m}+e_{m}^{2}}
+
+ and we can subtract it. The next line, we want to add 
+
+
+
+
+e
+
+m
+
+
+
+
+{\displaystyle e_{m}}
+
+ to 
+
+
+
+r
+
+
+{\displaystyle r}
+
+ which means we want to add 
+
+
+
+2
+
+e
+
+m
+
+
+2
+
+
+
+
+{\displaystyle 2e_{m}^{2}}
+
+ to 
+
+
+
+2
+r
+
+e
+
+m
+
+
+
+
+{\displaystyle 2re_{m}}
+
+ so we want res = res + bit<<1. Then update 
+
+
+
+
+e
+
+m
+
+
+
+
+{\displaystyle e_{m}}
+
+ to 
+
+
+
+
+e
+
+m
+−
+1
+
+
+
+
+{\displaystyle e_{m-1}}
+
+ inside res which involves dividing by 2 or another shift to the right. Combining these 2 into one line leads to res = res>>1 + bit. If 
+
+
+
+
+X
+
+m
+
+
+
+
+{\displaystyle X_{m}}
+
+ isn't greater than 
+
+
+
+2
+r
+
+e
+
+m
+
+
++
+
+e
+
+m
+
+
+2
+
+
+
+
+{\displaystyle 2re_{m}+e_{m}^{2}}
+
+ then we just update 
+
+
+
+
+e
+
+m
+
+
+
+
+{\displaystyle e_{m}}
+
+ to 
+
+
+
+
+e
+
+m
+−
+1
+
+
+
+
+{\displaystyle e_{m-1}}
+
+ inside res and divide it by 2. Then we update 
+
+
+
+
+e
+
+m
+
+
+
+
+{\displaystyle e_{m}}
+
+ to 
+
+
+
+
+e
+
+m
+−
+1
+
+
+
+
+{\displaystyle e_{m-1}}
+
+ in bit by dividing it by 4. The final iteration of the 2nd loop has bit equal to 1 and will cause update of 
+
+
+
+e
+
+
+{\displaystyle e}
+
+ to run one extra time removing the factor of 2 from res making it our integer approximation of the root.
+Faster algorithms, in binary and decimal or any other base, can be realized by using lookup tables—in effect trading more storage space for reduced run time.[4]
+Pocket calculators typically implement good routines to compute the exponential function and the natural logarithm, and then compute the square root of S using the identity found using the properties of logarithms (
+
+
+
+ln
+⁡
+
+x
+
+n
+
+
+=
+n
+ln
+⁡
+x
+
+
+{\displaystyle \ln x^{n}=n\ln x}
+
+) and exponentials (
+
+
+
+
+e
+
+ln
+⁡
+x
+
+
+=
+x
+
+
+{\displaystyle e^{\ln x}=x}
+
+):
+The denominator in the fraction corresponds to the nth root. In the case above the denominator is 2, hence the equation specifies that the square root is to be found. The same identity is used when computing square roots with logarithm tables or slide rules.
+This method for finding an approximation to a square root was described in an ancient Indian mathematical manuscript called the Bakhshali manuscript. It is equivalent to two iterations of the Babylonian method beginning with N. The original presentation goes as follows: To calculate 
+
+
+
+
+
+S
+
+
+
+
+{\displaystyle {\sqrt {S}}}
+
+, let N2 be the nearest perfect square to S. Then, calculate:
+This can be also written as:
+Find 
+
+
+
+
+
+9.2345
+
+
+
+
+{\displaystyle {\sqrt {9.2345}}}
+
+
+The Vedic duplex method from the book 'Vedic Mathematics' is a variant of the digit-by-digit method for calculating the square root.[5] The duplex is the square of the central digit plus double the cross-product of digits equidistant from the center. The duplex is computed from the quotient digits (square root digits) computed thus far, but after the initial digits. The duplex is subtracted from the dividend digit prior to the second subtraction for the product of the quotient digit times the divisor digit. For perfect squares the duplex and the dividend will get smaller and reach zero after a few steps. For non-perfect squares the decimal value of the square root can be calculated to any precision desired. However, as the decimal places proliferate, the duplex adjustment gets larger and longer to calculate. The duplex method follows the Vedic ideal for an algorithm, one-line, mental calculation. It is flexible in choosing the first digit group and the divisor. Small divisors are to be avoided by starting with a larger initial group.
+We proceed as with the digit-by-digit calculation by assuming that we want to express a number N as a square of the sum of n positive numbers as
+Define divisor as 
+
+
+
+q
+=
+2
+
+a
+
+0
+
+
+
+
+{\displaystyle q=2a_{0}}
+
+ and the duplex for a sequence of m numbers as
+Thus, we can re-express the above identity in terms of the divisor and the duplexes as
+Now the computation can proceed by recursively guessing the values of 
+
+
+
+
+a
+
+m
+
+
+
+
+{\displaystyle a_{m}}
+
+ so that
+such that 
+
+
+
+
+X
+
+m
+
+
+≥
+0
+
+
+{\displaystyle X_{m}\geq 0}
+
+ for all 
+
+
+
+1
+≤
+m
+≤
+n
+−
+1
+
+
+{\displaystyle 1\leq m\leq n-1}
+
+, with initialization 
+
+
+
+
+X
+
+0
+
+
+=
+N
+−
+
+a
+
+0
+
+
+2
+
+
+.
+
+
+{\displaystyle X_{0}=N-a_{0}^{2}.}
+
+ When 
+
+
+
+
+X
+
+m
+
+
+=
+0
+
+
+{\displaystyle X_{m}=0}
+
+ the algorithm terminates and the sum of 
+
+
+
+
+a
+
+i
+
+
+
+
+{\displaystyle a_{i}}
+
+s give the square root. The method is more similar to long division where 
+
+
+
+
+X
+
+m
+−
+1
+
+
+
+
+{\displaystyle X_{m-1}}
+
+ is the dividend and 
+
+
+
+
+X
+
+m
+
+
+
+
+{\displaystyle X_{m}}
+
+ is the remainder.
+For the case of decimal numbers, if
+where 
+
+
+
+
+a
+
+i
+
+
+∈
+{
+0
+,
+1
+,
+2
+,
+…
+,
+9
+}
+
+
+{\displaystyle a_{i}\in \{0,1,2,\ldots ,9\}}
+
+, then the initiation 
+
+
+
+
+X
+
+0
+
+
+=
+N
+−
+
+a
+
+0
+
+
+2
+
+
+⋅
+
+10
+
+2
+(
+n
+−
+1
+)
+
+
+
+
+{\displaystyle X_{0}=N-a_{0}^{2}\cdot 10^{2(n-1)}}
+
+ and the divisor will be 
+
+
+
+q
+=
+2
+
+a
+
+0
+
+
+⋅
+
+10
+
+n
+−
+1
+
+
+
+
+{\displaystyle q=2a_{0}\cdot 10^{n-1}}
+
+. Also the product at any m-th stage will be 
+
+
+
+q
+
+a
+
+m
+
+
+⋅
+
+10
+
+n
+−
+m
+−
+1
+
+
+=
+2
+
+a
+
+0
+
+
+
+a
+
+m
+
+
+⋅
+
+10
+
+2
+n
+−
+m
+−
+2
+
+
+
+
+{\displaystyle qa_{m}\cdot 10^{n-m-1}=2a_{0}a_{m}\cdot 10^{2n-m-2}}
+
+ and the duplexes will be 
+
+
+
+
+d
+
+m
+
+
+=
+
+
+
+
+d
+~
+
+
+
+
+m
+
+
+⋅
+
+10
+
+2
+n
+−
+m
+−
+3
+
+
+
+
+{\displaystyle d_{m}={\tilde {d}}_{m}\cdot 10^{2n-m-3}}
+
+, where 
+
+
+
+
+
+
+
+d
+~
+
+
+
+
+m
+
+
+
+
+{\displaystyle {\tilde {d}}_{m}}
+
+ are the duplexes of the sequence 
+
+
+
+
+a
+
+1
+
+
+,
+
+a
+
+2
+
+
+,
+…
+,
+
+a
+
+m
+
+
+
+
+{\displaystyle a_{1},a_{2},\ldots ,a_{m}}
+
+. At any m-th stage, we see that the place value of the duplex 
+
+
+
+
+
+
+
+d
+~
+
+
+
+
+m
+
+
+
+
+{\displaystyle {\tilde {d}}_{m}}
+
+ is one less than the product 
+
+
+
+2
+
+a
+
+0
+
+
+
+a
+
+m
+
+
+
+
+{\displaystyle 2a_{0}a_{m}}
+
+. Thus, in actual calculations it is customary to subtract the duplex value of the m-th stage at (m+1)-th stage. Also, unlike the previous digit-by-digit square root calculation, where at any given m-th stage, the calculation is done by taking the most significant pair of digits of the remaining term 
+
+
+
+
+X
+
+m
+−
+1
+
+
+
+
+{\displaystyle X_{m-1}}
+
+, the duplex method uses only a single most significant digit of 
+
+
+
+
+X
+
+m
+−
+1
+
+
+
+
+{\displaystyle X_{m-1}}
+
+.
+In other words, to calculate the duplex of a number, double the product of each pair of equidistant digits plus the square of the center digit (of the digits to the right of the colon).
+In a square root calculation the quotient digit set increases incrementally for each step.
+Consider the perfect square 2809 = 532. Use the duplex method to find the square root of 2,809.
+This method is applicable for finding the square root of 
+
+
+
+0
+<
+S
+<
+3
+
+
+
+
+{\displaystyle 0<S<3\,\!}
+
+ and converges best for 
+
+
+
+S
+≈
+1
+
+
+{\displaystyle S\approx 1}
+
+. This, however, is no real limitation for a computer based calculation, as in base 2 floating point and fixed point representations, it is trivial to multiply 
+
+
+
+S
+
+
+
+
+{\displaystyle S\,\!}
+
+ by an integer power of 4, and therefore 
+
+
+
+
+
+S
+
+
+
+
+{\displaystyle {\sqrt {S}}}
+
+ by the corresponding power of 2, by changing the exponent or by shifting, respectively. Therefore, 
+
+
+
+S
+
+
+
+
+{\displaystyle S\,\!}
+
+ can be moved to the range 
+
+
+
+
+
+1
+2
+
+
+≤
+S
+<
+2
+
+
+{\displaystyle {\frac {1}{2}}\leq S<2}
+
+. Moreover, the following method does not employ general divisions, but only additions, subtractions, multiplications, and divisions by powers of two, which are again trivial to implement. A disadvantage of the method is that numerical errors accumulate, in contrast to single variable iterative methods such as the Babylonian one.
+The initialization step of this method is
+while the iterative steps read
+Then, 
+
+
+
+
+a
+
+n
+
+
+→
+
+
+S
+
+
+
+
+{\displaystyle a_{n}\rightarrow {\sqrt {S}}}
+
+ (while 
+
+
+
+
+c
+
+n
+
+
+→
+0
+
+
+{\displaystyle c_{n}\rightarrow 0}
+
+).
+Note that the convergence of 
+
+
+
+
+c
+
+n
+
+
+
+
+
+
+{\displaystyle c_{n}\,\!}
+
+, and therefore also of 
+
+
+
+
+a
+
+n
+
+
+
+
+
+
+{\displaystyle a_{n}\,\!}
+
+, is quadratic.
+The proof of the method is rather easy. First, rewrite the iterative definition of 
+
+
+
+
+c
+
+n
+
+
+
+
+
+
+{\displaystyle c_{n}\,\!}
+
+ as
+Then it is straightforward to prove by induction that
+and therefore the convergence of 
+
+
+
+
+a
+
+n
+
+
+
+
+
+
+{\displaystyle a_{n}\,\!}
+
+ to the desired result 
+
+
+
+
+
+S
+
+
+
+
+{\displaystyle {\sqrt {S}}}
+
+ is ensured by the convergence of 
+
+
+
+
+c
+
+n
+
+
+
+
+
+
+{\displaystyle c_{n}\,\!}
+
+ to 0, which in turn follows from 
+
+
+
+−
+1
+<
+
+c
+
+0
+
+
+<
+2
+
+
+
+
+{\displaystyle -1<c_{0}<2\,\!}
+
+.
+This method was developed around 1950 by M. V. Wilkes, D. J. Wheeler and S. Gill[6] for use on EDSAC, one of the first electronic computers.[7] The method was later generalized, allowing the computation of non-square roots.[8]
+The following are iterative methods for finding the reciprocal square root of S which is 
+
+
+
+1
+
+/
+
+
+
+S
+
+
+
+
+{\displaystyle 1/{\sqrt {S}}}
+
+. Once it has been found, find 
+
+
+
+
+
+S
+
+
+
+
+{\displaystyle {\sqrt {S}}}
+
+ by simple multiplication: 
+
+
+
+
+
+S
+
+
+=
+S
+⋅
+(
+1
+
+/
+
+
+
+S
+
+
+)
+
+
+{\displaystyle {\sqrt {S}}=S\cdot (1/{\sqrt {S}})}
+
+. These iterations involve only multiplication, and not division. They are therefore faster than the Babylonian method. However, they are not stable. If the initial value is not close to the reciprocal square root, the iterations will diverge away from it rather than converge to it. It can therefore be advantageous to perform an iteration of the Babylonian method on a rough estimate before starting to apply these methods.
+Some computers use Goldschmidt's algorithm to simultaneously calculate 
+
+
+
+
+
+S
+
+
+
+
+{\displaystyle {\sqrt {S}}}
+
+ and 
+
+
+
+1
+
+/
+
+
+
+S
+
+
+
+
+{\displaystyle 1/{\sqrt {S}}}
+
+. Goldschmidt's algorithm finds 
+
+
+
+
+
+S
+
+
+
+
+{\displaystyle {\sqrt {S}}}
+
+ faster than Newton-Raphson iteration on a computer with a fused multiply–add instruction and either a pipelined floating point unit or two independent floating-point units. Two ways of writing Goldschmidt's algorithm are:[9]
+Each iteration:
+until 
+
+
+
+
+b
+
+i
+
+
+
+
+{\displaystyle b_{i}}
+
+ is sufficiently close to 1, or a fixed number of iterations.
+which causes
+Goldschmidt's equation can be rewritten as:
+Each iteration: (All 3 operations in this loop are in the form of a fused multiply–add.)
+until 
+
+
+
+
+r
+
+i
+
+
+
+
+{\displaystyle r_{i}}
+
+ is sufficiently close to 0, or a fixed number of iterations.
+which causes
+If N is an approximation to 
+
+
+
+
+
+S
+
+
+
+
+{\displaystyle {\sqrt {S}}}
+
+, a better approximation can be found by using the Taylor series of the square root function:
+As an iterative method, the order of convergence is equal to the number of terms used. With two terms, it is identical to the Babylonian method. With three terms, each iteration takes almost as many operations as the Bakhshali approximation, but converges more slowly. Therefore, this is not a particularly efficient way of calculation. To maximize the rate of convergence, choose N so that 
+
+
+
+
+
+
+
+|
+
+d
+
+|
+
+
+
+N
+
+2
+
+
+
+
+
+
+
+{\displaystyle {\frac {|d|}{N^{2}}}\,}
+
+ is as small as possible.
+A completely different method for computing the square root is based on the CORDIC algorithm, which uses only very simple operations (addition, subtraction, bitshift and table lookup, but no multiplication). The square root of S may be obtained as the output 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+ using the hyperbolic coordinate system in vectoring mode, with the following initialization:[10]
+Quadratic irrationals (numbers of the form 
+
+
+
+
+
+
+a
++
+
+
+b
+
+
+
+c
+
+
+
+
+{\displaystyle {\frac {a+{\sqrt {b}}}{c}}}
+
+, where a, b and c are integers), and in particular, square roots of integers, have periodic continued fractions. Sometimes what is desired is finding not the numerical value of a square root, but rather its continued fraction expansion, and hence its rational approximation. Let S be the positive number for which we are required to find the square root. Then assuming a to be a number that serves as an initial guess and r to be the remainder term, we can write 
+
+
+
+S
+=
+
+a
+
+2
+
+
++
+r
+.
+
+
+{\displaystyle S=a^{2}+r.}
+
+ Since we have 
+
+
+
+S
+−
+
+a
+
+2
+
+
+=
+(
+
+
+S
+
+
++
+a
+)
+(
+
+
+S
+
+
+−
+a
+)
+
+
+{\displaystyle S-a^{2}=({\sqrt {S}}+a)({\sqrt {S}}-a)}
+
+, we can express the square root of S as
+By applying this expression for 
+
+
+
+
+
+S
+
+
+
+
+{\displaystyle {\sqrt {S}}}
+
+ to the denominator term of the fraction, we have
+Proceeding this way, we get a generalized continued fraction for the square root as
+For any S a possible choice for a and r is a = 1 and r = S - 1, yielding
+For example, for the square root of 2, we can take a = 1 and r = 1, giving us
+Taking the first three denominators give the rational approximation of √2 as [1;2,2,2] = 17/12 = 1.41667, correct up to first three decimal places. Taking the first five denominators gives the rational approximation to √2 as [1;2,2,2,2,2] = 99/70 = 1.4142857, correct up to first five decimal places. Taking more denominators give better approximations.
+As another example, for the square root of 3, we can select a = 2 and r = -1, giving us
+The first three denominators gives √3 as 1.73214, correct up to the first four decimal places. Note that it is not necessary to choose an integer valued a. For instance, we can take a = √2 and r = 1, such that
+We can do the same for the whole numbers as well. For instance,
+The following iterative algorithm [11] can be used to obtain the continued fraction expansion in canonical form (S is any natural number that is not a perfect square):
+Notice that mn, dn, and an are always integers. The algorithm terminates when this triplet is the same as one encountered before. The algorithm can also terminate on ai when ai = 2 a0,[12] which is easier to implement.
+The expansion will repeat from then on. The sequence [a0; a1, a2, a3, …] is the continued fraction expansion:
+Begin with m0 = 0; d0 = 1; and a0 = 10 (102 = 100 and 112 = 121 > 114 so 10 chosen).
+So, m1 = 10; d1 = 14; and a1 = 1.
+Next, m2 = 4; d2 = 7; and a2 = 2.
+Now, loop back to the second equation above.
+Consequently, the simple continued fraction for the square root of 114 is
+Its actual value is approximately 10.67707 82520 31311 21....
+A more rapid method is to evaluate its generalized continued fraction. From the formula derived there:
+and the fact that 114 is 2/3 of the way between 102=100 and 112=121 results in
+which is simply the aforementioned [10;1,2, 10,2,1, 20,1,2, 10,2,1, 20,1,2, ...] evaluated at every third term. Combining pairs of fractions produces
+which is now [10;1,2, 10,2,1,20,1,2, 10,2,1,20,1,2, ...] evaluated at the third term and every six terms thereafter.
+Pell's equation (also known as Brahmagupta equation since he was the first to give a solution to this particular equation) and its variants yield a method for efficiently finding continued fraction convergents of square roots of integers. However, it can be complicated to execute, and usually not every convergent is generated. The ideas behind the method are as follows:
+The method is as follows:
+A number is represented in a floating point format as 
+
+
+
+m
+×
+
+b
+
+p
+
+
+
+
+{\displaystyle m\times b^{p}}
+
+ which is also called scientific notation. Its square root is 
+
+
+
+
+
+m
+
+
+×
+
+b
+
+p
+
+/
+
+2
+
+
+
+
+{\displaystyle {\sqrt {m}}\times b^{p/2}}
+
+ and similar formulae would apply for cube roots and logarithms. On the face of it, this is no improvement in simplicity, but suppose that only an approximation is required: then just 
+
+
+
+
+b
+
+p
+
+/
+
+2
+
+
+
+
+{\displaystyle b^{p/2}}
+
+ is good to an order of magnitude. Next, recognise that some powers, p, will be odd, thus for 3141.59 = 3.14159x103 rather than deal with fractional powers of the base, multiply the mantissa by the base and subtract one from the power to make it even. The adjusted representation will become the equivalent of 31.4159x102 so that the square root will be √31.4159 x 10.
+If the integer part of the adjusted mantissa is taken, there can only be the values 1 to 99, and that could be used as an index into a table of 99 pre-computed square roots to complete the estimate. A computer using base sixteen would require a larger table, but one using base two would require only three entries: the possible bits of the integer part of the adjusted mantissa are 01 (the power being even so there was no shift, remembering that a normalised floating point number always has a non-zero high-order digit) or if the power was odd, 10 or 11, these being the first two bits of the original mantissa. Thus, 6.25 = 110.01 in binary, normalised to 1.1001 x 22 an even power so the paired bits of the mantissa are 01, while .625 = 0.101 in binary normalises to 1.01 x 2−1 an odd power so the adjustment is to 10.1 x 2−2 and the paired bits are 10. Notice that the low order bit of the power is echoed in the high order bit of the pairwise mantissa. An even power has its low-order bit zero and the adjusted mantissa will start with 0, whereas for an odd power that bit is one and the adjusted mantissa will start with 1. Thus, when the power is halved, it is as if its low order bit is shifted out to become the first bit of the pairwise mantissa.
+A table with only three entries could be enlarged by incorporating additional bits of the mantissa. However, with computers, rather than calculate an interpolation into a table, it is often better to find some simpler calculation giving equivalent results. Everything now depends on the exact details of the format of the representation, plus what operations are available to access and manipulate the parts of the number. For example, Fortran offers an EXPONENT(x) function to obtain the power. Effort expended in devising a good initial approximation is to be recouped by thereby avoiding the additional iterations of the refinement process that would have been needed for a poor approximation. Since these are few (one iteration requires a divide, an add, and a halving) the constraint is severe.
+Many computers follow the IEEE (or sufficiently similar) representation, and a very rapid approximation to the square root can be obtained for starting Newton's method. The technique that follows is based on the fact that the floating point format (in base two) approximates the base-2 logarithm. That is 
+
+
+
+
+log
+
+2
+
+
+⁡
+(
+m
+×
+
+2
+
+p
+
+
+)
+=
+p
++
+
+log
+
+2
+
+
+⁡
+(
+m
+)
+
+
+{\displaystyle \log _{2}(m\times 2^{p})=p+\log _{2}(m)}
+
+
+So for a 32-bit single precision floating point number in IEEE format (where notably, the power has a bias of 127 added for the represented form) you can get the approximate logarithm by interpreting its binary representation as a 32-bit integer, scaling it by 
+
+
+
+
+2
+
+−
+23
+
+
+
+
+{\displaystyle 2^{-23}}
+
+, and removing a bias of 127, i.e.
+For example, 1.0 is represented by a hexadecimal number 0x3F800000, which would represent 
+
+
+
+1065353216
+=
+127
+⋅
+
+2
+
+23
+
+
+
+
+{\displaystyle 1065353216=127\cdot 2^{23}}
+
+ if taken as an integer. Using the formula above you get 
+
+
+
+1065353216
+⋅
+
+2
+
+−
+23
+
+
+−
+127
+=
+0
+
+
+{\displaystyle 1065353216\cdot 2^{-23}-127=0}
+
+, as expected from 
+
+
+
+
+log
+
+2
+
+
+⁡
+(
+1.0
+)
+
+
+{\displaystyle \log _{2}(1.0)}
+
+. In a similar fashion you get 0.5 from 1.5 (0x3FC00000).
+
+To get the square root, divide the logarithm by 2 and convert the value back. The following program demonstrates the idea. Note that the exponent's lowest bit is intentionally allowed to propagate into the mantissa. One way to justify the steps in this program is to assume 
+
+
+
+b
+
+
+{\displaystyle b}
+
+ is the exponent bias and 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ is the number of explicitly stored bits in the mantissa and then show that
+The three mathematical operations forming the core of the above function can be expressed in a single line. An additional adjustment can be added to reduce the maximum relative error. So, the three operations, not including the cast, can be rewritten as
+where a is a bias for adjusting the approximation errors. For example, with a = 0 the results are accurate for even powers of 2 (e.g., 1.0), but for other numbers the results will be slightly too big (e.g.,1.5 for 2.0 instead of 1.414... with 6% error). With a = -0x4C000, the errors are between about -3.5% and 3.5%.
+If the approximation is to be used for an initial guess for Newton's method to the equation 
+
+
+
+(
+1
+
+/
+
+
+x
+
+2
+
+
+)
+−
+S
+=
+0
+
+
+{\displaystyle (1/x^{2})-S=0}
+
+, then the reciprocal form shown in the following section is preferred.
+A variant of the above routine is included below, which can be used to compute the reciprocal of the square root, i.e., 
+
+
+
+
+x
+
+−
+
+
+1
+2
+
+
+
+
+
+
+{\displaystyle x^{-{1 \over 2}}}
+
+ instead, was written by Greg Walsh. The integer-shift approximation produced a relative error of less than 4%, and the error dropped further to 0.15% with one iteration of Newton's method on the following line.[13] In computer graphics it is a very efficient way to normalize a vector.
+Some VLSI hardware implements inverse square root using a second degree polynomial estimation followed by a Goldschmidt iteration.[14]
+If S < 0, then its principal square root is
+If S = a+bi where a and b are real and b ≠ 0, then its principal square root is
+This can be verified by squaring the root.[15][16] Here
+is the modulus of S. The principal square root of a complex number is defined to be the root with the non-negative real part.

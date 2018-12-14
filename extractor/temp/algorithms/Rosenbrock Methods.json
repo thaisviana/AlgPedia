@@ -1,0 +1,8 @@
+{
+    "about": "Rosenbrock methods refers to either of two distinct ideas in numerical computation, both named for Howard H. Rosenbrock.", 
+    "name": "Rosenbrock Methods", 
+    "classification": "Optimization Algorithms And Methods", 
+    "full_text": "Rosenbrock methods refers to either of two distinct ideas in numerical computation, both named for Howard H. Rosenbrock.\n\n\nRosenbrock methods for stiff differential equations are a family of multistep methods for solving ordinary differential equations that contain a wide range of characteristic timescales.[1][2] They are related to the implicit Runge-Kutta methods[3] and are also known as Kaps-Rentrop methods.[4]\nRosenbrock search is a numerical optimization algorithm applicable to optimization problems in which the objective function is inexpensive to compute and the derivative either does not exist or cannot be computed efficiently.[5] The idea of Rosenbrock search is also used to initialize some root-finding routines, such as fzero (based on Brent's method) in Matlab. Rosenbrock search is a form of derivate-free search but may perform better on functions with sharp ridges.[6] The method often identifies such a ridge which, in many applications, leads to a solution.[7]", 
+    "dbpedia_url": "http://dbpedia.org/resource/Rosenbrock_methods", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Rosenbrock_methods\n"
+}

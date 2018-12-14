@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-
+from django.contrib import admin
 
 class Implementation(models.Model):
 	# an algorithm can have many implementations
@@ -27,3 +27,17 @@ class Implementation(models.Model):
 		self.accumulated_weight = self.accumulated_weight + user_weight
 		self.save()
 		return True
+
+	@classmethod
+	def register_admin(cls):
+		admin.site.register(cls, Admin)
+
+	class Meta:
+		abstract = False
+		verbose_name_plural = "Implementations"
+		verbose_name = "Implementation"
+
+
+class Admin(admin.ModelAdmin):
+	list_display = ('algorithm', 'programming_language', 'reputation', 'visible')
+	search_fields = ('algorithm', 'programming_language')

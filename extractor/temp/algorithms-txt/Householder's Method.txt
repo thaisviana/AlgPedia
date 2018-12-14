@@ -1,0 +1,305 @@
+ABOUT
+In mathematics, and more specifically in numerical analysis, Householder's methods are a class of root-finding algorithms that are used for functions of one real variable with continuous derivatives up to some order d+1. Each of these methods is characterized by the number d, which is known as the order of the method. The algorithm is iterative and has a rate of convergence of d+1.
+FULL TEXT
+In mathematics, and more specifically in numerical analysis, Householder's methods are a class of root-finding algorithms that are used for functions of one real variable with continuous derivatives up to some order d+1. Each of these methods is characterized by the number d, which is known as the order of the method. The algorithm is iterative and has a rate of convergence of d+1.
+These methods are named after the American mathematician Alston Scott Householder.
+
+
+Householder's method is a numerical algorithm for solving the nonlinear equation f(x) = 0. In this case, the function f has to be a function of one real variable. The method consists of a sequence of iterations
+beginning with an initial guess x0.[1]
+If f is a (d+1) times continuously differentiable function and a is a zero of f but not of its derivative, then, in a neighborhood of a, the iterates xn satisfy:
+This means that the iterates converge to the zero if the initial guess is sufficiently close, and that the convergence has order (d+1).
+Despite their order of convergence, these methods are not widely used because the gain in precision is not commensurate with the rise in effort for large d. The Ostrowski index[2] expresses the error reduction in the number of function evaluations instead of the iteration count.
+An approximate idea of Householder's method derives from the geometric series. Let the real-valued, continuously differentiable function f(x) have a simple zero at x=a, that is a root f(a)=0 of multiplicity one, which is equivalent to 
+
+
+
+
+f
+′
+
+(
+a
+)
+≠
+0
+
+
+{\displaystyle f'(a)\neq 0}
+
+. Then 1/f(x) has a singularity at a, specifically a simple pole (also of multiplicity one), and close to a the behavior of 1/f(x) is dominated by 1/(x-a). Approximately one gets
+Here 
+
+
+
+
+f
+′
+
+(
+a
+)
+≠
+0
+
+
+{\displaystyle f'(a)\neq 0}
+
+ because a is a simple zero of f(x). The coefficient of degree d has the value 
+
+
+
+C
+
+
+a
+
+−
+d
+
+
+
+
+{\displaystyle C\,a^{-d}}
+
+. Thus, one can now reconstruct the zero a by dividing the coefficient of degree d-1 by the coefficient of degree d. Since this geometric series is an approximation to the Taylor expansion of 1/f(x), one can get estimates of the zero of f(x) − now without prior knowledge of the location of this zero − by dividing the corresponding coefficients of the Taylor expansion of 1/f(x) or, more generally, 1/f(b+x). From that one gets, for any integer d, and if the corresponding derivatives exist,
+Suppose x=a is a simple root. Then near x=a, (1/f)(x) is a meromorphic function. Suppose we have the Taylor expansion:
+By König's theorem, we have:
+This suggests that Householder's iteration might be a good convergent iteration. The actual proof of the convergence is also based on this idea.
+Householder's method of order 1 is just Newton's method, since:
+For Householder's method of order 2 one gets Halley's method, since the identities
+and
+result in
+In the last line, 
+
+
+
+
+h
+
+n
+
+
+=
+−
+
+
+
+
+f
+(
+
+x
+
+n
+
+
+)
+
+
+
+f
+′
+
+(
+
+x
+
+n
+
+
+)
+
+
+
+
+
+
+{\displaystyle h_{n}=-{\tfrac {f(x_{n})}{f'(x_{n})}}}
+
+ is the update of the Newton iteration at the point 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+. This line was added to demonstrate where the difference to the simple Newton's method lies.
+The third order method is obtained from the identity of the third order derivative of 1/f
+and has the formula
+and so on...
+The first problem solved by Newton with the Newton-Raphson-Simpson method was the polynomial equation 
+
+
+
+
+y
+
+3
+
+
+−
+2
+y
+−
+5
+=
+0
+
+
+{\displaystyle y^{3}-2y-5=0}
+
+. He observed that there should be a solution close to 2. Replacing y=x+2 transforms the equation into
+The Taylor series of the reciprocal function starts with
+The result of applying Householder's methods of various orders at x=0 is also obtained by dividing neighboring coefficients of the latter power series. For the first orders one gets the following values after just one iteration step: For an example, in the case of the 3rd order, 
+
+
+
+
+x
+
+1
+
+
+=
+0.0
++
+106
+
+/
+
+1121
+=
+0.09455842997324
+
+
+{\displaystyle x_{1}=0.0+106/1121=0.09455842997324}
+
+.
+As one can see, there are a little bit more than d correct decimal places for each order d.
+Let's calculate the 
+
+
+
+
+x
+
+2
+
+
+,
+
+x
+
+3
+
+
+,
+
+x
+
+4
+
+
+
+
+{\displaystyle x_{2},x_{3},x_{4}}
+
+ values for some lowest order,
+And using following relations,
+
+An exact derivation of Householder's methods starts from the Padé approximation of order (d+1) of the function, where the approximant with linear numerator is chosen. Once this has been achieved, the update for the next approximation results from computing the unique zero of the numerator.
+The Padé approximation has the form
+The rational function has a zero at 
+
+
+
+h
+=
+−
+
+a
+
+0
+
+
+
+
+{\displaystyle h=-a_{0}}
+
+.
+Just as the Taylor polynomial of degree d has d+1 coefficients that depend on the function f, the Padé approximation also has d+1 coefficients dependent on f and its derivatives. More precisely, in any Padé approximant, the degrees of the numerator and denominator polynomials have to add to the order of the approximant. Therefore, 
+
+
+
+
+b
+
+d
+
+
+=
+0
+
+
+{\displaystyle b_{d}=0}
+
+ has to hold.
+One could determine the Padé approximant starting from the Taylor polynomial of f using Euclid's algorithm. However, starting from the Taylor polynomial of 1/f is shorter and leads directly to the given formula. Since
+has to be equal to the inverse of the desired rational function, we get after multiplying with 
+
+
+
+
+a
+
+0
+
+
++
+h
+
+
+{\displaystyle a_{0}+h}
+
+ in the power 
+
+
+
+
+h
+
+d
+
+
+
+
+{\displaystyle h^{d}}
+
+ the equation
+Now, solving the last equation for the zero 
+
+
+
+h
+=
+−
+
+a
+
+0
+
+
+
+
+{\displaystyle h=-a_{0}}
+
+ of the numerator results in
+This implies the iteration formula

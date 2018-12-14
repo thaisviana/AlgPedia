@@ -1,0 +1,8 @@
+{
+    "about": "In computing, findstr is a command in the command line interpreters (shells) of Microsoft Windows. It is used to search for a specific text string in files. The command sends the specified lines to the standard output device.", 
+    "name": "Findstr", 
+    "classification": "Pattern Matching", 
+    "full_text": "In computing, findstr is a command in the command line interpreters (shells) of Microsoft Windows. It is used to search for a specific text string in files. The command sends the specified lines to the standard output device.\n\n\nArguments:\nFlags:\nNote: Following command displays the detailed help about this command:\nSave your running services into file _services.txt and search in this file for lines containing word \"network\" - case insensitive:\noutput would be:\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Findstr", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Findstr\n"
+}

@@ -1,0 +1,13 @@
+ABOUT
+The wake-sleep algorithm[1] is an unsupervised learning algorithm for a stochastic multilayer neural network. The algorithm adjusts the parameters so as to produce a good density estimator.[2] There are two learning phases, the “wake” phase and the “sleep” phase, which are performed alternately.[3] It was first designed as a model for brain functioning using variational Bayesian learning. After that, the algorithm was adapted to machine learning. It can be viewed as a way to train a Helmholtz Machine[4][5]
+FULL TEXT
+The wake-sleep algorithm[1] is an unsupervised learning algorithm for a stochastic multilayer neural network. The algorithm adjusts the parameters so as to produce a good density estimator.[2] There are two learning phases, the “wake” phase and the “sleep” phase, which are performed alternately.[3] It was first designed as a model for brain functioning using variational Bayesian learning. After that, the algorithm was adapted to machine learning. It can be viewed as a way to train a Helmholtz Machine[4][5]
+
+
+The wake-sleep algorithms is visualized as a stack of layers containing representations of data.[6] Layers above represent data from the layer below it. Actual data is placed below the bottom layer, causing layers on top of it to become gradually more abstract. Between each pair of layers there is a recognition weight and generative weight, which are trained to improve reliability during the algorithm runtime.[7]
+The wake-sleep algorithm is convergent[8] and can be stochastic[9] if alternated appropriately.
+Training consists of two phases – the “wake” phase and the “sleep” phase.
+Neurons are fired by recognition connections (from what would be input to what would be output). Generative connections (leading from outputs to inputs) are then modified to increase probability that they would recreate the correct activity in the layer below – closer to actual data from sensory input.[10]
+The process is reversed in the “sleep” phase – neurons are fired by generative connections while recognition connections are being modified to increase probability that they would recreate the correct activity in the layer above – further to actual data from sensory input.[11]
+Variational Bayesian learning is based on probabilities. There is a chance that an approximation is performed with mistakes, damaging further data representations. Another downside pertains to complicated or corrupted data samples, making it difficult to infer a representational pattern.
+The wake-sleep algorithm has been suggested not to be powerful enough for the layers of the inference network in order to recover a good estimator of the posterior distribution of latent variables.[12]

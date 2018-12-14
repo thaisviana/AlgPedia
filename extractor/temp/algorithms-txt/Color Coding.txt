@@ -1,0 +1,402 @@
+ABOUT
+In computer science and graph theory, the method of color-coding[1][2] efficiently finds k-vertex simple paths, k-vertex cycles, and other small subgraphs within a given graph using probabilistic algorithms, which can then be derandomized and turned into deterministic algorithms. This method shows that many subcases of the subgraph isomorphism problem (an NP-complete problem) can in fact be solved in polynomial time.
+FULL TEXT
+In computer science and graph theory, the method of color-coding[1][2] efficiently finds k-vertex simple paths, k-vertex cycles, and other small subgraphs within a given graph using probabilistic algorithms, which can then be derandomized and turned into deterministic algorithms. This method shows that many subcases of the subgraph isomorphism problem (an NP-complete problem) can in fact be solved in polynomial time.
+The theory and analysis of the color-coding method was proposed in 1994 by Noga Alon, Raphael Yuster, and Uri Zwick.
+
+
+The following results can be obtained through the method of color-coding:
+To solve the problem of finding a subgraph 
+
+
+
+H
+=
+(
+
+V
+
+H
+
+
+,
+
+E
+
+H
+
+
+)
+
+
+{\displaystyle H=(V_{H},E_{H})}
+
+ in a given graph G = (V, E), where H can be a path, a cycle, or any bounded treewidth graph where 
+
+
+
+
+|
+
+
+V
+
+H
+
+
+
+|
+
+=
+O
+(
+log
+⁡
+V
+)
+
+
+{\displaystyle |V_{H}|=O(\log V)}
+
+, the method of color-coding begins by randomly coloring each vertex of G with 
+
+
+
+k
+=
+
+|
+
+
+V
+
+H
+
+
+
+|
+
+
+
+{\displaystyle k=|V_{H}|}
+
+ colors, and then tries to find a colorful copy of H in colored G. Here, a graph is colorful if every vertex in it is colored with a distinct color. This method works by repeating (1) random coloring a graph and (2) finding colorful copy of the target subgraph, and eventually the target subgraph can be found if the process is repeated a sufficient number of times.
+Suppose H becomes colorful with some non-zero probability p. It immediately follows that if the random coloring is repeated 1/p times, then H is expected to become colorful once. Note that though p is small, it is shown that if 
+
+
+
+
+|
+
+
+V
+
+H
+
+
+
+|
+
+=
+O
+(
+log
+⁡
+V
+)
+
+
+{\displaystyle |V_{H}|=O(\log V)}
+
+, p is only polynomially small. Suppose again there exists an algorithm such that, given a graph G and a coloring which maps each vertex of G to one of the k colors, it finds a copy of colorful H, if one exists, within some runtime O(r). Then the expected time to find a copy of H in G, if one exists, is 
+
+
+
+O
+(
+
+
+
+r
+p
+
+
+
+)
+
+
+{\displaystyle O({\tfrac {r}{p}})}
+
+.
+Sometimes it is also desirable to use a more restricted version of colorfulness. For example, in the context of finding cycles in planar graphs, it is possible to develop an algorithm that finds well-colored cycles. Here, a cycle is well-colored if its vertices are colored by consecutive colors.
+An example would be finding a simple cycle of length k in graph G = (V, E).
+By applying random coloring method, each simple cycle has a probability of 
+
+
+
+k
+!
+
+/
+
+
+k
+
+k
+
+
+>
+
+e
+
+−
+k
+
+
+
+
+{\displaystyle k!/k^{k}>e^{-k}}
+
+ to become colorful, since there are 
+
+
+
+
+k
+
+k
+
+
+
+
+{\displaystyle k^{k}}
+
+ ways of coloring the k vertices on the path, among which there are 
+
+
+
+k
+!
+
+
+{\displaystyle k!}
+
+ colorful occurrences. Then an algorithm (described below) of runtime 
+
+
+
+O
+(
+
+V
+
+ω
+
+
+)
+
+
+{\displaystyle O(V^{\omega })}
+
+ can be adopted to find colorful cycles in the randomly colored graph G. Therefore, it takes 
+
+
+
+
+e
+
+k
+
+
+⋅
+O
+(
+
+V
+
+ω
+
+
+)
+
+
+{\displaystyle e^{k}\cdot O(V^{\omega })}
+
+ overall time to find a simple cycle of length k in G.
+The colorful cycle-finding algorithm works by first finding all pairs of vertices in V that are connected by a simple path of length k − 1, and then checking whether the two vertices in each pair are connected. Given a coloring function c : V → {1, ..., k} to color graph G, enumerate all partitions of the color set {1, ..., k} into two subsets C1, C2 of size 
+
+
+
+k
+
+/
+
+2
+
+
+{\displaystyle k/2}
+
+ each. Note that V can be divided into V1 and V2 accordingly, and let G1 and G2 denote the subgraphs induced by V1 and V2 respectively. Then, recursively find colorful paths of length 
+
+
+
+k
+
+/
+
+2
+−
+1
+
+
+{\displaystyle k/2-1}
+
+ in each of G1 and G2. Suppose the boolean matrix A1 and A2 represent the connectivity of each pair of vertices in G1 and G2 by a colorful path, respectively, and let B be the matrix describing the adjacency relations between vertices of V1 and those of V2, the boolean product 
+
+
+
+
+A
+
+1
+
+
+B
+
+A
+
+2
+
+
+
+
+{\displaystyle A_{1}BA_{2}}
+
+ gives all pairs of vertices in V that are connected by a colorful path of length k − 1. Thus, the recursive relation of matrix multiplications is 
+
+
+
+t
+(
+k
+)
+≤
+
+2
+
+k
+
+
+⋅
+t
+(
+k
+
+/
+
+2
+)
+
+
+{\displaystyle t(k)\leq 2^{k}\cdot t(k/2)}
+
+, which yields a runtime of 
+
+
+
+
+2
+
+O
+(
+k
+)
+
+
+⋅
+
+V
+
+ω
+
+
+∈
+O
+(
+
+V
+
+ω
+
+
+)
+
+
+{\displaystyle 2^{O(k)}\cdot V^{\omega }\in O(V^{\omega })}
+
+. Although this algorithm finds only the end points of the colorful path, another algorithm by Alon and Naor[4] that finds colorful paths themselves can be incorporated into it.
+The derandomization of color-coding involves enumerating possible colorings of a graph G, such that the randomness of coloring G is no longer required. For the target subgraph H in G to be discoverable, the enumeration has to include at least one instance where the H is colorful. To achieve this, enumerating a k-perfect family F of hash functions from {1, ..., |V|} to {1, ..., k} is sufficient. By definition, F is k-perfect if for every subset S of {1, ..., |V|} where 
+
+
+
+
+|
+
+S
+
+|
+
+=
+k
+
+
+{\displaystyle |S|=k}
+
+, there exists a hash function h in F such that h : S → {1, ..., k} is perfect. In other words, there must exist a hash function in F that colors any given k vertices with k distinct colors.
+There are several approaches to construct such a k-perfect hash family:
+In the case of derandomizing well-coloring, where each vertex on the subgraph is colored consecutively, a k-perfect family of hash functions from {1, ..., |V|} to {1, ..., k!} is needed. A sufficient k-perfect family which maps from {1, ..., |V|} to {1, ..., kk} can be constructed in a way similar to the approach 3 above (the first step). In particular, it is done by using nklog k random bits that are almost klog k independent, and the size of the resulting k-perfect family will be 
+
+
+
+
+k
+
+O
+(
+k
+)
+
+
+log
+⁡
+
+|
+
+V
+
+|
+
+
+
+{\displaystyle k^{O(k)}\log |V|}
+
+.
+The derandomization of color-coding method can be easily parallelized, yielding efficient NC algorithms.
+Recently, color-coding has attracted much attention in the field of bioinformatics. One example is the detection of signaling pathways in protein-protein interaction (PPI) networks. Another example is to discover and to count the number of motifs in PPI networks. Studying both signaling pathways and motifs allows a deeper understanding of the similarities and differences of many biological functions, processes, and structures among organisms.
+Due to the huge amount of gene data that can be collected, searching for pathways or motifs can be highly time consuming. However, by exploiting the color-coding method, the motifs or signaling pathways with 
+
+
+
+k
+=
+O
+(
+log
+⁡
+n
+)
+
+
+{\displaystyle k=O(\log n)}
+
+ vertices in a network G with n vertices can be found very efficiently in polynomial time. Thus, this enables us to explore more complex or larger structures in PPI networks.

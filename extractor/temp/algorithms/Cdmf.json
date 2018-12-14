@@ -1,0 +1,8 @@
+{
+    "about": "In cryptography, CDMF (Commercial Data Masking Facility) is an algorithm developed at IBM in 1992 to reduce the security strength of the 56-bit DES cipher to that of 40-bit encryption, at the time a requirement of U.S. restrictions on export of cryptography. Rather than a separate cipher from DES, CDMF constitutes a key generation algorithm, called key shortening. It is one of the cryptographic algorithms supported by S-HTTP.", 
+    "name": "Cdmf", 
+    "classification": "Cryptographic Algorithms", 
+    "full_text": "In cryptography, CDMF (Commercial Data Masking Facility) is an algorithm developed at IBM in 1992 to reduce the security strength of the 56-bit DES cipher to that of 40-bit encryption, at the time a requirement of U.S. restrictions on export of cryptography. Rather than a separate cipher from DES, CDMF constitutes a key generation algorithm, called key shortening. It is one of the cryptographic algorithms supported by S-HTTP.\nLike DES, CDMF accepts a 64-bit input key, but not all bits are used. The algorithm consists of the following steps:\nThe resulting 64-bit data is to be used as a DES key. Due to step 3, a brute force attack needs to test only 240 possible keys.\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/CDMF", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/CDMF\n"
+}

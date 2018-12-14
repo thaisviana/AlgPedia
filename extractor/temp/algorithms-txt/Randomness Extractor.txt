@@ -1,0 +1,1362 @@
+ABOUT
+A randomness extractor, often simply called an "extractor", is a function, which being applied to output from a weakly random entropy source, together with a short, uniformly random seed, generates a highly random output that appears independent from the source and uniformly distributed.[1] Examples of weakly random sources include radioactive decay or thermal noise; the only restriction on possible sources is that there is no way they can be fully controlled, calculated or predicted, and that a lower bound on their entropy rate can be established. For a given source, a randomness extractor can even be considered to be a true random number generator (TRNG); but there is no single extractor that has been proven to produce truly random output from any type of weakly random source.
+FULL TEXT
+A randomness extractor, often simply called an "extractor", is a function, which being applied to output from a weakly random entropy source, together with a short, uniformly random seed, generates a highly random output that appears independent from the source and uniformly distributed.[1] Examples of weakly random sources include radioactive decay or thermal noise; the only restriction on possible sources is that there is no way they can be fully controlled, calculated or predicted, and that a lower bound on their entropy rate can be established. For a given source, a randomness extractor can even be considered to be a true random number generator (TRNG); but there is no single extractor that has been proven to produce truly random output from any type of weakly random source.
+Sometimes the term "bias" is used to denote a weakly random source's departure from uniformity, and in older literature, some extractors are called unbiasing algorithms,[2] as they take the randomness from a so-called "biased" source and output a distribution that appears unbiased. The weakly random source will always be longer than the extractor's output, but an efficient extractor is one that lowers this ratio of lengths as much as possible, while simultaneously keeping the seed length low. Intuitively, this means that as much randomness as possible has been "extracted" from the source.
+Note that an extractor has some conceptual similarities with a pseudorandom generator (PRG), but the two concepts are not identical. Both are functions that take as input a small, uniformly random seed and produce a longer output that "looks" uniformly random. Some pseudorandom generators are, in fact, also extractors. (When a PRG is based on the existence of hard-core predicates, one can think of the weakly random source as a set of truth tables of such predicates and prove that the output is statistically close to uniform.[3]) However, the general PRG definition does not specify that a weakly random source must be used, and while in the case of an extractor, the output should be statistically close to uniform, in a PRG it is only required to be computationally indistinguishable from uniform, a somewhat weaker concept.
+NIST Special Publication 800-90B (draft) recommends several extractors, including the SHA hash family and states that if the amount of entropy input is twice the number of bits output from them, that output can be considered essentially fully random.[4]
+
+
+The min-entropy of a distribution 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ (denoted 
+
+
+
+
+H
+
+∞
+
+
+(
+X
+)
+
+
+{\displaystyle H_{\infty }(X)}
+
+), is the largest real number 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ such that 
+
+
+
+Pr
+[
+X
+=
+x
+]
+≤
+
+2
+
+−
+k
+
+
+
+
+{\displaystyle \Pr[X=x]\leq 2^{-k}}
+
+ for every 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ in the range of 
+
+
+
+X
+
+
+{\displaystyle X}
+
+. In essence, this measures how likely 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ is to take its most likely value, giving a worst-case bound on how random 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ appears. Letting 
+
+
+
+
+U
+
+ℓ
+
+
+
+
+{\displaystyle U_{\ell }}
+
+ denote the uniform distribution over 
+
+
+
+{
+0
+,
+1
+
+}
+
+ℓ
+
+
+
+
+{\displaystyle \{0,1\}^{\ell }}
+
+, clearly 
+
+
+
+
+H
+
+∞
+
+
+(
+
+U
+
+ℓ
+
+
+)
+=
+ℓ
+
+
+{\displaystyle H_{\infty }(U_{\ell })=\ell }
+
+.
+For an n-bit distribution 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ with min-entropy k, we say that 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ is an 
+
+
+
+(
+n
+,
+k
+)
+
+
+{\displaystyle (n,k)}
+
+ distribution.
+Definition (Extractor): (k, ε)-extractor
+Let 
+
+
+
+
+Ext
+
+:
+{
+0
+,
+1
+
+}
+
+n
+
+
+×
+{
+0
+,
+1
+
+}
+
+d
+
+
+→
+{
+0
+,
+1
+
+}
+
+m
+
+
+
+
+{\displaystyle {\text{Ext}}:\{0,1\}^{n}\times \{0,1\}^{d}\to \{0,1\}^{m}}
+
+ be a function that takes as input a sample from an 
+
+
+
+(
+n
+,
+k
+)
+
+
+{\displaystyle (n,k)}
+
+ distribution 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ and a d-bit seed from 
+
+
+
+
+U
+
+d
+
+
+
+
+{\displaystyle U_{d}}
+
+, and outputs an m-bit string. 
+
+
+
+
+Ext
+
+
+
+{\displaystyle {\text{Ext}}}
+
+ is a (k, ε)-extractor, if for all 
+
+
+
+(
+n
+,
+k
+)
+
+
+{\displaystyle (n,k)}
+
+ distributions 
+
+
+
+X
+
+
+{\displaystyle X}
+
+, the output distribution of 
+
+
+
+
+Ext
+
+
+
+{\displaystyle {\text{Ext}}}
+
+ is ε-close to 
+
+
+
+
+U
+
+m
+
+
+
+
+{\displaystyle U_{m}}
+
+.
+In the above definition, ε-close refers to statistical distance.
+Intuitively, an extractor takes a weakly random n-bit input and a short, uniformly random seed and produces an m-bit output that looks uniformly random. The aim is to have a low 
+
+
+
+d
+
+
+{\displaystyle d}
+
+ (i.e. to use as little uniform randomness as possible) and as high an 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ as possible (i.e. to get out as many close-to-random bits of output as we can).
+An extractor is strong if concatenating the seed with the extractor's output yields a distribution that is still close to uniform.
+Definition (Strong Extractor): A 
+
+
+
+(
+k
+,
+ϵ
+)
+
+
+{\displaystyle (k,\epsilon )}
+
+-strong extractor is a function
+such that for every 
+
+
+
+(
+n
+,
+k
+)
+
+
+{\displaystyle (n,k)}
+
+ distribution 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ the distribution 
+
+
+
+
+U
+
+d
+
+
+∘
+
+Ext
+
+(
+X
+,
+
+U
+
+d
+
+
+)
+
+
+{\displaystyle U_{d}\circ {\text{Ext}}(X,U_{d})}
+
+ (the two copies of 
+
+
+
+
+U
+
+d
+
+
+
+
+{\displaystyle U_{d}}
+
+ denote the same random variable) is 
+
+
+
+ϵ
+
+
+{\displaystyle \epsilon }
+
+-close to the uniform distribution on 
+
+
+
+{
+0
+,
+1
+
+}
+
+m
++
+d
+
+
+
+
+{\displaystyle \{0,1\}^{m+d}}
+
+.
+Using the probabilistic method, it can be shown that there exists a (k, ε)-extractor, i.e. that the construction is possible. However, it is usually not enough merely to show that an extractor exists. An explicit construction is needed, which is given as follows:
+Definition (Explicit Extractor): For functions k(n), ε(n), d(n), m(n) a family Ext = {Extn} of functions
+is an explicit (k, ε)-extractor, if Ext(x, y) can be computed in polynomial time (in its input length) and for every n, Extn is a (k(n), ε(n))-extractor.
+By the probabilistic method, it can be shown that there exists a (k, ε)-extractor with seed length
+and output length
+A variant of the randomness extractor with weaker properties is the disperser.
+One of the most important aspects of cryptography is random key generation.[6] It is often necessary to generate secret and random keys from sources that are semi-secret or which may be compromised to some degree. By taking a single, short (and secret) random key as a source, an extractor can be used to generate a longer pseudo-random key, which then can be used for public key encryption. More specifically, when a strong extractor is used its output will appear be uniformly random, even to someone who sees part (but not all) of the source. For example, if the source is known but the seed is not known (or vice versa). This property of extractors is particularly useful in what is commonly called Exposure-Resilient cryptography in which the desired extractor is used as an Exposure-Resilient Function (ERF). Exposure-Resilient cryptography takes into account that the fact that it is difficult to keep secret the initial exchange of data which often takes place during the initialization of an encryption application e.g., the sender of encrypted information has to provide the receivers with information which is required for decryption.
+The following paragraphs define and establish an important relationship between two kinds of ERF--k-ERF and k-APRF--which are useful in Exposure-Resilient cryptography.
+Definition (k-ERF): An adaptive k-ERF is a function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ where, for a random input 
+
+
+
+r
+
+
+{\displaystyle r}
+
+ , when a computationally unbounded adversary 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ can adaptively read all of 
+
+
+
+r
+
+
+{\displaystyle r}
+
+ except for 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ bits, 
+
+
+
+
+|
+
+Pr
+{
+
+A
+
+r
+
+
+(
+f
+(
+r
+)
+)
+=
+1
+}
+−
+Pr
+{
+
+A
+
+r
+
+
+(
+R
+)
+=
+1
+}
+
+|
+
+≤
+ϵ
+(
+n
+)
+
+
+{\displaystyle |\Pr\{A^{r}(f(r))=1\}-\Pr\{A^{r}(R)=1\}|\leq \epsilon (n)}
+
+ for some negligible function 
+
+
+
+ϵ
+(
+n
+)
+
+
+{\displaystyle \epsilon (n)}
+
+ (defined below).
+The goal is to construct an adaptive ERF whose output is highly random and uniformly distributed. But a stronger condition is often needed in which every output occurs with almost uniform probability. For this purpose Almost-Perfect Resilient Functions (APRF) are used. The definition of an APRF is as follows:
+Definition (k-APRF): A 
+
+
+
+k
+=
+k
+(
+n
+)
+
+
+{\displaystyle k=k(n)}
+
+ APRF is a function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ where, for any setting of 
+
+
+
+n
+−
+k
+
+
+{\displaystyle n-k}
+
+ bits of the input 
+
+
+
+r
+
+
+{\displaystyle r}
+
+ to any fixed values, the probability vector 
+
+
+
+p
+
+
+{\displaystyle p}
+
+ of the output 
+
+
+
+f
+(
+r
+)
+
+
+{\displaystyle f(r)}
+
+ over the random choices for the 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ remaining bits satisfies 
+
+
+
+
+|
+
+
+p
+
+i
+
+
+−
+
+2
+
+−
+m
+
+
+
+|
+
+<
+
+2
+
+−
+m
+
+
+ϵ
+(
+n
+)
+
+
+{\displaystyle |p_{i}-2^{-m}|<2^{-m}\epsilon (n)}
+
+ for all 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ and for some negligible function 
+
+
+
+ϵ
+(
+n
+)
+
+
+{\displaystyle \epsilon (n)}
+
+.
+Kamp and Zuckerman[7] have proved a theorem stating that if a function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is a k-APRF, then 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is also a k-ERF. More specifically, any extractor having sufficiently small error and taking as input an oblivious, bit-fixing source is also an APRF and therefore also a k-ERF. A more specific extractor is expressed in this lemma:
+Lemma: Any 
+
+
+
+
+2
+
+−
+m
+
+
+ϵ
+(
+n
+)
+
+
+{\displaystyle 2^{-m}\epsilon (n)}
+
+-extractor 
+
+
+
+f
+:
+{
+0
+,
+1
+
+}
+
+n
+
+
+→
+{
+0
+,
+1
+
+}
+
+m
+
+
+
+
+{\displaystyle f:\{0,1\}^{n}\rightarrow \{0,1\}^{m}}
+
+ for the set of 
+
+
+
+(
+n
+,
+k
+)
+
+
+{\displaystyle (n,k)}
+
+ oblivious bit-fixing sources, where 
+
+
+
+ϵ
+(
+n
+)
+
+
+{\displaystyle \epsilon (n)}
+
+ is negligible, is also a k-APRF.
+This lemma is proved by Kamp and Zuckerman.[7] The lemma is proved by examining the distance from uniform of the output, which in a 
+
+
+
+
+2
+
+−
+m
+
+
+ϵ
+(
+n
+)
+
+
+{\displaystyle 2^{-m}\epsilon (n)}
+
+-extractor obviously is at most
+
+
+
+
+2
+
+−
+m
+
+
+ϵ
+(
+n
+)
+
+
+{\displaystyle 2^{-m}\epsilon (n)}
+
+, which satisfies the condition of the APRF.
+The lemma leads to the following theorem, stating that there in fact exists a k-APRF function as described:
+Theorem (existence): For any positive constant 
+
+
+
+γ
+≤
+
+
+1
+2
+
+
+
+
+{\displaystyle \gamma \leq {\frac {1}{2}}}
+
+, there exists an explicit k-APRF 
+
+
+
+f
+:
+{
+0
+,
+1
+
+}
+
+n
+
+
+→
+{
+0
+,
+1
+
+}
+
+m
+
+
+
+
+{\displaystyle f:\{0,1\}^{n}\rightarrow \{0,1\}^{m}}
+
+, computable in a linear number of arithmetic operations on 
+
+
+
+m
+
+
+{\displaystyle m}
+
+-bit strings, with 
+
+
+
+m
+=
+Ω
+(
+
+n
+
+2
+γ
+
+
+)
+
+
+{\displaystyle m=\Omega (n^{2\gamma })}
+
+ and 
+
+
+
+k
+=
+
+n
+
+
+
+1
+2
+
+
++
+γ
+
+
+
+
+{\displaystyle k=n^{{\frac {1}{2}}+\gamma }}
+
+.
+Definition (negligible function): In the proof of this theorem, we need a definition of a negligible function. A function 
+
+
+
+ϵ
+(
+n
+)
+
+
+{\displaystyle \epsilon (n)}
+
+ is defined as being negligible if 
+
+
+
+ϵ
+(
+n
+)
+=
+O
+(
+
+
+1
+
+n
+
+c
+
+
+
+
+)
+
+
+{\displaystyle \epsilon (n)=O({\frac {1}{n^{c}}})}
+
+ for all constants 
+
+
+
+c
+
+
+{\displaystyle c}
+
+.
+Proof: Consider the following 
+
+
+
+ϵ
+
+
+{\displaystyle \epsilon }
+
+-extractor: The function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is an extractor for the set of 
+
+
+
+(
+n
+,
+δ
+n
+)
+
+
+{\displaystyle (n,\delta n)}
+
+ oblivious bit-fixing source: 
+
+
+
+f
+:
+{
+0
+,
+1
+
+}
+
+n
+
+
+→
+{
+0
+,
+1
+
+}
+
+m
+
+
+
+
+{\displaystyle f:\{0,1\}^{n}\rightarrow \{0,1\}^{m}}
+
+. 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ has 
+
+
+
+m
+=
+Ω
+(
+
+δ
+
+2
+
+
+n
+)
+
+
+{\displaystyle m=\Omega (\delta ^{2}n)}
+
+, 
+
+
+
+ϵ
+=
+
+2
+
+−
+c
+m
+
+
+
+
+{\displaystyle \epsilon =2^{-cm}}
+
+ and 
+
+
+
+c
+>
+1
+
+
+{\displaystyle c>1}
+
+.
+The proof of this extractor's existence with 
+
+
+
+δ
+≤
+1
+
+
+{\displaystyle \delta \leq 1}
+
+, as well as the fact that it is computable in linear computing time on the length of 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ can be found in the paper by Jesse Kamp and David Zuckerman (p. 1240).
+That this extractor fulfills the criteria of the lemma is trivially true as 
+
+
+
+ϵ
+=
+
+2
+
+−
+c
+m
+
+
+
+
+{\displaystyle \epsilon =2^{-cm}}
+
+ is a negligible function.
+The size of 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ is:
+Since we know 
+
+
+
+δ
+≤
+1
+
+
+{\displaystyle \delta \leq 1}
+
+ then the lower bound on 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ is dominated by 
+
+
+
+n
+
+
+{\displaystyle n}
+
+. In the last step we use the fact that 
+
+
+
+γ
+≤
+
+
+1
+2
+
+
+
+
+{\displaystyle \gamma \leq {\frac {1}{2}}}
+
+ which means that the power of 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ is at most 
+
+
+
+1
+
+
+{\displaystyle 1}
+
+. And since 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ is a positive integer we know that 
+
+
+
+
+n
+
+2
+γ
+
+
+
+
+{\displaystyle n^{2\gamma }}
+
+ is at most 
+
+
+
+n
+
+
+{\displaystyle n}
+
+.
+The value of 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ is calculated by using the definition of the extractor, where we know:
+and by using the value of 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ we have:
+Using this value of 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ we account for the worst case, where 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ is on its lower bound. Now by algebraic calculations we get:
+Which inserted in the value of 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ gives
+which proves that there exists an explicit k-APRF extractor with the given properties. 
+
+
+
+◻
+
+
+{\displaystyle \Box }
+
+
+Perhaps the earliest example is due to John von Neumann. His extractor took successive pairs of consecutive bits (non-overlapping) from the input stream. If the two bits matched, no output was generated. If the bits differed, the value of the first bit was output. The Von Neumann extractor can be shown to produce a uniform output even if the distribution of input bits is not uniform so long as each bit has the same probability of being one and there is no correlation between successive bits.[8]
+Thus, it takes as input a Bernoulli sequence with p not necessarily equal to 1/2, and outputs a Bernoulli sequence with 
+
+
+
+p
+=
+1
+
+/
+
+2.
+
+
+{\displaystyle p=1/2.}
+
+ More generally, it applies to any exchangeable sequence – it only relies on the fact that for any pair, 01 and 10 are equally likely: for independent trials, these have probabilities 
+
+
+
+p
+⋅
+q
+=
+q
+⋅
+p
+
+
+{\displaystyle p\cdot q=q\cdot p}
+
+, while for an exchangeable sequence the probability may be more complicated, but both are equally likely.
+Another approach is to use the output of a cryptographic hash function applied to the input stream. This approach generally relies on assumed properties of the hash function.
+Randomness extractors are used widely in cryptographic applications, whereby a cryptographic hash function is applied to a high-entropy, but non-uniform source, such as disk drive timing information or keyboard delays, to yield a uniformly random result.
+Randomness extractors have played a part in recent developments in quantum cryptography, where photons are used by the randomness extractor to generate secure random bits.[1]
+Randomness extraction is also used in some branches of computational complexity theory.
+Random extraction is also used to convert data to a simple random sample, which is normally distributed, and independent, which is desired by statistics.

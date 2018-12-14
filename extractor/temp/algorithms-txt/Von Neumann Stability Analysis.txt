@@ -1,0 +1,367 @@
+ABOUT
+In numerical analysis, von Neumann stability analysis (also known as Fourier stability analysis) is a procedure used to check the stability of finite difference schemes as applied to linear partial differential equations.[1] The analysis is based on the Fourier decomposition of numerical error and was developed at Los Alamos National Laboratory after having been briefly described in a 1947 article by British researchers Crank and Nicolson.[2] This method is an example of explicit time integration where the function that defines governing equation is evaluated at the current time. Later, the method was given a more rigorous treatment in an article[3] co-authored by John von Neumann.
+FULL TEXT
+In numerical analysis, von Neumann stability analysis (also known as Fourier stability analysis) is a procedure used to check the stability of finite difference schemes as applied to linear partial differential equations.[1] The analysis is based on the Fourier decomposition of numerical error and was developed at Los Alamos National Laboratory after having been briefly described in a 1947 article by British researchers Crank and Nicolson.[2] This method is an example of explicit time integration where the function that defines governing equation is evaluated at the current time. Later, the method was given a more rigorous treatment in an article[3] co-authored by John von Neumann.
+The stability of numerical schemes is closely associated with numerical error. A finite difference scheme is stable if the errors made at one time step of the calculation do not cause the errors to be magnified as the computations are continued. A neutrally stable scheme is one in which errors remain constant as the computations are carried forward. If the errors decay and eventually damp out, the numerical scheme is said to be stable. If, on the contrary, the errors grow with time the numerical scheme is said to be unstable. The stability of numerical schemes can be investigated by performing von Neumann stability analysis. For time-dependent problems, stability guarantees that the numerical method produces a bounded solution whenever the solution of the exact differential equation is bounded. Stability, in general, can be difficult to investigate, especially when the equation under consideration is nonlinear.
+In certain cases, von Neumann stability is necessary and sufficient for stability in the sense of Lax–Richtmyer (as used in the Lax equivalence theorem): The PDE and the finite difference scheme models are linear; the PDE is constant-coefficient with periodic boundary conditions and has only two independent variables; and the scheme uses no more than two time levels.[4] Von Neumann stability is necessary in a much wider variety of cases. It is often used in place of a more detailed stability analysis to provide a good guess at the restrictions (if any) on the step sizes used in the scheme because of its relative simplicity.
+The von Neumann method is based on the decomposition of the errors into Fourier series. To illustrate the procedure, consider the one-dimensional heat equation
+defined on the spatial interval 
+
+
+
+L
+
+
+{\displaystyle L}
+
+, which can be discretized[5] as
+where
+and the solution 
+
+
+
+
+u
+
+j
+
+
+n
+
+
+
+
+{\displaystyle u_{j}^{n}}
+
+ of the discrete equation approximates the analytical solution 
+
+
+
+u
+(
+x
+,
+t
+)
+
+
+{\displaystyle u(x,t)}
+
+ of the PDE on the grid.
+Define the round-off error 
+
+
+
+
+ϵ
+
+j
+
+
+n
+
+
+
+
+{\displaystyle \epsilon _{j}^{n}}
+
+ as
+where 
+
+
+
+
+u
+
+j
+
+
+n
+
+
+
+
+{\displaystyle u_{j}^{n}}
+
+ is the solution of the discretized equation (1) that would be computed in the absence of round-off error, and 
+
+
+
+
+N
+
+j
+
+
+n
+
+
+
+
+{\displaystyle N_{j}^{n}}
+
+ is the numerical solution obtained in finite precision arithmetic. Since the exact solution 
+
+
+
+
+u
+
+j
+
+
+n
+
+
+
+
+{\displaystyle u_{j}^{n}}
+
+ must satisfy the discretized equation exactly, the error 
+
+
+
+
+ϵ
+
+j
+
+
+n
+
+
+
+
+{\displaystyle \epsilon _{j}^{n}}
+
+ must also satisfy the discretized equation.[6] Here we assumed that 
+
+
+
+
+N
+
+j
+
+
+n
+
+
+
+
+{\displaystyle N_{j}^{n}}
+
+ satisfies the equation, too (this is only true in machine precision). Thus
+is a recurrence relation for the error. Equations (1) and (2) show that both the error and the numerical solution have the same growth or decay behavior with respect to time. For linear differential equations with periodic boundary condition, the spatial variation of error may be expanded in a finite Fourier series, in the interval 
+
+
+
+L
+
+
+{\displaystyle L}
+
+, as
+where the wavenumber 
+
+
+
+
+k
+
+m
+
+
+=
+
+
+
+π
+m
+
+L
+
+
+
+
+{\displaystyle k_{m}={\frac {\pi m}{L}}}
+
+ with 
+
+
+
+m
+=
+1
+,
+2
+,
+…
+,
+M
+
+
+{\displaystyle m=1,2,\ldots ,M}
+
+ and 
+
+
+
+M
+=
+L
+
+/
+
+Δ
+x
+
+
+{\displaystyle M=L/\Delta x}
+
+. The time dependence of the error is included by assuming that the amplitude of error 
+
+
+
+
+A
+
+m
+
+
+
+
+{\displaystyle A_{m}}
+
+ is a function of time. Since the error tends to grow or decay exponentially with time, it is reasonable to assume that the amplitude varies exponentially with time; hence
+where 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ is a constant.
+Since the difference equation for error is linear (the behavior of each term of the series is the same as series itself), it is enough to consider the growth of error of a typical term:
+The stability characteristics can be studied using just this form for the error with no loss in generality. To find out how error varies in steps of time, substitute equation (5) into equation (2), after noting that
+to yield (after simplification)
+Using the identities
+equation (6) may be written as
+Define the amplification factor
+The necessary and sufficient condition for the error to remain bounded is that 
+
+
+
+|
+G
+|
+≤
+1.
+
+
+{\displaystyle \vert G\vert \leq 1.}
+
+ However,
+Thus, from equations (7) and (8), the condition for stability is given by
+Note that the term 
+
+
+
+
+
+
+4
+α
+Δ
+t
+
+
+Δ
+
+x
+
+2
+
+
+
+
+
+
+sin
+
+2
+
+
+⁡
+(
+
+k
+
+m
+
+
+Δ
+x
+
+/
+
+2
+)
+
+
+{\displaystyle {\frac {4\alpha \Delta t}{\Delta x^{2}}}\sin ^{2}(k_{m}\Delta x/2)}
+
+ is always positive. Thus, to satisfy Equation (9):
+For the above condition to hold at all 
+
+
+
+
+sin
+
+2
+
+
+⁡
+(
+
+k
+
+m
+
+
+Δ
+x
+
+/
+
+2
+)
+
+
+{\displaystyle \sin ^{2}(k_{m}\Delta x/2)}
+
+, we have
+Equation (11) gives the stability requirement for the FTCS scheme as applied to one-dimensional heat equation. It says that for a given 
+
+
+
+Δ
+x
+
+
+{\displaystyle \Delta x}
+
+, the allowed value of 
+
+
+
+Δ
+t
+
+
+{\displaystyle \Delta t}
+
+ must be small enough to satisfy equation (10).

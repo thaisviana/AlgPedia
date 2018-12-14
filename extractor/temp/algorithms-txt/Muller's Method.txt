@@ -1,0 +1,88 @@
+ABOUT
+Muller's method is a root-finding algorithm, a numerical method for solving equations of the form f(x) = 0. It was first presented by David E. Muller in 1956.
+FULL TEXT
+Muller's method is a root-finding algorithm, a numerical method for solving equations of the form f(x) = 0. It was first presented by David E. Muller in 1956.
+Muller's method is based on the secant method, which constructs at every iteration a line through two points on the graph of f. Instead, Muller's method uses three points, constructs the parabola through these three points, and takes the intersection of the x-axis with the parabola to be the next approximation.
+
+
+Muller's method is a recursive method which generates an approximation of the root ξ of f at each iteration. Starting with the three initial values x0, x-1 and x-2, the first iteration calculates the first approximation x1, the second iteration calculates the second approximation x2, the third iteration calculates the third approximation x3, etc. Hence the kth iteration generates approximation xk. Each iteration takes as input the last three generated approximations and the value of f at these approximations. Hence the kth iteration takes as input the values xk-1, xk-2 and xk-3 and the function values f(xk-1), f(xk-2) and f(xk-3). The approximation xk is calculated as follows.
+A parabola yk(x) is constructed which goes through the three points (xk-1, f(xk-1)), (xk-2, f(xk-2)) and (xk-3, f(xk-3)). When written in the Newton form, yk(x) is
+where f[xk-1, xk-2] and f[xk-1, xk-2, xk-3] denote divided differences. This can be rewritten as
+where
+The next iterate xk is now given as the solution closest to xk-1 of the quadratic equation yk(x) = 0. This yields the recurrence relation
+In this formula, the sign should be chosen such that the denominator is as large as possible in magnitude. We do not use the standard formula for solving quadratic equations because that may lead to loss of significance.
+Note that xk can be complex, even if the previous iterates were all real. This is in contrast with other root-finding algorithms like the secant method, Sidi's generalized secant method or Newton's method, whose iterates will remain real if one starts with real numbers. Having complex iterates can be an advantage (if one is looking for complex roots) or a disadvantage (if it is known that all roots are real), depending on the problem.
+The order of convergence of Muller's method is approximately 1.84. This can be compared with 1.62 for the secant method and 2 for Newton's method. So, the secant method makes less progress per iteration than Muller's method and Newton's method makes more progress.
+More precisely, if ξ denotes a single root of f (so f(ξ) = 0 and f'(ξ) ≠ 0), f is three times continuously differentiable, and the initial guesses x0, x1, and x2 are taken sufficiently close to ξ, then the iterates satisfy
+where μ ≈ 1.84 is the positive solution of 
+
+
+
+
+x
+
+3
+
+
+−
+
+x
+
+2
+
+
+−
+x
+−
+1
+=
+0
+
+
+{\displaystyle x^{3}-x^{2}-x-1=0}
+
+.
+Muller's method fits a parabola, i.e. a second-order polynomial, to the last three obtained points f(xk-1), f(xk-2) and f(xk-3) in each iteration. One can generalize this and fit a polynomial pk,m(x) of degree m to the last m+1 points in the kth iteration. Our parabola yk is written as pk,2 in this notation. The degree m must be 1 or larger. The next approximation xk is now one of the roots of the pk,m, i.e. one of the solutions of pk,m(x)=0. Taking m=1 we obtain the secant method whereas m=2 gives Muller's method.
+Muller calculated that the sequence {xk} generated this way converges to the root ξ with an order μm where μm is the positive solution of 
+
+
+
+
+x
+
+m
++
+1
+
+
+−
+
+x
+
+m
+
+
+−
+
+x
+
+m
+−
+1
+
+
+−
+⋯
+−
+x
+−
+1
+=
+0
+
+
+{\displaystyle x^{m+1}-x^{m}-x^{m-1}-\dots -x-1=0}
+
+.
+The method is much more difficult though for m>2 than it is for m=1 or m=2 because it is much harder to determine the roots of a polynomial of degree 3 or higher. Another problem is that there seems no prescription of which of the roots of pk,m to pick as the next approximation xk for m>2.
+These difficulties are overcome by Sidi's generalized secant method which also employs the polynomial pk,m. Instead of trying to solve pk,m(x)=0, the next approximation xk is calculated with the aid of the derivative of pk,m at xk-1 in this method.

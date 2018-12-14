@@ -1,0 +1,257 @@
+ABOUT
+In statistics, isotonic regression or monotonic regression is the technique of fitting a free-form line to a sequence of observations under the following constraints: the fitted free-form line has to be non-decreasing everywhere, and it has to lie as close to the observations as possible.
+FULL TEXT
+In statistics, isotonic regression or monotonic regression is the technique of fitting a free-form line to a sequence of observations under the following constraints: the fitted free-form line has to be non-decreasing everywhere, and it has to lie as close to the observations as possible.
+
+
+Isotonic regression has applications in statistical inference, for example, to fit of an isotonic curve to mean experimental results when an order is expected. A benefit of isotonic regression is that it does not assume any form for the target function, such as linearity assumed by linear regression.
+Another application is nonmetric multidimensional scaling,[1] where a low-dimensional embedding for data points is sought such that order of distances between points in the embedding matches order of dissimilarity between points. Isotonic regression is used iteratively to fit ideal distances to preserve relative dissimilarity order.
+Software has been developed in the R statistical package for computing isotone (monotonic) regression. [2]
+In terms of numerical analysis, isotonic regression involves finding a weighted least-squares fit 
+
+
+
+x
+∈
+
+
+
+R
+
+
+
+n
+
+
+
+
+{\displaystyle x\in {\mathbb {R}}^{n}}
+
+ to a vector 
+
+
+
+a
+∈
+
+
+
+R
+
+
+
+n
+
+
+
+
+{\displaystyle a\in {\mathbb {R}}^{n}}
+
+ with weights vector 
+
+
+
+w
+∈
+
+
+
+R
+
+
+
+n
+
+
+
+
+{\displaystyle w\in {\mathbb {R}}^{n}}
+
+ subject to a set of non-contradictory constraints of the kind 
+
+
+
+
+x
+
+i
+
+
+≤
+
+x
+
+j
+
+
+
+
+{\displaystyle x_{i}\leq x_{j}}
+
+. The usual choice for the constraints is 
+
+
+
+
+x
+
+i
+
+
+≤
+
+x
+
+i
++
+1
+
+
+
+
+{\displaystyle x_{i}\leq x_{i+1}}
+
+, or in other words: every point must be at least as high as the previous point.
+Such constraints define a partial ordering or total ordering and can be represented as a directed graph 
+
+
+
+G
+=
+(
+N
+,
+E
+)
+
+
+{\displaystyle G=(N,E)}
+
+, where N is the set of variables (observed values) involved, and E is the set of pairs (i, j) for each constraint 
+
+
+
+
+x
+
+i
+
+
+≤
+
+x
+
+j
+
+
+
+
+{\displaystyle x_{i}\leq x_{j}}
+
+. Thus, the IR problem corresponds to the following quadratic program (QP):
+In the case when 
+
+
+
+G
+=
+(
+N
+,
+E
+)
+
+
+{\displaystyle G=(N,E)}
+
+ is a total ordering, a simple iterative algorithm for solving this quadratic program is called the pool adjacent violators algorithm. Conversely, Best and Chakravarti (1990) studied the problem as an active set identification problem, and proposed a primal algorithm. These two algorithms can be seen as each other's dual, and both have a computational complexity of O(n).[3]
+To illustrate the above, let the 
+
+
+
+
+x
+
+i
+
+
+≤
+
+x
+
+j
+
+
+
+
+{\displaystyle x_{i}\leq x_{j}}
+
+ constraints be 
+
+
+
+
+x
+
+1
+
+
+≤
+
+x
+
+2
+
+
+≤
+…
+≤
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{1}\leq x_{2}\leq \ldots \leq x_{n}}
+
+.
+The isotonic estimator, 
+
+
+
+
+g
+
+∗
+
+
+
+
+{\displaystyle g^{*}}
+
+, minimizes the weighted least squares-like condition:
+where 
+
+
+
+
+
+A
+
+
+
+
+{\displaystyle {\mathcal {A}}}
+
+ is the set of all piecewise linear, non-decreasing, continuous functions and 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is a known function.

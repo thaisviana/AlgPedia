@@ -9,3 +9,4 @@ nltk
 simplejson
 psycopg2==2.7.1
 whitenoise==3.3.0
+requests==2.21.0

@@ -1,0 +1,490 @@
+ABOUT
+Pseudo amino acid composition, or PseAA composition was originally introduced by Kuo-Chen Chou in 2001 to represent protein samples for improving protein subcellular localization prediction and membrane protein type prediction.[1]
+FULL TEXT
+Pseudo amino acid composition, or PseAA composition was originally introduced by Kuo-Chen Chou in 2001 to represent protein samples for improving protein subcellular localization prediction and membrane protein type prediction.[1]
+
+
+To predict the subcellular localization of proteins and other attributes based on their sequence, two kinds of models are generally used to represent protein samples: (1) the sequential model, and (2) the non-sequential model or discrete model.
+The most typical sequential representation for a protein sample is its entire amino acid (AA) sequence, which can contain its most complete information. This is an obvious advantage of the sequential model. To get the desired results, the sequence-similarity-search-based tools are usually utilized to conduct the prediction. However, this kind of approach fails when a query protein does not have significant homology to the known protein(s). Thus, various discrete models were proposed which do not rely on sequence-order.
+The simplest discrete model is using the amino acid composition (AAC) to represent protein samples, formulated as follows. Given a protein sequence P with 
+
+
+
+L
+
+
+{\displaystyle L}
+
+ amino acid residues, i.e.,
+where R1 represents the 1st residue of the protein P, R2 the 2nd residue, and so forth, according to the amino acid composition (AAC) model, the protein P of Eq.1 can be expressed by
+where 
+
+
+
+
+
+f
+
+u
+
+
+
+(
+u
+=
+1
+,
+2
+,
+⋯
+,
+20
+)
+
+
+{\displaystyle \,f_{u}\,(u=1,2,\cdots ,20)}
+
+ are the normalized occurrence frequencies of the 20 native amino acids in P, and T the transposing operator. Accordingly, the amino acid composition of a protein can be easily derived once the protein sequencing information is known.
+Owing to its simplicity, the amino acid composition (AAC) model was widely used in many earlier statistical methods for predicting protein attributes. However, all the sequence-order information is lost. This is its main shortcoming.
+To avoid completely losing the sequence-order information, the concept of PseAA (pseudo amino acid) composition was proposed.[1] In contrast with the conventional amino acid composition that contains 20 components with each reflecting the occurrence frequency for one of the 20 native amino acids in a protein, the PseAA composition contains a set of greater than 20 discrete factors, where the first 20 represent the components of its conventional AA composition while the additional factors incorporate some sequence-order information via various modes.
+The additional factors are a series of rank-different correlation factors along a protein chain, but they can also be any combinations of other factors so long as they can reflect some sorts of sequence-order effects one way or the other. Therefore, the essence of PseAA composition is that on one hand it covers the AA composition, but on the other hand it contains the information beyond the AA composition and hence can better reflect the feature of a protein sequence through a discrete model.
+Meanwhile, various modes to formulate the PseAA composition have also been developed, as summarized in a review.[2]
+According to the PseAA composition model, the protein P of Eq.1 can be formulated as
+where the (
+
+
+
+20
++
+λ
+
+
+{\displaystyle 20+\lambda }
+
+) components are given by
+where 
+
+
+
+w
+
+
+{\displaystyle w}
+
+ is the weight factor, and 
+
+
+
+
+τ
+
+k
+
+
+
+
+{\displaystyle \tau _{k}}
+
+ the 
+
+
+
+k
+
+
+{\displaystyle k}
+
+-th tier correlation factor that reflects the sequence order correlation between all the 
+
+
+
+k
+
+
+{\displaystyle k}
+
+-th most contiguous residues as formulated by
+with
+where 
+
+
+
+
+Φ
+
+q
+
+
+
+(
+
+
+R
+
+
+i
+
+
+)
+
+
+
+{\displaystyle \Phi _{q}\left(\mathrm {R} _{i}\right)}
+
+ is the 
+
+
+
+
+q
+
+
+
+{\displaystyle {q}}
+
+-th function of the amino acid 
+
+
+
+
+
+R
+
+
+i
+
+
+
+
+
+{\displaystyle \mathrm {R} _{i}\,}
+
+, and 
+
+
+
+Γ
+
+
+
+{\displaystyle \Gamma \,}
+
+ the total number of the functions considered. For example, in the original paper by Chou,[1] 
+
+
+
+
+Φ
+
+1
+
+
+
+(
+
+
+R
+
+
+i
+
+
+)
+
+
+
+{\displaystyle \Phi _{1}\left(\mathrm {R} _{i}\right)}
+
+, 
+
+
+
+
+Φ
+
+2
+
+
+
+(
+
+
+R
+
+
+i
+
+
+)
+
+
+
+{\displaystyle \Phi _{2}\left(\mathrm {R} _{i}\right)}
+
+ and 
+
+
+
+
+Φ
+
+3
+
+
+
+(
+
+
+R
+
+
+i
+
+
+)
+
+
+
+{\displaystyle \Phi _{3}\left(\mathrm {R} _{i}\right)}
+
+ are respectively the hydrophobicity value, hydrophilicity value, and side chain mass of amino acid 
+
+
+
+
+
+R
+
+
+i
+
+
+
+
+
+{\displaystyle \mathrm {R} _{i}\,}
+
+; while 
+
+
+
+
+Φ
+
+1
+
+
+
+(
+
+
+R
+
+
+i
++
+1
+
+
+)
+
+
+
+{\displaystyle \Phi _{1}\left(\mathrm {R} _{i+1}\right)}
+
+, 
+
+
+
+
+Φ
+
+2
+
+
+
+(
+
+
+R
+
+
+i
++
+1
+
+
+)
+
+
+
+{\displaystyle \Phi _{2}\left(\mathrm {R} _{i+1}\right)}
+
+ and 
+
+
+
+
+Φ
+
+3
+
+
+
+(
+
+
+R
+
+
+i
++
+1
+
+
+)
+
+
+
+{\displaystyle \Phi _{3}\left(\mathrm {R} _{i+1}\right)}
+
+ the corresponding values for the amino acid 
+
+
+
+
+
+R
+
+
+i
++
+1
+
+
+
+
+
+{\displaystyle \mathrm {R} _{i+1}\,}
+
+. Therefore, the total number of functions considered there is 
+
+
+
+Γ
+=
+3
+
+
+
+{\displaystyle \Gamma =3\,}
+
+. It can be seen from Eq.3 that the first 20 components, i.e. 
+
+
+
+
+p
+
+1
+
+
+,
+
+
+p
+
+2
+
+
+,
+
+⋯
+,
+
+
+p
+
+20
+
+
+
+
+{\displaystyle p_{1},\,p_{2},\,\cdots ,\,p_{20}}
+
+ are associated with the conventional AA composition of protein, while the remaining components 
+
+
+
+
+p
+
+20
++
+1
+
+
+,
+
+⋯
+,
+
+
+p
+
+20
++
+λ
+
+
+
+
+{\displaystyle p_{20+1},\,\cdots ,\,p_{20+\lambda }}
+
+ are the correlation factors that reflect the 1st tier, 2nd tier, …, and the 
+
+
+
+λ
+
+
+
+{\displaystyle \lambda \,}
+
+-th tier sequence order correlation patterns (Figure 1). It is through these additional 
+
+
+
+λ
+
+
+
+{\displaystyle \lambda \,}
+
+ factors that some important sequence-order effects are incorporated.
+
+
+
+
+λ
+
+
+
+{\displaystyle \lambda \,}
+
+ in Eq.3 is a parameter of integer and that choosing a different integer for 
+
+
+
+λ
+
+
+
+{\displaystyle \lambda \,}
+
+ will lead to a dimension-different PseAA composition.[3]
+Using Eq.6 is just one of the modes for deriving the correlation factors or PseAA components. The others, such as the physicochemical distance mode[4] and amphiphilic pattern mode,[5] can also be used to derive different types of PseAA composition, as summarized in a review paper.[2]
+Since PseAA composition was introduced, it has been widely used to predict various attributes of proteins, such as structural classes of proteins,[6][7] enzyme family classes and subfamily classes,[8] GABA(A) receptor proteins,[9] protein folding rates,[10] cyclin proteins,[11] supersecondary structure,[12] subcellular location of proteins,[13][14] subnuclear location of proteins,[15] apoptosis protein subcellular localization,[16] submitochondria localization,[17] protein quaternary structure,[18][19] bacterial secreted proteins,[20] conotoxin superfamily and family classification,[21] protease types,[22] GPCR types,[23][24] human papillomaviruses, [25] outer membrane proteins,[26] membrane protein types,[27] protein secondary structural contents,[28] metalloproteinase family [29] subcellular localization of mycobacterial proteins,[30] antibacterial peptides [31] lipase types,[32] allergenic proteins [33] DNA-binding proteins,[34] essential proteins,[35] cell wall lytic enzymes,[36] cofactors of oxidoreductases,[37] among many other protein attributes and protein-related features (see, e.g., the review paper by Gonzalez-Diaz et al.[38] as well as the relevant references cited therein).
+Ever since the concept of PseAA composition was introduced, it has been widely utilized to predict various protein attributes. It has also been used to incorporate the protein domain or FunD (functional domain) information and GO (gene ontology) information for improving the prediction quality for the subcellular localization of proteins.[39] as well as their other attributes.
+Meanwhile, the concept of PseAA composition has also stimulated the generation of pseudo-folding topological indices and pseudo-folding lattice network.[40][41][42]
+Recently, two open accessible tools were established to generate various modes of Chou’s pseudo amino acid composition.[43][44]

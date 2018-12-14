@@ -1,0 +1,8 @@
+{
+    "about": "In telecommunications, a transverse redundancy check (TRC) or vertical redundancy check is a redundancy check for synchronized parallel bits applied once per bit time, across the bit streams. This requires additional parallel channels for the check bit or bits.", 
+    "name": "Transverse Redundancy Check", 
+    "classification": "Error Detection And Correction", 
+    "full_text": "In telecommunications, a transverse redundancy check (TRC) or vertical redundancy check is a redundancy check for synchronized parallel bits applied once per bit time, across the bit streams. This requires additional parallel channels for the check bit or bits.\nThe term usually applies to a single parity bit, although it could also be used to refer to a larger Hamming code.\nThe adjective \"transverse\" is most often used when it is used in combination with additional error control coding, such as a longitudinal redundancy check. Although parity alone can only detect and not correct errors, it can be part of a system for correcting errors.\nAn example of a TRC is the parity written to the 9th track of a 9 track tape.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Transverse_redundancy_check", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Transverse_redundancy_check\n"
+}

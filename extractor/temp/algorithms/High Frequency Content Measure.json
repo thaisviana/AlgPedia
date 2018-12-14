@@ -1,0 +1,8 @@
+{
+    "about": "In signal processing, the high frequency content measure is a simple measure, taken across a signal spectrum (usually a STFT spectrum), that can be used to characterize the amount of high-frequency content in the signal. The magnitudes of the spectral bins are added together, but multiplying each magnitude by the bin \"position\" (proportional to the frequency). Thus if X(k) is a discrete spectrum with N unique points, its high frequency content measure is:", 
+    "name": "High Frequency Content Measure", 
+    "classification": "Digital Signal Processing", 
+    "full_text": "In signal processing, the high frequency content measure is a simple measure, taken across a signal spectrum (usually a STFT spectrum), that can be used to characterize the amount of high-frequency content in the signal. The magnitudes of the spectral bins are added together, but multiplying each magnitude by the bin \"position\" (proportional to the frequency). Thus if X(k) is a discrete spectrum with N unique points, its high frequency content measure is:\nIn contrast to perceptual measures, this is not based on any evidence about its relevance to human hearing. Despite that, it can be useful for some applications, such as onset detection.\nThe measure has close similarities to the spectral centroid measure, being essentially the same calculation but without normalization according to overall magnitude.\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/High_frequency_content_measure", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/High_frequency_content_measure\n"
+}

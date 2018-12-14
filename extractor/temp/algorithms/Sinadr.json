@@ -1,0 +1,8 @@
+{
+    "about": "Signal-to-noise and distortion ratio (SINADR[1]) is a measurement of the purity of a signal. SINADR is typically used in data converter specifications. SINADR is defined as:", 
+    "name": "Sinadr", 
+    "classification": "Digital Signal Processing", 
+    "full_text": "Signal-to-noise and distortion ratio (SINADR[1]) is a measurement of the purity of a signal. SINADR is typically used in data converter specifications. SINADR is defined as:\nwhere \n\n\n\nP\n\n\n{\\displaystyle P}\n\n is the average power of the signal, quantization error, random noise and distortion components. SINADR is usually expressed in dB. SINADR is a standard metric for analog-to-digital converter and digital-to-analog converter.\nSINADR (in dB) is related to ENOB by the following equation:\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/SINADR", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/SINADR\n"
+}

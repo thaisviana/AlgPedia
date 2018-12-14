@@ -1,0 +1,89 @@
+ABOUT
+Branch and cut[1] is a method of combinatorial optimization for solving integer linear programs (ILPs), that is, linear programming (LP) problems where some or all the unknowns are restricted to integer values.[2] Branch and cut involves running a branch and bound algorithm and using cutting planes to tighten the linear programming relaxations. Note that if cuts are only used to tighten the initial LP relaxation, the algorithm is called cut and branch.
+FULL TEXT
+Branch and cut[1] is a method of combinatorial optimization for solving integer linear programs (ILPs), that is, linear programming (LP) problems where some or all the unknowns are restricted to integer values.[2] Branch and cut involves running a branch and bound algorithm and using cutting planes to tighten the linear programming relaxations. Note that if cuts are only used to tighten the initial LP relaxation, the algorithm is called cut and branch.
+
+
+This description assumes the ILP is a maximization problem.
+The method solves the linear program without the integer constraint using the regular simplex algorithm. When an optimal solution is obtained, and this solution has a non-integer value for a variable that is supposed to be integer, a cutting plane algorithm may be used to find further linear constraints which are satisfied by all feasible integer points but violated by the current fractional solution. These inequalities may be added to the linear program, such that resolving it will yield a different solution which is hopefully "less fractional".
+At this point, the branch and bound part of the algorithm is started. The problem is split into multiple (usually two) versions. The new linear programs are then solved using the simplex method and the process repeats. During the branch and bound process, non-integral solutions to LP relaxations serve as upper bounds and integral solutions serve as lower bounds. A node can be pruned if an upper bound is lower than an existing lower bound. Further, when solving the LP relaxations, additional cutting planes may be generated, which may be either global cuts, i.e., valid for all feasible integer solutions, or local cuts, meaning that they are satisfied by all solutions fulfilling the side constraints from the currently considered branch and bound subtree.
+The algorithm is summarized below.
+An important step in the branch and cut algorithm is the branching step. At this step, there are a variety of branching heuristics that can be used. The branching strategies described below all involve what is called branching on a variable.[3] Branching on a variable involves choosing a variable, 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+, with a fractional value, 
+
+
+
+
+x
+
+i
+
+′
+
+
+
+{\displaystyle x_{i}'}
+
+, in the optimal solution to the current LP relaxation and then adding the constraints 
+
+
+
+
+x
+
+i
+
+
+≤
+⌊
+
+x
+
+i
+
+′
+
+⌋
+
+
+{\displaystyle x_{i}\leq \lfloor x_{i}'\rfloor }
+
+ and 
+
+
+
+
+x
+
+i
+
+
+≥
+⌈
+
+x
+
+i
+
+′
+
+⌉
+
+
+{\displaystyle x_{i}\geq \lceil x_{i}'\rceil }
+
+
+There are also a large number of variations of these branching strategies, such as using strong branching early on when pseudo cost branching is relatively uninformative and then switching to pseudo cost branching later when there is enough branching history for pseudo cost to be informative.

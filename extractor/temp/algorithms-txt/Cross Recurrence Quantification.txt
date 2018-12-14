@@ -1,0 +1,4 @@
+ABOUT
+Cross-recurrence quantification (CRQ) is a non-linear method that quantifies how similarly two observed data series unfold over time.[1] CRQ produces measures reflecting coordination, such as how often two data series have similar values or reflect similar system states (called percentage recurrence, or %REC), among other measures.[2]
+FULL TEXT
+Cross-recurrence quantification (CRQ) is a non-linear method that quantifies how similarly two observed data series unfold over time.[1] CRQ produces measures reflecting coordination, such as how often two data series have similar values or reflect similar system states (called percentage recurrence, or %REC), among other measures.[2]

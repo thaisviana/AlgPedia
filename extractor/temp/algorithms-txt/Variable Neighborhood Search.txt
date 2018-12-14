@@ -1,0 +1,668 @@
+ABOUT
+Variable neighborhood search (VNS),[1] proposed by Mladenović, Hansen, 1997,[2] is a metaheuristic method for solving a set of combinatorial optimization and global optimization problems. It explores distant neighborhoods of the current incumbent solution, and moves from there to a new one if and only if an improvement was made. The local search method is applied repeatedly to get from solutions in the neighborhood to local optima. VNS was designed for approximating solutions of discrete and continuous optimization problems and according to these, it is aimed for solving linear program problems, integer program problems, mixed integer program problems, nonlinear program problems, etc.
+FULL TEXT
+Variable neighborhood search (VNS),[1] proposed by Mladenović, Hansen, 1997,[2] is a metaheuristic method for solving a set of combinatorial optimization and global optimization problems. It explores distant neighborhoods of the current incumbent solution, and moves from there to a new one if and only if an improvement was made. The local search method is applied repeatedly to get from solutions in the neighborhood to local optima. VNS was designed for approximating solutions of discrete and continuous optimization problems and according to these, it is aimed for solving linear program problems, integer program problems, mixed integer program problems, nonlinear program problems, etc.
+
+
+VNS systematically changes the neighborhood in two phases: firstly, descent to find a local optimum and finally, a perturbation phase to get out of the corresponding valley.
+Applications are rapidly increasing in number and pertain to many fields: location theory, cluster analysis, scheduling, vehicle routing, network design, lot-sizing, artificial intelligence, engineering, pooling problems, biology, phylogeny, reliability, geometry, telecommunication design, etc.
+There are several books important for understanding VNS, such as: Handbook of Metaheuristics, 2010,[3] Handbook of Metaheuristics, 2003[4] and Search methodologies, 2005.[5] Earlier work that motivated this approach can be found in
+Recent surveys on VNS methodology as well as numerous applications can be found in 4OR, 2008[10] and Annals of OR, 2010.
+Define one deterministic optimization problem with
+
+
+
+
+min
+
+{
+f
+(
+x
+)
+
+|
+
+x
+∈
+X
+,
+X
+⊆
+S
+}
+
+
+
+{\displaystyle \min {\{f(x)|x\in X,X\subseteq S\}}}
+
+, (1)
+where S, X, x, and f are the solution space, the feasible set, a feasible solution, and a real-valued objective function, respectively. If S is a finite but large set, a combinatorial optimization problem is defined. If 
+
+
+
+
+S
+=
+
+R
+
+n
+
+
+
+
+
+{\displaystyle {S=R^{n}}}
+
+, there is continuous optimization model.
+A solution 
+
+
+
+
+
+x
+
+∗
+
+
+∈
+X
+
+
+
+{\displaystyle {x^{*}\in X}}
+
+ is optimal if
+
+
+
+
+
+f
+(
+
+x
+
+∗
+
+
+)
+≤
+f
+(
+x
+)
+,
+
+∀
+
+x
+
+
+∈
+X
+
+
+
+{\displaystyle {f(x^{*})\leq f(x),\qquad \forall {x}\,\in X}}
+
+.
+Exact algorithm for problem (1) is to be found an optimal solution x*, with the validation of its optimal structure, or if it is unrealizable, in procedure have to be shown that there is no achievable solution, i.e., 
+
+
+
+X
+=
+∅
+
+
+{\displaystyle X=\varnothing }
+
+, or the solution is unbounded. CPU time has to be finite and short. For continuous optimization, it is reasonable to allow for some degree of tolerance, i.e., to stop when a feasible solution 
+
+
+
+
+x
+
+∗
+
+
+
+
+{\displaystyle x^{*}}
+
+ has been found such that
+
+
+
+
+
+f
+(
+
+x
+
+∗
+
+
+)
+≤
+f
+(
+x
+)
++
+ϵ
+,
+
+∀
+
+x
+
+
+∈
+X
+
+
+
+{\displaystyle {f(x^{*})\leq f(x)+\epsilon ,\qquad \forall {x}\,\in X}}
+
+ or 
+
+
+
+
+(
+f
+(
+
+x
+
+∗
+
+
+)
+−
+f
+(
+x
+)
+)
+
+/
+
+f
+(
+
+x
+
+∗
+
+
+)
+<
+ϵ
+,
+
+∀
+
+x
+
+
+∈
+X
+
+
+
+{\displaystyle {(f(x^{*})-f(x))/f(x^{*})<\epsilon ,\qquad \forall {x}\,\in X}}
+
+
+Some heuristics speedily accept an approximate solution, or optimal solution but one with no validation of its optimality. Some of them have an incorrect certificate, i.e., the solution 
+
+
+
+
+x
+
+h
+
+
+
+
+{\displaystyle x_{h}}
+
+ obtained satisfies
+
+
+
+
+
+(
+f
+(
+
+x
+
+h
+
+
+)
+−
+f
+(
+x
+)
+)
+
+/
+
+f
+(
+
+x
+
+h
+
+
+)
+≤
+ϵ
+,
+
+∀
+
+x
+
+
+∈
+X
+
+
+
+{\displaystyle {(f(x_{h})-f(x))/f(x_{h})\leq \epsilon ,\qquad \forall {x}\,\in X}}
+
+ for some 
+
+
+
+ϵ
+
+
+{\displaystyle \epsilon }
+
+, though this is rarely small.
+Heuristics are faced with the problem of local optima as a result of avoiding boundless computing time. A local optimum 
+
+
+
+
+x
+
+L
+
+
+
+
+{\displaystyle x_{L}}
+
+ of problem is such that
+
+
+
+
+
+f
+(
+
+x
+
+L
+
+
+)
+≤
+f
+(
+x
+)
+,
+
+∀
+
+x
+
+
+∈
+N
+(
+
+x
+
+L
+
+
+)
+∩
+X
+
+
+
+{\displaystyle {f(x_{L})\leq f(x),\qquad \forall {x}\,\in N(x_{L})\cap X}}
+
+
+where 
+
+
+
+N
+(
+
+x
+
+L
+
+
+)
+
+
+{\displaystyle N(x_{L})}
+
+ denotes a neighborhood of 
+
+
+
+
+x
+
+L
+
+
+
+
+{\displaystyle x_{L}}
+
+
+According to (Mladenovic, 1995), VNS is a metaheuristic which systematically performs the procedure of neighborhood change, both in descent to local minima and in escape from the valleys which contain them.
+VNS is built upon the following perceptions:
+Unlike many other metaheuristics, the basic schemes of VNS and its extensions are simple and require few, and sometimes no parameters. Therefore, in addition to providing very good solutions, often in simpler ways than other methods, VNS gives insight into the reasons for such a performance, which, in turn, can lead to more efficient and sophisticated implementations.
+There are several papers where it could be studied among recently mentioned, such as (Hansen and Mladenovi´c 1999, 2001a, 2003, 2005; Moreno-Pérez et al.;[11])
+A local search heuristic is performed through choosing an initial solution x, discovering a direction of descent from x, within a neighbourhood N(x), and proceeding to the minimum of f(x) within N(x) in the same direction. If there is no direction of descent, the heuristic stops; otherwise, it is iterated. Usually the highest direction of descent, also related to as best improvement, is used. This set of rules is summarized in Algorithm 1, where we assume that an initial solution x is given. The output consists of a local minimum, also denoted by x, and its value. Observe that a neighbourhood structure N(x) is defined for all x ∈ X. At each step, the neighbourhood N(x) of x is explored completely. As this may be timeconsuming, an alternative is to use the first descent heuristic. Vectors 
+
+
+
+
+x
+
+i
+
+
+∈
+N
+(
+x
+)
+
+
+{\displaystyle x^{i}\in N(x)}
+
+ are then enumerated systematically and a move is made as soon as a direction for the descent is found. This is summarized in Algorithm 2.
+Let one denote 
+
+
+
+
+
+
+N
+
+
+
+k
+
+
+(
+k
+=
+1
+,
+.
+.
+.
+,
+
+k
+
+m
+a
+x
+
+
+)
+
+
+{\displaystyle {\mathcal {N}}_{k}(k=1,...,k_{max})}
+
+, a finite set of pre-selected neighborhood structures, and with 
+
+
+
+
+
+
+N
+
+
+
+k
+
+
+(
+x
+)
+
+
+{\displaystyle {\mathcal {N}}_{k}(x)}
+
+ the set of solutions in the kth neighborhood of x.
+One will also use the notation 
+
+
+
+
+
+
+
+N
+′
+
+
+
+
+k
+
+
+(
+x
+)
+,
+k
+=
+1
+,
+.
+.
+.
+,
+
+k
+
+m
+a
+x
+
+′
+
+
+
+{\displaystyle {\mathcal {N'}}_{k}(x),k=1,...,k'_{max}}
+
+ when describing local descent. Neighborhoods 
+
+
+
+
+
+
+N
+
+
+
+k
+
+
+(
+x
+)
+
+
+{\displaystyle {\mathcal {N}}_{k}(x)}
+
+ or 
+
+
+
+
+
+
+
+N
+′
+
+
+
+
+k
+
+
+(
+x
+)
+
+
+{\displaystyle {\mathcal {N'}}_{k}(x)}
+
+ may be induced from one or more metric (or quasi-metric) functions introduced into a solution space S. An optimal solution 
+
+
+
+
+x
+
+o
+p
+t
+
+
+
+
+{\displaystyle x_{opt}}
+
+ (or global minimum) is a feasible solution where a minimum of problem ( is reached. We call x' ∈ X a local minimum of problem with respect to 
+
+
+
+
+
+
+N
+
+
+
+k
+
+
+(
+x
+)
+
+
+{\displaystyle {\mathcal {N}}_{k}(x)}
+
+, if there is no solution 
+
+
+
+x
+∈
+
+
+
+
+N
+′
+
+
+
+
+k
+
+
+(
+x
+)
+⊆
+X
+
+
+{\displaystyle x\in {\mathcal {N'}}_{k}(x)\subseteq X}
+
+ such that 
+
+
+
+f
+(
+x
+)
+<
+f
+(
+
+x
+′
+
+)
+
+
+{\displaystyle f(x)<f(x')}
+
+.
+In order to solve problem by using several neighbourhoods, facts 1–3 can be used in three different ways: (i) deterministic; (ii) stochastic; (iii) both deterministic and stochastic. We first give in Algorithm 3 the steps of the neighbourhood change function which will be used later. Function NeighbourhoodChange() compares the new value f(x') with the incumbent value f(x) obtained in the neighbourhood k (line 1). If an improvement is obtained, k is returned to its initial value and the new incumbent updated (line 2). Otherwise, the next neighbourhood is considered (line 3).
+When VNS does not render good solution, there are several steps which could be helped in process, such as comparing first and best improvement strategies in local search, reducing neighborhood, intensifying shaking, adopting VND, adopting FSS, and experimenting with parameter settings.
+The Basic VNS (BVNS) method (Mladenovic and Hansen 1997) combines deterministic and stochastic changes of neighbourhood. Its steps are given in Algorithm 4. Often successive neighbourhoods 
+
+
+
+
+
+
+N
+
+
+
+k
+
+
+
+
+{\displaystyle {\mathcal {N}}_{k}}
+
+ will be nested. Observe that point x' is generated at random in Step 4 in order to avoid cycling, which might occur if a deterministic rule were applied. In Step 5, the first improvement local search (Algorithm 2) is usually adopted. However, it can be replaced with best improvement (Algorithm 1).
+The basic VNS is a first improvement descent method with randomization. Without much additional effort, it can be transformed into a descent-ascent method: in NeighbourhoodChange() function, replace also x by x" with some probability, even if the solution is worse than the incumbent. It can also be changed into a best improvement method: make a move to the best neighbourhood k* among all k_max of them. Another variant of the basic VNS can be to find a solution x' in the “Shaking” step as the best among b (a parameter) randomly generated solutions from the kth neighbourhood. There are two possible variants of this extension: (1) to perform only one local search from the best among b points; (2) to perform all b local searches and then choose the best. In paper (Fleszar and Hindi[12]) could be found algorithm.
+In order to make a simple version of VNS, here is the list of steps which should be made. Most of it is very similar with steps in other metaheuristics.
+Applications of VNS, or of varieties of VNS are very abundant and numerous. Some fields where it could be found collections of scientific papers:
+VNS implies several features which are presented in Hansen and Mladenovic[22] and some are presented here:
+Interest in VNS is growing quickly, evidenced by the increasing number of papers published each year on this topic (10 years ago, only a few; 5 years ago, about a dozen; and about 50 in 2007). Moreover, the 18th EURO mini-conference held in Tenerife in November 2005 was entirely devoted to VNS. It led to special issues of IMA Journal of Management Mathematics in 2007, European Journal of Operational Research (http://www.journals.elsevier.com/european-journal-of-operational-research/), and Journal of Heuristics (http://www.springer.com/mathematics/applications/journal/10732/) in 2008.

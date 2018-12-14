@@ -1,0 +1,8 @@
+{
+    "about": "In coding theory, alternant codes form a class of parameterised error-correcting codes which generalise the BCH codes.", 
+    "name": "Alternant Code", 
+    "classification": "Error Detection And Correction", 
+    "full_text": "In coding theory, alternant codes form a class of parameterised error-correcting codes which generalise the BCH codes.\nAn alternant code over GF(q) of length n is defined by a parity check matrix H of alternant form Hi,j = \u03b1jiyi, where the \u03b1j are distinct elements of the extension GF(qm), the yi are further non-zero parameters again in the extension GF(qm) and the indices range as i from 0 to \u03b4\u00a0\u2212\u00a01, j from 1 to n.\nThe parameters of this alternant code are length n, dimension \u2265 n\u00a0\u2212\u00a0m\u03b4 and minimum distance \u2265\u00a0\u03b4\u00a0+\u00a01. There exist long alternant codes which meet the Gilbert-Varshamov bound.\nThe class of alternant codes includes", 
+    "dbpedia_url": "http://dbpedia.org/resource/Alternant_code", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Alternant_code\n"
+}

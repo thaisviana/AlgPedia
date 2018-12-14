@@ -1,0 +1,8 @@
+{
+    "about": "In signal processing, a washout filter is a filter that makes a transition caused by changes in the input source more smooth. An example of this transition is the change in the modes of a signal. The general form of this filter is:", 
+    "name": "Washout Filter", 
+    "classification": "Signal Processing", 
+    "full_text": "In signal processing, a washout filter is a filter that makes a transition caused by changes in the input source more smooth. An example of this transition is the change in the modes of a signal. The general form of this filter is:\nH(s) = s/(s+a)\nThe function of a filter like this, is to damp the DC part of a signal which is most useful for a signal that will be integrated in time afterwards. More information can be found under High-pass filter. It has been used in flight control stabilization. An example of this use of can be located at Yaw Damper Design for a 747\u00ae Jet.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Washout_filter", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Washout_filter\n"
+}

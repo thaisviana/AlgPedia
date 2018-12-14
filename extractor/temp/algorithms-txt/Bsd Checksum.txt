@@ -1,0 +1,18 @@
+ABOUT
+The BSD checksum algorithm is a commonly used, legacy checksum algorithm. It has been implemented in BSD and is also available through the GNU sum command line utility.
+FULL TEXT
+The BSD checksum algorithm is a commonly used, legacy checksum algorithm. It has been implemented in BSD and is also available through the GNU sum command line utility.
+Below is the relevant part of the GNU sum source code (GPL licensed). It computes a 16-bit checksum by adding up all bytes (8-bit words) of the input data stream. In order to avoid many of the weaknesses of simply adding the data, the checksum accumulator is circular rotated to the right by one bit at each step before the new char is added.
+Below is a sample java code that calculates an 8-bit checksum. It adds each byte from the input byte array after a circular rotation of the checksum.
+As mentioned above, this algorithm computes a checksum by segmenting the data and adding it to an accumulator that is circular right shifted between each summation. To keep the accumulator within return value bounds, bit-masking with 1's is done.
+Example: 4-bit checksum using 4-bit sized segments (big-endian)
+Loop 1:
+a) Circular shift checksum:
+b) Add seg and bitmask:
+Loop 2:
+a) Circular shift checksum:
+b) Add seg and bitmask:
+Loop 3:
+a) Circular shift checksum:
+b) Add seg and bitmask:
+Checksum: 1000

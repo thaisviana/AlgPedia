@@ -1,0 +1,13 @@
+ABOUT
+Completely Fair Queuing (CFQ) is an I/O scheduler for the Linux kernel which was written in 2003 by Jens Axboe.
+FULL TEXT
+Completely Fair Queuing (CFQ) is an I/O scheduler for the Linux kernel which was written in 2003 by Jens Axboe.
+
+
+CFQ places synchronous requests submitted by processes into a number of per-process queues and then allocates timeslices for each of the queues to access the disk. The length of the time slice and the number of requests a queue is allowed to submit depends on the I/O priority of the given process. Asynchronous requests for all processes are batched together in fewer queues, one per priority. While CFQ does not do explicit anticipatory I/O scheduling, it achieves the same effect of having good aggregate throughput for the system as a whole, by allowing a process queue to idle at the end of synchronous I/O thereby "anticipating" further close I/O from that process. It can be considered a natural extension of granting I/O time slices to a process.
+In February 2003 Andrea Arcangeli put forward his idea for a Stochastic Fair Queueing I/O scheduler to Jens Axboe who then implemented it. Jens Axboe made improvements to his first implementation, calling the new version the Completely Fair Queueing scheduler, and produced a patch to apply it to the 2.5.60 development series kernel.
+The CFQ I/O scheduler was first integrated into the mainline kernel as an optional I/O scheduler. It is possible to change the scheduler at boot time with the 'elevator' parameter to kernel.
+Red Hat Enterprise Linux 4 used this I/O scheduler as the default even though it used a kernel based on a 2.6.9.[1]
+The second release of the CFQ scheduler dubbed CFQv2 is included in the 2.6.10, improvements include better responsiveness and the elimination of some starvation issues which were present in the earlier version. The scheduler now is also switchable at run time by modifying the /sys/block/<block_device>/queue/scheduler variable in the sysfs filesystem.
+CFQ scheduler moved to a new time sliced design dubbed CFQv3. Among other things, it implements ioprio_get(2) and ioprio_set(2) which allows user to set per-process I/O priorities, usually using ionice(1) command (although using nice(1) also modifies I/O priorities somewhat)
+CFQ became the default scheduler, replacing the anticipatory scheduler.[2]

@@ -1,0 +1,363 @@
+ABOUT
+Task systems are mathematical objects used to model the set of possible configuration of online algorithms. They were introduced by Borodin, Linial and Saks (1992) to model a variety of online problems. A task system determines a set of states and costs to change states. Task systems obtain as input a sequence of requests such that each request assigns processing times to the states. The objective of an online algorithm for task systems is to create a schedule that minimizes the overall cost incurred due to processing the tasks with respect to the states and due to the cost to change states.
+FULL TEXT
+Task systems are mathematical objects used to model the set of possible configuration of online algorithms. They were introduced by Borodin, Linial and Saks (1992) to model a variety of online problems. A task system determines a set of states and costs to change states. Task systems obtain as input a sequence of requests such that each request assigns processing times to the states. The objective of an online algorithm for task systems is to create a schedule that minimizes the overall cost incurred due to processing the tasks with respect to the states and due to the cost to change states.
+If the cost function to change states is a metric, the task system is a metrical task system (MTS). This is the most common type of task systems. Metrical task systems generalize online problems such as paging, list accessing, and the k-server problem (in finite spaces).
+
+
+A task system is a pair 
+
+
+
+(
+S
+,
+d
+)
+
+
+{\displaystyle (S,d)}
+
+ where 
+
+
+
+S
+=
+{
+
+s
+
+1
+
+
+,
+
+s
+
+2
+
+
+,
+…
+,
+
+s
+
+n
+
+
+}
+
+
+{\displaystyle S=\{s_{1},s_{2},\dotsc ,s_{n}\}}
+
+ is a set of states and 
+
+
+
+d
+:
+S
+×
+S
+→
+
+R
+
+
+
+{\displaystyle d:S\times S\rightarrow \mathbb {R} }
+
+ is a distance function. If 
+
+
+
+d
+
+
+{\displaystyle d}
+
+ is a metric, 
+
+
+
+(
+S
+,
+d
+)
+
+
+{\displaystyle (S,d)}
+
+ is a metrical task system. An input to the task system is a sequence 
+
+
+
+σ
+=
+
+T
+
+1
+
+
+,
+
+T
+
+2
+
+
+,
+…
+,
+
+T
+
+l
+
+
+
+
+{\displaystyle \sigma =T_{1},T_{2},\dotsc ,T_{l}}
+
+ such that for each 
+
+
+
+i
+
+
+{\displaystyle i}
+
+, 
+
+
+
+
+T
+
+i
+
+
+
+
+{\displaystyle T_{i}}
+
+ is a vector of 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ non-negative entries that determine the processing costs for the 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ states when processing the 
+
+
+
+i
+
+
+{\displaystyle i}
+
+th task.
+An algorithm for the task system produces a schedule 
+
+
+
+π
+
+
+{\displaystyle \pi }
+
+ that determines the sequence of states. For instance, 
+
+
+
+π
+(
+i
+)
+=
+
+s
+
+j
+
+
+
+
+{\displaystyle \pi (i)=s_{j}}
+
+ means that the 
+
+
+
+i
+
+
+{\displaystyle i}
+
+th task 
+
+
+
+
+T
+
+i
+
+
+
+
+{\displaystyle T_{i}}
+
+ is run in state 
+
+
+
+
+s
+
+j
+
+
+
+
+{\displaystyle s_{j}}
+
+. The processing cost of a schedule is 
+
+
+
+
+c
+o
+s
+t
+
+(
+π
+,
+σ
+)
+=
+
+∑
+
+i
+=
+1
+
+
+l
+
+
+d
+(
+π
+(
+i
+−
+1
+)
+,
+π
+(
+i
+)
+)
++
+
+T
+
+i
+
+
+(
+π
+(
+i
+)
+)
+.
+
+
+{\displaystyle \mathrm {cost} (\pi ,\sigma )=\sum _{i=1}^{l}d(\pi (i-1),\pi (i))+T_{i}(\pi (i)).}
+
+
+The objective of the algorithm is to find a schedule such that the cost is minimized.
+As usual for online problems, the most common measure to analyze algorithms for metrical task systems is the competitive analysis, where the performance of an online algorithm is compared to the performance of an optimal offline algorithm. For deterministic online algorithms, there is a tight bound 
+
+
+
+2
+n
+−
+1
+
+
+{\displaystyle 2n-1}
+
+ on the competitive ratio due to Borodin et al. (1992).
+For randomized online algorithms, the competitive ratio is lower bounded by 
+
+
+
+Ω
+(
+log
+⁡
+n
+
+/
+
+log
+⁡
+log
+⁡
+n
+)
+
+
+{\displaystyle \Omega (\log n/\log \log n)}
+
+ and upper bounded by 
+
+
+
+O
+(
+
+log
+
+2
+
+
+⁡
+n
+log
+⁡
+log
+⁡
+n
+)
+
+
+{\displaystyle O(\log ^{2}n\log \log n)}
+
+. The lower bound is due to Bartal et al. (2006,2005). The upper bound is due to Fiat and Mendel (2003) who improved upon a result of Bartal et al. (1997).
+There are many results for various types of restricted metrics.

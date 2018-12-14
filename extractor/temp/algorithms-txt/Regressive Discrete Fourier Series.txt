@@ -1,0 +1,169 @@
+ABOUT
+In applied mathematics, the regressive discrete Fourier series (RDFS) is a generalization of the discrete Fourier transform where the Fourier series coefficients are computed in a least squares sense and the period is arbitrary, i.e., not necessarily equal to the length of the data. It was first proposed by Arruda (1992a,1992b). It can be used to smooth data in one or more dimensions and to compute derivatives from the smoothed curve, surface, or hypersurface.
+FULL TEXT
+In applied mathematics, the regressive discrete Fourier series (RDFS) is a generalization of the discrete Fourier transform where the Fourier series coefficients are computed in a least squares sense and the period is arbitrary, i.e., not necessarily equal to the length of the data. It was first proposed by Arruda (1992a,1992b). It can be used to smooth data in one or more dimensions and to compute derivatives from the smoothed curve, surface, or hypersurface.
+
+
+The one-dimensional RDFS proposed by Arruda (1992a) can be formulated in a very straightforward way. Given a sampled data vector (signal) 
+
+
+
+
+x
+
+n
+
+
+=
+x
+(
+
+t
+
+n
+
+
+)
+
+
+{\displaystyle x_{n}=x(t_{n})}
+
+, one can write the algebraic expression:
+Typically 
+
+
+
+
+t
+
+n
+
+
+=
+n
+
+Δ
+t
+
+
+{\displaystyle t_{n}=n\,\Delta t}
+
+, but this is not necessary.
+The above equation can be written in matrix form as
+The least squares solution of the above linear system of equations can be written as:
+and the smoothed signal is obtained from:
+The first derivative of the smoothed signal 
+
+
+
+
+
+
+x
+^
+
+
+
+
+
+{\displaystyle {\hat {x}}}
+
+ can be obtained from:
+The two-dimensional, or bidimensional RDFS proposed by Arruda (1992b) can also be formulated in a straightforward way. Here the equally spaced data case will be treated for the sake of simplicity. The general non-equally-spaced and arbitrary grid cases are given in the reference (Arruda,1992b). Given a sampled data matrix (bi dimensional signal) 
+
+
+
+
+x
+
+m
+n
+
+
+=
+x
+(
+
+ξ
+
+m
+
+
+,
+
+ν
+
+n
+
+
+)
+,
+m
+=
+1
+,
+…
+,
+M
+;
+ 
+n
+=
+1
+,
+…
+,
+N
+;
+
+
+{\displaystyle x_{mn}=x(\xi _{m},\nu _{n}),m=1,\dots ,M;\ n=1,\dots ,N;}
+
+ one can write the algebraic expression:
+The above equation can be written in matrix form for a rectangular grid. For the equally spaced sampling case :
+
+
+
+
+ξ
+
+m
+
+
+=
+m
+Δ
+ξ
+,
+
+ν
+
+n
+
+
+=
+n
+Δ
+ν
+
+
+
+{\displaystyle \xi _{m}=m\Delta \xi ,\nu _{n}=n\Delta \nu \,}
+
+ we have:
+The least squares solution may be shown to be:
+and the smoothed bidimensional surface is given by:
+Differentiation with respect to 
+
+
+
+ξ
+
+ and 
+
+ν
+
+
+{\displaystyle \xi {\text{ and }}\nu }
+
+ can be easily implemented analogously to the one-dimensional case (Arruda, 1992b).

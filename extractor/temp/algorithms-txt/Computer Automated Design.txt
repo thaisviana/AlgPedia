@@ -1,0 +1,46 @@
+ABOUT
+Design Automation usually refers to electronic design automation, or Design Automation which is a Product configurator. Extending Computer-Aided Design (CAD), automated design and Computer-Automated Design (CAutoD) [1][2][3] are more concerned with a broader range of applications, such as automotive engineering, civil engineering,[4][5][6][7] composite material design, control engineering,[8] dynamic system identification,[9] financial systems, industrial equipment, mechatronic systems, steel construction,[10] structural optimisation, and the invention of novel systems.
+FULL TEXT
+Design Automation usually refers to electronic design automation, or Design Automation which is a Product configurator. Extending Computer-Aided Design (CAD), automated design and Computer-Automated Design (CAutoD) [1][2][3] are more concerned with a broader range of applications, such as automotive engineering, civil engineering,[4][5][6][7] composite material design, control engineering,[8] dynamic system identification,[9] financial systems, industrial equipment, mechatronic systems, steel construction,[10] structural optimisation, and the invention of novel systems.
+The concept of CAutoD perhaps first appeared in 1963, in the IBM Journal of Research and Development [1], where a computer program was written (1) to search for logic circuits having certain constraints on hardware design and (2) to evaluate these logics in terms of their discriminating ability over samples of the character set they are expected to recognize. More recently, traditional CAD simulation is seen to be transformed to CAutoD by biologically-inspired machine learning[11] or search techniques such as evolutionary computation,[12][13] including swarm intelligence algorithms[3].
+
+
+To meet the ever growing demand of quality and competitiveness, iterative physical prototyping is now often replaced by 'digital prototyping' of a 'good design', which aims to meet multiple objectives such as maximised output, energy efficiency, highest speed and cost-effectiveness. The design problem concerns both finding the best design within a known range (i.e., through 'learning' or 'optimisation') and finding a new and better design beyond the existing ones (i.e., through creation and invention). This is equivalent to a search problem in an, almost certainly, multidimensional (multivariate), multi-modal space with a single (or weighted) objective or multiple objectives.
+Using single-objective CAutoD as an example, if the objective function, either as a cost function 
+
+
+
+J
+∈
+[
+0
+,
+∞
+)
+
+
+{\displaystyle J\in [0,\infty )}
+
+, or inversely, as a fitness function 
+
+
+
+f
+∈
+(
+0
+,
+1
+]
+
+
+{\displaystyle f\in (0,1]}
+
+, where
+is differentiable under practical constraints in the multidimensional space, the design problem may be solved analytically. Finding the parameter sets that result in a zero first-order derivative and that satisfy the second-order derivative conditions would reveal all local optima. Then comparing the values of the performance index of all the local optima, together with those of all boundary parameter sets, would lead to the global optimum, whose corresponding 'parameter' set will thus represent the best design. However, in practice, the optimization usually involves multiple objectives and the matters involving derivatives are lot more complex.
+In practice, the objective value may be noisy or even non-numerical, and hence its gradient information may be unreliable or unavailable. This is particularly true when the problem is multi-objective. At present, many designs and refinements are mainly made through a manual trial-and-error process with the help of a CAD simulation package. Usually, such a posteriori learning or adjustments need to be repeated many times until a ‘satisfactory’ or ‘optimal’ design emerges.
+In theory, this adjustment process can be automated by computerised search, such as exhaustive search. As this is an exponential algorithm, it may not deliver solutions in practice within a limited period of time.
+One approach to virtual engineering and automated design is evolutionary computation such as evolutionary algorithms.
+To reduce the search time, the biologically-inspired evolutionary algorithm (EA) can be used instead, which is a (non-deterministic) polynomial algorithm. The EA based multi-objective "search team" can be interfaced with an existing CAD simulation package in a batch mode. The EA encodes the design parameters (encoding being necessary if some parameters are non-numerical) to refine multiple candidates through parallel and interactive search. In the search process, 'selection' is performed using 'survival of the fittest' a posteriori learning. To obtain the next 'generation' of possible solutions, some parameter values are exchanged between two candidates (by an operation called 'crossover') and new values introduced (by an operation called 'mutation'). This way, the evolutionary technique makes use of past trial information in a similarly intelligent manner to the human designer.
+The EA based optimal designs can start from the designer's existing design database or from an initial generation of candidate designs obtained randomly. A number of finally evolved top-performing candidates will represent several automatically optimized digital prototypes.
+There are websites that demonstrate interactive evolutionary algorithms for design. EndlessForms.com allows you to evolve 3D objects online and have them 3D printed. PicBreeder.org allows you to do the same for 2D images.

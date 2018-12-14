@@ -1,0 +1,86 @@
+ABOUT
+The Suzuki-Kasami algorithm[1] is a token-based algorithm for achieving mutual exclusion in distributed systems. The process holding the token is the only process able to enter its critical section.
+FULL TEXT
+The Suzuki-Kasami algorithm[1] is a token-based algorithm for achieving mutual exclusion in distributed systems. The process holding the token is the only process able to enter its critical section.
+This is a modification to Ricart–Agrawala algorithm[2] in which a REQUEST and REPLY message are used for attaining the critical section. but in this algorithm they introduced a method in which a seniority vise and also by handing over the critical section to other node by sending a single PRIVILEGE message to other node. So, the node which has the privilege it can use the critical section and if it does not have one it cannot. If a process wants to enter its critical section and it does not have the token, it broadcasts a request message to all other processes in the system. The process that has the token, if it is not currently in a critical section, will then send the token to the requesting process. The algorithm makes use of increasing Request Numbers to allow messages to arrive out-of-order.
+
+
+Let 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ be the number of processes. Each process is identified by an integer in 
+
+
+
+1
+,
+.
+.
+.
+,
+n
+
+
+{\displaystyle 1,...,n}
+
+.
+Each process maintains one data structure:
+The token contains two data structures:
+When process 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ wants to enter the CS, if it does not have the token, it:
+When process 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ leaves the CS, it:
+When process 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ receives a request from 
+
+
+
+j
+
+
+{\displaystyle j}
+
+ with sequence number 
+
+
+
+s
+
+
+{\displaystyle s}
+
+, it:
+A process enters the CS when it has acquired the token.
+The main design issues of the algorithm:
+Data structures used to deal with these two aspects:
+The token contains two data structures:

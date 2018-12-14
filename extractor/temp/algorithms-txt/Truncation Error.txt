@@ -1,0 +1,84 @@
+ABOUT
+In numerical analysis and scientific computing, truncation error is the error made by truncating an infinite sum and approximating it by a finite sum. For instance, if we approximate the sine function by the first two non-zero term of its Taylor series, as in 
+
+
+
+sin
+⁡
+(
+x
+)
+≈
+x
+−
+
+
+
+1
+6
+
+
+
+
+x
+
+3
+
+
+
+
+{\displaystyle \sin(x)\approx x-{\tfrac {1}{6}}x^{3}}
+
+ for small 
+
+
+
+x
+
+
+{\displaystyle x}
+
+, the resulting error is a truncation error. It is present even with infinite-precision arithmetic, because it is caused by truncation of the infinite Taylor series to form the algorithm.
+FULL TEXT
+In numerical analysis and scientific computing, truncation error is the error made by truncating an infinite sum and approximating it by a finite sum. For instance, if we approximate the sine function by the first two non-zero term of its Taylor series, as in 
+
+
+
+sin
+⁡
+(
+x
+)
+≈
+x
+−
+
+
+
+1
+6
+
+
+
+
+x
+
+3
+
+
+
+
+{\displaystyle \sin(x)\approx x-{\tfrac {1}{6}}x^{3}}
+
+ for small 
+
+
+
+x
+
+
+{\displaystyle x}
+
+, the resulting error is a truncation error. It is present even with infinite-precision arithmetic, because it is caused by truncation of the infinite Taylor series to form the algorithm.
+Often, truncation error also includes discretization error, which is the error that arises from taking a finite number of steps in a computation to approximate an infinite process. For example, in numerical methods for ordinary differential equations, the continuously varying function that is the solution of the differential equation is approximated by a process that progresses step by step, and the error that this entails is a discretization or truncation error. See Truncation error (numerical integration) for more on this.
+Occasionally, round-off error (the consequence of using finite precision floating point numbers on computers) is also called truncation error, especially if the number is rounded by truncation.

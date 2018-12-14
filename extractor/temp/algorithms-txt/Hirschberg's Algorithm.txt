@@ -1,0 +1,696 @@
+ABOUT
+In computer science, Hirschberg's algorithm, named after its inventor, Dan Hirschberg, is a dynamic programming algorithm that finds the optimal sequence alignment between two strings. Optimality is measured with the Levenshtein distance, defined to be the sum of the costs of insertions, replacements, deletions, and null actions needed to change one string into the other. Hirschberg's algorithm is simply described as a divide and conquer version of the Needleman–Wunsch algorithm.[1] Hirschberg's algorithm is commonly used in computational biology to find maximal global alignments of DNA and protein sequences.
+FULL TEXT
+In computer science, Hirschberg's algorithm, named after its inventor, Dan Hirschberg, is a dynamic programming algorithm that finds the optimal sequence alignment between two strings. Optimality is measured with the Levenshtein distance, defined to be the sum of the costs of insertions, replacements, deletions, and null actions needed to change one string into the other. Hirschberg's algorithm is simply described as a divide and conquer version of the Needleman–Wunsch algorithm.[1] Hirschberg's algorithm is commonly used in computational biology to find maximal global alignments of DNA and protein sequences.
+
+
+Hirschberg's algorithm is a generally applicable algorithm for optimal sequence alignment. BLAST and FASTA are suboptimal heuristics. If x and y are strings, where length(x) = n and length(y) = m, the Needleman-Wunsch algorithm finds an optimal alignment in O(nm) time, using O(nm) space. Hirschberg's algorithm is a clever modification of the Needleman-Wunsch Algorithm which still takes O(nm) time, but needs only O(min{n,m}) space.[2] One application of the algorithm is finding sequence alignments of DNA or protein sequences. It is also a space-efficient way to calculate the longest common subsequence between two sets of data such as with the common diff tool.
+The Hirschberg algorithm can be derived from the Needleman-Wunsch algorithm by observing that:[3]
+
+
+
+
+
+X
+
+i
+
+
+
+
+{\displaystyle X_{i}}
+
+ denotes the i-th character of 
+
+
+
+X
+
+
+{\displaystyle X}
+
+, where 
+
+
+
+1
+<
+i
+⩽
+length
+⁡
+(
+X
+)
+
+
+{\displaystyle 1<i\leqslant \operatorname {length} (X)}
+
+. 
+
+
+
+
+X
+
+i
+:
+j
+
+
+
+
+{\displaystyle X_{i:j}}
+
+ denotes a substring of size 
+
+
+
+j
+−
+i
++
+1
+
+
+{\displaystyle j-i+1}
+
+, ranging from i-th to the j-th character of 
+
+
+
+X
+
+
+{\displaystyle X}
+
+. 
+
+
+
+rev
+⁡
+(
+X
+)
+
+
+{\displaystyle \operatorname {rev} (X)}
+
+ is the reversed version of 
+
+
+
+X
+
+
+{\displaystyle X}
+
+.
+
+
+
+
+X
+
+
+{\displaystyle X}
+
+ and 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+ are sequences to be aligned. Let 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ be a character from 
+
+
+
+X
+
+
+{\displaystyle X}
+
+, and 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ be a character from 
+
+
+
+Y
+
+
+{\displaystyle Y}
+
+. We assume that 
+
+
+
+Del
+⁡
+(
+x
+)
+
+
+{\displaystyle \operatorname {Del} (x)}
+
+, 
+
+
+
+Ins
+⁡
+(
+y
+)
+
+
+{\displaystyle \operatorname {Ins} (y)}
+
+ and 
+
+
+
+Sub
+⁡
+(
+x
+,
+y
+)
+
+
+{\displaystyle \operatorname {Sub} (x,y)}
+
+ are well defined integer-valued functions. These functions represent the cost of deleting 
+
+
+
+x
+
+
+{\displaystyle x}
+
+, inserting 
+
+
+
+y
+
+
+{\displaystyle y}
+
+, and replacing 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ with 
+
+
+
+y
+
+
+{\displaystyle y}
+
+, respectively.
+We define 
+
+
+
+NWScore
+⁡
+(
+X
+,
+Y
+)
+
+
+{\displaystyle \operatorname {NWScore} (X,Y)}
+
+, which returns the last line of the Needleman-Wunsch score matrix 
+
+
+
+
+S
+c
+o
+r
+e
+
+(
+i
+,
+j
+)
+
+
+{\displaystyle \mathrm {Score} (i,j)}
+
+:
+Note that at any point, 
+
+
+
+NWScore
+
+
+{\displaystyle \operatorname {NWScore} }
+
+ only requires the two most recent rows of the score matrix. Thus, 
+
+
+
+NWScore
+
+
+{\displaystyle \operatorname {NWScore} }
+
+ can be implemented in 
+
+
+
+O
+(
+min
+⁡
+{
+length
+⁡
+(
+X
+)
+,
+length
+⁡
+(
+Y
+)
+}
+)
+
+
+{\displaystyle O(\operatorname {min} \{\operatorname {length} (X),\operatorname {length} (Y)\})}
+
+ space, although the algorithm above takes O(i*j) space.
+The Hirschberg algorithm follows:
+In the context of Observation (2), assume that 
+
+
+
+
+X
+
+l
+
+
++
+
+X
+
+r
+
+
+
+
+{\displaystyle X^{l}+X^{r}}
+
+ is a partition of 
+
+
+
+X
+
+
+{\displaystyle X}
+
+. Index 
+
+
+
+
+y
+m
+i
+d
+
+
+
+{\displaystyle \mathrm {ymid} }
+
+ is computed such that 
+
+
+
+
+Y
+
+l
+
+
+=
+
+Y
+
+1
+:
+
+y
+m
+i
+d
+
+
+
+
+
+{\displaystyle Y^{l}=Y_{1:\mathrm {ymid} }}
+
+ and 
+
+
+
+
+Y
+
+r
+
+
+=
+
+Y
+
+
+y
+m
+i
+d
+
++
+1
+:
+length
+⁡
+(
+Y
+)
+
+
+
+
+{\displaystyle Y^{r}=Y_{\mathrm {ymid} +1:\operatorname {length} (Y)}}
+
+.
+Let
+
+
+
+
+
+
+
+
+X
+
+
+
+=
+
+A
+G
+T
+A
+C
+G
+C
+A
+
+,
+
+
+
+
+Y
+
+
+
+=
+
+T
+A
+T
+G
+C
+
+,
+
+
+
+
+Del
+⁡
+(
+x
+)
+
+
+
+=
+−
+2
+,
+
+
+
+
+Ins
+⁡
+(
+y
+)
+
+
+
+=
+−
+2
+,
+
+
+
+
+Sub
+⁡
+(
+x
+,
+y
+)
+
+
+
+=
+
+
+{
+
+
+
++
+2
+,
+
+
+
+if 
+
+x
+=
+y
+
+
+
+
+−
+1
+,
+
+
+
+if 
+
+x
+≠
+y
+.
+
+
+
+
+
+
+
+
+
+
+
+
+{\displaystyle {\begin{aligned}X&=\mathrm {AGTACGCA} ,\\Y&=\mathrm {TATGC} ,\\\operatorname {Del} (x)&=-2,\\\operatorname {Ins} (y)&=-2,\\\operatorname {Sub} (x,y)&={\begin{cases}+2,&{\mbox{if }}x=y\\-1,&{\mbox{if }}x\neq y.\end{cases}}\end{aligned}}}
+
+
+The optimal alignment is given by
+Indeed, this can be verified by backtracking its corresponding Needleman-Wunsch matrix:
+One starts with the top level call to 
+
+
+
+Hirschberg
+⁡
+(
+
+A
+G
+T
+A
+C
+G
+C
+A
+
+,
+
+T
+A
+T
+G
+C
+
+)
+
+
+{\displaystyle \operatorname {Hirschberg} (\mathrm {AGTACGCA} ,\mathrm {TATGC} )}
+
+, which splits the first argument in half: 
+
+
+
+X
+=
+
+A
+G
+T
+A
+
++
+
+C
+G
+C
+A
+
+
+
+{\displaystyle X=\mathrm {AGTA} +\mathrm {CGCA} }
+
+. The call to 
+
+
+
+NWScore
+⁡
+(
+
+A
+G
+T
+A
+
+,
+Y
+)
+
+
+{\displaystyle \operatorname {NWScore} (\mathrm {AGTA} ,Y)}
+
+ produces the following matrix:
+Likewise, 
+
+
+
+NWScore
+⁡
+(
+rev
+⁡
+(
+
+C
+G
+C
+A
+
+)
+,
+rev
+⁡
+(
+Y
+)
+)
+
+
+{\displaystyle \operatorname {NWScore} (\operatorname {rev} (\mathrm {CGCA} ),\operatorname {rev} (Y))}
+
+ generates the following matrix:
+Their last lines (after reversing the latter) and sum of those are respectively
+The maximum (shown in bold) appears at ymid = 2, producing the partition 
+
+
+
+Y
+=
+
+T
+A
+
++
+
+T
+G
+C
+
+
+
+{\displaystyle Y=\mathrm {TA} +\mathrm {TGC} }
+
+.
+The entire Hirschberg recursion (which we omit for brevity) produces the following tree:
+The leaves of the tree contain the optimal alignment.

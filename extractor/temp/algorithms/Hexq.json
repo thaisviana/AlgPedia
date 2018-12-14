@@ -1,0 +1,8 @@
+{
+    "about": "HEXQ is a reinforcement learning algorithm created by Bernhard Hengst, which attempts to solve a Markov Decision Process by decomposing it hierarchically.", 
+    "name": "Hexq", 
+    "classification": "Machine Learning Algorithms", 
+    "full_text": "HEXQ is a reinforcement learning algorithm created by Bernhard Hengst, which attempts to solve a Markov Decision Process by decomposing it hierarchically.\nBernhard Hengst (2002). \"Discovering Hierarchy in Reinforcement Learning with HEXQ\".\u00a0", 
+    "dbpedia_url": "http://dbpedia.org/resource/HEXQ", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/HEXQ\n"
+}

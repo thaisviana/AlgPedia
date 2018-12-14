@@ -1,0 +1,6 @@
+ABOUT
+In wireless networking, On-Demand Multicast Routing Protocol is a protocol for routing multicast and unicast traffic throughout Ad hoc wireless mesh networks.
+FULL TEXT
+In wireless networking, On-Demand Multicast Routing Protocol is a protocol for routing multicast and unicast traffic throughout Ad hoc wireless mesh networks.
+ODMRP creates routes on demand, rather than proactively creating routes as OLSR does. This suffers from a route acquisition delay, although it helps reduce network traffic in general. To help reduce the problem of this delay, some implementations send the first data packet along with the route discovery packet.
+Because some links may be asymmetric, the path from one node to another is not necessarily the same as the reverse path of these nodes.

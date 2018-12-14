@@ -1,0 +1,60 @@
+ABOUT
+The regular expression denial of service (ReDoS)[1] is an algorithmic complexity attack that produces a denial-of-service by providing a regular expression that takes a very long time to evaluate. The attack exploits the fact that most regular expression implementations have exponential time worst case complexity: the time taken can grow exponentially in relation to input size. An attacker can thus cause a program to spend an unbounded amount of time processing by providing such a regular expression, either slowing down or becoming unresponsive.[2][3]
+FULL TEXT
+The regular expression denial of service (ReDoS)[1] is an algorithmic complexity attack that produces a denial-of-service by providing a regular expression that takes a very long time to evaluate. The attack exploits the fact that most regular expression implementations have exponential time worst case complexity: the time taken can grow exponentially in relation to input size. An attacker can thus cause a program to spend an unbounded amount of time processing by providing such a regular expression, either slowing down or becoming unresponsive.[2][3]
+
+
+Regular expression matching can be done by building a finite-state automaton. Regular expressions can be easily converted to nondeterministic automata (NFAs), in which for each state and input symbol there may be several possible next states. After building the automaton, several possibilities exist:
+Of the above algorithms, the first two are problematic. The first is problematic because a deterministic automaton could have up to 
+
+
+
+
+2
+
+m
+
+
+
+
+{\displaystyle 2^{m}}
+
+ states where 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ is the number of states in the nondeterministic automaton; thus, the conversion from NFA to DFA may take exponential time. The second is problematic because a nondeterministic automaton could have an exponential number of paths of length 
+
+
+
+n
+
+
+{\displaystyle n}
+
+, so that walking through an input of length 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ will also take exponential time.[6] The last two algorithms, however, do not exhibit pathological behavior.
+Note that for non-pathological regular expressions the problematic algorithms are usually fast, and in practice one can expect them to "compile" a regular expression in O(m) time and match it in O(n) time; instead, simulation of an NFA and lazy computation of the DFA have O(m2n) worst-case complexity.[7] Regular expression denial of service occurs when these expectations are applied to regular expressions provided by the user, and malicious regular expressions provided by the user trigger the worst-case complexity of the regular expression matcher.
+While regex algorithms can be written in an efficient way, most regular expression engines in existence extend the regular expression languages with additional constructs that cannot always be solved efficiently. Such extended patterns essentially force the implementation of regular expression in most programming languages to use backtracking.
+Malicious regexes that get stuck on crafted input can be different depending on the regular expression matcher that is under attack. For backtracking matchers, they occur whenever these factors occur:[8]
+The second condition is best explained with an example: in the regular expression (a[ab]*)+, both "a" and "aa" can match the repeated subexpression a[ab]*. Therefore, after matching "a", the nondeterministic automaton may try a new match of a[ab]* or a new match of a. If the input has many consecutive "a"s, each of them will double the number of possible paths through the automaton. Examples of malicious regexes include the following:
+All the above are susceptible to the input aaaaaaaaaaaaaaaaaaaaaaaa!. (The minimum input length might change slightly, when using faster or slower machines.)
+Other patterns may not cause an exponential behavior, but for long enough inputs (a few hundreds of characters, usually) they could still cause long elaboration times. An example of such a pattern is "a*b?a*x", the input being an arbitrarily long sequence of "a"s. Such a pattern may also cause backtracking matchers to hang.
+So-called "evil" or malicious regexes have been found in online regular expression repositories. Note that it is enough to find an evil subexpression in order to attack the full regex:
+These two examples are also susceptible to the input aaaaaaaaaaaaaaaaaaaaaaaa!.
+If a regex itself is affected by a user input, the attacker can inject a malicious regex and make the system vulnerable. Therefore, in most cases, regular expression denial of service can be avoided by removing the possibility for the user to execute arbitrary patterns on the server. In this case, web applications and databases are the main vulnerable applications. Alternatively, a malicious page could hang the user's web browser or cause it to use arbitrary amounts of memory.
+However, some of the examples in the above paragraphs are considerably less "artificial" than the others; thus, they demonstrate how a vulnerable regexes may be used as a result of programming mistakes. In this case e-mail scanners and intrusion detection systems could also be vulnerable. Fortunately, in most cases the problematic regular expressions can be rewritten as "non-evil" patterns. For example, (.*a){x} can be rewritten to ([^a]*a){x,}.
+In the case of a web application, the programmer may use the same regular expression to validate input on both the client and the server side of the system. An attacker could inspect the client code, looking for evil regular expressions, and send crafted input directly to the web server in order to hang it.

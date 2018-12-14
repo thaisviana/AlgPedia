@@ -1,0 +1,7 @@
+ABOUT
+This is a list of hash functions, including cyclic redundancy checks, checksum functions, and cryptographic hash functions.
+FULL TEXT
+This is a list of hash functions, including cyclic redundancy checks, checksum functions, and cryptographic hash functions.
+
+
+Adler-32 is often mistaken for a CRC, but it is not, it's a checksum.

@@ -1,0 +1,14 @@
+ABOUT
+In mathematics, an automatic group is a finitely generated group equipped with several finite-state automata. These automata represent the Cayley graph of the group, i. e. can tell if a given word representation of a group element is in a "canonical form" and can tell if two elements given in canonical words differ by a generator.[1]
+FULL TEXT
+In mathematics, an automatic group is a finitely generated group equipped with several finite-state automata. These automata represent the Cayley graph of the group, i. e. can tell if a given word representation of a group element is in a "canonical form" and can tell if two elements given in canonical words differ by a generator.[1]
+More precisely, let G be a group and A be a finite set of generators. Then an automatic structure of G with respect to A is a set of finite-state automata:[2]
+The property of being automatic does not depend on the set of generators.[3]
+The concept of automatic groups generalizes naturally to automatic semigroups.[4]
+
+
+Automatic groups have word problem solvable in quadratic time. More strongly, a given word can actually be put into canonical form in quadratic time, based on which the word problem may be solved by testing whether the canonical forms of two words are equal.[5]
+The automatic groups include:
+A group is biautomatic if it has two multiplier automata, for left and right multiplication by elements of the generating set respectively. A biautomatic group is clearly automatic.[7]
+Examples include:
+The idea of describing algebraic structures with finite-automata can be generalized from groups to other structures.[9]

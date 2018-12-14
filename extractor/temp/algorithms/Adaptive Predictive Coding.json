@@ -1,0 +1,8 @@
+{
+    "about": "Adaptive predictive coding (APC) is a narrowband analog-to-digital conversion that uses a one-level or multilevel sampling system in which the value of the signal at each sampling instant is predicted according to a linear function of the past values of the quantized signals.", 
+    "name": "Adaptive Predictive Coding", 
+    "classification": "Digital Signal Processing", 
+    "full_text": "Adaptive predictive coding (APC) is a narrowband analog-to-digital conversion that uses a one-level or multilevel sampling system in which the value of the signal at each sampling instant is predicted according to a linear function of the past values of the quantized signals.\nAPC is related to linear predictive coding (LPC) in that both use adaptive predictors. However, APC uses fewer prediction coefficients, thus requiring a higher sampling rate than LPC.\n\u00a0This article incorporates\u00a0public domain material from the General Services Administration document \"Federal Standard 1037C\".", 
+    "dbpedia_url": "http://dbpedia.org/resource/Adaptive_predictive_coding", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Adaptive_predictive_coding\n"
+}

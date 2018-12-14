@@ -1,0 +1,118 @@
+ABOUT
+The Material Point Method (MPM) is a numerical technique used to simulate the behavior of solids, liquids, gases, and any other continuum material. In MPM a body is described by a number of small Lagrangian elements referred to as 'material points'. These material points are surrounded by a background mesh/grid that is used only to calculate gradient terms like acceleration and the deformation gradient. Unlike other mesh-based methods like the Finite Element Method, Finite Volume Method or Finite Difference Method, MPM is not a mesh based method and is instead categorized as a meshless/meshfree method, examples of which are Smoothed Particle Hydrodynamics and Peridynamics. Despite the presence of a background mesh, MPM does not encounter the drawbacks of mesh-bashed methods (high deformation tangling, advection errors etc.) which makes it a promising and powerful tool in computational mechanics.
+FULL TEXT
+The Material Point Method (MPM) is a numerical technique used to simulate the behavior of solids, liquids, gases, and any other continuum material. In MPM a body is described by a number of small Lagrangian elements referred to as 'material points'. These material points are surrounded by a background mesh/grid that is used only to calculate gradient terms like acceleration and the deformation gradient. Unlike other mesh-based methods like the Finite Element Method, Finite Volume Method or Finite Difference Method, MPM is not a mesh based method and is instead categorized as a meshless/meshfree method, examples of which are Smoothed Particle Hydrodynamics and Peridynamics. Despite the presence of a background mesh, MPM does not encounter the drawbacks of mesh-bashed methods (high deformation tangling, advection errors etc.) which makes it a promising and powerful tool in computational mechanics.
+MPM was originally presented an extension of a similar method known as FLIP (a further extension of a method called PIC) in 1994 and was developed at the Los Alamos National Labs. After this the major developments of MPM have continued both in the national labs as well as the University of New Mexico, Oregon State University, University of Utah and more across the US and the world. Recently the number of institutions researching MPM has been growing with added popularity and awareness coming from various sources such as MPM's use in the Disney film 'Frozen'.
+
+
+An MPM simulation consists of the following stages:
+(Prior to the time integration phase)
+(During the time integration phase - explicit formulation)
+2. Material point quantities are extrapolated to grid nodes.
+3. Equations of motion are solved on the grid.
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+V
+
+n
+o
+d
+e
+
+
+→
+
+
+~
+
+
+
+=
+
+
+
+
+V
+
+n
+o
+d
+e
+
+
+→
+
+
+
++
+
+
+
+
+A
+
+n
+o
+d
+e
+
+
+→
+
+
+
+d
+t
+
+
+{\displaystyle ~~~~~~~~~~~~~~~~~~~~{\tilde {\vec {V_{node}}}}={\vec {V_{node}}}+{\vec {A_{node}}}dt}
+
+4. Derivative terms are extrapolated back to material points.
+5.Resetting of grid.
+The PIC was originally conceived to solve problems in fluid dynamics, and developed by Harlow at Los Alamos National Laboratory in 1957.[1] One of the first PIC codes was the Fluid-Implicit Particle (FLIP) program, which was created by Brackbill in 1986[2] and has been constantly in development ever since. Until the 1990s, the PIC method was used principally in fluid dynamics.
+Motivated by the need for better simulating penetration problems in solid dynamics, Sulsky, Chen and Schreyer started in 1993 to reformulate the PIC and develop the MPM, with funding from Sandia National Laboratories.[3] The original MPM was then further extended by Bardenhagen et al.. to include frictional contact,[4] which enabled the simulation of granular flow,[5] and by Nairn to include explicit cracks[6] and crack propagation (known as CRAMP).
+Recently, an MPM implementation based on a micro-polar Cosserat continuum [7] has been used to simulate high-shear granular flow, such as silo discharge. MPM's uses were further extended into Geotechnical engineering with the recent development of a quasi-static, implicit MPM solver which provides numerically stable analyses of large-deformation problems in Soil mechanics.[8]
+Annual workshops on the use of MPM are held at various locations in the United States. The Fifth MPM Workshop was held at Oregon State University, in Corvallis, OR, on April 2 and 3, 2009.
+The uses of the PIC or MPM method can be divided into two broad categories: firstly, there are many applications involving fluid dynamics, plasma physics, magnetohydrodynamics, and multiphase applications. The second category of applications comprises problems in solid mechanics.
+The PIC method has been used to simulate a wide range of fluid-solid interactions, including sea ice dynamics,[9] penetration of biological soft tissues,[10] fragmentation of gas-filled canisters,[11] dispersion of atmospheric pollutants,[12] multiscale simulations coupling molecular dynamics with MPM,[13][14] and fluid-membrane interactions.[15] In addition, the PIC-based FLIP code has been applied in magnetohydrodynamics and plasma processing tools, and simulations in astrophysics and free-surface flow.[16]
+As a result of a joint effort between UCLA's mathematics department and Walt Disney Animation Studios, MPM was successfully used to simulate snow in the 2013 computer-animated film Frozen.[17][18][19]
+MPM has also been used extensively in solid mechanics, to simulate impact, penetration, collision and rebound, as well as crack propagation.[20][21] MPM has also become a widely used method within the field of soil mechanics: it has been used to simulate granular flow, silo discharge, pile driving, bucket filling, and material failure; and to model soil stress distribution, compaction, and hardening. It is now being used in wood mechanics problems such as simulations of transverse compression on the cellular level including cell wall contact [22] (this work received the George Marra Award for paper of the year from the Society of Wood Science and Technology [1])
+One subset of numerical methods are Meshfree methods, which are defined as methods for which "a predefined mesh is not necessary, at least in field variable interpolation". Ideally, a meshfree method does not make use of a mesh "throughout the process of solving the problem governed by partial differential equations, on a given arbitrary domain, subject to all kinds of boundary conditions," although existing methods are not ideal and fail in at least one of these respects. Meshless methods, which are also sometimes called particle methods, share a "common feature that the history of state variables is traced at points (particles) which are not connected with any element mesh, the distortion of which is a source of numerical difficulties." As can be seen by these varying interpretations, some scientists consider MPM to be a meshless method, while others do not. All agree, however, that MPM is a particle method.
+The Arbitrary Lagrangian Eulerian (ALE) methods form another subset of numerical methods which includes MPM. Purely Lagrangian methods employ a framework in which a space is discretised into initial subvolumes, whose flowpaths are then charted over time. Purely Eulerian methods, on the other hand, employ a framework in which the motion of material is described relative to a mesh that remains fixed in space throughout the calculation. As the name indicates, ALE methods combine Lagrangian and Eulerian frames of reference.
+PIC methods may be based on either the strong form collocation or a weak form discretisation of the underlying partial differential equation (PDE). Those based on the strong form are properly referred to as finite-volume PIC methods. Those based on the weak form discretisation of PDEs may be called either PIC or MPM.
+MPM solvers can model problems in one, two, or three spatial dimensions, and can also model axisymmetric problems. MPM can be implemented to solve either quasi-static or dynamic equations of motion, depending on the type of problem that is to be modeled.
+The time-integration used for MPM may be either explicit or implicit. The advantage to implicit integration is guaranteed stability, even for large timesteps. On the other hand, explicit integration runs much faster and is easier to implement.
+Unlike FEM, MPM does not require periodical remeshing steps and remapping of state variables, and is therefore better suited to the modeling of large material deformations. In MPM, particles and not the mesh points store all the information on the state of the calculation. Therefore, no numerical error results from the mesh returning to its original position after each calculation cycle, and no remeshing algorithm is required.
+The particle basis of MPM allows it to treat crack propagation and other discontinuities better than FEM, which is known to impose the mesh orientation on crack propagation in a material. Also, particle methods are better at handling history-dependent constitutive models.
+Because in MPM nodes remain fixed on a regular grid, the calculation of gradients is trivial.
+In simulations with two or more phases it is rather easy to detect contact between entities, as particles can interact via the grid with other particles in the same body, with other solid bodies, and with fluids.
+MPM is more expensive in terms of storage than other methods, as MPM makes use of mesh as well as particle data. MPM is more computationally expensive than FEM, as the grid must be reset at the end of each MPM calculation step and reinitialised at the beginning of the following step. Spurious oscillation may occur as particles cross the boundaries of the mesh in MPM, although this effect can be minimized by using generalized interpolation methods (GIMP). In MPM as in FEM, the size and orientation of the mesh can impact the results of a calculation: for example, in MPM, strain localisation is known to be particularly sensitive to mesh refinement.
+The first commercial package based on a meshless method is MPMsim. This program allows users to download a trial version for free and offers varying levels of licenses.

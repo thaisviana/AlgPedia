@@ -1,0 +1,8 @@
+{
+    "about": "TOLMIN [1][2] is a numerical optimization algorithm by Michael J. D. Powell. It is also the name of Powell's Fortran 77 implementation of the algorithm.", 
+    "name": "Tolmin (Optimization Software)", 
+    "classification": "Optimization Algorithms And Methods", 
+    "full_text": "TOLMIN [1][2] is a numerical optimization algorithm by Michael J. D. Powell. It is also the name of Powell's Fortran 77 implementation of the algorithm.\nTOLMIN seeks the minimum of a differentiable nonlinear function subject to linear constraints (equality and/or inequality) and simple bounds on variables. Each search direction is calculated so that it does not intersect the boundary of any inequality constraint that is satisfied and that has a \"small\" residual at the beginning of the line search. The meaning of \"small\" depends on a parameter called TOL which is automatically adjusted, and which gives the name of the software.\nFeatures of the software include: quadratic approximations of the objective function whose second derivative matrices are updated by means of the BFGS formula, active sets technique, primal-dual quadratic programming procedure for calculation of the search direction.\nThe TOLMIN software is distributed under The GNU Lesser General Public License (LGPL).[2]", 
+    "dbpedia_url": "http://dbpedia.org/resource/TOLMIN_(optimization_software)", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/TOLMIN_(optimization_software)\n"
+}

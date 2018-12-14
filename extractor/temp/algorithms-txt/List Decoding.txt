@@ -1,0 +1,1726 @@
+ABOUT
+In computer science, particularly in coding theory, list decoding is an alternative to unique decoding of error-correcting codes for large error rates. The notion was proposed by Elias in the 1950s. The main idea behind list decoding is that the decoding algorithm instead of outputting a single possible message outputs a list of possibilities one of which is correct. This allows for handling a greater number of errors than that allowed by unique decoding.
+FULL TEXT
+In computer science, particularly in coding theory, list decoding is an alternative to unique decoding of error-correcting codes for large error rates. The notion was proposed by Elias in the 1950s. The main idea behind list decoding is that the decoding algorithm instead of outputting a single possible message outputs a list of possibilities one of which is correct. This allows for handling a greater number of errors than that allowed by unique decoding.
+The unique decoding model in coding theory, which is constrained to output a single valid codeword from the received word could not tolerate greater fraction of errors. This resulted in a gap between the error-correction performance for stochastic noise models (proposed by Shannon) and the adversarial noise model (considered by Richard Hamming). Since the mid 90s, significant algorithmic progress by the coding theory community has bridged this gap. Much of this progress is based on a relaxed error-correction model called list decoding, wherein the decoder outputs a list of codewords for worst-case pathological error patterns where the actual transmitted codeword is included in the output list. In case of typical error patterns though, the decoder outputs a unique single codeword, given a received word, which is almost always the case (However, this is not known to be true for all codes). The improvement here is significant in that the error-correction performance doubles. This is because now the decoder is not confined by the half-the-minimum distance barrier. This model is very appealing because having a list of codewords is certainly better than just giving up. The notion of list-decoding has many interesting applications in complexity theory.
+The way the channel noise is modeled plays a crucial role in that it governs the rate at which reliable communication is possible. There are two main schools of thought in modeling the channel behavior:
+The highlight of list-decoding is that even under adversarial noise conditions, it is possible to achieve the information-theoretic optimal trade-off between rate and fraction of errors that can be corrected. Hence, in a sense this is like improving the error-correction performance to that possible in case of a weaker, stochastic noise model.
+
+
+Let 
+
+
+
+
+
+C
+
+
+
+
+{\displaystyle {\mathcal {C}}}
+
+ be a 
+
+
+
+(
+n
+,
+k
+,
+d
+
+)
+
+q
+
+
+
+
+{\displaystyle (n,k,d)_{q}}
+
+ error-correcting code; in other words, 
+
+
+
+
+
+C
+
+
+
+
+{\displaystyle {\mathcal {C}}}
+
+ is a code of length 
+
+
+
+n
+
+
+{\displaystyle n}
+
+, dimension 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ and minimum distance 
+
+
+
+d
+
+
+{\displaystyle d}
+
+ over an alphabet 
+
+
+
+Σ
+
+
+{\displaystyle \Sigma }
+
+ of size 
+
+
+
+q
+
+
+{\displaystyle q}
+
+. The list-decoding problem can now be formulated as follows:
+Input: Received word 
+
+
+
+x
+∈
+
+Σ
+
+n
+
+
+
+
+{\displaystyle x\in \Sigma ^{n}}
+
+, error bound 
+
+
+
+e
+
+
+{\displaystyle e}
+
+
+Output: A list of all codewords 
+
+
+
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+,
+…
+,
+
+x
+
+m
+
+
+∈
+
+
+C
+
+
+
+
+{\displaystyle x_{1},x_{2},\ldots ,x_{m}\in {\mathcal {C}}}
+
+ whose hamming distance from 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ is at most 
+
+
+
+e
+
+
+{\displaystyle e}
+
+.
+Given a received word 
+
+
+
+y
+
+
+{\displaystyle y}
+
+, which is a noisy version of some transmitted codeword 
+
+
+
+c
+
+
+{\displaystyle c}
+
+, the decoder tries to output the transmitted codeword by placing its bet on a codeword that is “nearest” to the received word. The Hamming distance between two codewords is used as a metric in finding the nearest codeword, given the received word by the decoder. If 
+
+
+
+d
+
+
+{\displaystyle d}
+
+ is the minimum Hamming distance of a code 
+
+
+
+
+
+C
+
+
+
+
+{\displaystyle {\mathcal {C}}}
+
+, then there exists two codewords 
+
+
+
+
+c
+
+1
+
+
+
+
+{\displaystyle c_{1}}
+
+ and 
+
+
+
+
+c
+
+2
+
+
+
+
+{\displaystyle c_{2}}
+
+ that differ in exactly 
+
+
+
+d
+
+
+{\displaystyle d}
+
+ positions. Now, in the case where the received word 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ is equidistant from the codewords 
+
+
+
+
+c
+
+1
+
+
+
+
+{\displaystyle c_{1}}
+
+ and 
+
+
+
+
+c
+
+2
+
+
+
+
+{\displaystyle c_{2}}
+
+, unambiguous decoding becomes impossible as the decoder cannot decide which one of 
+
+
+
+
+c
+
+1
+
+
+
+
+{\displaystyle c_{1}}
+
+ and 
+
+
+
+
+c
+
+2
+
+
+
+
+{\displaystyle c_{2}}
+
+ to output as the original transmitted codeword. As a result, the half-the minimum distance acts as a combinatorial barrier beyond which unambiguous error-correction is impossible, if we only insist on unique decoding. However, received words such as 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ considered above occur only in the worst-case and if one looks at the way Hamming balls are packed in high-dimensional space, even for error patterns 
+
+
+
+e
+
+
+{\displaystyle e}
+
+ beyond half-the minimum distance, there is only a single codeword 
+
+
+
+c
+
+
+{\displaystyle c}
+
+ within Hamming distance 
+
+
+
+e
+
+
+{\displaystyle e}
+
+ from the received word. This claim has been shown to hold with high probability for a random code picked from a natural ensemble and more so for the case of Reed–Solomon codes which is well studied and quite ubiquitous in the real world applications. In fact, Shannon’s proof of the capacity theorem for q-ary symmetric channels can be viewed in light of the above claim for random codes.
+Under the mandate of list-decoding, for worst-case errors, the decoder is allowed to output a small list of codewords. With some context specific or side information, it may be possible to prune the list and recover the original transmitted codeword. Hence, in general, this seems to be a stronger error-recovery model than unique decoding.
+For a polynomial-time list-decoding algorithm to exist, we need the combinatorial guarantee that any Hamming ball of radius 
+
+
+
+p
+n
+
+
+{\displaystyle pn}
+
+ around a received word 
+
+
+
+r
+
+
+{\displaystyle r}
+
+ (where 
+
+
+
+p
+
+
+{\displaystyle p}
+
+ is the fraction of errors in terms of the block length 
+
+
+
+n
+
+
+{\displaystyle n}
+
+) has a small number of codewords. This is because the list size itself is clearly a lower bound on the running time of the algorithm. Hence, we require the list size to be a polynomial in the block length 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ of the code. A combinatorial consequence of this requirement is that it imposes an upper bound on the rate of a code. List decoding promises to meet this upper bound. It has been shown non-constructively that codes of rate 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ exist that can be list decoded up to a fraction of errors approaching 
+
+
+
+1
+−
+R
+
+
+{\displaystyle 1-R}
+
+. The quantity 
+
+
+
+1
+−
+R
+
+
+{\displaystyle 1-R}
+
+ is referred to in the literature as the list-decoding capacity. This is a substantial gain compared to the unique decoding model as we now have the potential to correct twice as many errors. Naturally, we need to have at least a fraction 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ of the transmitted symbols to be correct in order to recover the message. This is an information-theoretic lower bound on the number of correct symbols required to perform decoding and with list decoding, we can potentially achieve this information-theoretic limit. However, to realize this potential, we need explicit codes (codes that can be constructed in polynomial time) and efficient algorithms to perform encoding and decoding.
+For any error fraction 
+
+
+
+0
+⩽
+p
+⩽
+1
+
+
+{\displaystyle 0\leqslant p\leqslant 1}
+
+ and an integer 
+
+
+
+L
+⩾
+1
+
+
+{\displaystyle L\geqslant 1}
+
+, a code 
+
+
+
+
+
+C
+
+
+⊆
+
+Σ
+
+n
+
+
+
+
+{\displaystyle {\mathcal {C}}\subseteq \Sigma ^{n}}
+
+ is said to be list decodable up to a fraction 
+
+
+
+p
+
+
+{\displaystyle p}
+
+ of errors with list size at most 
+
+
+
+L
+
+
+{\displaystyle L}
+
+ or 
+
+
+
+(
+p
+,
+L
+)
+
+
+{\displaystyle (p,L)}
+
+-list-decodable if for every 
+
+
+
+y
+∈
+
+Σ
+
+n
+
+
+
+
+{\displaystyle y\in \Sigma ^{n}}
+
+, the number of codewords 
+
+
+
+c
+∈
+C
+
+
+{\displaystyle c\in C}
+
+ within Hamming distance 
+
+
+
+p
+n
+
+
+{\displaystyle pn}
+
+ from 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ is at most 
+
+
+
+L
+.
+
+
+{\displaystyle L.}
+
+
+The relation between list decodability of a code and other fundamental parameters such as minimum distance and rate have been fairly well studied. It has been shown that every code can be list decoded using small lists beyond half the minimum distance up to a bound called the Johnson radius. This is quite significant because it proves the existence of 
+
+
+
+(
+p
+,
+L
+)
+
+
+{\displaystyle (p,L)}
+
+-list-decodable codes of good rate with a list-decoding radius much larger than 
+
+
+
+
+
+
+d
+2
+
+
+
+.
+
+
+{\displaystyle {\tfrac {d}{2}}.}
+
+ In other words, the Johnson bound rules out the possibility of having a large number of codewords in a Hamming ball of radius slightly greater than 
+
+
+
+
+
+
+d
+2
+
+
+
+
+
+{\displaystyle {\tfrac {d}{2}}}
+
+ which means that it is possible to correct far more errors with list decoding.
+What this means is that for rates approaching the channel capacity, there exists list decodable codes with polynomial sized lists enabling efficient decoding algorithms whereas for rates exceeding the channel capacity, the list size becomes exponential which rules out the existence of efficient decoding algorithms.
+The proof for list-decoding capacity is a significant one in that it exactly matches the capacity of a 
+
+
+
+q
+
+
+{\displaystyle q}
+
+-ary symmetric channel 
+
+
+
+q
+S
+
+C
+
+p
+
+
+
+
+{\displaystyle qSC_{p}}
+
+. In fact, the term "list-decoding capacity" should actually be read as the capacity of an adversarial channel under list decoding. Also, the proof for list-decoding capacity is an important result that pin points the optimal trade-off between rate of a code and the fraction of errors that can be corrected under list decoding.
+The idea behind the proof is similar to that of Shannon's proof for capacity of the binary symmetric channel 
+
+
+
+B
+S
+
+C
+
+p
+
+
+
+
+{\displaystyle BSC_{p}}
+
+ where a random code is picked and showing that it is 
+
+
+
+(
+p
+,
+L
+)
+
+
+{\displaystyle (p,L)}
+
+-list-decodable with high probability as long as the rate 
+
+
+
+R
+⩽
+1
+−
+
+H
+
+q
+
+
+(
+p
+)
+−
+
+
+
+1
+L
+
+
+
+.
+
+
+{\displaystyle R\leqslant 1-H_{q}(p)-{\tfrac {1}{L}}.}
+
+ For rates exceeding the above quantity, it can be shown that the list size 
+
+
+
+L
+
+
+{\displaystyle L}
+
+ becomes super-polynomially large.
+A "bad" event is defined as one in which, given a received word 
+
+
+
+y
+∈
+[
+q
+
+]
+
+n
+
+
+
+
+{\displaystyle y\in [q]^{n}}
+
+ and 
+
+
+
+L
++
+1
+
+
+{\displaystyle L+1}
+
+ messages 
+
+
+
+
+m
+
+0
+
+
+,
+…
+,
+
+m
+
+L
+
+
+∈
+[
+q
+
+]
+
+k
+
+
+,
+
+
+{\displaystyle m_{0},\ldots ,m_{L}\in [q]^{k},}
+
+ it so happens that 
+
+
+
+
+
+C
+
+
+(
+
+m
+
+i
+
+
+)
+∈
+B
+(
+y
+,
+p
+n
+)
+
+
+{\displaystyle {\mathcal {C}}(m_{i})\in B(y,pn)}
+
+, for every 
+
+
+
+0
+⩽
+i
+⩽
+L
+
+
+{\displaystyle 0\leqslant i\leqslant L}
+
+ where 
+
+
+
+p
+
+
+{\displaystyle p}
+
+ is the fraction of errors that we wish to correct and 
+
+
+
+B
+(
+y
+,
+p
+n
+)
+
+
+{\displaystyle B(y,pn)}
+
+ is the Hamming ball of radius 
+
+
+
+p
+n
+
+
+{\displaystyle pn}
+
+ with the received word 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ as the center.
+Now, the probability that a codeword 
+
+
+
+
+
+C
+
+
+(
+
+m
+
+i
+
+
+)
+
+
+{\displaystyle {\mathcal {C}}(m_{i})}
+
+ associated with a fixed message 
+
+
+
+
+m
+
+i
+
+
+∈
+[
+q
+
+]
+
+k
+
+
+
+
+{\displaystyle m_{i}\in [q]^{k}}
+
+ lies in a Hamming ball 
+
+
+
+B
+(
+y
+,
+p
+n
+)
+
+
+{\displaystyle B(y,pn)}
+
+ is given by
+where the quantity 
+
+
+
+V
+o
+
+l
+
+q
+
+
+(
+y
+,
+p
+n
+)
+
+
+{\displaystyle Vol_{q}(y,pn)}
+
+ is the volume of a Hamming ball of radius 
+
+
+
+p
+n
+
+
+{\displaystyle pn}
+
+ with the received word 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ as the center. The inequality in the above relation follows from the upper bound on the volume of a Hamming ball. The quantity 
+
+
+
+
+q
+
+
+H
+
+q
+
+
+(
+p
+)
+
+
+
+
+{\displaystyle q^{H_{q}(p)}}
+
+ gives a very good estimate on the volume of a Hamming ball of radius 
+
+
+
+p
+
+
+{\displaystyle p}
+
+ centered on any word in 
+
+
+
+[
+q
+
+]
+
+n
+
+
+.
+
+
+{\displaystyle [q]^{n}.}
+
+ Put another way, the volume of a Hamming ball is translation invariant. To continue with the proof sketch, we conjure the union bound in probability theory which tells us that the probability of a bad event happening for a given 
+
+
+
+(
+y
+,
+
+m
+
+0
+
+
+,
+…
+,
+
+m
+
+L
+
+
+)
+
+
+{\displaystyle (y,m_{0},\dots ,m_{L})}
+
+ is upper bounded by the quantity 
+
+
+
+
+q
+
+−
+n
+(
+L
++
+1
+)
+(
+1
+−
+
+H
+
+q
+
+
+(
+p
+)
+)
+
+
+
+
+{\displaystyle q^{-n(L+1)(1-H_{q}(p))}}
+
+.
+With the above in mind, the probability of "any" bad event happening can be shown to be less than 
+
+
+
+1
+
+
+{\displaystyle 1}
+
+. To show this, we work our way over all possible received words 
+
+
+
+y
+∈
+[
+q
+
+]
+
+n
+
+
+
+
+{\displaystyle y\in [q]^{n}}
+
+ and every possible subset of 
+
+
+
+L
+
+
+{\displaystyle L}
+
+ messages in 
+
+
+
+[
+q
+
+]
+
+k
+
+
+.
+
+
+{\displaystyle [q]^{k}.}
+
+
+Now turning to the proof of part (ii), we need to show that there are super-polynomially many codewords around every 
+
+
+
+y
+∈
+[
+q
+
+]
+
+n
+
+
+
+
+{\displaystyle y\in [q]^{n}}
+
+ when the rate exceeds the list-decoding capacity. We need to show that 
+
+
+
+
+|
+
+
+
+C
+
+
+∩
+B
+(
+y
+,
+p
+n
+)
+
+|
+
+
+
+{\displaystyle |{\mathcal {C}}\cap B(y,pn)|}
+
+ is super-polynomially large if the rate 
+
+
+
+R
+⩾
+1
+−
+
+H
+
+q
+
+
+(
+p
+)
++
+ϵ
+
+
+{\displaystyle R\geqslant 1-H_{q}(p)+\epsilon }
+
+. Fix a codeword 
+
+
+
+c
+∈
+
+
+C
+
+
+
+
+{\displaystyle c\in {\mathcal {C}}}
+
+. Now, for every 
+
+
+
+y
+∈
+[
+q
+
+]
+
+n
+
+
+
+
+{\displaystyle y\in [q]^{n}}
+
+ picked at random, we have
+since Hamming balls are translation invariant. From the definition of the volume of a Hamming ball and the fact that 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ is chosen uniformly at random from 
+
+
+
+[
+q
+
+]
+
+n
+
+
+
+
+{\displaystyle [q]^{n}}
+
+ we also have
+Let us now define an indicator variable 
+
+
+
+
+X
+
+c
+
+
+
+
+{\displaystyle X_{c}}
+
+ such that
+Taking the expectation of the volume of a Hamming ball we have
+Therefore, by the probabilistic method, we have shown that if the rate exceeds the list-decoding capacity, then the list size becomes super-polynomially large. This completes the proof sketch for the list-decoding capacity.
+In the period from 1995 to 2007, the coding theory community developed progressively more efficient list-decoding algorithms. Algorithms for Reed–Solomon codes that can decode up to the Johnson radius which is 
+
+
+
+1
+−
+
+
+1
+−
+δ
+
+
+
+
+{\displaystyle 1-{\sqrt {1-\delta }}}
+
+ exist where 
+
+
+
+δ
+
+
+{\displaystyle \delta }
+
+ is the normalised distance or relative distance. However, for Reed-Solomon codes, 
+
+
+
+δ
+=
+1
+−
+R
+
+
+{\displaystyle \delta =1-R}
+
+ which means a fraction 
+
+
+
+1
+−
+
+
+R
+
+
+
+
+{\displaystyle 1-{\sqrt {R}}}
+
+ of errors can be corrected. Some of the most prominent list-decoding algorithms are the following:
+Because of their ubiquity and the nice algebraic properties they possess, list-decoding algorithms for Reed–Solomon codes were a main focus of researchers. The list-decoding problem for Reed–Solomon codes can be formulated as follows:
+Input: For an 
+
+
+
+[
+n
+,
+k
++
+1
+
+]
+
+q
+
+
+
+
+{\displaystyle [n,k+1]_{q}}
+
+ Reed-Solomon code, we are given the pair 
+
+
+
+(
+
+α
+
+i
+
+
+,
+
+y
+
+i
+
+
+)
+
+
+{\displaystyle (\alpha _{i},y_{i})}
+
+ for 
+
+
+
+1
+≤
+i
+≤
+n
+
+
+{\displaystyle 1\leq i\leq n}
+
+, where 
+
+
+
+
+y
+
+i
+
+
+
+
+{\displaystyle y_{i}}
+
+ is the 
+
+
+
+i
+
+
+{\displaystyle i}
+
+th bit of the received word and the 
+
+
+
+
+α
+
+i
+
+
+
+
+{\displaystyle \alpha _{i}}
+
+'s are distinct points in the finite field 
+
+
+
+
+F
+
+q
+
+
+
+
+{\displaystyle F_{q}}
+
+ and an error parameter 
+
+
+
+e
+=
+n
+−
+t
+
+
+{\displaystyle e=n-t}
+
+.
+Output: The goal is to find all the polynomials 
+
+
+
+P
+(
+X
+)
+∈
+
+F
+
+q
+
+
+[
+X
+]
+
+
+{\displaystyle P(X)\in F_{q}[X]}
+
+ of degree at most 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ which is the message length such that 
+
+
+
+p
+(
+
+α
+
+i
+
+
+)
+=
+
+y
+
+i
+
+
+
+
+{\displaystyle p(\alpha _{i})=y_{i}}
+
+ for at least 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ values of 
+
+
+
+i
+
+
+{\displaystyle i}
+
+. Here, we would like to have 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ as small as possible so that greater number of errors can be tolerated.
+With the above formulation, the general structure of list-decoding algorithms for Reed-Solomon codes is as follows:
+Step 1: (Interpolation) Find a non-zero bivariate polynomial 
+
+
+
+Q
+(
+X
+,
+Y
+)
+
+
+{\displaystyle Q(X,Y)}
+
+ such that 
+
+
+
+Q
+(
+
+α
+
+i
+
+
+,
+
+y
+
+i
+
+
+)
+=
+0
+
+
+{\displaystyle Q(\alpha _{i},y_{i})=0}
+
+ for 
+
+
+
+1
+≤
+i
+≤
+n
+
+
+{\displaystyle 1\leq i\leq n}
+
+.
+Step 2: (Root finding/Factorization) Output all degree 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ polynomials 
+
+
+
+p
+(
+X
+)
+
+
+{\displaystyle p(X)}
+
+ such that 
+
+
+
+Y
+−
+p
+(
+X
+)
+
+
+{\displaystyle Y-p(X)}
+
+ is a factor of 
+
+
+
+Q
+(
+X
+,
+Y
+)
+
+
+{\displaystyle Q(X,Y)}
+
+ i.e. 
+
+
+
+Q
+(
+X
+,
+p
+(
+X
+)
+)
+=
+0
+
+
+{\displaystyle Q(X,p(X))=0}
+
+. For each of these polynomials, check if 
+
+
+
+p
+(
+
+α
+
+i
+
+
+)
+=
+
+y
+
+i
+
+
+
+
+{\displaystyle p(\alpha _{i})=y_{i}}
+
+ for at least 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ values of 
+
+
+
+i
+∈
+[
+n
+]
+
+
+{\displaystyle i\in [n]}
+
+. If so, include such a polynomial 
+
+
+
+p
+(
+X
+)
+
+
+{\displaystyle p(X)}
+
+ in the output list.
+Given the fact that bivariate polynomials can be factored efficiently, the above algorithm runs in polynomial time.
+Algorithms developed for list decoding of several interesting code families have found interesting applications in computational complexity and the field of cryptography. Following is a sample list of applications outside of coding theory:

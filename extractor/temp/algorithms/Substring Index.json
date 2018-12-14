@@ -1,0 +1,8 @@
+{
+    "about": "In computer science, a substring index is a data structure which gives substring search in a text or text collection in sublinear time. If you have a document \n\n\n\nS\n\n\n{\\displaystyle S}\n\n of length \n\n\n\nn\n\n\n{\\displaystyle n}\n\n, or a set of documents \n\n\n\nD\n=\n{\n\nS\n\n1\n\n\n,\n\nS\n\n2\n\n\n,\n\u2026\n,\n\nS\n\nd\n\n\n}\n\n\n{\\displaystyle D=\\{S^{1},S^{2},\\dots ,S^{d}\\}}\n\n of total length \n\n\n\nn\n\n\n{\\displaystyle n}\n\n, you can locate all occurrences of a pattern \n\n\n\nP\n\n\n{\\displaystyle P}\n\n in \n\n\n\no\n(\nn\n)\n\n\n{\\displaystyle o(n)}\n\n time. (See Big O notation.)", 
+    "name": "Substring Index", 
+    "classification": "Algorithms On Strings", 
+    "full_text": "In computer science, a substring index is a data structure which gives substring search in a text or text collection in sublinear time. If you have a document \n\n\n\nS\n\n\n{\\displaystyle S}\n\n of length \n\n\n\nn\n\n\n{\\displaystyle n}\n\n, or a set of documents \n\n\n\nD\n=\n{\n\nS\n\n1\n\n\n,\n\nS\n\n2\n\n\n,\n\u2026\n,\n\nS\n\nd\n\n\n}\n\n\n{\\displaystyle D=\\{S^{1},S^{2},\\dots ,S^{d}\\}}\n\n of total length \n\n\n\nn\n\n\n{\\displaystyle n}\n\n, you can locate all occurrences of a pattern \n\n\n\nP\n\n\n{\\displaystyle P}\n\n in \n\n\n\no\n(\nn\n)\n\n\n{\\displaystyle o(n)}\n\n time. (See Big O notation.)\nThe phrase full-text index is also often used for an index of all substrings of a text. But is ambiguous, as it is also used for regular word indexes such as inverted files and document retrieval. See full text search.\nSubstring indexes include:", 
+    "dbpedia_url": "http://dbpedia.org/resource/Substring_index", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Substring_index\n"
+}

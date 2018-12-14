@@ -1,6 +1,5 @@
 import re
-import urllib
-import io, gzip
+import requests
 from bs4 import BeautifulSoup
 
 
@@ -27,15 +26,15 @@ class WikiPediaAbstractExtractor:
 
     def search_page(self, url):
         self.url = self.remove_break_line(url)
-        request = urllib.Request(self.url, None, self.headers)
         try:
-            response = urllib.urlopen(request)
-        except:
+            response = requests.get(self.url, None, self.headers)
+            data = response.json()
+
+            self.pool = BeautifulSoup(data)
+            print("Fetched : " + str(self.url))
+        except Exception:
             raise ExtractionError("Error retreiving: " + str(self.url))
 
-        data = self.decode(response)
-
-        self.pool = BeautifulSoup(data)
 
     def get_alg_name(self):
         page_name = re.split('/', self.url)[-1]
@@ -118,11 +117,8 @@ class WikiPediaAbstractExtractor:
     def decode(self, page):
         encoding = page.info().get("Content-Encoding")
         if encoding in ('gzip', 'x-gzip', 'deflate'):
-            content = page.read()
-            if encoding == 'deflate':
-                data = io.StringIO(zlib.decompress(content))
-            else:
-                data = gzip.GzipFile('', 'rb', 9, io.StringIO(content))
+            # content = page.read()
+            data = page
         page = data.read()
 
         return page

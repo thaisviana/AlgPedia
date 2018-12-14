@@ -1,0 +1,204 @@
+ABOUT
+In mathematics, series acceleration is one of a collection of sequence transformations for improving the rate of convergence of a series. Techniques for series acceleration are often applied in numerical analysis, where they are used to improve the speed of numerical integration. Series acceleration techniques may also be used, for example, to obtain a variety of identities on special functions. Thus, the Euler transform applied to the hypergeometric series gives some of the classic, well-known hypergeometric series identities.
+FULL TEXT
+In mathematics, series acceleration is one of a collection of sequence transformations for improving the rate of convergence of a series. Techniques for series acceleration are often applied in numerical analysis, where they are used to improve the speed of numerical integration. Series acceleration techniques may also be used, for example, to obtain a variety of identities on special functions. Thus, the Euler transform applied to the hypergeometric series gives some of the classic, well-known hypergeometric series identities.
+
+
+Given a sequence
+having a limit
+an accelerated series is a second sequence
+which converges faster to 
+
+
+
+ℓ
+
+
+{\displaystyle \ell }
+
+ than the original sequence, in the sense that
+If the original sequence is divergent, the sequence transformation acts as an extrapolation method to the antilimit 
+
+
+
+ℓ
+
+
+{\displaystyle \ell }
+
+.
+The mappings from the original to the transformed series may be linear (as defined in the article sequence transformations), or non-linear. In general, the non-linear sequence transformations tend to be more powerful.
+Two classical techniques for series acceleration are Euler's transformation of series[1] and Kummer's transformation of series.[2] A variety of much more rapidly convergent and special-case tools have been developed in the 20th century, including Richardson extrapolation, introduced by Lewis Fry Richardson in the early 20th century but also known and used by Katahiro Takebe in 1722, the Aitken delta-squared process, introduced by Alexander Aitken in 1926 but also known and used by Takakazu Seki in the 18th century, the epsilon algorithm given by Peter Wynn in 1956, the Levin u-transform, and the Wilf-Zeilberger-Ekhad method or WZ method.
+For alternating series, several powerful techniques, offering convergence rates from 
+
+
+
+
+5.828
+
+−
+n
+
+
+
+
+{\displaystyle 5.828^{-n}}
+
+ all the way to 
+
+
+
+
+17.93
+
+−
+n
+
+
+
+
+{\displaystyle 17.93^{-n}}
+
+ for a summation of 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ terms, are described by Cohen et al..[3]
+A basic example of a linear sequence transformation, offering improved convergence, is Euler's transform. It is intended to be applied to an alternating series; it is given by
+where 
+
+
+
+Δ
+
+
+{\displaystyle \Delta }
+
+ is the forward difference operator:
+If the original series, on the left hand side, is only slowly converging, the forward differences will tend to become small quite rapidly; the additional power of two further improves the rate at which the right hand side converges.
+A particularly efficient numerical implementation of the Euler transform is the van Wijngaarden transformation.[4]
+A series
+can be written as f(1), where the function f(z) is defined as
+The function f(z) can have singularities in the complex plane (branch point singularities, poles or essential singularities), which limit the radius of convergence of the series. If the point z = 1 is close to or on the boundary of the disk of convergence, the series for S will converge very slowly. One can then improve the convergence of the series by means of a conformal mapping that moves the singularities such that the point that is mapped to z = 1, ends up deeper in the new disk of convergence.
+The conformal transform 
+
+
+
+z
+=
+Φ
+(
+w
+)
+
+
+{\displaystyle z=\Phi (w)}
+
+ needs to be chosen such that 
+
+
+
+Φ
+(
+0
+)
+=
+0
+
+
+{\displaystyle \Phi (0)=0}
+
+, and one usually chooses a function that has a finite derivative at w = 0. One can assume that 
+
+
+
+Φ
+(
+1
+)
+=
+1
+
+
+{\displaystyle \Phi (1)=1}
+
+ without loss of generality, as one can always rescale w to redefine 
+
+
+
+Φ
+
+
+{\displaystyle \Phi }
+
+. We then consider the function
+Since 
+
+
+
+Φ
+(
+1
+)
+=
+1
+
+
+{\displaystyle \Phi (1)=1}
+
+, we have f(1) = g(1). We can obtain the series expansion of g(w) by putting 
+
+
+
+z
+=
+Φ
+(
+w
+)
+
+
+{\displaystyle z=\Phi (w)}
+
+ in the series expansion of f(z) because 
+
+
+
+Φ
+(
+0
+)
+=
+0
+
+
+{\displaystyle \Phi (0)=0}
+
+; the first n terms of the series expansion for f(z) will yield the first n terms of the series expansion for g(w) if 
+
+
+
+
+Φ
+′
+
+(
+0
+)
+≠
+0
+
+
+{\displaystyle \Phi '(0)\neq 0}
+
+. Putting w = 1 in that series expansion will thus yield a series such that if it converges, it will converge to the same value as the original series.
+Examples of such nonlinear sequence transformations are Padé approximants, the Shanks transformation, and Levin-type sequence transformations.
+Especially nonlinear sequence transformations often provide powerful numerical methods for the summation of divergent series or asymptotic series that arise for instance in perturbation theory, and may be used as highly effective extrapolation methods.
+A simple nonlinear sequence transformation is the Aitken extrapolation or delta-squared method,
+defined by
+This transformation is commonly used to improve the rate of convergence of a slowly converging sequence; heuristically, it eliminates the largest part of the absolute error.

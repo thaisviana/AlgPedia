@@ -1,0 +1,14 @@
+ABOUT
+In applied mathematics, complementary sequences (CS) are pairs of sequences with the useful property that their out-of-phase aperiodic autocorrelation coefficients sum to zero. Binary complementary sequences were first introduced by Marcel J. E. Golay in 1949. In 1961–1962 Golay gave several methods for constructing sequences of length 2N and gave examples of complementary sequences of lengths 10 and 26. In 1974 R. J. Turyn gave a method for constructing sequences of length mn from sequences of lengths m and n which allows the construction of sequences of any length of the form 2N10K26M.
+FULL TEXT
+In applied mathematics, complementary sequences (CS) are pairs of sequences with the useful property that their out-of-phase aperiodic autocorrelation coefficients sum to zero. Binary complementary sequences were first introduced by Marcel J. E. Golay in 1949. In 1961–1962 Golay gave several methods for constructing sequences of length 2N and gave examples of complementary sequences of lengths 10 and 26. In 1974 R. J. Turyn gave a method for constructing sequences of length mn from sequences of lengths m and n which allows the construction of sequences of any length of the form 2N10K26M.
+Later the theory of complementary sequences was generalized by other authors to polyphase complementary sequences, multilevel complementary sequences, and arbitrary complex complementary sequences. Complementary sets have also been considered; these can contain more than two sequences.
+
+
+Let (a0, a1, ..., aN − 1) and (b0, b1, ..., bN − 1) be a pair of bipolar sequences, meaning that a(k) and b(k) have values +1 or −1. Let the aperiodic autocorrelation function of the sequence x be defined by
+Then the pair of sequences a and b is complementary if:
+for k = 1, ..., N − 1.
+Or using Kronecker delta we can write:
+So we can say that the sum of autocorrelation functions of complementary sequences is a delta function, which is an ideal autocorrelation for many applications like radar pulse compression and spread spectrum telecommunications.
+A complementary pair a, b may be encoded as polynomials A(z) = a(0) + a(1)z + ... + a(N − 1)zN−1 and similarly for B(z). The complementarity property of the sequences is equivalent to the condition
+for all z on the unit circle, that is, |z| = 1. If so, A and B form a Golay pair of polynomials. Examples include the Shapiro polynomials, which give rise to complementary sequences of length a power of 2.

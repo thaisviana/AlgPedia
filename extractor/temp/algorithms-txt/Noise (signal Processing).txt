@@ -1,0 +1,12 @@
+ABOUT
+In signal processing, noise is a general term for unwanted (and, in general, unknown) modifications that a signal may suffer during capture, storage, transmission, processing, or conversion.[1]
+FULL TEXT
+In signal processing, noise is a general term for unwanted (and, in general, unknown) modifications that a signal may suffer during capture, storage, transmission, processing, or conversion.[1]
+Sometimes the word is also used to mean signals that are random (unpredictable) and carry no useful information; even if they are not interfering with other signals or may have been introduced intentionally, as in comfort noise.
+Noise reduction, the recovery of the original signal from the noise-corrupted one, is a very common goal in the design of signal processing systems, especially filters. The mathematical limits for noise removal are set by information theory, namely the Nyquist–Shannon sampling theorem.
+
+
+Signal processing noise can be classified by its statistical properties (sometimes called the "color" of the noise) and by how it modifies the intended signal:
+Noise may arise in signals of interest to various scientific and technical fields, often with specific features:
+A long list of noise measures have been defined to measure noise in signal processing: in absolute terms, relative to some standard noise level, or relative to the desired signal level. They include:
+Almost every technique and device for signal processing has some connection to noise. Some random examples are:

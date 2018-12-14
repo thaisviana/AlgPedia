@@ -1,0 +1,4 @@
+ABOUT
+In mathematics and computer science, symbolic-numeric computation is the use of software that combines symbolic and numeric methods to solve problems.
+FULL TEXT
+In mathematics and computer science, symbolic-numeric computation is the use of software that combines symbolic and numeric methods to solve problems.

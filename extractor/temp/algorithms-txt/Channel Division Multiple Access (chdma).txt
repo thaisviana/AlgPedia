@@ -1,0 +1,4 @@
+ABOUT
+Channel Division Multiple Access (ChDMA) is a simple multiple access scheme developed for low duty cycle UWB networks. The idea lies in the fact that different users have different channel impulse response (CSI) and the signal at the receiver can be rebuilt based on this information.
+FULL TEXT
+Channel Division Multiple Access (ChDMA) is a simple multiple access scheme developed for low duty cycle UWB networks. The idea lies in the fact that different users have different channel impulse response (CSI) and the signal at the receiver can be rebuilt based on this information.

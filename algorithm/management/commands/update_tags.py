@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from algorithm.models import algorithm, tag
+from algorithm.models import Algorithm, Tag
 from algorithm.controllers import *
 from django.core.management.base import BaseCommand
 from nltk.corpus import stopwords
@@ -14,8 +14,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         try:
             wnl = nltk.WordNetLemmatizer()
-            algorithms = algorithm.objects.all()
-            tags = tag.objects.all()
+            algorithms = Algorithm.objects.all()
+            tags = Tag.objects.all()
             f_bayes_var = 0.0
             vecTag = []
             vecBag = []

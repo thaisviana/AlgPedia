@@ -1,0 +1,524 @@
+ABOUT
+In mathematics, in the area of numerical analysis, Galerkin methods are a class of methods for converting a continuous operator problem (such as a differential equation) to a discrete problem. In principle, it is the equivalent of applying the method of variation of parameters to a function space, by converting the equation to a weak formulation. Typically one then applies some constraints on the function space to characterize the space with a finite set of basis functions.
+FULL TEXT
+In mathematics, in the area of numerical analysis, Galerkin methods are a class of methods for converting a continuous operator problem (such as a differential equation) to a discrete problem. In principle, it is the equivalent of applying the method of variation of parameters to a function space, by converting the equation to a weak formulation. Typically one then applies some constraints on the function space to characterize the space with a finite set of basis functions.
+The approach is usually credited to the Russian mathematician Boris Galerkin but the method was discovered by the Swiss mathematician Walther Ritz,[1] to whom Galerkin refers. Often when referring to a Galerkin method, one also gives the name along with typical approximation methods used, such as Bubnov–Galerkin method (after Ivan Bubnov), Petrov–Galerkin method (after Georgii I. Petrov[2][3]) or Ritz–Galerkin method[4] (after Walther Ritz).
+Examples of Galerkin methods are:
+
+
+Let us introduce Galerkin's method with an abstract problem posed as a weak formulation on a Hilbert space 
+
+
+
+V
+
+
+{\displaystyle V}
+
+, namely,
+Here, 
+
+
+
+a
+(
+⋅
+,
+⋅
+)
+
+
+{\displaystyle a(\cdot ,\cdot )}
+
+ is a bilinear form (the exact requirements on 
+
+
+
+a
+(
+⋅
+,
+⋅
+)
+
+
+{\displaystyle a(\cdot ,\cdot )}
+
+ will be specified later) and 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is a bounded linear functional on 
+
+
+
+V
+
+
+{\displaystyle V}
+
+.
+Choose a subspace 
+
+
+
+
+V
+
+n
+
+
+⊂
+V
+
+
+{\displaystyle V_{n}\subset V}
+
+ of dimension n and solve the projected problem:
+We call this the Galerkin equation. Notice that the equation has remained unchanged and only the spaces have changed. Reducing the problem to a finite-dimensional vector subspace allows us to numerically compute 
+
+
+
+
+u
+
+n
+
+
+
+
+{\displaystyle u_{n}}
+
+ as a finite linear combination of the basis vectors in 
+
+
+
+
+V
+
+n
+
+
+
+
+{\displaystyle V_{n}}
+
+.
+The key property of the Galerkin approach is that the error is orthogonal to the chosen subspaces. Since 
+
+
+
+
+V
+
+n
+
+
+⊂
+V
+
+
+{\displaystyle V_{n}\subset V}
+
+, we can use 
+
+
+
+
+v
+
+n
+
+
+
+
+{\displaystyle v_{n}}
+
+ as a test vector in the original equation. Subtracting the two, we get the Galerkin orthogonality relation for the error, 
+
+
+
+
+ϵ
+
+n
+
+
+=
+u
+−
+
+u
+
+n
+
+
+
+
+{\displaystyle \epsilon _{n}=u-u_{n}}
+
+ which is the error between the solution of the original problem, 
+
+
+
+u
+
+
+{\displaystyle u}
+
+, and the solution of the Galerkin equation, 
+
+
+
+
+u
+
+n
+
+
+
+
+{\displaystyle u_{n}}
+
+
+Since the aim of Galerkin's method is the production of a linear system of equations, we build its matrix form, which can be used to compute the solution by a computer program.
+Let 
+
+
+
+
+e
+
+1
+
+
+,
+
+e
+
+2
+
+
+,
+…
+,
+
+e
+
+n
+
+
+
+
+{\displaystyle e_{1},e_{2},\ldots ,e_{n}}
+
+ be a basis for 
+
+
+
+
+V
+
+n
+
+
+
+
+{\displaystyle V_{n}}
+
+. Then, it is sufficient to use these in turn for testing the Galerkin equation, i.e.: find 
+
+
+
+
+u
+
+n
+
+
+∈
+
+V
+
+n
+
+
+
+
+{\displaystyle u_{n}\in V_{n}}
+
+ such that
+We expand 
+
+
+
+
+u
+
+n
+
+
+
+
+{\displaystyle u_{n}}
+
+ with respect to this basis, 
+
+
+
+
+u
+
+n
+
+
+=
+
+∑
+
+j
+=
+1
+
+
+n
+
+
+
+u
+
+j
+
+
+
+e
+
+j
+
+
+
+
+{\displaystyle u_{n}=\sum _{j=1}^{n}u_{j}e_{j}}
+
+ and insert it into the equation above, to obtain
+This previous equation is actually a linear system of equations 
+
+
+
+A
+u
+=
+f
+
+
+{\displaystyle Au=f}
+
+, where
+Due to the definition of the matrix entries, the matrix of the Galerkin equation is symmetric if and only if the bilinear form 
+
+
+
+a
+(
+⋅
+,
+⋅
+)
+
+
+{\displaystyle a(\cdot ,\cdot )}
+
+ is symmetric.
+Here, we will restrict ourselves to symmetric bilinear forms, that is
+While this is not really a restriction of Galerkin methods, the application of the standard theory becomes much simpler. Furthermore, a Petrov–Galerkin method may be required in the nonsymmetric case.
+The analysis of these methods proceeds in two steps. First, we will show that the Galerkin equation is a well-posed problem in the sense of Hadamard and therefore admits a unique solution. In the second step, we study the quality of approximation of the Galerkin solution 
+
+
+
+
+u
+
+n
+
+
+
+
+{\displaystyle u_{n}}
+
+.
+The analysis will mostly rest on two properties of the bilinear form, namely
+By the Lax-Milgram theorem (see weak formulation), these two conditions imply well-posedness of the original problem in weak formulation. All norms in the following sections will be norms for which the above inequalities hold (these norms are often called an energy norm).
+Since 
+
+
+
+
+V
+
+n
+
+
+⊂
+V
+
+
+{\displaystyle V_{n}\subset V}
+
+, boundedness and ellipticity of the bilinear form apply to 
+
+
+
+
+V
+
+n
+
+
+
+
+{\displaystyle V_{n}}
+
+. Therefore, the well-posedness of the Galerkin problem is actually inherited from the well-posedness of the original problem.
+The error 
+
+
+
+u
+−
+
+u
+
+n
+
+
+
+
+{\displaystyle u-u_{n}}
+
+ between the original and the Galerkin solution admits the estimate
+This means, that up to the constant 
+
+
+
+C
+
+/
+
+c
+
+
+{\displaystyle C/c}
+
+, the Galerkin solution 
+
+
+
+
+u
+
+n
+
+
+
+
+{\displaystyle u_{n}}
+
+ is as close to the original solution 
+
+
+
+u
+
+
+{\displaystyle u}
+
+ as any other vector in 
+
+
+
+
+V
+
+n
+
+
+
+
+{\displaystyle V_{n}}
+
+. In particular, it will be sufficient to study approximation by spaces 
+
+
+
+
+V
+
+n
+
+
+
+
+{\displaystyle V_{n}}
+
+, completely forgetting about the equation being solved.
+Since the proof is very simple and the basic principle behind all Galerkin methods, we include it here: by ellipticity and boundedness of the bilinear form (inequalities) and Galerkin orthogonality (equals sign in the middle), we have for arbitrary 
+
+
+
+
+v
+
+n
+
+
+∈
+
+V
+
+n
+
+
+
+
+{\displaystyle v_{n}\in V_{n}}
+
+:
+Dividing by 
+
+
+
+c
+∥
+u
+−
+
+u
+
+n
+
+
+∥
+
+
+{\displaystyle c\|u-u_{n}\|}
+
+ and taking the infimum over all possible 
+
+
+
+
+v
+
+n
+
+
+
+
+{\displaystyle v_{n}}
+
+ yields the lemma.

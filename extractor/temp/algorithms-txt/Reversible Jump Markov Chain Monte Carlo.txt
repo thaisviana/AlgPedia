@@ -1,0 +1,386 @@
+ABOUT
+In computational statistics, reversible-jump Markov chain Monte Carlo is an extension to standard Markov chain Monte Carlo (MCMC) methodology that allows simulation of the posterior distribution on spaces of varying dimensions.[1] Thus, the simulation is possible even if the number of parameters in the model is not known.
+FULL TEXT
+In computational statistics, reversible-jump Markov chain Monte Carlo is an extension to standard Markov chain Monte Carlo (MCMC) methodology that allows simulation of the posterior distribution on spaces of varying dimensions.[1] Thus, the simulation is possible even if the number of parameters in the model is not known.
+Let
+be a model indicator and 
+
+
+
+M
+=
+
+⋃
+
+
+n
+
+m
+
+
+=
+1
+
+
+I
+
+
+
+
+R
+
+
+
+d
+
+m
+
+
+
+
+
+
+{\displaystyle M=\bigcup _{n_{m}=1}^{I}\mathbb {R} ^{d_{m}}}
+
+ the parameter space whose number of dimensions 
+
+
+
+
+d
+
+m
+
+
+
+
+{\displaystyle d_{m}}
+
+ depends on the model 
+
+
+
+
+n
+
+m
+
+
+
+
+{\displaystyle n_{m}}
+
+. The model indication need not be finite. The stationary distribution is the joint posterior distribution of 
+
+
+
+(
+M
+,
+
+N
+
+m
+
+
+)
+
+
+{\displaystyle (M,N_{m})}
+
+ that takes the values 
+
+
+
+(
+m
+,
+
+n
+
+m
+
+
+)
+
+
+{\displaystyle (m,n_{m})}
+
+.
+The proposal 
+
+
+
+
+m
+′
+
+
+
+{\displaystyle m'}
+
+ can be constructed with a mapping 
+
+
+
+
+g
+
+1
+m
+
+m
+′
+
+
+
+
+
+{\displaystyle g_{1mm'}}
+
+ of 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ and 
+
+
+
+u
+
+
+{\displaystyle u}
+
+, where 
+
+
+
+u
+
+
+{\displaystyle u}
+
+ is drawn from a random component 
+
+
+
+U
+
+
+{\displaystyle U}
+
+ with density 
+
+
+
+q
+
+
+{\displaystyle q}
+
+ on 
+
+
+
+
+
+R
+
+
+
+d
+
+m
+
+m
+′
+
+
+
+
+
+
+
+{\displaystyle \mathbb {R} ^{d_{mm'}}}
+
+. The move to state 
+
+
+
+(
+
+m
+′
+
+,
+
+n
+
+m
+
+′
+
+)
+
+
+{\displaystyle (m',n_{m}')}
+
+ can thus be formulated as
+The function
+must be one to one and differentiable, and have a non-zero support:
+so that there exists an inverse function
+that is differentiable. Therefore, the 
+
+
+
+(
+m
+,
+u
+)
+
+
+{\displaystyle (m,u)}
+
+ and 
+
+
+
+(
+
+m
+′
+
+,
+
+u
+′
+
+)
+
+
+{\displaystyle (m',u')}
+
+ must be of equal dimension, which is the case if the dimension criterion
+is met where 
+
+
+
+
+d
+
+m
+
+m
+′
+
+
+
+
+
+{\displaystyle d_{mm'}}
+
+ is the dimension of 
+
+
+
+u
+
+
+{\displaystyle u}
+
+. This is known as dimension matching.
+If 
+
+
+
+
+
+R
+
+
+
+d
+
+m
+
+
+
+
+⊂
+
+
+R
+
+
+
+d
+
+
+m
+′
+
+
+
+
+
+
+
+{\displaystyle \mathbb {R} ^{d_{m}}\subset \mathbb {R} ^{d_{m'}}}
+
+ then the dimensional matching condition can be reduced to
+with
+The acceptance probability will be given by
+where 
+
+
+
+
+|
+
+⋅
+
+|
+
+
+
+{\displaystyle |\cdot |}
+
+ denotes the absolute value and 
+
+
+
+
+p
+
+m
+
+
+
+f
+
+m
+
+
+
+
+{\displaystyle p_{m}f_{m}}
+
+ is the joint posterior probability
+where 
+
+
+
+c
+
+
+{\displaystyle c}
+
+ is the normalising constant.
+
+There is an experimental RJ-MCMC tool available for the open source BUGs package.

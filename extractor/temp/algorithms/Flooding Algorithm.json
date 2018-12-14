@@ -1,0 +1,8 @@
+{
+    "about": "A flooding algorithm is an algorithm for distributing material to every part of a graph. The name derives from the concept of inundation by a flood.", 
+    "name": "Flooding Algorithm", 
+    "classification": "Graph Algorithms", 
+    "full_text": "A flooding algorithm is an algorithm for distributing material to every part of a graph. The name derives from the concept of inundation by a flood.\nFlooding algorithms are used in computer networking and graphics. Flooding algorithms are also useful for solving many mathematical problems, including maze problems and many problems in graph theory.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Flooding_algorithm", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Flooding_algorithm\n"
+}

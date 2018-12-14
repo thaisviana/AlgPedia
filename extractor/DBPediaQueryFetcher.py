@@ -1,6 +1,12 @@
+'''
+Created on 26/02/2013
+
+@author: Pericolo
+'''
 import os
+import requests
 import urllib
-from .FileWriters import HTMLWriter, CSVWriter
+from .FileWriters import  HTMLWriter, CSVWriter
 from bs4 import *
 
 class QueryFetcher:
@@ -12,11 +18,11 @@ class QueryFetcher:
         self.base_url = 'http://dbpedia.org/sparql'
 
         self.get_params = {
-            'query' : '',
-            'default-graph-uri' : 'http://dbpedia.org',
-            'format'  : 'text/html',
-            'timeout' : 0,
-            'debug' : 'on'
+              'query' : '',
+              'default-graph-uri' : 'http://dbpedia.org',
+              'format'  : 'text/html',
+              'timeout' : 0,
+              'debug' : 'on'
         }
 
         # Creating the appropriate type of writer
@@ -32,10 +38,10 @@ class QueryFetcher:
 
         data = urllib.urlencode(self.get_params)
         headers = {'User-Agent' : 'Mozilla/5.0'}
-        request = urllib.Request(self.base_url,data, headers)
-        response = urllib.urlopen(request)
+        response = requests.get(self.base_url,data, headers)
+        # response = urllib2.urlopen(request)
 
-        return response.read()
+        return response.json()
 
     def fetchCount(self, query_body):
         query_string = "select count(*) where " + query_body

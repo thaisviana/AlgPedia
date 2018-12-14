@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from algorithm.controllers import *
 from django.core.management.base import BaseCommand
 import traceback
 from algorithm.controllers import *
@@ -26,19 +25,20 @@ class Command(BaseCommand):
             return json.load(data_file)
 
     def update_algorithms(self, algorithms):
+        from algorithm.models import Algorithm
         for algorithm in algorithms:
             try:
-                alg = algorithm.objects.get(name=algorithm['name'])
+                alg = Algorithm.objects.get(name=algorithm['name'])
                 if alg:
                     alg.description = algorithm['about']
                     alg.classification = get_classification_by_name(algorithm['classification'])
                     alg.save()
-            except algorithm.DoesNotExist:          
+            except Algorithm.DoesNotExist:
                 dbpurl = ""
                 if 'dbpedia_url' in algorithm.keys():
                     dbpurl = algorithm['dbpedia_url']
-                algorithm.objects.create(name=algorithm['name'], description=algorithm['about'], classification=get_classification_by_name(algorithm['classification']), uri=dbpurl, visible=True, user=None)
-            except algorithm.MultipleObjectsReturned:
+                Algorithm.objects.create(name=algorithm['name'], description=algorithm['about'], classification=get_classification_by_name(algorithm['classification']), uri=dbpurl, visible=True, user=None)
+            except Algorithm.MultipleObjectsReturned:
                 continue
 
     def update_classifications(self, classifications):

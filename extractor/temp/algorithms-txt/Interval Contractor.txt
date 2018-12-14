@@ -1,0 +1,221 @@
+ABOUT
+In mathematics, an interval contractor (or contractor for short) [1] associated to a set X is an operator C which associates to a box [x] in Rn another box C([x]) of Rn such that the two following properties are always satisfied
+FULL TEXT
+In mathematics, an interval contractor (or contractor for short) [1] associated to a set X is an operator C which associates to a box [x] in Rn another box C([x]) of Rn such that the two following properties are always satisfied
+A contractor associated to a constraint (such as an equation or an inequality) is a contractor associated to the set X of all x which satisfy the constraint. Contractors make it possible to improve the efficiency of branch-and-bound algorithms classically used in interval analysis.
+
+
+A contractor C is monotonic if we have 
+
+
+
+[
+x
+]
+⊂
+[
+y
+]
+⇒
+C
+(
+[
+x
+]
+)
+⊂
+C
+(
+[
+y
+]
+)
+
+
+{\displaystyle [x]\subset [y]\Rightarrow C([x])\subset C([y])}
+
+
+It is minimal if for all boxes [x], we have 
+
+
+
+C
+(
+[
+x
+]
+)
+=
+[
+[
+x
+]
+∩
+X
+]
+
+
+{\displaystyle C([x])=[[x]\cap X]}
+
+, where [A] is the interval hull of the set A, i.e., the smallest box enclosing A.
+The contractor C is thin if for all points x, 
+
+
+
+C
+(
+{
+x
+}
+)
+=
+{
+x
+}
+∩
+X
+
+
+{\displaystyle C(\{x\})=\{x\}\cap X}
+
+ where {x} denotes the degenerated box enclosing x as a single point.
+The contractor C is idempotent if for all boxes [x], we have 
+
+
+
+C
+∘
+C
+(
+[
+x
+]
+)
+=
+C
+(
+[
+x
+]
+)
+.
+
+
+{\displaystyle C\circ C([x])=C([x]).}
+
+
+The contractor C is convergent if for all sequences [x](k) of boxes containing x, we have 
+
+
+
+[
+x
+]
+(
+k
+)
+→
+x
+⇒
+C
+(
+[
+x
+]
+(
+k
+)
+)
+→
+{
+x
+}
+∩
+X
+.
+
+
+{\displaystyle [x](k)\rightarrow x\Rightarrow C([x](k))\rightarrow \{x\}\cap X.}
+
+
+Figure 1 represents the set X painted grey and some boxes. Some of them of degenerated, i.e., they correspond to singletons. Figure 2 represents these boxes after contraction. Note that no point of X has been removed by the contractor. The contractor is minimal for the cyan box but is pessimistic for the green one. All degenerated blue boxes are contracted to the empty box. The magenta box and the red box cannot be contracted.
+Some operations can be performed on contractors to build more complex contractors. [2] The intersection, the union, the composition and the repetition are defined as follows.
+There exist different ways to build contractors associated to equations and inequalities, say, f(x) in [y]. Most of them are based on interval arithmetic. One of the most efficient and most simple is the forward/backward contractor (also called as HC4-revise). [3] [4]
+The principle is to evaluate f(x) using interval arithmetic (this is the forward step). The resulting interval is intersected with [y]. A backward evaluation of f(x) is then performed in order to contract the intervals for the xi (this is the backward step). We now illustrate the principle on a simple example.
+Consider the constraint 
+
+
+
+(
+
+x
+
+1
+
+
++
+
+x
+
+2
+
+
+)
+⋅
+
+x
+
+3
+
+
+∈
+[
+1
+,
+2
+]
+.
+
+
+{\displaystyle (x_{1}+x_{2})\cdot x_{3}\in [1,2].}
+
+ We can evaluate the function f(x) by introducing the two intermediate variables a and b, as follows
+The two previous constraints are called forward constraints. We get the backward constraints by taking each forward constraint in the reverse order and isolating each variable on the right hand side. We get
+The resulting forward/backward contractor 
+
+
+
+C
+(
+[
+
+x
+
+1
+
+
+]
+,
+[
+
+x
+
+2
+
+
+]
+,
+[
+
+x
+
+3
+
+
+]
+)
+
+
+{\displaystyle C([x_{1}],[x_{2}],[x_{3}])}
+
+ is obtained by evaluating the forward and the backward constraints using interval analysis.

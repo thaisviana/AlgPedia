@@ -1,0 +1,461 @@
+ABOUT
+The Kantorovich theorem is a mathematical statement on the convergence of Newton's method. It was first stated by Leonid Kantorovich in 1940.
+FULL TEXT
+The Kantorovich theorem is a mathematical statement on the convergence of Newton's method. It was first stated by Leonid Kantorovich in 1940.
+Newton's method constructs a sequence of points that under certain conditions will converge to a solution 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ of an equation 
+
+
+
+f
+(
+x
+)
+=
+0
+
+
+{\displaystyle f(x)=0}
+
+ or a vector solution of a system of equation 
+
+
+
+F
+(
+x
+)
+=
+0
+
+
+{\displaystyle F(x)=0}
+
+. The Kantorovich theorem gives conditions on the initial point of this sequence. If those conditions are satisfied then a solution exists close to the initial point and the sequence converges to that point.
+
+
+Let 
+
+
+
+X
+⊂
+
+
+R
+
+
+n
+
+
+
+
+{\displaystyle X\subset \mathbb {R} ^{n}}
+
+ be an open subset and 
+
+
+
+F
+:
+
+
+R
+
+
+n
+
+
+⊃
+X
+→
+
+
+R
+
+
+n
+
+
+
+
+{\displaystyle F:\mathbb {R} ^{n}\supset X\to \mathbb {R} ^{n}}
+
+ a differentiable function with a Jacobian 
+
+
+
+
+F
+
+′
+
+
+(
+x
+)
+
+
+{\displaystyle F^{\prime }(x)}
+
+ that is locally Lipschitz continuous (for instance if 
+
+
+
+F
+
+
+{\displaystyle F}
+
+ is twice differentiable). That is, it is assumed that for any open subset 
+
+
+
+U
+⊂
+X
+
+
+{\displaystyle U\subset X}
+
+ there exists a constant 
+
+
+
+L
+>
+0
+
+
+{\displaystyle L>0}
+
+ such that for any 
+
+
+
+
+x
+
+,
+
+y
+
+∈
+U
+
+
+{\displaystyle \mathbf {x} ,\mathbf {y} \in U}
+
+
+holds. The norm on the left is some operator norm that is compatible with the vector norm on the right. This inequality can be rewritten to only use the vector norm. Then for any vector 
+
+
+
+v
+∈
+
+
+R
+
+
+n
+
+
+
+
+{\displaystyle v\in \mathbb {R} ^{n}}
+
+ the inequality
+must hold.
+Now choose any initial point 
+
+
+
+
+
+x
+
+
+0
+
+
+∈
+X
+
+
+{\displaystyle \mathbf {x} _{0}\in X}
+
+. Assume that 
+
+
+
+
+F
+′
+
+(
+
+
+x
+
+
+0
+
+
+)
+
+
+{\displaystyle F'(\mathbf {x} _{0})}
+
+ is invertible and construct the Newton step 
+
+
+
+
+
+h
+
+
+0
+
+
+=
+−
+
+F
+′
+
+(
+
+
+x
+
+
+0
+
+
+
+)
+
+−
+1
+
+
+F
+(
+
+
+x
+
+
+0
+
+
+)
+.
+
+
+{\displaystyle \mathbf {h} _{0}=-F'(\mathbf {x} _{0})^{-1}F(\mathbf {x} _{0}).}
+
+
+The next assumption is that not only the next point 
+
+
+
+
+
+x
+
+
+1
+
+
+=
+
+
+x
+
+
+0
+
+
++
+
+
+h
+
+
+0
+
+
+
+
+{\displaystyle \mathbf {x} _{1}=\mathbf {x} _{0}+\mathbf {h} _{0}}
+
+ but the entire ball 
+
+
+
+B
+(
+
+
+x
+
+
+1
+
+
+,
+∥
+
+
+h
+
+
+0
+
+
+∥
+)
+
+
+{\displaystyle B(\mathbf {x} _{1},\|\mathbf {h} _{0}\|)}
+
+ is contained inside the set X. Let 
+
+
+
+M
+≤
+L
+
+
+{\displaystyle M\leq L}
+
+ be the Lipschitz constant for the Jacobian over this ball.
+As a last preparation, construct recursively, as long as it is possible, the sequences 
+
+
+
+(
+
+
+x
+
+
+k
+
+
+
+)
+
+k
+
+
+
+
+{\displaystyle (\mathbf {x} _{k})_{k}}
+
+, 
+
+
+
+(
+
+
+h
+
+
+k
+
+
+
+)
+
+k
+
+
+
+
+{\displaystyle (\mathbf {h} _{k})_{k}}
+
+, 
+
+
+
+(
+
+α
+
+k
+
+
+
+)
+
+k
+
+
+
+
+{\displaystyle (\alpha _{k})_{k}}
+
+ according to
+Now if 
+
+
+
+
+α
+
+0
+
+
+≤
+
+
+
+1
+2
+
+
+
+
+
+{\displaystyle \alpha _{0}\leq {\tfrac {1}{2}}}
+
+ then
+A statement that is more precise but slightly more difficult to prove uses the roots 
+
+
+
+
+t
+
+∗
+
+
+≤
+
+t
+
+∗
+∗
+
+
+
+
+{\displaystyle t^{\ast }\leq t^{**}}
+
+ of the quadratic polynomial
+and their ratio
+Then

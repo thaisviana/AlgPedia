@@ -1,0 +1,5 @@
+ABOUT
+Variance Adaptive Quantization (VAQ) is a video encoding algorithm that was first introduced in the open source video encoder x264. According to Xvid Builds FAQ: "It's an algorithm that tries to optimally choose a quantizer for each macroblock using advanced math algorithms."[2] It was later ported to programs which encode video content in other video standards, like MPEG-4 ASP or MPEG-2.
+FULL TEXT
+Variance Adaptive Quantization (VAQ) is a video encoding algorithm that was first introduced in the open source video encoder x264. According to Xvid Builds FAQ: "It's an algorithm that tries to optimally choose a quantizer for each macroblock using advanced math algorithms."[2] It was later ported to programs which encode video content in other video standards, like MPEG-4 ASP or MPEG-2.
+In the case of Xvid, the algorithm is intended to make up for the earlier limitations in its Adaptive Quantization mode. The first Xvid library containing this improvement was released in February 2008.[3]

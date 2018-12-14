@@ -1,0 +1,8 @@
+{
+    "about": "In applied mathematics, the transfer matrix is a formulation in terms of a block-Toeplitz matrix of the two-scale equation, which characterizes refinable functions. Refinable functions play an important role in wavelet theory and finite element theory.", 
+    "name": "Transfer Matrix", 
+    "classification": "Numerical Analysis", 
+    "full_text": "In applied mathematics, the transfer matrix is a formulation in terms of a block-Toeplitz matrix of the two-scale equation, which characterizes refinable functions. Refinable functions play an important role in wavelet theory and finite element theory.\nFor the mask \n\n\n\nh\n\n\n{\\displaystyle h}\n\n, which is a vector with component indexes from \n\n\n\na\n\n\n{\\displaystyle a}\n\n to \n\n\n\nb\n\n\n{\\displaystyle b}\n\n, the transfer matrix of \n\n\n\nh\n\n\n{\\displaystyle h}\n\n, we call it \n\n\n\n\nT\n\nh\n\n\n\n\n{\\displaystyle T_{h}}\n\n here, is defined as\nMore verbosely\nThe effect of \n\n\n\n\nT\n\nh\n\n\n\n\n{\\displaystyle T_{h}}\n\n can be expressed in terms of the downsampling operator \"\n\n\n\n\u2193\n\n\n{\\displaystyle \\downarrow }\n\n\":", 
+    "dbpedia_url": "http://dbpedia.org/resource/Transfer_matrix", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Transfer_matrix\n"
+}

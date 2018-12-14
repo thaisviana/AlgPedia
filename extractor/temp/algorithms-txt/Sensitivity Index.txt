@@ -1,0 +1,119 @@
+ABOUT
+The sensitivity index or d' (pronounced 'dee-prime') is a statistic used in signal detection theory. It provides the separation between the means of the signal and the noise distributions, compared against the standard deviation of the signal plus noise distributions. For normally distributed signal and noise with mean and standard deviations 
+
+
+
+
+μ
+
+S
+
+
+
+
+{\displaystyle \mu _{S}}
+
+ and 
+
+
+
+
+σ
+
+S
+
+
+
+
+{\displaystyle \sigma _{S}}
+
+, and 
+
+
+
+
+μ
+
+N
+
+
+
+
+{\displaystyle \mu _{N}}
+
+ and 
+
+
+
+
+σ
+
+N
+
+
+
+
+{\displaystyle \sigma _{N}}
+
+, respectively, d' is defined as:
+FULL TEXT
+The sensitivity index or d' (pronounced 'dee-prime') is a statistic used in signal detection theory. It provides the separation between the means of the signal and the noise distributions, compared against the standard deviation of the signal plus noise distributions. For normally distributed signal and noise with mean and standard deviations 
+
+
+
+
+μ
+
+S
+
+
+
+
+{\displaystyle \mu _{S}}
+
+ and 
+
+
+
+
+σ
+
+S
+
+
+
+
+{\displaystyle \sigma _{S}}
+
+, and 
+
+
+
+
+μ
+
+N
+
+
+
+
+{\displaystyle \mu _{N}}
+
+ and 
+
+
+
+
+σ
+
+N
+
+
+
+
+{\displaystyle \sigma _{N}}
+
+, respectively, d' is defined as:
+An estimate of d' can be also found from measurements of the hit rate and false-alarm rate. It is calculated as:
+where function Z(p), p ∈ [0,1], is the inverse of the cumulative distribution function of the Gaussian distribution.
+d' is a dimensionless statistic. A higher d' indicates that the signal can be more readily detected.

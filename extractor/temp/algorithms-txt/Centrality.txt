@@ -1,0 +1,1617 @@
+ABOUT
+In graph theory and network analysis, indicators of centrality identify the most important vertices within a graph. Applications include identifying the most influential person(s) in a social network, key infrastructure nodes in the Internet or urban networks, and super-spreaders of disease. Centrality concepts were first developed in social network analysis, and many of the terms used to measure centrality reflect their sociological origin.[1] They should not be confused with node influence metrics, which seek to quantify the influence of every node in the network.
+FULL TEXT
+In graph theory and network analysis, indicators of centrality identify the most important vertices within a graph. Applications include identifying the most influential person(s) in a social network, key infrastructure nodes in the Internet or urban networks, and super-spreaders of disease. Centrality concepts were first developed in social network analysis, and many of the terms used to measure centrality reflect their sociological origin.[1] They should not be confused with node influence metrics, which seek to quantify the influence of every node in the network.
+
+
+Centrality indices are answers to the question "What characterizes an important vertex?" The answer is given in terms of a real-valued function on the vertices of a graph, where the values produced are expected to provide a ranking which identifies the most important nodes.[2][3]
+The word "importance" has a wide number of meanings, leading to many different definitions of centrality. Two categorization schemes have been proposed. "Importance" can be conceived in relation to a type of flow or transfer across the network. This allows centralities to be classified by the type of flow they consider important.[3] "Importance" can alternately be conceived as involvement in the cohesiveness of the network. This allows centralities to be classified based on how they measure cohesiveness.[4] Both of these approaches divide centralities in distinct categories. A further conclusion is that a centrality which is appropriate for one category will often "get it wrong" when applied to a different category.[3]
+When centralities are categorized by their approach to cohesiveness, it becomes apparent that the majority of centralities inhabit one category. The count of the number of walks starting from a given vertex differs only in how walks are defined and counted. Restricting consideration to this group allows for a soft characterization which places centralities on a spectrum from walks of length one (degree centrality) to infinite walks (eigenvalue centrality).[2][5] The observation that many centralities share this familial relationships perhaps explains the high rank correlations between these indices.
+A network can be considered a description of the paths along which something flows. This allows a characterization based on the type of flow and the type of path encoded by the centrality. A flow can be based on transfers, where each undivisible item goes from one node to another, like a package delivery which goes from the delivery site to the client's house. A second case is the serial duplication, where this is a replication of the item which goes to the next node, so both the source and the target have it. An example is the propagation of information through gossip, with the information being propagated in a private way and with both the source and the target nodes being informed at the end of the process. The last case is the parallel duplication, with the item being duplicated to several links at the same time, like a radio broadcast which provides the same information to many listeners at once.[3]
+Likewise, the type of path can be constrained to: Geodesics (shortest paths), paths (no vertex is visited more than once), trails (vertices can be visited multiple times, no edge is traversed more than once), or walks (vertices and edges can be visited/traversed multiple times).[3]
+An alternate classification can be derived from how the centrality is constructed. This again splits into two classes. Centralities are either Radial or Medial. Radial centralities count walks which start/end from the given vertex. The degree and eigenvalue centralities are examples of radial centralities, counting the number of walks of length one or length infinity. Medial centralities count walks which pass through the given vertex. The canonical example is Freeman's betweenness centrality, the number of shortest paths which pass through the given vertex.[4]
+Likewise, the counting can capture either the volume or the length of walks. Volume is the total number of walks of the given type. The three examples from the previous paragraph fall into this category. Length captures the distance from the given vertex to the remaining vertices in the graph. Freeman's closeness centrality, the total geodesic distance from a given vertex to all other vertices, is the best known example.[4] Note that this classification is independent of the type of walk counted (i.e. walk, trail, path, geodesic).
+Borgatti and Everett propose that this typology provides insight into how best to compare centrality measures. Centralities placed in the same box in this 2×2 classification are similar enough to make plausible alternatives; one can reasonably compare which is better for a given application. Measures from different boxes, however, are categorically distinct. Any evaluation of relative fitness can only occur within the context of predetermining which category is more applicable, rendering the comparison moot.[4]
+The characterization by walk structure shows that almost all centralities in wide use are radial-volume measures. These encode the belief that a vertex's centrality is a function of the centrality of the vertices it is associated with. Centralities distinguish themselves on how association is defined.
+Bonacich showed that if association is defined in terms of walks, then a family of centralities can be defined based on the length of walk considered.[2] The degree counts walks of length one, the eigenvalue centrality counts walks of length infinity. Alternate definitions of association are also reasonable. The alpha centrality allows vertices to have an external source of influence. Estrada's subgraph centrality proposes only counting closed paths (triangles, squares, ...).
+The heart of such measures is the observation that powers of the graph's adjacency matrix gives the number of walks of length given by that power. Similarly, the matrix exponential is also closely related to the number of walks of a given length. An initial transformation of the adjacency matrix allows differing definition of the type of walk counted. Under either approach, the centrality of a vertex can be expressed as an infinite sum, either
+for matrix powers or
+for matrix exponentials, where
+Bonacich's family of measures does not transform the adjacency matrix. The alpha centrality replaces the adjacency matrix with its resolvent. The subgraph centrality replaces the adjacency matrix with its trace. A startling conclusion is that regardless of the initial transformation of the adjacency matrix, all such approaches have common limiting behavior. As 
+
+
+
+β
+
+
+{\displaystyle \beta }
+
+ approaches zero, the indices converge to the degree centrality. As 
+
+
+
+β
+
+
+{\displaystyle \beta }
+
+ approaches its maximal value, the indices converge to the eigenvalue centrality.[5]
+Centrality indices have two important limitations, one obvious and the other subtle. The obvious limitation is that a centrality which is optimal for one application is often sub-optimal for a different application. Indeed, if this were not so, we would not need so many different centralities.
+The more subtle limitation is the commonly held fallacy that vertex centrality indicates the relative importance of vertices. Centrality indices are explicitly designed to produce a ranking which allows indication of the most important vertices.[2][3] This they do well, under the limitation just noted. They are not designed to measure the influence of nodes in general. Recently, network physicists have begun developing node influence metrics to address this problem.
+The error is two-fold. Firstly, a ranking only orders vertices by importance, it does not quantify the difference in importance between different levels of the ranking. This may be mitigated by applying Freeman centralization to the centrality measure in question, which provide some insight to the importance of nodes depending on the differences of their centralization scores. Furthermore, Freeman centralization enables one to compare several networks by comparing their highest centralization scores.[6] This approach, however, is seldom seen in practice.[citation needed]
+Secondly, the features which (correctly) identify the most important vertices in a given network/application do not necessarily generalize to the remaining vertices. For the majority of other network nodes the rankings may be meaningless.[7][8][9][10] This explains why, for example, only the first few results of a Google image search appear in a reasonable order. The pagerank is a highly unstable measure, showing frequent rank reversals after small adjustments of the jump parameter [11]
+While the failure of centrality indices to generalize to the rest of the network may at first seem counter-intuitive, it follows directly from the above definitions. Complex networks have heterogeneous topology. To the extent that the optimal measure depends on the network structure of the most important vertices, a measure which is optimal for such vertices is sub-optimal for the remainder of the network.[7]
+Historically first and conceptually simplest is degree centrality, which is defined as the number of links incident upon a node (i.e., the number of ties that a node has). The degree can be interpreted in terms of the immediate risk of a node for catching whatever is flowing through the network (such as a virus, or some information). In the case of a directed network (where ties have direction), we usually define two separate measures of degree centrality, namely indegree and outdegree. Accordingly, indegree is a count of the number of ties directed to the node and outdegree is the number of ties that the node directs to others. When ties are associated to some positive aspects such as friendship or collaboration, indegree is often interpreted as a form of popularity, and outdegree as gregariousness.
+The degree centrality of a vertex 
+
+
+
+v
+
+
+{\displaystyle v}
+
+, for a given graph 
+
+
+
+G
+:=
+(
+V
+,
+E
+)
+
+
+{\displaystyle G:=(V,E)}
+
+ with 
+
+
+
+
+|
+
+V
+
+|
+
+
+
+{\displaystyle |V|}
+
+ vertices and 
+
+
+
+
+|
+
+E
+
+|
+
+
+
+{\displaystyle |E|}
+
+ edges, is defined as
+Calculating degree centrality for all the nodes in a graph takes 
+
+
+
+Θ
+(
+
+V
+
+2
+
+
+)
+
+
+{\displaystyle \Theta (V^{2})}
+
+ in a dense adjacency matrix representation of the graph, and for edges takes 
+
+
+
+Θ
+(
+E
+)
+
+
+{\displaystyle \Theta (E)}
+
+ in a sparse matrix representation.
+The definition of centrality on the node level can be extended to the whole graph, in which case we are speaking of graph centralization.[12] Let 
+
+
+
+v
+∗
+
+
+{\displaystyle v*}
+
+ be the node with highest degree centrality in 
+
+
+
+G
+
+
+{\displaystyle G}
+
+. Let 
+
+
+
+X
+:=
+(
+Y
+,
+Z
+)
+
+
+{\displaystyle X:=(Y,Z)}
+
+ be the 
+
+
+
+
+|
+
+Y
+
+|
+
+
+
+{\displaystyle |Y|}
+
+ node connected graph that maximizes the following quantity (with 
+
+
+
+y
+∗
+
+
+{\displaystyle y*}
+
+ being the node with highest degree centrality in 
+
+
+
+X
+
+
+{\displaystyle X}
+
+):
+Correspondingly, the degree centralization of the graph 
+
+
+
+G
+
+
+{\displaystyle G}
+
+ is as follows:
+The value of 
+
+
+
+H
+
+
+{\displaystyle H}
+
+ is maximized when the graph 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ contains one central node to which all other nodes are connected (a star graph), and in this case 
+
+
+
+H
+=
+(
+n
+−
+1
+)
+⋅
+(
+(
+n
+−
+1
+)
+−
+1
+)
+=
+
+n
+
+2
+
+
+−
+3
+n
++
+2
+
+
+{\displaystyle H=(n-1)\cdot ((n-1)-1)=n^{2}-3n+2}
+
+.
+In a connected graph, the normalized closeness centrality (or closeness) of a node is the average length of the shortest path between the node and all other nodes in the graph. Thus the more central a node is, the closer it is to all other nodes.
+Closeness was defined by Bavelas (1950) as the reciprocal of the farness,[13][14] that is:
+where 
+
+
+
+d
+(
+y
+,
+x
+)
+
+
+{\displaystyle d(y,x)}
+
+ is the distance between vertices 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ and 
+
+
+
+y
+
+
+{\displaystyle y}
+
+. However, when speaking of closeness centrality, people usually refer to its normalized form, generally given by the previous formula divided by 
+
+
+
+N
+−
+1
+
+
+{\displaystyle N-1}
+
+, where 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ is the number of nodes in the graph. This adjustment allows comparisons between nodes of graphs of different sizes.
+Taking distances from or to all other nodes is irrelevant in undirected graphs, whereas it can produce totally different results in directed graphs (e.g. a website can have a high closeness centrality from outgoing link, but low closeness centrality from incoming links).
+Betweenness is a centrality measure of a vertex within a graph (there is also edge betweenness, which is not discussed here). Betweenness centrality quantifies the number of times a node acts as a bridge along the shortest path between two other nodes. It was introduced as a measure for quantifying the control of a human on the communication between other humans in a social network by Linton Freeman[15] In his conception, vertices that have a high probability to occur on a randomly chosen shortest path between two randomly chosen vertices have a high betweenness.
+The betweenness of a vertex 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ in a graph 
+
+
+
+G
+:=
+(
+V
+,
+E
+)
+
+
+{\displaystyle G:=(V,E)}
+
+ with 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ vertices is computed as follows:
+More compactly the betweenness can be represented as:[16]
+where 
+
+
+
+
+σ
+
+s
+t
+
+
+
+
+{\displaystyle \sigma _{st}}
+
+ is total number of shortest paths from node 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ to node 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ and 
+
+
+
+
+σ
+
+s
+t
+
+
+(
+v
+)
+
+
+{\displaystyle \sigma _{st}(v)}
+
+ is the number of those paths that pass through 
+
+
+
+v
+
+
+{\displaystyle v}
+
+. The betweenness may be normalised by dividing through the number of pairs of vertices not including v, which for directed graphs is 
+
+
+
+(
+n
+−
+1
+)
+(
+n
+−
+2
+)
+
+
+{\displaystyle (n-1)(n-2)}
+
+ and for undirected graphs is 
+
+
+
+(
+n
+−
+1
+)
+(
+n
+−
+2
+)
+
+/
+
+2
+
+
+{\displaystyle (n-1)(n-2)/2}
+
+. For example, in an undirected star graph, the center vertex (which is contained in every possible shortest path) would have a betweenness of 
+
+
+
+(
+n
+−
+1
+)
+(
+n
+−
+2
+)
+
+/
+
+2
+
+
+{\displaystyle (n-1)(n-2)/2}
+
+ (1, if normalised) while the leaves (which are contained in no shortest paths) would have a betweenness of 0.
+From a calculation aspect, both betweenness and closeness centralities of all vertices in a graph involve calculating the shortest paths between all pairs of vertices on a graph, which requires 
+
+
+
+Θ
+(
+
+V
+
+3
+
+
+)
+
+
+{\displaystyle \Theta (V^{3})}
+
+ time with the Floyd–Warshall algorithm. However, on sparse graphs, Johnson's algorithm may be more efficient, taking 
+
+
+
+O
+(
+
+V
+
+2
+
+
+log
+⁡
+V
++
+V
+E
+)
+
+
+{\displaystyle O(V^{2}\log V+VE)}
+
+ time. In the case of unweighted graphs the calculations can be done with Brandes' algorithm[16] which takes 
+
+
+
+O
+(
+V
+E
+)
+
+
+{\displaystyle O(VE)}
+
+ time. Normally, these algorithms assume that graphs are undirected and connected with the allowance of loops and multiple edges. When specifically dealing with network graphs, often graphs are without loops or multiple edges to maintain simple relationships (where edges represent connections between two people or vertices). In this case, using Brandes' algorithm will divide final centrality scores by 2 to account for each shortest path being counted twice.[16]
+Eigenvector centrality (also called eigencentrality) is a measure of the influence of a node in a network. It assigns relative scores to all nodes in the network based on the concept that connections to high-scoring nodes contribute more to the score of the node in question than equal connections to low-scoring nodes. Google's PageRank and the Katz centrality are variants of the eigenvector centrality.[17]
+For a given graph 
+
+
+
+G
+:=
+(
+V
+,
+E
+)
+
+
+{\displaystyle G:=(V,E)}
+
+ with 
+
+
+
+
+|
+
+V
+
+|
+
+
+
+{\displaystyle |V|}
+
+ number of vertices let 
+
+
+
+A
+=
+(
+
+a
+
+v
+,
+t
+
+
+)
+
+
+{\displaystyle A=(a_{v,t})}
+
+ be the adjacency matrix, i.e. 
+
+
+
+
+a
+
+v
+,
+t
+
+
+=
+1
+
+
+{\displaystyle a_{v,t}=1}
+
+ if vertex 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ is linked to vertex 
+
+
+
+t
+
+
+{\displaystyle t}
+
+, and 
+
+
+
+
+a
+
+v
+,
+t
+
+
+=
+0
+
+
+{\displaystyle a_{v,t}=0}
+
+ otherwise. The relative centrality score of vertex 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ can be defined as:
+where 
+
+
+
+M
+(
+v
+)
+
+
+{\displaystyle M(v)}
+
+ is a set of the neighbors of 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ and 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+ is a constant. With a small rearrangement this can be rewritten in vector notation as the eigenvector equation
+In general, there will be many different eigenvalues 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+ for which a non-zero eigenvector solution exists. However, the additional requirement that all the entries in the eigenvector be non negative implies (by the Perron–Frobenius theorem) that only the greatest eigenvalue results in the desired centrality measure.[18] The 
+
+
+
+
+v
+
+t
+h
+
+
+
+
+{\displaystyle v^{th}}
+
+ component of the related eigenvector then gives the relative centrality score of the vertex 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ in the network. The eigenvector is only defined up to a common factor, so only the ratios of the centralities of the vertices are well defined. To define an absolute score one must normalise the eigen vector e.g. such that the sum over all vertices is 1 or the total number of vertices n. Power iteration is one of many eigenvalue algorithms that may be used to find this dominant eigenvector.[17] Furthermore, this can be generalized so that the entries in A can be real numbers representing connection strengths, as in a stochastic matrix.
+Katz centrality[19] is a generalization of degree centrality. Degree centrality measures the number of direct neighbors, and Katz centrality measures the number of all nodes that can be connected through a path, while the contributions of distant nodes are penalized. Mathematically, it is defined as 
+
+
+
+
+x
+
+i
+
+
+=
+
+∑
+
+k
+=
+1
+
+
+∞
+
+
+
+∑
+
+j
+=
+1
+
+
+N
+
+
+
+α
+
+k
+
+
+(
+
+A
+
+k
+
+
+
+)
+
+j
+i
+
+
+
+
+{\displaystyle x_{i}=\sum _{k=1}^{\infty }\sum _{j=1}^{N}\alpha ^{k}(A^{k})_{ji}}
+
+ where 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ is an attenuation factor in 
+
+
+
+(
+0
+,
+1
+)
+
+
+{\displaystyle (0,1)}
+
+.
+Katz centrality can be viewed as a variant of eigenvector centrality. Another form of Katz centrality is 
+
+
+
+
+x
+
+i
+
+
+=
+α
+
+∑
+
+j
+=
+1
+
+
+N
+
+
+
+a
+
+i
+j
+
+
+(
+
+x
+
+j
+
+
++
+1
+)
+.
+
+
+{\displaystyle x_{i}=\alpha \sum _{j=1}^{N}a_{ij}(x_{j}+1).}
+
+ Compared to the expression of eigenvector centrality, 
+
+
+
+
+x
+
+j
+
+
+
+
+{\displaystyle x_{j}}
+
+ is replaced by 
+
+
+
+
+x
+
+j
+
+
++
+1
+
+
+{\displaystyle x_{j}+1}
+
+.
+It is shown that[20] the principal eigenvector (associated with the largest eigenvalue of 
+
+
+
+A
+
+
+{\displaystyle A}
+
+, the adjacency matrix) is the limit of Katz centrality as 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ approaches 
+
+
+
+1
+
+/
+
+λ
+
+
+{\displaystyle 1/\lambda }
+
+ from below.
+PageRank satisfies the following equation
+
+
+
+
+
+x
+
+i
+
+
+=
+α
+
+∑
+
+j
+
+
+
+a
+
+j
+i
+
+
+
+
+
+x
+
+j
+
+
+
+L
+(
+j
+)
+
+
+
++
+
+
+
+1
+−
+α
+
+N
+
+
+,
+
+
+{\displaystyle x_{i}=\alpha \sum _{j}a_{ji}{\frac {x_{j}}{L(j)}}+{\frac {1-\alpha }{N}},}
+
+ where 
+
+
+
+L
+(
+j
+)
+=
+
+∑
+
+i
+
+
+
+a
+
+j
+i
+
+
+
+
+{\displaystyle L(j)=\sum _{i}a_{ji}}
+
+ is the number of neighbors of node 
+
+
+
+j
+
+
+{\displaystyle j}
+
+ (or number of outbound links in a directed graph). Compared to eigenvector centrality and Katz centrality, one major difference is the scaling factor 
+
+
+
+L
+(
+j
+)
+
+
+{\displaystyle L(j)}
+
+. Another difference between PageRank and eigenvector centrality is that the PageRank vector is a left hand eigenvector (note the factor 
+
+
+
+
+a
+
+j
+i
+
+
+
+
+{\displaystyle a_{ji}}
+
+ has indices reversed).[21]
+A slew of centrality measures exist to determine the ‘importance’ of a single node in a complex network. However, these measures quantify the importance of a node in purely topological terms, and the value of the node does not depend on the ‘state’ of the node in any way. It remains constant regardless of network dynamics. This is true even for the weighted betweenness measures. However, a node may very well be centrally located in terms of betweenness centrality or another centrality measure, but may not be ‘centrally’ located in the context of a network in which there is percolation. Percolation of a ‘contagion’ occurs in complex networks in a number of scenarios. For example, viral or bacterial infection can spread over social networks of people, known as contact networks. The spread of disease can also be considered at a higher level of abstraction, by contemplating a network of towns or population centres, connected by road, rail or air links. Computer viruses can spread over computer networks. Rumours or news about business offers and deals can also spread via social networks of people. In all of these scenarios, a ‘contagion’ spreads over the links of a complex network, altering the ‘states’ of the nodes as it spreads, either recoverably or otherwise. For example, in an epidemiological scenario, individuals go from ‘susceptible’ to ‘infected’ state as the infection spreads. The states the individual nodes can take in the above examples could be binary (such as received/not received a piece of news), discrete (susceptible/infected/recovered), or even continuous (such as the proportion of infected people in a town), as the contagion spreads. The common feature in all these scenarios is that the spread of contagion results in the change of node states in networks. Percolation centrality (PC) was proposed with this in mind, which specifically measures the importance of nodes in terms of aiding the percolation through the network. This measure was proposed by Piraveenan et al.[22]
+The Percolation Centrality is defined for a given node, at a given time, as the proportion of ‘percolated paths’ that go through that node. A ‘percolated path’ is a shortest path between a pair of nodes, where the source node is percolated (e.g., infected). The target node can be percolated or non-percolated, or in a partially percolated state.
+where 
+
+
+
+
+σ
+
+s
+r
+
+
+
+
+{\displaystyle \sigma _{sr}}
+
+ is total number of shortest paths from node 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ to node 
+
+
+
+r
+
+
+{\displaystyle r}
+
+ and 
+
+
+
+
+σ
+
+s
+r
+
+
+(
+v
+)
+
+
+{\displaystyle \sigma _{sr}(v)}
+
+ is the number of those paths that pass through 
+
+
+
+v
+
+
+{\displaystyle v}
+
+. The percolation state of the node 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ at time 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ is denoted by 
+
+
+
+
+
+
+x
+
+t
+
+
+
+
+i
+
+
+
+
+{\displaystyle {x^{t}}_{i}}
+
+ and two special cases are when 
+
+
+
+
+
+
+x
+
+t
+
+
+
+
+i
+
+
+=
+0
+
+
+{\displaystyle {x^{t}}_{i}=0}
+
+ which indicates a non-percolated state at time 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ whereas when 
+
+
+
+
+
+
+x
+
+t
+
+
+
+
+i
+
+
+=
+1
+
+
+{\displaystyle {x^{t}}_{i}=1}
+
+ which indicates a fully percolated state at time 
+
+
+
+t
+
+
+{\displaystyle t}
+
+. The values in between indicate partially percolated states ( e.g., in a network of townships, this would be the percentage of people infected in that town).
+The attached weights to the percolation paths depend on the percolation levels assigned to the source nodes, based on the premise that the higher the percolation level of a source node is, the more important are the paths that originate from that node. Nodes which lie on shortest paths originating from highly percolated nodes are therefore potentially more important to the percolation. The definition of PC may also be extended to include target node weights as well. Percolation centrality calculations run in 
+
+
+
+O
+(
+N
+M
+)
+
+
+{\displaystyle O(NM)}
+
+ time with an efficient implementation adopted from Brandes' fast algorithm and if the calculation needs to consider target nodes weights, the worst case time is 
+
+
+
+O
+(
+
+N
+
+3
+
+
+)
+
+
+{\displaystyle O(N^{3})}
+
+.
+Cross-clique centrality of a single node, in a complex graph determines the connectivity of a node to different cliques. A node with high cross-clique connectivity facilitates the propagation of information or disease in a graph. Cliques are subgraphs in which every node is connected to every other node in the clique. The cross-clique connectivity of a node 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ for a given graph 
+
+
+
+G
+:=
+(
+V
+,
+E
+)
+
+
+{\displaystyle G:=(V,E)}
+
+ with 
+
+
+
+
+|
+
+V
+
+|
+
+
+
+{\displaystyle |V|}
+
+ vertices and 
+
+
+
+
+|
+
+E
+
+|
+
+
+
+{\displaystyle |E|}
+
+ edges, is defined as 
+
+
+
+X
+(
+v
+)
+
+
+{\displaystyle X(v)}
+
+ where 
+
+
+
+X
+(
+v
+)
+
+
+{\displaystyle X(v)}
+
+ is the number of cliques to which vertex 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ belongs. This measure was used in [23] but was first proposed by Everett and Borgatti in 1998 where they called it clique-overlap centrality.
+The centralization of any network is a measure of how central its most central node is in relation to how central all the other nodes are.[6] Centralization measures then (a) calculate the sum in differences in centrality between the most central node in a network and all other nodes; and (b) divide this quantity by the theoretically largest such sum of differences in any network of the same size.[6] Thus, every centrality measure can have its own centralization measure. Defined formally, if 
+
+
+
+
+C
+
+x
+
+
+(
+
+p
+
+i
+
+
+)
+
+
+{\displaystyle C_{x}(p_{i})}
+
+ is any centrality measure of point 
+
+
+
+i
+
+
+{\displaystyle i}
+
+, if 
+
+
+
+
+C
+
+x
+
+
+(
+
+p
+
+∗
+
+
+)
+
+
+{\displaystyle C_{x}(p_{*})}
+
+ is the largest such measure in the network, and if 
+
+
+
+max
+
+∑
+
+i
+=
+1
+
+
+N
+
+
+
+C
+
+x
+
+
+(
+
+p
+
+∗
+
+
+)
+−
+
+C
+
+x
+
+
+(
+
+p
+
+i
+
+
+)
+
+
+{\displaystyle \max \sum _{i=1}^{N}C_{x}(p_{*})-C_{x}(p_{i})}
+
+ is the largest sum of differences in point centrality 
+
+
+
+
+C
+
+x
+
+
+
+
+{\displaystyle C_{x}}
+
+ for any graph with the same number of nodes, then the centralization of the network is:[6] 
+
+
+
+
+C
+
+x
+
+
+=
+
+
+
+
+∑
+
+i
+=
+1
+
+
+N
+
+
+
+C
+
+x
+
+
+(
+
+p
+
+∗
+
+
+)
+−
+
+C
+
+x
+
+
+(
+
+p
+
+i
+
+
+)
+
+
+max
+
+∑
+
+i
+=
+1
+
+
+N
+
+
+
+C
+
+x
+
+
+(
+
+p
+
+∗
+
+
+)
+−
+
+C
+
+x
+
+
+(
+
+p
+
+i
+
+
+)
+
+
+
+
+
+{\displaystyle C_{x}={\frac {\sum _{i=1}^{N}C_{x}(p_{*})-C_{x}(p_{i})}{\max \sum _{i=1}^{N}C_{x}(p_{*})-C_{x}(p_{i})}}}
+
+
+In order to obtain better results in the ranking of the nodes of a given network, in [24] are used dissimilarity measures (specific to theory of classification and data mining) to enrich the centrality measures in complex networks. This is illustrated with the Eigenvector centrality, calculating the centrality of each node through the solution of the eigenvalue problem
+where 
+
+
+
+
+W
+
+i
+j
+
+
+=
+
+A
+
+i
+j
+
+
+
+D
+
+i
+j
+
+
+
+
+{\displaystyle W_{ij}=A_{ij}D_{ij}}
+
+ (coordinate-to-coordinate product) and 
+
+
+
+
+D
+
+i
+j
+
+
+
+
+{\displaystyle D_{ij}}
+
+ is an arbitrary dissimilarity matrix, defined through a dissimilitary measure, e.g., Jaccard dissimilarity given by
+Where this measure permits us to quantify the topological contribution (which is why is called contribution centrality) of each node to the centrality of a given node, having more weight/relevance those nodes with greater dissimilarity, since these allow to the given node access to nodes that which themselves can not access directly.
+Is noteworthy that 
+
+
+
+W
+
+
+{\displaystyle W}
+
+ is non-negative because 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ and 
+
+
+
+D
+
+
+{\displaystyle D}
+
+ are non-negative matrices, so we can use the Perron–Frobenius theorem to ensure that the above problem has a unique solution for λ = λmax with c non-negative, allowing us to infer the centrality of each node in the network. Therefore, the centrality of the i-th node is
+where 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ is the number of the nodes in the network. Several dissimilarity measures and networks where tested in [25] obtaining improved results in the studied cases.
+Empirical and theoretical research have extended the concept of centrality in the context of static networks to dynamic centrality[26] in the context of time-dependent and temporal networks.[27][28][29]
+For generalizations to weighted networks, see Opsahl et al. (2010).[30]
+The concept of centrality was extended to a group level as well. For example, group betweenness centrality shows the proportion of geodesics connecting pairs of non-group members that pass through the group.[31][32]

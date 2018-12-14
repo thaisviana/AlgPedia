@@ -1,0 +1,8 @@
+ABOUT
+Elmer is computational tool for multi-physics problems. It has been developed by CSC[1] in collaboration with Finnish universities, research laboratories and industry. Elmer FEM solver is free and open-source software, subject to the requirements of the GNU General Public License (GPL), version 2 or any later.[2]
+FULL TEXT
+Elmer is computational tool for multi-physics problems. It has been developed by CSC[1] in collaboration with Finnish universities, research laboratories and industry. Elmer FEM solver is free and open-source software, subject to the requirements of the GNU General Public License (GPL), version 2 or any later.[2]
+Elmer includes physical models of fluid dynamics, structural mechanics, electromagnetics, heat transfer and acoustics, for example.[2] These are described by partial differential equations which Elmer solves by the Finite Element Method (FEM).
+Elmer comprises several different parts:[3]
+The different parts of Elmer software may be used independently. Whilst the main module is the ElmerSolver tool, which includes many sophisticated features for physical model solving, the additional components are required to create a full workflow. For pre- and post-processing other tools, such as Paraview can be used to visualise the output.
+The software runs on Unix and Windows platforms and can be compiled on a large variety of compilers, using the CMake building tool. The solver can also be used in a multi-host parallel mode on platforms that support MPI.

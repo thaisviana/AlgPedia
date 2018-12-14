@@ -1,0 +1,8 @@
+ABOUT
+Spaghetti sort is a linear-time, analog algorithm for sorting a sequence of items, by Alexander Dewdney in his column, Scientific American.[1][2][3] This algorithm sorts a sequence of items requiring O(n) stack space in a stable manner. It requires a parallel processor.
+FULL TEXT
+Spaghetti sort is a linear-time, analog algorithm for sorting a sequence of items, by Alexander Dewdney in his column, Scientific American.[1][2][3] This algorithm sorts a sequence of items requiring O(n) stack space in a stable manner. It requires a parallel processor.
+
+
+For simplicity, assume we are sorting a list of natural numbers. The sorting method is illustrated using uncooked rods of spaghetti:
+Preparing the n rods of spaghetti takes linear time. Lowering the rods on the table takes constant time, O(1). This is possible because the hand, the spaghetti rods and the table work as a fully parallel computing device. There are then n rods to remove so, assuming each contact-and-removal operation takes constant time, the worst-case time complexity of the algorithm is O(n).

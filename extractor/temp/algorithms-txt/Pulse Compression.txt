@@ -1,0 +1,863 @@
+ABOUT
+Pulse compression is a signal processing technique commonly used by radar, sonar and echography to increase the range resolution as well as the signal to noise ratio. This is achieved by modulating the transmitted pulse and then correlating the received signal with the transmitted pulse.[1]
+FULL TEXT
+Pulse compression is a signal processing technique commonly used by radar, sonar and echography to increase the range resolution as well as the signal to noise ratio. This is achieved by modulating the transmitted pulse and then correlating the received signal with the transmitted pulse.[1]
+
+
+The simplest signal a pulse radar can transmit is a sinusoidal-amplitude pulse, 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ and carrier frequency, 
+
+
+
+
+f
+
+0
+
+
+
+
+{\displaystyle f_{0}}
+
+, truncated by a rectangular function of width, 
+
+
+
+
+T
+
+
+
+{\displaystyle \scriptstyle T}
+
+. The pulse is transmitted periodically, but that is not the main topic of this article; we will consider only a single pulse, 
+
+
+
+s
+
+
+{\displaystyle s}
+
+. If we assume the pulse to start at time 
+
+
+
+t
+
+=
+
+0
+
+
+{\displaystyle t\,=\,0}
+
+, the signal can be written the following way, using the complex notation:
+Let us determine the range resolution which can be obtained with such a signal. The return signal, written 
+
+
+
+
+r
+(
+t
+)
+
+
+
+{\displaystyle \scriptstyle r(t)}
+
+, is an attenuated and time-shifted copy of the original transmitted signal (in reality, Doppler effect can play a role too, but this is not important here.) There is also noise in the incoming signal, both on the imaginary and the real channel, which we will assume to be white and Gaussian (this generally holds in reality); we write 
+
+
+
+
+B
+(
+t
+)
+
+
+
+{\displaystyle \scriptstyle B(t)}
+
+ to denote that noise. To detect the incoming signal, matched filtering is commonly used. This method is optimal when a known signal is to be detected among additive white Gaussian noise.
+In other words, the cross-correlation of the received signal with the transmitted signal is computed. This is achieved by convolving the incoming signal with a conjugated and time-reversed version of the transmitted signal. This operation can be done either in software or with hardware. We write 
+
+
+
+
+<
+s
+,
+
+r
+>
+(
+t
+)
+
+
+
+{\displaystyle \scriptstyle <s,\,r>(t)}
+
+ for this cross-correlation. We have:
+If the reflected signal comes back to the receiver at time 
+
+
+
+
+
+t
+
+r
+
+
+
+
+
+{\displaystyle \scriptstyle t_{r}}
+
+ and is attenuated by factor 
+
+
+
+
+K
+
+
+
+{\displaystyle \scriptstyle K}
+
+, this yields:
+Since we know the transmitted signal, we obtain:
+where 
+
+
+
+
+
+B
+′
+
+(
+t
+)
+
+
+
+{\displaystyle \scriptstyle B'(t)}
+
+, the result of the intercorrelation between the noise and the transmitted signal. Function 
+
+
+
+Λ
+
+
+{\displaystyle \Lambda }
+
+ is the triangle function, its value is 0 on 
+
+
+
+
+[
+−
+∞
+,
+
+−
+
+
+1
+2
+
+
+]
+
+∪
+
+[
+
+
+1
+2
+
+
+,
+
++
+∞
+]
+
+
+
+{\displaystyle \scriptstyle [-\infty ,\,-{\frac {1}{2}}]\,\cup \,[{\frac {1}{2}},\,+\infty ]}
+
+, it increases linearly on 
+
+
+
+
+[
+−
+
+
+1
+2
+
+
+,
+
+0
+]
+
+
+
+{\displaystyle \scriptstyle [-{\frac {1}{2}},\,0]}
+
+ where it reaches its maximum 1, and it decreases linearly on 
+
+
+
+
+[
+0
+,
+
+
+
+1
+2
+
+
+]
+
+
+
+{\displaystyle \scriptstyle [0,\,{\frac {1}{2}}]}
+
+ until it reaches 0 again. Figures at the end of this paragraph show the shape of the intercorrelation for a sample signal (in red), in this case a real truncated sine, of duration 
+
+
+
+
+T
+
+=
+
+1
+
+
+
+{\displaystyle \scriptstyle T\,=\,1}
+
+ seconds, of unit amplitude, and frequency 
+
+
+
+
+
+f
+
+0
+
+
+
+=
+
+10
+
+
+
+{\displaystyle \scriptstyle f_{0}\,=\,10}
+
+ hertz. Two echoes (in blue) come back with delays of 3 and 5 seconds and amplitudes equal to 0.5 and 0.3 times the amplitude of the transmitted pulse, respectively; these are just random values for the sake of the example. Since the signal is real, the intercorrelation is weighted by an additional  1⁄2 factor.
+If two pulses come back (nearly) at the same time, the intercorrelation is equal to the sum of the intercorrelations of the two elementary signals. To distinguish one "triangular" envelope from that of the other pulse, it is clearly visible that the times of arrival of the two pulses must be separated by at least 
+
+
+
+
+T
+
+
+
+{\displaystyle \scriptstyle T}
+
+ so that the maxima of both pulses can be separated. If this condition is not met, both triangles will be mixed together and impossible to separate.
+Since the distance travelled by a wave during 
+
+
+
+
+T
+
+
+
+{\displaystyle \scriptstyle T}
+
+ is 
+
+
+
+
+c
+T
+
+
+
+{\displaystyle \scriptstyle cT}
+
+ (where c is the speed of the wave in the medium), and since this distance corresponds to a round-trip time, we get:
+ 
+Conclusion: to increase the resolution, the pulse length must be reduced.
+ 
+The instantaneous power of the transmitted pulse is 
+
+
+
+
+P
+(
+t
+)
+
+=
+
+
+|
+
+s
+
+
+|
+
+
+2
+
+
+(
+t
+)
+
+
+
+{\displaystyle \scriptstyle P(t)\,=\,|s|^{2}(t)}
+
+. The energy put into that signal is:
+Similarly, the energy in the received pulse is 
+
+
+
+
+
+E
+
+r
+
+
+
+=
+
+
+K
+
+2
+
+
+
+A
+
+2
+
+
+T
+
+
+
+{\displaystyle \scriptstyle E_{r}\,=\,K^{2}A^{2}T}
+
+. If 
+
+
+
+
+σ
+
+
+
+{\displaystyle \scriptstyle \sigma }
+
+ is the standard deviation of the noise, the signal-to-noise ratio (SNR) at the receiver is:
+The SNR is proportional to pulse duration 
+
+
+
+T
+
+
+{\displaystyle T}
+
+, if other parameters are held constant. This introduces a tradeoff: increasing 
+
+
+
+T
+
+
+{\displaystyle T}
+
+ improves the SNR, but reduces the resolution, and vice versa.
+How can one have a large enough pulse (to still have a good SNR at the receiver) without poor resolution? This is where pulse compression enters the picture. The basic principle is the following:
+In radar or sonar applications, linear chirps are the most typically used signals to achieve pulse compression. The pulse being of finite length, the amplitude is a rectangle function. If the transmitted signal has a duration 
+
+
+
+
+T
+
+
+
+{\displaystyle \scriptstyle T}
+
+, begins at 
+
+
+
+
+t
+
+=
+
+0
+
+
+
+{\displaystyle \scriptstyle t\,=\,0}
+
+ and linearly sweeps the frequency band 
+
+
+
+
+Δ
+f
+
+
+
+{\displaystyle \scriptstyle \Delta f}
+
+ centered on carrier 
+
+
+
+
+
+f
+
+0
+
+
+
+
+
+{\displaystyle \scriptstyle f_{0}}
+
+, it can be written:
+The chirp definition above means that the phase of the chirped signal (that is, the argument of the complex exponential), is the quadratic:
+thus the instantaneous frequency is (by definition):
+which is the intended linear ramp going from 
+
+
+
+
+
+f
+
+0
+
+
+
+−
+
+
+
+
+Δ
+f
+
+2
+
+
+
+
+
+{\displaystyle \scriptstyle f_{0}\,-\,{\frac {\Delta f}{2}}}
+
+ at 
+
+
+
+
+t
+
+=
+
+0
+
+
+
+{\displaystyle \scriptstyle t\,=\,0}
+
+ to 
+
+
+
+
+
+f
+
+0
+
+
+
++
+
+
+
+
+Δ
+f
+
+2
+
+
+
+
+
+{\displaystyle \scriptstyle f_{0}\,+\,{\frac {\Delta f}{2}}}
+
+ at 
+
+
+
+
+t
+
+=
+
+T
+
+
+
+{\displaystyle \scriptstyle t\,=\,T}
+
+.
+The relation of phase to frequency is often used in the other direction, starting with the desired 
+
+
+
+f
+(
+t
+)
+
+
+{\displaystyle f(t)}
+
+ and writing the chirp phase via the integration of frequency:
+As for the "simple" pulse, let us compute the cross-correlation between the transmitted and the received signal. To simplify things, we shall consider that the chirp is not written as it is given above, but in this alternate form (the final result will be the same):
+Since this cross-correlation is equal (save for the 
+
+
+
+K
+
+
+{\displaystyle K}
+
+ attenuation factor), to the autocorrelation function of 
+
+
+
+
+
+s
+
+
+c
+′
+
+
+
+
+
+
+{\displaystyle \scriptstyle s_{c'}}
+
+, this is what we consider:
+It can be shown[2] that the autocorrelation function of 
+
+
+
+
+s
+
+
+c
+′
+
+
+
+
+
+{\displaystyle s_{c'}}
+
+ is:
+The maximum of the autocorrelation function of 
+
+
+
+
+
+s
+
+
+c
+′
+
+
+
+
+
+
+{\displaystyle \scriptstyle s_{c'}}
+
+ is reached at 0. Around 0, this function behaves as the sinc (or cardinal sine) term. The −3 dB temporal width of that cardinal sine is more or less equal to 
+
+
+
+
+
+T
+′
+
+
+=
+
+
+
+1
+
+Δ
+f
+
+
+
+
+
+
+{\displaystyle \scriptstyle T'\,=\,{\frac {1}{\Delta f}}}
+
+. Everything happens as if, after matched filtering, we had the resolution that would have been reached with a simple pulse of duration 
+
+
+
+
+
+T
+′
+
+
+
+
+{\displaystyle \scriptstyle T'}
+
+. For the common values of 
+
+
+
+
+Δ
+f
+
+
+
+{\displaystyle \scriptstyle \Delta f}
+
+, 
+
+
+
+
+
+T
+′
+
+
+
+
+{\displaystyle \scriptstyle T'}
+
+ is smaller than 
+
+
+
+
+T
+
+
+
+{\displaystyle \scriptstyle T}
+
+, hence the pulse compression name.
+Since the cardinal sine can have annoying sidelobes, a common practice is to filter the result by a window (Hamming, Hann, etc.). In practice, this can be done at the same time as the adapted filtering by multiplying the reference chirp with the filter. The result will be a signal with a slightly lower maximum amplitude, but the sidelobes will be filtered out, which is more important.
+ 
+ 
+The energy of the signal does not vary during pulse compression. However, it is now located in the main lobe of the cardinal sine, whose width is approximately 
+
+
+
+
+
+T
+′
+
+
+≈
+
+
+
+1
+
+Δ
+f
+
+
+
+
+
+
+{\displaystyle \scriptstyle T'\,\approx \,{\frac {1}{\Delta f}}}
+
+. If 
+
+
+
+
+P
+
+
+
+{\displaystyle \scriptstyle P}
+
+ is the power of the signal before compression, and 
+
+
+
+
+
+P
+′
+
+
+
+
+{\displaystyle \scriptstyle P'}
+
+ the power of the signal after compression, we have:
+which yields:
+Besides, the power of the noise does not change through intercorrelation since it is not correlated to the transmitted pulse (it is totally random). As a consequence:  
+ 
+There are other means to modulate the signal. Phase modulation is a commonly used technique; in this case, the pulse is divided in 
+
+
+
+
+N
+
+
+
+{\displaystyle \scriptstyle N}
+
+ time slots of duration 
+
+
+
+
+
+
+T
+N
+
+
+
+
+
+{\displaystyle \scriptstyle {\frac {T}{N}}}
+
+ for which the phase at the origin is chosen according to a pre-established convention. For instance, it is possible to not change the phase for some time slots (which comes down to just leaving the signal as it is, in those slots) and de-phase the signal in the other slots by 
+
+
+
+
+π
+
+
+
+{\displaystyle \scriptstyle \pi }
+
+ (which is equivalent of changing the sign of the signal). The precise way of choosing the sequence of 
+
+
+
+
+{
+0
+,
+
+π
+}
+
+
+
+{\displaystyle \scriptstyle \{0,\,\pi \}}
+
+ phases is done according to a technique known as Barker codes. It is possible to code the sequence on more than two phases (polyphase coding). As with a linear chirp, pulse compression is achieved through intercorrelation.
+The advantages[3] of the Barker codes are their simplicity (as indicated above, a 
+
+
+
+
+π
+
+
+
+{\displaystyle \scriptstyle \pi }
+
+ de-phasing is a simple sign change), but the pulse compression ratio is lower than in the chirp case and the compression is very sensitive to frequency changes due to the Doppler effect if that change is larger than 
+
+
+
+
+
+
+1
+T
+
+
+
+
+
+{\displaystyle \scriptstyle {\frac {1}{T}}}
+
+.

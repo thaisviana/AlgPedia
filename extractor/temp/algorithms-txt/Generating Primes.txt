@@ -1,0 +1,203 @@
+ABOUT
+In computational number theory, a variety of algorithms make it possible to generate prime numbers efficiently. These are used in various applications, for example hashing, public-key cryptography, and search of prime factors in large numbers.
+FULL TEXT
+In computational number theory, a variety of algorithms make it possible to generate prime numbers efficiently. These are used in various applications, for example hashing, public-key cryptography, and search of prime factors in large numbers.
+For relatively small numbers, it is possible to just apply trial division to each successive odd number. Prime sieves are almost always faster.
+
+
+A prime sieve or prime number sieve is a fast type of algorithm for finding primes. There are many prime sieves. The simple sieve of Eratosthenes (250s BCE), the sieve of Sundaram (1934), the still faster but more complicated sieve of Atkin[1] (2004), and various wheel sieves[2] are most common.
+A prime sieve works by creating a list of all integers up to a desired limit and progressively removing composite numbers (which it directly generates) until only primes are left. This is the most efficient way to obtain a large range of primes; however, to find individual primes, direct primality tests are more efficient[citation needed]. Furthermore, based on the sieve formalisms, some integer sequences (sequence A240673 in the OEIS) are constructed which they also could be used for generating primes in certain intervals.
+For the large primes used in cryptography, it is usual to use a modified form of sieving: a randomly chosen range of odd numbers of the desired size is sieved against a number of relatively small primes (typically all primes less than 65,000). The remaining candidate primes are tested in random order with a standard probabilistic primality test such as the Baillie-PSW primality test or the Miller-Rabin primality test for probable primes.
+Alternatively, a number of techniques exist for efficiently generating provable primes. These include generating prime numbers p for which the prime factorization of p − 1 or p + 1 is known, for example Mersenne primes, Fermat primes and their generalizations.
+The sieve of Eratosthenes is generally considered the easiest sieve to implement, but it is not the fastest in the sense of the number of operations for a given range for large sieving ranges. In its usual standard implementation (which may include basic wheel factorization for small primes), it can find all the primes up to N in time 
+
+
+
+O
+(
+N
+log
+⁡
+log
+⁡
+N
+)
+
+
+{\displaystyle O(N\log \log N)}
+
+, while basic implementations of the sieve of Atkin and wheel sieves run in linear time 
+
+
+
+O
+(
+N
+)
+
+
+{\displaystyle O(N)}
+
+. Special versions of the Sieve of Eratosthenes using wheel sieve principles can have this same linear 
+
+
+
+O
+(
+N
+)
+
+
+{\displaystyle O(N)}
+
+ time complexity. A special version of the Sieve of Atkin and some special versions of wheel sieves which may include sieving using the methods from the Sieve of Eratosthenes can run in sublinear time complexity of 
+
+
+
+O
+(
+N
+
+/
+
+log
+⁡
+log
+⁡
+N
+)
+
+
+{\displaystyle O(N/\log \log N)}
+
+. Note that just because an algorithm has decreased asymptotic time complexity does not mean that a practical implementation runs faster than an algorithm with a greater asymptotic time complexity: If in order to achieve that lesser asymptotic complexity the individual operations have a constant factor of increased time complexity that may be many times greater than for the simpler algorithm, it may never be possible within practical sieving ranges for the advantage of the reduced number of operations for reasonably large ranges to make up for this extra cost in time per operation.
+Some sieving algorithms, such as the Sieve of Eratosthenes with large amounts of wheel factorization, take much less time for smaller ranges than their asymptotic time complexity would indicate because they have large negative constant offsets in their complexity and thus don't reach that asymptotic complexity until far beyond practical ranges. For instance, the Sieve of Eratosthenes with a combination of wheel factorization and pre-culling using small primes up to 19 uses time of about a factor of two less than that predicted for the total range for a range of 1019, which total range takes hundreds of core-years to sieve for the best of sieve algorithms.
+The simple naive "one large sieving array" sieves of any of these sieve types take memory space of about 
+
+
+
+O
+(
+N
+)
+
+
+{\displaystyle O(N)}
+
+, which means that 1) they are very limited in the sieving ranges they can handle to the amount of RAM memory available and 2) that they are typically quite slow since RAM memory access speed typically becomes the speed bottleneck more than computational speed once the array size grows beyond the size of the CPU caches. The normally implemented page segmented sieves of both Eratosthenes and Atkin take space 
+
+
+
+O
+(
+N
+
+/
+
+log
+⁡
+N
+)
+
+
+{\displaystyle O(N/\log N)}
+
+ plus small sieve segment buffers which are normally sized to fit within the CPU cache sizes; page segmented wheel sieves including special variations of the Sieve of Eratosthenes typically take much more space than this by a significant factor in order to store the required wheel representations; Pritchard's variation of the linear time complexity sieve of Eratosthenes/wheel sieve takes 
+
+
+
+O
+(
+
+N
+
+1
+
+/
+
+2
+
+
+log
+⁡
+log
+⁡
+N
+
+/
+
+log
+⁡
+N
+)
+
+
+{\displaystyle O(N^{1/2}\log \log N/\log N)}
+
+ space. The better time complexity special version of the Sieve of Atkin takes space 
+
+
+
+
+N
+
+1
+
+/
+
+2
++
+o
+(
+1
+)
+
+
+
+
+{\displaystyle N^{1/2+o(1)}}
+
+. Sorenson[3] shows an improvement to the wheel sieve that takes even less space at 
+
+
+
+O
+(
+N
+
+/
+
+(
+(
+log
+⁡
+N
+
+)
+
+L
+
+
+log
+⁡
+log
+⁡
+N
+)
+)
+
+
+{\displaystyle O(N/((\log N)^{L}\log \log N))}
+
+ for any 
+
+
+
+L
+>
+1
+
+
+{\displaystyle L>1}
+
+. However, the following is a general observation: the more the amount of memory is reduced, the greater the constant factor increase in the cost in time per operation even though the asymptotic time complexity may remain the same, meaning that the memory-reduced versions may run many times slower than the non-memory-reduced versions by quite a large factor.

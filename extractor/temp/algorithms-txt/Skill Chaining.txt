@@ -1,0 +1,4 @@
+ABOUT
+Skill chaining is a skill discovery method in continuous reinforcement learning.
+FULL TEXT
+Skill chaining is a skill discovery method in continuous reinforcement learning.

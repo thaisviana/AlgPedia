@@ -1,0 +1,651 @@
+ABOUT
+Quasi-Newton methods are methods used to either find zeroes or local maxima and minima of functions, as an alternative to Newton's method. They can be used if the Jacobian or Hessian is unavailable or is too expensive to compute at every iteration. The "full" Newton's method requires the Jacobian in order to search for zeros, or the Hessian for finding extrema.
+FULL TEXT
+Quasi-Newton methods are methods used to either find zeroes or local maxima and minima of functions, as an alternative to Newton's method. They can be used if the Jacobian or Hessian is unavailable or is too expensive to compute at every iteration. The "full" Newton's method requires the Jacobian in order to search for zeros, or the Hessian for finding extrema.
+
+
+Newton's method to find zeroes of a function 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ of multiple variables is given by: 
+
+
+
+
+x
+
+n
++
+1
+
+
+=
+
+x
+
+n
+
+
+−
+[
+
+J
+
+g
+
+
+(
+
+x
+
+n
+
+
+)
+
+]
+
+−
+1
+
+
+g
+(
+
+x
+
+n
+
+
+)
+
+
+
+
+{\displaystyle x_{n+1}=x_{n}-[J_{g}(x_{n})]^{-1}g(x_{n})\,\!}
+
+ where 
+
+
+
+[
+
+J
+
+g
+
+
+(
+
+x
+
+n
+
+
+)
+
+]
+
+−
+1
+
+
+
+
+{\displaystyle [J_{g}(x_{n})]^{-1}}
+
+ is the left inverse of the Jacobian matrix 
+
+
+
+
+J
+
+g
+
+
+(
+
+x
+
+n
+
+
+)
+
+
+{\displaystyle J_{g}(x_{n})}
+
+ of 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ evaluated for 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{n}}
+
+.
+Strictly speaking, any method that replaces the exact Jacobian 
+
+
+
+
+J
+
+g
+
+
+(
+
+x
+
+n
+
+
+)
+
+
+{\displaystyle J_{g}(x_{n})}
+
+ with an approximation is a quasi-Newton method. The chord method (where 
+
+
+
+
+J
+
+g
+
+
+(
+
+x
+
+n
+
+
+)
+
+
+{\displaystyle J_{g}(x_{n})}
+
+ is replaced by 
+
+
+
+
+J
+
+g
+
+
+(
+
+x
+
+o
+
+
+)
+
+
+{\displaystyle J_{g}(x_{o})}
+
+ for all iterations) for instance is a simple example. The methods given below for optimization refer to an important subclass of quasi-Newton methods, secant methods. [1]
+Using methods developed to find extrema in order to find zeroes is not always a good idea as the majority of the methods used to find extrema require that the matrix that is used is symmetrical. While this holds in the context of the search for extrema, it rarely holds when searching for zeroes. Broyden's "good" method and Broyden's "bad" method are two methods commonly used to find extrema that can also be applied to find zeroes. Other methods that can be used are the Column Updating Method, the Inverse Column Updating Method, the Quasi-Newton Least Squares Method and the Quasi-Newton Inverse Least Squares Method.
+More recently quasi-Newton methods have been applied to find the solution of multiple coupled systems of equations (e.g. fluid-structure interaction problems or interaction problems in physics). They allow the solution to be found by solving each constituent system separately (which is simpler than the global system) in a cyclic, iterative fashion until the solution of the global system is found.[1][2]
+Noting that the search for a minimum or maximum of a single-valued function is nothing else than the search for the zeroes of the gradient of that function, quasi-Newton methods can be readily applied to find extrema of a function. In other words, if 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ is the gradient of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ then searching for the zeroes of the multi-valued function 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ corresponds to the search for the extrema of the single-valued function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+; the Jacobian of 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ now becomes the Hessian of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+. The main difference is that the Hessian matrix is a symmetric matrix, unlike the Jacobian when searching for zeroes. Most quasi-Newton methods used in optimisation exploit this property.
+In optimization, quasi-Newton methods (a special case of variable metric methods) are algorithms for finding local maxima and minima of functions. Quasi-Newton methods are based on Newton's method to find the stationary point of a function, where the gradient is 0. Newton's method assumes that the function can be locally approximated as a quadratic in the region around the optimum, and uses the first and second derivatives to find the stationary point. In higher dimensions, Newton's method uses the gradient and the Hessian matrix of second derivatives of the function to be minimized.
+In quasi-Newton methods the Hessian matrix does not need to be computed. The Hessian is updated by analyzing successive gradient vectors instead. Quasi-Newton methods are a generalization of the secant method to find the root of the first derivative for multidimensional problems. In multiple dimensions the secant equation is under-determined, and quasi-Newton methods differ in how they constrain the solution, typically by adding a simple low-rank update to the current estimate of the Hessian.
+The first quasi-Newton algorithm was proposed by William C. Davidon, a physicist working at Argonne National Laboratory. He developed the first quasi-Newton algorithm in 1959: the DFP updating formula, which was later popularized by Fletcher and Powell in 1963, but is rarely used today. The most common quasi-Newton algorithms are currently the SR1 formula (for symmetric rank one), the BHHH method, the widespread BFGS method (suggested independently by Broyden, Fletcher, Goldfarb, and Shanno, in 1970), and its low-memory extension, L-BFGS. The Broyden's class is a linear combination of the DFP and BFGS methods.
+The SR1 formula does not guarantee the update matrix to maintain positive-definiteness and can be used for indefinite problems. The Broyden's method does not require the update matrix to be symmetric and it is used to find the root of a general system of equations (rather than the gradient) by updating the Jacobian (rather than the Hessian).
+One of the chief advantages of quasi-Newton methods over Newton's method is that the Hessian matrix (or, in the case of quasi-Newton methods, its approximation) 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ does not need to be inverted. Newton's method, and its derivatives such as interior point methods, require the Hessian to be inverted, which is typically implemented by solving a system of linear equations and is often quite costly. In contrast, quasi-Newton methods usually generate an estimate of 
+
+
+
+
+B
+
+−
+1
+
+
+
+
+{\displaystyle B^{-1}}
+
+ directly.
+As in Newton's method, one uses a second order approximation to find the minimum of a function 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+. The Taylor series of 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ around an iterate is:
+where (
+
+
+
+∇
+f
+
+
+{\displaystyle \nabla f}
+
+) is the gradient and 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ an approximation to the Hessian matrix. The gradient of this approximation (with respect to 
+
+
+
+Δ
+x
+
+
+{\displaystyle \Delta x}
+
+) is
+and setting this gradient to zero (which is the objective of optimisation) provides the Newton step:
+The Hessian approximation 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ is chosen to satisfy
+which is called the secant equation (the Taylor series of the gradient itself). In more than one dimension 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ is underdetermined. In one dimension, solving for 
+
+
+
+B
+
+
+{\displaystyle B}
+
+ and applying the Newton's step with the updated value is equivalent to the secant method. The various quasi-Newton methods differ in their choice of the solution to the secant equation (in one dimension, all the variants are equivalent). Most methods (but with exceptions, such as Broyden's method) seek a symmetric solution (
+
+
+
+
+B
+
+T
+
+
+=
+B
+
+
+{\displaystyle B^{T}=B}
+
+); furthermore, the variants listed below can be motivated by finding an update 
+
+
+
+
+B
+
+k
++
+1
+
+
+
+
+{\displaystyle B_{k+1}}
+
+ that is as close as possible to 
+
+
+
+
+B
+
+k
+
+
+
+
+{\displaystyle B_{k}}
+
+ in some norm; that is, 
+
+
+
+
+B
+
+k
++
+1
+
+
+=
+
+
+
+argmin
+
+
+
+B
+
+
+∥
+B
+−
+
+B
+
+k
+
+
+
+∥
+
+V
+
+
+
+
+{\displaystyle B_{k+1}={\textrm {argmin}}_{B}\|B-B_{k}\|_{V}}
+
+ where 
+
+
+
+V
+
+
+{\displaystyle V}
+
+ is some positive definite matrix that defines the norm. An approximate initial value of 
+
+
+
+
+B
+
+0
+
+
+=
+I
+∗
+x
+
+
+{\displaystyle B_{0}=I*x}
+
+ is often sufficient to achieve rapid convergence. Note that 
+
+
+
+
+B
+
+0
+
+
+
+
+{\displaystyle B_{0}}
+
+ should be positive definite. The unknown 
+
+
+
+
+x
+
+k
+
+
+
+
+{\displaystyle x_{k}}
+
+ is updated applying the Newton's step calculated using the current approximate Hessian matrix 
+
+
+
+
+B
+
+k
+
+
+
+
+{\displaystyle B_{k}}
+
+
+is used to update the approximate Hessian 
+
+
+
+
+
+B
+
+k
++
+1
+
+
+
+
+
+{\displaystyle \displaystyle B_{k+1}}
+
+, or directly its inverse 
+
+
+
+
+
+H
+
+k
++
+1
+
+
+=
+
+B
+
+k
++
+1
+
+
+−
+1
+
+
+
+
+
+{\displaystyle \displaystyle H_{k+1}=B_{k+1}^{-1}}
+
+ using the Sherman-Morrison formula.
+The most popular update formulas are:
+Other methods are Pearson's method, McCormick's Method, the Powell symmetric Broyden (PSB) method and Greenstadt's method.[1]
+When 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is a convex quadratic function with positive definite Hessian 
+
+
+
+B
+
+
+{\displaystyle B}
+
+, one would expect the matrices 
+
+
+
+
+H
+
+k
+
+
+
+
+{\displaystyle H_{k}}
+
+ generated by a Quasi-Newton method to converge to the inverse Hessian 
+
+
+
+H
+=
+
+B
+
+−
+1
+
+
+
+
+{\displaystyle H=B^{-1}}
+
+. This is indeed the case for the class of Quasi-Newton methods based on least-change updates. [3]
+Owing to their success, there are implementations of quasi-Newton methods in almost all programming languages. The NAG Library contains several routines[4] for minimizing or maximizing a function[5] which use quasi-Newton algorithms.
+Scipy.optimize has fmin_bfgs. In the SciPy extension to Python, the scipy.optimize.minimize function includes, among other methods, a BFGS implementation.
+GNU Octave uses a form of BFGS in its 'fsolve' function, with trust region extensions.
+In MATLAB's Optimization Toolbox, the fminunc function uses (among other methods) the BFGS Quasi-Newton method. Many of the constrained methods of the Optimization toolbox use BFGS and the variant L-BFGS. Many user-contributed quasi-Newton routines are available on MATLAB's file exchange.
+Mathematica includes quasi-Newton solvers.
+R's optim general-purpose optimizer routine uses the BFGS method by using method="BFGS"[1].

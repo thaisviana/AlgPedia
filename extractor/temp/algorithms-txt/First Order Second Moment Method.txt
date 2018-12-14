@@ -1,0 +1,250 @@
+ABOUT
+In probability theory, the first-order second-moment (FOSM) method, also referenced as mean value first-order second-moment (MVFOSM) method, is a probabilistic method to determine the stochastic moments of a function with random input variables. The name is based on the derivation, which uses a first-order Taylor series and the first and second moments of the input variables.[1]
+FULL TEXT
+In probability theory, the first-order second-moment (FOSM) method, also referenced as mean value first-order second-moment (MVFOSM) method, is a probabilistic method to determine the stochastic moments of a function with random input variables. The name is based on the derivation, which uses a first-order Taylor series and the first and second moments of the input variables.[1]
+
+
+Consider the objective function 
+
+
+
+g
+(
+x
+)
+
+
+{\displaystyle g(x)}
+
+, where the input vector 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ is a realization of the random vector 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ with probability density function 
+
+
+
+
+f
+
+X
+
+
+(
+x
+)
+
+
+{\displaystyle f_{X}(x)}
+
+. As 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ is randomly distributed, also 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ is randomly distributed. Following the FOSM method, the mean value of 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ is approximated by
+The variance of 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ is approximated by
+where 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ is the length/dimension of 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ and 
+
+
+
+
+
+
+∂
+g
+(
+μ
+)
+
+
+∂
+
+x
+
+i
+
+
+
+
+
+
+
+{\displaystyle {\frac {\partial g(\mu )}{\partial x_{i}}}}
+
+ is the partial derivative of 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ at the mean vector 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ with respect to the i-th entry of 
+
+
+
+x
+
+
+{\displaystyle x}
+
+.
+The objective function is approximated by a Taylor series at the mean vector 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+.
+The mean value of 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ is given by the integral
+Inserting the first-order Taylor series yields
+The variance of 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ is given by the integral
+According to the computational formula for the variance, this can be written as
+Inserting the Taylor series yields
+The following abbreviations are introduced.
+In the following, the entries of the random vector 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ are assumed to be independent. Considering also the second-order terms of the Taylor expansion, the approximation of the mean value is given by
+The second-order approximation of the variance is given by
+The skewness of 
+
+
+
+g
+
+
+{\displaystyle g}
+
+ can be determined from the third central moment 
+
+
+
+
+μ
+
+g
+,
+3
+
+
+
+
+{\displaystyle \mu _{g,3}}
+
+. When considering only linear terms of the Taylor series, but higher-order moments, the third central moment is approximated by
+For the second-order approximations of the third central moment as well as for the derivation of all higher-order approximations see Appendix D of Ref.[2] Taking into account the quadratic terms of the Taylor series and the third moments of the input variables is referred to as second-order third-moment method.[3] However, the full second-order approach of the variance (given above) also includes fourth-order moments of input parameters, and the full second-order approach of the skewness 6th-order moments [2]
+There are several examples in the literature where the FOSM method is employed to estimate the stochastic distribution of the buckling load of axially compressed structures (see e.g. Ref.[4][5][6][7]). For structures which are very sensitive to deviations from the ideal structure (like cylindrical shells) it has been proposed to use the FOSM method as a design approach. Often the applicability is checked by comparison with a Monte Carlo simulation. In engineering practice, the objective function often is not given as analytic expression, but for instance as a result of a finite-element simulation. Then the derivatives of the objective function need to be estimated by the central differences method. The number of evaluations of the objective function equals 
+
+
+
+2
+n
++
+1
+
+
+{\displaystyle 2n+1}
+
+. Depending on the number of random variables this still can mean a significantly smaller number of evaluations than performing a Monte Carlo simulation. However, when using the FOSM method as a design procedure, a lower bound shall be estimated, which is actually not given by the FOSM approach. Therefore, a type of distribution needs to be assumed for the distribution of the objective function, taking into account the approximated mean value and standard deviation.

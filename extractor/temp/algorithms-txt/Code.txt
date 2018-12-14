@@ -1,0 +1,118 @@
+ABOUT
+In communications and information processing, code is a system of rules to convert information—such as a letter, word, sound, image, or gesture—into another form or representation, sometimes shortened or secret, for communication through a channel or storage in a medium. An early example is the invention of language, which enabled a person, through speech, to communicate what he or she saw, heard, felt, or thought to others. But speech limits the range of communication to the distance a voice can carry, and limits the audience to those present when the speech is uttered. The invention of writing, which converted spoken language into visual symbols, extended the range of communication across space and time
+FULL TEXT
+In communications and information processing, code is a system of rules to convert information—such as a letter, word, sound, image, or gesture—into another form or representation, sometimes shortened or secret, for communication through a channel or storage in a medium. An early example is the invention of language, which enabled a person, through speech, to communicate what he or she saw, heard, felt, or thought to others. But speech limits the range of communication to the distance a voice can carry, and limits the audience to those present when the speech is uttered. The invention of writing, which converted spoken language into visual symbols, extended the range of communication across space and time
+The process of encoding converts information from a source into symbols for communication or storage. Decoding is the reverse process, converting code symbols back into a form that the recipient of that understands time.
+One reason for coding is to enable communication in places where ordinary plain language, spoken or written, is difficult or impossible. For example, semaphore, where the configuration of flags held by a signaller or the arms of a semaphore tower encodes parts of the message, typically individual letters and numbers. Another person standing a great distance away can interpret the flags and reproduce the words sent.
+
+
+In information theory and computer science, a code is usually considered as an algorithm which uniquely represents symbols from some source alphabet, by encoded strings, which may be in some other target alphabet. An extension of the code for representing sequences of symbols over the source alphabet is obtained by concatenating the encoded strings.
+Before giving a mathematically precise definition, this is a brief example. The mapping
+is a code, whose source alphabet is the set 
+
+
+
+{
+a
+,
+b
+,
+c
+}
+
+
+{\displaystyle \{a,b,c\}}
+
+ and whose target alphabet is the set 
+
+
+
+{
+0
+,
+1
+}
+
+
+{\displaystyle \{0,1\}}
+
+. Using the extension of the code, the encoded string 0011001011 can be grouped into codewords as 0 011 0 01 011, and these in turn can be decoded to the sequence of source symbols acabc.
+Using terms from formal language theory, the precise mathematical definition of this concept is as follows: Let S and T be two finite sets, called the source and target alphabets, respectively. A code 
+
+
+
+C
+:
+
+S
+→
+
+T
+
+∗
+
+
+
+
+{\displaystyle C:\,S\to T^{*}}
+
+ is a total function mapping each symbol from S to a sequence of symbols over T, and the extension of 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ to a homomorphism of 
+
+
+
+
+S
+
+∗
+
+
+
+
+{\displaystyle S^{*}}
+
+ into 
+
+
+
+
+T
+
+∗
+
+
+
+
+{\displaystyle T^{*}}
+
+, which naturally maps each sequence of source symbols to a sequence of target symbols, is referred to as its extension.
+In this section we consider codes, which encode each source (clear text) character by a code word from some dictionary, and concatenation of such code words give us an encoded string. Variable-length codes are especially useful when clear text characters have different probabilities; see also entropy encoding.
+A prefix code is a code with the "prefix property": there is no valid code word in the system that is a prefix (start) of any other valid code word in the set. Huffman coding is the most known algorithm for deriving prefix codes. Prefix codes are widely referred to as "Huffman codes", even when the code was not produced by a Huffman algorithm. Other examples of prefix codes are country calling codes, the country and publisher parts of ISBNs, and the Secondary Synchronization Codes used in the UMTS W-CDMA 3G Wireless Standard.
+Kraft's inequality characterizes the sets of codeword lengths that are possible in a prefix code. Virtually any uniquely decodable one-to-many code, not necessary a prefix one, must satisfy Kraft's inequality.
+Codes may also be used to represent data in a way more resistant to errors in transmission or storage. Such a "code" is called an error-correcting code, and works by including carefully crafted redundancy with the stored (or transmitted) data. Examples include Hamming codes, Reed–Solomon, Reed–Muller, Walsh–Hadamard, Bose–Chaudhuri–Hochquenghem, Turbo, Golay, Goppa, low-density parity-check codes, and space–time codes. Error detecting codes can be optimised to detect burst errors, or random errors.
+A cable code replaces words (e.g., ship or invoice) with shorter words, allowing the same information to be sent with fewer characters, more quickly, and most importantly, less expensively.
+Codes can be used for brevity. When telegraph messages were the state of the art in rapid long distance communication, elaborate systems of commercial codes that encoded complete phrases into single mouths (commonly five-minute groups) were developed, so that telegraphers became conversant with such "words" as BYOXO ("Are you trying to weasel out of our deal?"), LIOUY ("Why do you not answer my question?"), BMULD ("You're a skunk!"), or AYYLU ("Not clearly coded, repeat more clearly."). Code words were chosen for various reasons: length, pronounceability, etc. Meanings were chosen to fit perceived needs: commercial negotiations, military terms for military codes, diplomatic terms for diplomatic codes, any and all of the preceding for espionage codes. Codebooks and codebook publishers proliferated, including one run as a front for the American Black Chamber run by Herbert Yardley between the First and Second World Wars. The purpose of most of these codes was to save on cable costs. The use of data coding for data compression predates the computer era; an early example is the telegraph Morse code where more-frequently used characters have shorter representations. Techniques such as Huffman coding are now used by computer-based algorithms to compress large data files into a more compact form for storage or transmission.
+Probably the most widely known data communications code so far (a.k.a. character representation) in use today is ASCII. In one or another (somewhat compatible) version, it is used by nearly all personal computers, terminals, printers, and other communication equipment. It represents 128 characters with seven-bit binary numbers—that is, as a string of seven 1s and 0s (bits). In ASCII a lowercase "a" is always 1100001, an uppercase "A" always 1000001, and so on. There are many other encodings, which represent each character by a byte (usually referred as code pages), integer code point (Unicode) or a byte sequence (UTF-8).
+Biological organisms contain genetic material that is used to control their function and development. This is DNA, which contains units named genes from which messenger RNA is derived. This in turn produces proteins through a code (genetic code) in which a series of triplets (codons) of four possible nucleotides can be translated into one of twenty possible amino acids. A sequence of codons results in a corresponding sequence of amino acids that form a protein molecule; a type of codon called a stop codon signals the end of the sequence.
+In mathematics, a Gödel code was the basis for the proof of Gödel's incompleteness theorem. Here, the idea was to map mathematical notation to a natural number (using a Gödel numbering).
+There are codes using colors, like traffic lights, the color code employed to mark the nominal value of the electrical resistors or that of the trashcans devoted to specific types of garbage (paper, glass, biological, etc.)
+In marketing, coupon codes can be used for a financial discount or rebate when purchasing a product from an internet retailer.
+In military environments, specific sounds with the cornet are used for different uses: to mark some moments of the day, to command the infantry in the battlefield, etc.
+Communication systems for sensory impairments, such as sign language for deaf people and braille for blind people, are based on movement or tactile codes.
+Musical scores are the most common way to encode music.
+Specific games, as chess, have their own code systems to record the matches called chess notation.
+In the history of cryptography, codes were once common for ensuring the confidentiality of communications, although ciphers are now used instead. See code (cryptography).
+Secret codes intended to obscure the real messages, ranging from serious (mainly espionage in military, diplomatic, business, etc.) to trivial (romance, games) can be any kind of imaginative encoding: flowers, game cards, clothes, fans, hats, melodies, birds, etc., in which the sole requisite is the previous agreement of the meaning by both the sender and the receiver.
+Other examples of encoding include:
+Other examples of decoding include:
+Acronyms and abbreviations can be considered codes, and in a sense all languages and writing systems are codes for human thought.
+International Air Transport Association airport codes are three-letter codes used to designate airports and used for bag tags. Station codes are similarly used on railways, but are usually national, so the same code can be used for different stations if they are in different countries.
+Occasionally a code word achieves an independent existence (and meaning) while the original equivalent phrase is forgotten or at least no longer has the precise meaning attributed to the code word. For example, '30' was widely used in journalism to mean "end of story", and has been used in other contexts to signify "the end".[1] [2]

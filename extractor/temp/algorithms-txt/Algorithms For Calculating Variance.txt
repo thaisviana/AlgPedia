@@ -1,0 +1,1161 @@
+ABOUT
+Algorithms for calculating variance play a major role in computational statistics. A key difficulty in the design of good algorithms for this problem is that formulas for the variance may involve sums of squares, which can lead to numerical instability as well as to arithmetic overflow when dealing with large values.
+FULL TEXT
+Algorithms for calculating variance play a major role in computational statistics. A key difficulty in the design of good algorithms for this problem is that formulas for the variance may involve sums of squares, which can lead to numerical instability as well as to arithmetic overflow when dealing with large values.
+
+
+A formula for calculating the variance of an entire population of size N is:
+Using Bessel's correction to calculate an unbiased estimate of the population variance from a finite sample of n observations, the formula is:
+Therefore, a naive algorithm to calculate the estimated variance is given by the following:
+This algorithm can easily be adapted to compute the variance of a finite population: simply divide by N instead of n − 1 on the last line.
+Because SumSq and (Sum×Sum)/n can be very similar numbers, cancellation can lead to the precision of the result to be much less than the inherent precision of the floating-point arithmetic used to perform the computation. Thus this algorithm should not be used in practice.[1][2] This is particularly bad if the standard deviation is small relative to the mean. However, the algorithm can be improved by adopting the method of the assumed mean.
+We can use a property of the variance to avoid the catastrophic cancellation in this formula, namely the variance is invariant with respect to changes in a location parameter
+with 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ any constant, which leads to the new formula
+the closer 
+
+
+
+K
+
+
+{\displaystyle K}
+
+ is to the mean value the more accurate the result will be, but just choosing a value inside the samples range will guarantee the desired stability. If the values 
+
+
+
+(
+
+x
+
+i
+
+
+−
+K
+)
+
+
+{\displaystyle (x_{i}-K)}
+
+ are small then there are no problems with the sum of its squares, on the contrary, if they are large it necessarily means that the variance is large as well. In any case the second term in the formula is always smaller than the first one therefore no cancellation may occur.[2]
+If we take just the first sample as 
+
+
+
+K
+
+
+{\displaystyle K}
+
+ the algorithm can be written in Python programming language as
+this formula facilitates as well the incremental computation, that can be expressed as
+An alternative approach, using a different formula for the variance, first computes the sample mean,
+and then computes the sum of the squares of the differences from the mean,
+where s is the standard deviation. This is given by the following pseudocode:
+This algorithm is numerically stable if n is small.[1][3] However, the results of both of these simple algorithms ("Naïve" and "Two-pass") can depend inordinately on the ordering of the data and can give poor results for very large data sets due to repeated roundoff error in the accumulation of the sums. Techniques such as compensated summation can be used to combat this error to a degree.
+It is often useful to be able to compute the variance in a single pass, inspecting each value 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+ only once; for example, when the data are being collected without enough storage to keep all the values, or when costs of memory access dominate those of computation. For such an online algorithm, a recurrence relation is required between quantities from which the required statistics can be calculated in a numerically stable fashion.
+The following formulas can be used to update the mean and (estimated) variance of the sequence, for an additional element xn. Here, xn denotes the sample mean of the first n samples (x1, ..., xn), s2n their sample variance, and σ2n their population variance.
+These formulas suffer from numerical instability. A better quantity for updating is the sum of squares of differences from the current mean, 
+
+
+
+
+
+∑
+
+i
+=
+1
+
+
+n
+
+
+(
+
+x
+
+i
+
+
+−
+
+
+
+
+x
+¯
+
+
+
+
+n
+
+
+
+)
+
+2
+
+
+
+
+
+{\displaystyle \textstyle \sum _{i=1}^{n}(x_{i}-{\bar {x}}_{n})^{2}}
+
+, here denoted 
+
+
+
+
+M
+
+2
+,
+n
+
+
+
+
+{\displaystyle M_{2,n}}
+
+:
+A numerically stable algorithm for the sample variance is given below. It also computes the mean. This algorithm was found by Welford,[4][5] and it has been thoroughly analyzed.[6][7] It is also common to denote 
+
+
+
+
+M
+
+k
+
+
+=
+
+
+
+
+x
+¯
+
+
+
+
+k
+
+
+
+
+{\displaystyle M_{k}={\bar {x}}_{k}}
+
+ and 
+
+
+
+
+S
+
+k
+
+
+=
+
+M
+
+2
+,
+k
+
+
+
+
+{\displaystyle S_{k}=M_{2,k}}
+
+.[8]
+This algorithm is much less prone to loss of precision due to catastrophic cancellation, but might not be as efficient because of the division operation inside the loop. For a particularly robust two-pass algorithm for computing the variance, one can first compute and subtract an estimate of the mean, and then use this algorithm on the residuals.
+The parallel algorithm below illustrates how to merge multiple sets of statistics calculated online.
+The algorithm can be extended to handle unequal sample weights, replacing the simple counter n with the sum of weights seen so far. West (1979)[9] suggests this incremental algorithm:
+Chan et al.[10] note that the above "On-line" algorithm is a special case of an algorithm that works for any partition of the sample 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ into sets 
+
+
+
+
+X
+
+A
+
+
+
+
+{\displaystyle X_{A}}
+
+, 
+
+
+
+
+X
+
+B
+
+
+
+
+{\displaystyle X_{B}}
+
+:
+This may be useful when, for example, multiple processing units may be assigned to discrete parts of the input.
+Chan's method for estimating the mean is numerically unstable when 
+
+
+
+
+n
+
+A
+
+
+≈
+
+n
+
+B
+
+
+
+
+{\displaystyle n_{A}\approx n_{B}}
+
+ and both are large, because the numerical error in 
+
+
+
+
+
+
+
+x
+¯
+
+
+
+
+B
+
+
+−
+
+
+
+
+x
+¯
+
+
+
+
+A
+
+
+
+
+{\displaystyle {\bar {x}}_{B}-{\bar {x}}_{A}}
+
+ is not scaled down in the way that it is in the 
+
+
+
+
+n
+
+B
+
+
+=
+1
+
+
+{\displaystyle n_{B}=1}
+
+ case. In such cases, prefer 
+
+
+
+
+
+
+
+x
+¯
+
+
+
+
+X
+
+
+=
+
+
+
+
+n
+
+A
+
+
+
+
+
+
+x
+¯
+
+
+
+
+A
+
+
++
+
+n
+
+B
+
+
+
+
+
+
+x
+¯
+
+
+
+
+B
+
+
+
+
+
+n
+
+A
+
+
++
+
+n
+
+B
+
+
+
+
+
+
+
+{\displaystyle {\bar {x}}_{X}={\frac {n_{A}{\bar {x}}_{A}+n_{B}{\bar {x}}_{B}}{n_{A}+n_{B}}}}
+
+.
+Assume that all floating point operations use the standard IEEE 754 double-precision arithmetic. Consider the sample (4, 7, 13, 16) from an infinite population. Based on this sample, the estimated population mean is 10, and the unbiased estimate of population variance is 30. Both "Naïve" algorithm and "Two-pass" algorithm compute these values correctly. Next consider the sample (108 + 4, 108 + 7, 108 + 13, 108 + 16), which gives rise to the same estimated variance as the first sample. "Two-pass" algorithm computes this variance estimate correctly, but "Naïve" algorithm returns 29.333333333333332 instead of 30. While this loss of precision may be tolerable and viewed as a minor flaw of "Naïve" algorithm, it is easy to find data that reveal a major flaw in the naive algorithm: Take the sample to be (109 + 4, 109 + 7, 109 + 13, 109 + 16). Again the estimated population variance of 30 is computed correctly by "Two-pass"" algorithm, but "Naïve" algorithm now computes it as −170.66666666666666. This is a serious problem with "Naïve" algorithm and is due to catastrophic cancellation in the subtraction of two similar numbers at the final stage of the algorithm.
+Terriberry[11] extends Chan's formulae to calculating the third and fourth central moments, needed for example when estimating skewness and kurtosis:
+Here the 
+
+
+
+
+M
+
+k
+
+
+
+
+{\displaystyle M_{k}}
+
+ are again the sums of powers of differences from the mean 
+
+
+
+Σ
+(
+x
+−
+
+
+x
+¯
+
+
+
+)
+
+k
+
+
+
+
+{\displaystyle \Sigma (x-{\overline {x}})^{k}}
+
+, giving
+For the incremental case (i.e., 
+
+
+
+B
+=
+{
+x
+}
+
+
+{\displaystyle B=\{x\}}
+
+), this simplifies to:
+By preserving the value 
+
+
+
+δ
+
+/
+
+n
+
+
+{\displaystyle \delta /n}
+
+, only one division operation is needed and the higher-order statistics can thus be calculated for little incremental cost.
+An example of the online algorithm for kurtosis implemented as described is:
+Pébay[12] further extends these results to arbitrary-order central moments, for the incremental and the pairwise cases. One can also find there similar formulas for covariance.
+Choi and Sweetman [13] offer two alternative methods to compute the skewness and kurtosis, each of which can save substantial computer memory requirements and CPU time in certain applications. The first approach is to compute the statistical moments by separating the data into bins and then computing the moments from the geometry of the resulting histogram, which effectively becomes a one-pass algorithm for higher moments. One benefit is that the statistical moment calculations can be carried out to arbitrary accuracy such that the computations can be tuned to the precision of, e.g., the data storage format or the original measurement hardware. A relative histogram of a random variable can be constructed in the conventional way: the range of potential values is divided into bins and the number of occurrences within each bin are counted and plotted such that the area of each rectangle equals the portion of the sample values within that bin:
+where 
+
+
+
+h
+(
+
+x
+
+k
+
+
+)
+
+
+{\displaystyle h(x_{k})}
+
+ and 
+
+
+
+H
+(
+
+x
+
+k
+
+
+)
+
+
+{\displaystyle H(x_{k})}
+
+ represent the frequency and the relative frequency at bin 
+
+
+
+
+x
+
+k
+
+
+
+
+{\displaystyle x_{k}}
+
+ and 
+
+
+
+A
+=
+
+∑
+
+k
+=
+1
+
+
+K
+
+
+h
+(
+
+x
+
+k
+
+
+)
+
+Δ
+
+x
+
+k
+
+
+
+
+{\displaystyle A=\sum _{k=1}^{K}h(x_{k})\,\Delta x_{k}}
+
+ is the total area of the histogram. After this normalization, the 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ raw moments and central moments of 
+
+
+
+x
+(
+t
+)
+
+
+{\displaystyle x(t)}
+
+ can be calculated from the relative histogram:
+where the superscript 
+
+
+
+
+
+
+(
+h
+)
+
+
+
+
+{\displaystyle ^{(h)}}
+
+ indicates the moments are calculated from the histogram. For constant bin width 
+
+
+
+Δ
+
+x
+
+k
+
+
+=
+Δ
+x
+
+
+{\displaystyle \Delta x_{k}=\Delta x}
+
+ these two expressions can be simplified using 
+
+
+
+I
+=
+A
+
+/
+
+Δ
+x
+
+
+{\displaystyle I=A/\Delta x}
+
+:
+The second approach from Choi and Sweetman [13] is an analytical methodology to combine statistical moments from individual segments of a time-history such that the resulting overall moments are those of the complete time-history. This methodology could be used for parallel computation of statistical moments with subsequent combination of those moments, or for combination of statistical moments computed at sequential times.
+If 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ sets of statistical moments are known: 
+
+
+
+(
+
+γ
+
+0
+,
+q
+
+
+,
+
+μ
+
+q
+
+
+,
+
+σ
+
+q
+
+
+2
+
+
+,
+
+α
+
+3
+,
+q
+
+
+,
+
+α
+
+4
+,
+q
+
+
+)
+
+
+
+{\displaystyle (\gamma _{0,q},\mu _{q},\sigma _{q}^{2},\alpha _{3,q},\alpha _{4,q})\quad }
+
+ for 
+
+
+
+q
+=
+1
+,
+2
+,
+.
+.
+.
+,
+Q
+
+
+{\displaystyle q=1,2,...,Q}
+
+, then each 
+
+
+
+
+γ
+
+n
+
+
+
+
+{\displaystyle \gamma _{n}}
+
+ can be expressed in terms of the equivalent 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ raw moments:
+where 
+
+
+
+
+γ
+
+0
+,
+q
+
+
+
+
+{\displaystyle \gamma _{0,q}}
+
+ is generally taken to be the duration of the 
+
+
+
+
+q
+
+t
+h
+
+
+
+
+{\displaystyle q^{th}}
+
+ time-history, or the number of points if 
+
+
+
+Δ
+t
+
+
+{\displaystyle \Delta t}
+
+ is constant.
+The benefit of expressing the statistical moments in terms of 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+ is that the 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ sets can be combined by addition, and there is no upper limit on the value of 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+.
+where the subscript 
+
+
+
+
+
+
+c
+
+
+
+
+{\displaystyle _{c}}
+
+ represents the concatenated time-history or combined 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+. These combined values of 
+
+
+
+γ
+
+
+{\displaystyle \gamma }
+
+ can then be inversely transformed into raw moments representing the complete concatenated time-history
+Known relationships between the raw moments (
+
+
+
+
+m
+
+n
+
+
+
+
+{\displaystyle m_{n}}
+
+) and the central moments (
+
+
+
+
+θ
+
+n
+
+
+=
+E
+[
+(
+x
+−
+μ
+
+)
+
+n
+
+
+]
+)
+
+
+{\displaystyle \theta _{n}=E[(x-\mu )^{n}])}
+
+) are then used to compute the central moments of the concatenated time-history. Finally, the statistical moments of the concatenated history are computed from the central moments:
+Very similar algorithms can be used to compute the covariance. The naive algorithm is:
+For the algorithm above, one could use the following Python code:
+As for the variance, the covariance of two random variables is also shift-invariant, so given that 
+
+
+
+
+K
+
+x
+
+
+
+
+{\displaystyle K_{x}}
+
+ and 
+
+
+
+
+K
+
+y
+
+
+
+
+{\displaystyle K_{y}}
+
+ are whatever two constant values it can be written:
+and again choosing a value inside the range of values will stabilize the formula against catastrophic cancellation as well as make it more robust against big sums. Taking the first value of each data set, the algorithm can be written as:
+The two-pass algorithm first computes the sample means, and then the covariance:
+The two-pass algorithm may be written as:
+A slightly more accurate compensated version performs the full naive algorithm on the residuals. The final sums 
+
+
+
+
+∑
+
+x
+
+i
+
+
+
+
+
+{\displaystyle \textstyle \sum x_{i}}
+
+ and 
+
+
+
+
+∑
+
+y
+
+i
+
+
+
+
+
+{\displaystyle \textstyle \sum y_{i}}
+
+ should be zero, but the second pass compensates for any small error.
+A slight modification of the online algorithm for computing the variance yields an online algorithm for the covariance:
+A stable one-pass algorithm exists, similar to the one above, that computes co-moment 
+
+
+
+
+
+C
+
+n
+
+
+=
+
+∑
+
+i
+=
+1
+
+
+n
+
+
+(
+
+x
+
+i
+
+
+−
+
+
+
+
+x
+¯
+
+
+
+
+n
+
+
+)
+(
+
+y
+
+i
+
+
+−
+
+
+
+
+y
+¯
+
+
+
+
+n
+
+
+)
+
+
+
+{\displaystyle \textstyle C_{n}=\sum _{i=1}^{n}(x_{i}-{\bar {x}}_{n})(y_{i}-{\bar {y}}_{n})}
+
+:
+The apparent asymmetry in that last equation is due to the fact that 
+
+
+
+
+(
+
+x
+
+n
+
+
+−
+
+
+
+
+x
+¯
+
+
+
+
+n
+
+
+)
+=
+
+
+
+n
+−
+1
+
+n
+
+
+(
+
+x
+
+n
+
+
+−
+
+
+
+
+x
+¯
+
+
+
+
+n
+−
+1
+
+
+)
+
+
+
+{\displaystyle \textstyle (x_{n}-{\bar {x}}_{n})={\frac {n-1}{n}}(x_{n}-{\bar {x}}_{n-1})}
+
+, so both update terms are equal to 
+
+
+
+
+
+
+
+n
+−
+1
+
+n
+
+
+(
+
+x
+
+n
+
+
+−
+
+
+
+
+x
+¯
+
+
+
+
+n
+−
+1
+
+
+)
+(
+
+y
+
+n
+
+
+−
+
+
+
+
+y
+¯
+
+
+
+
+n
+−
+1
+
+
+)
+
+
+
+{\displaystyle \textstyle {\frac {n-1}{n}}(x_{n}-{\bar {x}}_{n-1})(y_{n}-{\bar {y}}_{n-1})}
+
+. Even greater accuracy can be achieved by first computing the means, then using the stable one-pass algorithm on the residuals.
+Thus we can compute the covariance as
+Likewise, there is a formula for combining the covariances of two sets that can be used to parallelize the computation:

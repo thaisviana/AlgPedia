@@ -1,0 +1,6 @@
+ABOUT
+In cryptography, residual block termination is a variation of cipher block chaining mode (CBC) that does not require any padding. It does this by effectively changing to cipher feedback mode for one block. The cost is the increased complexity.
+FULL TEXT
+In cryptography, residual block termination is a variation of cipher block chaining mode (CBC) that does not require any padding. It does this by effectively changing to cipher feedback mode for one block. The cost is the increased complexity.
+If the plaintext length N is not a multiple of the block size L:
+For messages shorter than one block, residual block termination can use an encrypted IV instead of the previously encrypted block.

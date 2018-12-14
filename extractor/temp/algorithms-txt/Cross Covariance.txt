@@ -1,0 +1,313 @@
+ABOUT
+In probability and statistics, given two stochastic processes 
+
+
+
+X
+=
+(
+
+X
+
+t
+
+
+)
+
+
+{\displaystyle X=(X_{t})}
+
+ and 
+
+
+
+Y
+=
+(
+
+Y
+
+t
+
+
+)
+
+
+{\displaystyle Y=(Y_{t})}
+
+, the cross-covariance is a function that gives the covariance of one process with the other at pairs of time points. With the usual notation E  for the expectation operator, if the processes have the mean functions 
+
+
+
+
+μ
+
+t
+
+
+=
+E
+[
+
+X
+
+t
+
+
+]
+
+
+{\displaystyle \mu _{t}=E[X_{t}]}
+
+ and 
+
+
+
+
+ν
+
+t
+
+
+=
+E
+[
+
+Y
+
+t
+
+
+]
+
+
+{\displaystyle \nu _{t}=E[Y_{t}]}
+
+, then the cross-covariance is given by
+FULL TEXT
+In probability and statistics, given two stochastic processes 
+
+
+
+X
+=
+(
+
+X
+
+t
+
+
+)
+
+
+{\displaystyle X=(X_{t})}
+
+ and 
+
+
+
+Y
+=
+(
+
+Y
+
+t
+
+
+)
+
+
+{\displaystyle Y=(Y_{t})}
+
+, the cross-covariance is a function that gives the covariance of one process with the other at pairs of time points. With the usual notation E  for the expectation operator, if the processes have the mean functions 
+
+
+
+
+μ
+
+t
+
+
+=
+E
+[
+
+X
+
+t
+
+
+]
+
+
+{\displaystyle \mu _{t}=E[X_{t}]}
+
+ and 
+
+
+
+
+ν
+
+t
+
+
+=
+E
+[
+
+Y
+
+t
+
+
+]
+
+
+{\displaystyle \nu _{t}=E[Y_{t}]}
+
+, then the cross-covariance is given by
+Cross-covariance is related to the more commonly used cross-correlation of the processes in question.
+In the case of two random vectors 
+
+
+
+X
+=
+(
+
+X
+
+1
+
+
+,
+
+X
+
+2
+
+
+,
+.
+.
+.
+,
+
+X
+
+n
+
+
+)
+
+
+{\displaystyle X=(X_{1},X_{2},...,X_{n})}
+
+ and 
+
+
+
+Y
+=
+(
+
+Y
+
+1
+
+
+,
+
+Y
+
+2
+
+
+,
+.
+.
+.
+,
+
+Y
+
+n
+
+
+)
+
+
+{\displaystyle Y=(Y_{1},Y_{2},...,Y_{n})}
+
+, the cross-covariance would be a square n by n matrix 
+
+
+
+
+C
+
+X
+Y
+
+
+
+
+{\displaystyle C_{XY}}
+
+ with entries 
+
+
+
+
+C
+
+X
+Y
+
+
+(
+j
+,
+k
+)
+=
+
+cov
+
+(
+
+X
+
+j
+
+
+,
+
+Y
+
+k
+
+
+)
+.
+
+
+
+{\displaystyle C_{XY}(j,k)={\text{cov}}(X_{j},Y_{k}).\,}
+
+ Thus the term cross-covariance is used in order to distinguish this concept from the covariance of a random vector X, which is understood to be the matrix of covariances between the scalar components of X itself.
+In signal processing, the cross-covariance is often called cross-correlation and is a measure of similarity of two signals, commonly used to find features in an unknown signal by comparing it to a known one. It is a function of the relative time between the signals, is sometimes called the sliding dot product, and has applications in pattern recognition and cryptanalysis.
+
+
+For random vectors X and Y, each containing random elements whose expected value and variance exist, the cross-covariance matrix of X and Y is defined by
+where μX and μY are vectors containing the expected values of X and Y. The vectors X and Y need not have the same dimension, and either might be a scalar value. Any element of the cross-covariance matrix is itself a "cross-covariance".
+For example, if X=(X1, X2, X3) and Y=(Y1, Y2) are random vectors, then cov(X, Y) is a 3 x 2 matrix whose ij-th entry is cov(Xi, Yj).
+The cross-covariance is also relevant in signal processing where the cross-covariance between two wide-sense stationary random processes can be estimated by averaging the product of samples measured from one process and samples measured from the other (and its time shifts). The samples included in the average can be an arbitrary subset of all the samples in the signal (e.g., samples within a finite time window or a sub-sampling of one of the signals). For a large number of samples, the average converges to the true covariance.
+Cross-covariance may also refer to a "deterministic" cross-covariance between two signals. This consists of summing over all time indices. For example, for discrete signals fi and gi the cross-covariance is defined as
+where the asterisk indicates that the complex conjugate is taken when the signals are complex-valued.
+For continuous functions f (x) and g (x) the (deterministic) cross-covariance is defined as
+The cross-covariance of two signals is related to the convolution by:

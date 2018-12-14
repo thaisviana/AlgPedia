@@ -1,0 +1,81 @@
+ABOUT
+The autocorrelation matrix is used in various digital signal processing algorithms. It consists of elements of the discrete autocorrelation function, 
+
+
+
+
+R
+
+x
+x
+
+
+(
+j
+)
+
+
+{\displaystyle R_{xx}(j)}
+
+ arranged in the following manner:
+FULL TEXT
+The autocorrelation matrix is used in various digital signal processing algorithms. It consists of elements of the discrete autocorrelation function, 
+
+
+
+
+R
+
+x
+x
+
+
+(
+j
+)
+
+
+{\displaystyle R_{xx}(j)}
+
+ arranged in the following manner:
+This is clearly a Hermitian matrix and a Toeplitz matrix. If 
+
+
+
+
+x
+
+
+
+{\displaystyle \mathbf {x} }
+
+ is wide-sense stationary then its autocorrelation matrix will be positive definite.
+The autocovariance matrix is related to the autocorrelation matrix as follows:
+Where 
+
+
+
+
+
+m
+
+
+x
+
+
+
+
+{\displaystyle \mathbf {m} _{x}}
+
+ is a vector giving the mean of signal 
+
+
+
+
+x
+
+
+
+{\displaystyle \mathbf {x} }
+
+ at each index of time.

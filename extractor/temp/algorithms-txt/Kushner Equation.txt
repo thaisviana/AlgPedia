@@ -1,0 +1,264 @@
+ABOUT
+In filtering theory the Kushner equation[1] (after Harold Kushner) is an equation for the conditional probability density of the state of a stochastic non-linear dynamical system, given noisy measurements of the state. It therefore provides the solution of the nonlinear filtering problem in estimation theory. The equation is sometimes referred to as the Stratonovich–Kushner[2][3][4][5] (or Kushner–Stratonovich) equation. However, the correct equation in terms of Itō calculus was first derived by Kushner although a more heuristic Stratonovich version of it appeared already in Stratonovich's works in late fifties. However, the derivation in terms of Itō calculus is due to Richard Bucy.[6]
+FULL TEXT
+In filtering theory the Kushner equation[1] (after Harold Kushner) is an equation for the conditional probability density of the state of a stochastic non-linear dynamical system, given noisy measurements of the state. It therefore provides the solution of the nonlinear filtering problem in estimation theory. The equation is sometimes referred to as the Stratonovich–Kushner[2][3][4][5] (or Kushner–Stratonovich) equation. However, the correct equation in terms of Itō calculus was first derived by Kushner although a more heuristic Stratonovich version of it appeared already in Stratonovich's works in late fifties. However, the derivation in terms of Itō calculus is due to Richard Bucy.[6]
+
+
+Assume the state of the system evolves according to
+and a noisy measurement of the system state is available:
+where w, v are independent Wiener processes. Then the conditional probability density p(x, t) of the state at time t is given by the Kushner equation:
+where 
+
+
+
+L
+p
+=
+−
+∑
+
+
+
+∂
+(
+
+f
+
+i
+
+
+p
+)
+
+
+∂
+
+x
+
+i
+
+
+
+
+
++
+
+
+1
+2
+
+
+∑
+(
+σ
+
+σ
+
+⊤
+
+
+
+)
+
+i
+,
+j
+
+
+
+
+
+
+∂
+
+2
+
+
+p
+
+
+∂
+
+x
+
+i
+
+
+∂
+
+x
+
+j
+
+
+
+
+
+
+
+{\displaystyle Lp=-\sum {\frac {\partial (f_{i}p)}{\partial x_{i}}}+{\frac {1}{2}}\sum (\sigma \sigma ^{\top })_{i,j}{\frac {\partial ^{2}p}{\partial x_{i}\partial x_{j}}}}
+
+ is the Kolmogorov Forward operator and 
+
+
+
+d
+p
+(
+x
+,
+t
+)
+=
+p
+(
+x
+,
+t
++
+d
+t
+)
+−
+p
+(
+x
+,
+t
+)
+
+
+{\displaystyle dp(x,t)=p(x,t+dt)-p(x,t)}
+
+ is the variation of the conditional probability.
+The term 
+
+
+
+d
+z
+−
+
+E
+
+t
+
+
+h
+(
+x
+,
+t
+)
+d
+t
+
+
+{\displaystyle dz-E_{t}h(x,t)dt}
+
+ is the innovation i.e. the difference between the measurement and its expected value.
+
+One can simply use the Kushner equation to derive the Kalman-Bucy filter for a linear diffusion process. Suppose we have 
+
+
+
+f
+(
+x
+,
+t
+)
+=
+a
+x
+
+
+{\displaystyle f(x,t)=ax}
+
+ and 
+
+
+
+h
+(
+x
+,
+t
+)
+=
+c
+x
+
+
+{\displaystyle h(x,t)=cx}
+
+. The Kushner equation will be given by
+where 
+
+
+
+μ
+(
+t
+)
+
+
+{\displaystyle \mu (t)}
+
+ is the mean of the conditional probability at time 
+
+
+
+t
+
+
+{\displaystyle t}
+
+. Multiplying by 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ and integrating over it, we obtain the variation of the mean
+Likewise, the variation of the variance 
+
+
+
+Σ
+(
+t
+)
+
+
+{\displaystyle \Sigma (t)}
+
+ is given by
+The conditional probability is then given at every instant by a normal distribution 
+
+
+
+
+
+N
+
+
+(
+μ
+(
+t
+)
+,
+Σ
+(
+t
+)
+)
+
+
+{\displaystyle {\mathcal {N}}(\mu (t),\Sigma (t))}
+
+.

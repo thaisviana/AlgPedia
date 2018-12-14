@@ -1,0 +1,94 @@
+ABOUT
+Modular exponentiation is a type of exponentiation performed over a modulus. It is useful in computer science, especially in the field of public-key cryptography.
+FULL TEXT
+Modular exponentiation is a type of exponentiation performed over a modulus. It is useful in computer science, especially in the field of public-key cryptography.
+The operation of modular exponentiation calculates the remainder when an integer b (the base) raised to the eth power (the exponent), be, is divided by a positive integer m (the modulus). In symbols, given base b, exponent e, and modulus m, the modular exponentiation c is: c ≡ be (mod m).
+For example, given b = 5, e = 3 and m = 13, the solution c = 8 is the remainder of dividing 53 = 125 by 13.
+Given integers b and e, and a positive integer m, a unique solution c exists with the property 0 ≤ c < m.
+Modular exponentiation can be performed with a negative exponent e by finding the modular multiplicative inverse d of b modulo m using the extended Euclidean algorithm. That is:
+Modular exponentiation similar to the one described above are considered easy to compute, even when the numbers involved are enormous. On the other hand, computing the discrete logarithm – that is, the task of finding the exponent e when given b, c, and m – is believed to be difficult. This one-way function behavior makes modular exponentiation a candidate for use in cryptographic algorithms.
+
+
+The most straightforward method of calculating a modular exponent is to calculate be directly, then to take this number modulo m. Consider trying to compute c, given b = 4, e = 13, and m = 497:
+One could use a calculator to compute 413; this comes out to 67,108,864. Taking this value modulo 497, the answer c is determined to be 445.
+Note that b is only one digit in length and that e is only two digits in length, but the value be is 8 digits in length.
+In strong cryptography, b is often at least 256 bits (78 decimal digits). Consider b = 5 × 1076 and e = 17, both of which are perfectly reasonable values. In this example, b is 77 digits in length and e is 2 digits in length, but the value be is 1,304 decimal digits in length. Such calculations are possible on modern computers, but the sheer magnitude of such numbers causes the speed of calculations to slow considerably. As b and e increase even further to provide better security, the value be becomes unwieldy.
+The time required to perform the exponentiation depends on the operating environment and the processor. The method described above requires O(e) multiplications to complete.
+A second method to compute modular exponentiation requires more operations than the first method. Because the required memory is substantially less, however, operations take less time than before. The end result is that the algorithm is faster.
+This algorithm makes use of the fact that, given two integers a and b, the following two equations are equivalent:
+The algorithm is as follows:
+Note that in every pass through step 3, the equation c ≡ be′ mod m holds true. When step 3 has been executed e times, then, c contains the answer that was sought. In summary, this algorithm basically counts up e′ by ones until e′ reaches e, doing a multiply by b and the modulo operation each time it adds one (to ensure the results stay small).
+The example b = 4, e = 13, and m = 497 is presented again. The algorithm passes through step 3 thirteen times:
+The final answer for c is therefore 445, as in the first method.
+Like the first method, this requires O(e) multiplications to complete. However, since the numbers used in these calculations are much smaller than the numbers used in the first algorithm's calculations, the computation time decreases by a factor of at least O(e) in this method.
+In pseudocode, this method can be performed the following way:
+A third method drastically reduces the number of operations to perform modular exponentiation, while keeping the same memory footprint as in the previous method. It is a combination of the previous method and a more general principle called exponentiation by squaring (also known as binary exponentiation).
+First, it is required that the exponent e be converted to binary notation. That is, e can be written as:
+In such notation, the length of e is n bits. ai can take the value 0 or 1 for any i such that 0 ≤ i < n. By definition, an − 1 = 1.
+The value be can then be written as:
+The solution c is therefore:
+The following is an example in pseudocode based on Applied Cryptography by Bruce Schneier.[1] The inputs base, exponent, and modulus correspond to b, e, and m in the equations given above.
+Note that upon entering the loop for the first time, the code variable base is equivalent to b. However, the repeated squaring in the third line of code ensures that at the completion of every loop, the variable base is equivalent to b2i mod m, where i is the number of times the loop has been iterated. (This makes i the next working bit of the binary exponent exponent, where the least-significant bit is exponent0).
+The first line of code simply carries out the multiplication in 
+
+
+
+
+∏
+
+i
+=
+0
+
+
+n
+−
+1
+
+
+
+
+(
+
+b
+
+
+2
+
+i
+
+
+
+
+)
+
+
+
+a
+
+i
+
+
+
+
+ 
+(
+
+mod
+
+ 
+m
+)
+
+
+{\displaystyle \prod _{i=0}^{n-1}\left(b^{2^{i}}\right)^{a_{i}}\ ({\mbox{mod}}\ m)}
+
+. If ai is zero, no code executes since this effectively multiplies the running total by one. If ai instead is one, the variable base (containing the value b2i mod m of the original base) is simply multiplied in.
+Example: base = 4, exponent = 13, and modulus = 497. Note that exponent is 1101 in binary notation. Because exponent is four binary digits in length, the loop executes only four times:
+The loop then terminates since exponent is zero, and the result 445 is returned. This agrees with the previous two algorithms.
+The running time of this algorithm is O(log exponent). When working with large values of exponent, this offers a substantial speed benefit over both of the previous two algorithms.
+The Fibonacci numbers and Perrin numbers modulo n can be computed efficiently by computing Am (mod n) for a certain m and a certain matrix A. The above methods adapt easily to this application. This can be used for primality testing of large numbers n, for example.
+A recursive algorithm for ModExp(A, b, c) = Ab (mod c), where A is a square matrix.
+Diffie-Hellman key exchange uses exponentiation in finite cyclic groups. The above methods for modular matrix exponentiation clearly extend to this context. The modular matrix multiplication C ≡ AB (mod n) is simply replaced everywhere by the group multiplication c = ab.
+In quantum computing, modular exponentiation appears as the bottleneck of Shor's algorithm, where it must be computed by a circuit consisting of reversible gates, which can be further broken down into quantum gates appropriate for a specific physical device. Furthermore, in Shor's algorithm it is possible to know the base and the modulus of exponentiation at every call, which enables various circuit optimizations.[2]
+Because modular exponentiation is an important operation in computer science, and there are efficient algorithms (see above) that are much faster than simply exponentiating and then taking the remainder, many programming languages and arbitrary-precision integer libraries have a dedicated function to perform modular exponentiation:

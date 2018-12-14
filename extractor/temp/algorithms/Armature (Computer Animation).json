@@ -1,0 +1,8 @@
+{
+    "about": "An armature is the name of the kinematic chains used in computer animation to simulate the motions of virtual human or animal characters. In the context of animation, the inverse kinematics of the armature is the most relevant computational algorithm.", 
+    "name": "Armature (Computer Animation)", 
+    "classification": "Computational Physics", 
+    "full_text": "An armature is the name of the kinematic chains used in computer animation to simulate the motions of virtual human or animal characters. In the context of animation, the inverse kinematics of the armature is the most relevant computational algorithm.\nThere are two types of digital armatures: Keyframing (stop-motion) armatures and real-time (puppeteering) armatures. Keyframing armatures were initially developed to assist in animating digital characters without basing the movement on a live performance. The animator poses a device manually for each keyframe, while the character in the animation is set up with a mechanical structure equivalent to the armature. The device is connected to the animation software through a driver program and each move is recorded for a particular frame in time. Real-time armatures are similar, but they are puppeteered by one or more people and captured in real-time.[1]\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Armature_(computer_animation)", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Armature_(computer_animation)\n"
+}

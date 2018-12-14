@@ -1,0 +1,280 @@
+ABOUT
+Loss of significance is an undesirable effect in calculations using finite-precision arithmetic. It occurs when an operation on two numbers increases relative error substantially more than it increases absolute error, for example in subtracting two nearly equal numbers (known as catastrophic cancellation). The effect is that the number of significant digits in the result is reduced unacceptably. Ways to avoid this effect are studied in numerical analysis.
+FULL TEXT
+Loss of significance is an undesirable effect in calculations using finite-precision arithmetic. It occurs when an operation on two numbers increases relative error substantially more than it increases absolute error, for example in subtracting two nearly equal numbers (known as catastrophic cancellation). The effect is that the number of significant digits in the result is reduced unacceptably. Ways to avoid this effect are studied in numerical analysis.
+
+
+The effect can be demonstrated with decimal numbers. The following example demonstrates loss of significance for a decimal floating-point data type with 10 significant digits:
+Consider the decimal number
+A floating-point representation of this number on a machine that keeps 10 floating-point digits would be
+which is fairly close when measuring the error as a percentage of the value. It is very different when measured in order of precision. The first is accurate to 6981099999999999999♠10×10−20, while the second is only accurate to 6991100000000000000♠10×10−10.
+Now perform the calculation
+The answer, accurate to 10 significant digits, is
+However, on the 10-digit floating-point machine, the calculation yields
+In both cases the result is accurate to same order of magnitude as the inputs (-20 and -10, respectively). In the second case, the answer seems to have one significant digit, which would amount to loss of significance. However, in computer floating point arithmetic, all operations can be viewed as being performed on antilogarithms, for which the rules for significant figures indicate that the number of sigfigs remains the same as the smallest number of sigfigs in the mantissas. The way to indicate this and represent the answer to 10 sigfigs is:
+It is possible to do computations using an exact fractional representation of rational numbers and keep all significant digits, but this is often prohibitively slower than floating-point arithmetic. Furthermore, it usually only postpones the problem: What if the data is accurate to only ten digits? The same effect will occur.
+One of the most important parts of numerical analysis is to avoid or minimize loss of significance in calculations. If the underlying problem is well-posed, there should be a stable algorithm for solving it.
+Let x and y be positive normalized floating point numbers.
+In the subtraction x − y, r significant bits are lost where
+for some positive integers p and q.
+For example, consider the quadratic equation:
+with the two exact solutions:
+This formula may not always produce an accurate result. For example, when 
+
+
+
+c
+
+
+{\displaystyle c}
+
+ is very small, loss of significance can occur in either of the root calculations, depending on the sign of 
+
+
+
+b
+
+
+{\displaystyle b}
+
+.
+The case 
+
+
+
+a
+=
+1
+
+
+{\displaystyle a=1}
+
+, 
+
+
+
+b
+=
+200
+
+
+{\displaystyle b=200}
+
+, 
+
+
+
+c
+=
+−
+0.000015
+
+
+{\displaystyle c=-0.000015}
+
+ will serve to illustrate the problem:
+We have
+In real arithmetic, the roots are
+In 10-digit floating-point arithmetic,
+Notice that the solution of greater magnitude is accurate to ten digits, but the first nonzero digit of the solution of lesser magnitude is wrong.
+Because of the subtraction that occurs in the quadratic equation, it does not constitute a stable algorithm to calculate the two roots.
+A careful floating point computer implementation combines several strategies to produce a robust result. Assuming the discriminant, b2 − 4ac, is positive and b is nonzero, the computation would be as follows:[1]
+Here sgn denotes the sign function, where 
+
+
+
+sgn
+⁡
+(
+b
+)
+
+
+{\displaystyle \operatorname {sgn}(b)}
+
+ is 1 if 
+
+
+
+b
+
+
+{\displaystyle b}
+
+ is positive and −1 if 
+
+
+
+b
+
+
+{\displaystyle b}
+
+ is negative. This avoids cancellation problems between 
+
+
+
+b
+
+
+{\displaystyle b}
+
+ and the square root of the discriminant by ensuring that only numbers of the same sign are added.
+To illustrate the instability of the standard quadratic formula versus this variant formula, consider a quadratic equation with roots 
+
+
+
+1.786737589984535
+
+
+{\displaystyle 1.786737589984535}
+
+ and 
+
+
+
+1.149782767465722
+×
+
+10
+
+−
+8
+
+
+
+
+{\displaystyle 1.149782767465722\times 10^{-8}}
+
+. To sixteen significant figures, roughly corresponding to double-precision accuracy on a computer, the monic quadratic equation with these roots may be written as:
+Using the standard quadratic formula and maintaining sixteen significant figures at each step, the standard quadratic formula yields
+Note how cancellation has resulted in 
+
+
+
+
+x
+
+2
+
+
+
+
+{\displaystyle x_{2}}
+
+ being computed to only eight significant digits of accuracy. The variant formula presented here, however, yields the following:
+Note the retention of all significant digits for 
+
+
+
+
+x
+
+2
+
+
+
+
+{\displaystyle x_{2}}
+
+.
+Note that while the above formulation avoids catastrophic cancellation between 
+
+
+
+b
+
+
+{\displaystyle b}
+
+ and 
+
+
+
+
+
+
+b
+
+2
+
+
+−
+4
+a
+c
+
+
+
+
+{\displaystyle {\sqrt {b^{2}-4ac}}}
+
+, there remains a form of cancellation between the terms 
+
+
+
+
+b
+
+2
+
+
+
+
+{\displaystyle b^{2}}
+
+ and 
+
+
+
+−
+4
+a
+c
+
+
+{\displaystyle -4ac}
+
+ of the discriminant, which can still lead to loss of up to half of correct significant figures.[2][3] The discriminant 
+
+
+
+
+b
+
+2
+
+
+−
+4
+a
+c
+
+
+{\displaystyle b^{2}-4ac}
+
+ needs to be computed in arithmetic of twice the precision of the result to avoid this (e.g. quad precision if the final result is to be accurate to full double precision).[4] This can be in the form of a fused multiply-add operation.[2]
+To illustrate this, consider the following quadratic equation, adapted from Kahan (2004):[2]
+This equation has 
+
+
+
+Δ
+=
+7.5625
+
+
+{\displaystyle \Delta =7.5625}
+
+ and has roots
+However, when computed using IEEE 754 double-precision arithmetic corresponding to 15 to 17 significant digits of accuracy, 
+
+
+
+Δ
+
+
+{\displaystyle \Delta }
+
+ is rounded to 0.0, and the computed roots are
+which are both false after the eighth significant digit. This is despite the fact that superficially, the problem seems to require only eleven significant digits of accuracy for its solution.

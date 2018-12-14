@@ -1,0 +1,11 @@
+ABOUT
+A polyphase quadrature filter, or PQF, is a filter bank which splits an input signal into a given number N (mostly a power of 2) of equidistant sub-bands. These sub-bands are subsampled by a factor of N, so they are critically sampled.
+FULL TEXT
+A polyphase quadrature filter, or PQF, is a filter bank which splits an input signal into a given number N (mostly a power of 2) of equidistant sub-bands. These sub-bands are subsampled by a factor of N, so they are critically sampled.
+This critical sampling introduces aliasing. Similar to the MDCT time domain alias cancellation the aliasing of polyphase quadrature filters is canceled by neighbouring sub-bands, i.e. signals are typically stored in two sub-bands.
+Note that signal in odd subbands is stored frequency inverted.
+PQF filters are used in MPEG-1 Audio Layer I and II, Musepack (which was based on MPEG-1 layer II), in MPEG-1 Layer III with an additional MDCT, in MPEG-4 AAC-SSR for the 4 band PQF bank, in MPEG-4 V3 SBR for the analysis of the upper spectral replicated band, and in DTS.
+PQF has an advantage over the very similar stacked quadrature mirror filter (QMF). Delay and computational effort are much lower.
+A PQF filter bank is constructed using a base filter, which is a low-pass at fs/4N. This lowpass is modulated by N cosine functions and converted to N band-passes with a bandwidth of fs/2N.
+The base lowpass is typically a FIR filter with a length of 10*N ... 24*N taps. Note that it is also possible to build PQF filters using recursive IIR filters.
+There are different formulas possible. Most of them are based on the MDCT but are slightly modified.

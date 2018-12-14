@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.contrib import admin
 from django.db.models.aggregates import Avg
 
 
@@ -27,7 +28,16 @@ class Algorithm(models.Model):
 		self.reputation = reputation
 		self.save()
 
+	@classmethod
+	def register_admin(cls):
+		admin.site.register(cls, Admin)
+
 	class Meta:
 		abstract = False
 		verbose_name_plural = "Algorithm"
 		verbose_name = "Algorithm"
+
+
+class Admin(admin.ModelAdmin):
+	list_display = ('name', 'description', 'classification')
+	search_fields = ('name', 'classification__name')

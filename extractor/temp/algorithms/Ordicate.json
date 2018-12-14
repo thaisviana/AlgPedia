@@ -1,0 +1,8 @@
+{
+    "about": "Ordicate is a term which means to put a series of data in numerical order.", 
+    "name": "Ordicate", 
+    "classification": "Sorting Algorithms", 
+    "full_text": "Ordicate is a term which means to put a series of data in numerical order.\nIn order for a set of data to be ordicated, the data must first be enumerated.\nFor example, imagine a class of twenty students taking an exam. The order in which the students hand in the exam is the order in which the professor grades the test. The professor enumerates the exams by placing a score from 0 to 100 on them. Then, when the teacher hands back the exams, he or she has arranged the exams from lowest to highest (or highest to lowest) score.\nThis is ordication: the professor ordered the exams by their numerical value.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Ordicate", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Ordicate\n"
+}

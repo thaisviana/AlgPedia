@@ -1,0 +1,7 @@
+ABOUT
+A snapshot algorithm is used to create a consistent snapshot of the global state of a distributed system. Due to the lack of globally shared memory and a global clock, this isn't trivially possible.
+FULL TEXT
+A snapshot algorithm is used to create a consistent snapshot of the global state of a distributed system. Due to the lack of globally shared memory and a global clock, this isn't trivially possible.
+A bunch of computers work together in a distributed system. Each of them represents a bank account holding a certain amount of money. The participants can transfer money between their accounts by exchanging messages.
+Assume the overall balance shall be calculated. Just requesting the balance of each participant can lead to an incorrect result, if one of them just sent a transfer message to another one (and thus has already decreased its own balance), which did not yet receive it.
+A snapshot algorithm avoids such inconsistencies.

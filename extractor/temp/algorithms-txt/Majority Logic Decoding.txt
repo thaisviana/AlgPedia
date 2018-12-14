@@ -1,0 +1,190 @@
+ABOUT
+In error detection and correction, majority logic decoding is a method to decode repetition codes, based on the assumption that the largest number of occurrences of a symbol was the transmitted symbol.
+FULL TEXT
+In error detection and correction, majority logic decoding is a method to decode repetition codes, based on the assumption that the largest number of occurrences of a symbol was the transmitted symbol.
+
+
+In a binary alphabet made of 
+
+
+
+0
+,
+1
+
+
+{\displaystyle 0,1}
+
+, if a 
+
+
+
+(
+n
+,
+1
+)
+
+
+{\displaystyle (n,1)}
+
+ repetition code is used, then each input bit is mapped to the code word as a string of 
+
+
+
+n
+
+
+{\displaystyle n}
+
+-replicated input bits. Generally 
+
+
+
+n
+=
+2
+t
++
+1
+
+
+{\displaystyle n=2t+1}
+
+, an odd number.
+The repetition codes can detect up to 
+
+
+
+[
+n
+
+/
+
+2
+]
+
+
+{\displaystyle [n/2]}
+
+ transmission errors. Decoding errors occur when the more than these transmission errors occur. Thus, assuming bit-transmission errors are independent, the probability of error for a repetition code is given by 
+
+
+
+
+P
+
+e
+
+
+=
+
+∑
+
+k
+=
+
+
+
+n
++
+1
+
+2
+
+
+
+
+n
+
+
+
+
+
+(
+
+
+n
+k
+
+
+)
+
+
+
+
+ϵ
+
+k
+
+
+(
+1
+−
+ϵ
+
+)
+
+(
+n
+−
+k
+)
+
+
+
+
+{\displaystyle P_{e}=\sum _{k={\frac {n+1}{2}}}^{n}{n \choose k}\epsilon ^{k}(1-\epsilon )^{(n-k)}}
+
+, where 
+
+
+
+ϵ
+
+
+{\displaystyle \epsilon }
+
+ is the error over the transmission channel.
+The code word is 
+
+
+
+(
+n
+,
+1
+)
+
+
+{\displaystyle (n,1)}
+
+, where 
+
+
+
+n
+=
+2
+t
++
+1
+
+
+{\displaystyle n=2t+1}
+
+, an odd number.
+In a 
+
+
+
+(
+n
+,
+1
+)
+
+
+{\displaystyle (n,1)}
+
+ code, if R=[1 0 1 1 0], then it would be decoded as,

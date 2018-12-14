@@ -1,0 +1,9 @@
+ABOUT
+In cryptology, SecureLog is an algorithm used to convert digital data into trusted data that can be verified if the authencity is questioned. SecureLog is used in IT solutions that generates data to support compliance regulations like SOX.
+FULL TEXT
+In cryptology, SecureLog is an algorithm used to convert digital data into trusted data that can be verified if the authencity is questioned. SecureLog is used in IT solutions that generates data to support compliance regulations like SOX.
+
+
+An algorithm used to make datalogs secure from manipulation. The first infrastructure supporting the algorithm was available on the Internet in 2006.
+SecureLog involves an active key provider, a managed data store and a verification provider.
+The algorithm is used in several different use cases:

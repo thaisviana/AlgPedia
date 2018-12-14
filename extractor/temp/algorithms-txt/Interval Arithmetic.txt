@@ -1,0 +1,3854 @@
+ABOUT
+Interval arithmetic, interval mathematics, interval analysis, or interval computation, is a method developed by mathematicians since the 1950s and 1960s, as an approach to putting bounds on rounding errors and measurement errors in mathematical computation and thus developing numerical methods that yield reliable results. Very simply put, it represents each value as a range of possibilities. For example, instead of estimating the height of someone using standard arithmetic as 2.0 metres, using interval arithmetic we might be certain that that person is somewhere between 1.97 and 2.03 metres.
+FULL TEXT
+Interval arithmetic, interval mathematics, interval analysis, or interval computation, is a method developed by mathematicians since the 1950s and 1960s, as an approach to putting bounds on rounding errors and measurement errors in mathematical computation and thus developing numerical methods that yield reliable results. Very simply put, it represents each value as a range of possibilities. For example, instead of estimating the height of someone using standard arithmetic as 2.0 metres, using interval arithmetic we might be certain that that person is somewhere between 1.97 and 2.03 metres.
+This concept is suitable for a variety of purposes. The most common use is to keep track of and handle rounding errors directly during the calculation and of uncertainties in the knowledge of the exact values of physical and technical parameters. The latter often arise from measurement errors and tolerances for components or due to limits on computational accuracy. Interval arithmetic also helps find reliable and guaranteed solutions to equations and optimization problems.
+Mathematically, instead of working with an uncertain real 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ we work with the two ends of the interval 
+
+
+
+[
+a
+,
+b
+]
+
+
+{\displaystyle [a,b]}
+
+ which contains 
+
+
+
+x
+
+
+{\displaystyle x}
+
+. In interval arithmetic, any variable 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ lies between 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ and 
+
+
+
+b
+
+
+{\displaystyle b}
+
+, or could be one of them. A function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ when applied to 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ is also uncertain. In interval arithmetic 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ produces an interval 
+
+
+
+[
+c
+,
+d
+]
+
+
+{\displaystyle [c,d]}
+
+ which is all the possible values for 
+
+
+
+f
+(
+x
+)
+
+
+{\displaystyle f(x)}
+
+ for all 
+
+
+
+x
+∈
+[
+a
+,
+b
+]
+
+
+{\displaystyle x\in [a,b]}
+
+.
+
+
+The main focus of interval arithmetic is the simplest way to calculate upper and lower endpoints for the range of values of a function in one or more variables. These endpoints are not necessarily the supremum or infimum, since the precise calculation of those values can be difficult or impossible.
+Treatment is typically limited to real intervals, so quantities of form
+where 
+
+
+
+a
+=
+
+−
+∞
+
+
+
+{\displaystyle a={-\infty }}
+
+ and 
+
+
+
+b
+=
+
+∞
+
+
+
+{\displaystyle b={\infty }}
+
+ are allowed; with one of them infinite we would have an unbounded interval, while with both infinite we would have the extended real number line.
+As with traditional calculations with real numbers, simple arithmetic operations and functions on elementary intervals must first be defined.[1] More complicated functions can be calculated from these basic elements.[1]
+Take as an example the calculation of body mass index (BMI). The BMI is the body weight in kilograms divided by the square of height in metres. Measuring the mass with bathroom scales may have an accuracy of one kilogram. We will not know intermediate values –  about 79.6 kg or 80.3 kg –  but information rounded to the nearest whole number. It is unlikely that when the scale reads 80 kg, someone really weighs exactly 80.0 kg. In normal rounding to the nearest value, the scales showing 80 kg indicates a weight between 79.5 kg and 80.5 kg. The relevant range is that of all real numbers that are greater than or equal to 79.5, while less than or equal to 80.5, or in other words the interval [79.5,80.5].
+For a man who weighs 80 kg and is 1.80 m tall, the BMI is about 24.7. With a weight of 79.5 kg and the same height the value is 24.5, while 80.5 kilograms gives almost 24.9. So the actual BMI is in the range [24.5,24.9]. The error in this case does not affect the conclusion (normal weight), but this is not always the position. For example, weight fluctuates in the course of a day so that the BMI can vary between 24 (normal weight) and 25 (overweight). Without detailed analysis it is not possible to always exclude questions as to whether an error ultimately is large enough to have significant influence.
+Interval arithmetic states the range of possible outcomes explicitly. Simply put, results are no longer stated as numbers, but as intervals which represent imprecise values. The size of the intervals are similar to error bars to a metric in expressing the extent of uncertainty. Simple arithmetic operations, such as basic arithmetic and trigonometric functions, enable the calculation of outer limits of intervals.
+Returning to the earlier BMI example, in determining the body mass index, height and body weight both affect the result. For height, measurements are usually in round centimetres: a recorded measurement of 1.80 metres actually means a height somewhere between 1.795 m and 1.805 m. This uncertainty must be combined with the fluctuation range in weight between 79.5 kg and 80.5 kg. The BMI is defined as the weight in kilograms divided by the square of height in metre. Using either 79.5 kg and 1.795 m or 80.5 kg and 1.805 m gives approximately 24.7. But the person in question may only be 1.795 m tall, with a weight of 80.5 kilograms –  or 1.805 m and 79.5 kilograms: all combinations of all possible intermediate values must be considered. Using the interval arithmetic methods described below, the BMI lies in the interval
+An operation 
+
+
+
+
+⟨
+
+
+o
+p
+
+
+⟩
+
+
+
+{\displaystyle {\langle \!\mathrm {op} \!\rangle }}
+
+, such as addition or multiplication, on two intervals is defined by
+For the four basic arithmetic operations this can become
+provided that 
+
+
+
+x
+
+
+⟨
+
+
+o
+p
+
+
+⟩
+
+
+y
+
+
+{\displaystyle x{\,\langle \!\mathrm {op} \!\rangle \,}y}
+
+ is allowed for all 
+
+
+
+x
+∈
+[
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+]
+
+
+{\displaystyle x\in [x_{1},x_{2}]}
+
+ and 
+
+
+
+y
+∈
+[
+
+y
+
+1
+
+
+,
+
+y
+
+2
+
+
+]
+
+
+{\displaystyle y\in [y_{1},y_{2}]}
+
+.
+For practical applications this can be simplified further:
+For division by an interval including zero, first define
+For 
+
+
+
+
+y
+
+1
+
+
+<
+0
+<
+
+y
+
+2
+
+
+
+
+{\displaystyle y_{1}<0<y_{2}}
+
+, we get 
+
+
+
+1
+
+/
+
+[
+
+y
+
+1
+
+
+,
+
+y
+
+2
+
+
+]
+=
+[
+−
+∞
+,
+1
+
+/
+
+
+y
+
+1
+
+
+]
+∪
+[
+1
+
+/
+
+
+y
+
+2
+
+
+,
+∞
+]
+
+
+{\displaystyle 1/[y_{1},y_{2}]=[-\infty ,1/y_{1}]\cup [1/y_{2},\infty ]}
+
+ which as a single interval gives 
+
+
+
+1
+
+/
+
+[
+
+y
+
+1
+
+
+,
+
+y
+
+2
+
+
+]
+=
+[
+−
+∞
+,
+∞
+]
+
+
+{\displaystyle 1/[y_{1},y_{2}]=[-\infty ,\infty ]}
+
+; this loses useful information about 
+
+
+
+(
+1
+
+/
+
+
+y
+
+1
+
+
+,
+1
+
+/
+
+
+y
+
+2
+
+
+)
+
+
+{\displaystyle (1/y_{1},1/y_{2})}
+
+. So typically it is common to work with 
+
+
+
+[
+−
+∞
+,
+1
+
+/
+
+
+y
+
+1
+
+
+]
+
+
+{\displaystyle [-\infty ,1/y_{1}]}
+
+ and 
+
+
+
+[
+1
+
+/
+
+
+y
+
+2
+
+
+,
+∞
+]
+
+
+{\displaystyle [1/y_{2},\infty ]}
+
+ as separate intervals.
+Because several such divisions may occur in an interval arithmetic calculation, it is sometimes useful to do the calculation with so-called multi-intervals of the form 
+
+
+
+
+
+⋃
+
+i
+=
+1
+
+
+l
+
+
+[
+
+x
+
+i
+1
+
+
+,
+
+x
+
+i
+2
+
+
+]
+
+
+
+{\displaystyle \textstyle \bigcup _{i=1}^{l}[x_{i1},x_{i2}]}
+
+. The corresponding multi-interval arithmetic maintains a disjoint set of intervals and also provides for overlapping intervals to unite.[2][page needed]
+Since a real number 
+
+
+
+r
+∈
+
+R
+
+
+
+{\displaystyle r\in \mathbb {R} }
+
+ can be interpreted as the interval 
+
+
+
+[
+r
+,
+r
+]
+
+
+{\displaystyle [r,r]}
+
+, intervals and real numbers can be freely and easily combined.
+With the help of these definitions, it is already possible to calculate the range of simple functions, such as 
+
+
+
+f
+(
+a
+,
+b
+,
+x
+)
+=
+a
+⋅
+x
++
+b
+
+
+{\displaystyle f(a,b,x)=a\cdot x+b}
+
+. If, for example, 
+
+
+
+a
+=
+[
+1
+,
+2
+]
+
+
+{\displaystyle a=[1,2]}
+
+, 
+
+
+
+b
+=
+[
+5
+,
+7
+]
+
+
+{\displaystyle b=[5,7]}
+
+ and 
+
+
+
+x
+=
+[
+2
+,
+3
+]
+
+
+{\displaystyle x=[2,3]}
+
+, it is clear
+Interpreting this as a function 
+
+
+
+f
+(
+a
+,
+b
+,
+x
+)
+
+
+{\displaystyle f(a,b,x)}
+
+ of the variable 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ with interval parameters 
+
+
+
+a
+
+
+{\displaystyle a}
+
+ and 
+
+
+
+b
+
+
+{\displaystyle b}
+
+, then it is possible to find the roots of this function. It is then
+the possible zeros are in the interval 
+
+
+
+[
+−
+7
+,
+
+−
+2.5
+
+]
+
+
+{\displaystyle [-7,{-2.5}]}
+
+.
+As in the above example, the multiplication of intervals often only requires two multiplications. It is in fact
+The multiplication can be seen as a destination area of a rectangle with varying edges. The result interval covers all levels from the smallest to the largest.
+The same applies when one of the two intervals is non-positive and the other non-negative. Generally, multiplication can produce results as wide as 
+
+
+
+[
+−
+∞
+,
+∞
+]
+
+
+{\displaystyle [-\infty ,\infty ]}
+
+, for example if 
+
+
+
+0
+⋅
+∞
+
+
+{\displaystyle 0\cdot \infty }
+
+ is squared. This also occurs, for example, in a division, if the numerator and denominator both contain zero.
+To make the notation of intervals smaller in formulae, brackets can be used.
+So we can use 
+
+
+
+[
+x
+]
+≡
+[
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+]
+
+
+{\displaystyle [x]\equiv [x_{1},x_{2}]}
+
+ to represent an interval. For the set of all finite intervals, we can use
+as an abbreviation. For a vector of intervals 
+
+
+
+
+
+(
+
+
+[
+x
+
+]
+
+1
+
+
+,
+…
+,
+[
+x
+
+]
+
+n
+
+
+
+
+)
+
+
+∈
+[
+
+R
+
+
+]
+
+n
+
+
+
+
+{\displaystyle {\big (}[x]_{1},\ldots ,[x]_{n}{\big )}\in [\mathbb {R} ]^{n}}
+
+ we can also use a bold font: 
+
+
+
+[
+
+x
+
+]
+
+
+{\displaystyle [\mathbf {x} ]}
+
+.
+Note that in such a compact notation, 
+
+
+
+[
+x
+]
+
+
+{\displaystyle [x]}
+
+ should not be confused between a so-called improper or single point interval 
+
+
+
+[
+
+x
+
+1
+
+
+,
+
+x
+
+1
+
+
+]
+
+
+{\displaystyle [x_{1},x_{1}]}
+
+ and the lower and upper limit.
+Interval methods can also apply to functions which do not just use simple arithmetic, and we must also use other basic functions for redefining intervals, using already known monotonicity properties.
+For monotonic functions in one variable, the range of values is also easy. If 
+
+
+
+f
+:
+
+R
+
+→
+
+R
+
+
+
+{\displaystyle f:\mathbb {R} \rightarrow \mathbb {R} }
+
+ is monotonically rising or falling in the interval 
+
+
+
+[
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+]
+
+
+{\displaystyle [x_{1},x_{2}]}
+
+, then for all values in the interval 
+
+
+
+
+y
+
+1
+
+
+,
+
+y
+
+2
+
+
+∈
+[
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+]
+
+
+{\displaystyle y_{1},y_{2}\in [x_{1},x_{2}]}
+
+ such that 
+
+
+
+
+y
+
+1
+
+
+≤
+
+y
+
+2
+
+
+
+
+{\displaystyle y_{1}\leq y_{2}}
+
+, one of the following inequalities applies:
+The range corresponding to the interval 
+
+
+
+[
+
+y
+
+1
+
+
+,
+
+y
+
+2
+
+
+]
+⊆
+[
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+]
+
+
+{\displaystyle [y_{1},y_{2}]\subseteq [x_{1},x_{2}]}
+
+ can be calculated by applying the function to the endpoints 
+
+
+
+
+y
+
+1
+
+
+
+
+{\displaystyle y_{1}}
+
+ and 
+
+
+
+
+y
+
+2
+
+
+
+
+{\displaystyle y_{2}}
+
+:
+From this the following basic features for interval functions can easily be defined:
+For even powers, the range of values being considered is important, and needs to be dealt with before doing any multiplication. For example, 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x^{n}}
+
+ for 
+
+
+
+x
+∈
+[
+−
+1
+,
+1
+]
+
+
+{\displaystyle x\in [-1,1]}
+
+ should produce the interval 
+
+
+
+[
+0
+,
+1
+]
+
+
+{\displaystyle [0,1]}
+
+ when 
+
+
+
+n
+=
+2
+,
+4
+,
+6
+,
+…
+
+
+{\displaystyle n=2,4,6,\ldots }
+
+. But if 
+
+
+
+[
+−
+1
+,
+1
+
+]
+
+n
+
+
+
+
+{\displaystyle [-1,1]^{n}}
+
+ is taken by applying interval multiplication of form 
+
+
+
+[
+−
+1
+,
+1
+]
+⋅
+…
+⋅
+[
+−
+1
+,
+1
+]
+
+
+{\displaystyle [-1,1]\cdot \ldots \cdot [-1,1]}
+
+ then the result will appear to be 
+
+
+
+[
+−
+1
+,
+1
+]
+
+
+{\displaystyle [-1,1]}
+
+, wider than necessary.
+Instead consider the function 
+
+
+
+
+x
+
+n
+
+
+
+
+{\displaystyle x^{n}}
+
+ as a monotonically decreasing function for 
+
+
+
+x
+<
+0
+
+
+{\displaystyle x<0}
+
+ and a monotonically increasing function for 
+
+
+
+x
+>
+0
+
+
+{\displaystyle x>0}
+
+. So for even 
+
+
+
+n
+∈
+
+N
+
+
+
+{\displaystyle n\in \mathbb {N} }
+
+:
+More generally, one can say that for piecewise monotonic functions it is sufficient to consider the endpoints 
+
+
+
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+
+
+{\displaystyle x_{1},x_{2}}
+
+ of the interval 
+
+
+
+[
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+]
+
+
+{\displaystyle [x_{1},x_{2}]}
+
+, together with the so-called critical points within the interval being those points where the monotonicity of the function changes direction.
+For the sine and cosine functions, the critical points are at 
+
+
+
+
+(
+
+
+
+
+1
+
+
+
+
+
+/
+
+
+
+
+
+
+2
+
+
++
+
+n
+
+)
+
+⋅
+π
+
+
+{\displaystyle \left({}^{1}\!\!/\!{}_{2}+{n}\right)\cdot \pi }
+
+ or 
+
+
+
+
+n
+
+⋅
+π
+
+
+{\displaystyle {n}\cdot \pi }
+
+ for all 
+
+
+
+n
+∈
+
+Z
+
+
+
+{\displaystyle n\in \mathbb {Z} }
+
+ respectively. Only up to five points matter as the resulting interval will be 
+
+
+
+[
+−
+1
+,
+1
+]
+
+
+{\displaystyle [-1,1]}
+
+ if the interval includes at least two extrema. For sine and cosine, only the endpoints need full evaluation as the critical points lead to easily pre-calculated values – namely -1, 0, +1.
+In general, it may not be easy to find such a simple description of the output interval for many functions. But it may still be possible to extend functions to interval arithmetic. If 
+
+
+
+f
+:
+
+
+R
+
+
+n
+
+
+→
+
+R
+
+
+
+{\displaystyle f:\mathbb {R} ^{n}\rightarrow \mathbb {R} }
+
+ is a function from a real vector to a real number, then  
+
+
+
+[
+f
+]
+:
+[
+
+R
+
+
+]
+
+n
+
+
+→
+[
+
+R
+
+]
+
+
+{\displaystyle [f]:[\mathbb {R} ]^{n}\rightarrow [\mathbb {R} ]}
+
+ is called an interval extension of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ if
+This definition of the interval extension does not give a precise result. For example, both 
+
+
+
+[
+f
+]
+(
+[
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+]
+)
+=
+[
+
+e
+
+
+x
+
+1
+
+
+
+
+,
+
+e
+
+
+x
+
+2
+
+
+
+
+]
+
+
+{\displaystyle [f]([x_{1},x_{2}])=[e^{x_{1}},e^{x_{2}}]}
+
+ and 
+
+
+
+[
+g
+]
+(
+[
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+]
+)
+=
+[
+
+−
+∞
+
+,
+
+∞
+
+]
+
+
+{\displaystyle [g]([x_{1},x_{2}])=[{-\infty },{\infty }]}
+
+ are allowable extensions of the exponential function. Extensions as tight as possible are desirable, taking into the relative costs of calculation and imprecision; in this case 
+
+
+
+[
+f
+]
+
+
+{\displaystyle [f]}
+
+ should be chosen as it give the tightest possible result.
+The natural interval extension is achieved by combining the function rule 
+
+
+
+f
+(
+
+x
+
+1
+
+
+,
+⋯
+,
+
+x
+
+n
+
+
+)
+
+
+{\displaystyle f(x_{1},\cdots ,x_{n})}
+
+ with the equivalents of the basic arithmetic and elementary functions.
+The Taylor interval extension (of degree 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ ) is a 
+
+
+
+k
++
+1
+
+
+{\displaystyle k+1}
+
+ times differentiable function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ defined by
+for some 
+
+
+
+
+y
+
+∈
+[
+
+x
+
+]
+
+
+{\displaystyle \mathbf {y} \in [\mathbf {x} ]}
+
+, where 
+
+
+
+
+
+D
+
+
+i
+
+
+f
+(
+
+y
+
+)
+
+
+{\displaystyle \mathrm {D} ^{i}f(\mathbf {y} )}
+
+ is the 
+
+
+
+i
+
+
+{\displaystyle i}
+
+th order differential of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ at the point 
+
+
+
+
+y
+
+
+
+{\displaystyle \mathbf {y} }
+
+ and 
+
+
+
+[
+r
+]
+
+
+{\displaystyle [r]}
+
+ is an interval extension of the Taylor remainder
+The vector 
+
+
+
+ξ
+
+
+{\displaystyle \xi }
+
+ lies between 
+
+
+
+
+x
+
+
+
+{\displaystyle \mathbf {x} }
+
+ and 
+
+
+
+
+y
+
+
+
+{\displaystyle \mathbf {y} }
+
+ with 
+
+
+
+
+x
+
+,
+
+y
+
+∈
+[
+
+x
+
+]
+
+
+{\displaystyle \mathbf {x} ,\mathbf {y} \in [\mathbf {x} ]}
+
+, 
+
+
+
+ξ
+
+
+{\displaystyle \xi }
+
+ is protected by 
+
+
+
+[
+
+x
+
+]
+
+
+{\displaystyle [\mathbf {x} ]}
+
+. Usually one chooses 
+
+
+
+
+y
+
+
+
+{\displaystyle \mathbf {y} }
+
+ to be the midpoint of the interval and uses the natural interval extension to assess the remainder.
+The special case of the Taylor interval extension of degree 
+
+
+
+k
+=
+0
+
+
+{\displaystyle k=0}
+
+ is also referred to as the mean value form. For an interval extension of the Jacobian 
+
+
+
+[
+
+J
+
+f
+
+
+]
+(
+
+[
+x
+]
+
+)
+
+
+{\displaystyle [J_{f}](\mathbf {[x]} )}
+
+ we get
+A nonlinear function can be defined by linear features.
+An interval can also be defined as a locus of points at a given distance from the centre, and this definition can be extended from real numbers to complex numbers.[3] As it is the case with computing with real numbers, computing with complex numbers involves uncertain data. So, given the fact that an interval number is a real closed interval and a complex number is an ordered pair of real numbers, there is no reason to limit the application of interval arithmetic to the measure of uncertainties in computations with real numbers.[4] Interval arithmetic can thus be extended, via complex interval numbers, to determine regions of uncertainty in computing with complex numbers.[4]
+The basic algebraic operations for real interval numbers (real closed intervals) can be extended to complex numbers. It is therefore not surprising that complex interval arithmetic is similar to, but not the same as, ordinary complex arithmetic.[4] It can be shown that, as it is the case with real interval arithmetic, there is no distributivity between addition and multiplication of complex interval numbers except for certain special cases, and inverse elements do not always exist for complex interval numbers.[4] Two other useful properties of ordinary complex arithmetic fail to hold in complex interval arithmetic: the additive and multiplicative properties, of ordinary complex conjugates, do not hold for complex interval conjugates.[4]
+Interval arithmetic can be extended, in an analogous manner, to other multidimensional number systems such as quaternions and octonions, but with the expense that we have to sacrifice other useful properties of ordinary arithmetic.[4]
+The methods of classical numerical analysis can not be transferred one-to-one into interval-valued algorithms, as dependencies between numerical values are usually not taken into account.
+In order to work effectively in a real-life implementation, intervals must be compatible with floating point computing. The earlier operations were based on exact arithmetic, but in general fast numerical solution methods may not be available. The range of values of the function 
+
+
+
+f
+(
+x
+,
+y
+)
+=
+x
++
+y
+
+
+{\displaystyle f(x,y)=x+y}
+
+ for 
+
+
+
+x
+∈
+[
+0.1
+,
+0.8
+]
+
+
+{\displaystyle x\in [0.1,0.8]}
+
+ and 
+
+
+
+y
+∈
+[
+0.06
+,
+0.08
+]
+
+
+{\displaystyle y\in [0.06,0.08]}
+
+ are for example 
+
+
+
+[
+0.16
+,
+0.88
+]
+
+
+{\displaystyle [0.16,0.88]}
+
+. Where the same calculation is done with single digit precision, the result would normally be 
+
+
+
+[
+0.2
+,
+0.9
+]
+
+
+{\displaystyle [0.2,0.9]}
+
+. But 
+
+
+
+[
+0.2
+,
+0.9
+]
+⊉
+[
+0.16
+,
+0.88
+]
+
+
+{\displaystyle [0.2,0.9]\not \supseteq [0.16,0.88]}
+
+, so this approach would contradict the basic principles of interval arithmetic, as a part of the domain of 
+
+
+
+f
+(
+[
+0.1
+,
+0.8
+]
+,
+[
+0.06
+,
+0.08
+]
+)
+
+
+{\displaystyle f([0.1,0.8],[0.06,0.08])}
+
+ would be lost. Instead, it is the outward rounded solution 
+
+
+
+[
+0.1
+,
+0.9
+]
+
+
+{\displaystyle [0.1,0.9]}
+
+ which is used.
+The standard IEEE 754 for binary floating-point arithmetic also sets out procedures for the implementation of rounding. An IEEE 754 compliant system allows programmers to round to the nearest floating point number; alternatives are rounding towards 0 (truncating), rounding toward positive infinity (i.e. up), or rounding towards negative infinity (i.e. down).
+The required external rounding for interval arithmetic can thus be achieved by changing the rounding settings of the processor in the calculation of the upper limit (up) and lower limit (down). Alternatively, an appropriate small interval 
+
+
+
+[
+
+ε
+
+1
+
+
+,
+
+ε
+
+2
+
+
+]
+
+
+{\displaystyle [\varepsilon _{1},\varepsilon _{2}]}
+
+ can be added.
+The so-called dependency problem is a major obstacle to the application of interval arithmetic. Although interval methods can determine the range of elementary arithmetic operations and functions very accurately, this is not always true with more complicated functions. If an interval occurs several times in a calculation using parameters, and each occurrence is taken independently then this can lead to an unwanted expansion of the resulting intervals.
+As an illustration, take the function 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ defined by 
+
+
+
+f
+(
+x
+)
+=
+
+x
+
+2
+
+
++
+x
+
+
+{\displaystyle f(x)=x^{2}+x}
+
+. The values of this function over the interval 
+
+
+
+[
+−
+1
+,
+1
+]
+
+
+{\displaystyle [-1,1]}
+
+ are really 
+
+
+
+[
+−
+1
+
+/
+
+4
+,
+2
+]
+
+
+{\displaystyle [-1/4,2]}
+
+. As the natural interval extension, it is calculated as 
+
+
+
+[
+−
+1
+,
+1
+
+]
+
+2
+
+
++
+[
+−
+1
+,
+1
+]
+=
+[
+0
+,
+1
+]
++
+[
+−
+1
+,
+1
+]
+=
+[
+−
+1
+,
+2
+]
+
+
+{\displaystyle [-1,1]^{2}+[-1,1]=[0,1]+[-1,1]=[-1,2]}
+
+, which is slightly larger; we have instead calculated the infimum and supremum of the function 
+
+
+
+h
+(
+x
+,
+y
+)
+=
+
+x
+
+2
+
+
++
+y
+
+
+{\displaystyle h(x,y)=x^{2}+y}
+
+ over 
+
+
+
+x
+,
+y
+∈
+[
+−
+1
+,
+1
+]
+
+
+{\displaystyle x,y\in [-1,1]}
+
+. There is a better expression of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ in which the variable 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ only appears once, namely by rewriting 
+
+
+
+f
+(
+x
+)
+=
+
+x
+
+2
+
+
++
+x
+
+
+{\displaystyle f(x)=x^{2}+x}
+
+ as addition and squaring in the quadratic 
+
+
+
+f
+(
+x
+)
+=
+
+
+(
+x
++
+
+
+1
+2
+
+
+)
+
+
+2
+
+
+−
+
+
+1
+4
+
+
+
+
+{\displaystyle f(x)=\left(x+{\frac {1}{2}}\right)^{2}-{\frac {1}{4}}}
+
+.
+So the suitable interval calculation is
+and gives the correct values.
+In general, it can be shown that the exact range of values can be achieved, if each variable appears only once and if 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ is continuous inside the box. However, not every function can be rewritten this way.
+The dependency of the problem causing over-estimation of the value range can go as far as covering a large range, preventing more meaningful conclusions.
+An additional increase in the range stems from the solution of areas that do not take the form of an interval vector. The solution set of the linear system
+for 
+
+
+
+p
+∈
+[
+−
+1
+,
+1
+]
+
+
+{\displaystyle p\in [-1,1]}
+
+ is precisely the line between the points 
+
+
+
+(
+−
+1
+,
+−
+1
+)
+
+
+{\displaystyle (-1,-1)}
+
+ and 
+
+
+
+(
+1
+,
+1
+)
+
+
+{\displaystyle (1,1)}
+
+. Using interval methods results in the unit square, 
+
+
+
+[
+−
+1
+,
+1
+]
+×
+[
+−
+1
+,
+1
+]
+
+
+{\displaystyle [-1,1]\times [-1,1]}
+
+. This is known as the wrapping effect.
+A linear interval system consists of a matrix interval extension 
+
+
+
+[
+
+A
+
+]
+∈
+[
+
+R
+
+
+]
+
+n
+×
+m
+
+
+
+
+{\displaystyle [\mathbf {A} ]\in [\mathbb {R} ]^{n\times m}}
+
+ and an interval vector 
+
+
+
+[
+
+b
+
+]
+∈
+[
+
+R
+
+
+]
+
+n
+
+
+
+
+{\displaystyle [\mathbf {b} ]\in [\mathbb {R} ]^{n}}
+
+. We want the smallest cuboid 
+
+
+
+[
+
+x
+
+]
+∈
+[
+
+R
+
+
+]
+
+m
+
+
+
+
+{\displaystyle [\mathbf {x} ]\in [\mathbb {R} ]^{m}}
+
+, for all vectors 
+
+
+
+
+x
+
+∈
+
+
+R
+
+
+m
+
+
+
+
+{\displaystyle \mathbf {x} \in \mathbb {R} ^{m}}
+
+ which there is a pair 
+
+
+
+(
+
+A
+
+,
+
+b
+
+)
+
+
+{\displaystyle (\mathbf {A} ,\mathbf {b} )}
+
+ with 
+
+
+
+
+A
+
+∈
+[
+
+A
+
+]
+
+
+{\displaystyle \mathbf {A} \in [\mathbf {A} ]}
+
+ and 
+
+
+
+
+b
+
+∈
+[
+
+b
+
+]
+
+
+{\displaystyle \mathbf {b} \in [\mathbf {b} ]}
+
+ satisfying
+For quadratic systems – in other words, for 
+
+
+
+n
+=
+m
+
+
+{\displaystyle n=m}
+
+ – there can be such an interval vector 
+
+
+
+[
+
+x
+
+]
+
+
+{\displaystyle [\mathbf {x} ]}
+
+, which covers all possible solutions, found simply with the interval Gauss method. This replaces the numerical operations, in that the linear algebra method known as Gaussian elimination becomes its interval version. However, since this method uses the interval entities
+
+
+
+[
+
+A
+
+]
+
+
+{\displaystyle [\mathbf {A} ]}
+
+ and 
+
+
+
+[
+
+b
+
+]
+
+
+{\displaystyle [\mathbf {b} ]}
+
+ repeatedly in the calculation, it can produce poor results for some problems. Hence using the result of the interval-valued Gauss only provides first rough estimates, since although it contains the entire solution set, it also has a large area outside it.
+A rough solution 
+
+
+
+[
+
+x
+
+]
+
+
+{\displaystyle [\mathbf {x} ]}
+
+ can often be improved by an interval version of the Gauss–Seidel method. The motivation for this is that the 
+
+
+
+i
+
+
+{\displaystyle i}
+
+-th row of the interval extension of the linear equation
+can be determined by the variable 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+ if the division 
+
+
+
+1
+
+/
+
+[
+
+a
+
+i
+i
+
+
+]
+
+
+{\displaystyle 1/[a_{ii}]}
+
+ is allowed. It is therefore simultaneously
+So we can now replace 
+
+
+
+[
+
+x
+
+j
+
+
+]
+
+
+{\displaystyle [x_{j}]}
+
+ by
+and so the vector 
+
+
+
+[
+
+x
+
+]
+
+
+{\displaystyle [\mathbf {x} ]}
+
+ by each element. Since the procedure is more efficient for a diagonally dominant matrix, instead of the system 
+
+
+
+[
+
+A
+
+]
+⋅
+
+x
+
+=
+[
+
+b
+
+]
+
+,
+
+
+
+{\displaystyle [\mathbf {A} ]\cdot \mathbf {x} =[\mathbf {b} ]{\mbox{,}}}
+
+ one can often try multiplying it by an appropriate rational matrix 
+
+
+
+
+M
+
+
+
+{\displaystyle \mathbf {M} }
+
+ with the resulting matrix equation
+left to solve. If one chooses, for example, 
+
+
+
+
+M
+
+=
+
+
+A
+
+
+−
+1
+
+
+
+
+{\displaystyle \mathbf {M} =\mathbf {A} ^{-1}}
+
+ for the central matrix 
+
+
+
+
+A
+
+∈
+[
+
+A
+
+]
+
+
+{\displaystyle \mathbf {A} \in [\mathbf {A} ]}
+
+, then 
+
+
+
+
+M
+
+⋅
+[
+
+A
+
+]
+
+
+{\displaystyle \mathbf {M} \cdot [\mathbf {A} ]}
+
+ is outer extension of the identity matrix.
+These methods only work well if the widths of the intervals occurring are sufficiently small. For wider intervals it can be useful to use an interval-linear system on finite (albeit large) real number equivalent linear systems. If all the matrices 
+
+
+
+
+A
+
+∈
+[
+
+A
+
+]
+
+
+{\displaystyle \mathbf {A} \in [\mathbf {A} ]}
+
+ are invertible, it is sufficient to consider all possible combinations (upper and lower) of the endpoints occurring in the intervals. The resulting problems can be resolved using conventional numerical methods. Interval arithmetic is still used to determine rounding errors.
+This is only suitable for systems of smaller dimension, since with a fully occupied 
+
+
+
+n
+×
+n
+
+
+{\displaystyle n\times n}
+
+ matrix, 
+
+
+
+
+2
+
+
+n
+
+2
+
+
+
+
+
+
+{\displaystyle 2^{n^{2}}}
+
+ real matrices need to be inverted, with 
+
+
+
+
+2
+
+n
+
+
+
+
+{\displaystyle 2^{n}}
+
+ vectors for the right hand side. This approach was developed by Jiri Rohn and is still being developed.[5]
+An interval variant of Newton's method for finding the zeros in an interval vector 
+
+
+
+[
+
+x
+
+]
+
+
+{\displaystyle [\mathbf {x} ]}
+
+ can be derived from the average value extension.[6] For an unknown vector 
+
+
+
+
+z
+
+∈
+[
+
+x
+
+]
+
+
+{\displaystyle \mathbf {z} \in [\mathbf {x} ]}
+
+ applied to 
+
+
+
+
+y
+
+∈
+[
+
+x
+
+]
+
+
+{\displaystyle \mathbf {y} \in [\mathbf {x} ]}
+
+, gives
+For a zero 
+
+
+
+
+z
+
+
+
+{\displaystyle \mathbf {z} }
+
+, that is 
+
+
+
+f
+(
+z
+)
+=
+0
+
+
+{\displaystyle f(z)=0}
+
+, and thus must satisfy
+This is equivalent to 
+
+
+
+
+z
+
+∈
+
+y
+
+−
+[
+
+J
+
+f
+
+
+]
+(
+
+[
+x
+]
+
+
+)
+
+−
+1
+
+
+⋅
+f
+(
+
+y
+
+)
+
+
+{\displaystyle \mathbf {z} \in \mathbf {y} -[J_{f}](\mathbf {[x]} )^{-1}\cdot f(\mathbf {y} )}
+
+. An outer estimate of 
+
+
+
+[
+
+J
+
+f
+
+
+]
+(
+
+[
+x
+]
+
+
+)
+
+−
+1
+
+
+⋅
+f
+(
+
+y
+
+)
+)
+
+
+{\displaystyle [J_{f}](\mathbf {[x]} )^{-1}\cdot f(\mathbf {y} ))}
+
+ can be determined using linear methods.
+In each step of the interval Newton method, an approximate starting value 
+
+
+
+[
+
+x
+
+]
+∈
+[
+
+R
+
+
+]
+
+n
+
+
+
+
+{\displaystyle [\mathbf {x} ]\in [\mathbb {R} ]^{n}}
+
+ is replaced by 
+
+
+
+[
+
+x
+
+]
+∩
+
+(
+
+y
+
+−
+[
+
+J
+
+f
+
+
+]
+(
+
+[
+x
+]
+
+
+)
+
+−
+1
+
+
+⋅
+f
+(
+
+y
+
+)
+)
+
+
+
+{\displaystyle [\mathbf {x} ]\cap \left(\mathbf {y} -[J_{f}](\mathbf {[x]} )^{-1}\cdot f(\mathbf {y} )\right)}
+
+ and so the result can be improved iteratively. In contrast to traditional methods, the interval method approaches the result by containing the zeros. This guarantees that the result will produce all the zeros in the initial range. Conversely, it will prove that no zeros of 
+
+
+
+f
+
+
+{\displaystyle f}
+
+ were in the initial range 
+
+
+
+[
+
+x
+
+]
+
+
+{\displaystyle [\mathbf {x} ]}
+
+ if a Newton step produces the empty set.
+The method converges on all zeros in the starting region. Division by zero can lead to separation of distinct zeros, though the separation may not be complete; it can be complemented by the bisection method.
+As an example, consider the function 
+
+
+
+f
+(
+x
+)
+=
+
+x
+
+2
+
+
+−
+2
+
+
+{\displaystyle f(x)=x^{2}-2}
+
+, the starting range 
+
+
+
+[
+x
+]
+=
+[
+−
+2
+,
+2
+]
+
+
+{\displaystyle [x]=[-2,2]}
+
+, and the point 
+
+
+
+y
+=
+0
+
+
+{\displaystyle y=0}
+
+. We then have 
+
+
+
+
+J
+
+f
+
+
+(
+x
+)
+=
+2
+
+x
+
+
+{\displaystyle J_{f}(x)=2\,x}
+
+ and the first Newton step gives
+More Newton steps are used separately on 
+
+
+
+x
+∈
+[
+
+−
+2
+
+,
+
+−
+0.5
+
+]
+
+
+{\displaystyle x\in [{-2},{-0.5}]}
+
+ and 
+
+
+
+[
+
+0.5
+
+,
+
+2
+
+]
+
+
+{\displaystyle [{0.5},{2}]}
+
+. These converge to arbitrarily small intervals around 
+
+
+
+−
+
+
+2
+
+
+
+
+{\displaystyle -{\sqrt {2}}}
+
+ and 
+
+
+
++
+
+
+2
+
+
+
+
+{\displaystyle +{\sqrt {2}}}
+
+.
+The Interval Newton method can also be used with thick functions such as 
+
+
+
+g
+(
+x
+)
+=
+
+x
+
+2
+
+
+−
+[
+2
+,
+3
+]
+
+
+{\displaystyle g(x)=x^{2}-[2,3]}
+
+, which would in any case have interval results. The result then produces intervals containing 
+
+
+
+
+[
+−
+
+
+3
+
+
+,
+−
+
+
+2
+
+
+]
+
+∪
+
+[
+
+
+2
+
+
+,
+
+
+3
+
+
+]
+
+
+
+{\displaystyle \left[-{\sqrt {3}},-{\sqrt {2}}\right]\cup \left[{\sqrt {2}},{\sqrt {3}}\right]}
+
+.
+The various interval methods deliver conservative results as dependencies between the sizes of different intervals extensions are not taken into account. However the dependency problem becomes less significant for narrower intervals.
+Covering an interval vector 
+
+
+
+[
+
+x
+
+]
+
+
+{\displaystyle [\mathbf {x} ]}
+
+ by smaller boxes 
+
+
+
+[
+
+
+x
+
+
+1
+
+
+]
+,
+…
+,
+[
+
+
+x
+
+
+k
+
+
+]
+
+,
+
+
+
+{\displaystyle [\mathbf {x} _{1}],\dots ,[\mathbf {x} _{k}]{\mbox{,}}}
+
+ so that 
+
+
+
+
+[
+
+x
+
+]
+=
+
+⋃
+
+i
+=
+1
+
+
+k
+
+
+[
+
+
+x
+
+
+i
+
+
+]
+
+,
+
+
+
+
+{\displaystyle \textstyle [\mathbf {x} ]=\bigcup _{i=1}^{k}[\mathbf {x} _{i}]{\mbox{,}}}
+
+ is then valid for the range of values 
+
+
+
+
+f
+(
+[
+
+x
+
+]
+)
+=
+
+⋃
+
+i
+=
+1
+
+
+k
+
+
+f
+(
+[
+
+
+x
+
+
+i
+
+
+]
+)
+
+.
+
+
+
+
+{\displaystyle \textstyle f([\mathbf {x} ])=\bigcup _{i=1}^{k}f([\mathbf {x} _{i}]){\mbox{.}}}
+
+ So for the interval extensions described above, 
+
+
+
+
+[
+f
+]
+(
+[
+
+x
+
+]
+)
+⊇
+
+⋃
+
+i
+=
+1
+
+
+k
+
+
+[
+f
+]
+(
+[
+
+
+x
+
+
+i
+
+
+]
+)
+
+
+
+{\displaystyle \textstyle [f]([\mathbf {x} ])\supseteq \bigcup _{i=1}^{k}[f]([\mathbf {x} _{i}])}
+
+ is valid. Since 
+
+
+
+[
+f
+]
+(
+[
+
+x
+
+]
+)
+
+
+{\displaystyle [f]([\mathbf {x} ])}
+
+ is often a genuine superset of the right-hand side, this usually leads to an improved estimate.
+Such a cover can be generated by the bisection method such as thick elements 
+
+
+
+[
+
+x
+
+i
+1
+
+
+,
+
+x
+
+i
+2
+
+
+]
+
+
+{\displaystyle [x_{i1},x_{i2}]}
+
+ of the interval vector 
+
+
+
+[
+
+x
+
+]
+=
+(
+[
+
+x
+
+11
+
+
+,
+
+x
+
+12
+
+
+]
+,
+…
+,
+[
+
+x
+
+n
+1
+
+
+,
+
+x
+
+n
+2
+
+
+]
+)
+
+
+{\displaystyle [\mathbf {x} ]=([x_{11},x_{12}],\dots ,[x_{n1},x_{n2}])}
+
+ by splitting in the centre into the two intervals 
+
+
+
+[
+
+x
+
+i
+1
+
+
+,
+(
+
+x
+
+i
+1
+
+
++
+
+x
+
+i
+2
+
+
+)
+
+/
+
+2
+]
+
+
+{\displaystyle [x_{i1},(x_{i1}+x_{i2})/2]}
+
+ and 
+
+
+
+[
+(
+
+x
+
+i
+1
+
+
++
+
+x
+
+i
+2
+
+
+)
+
+/
+
+2
+,
+
+x
+
+i
+2
+
+
+]
+
+
+{\displaystyle [(x_{i1}+x_{i2})/2,x_{i2}]}
+
+. If the result is still not suitable then further gradual subdivision is possible. Note that a cover of 
+
+
+
+
+2
+
+r
+
+
+
+
+{\displaystyle 2^{r}}
+
+ intervals results from 
+
+
+
+r
+
+
+{\displaystyle r}
+
+ divisions of vector elements, substantially increasing the computation costs.
+With very wide intervals, it can be helpful to split all intervals into several subintervals with a constant (and smaller) width, a method known as mincing. This then avoids the calculations for intermediate bisection steps. Both methods are only suitable for problems of low dimension.
+Interval arithmetic can be used in various areas (such as set inversion, motion planning, set estimation or stability analysis), in order to be treated estimates for which no exact numerical values can stated.[7]
+Interval arithmetic is used with error analysis, to control rounding errors arising from each calculation. The advantage of interval arithmetic is that after each operation there is an interval which reliably includes the true result. The distance between the interval boundaries gives the current calculation of rounding errors directly:
+Interval analysis adds to rather than substituting for traditional methods for error reduction, such as pivoting.
+Parameters for which no exact figures can be allocated often arise during the simulation of technical and physical processes. The production process of technical components allows certain tolerances, so some parameters fluctuate within intervals. In addition, many fundamental constants are not known precisely.[2]
+If the behavior of such a system affected by tolerances satisfies, for example, 
+
+
+
+f
+(
+
+x
+
+,
+
+p
+
+)
+=
+0
+
+
+{\displaystyle f(\mathbf {x} ,\mathbf {p} )=0}
+
+, for 
+
+
+
+
+p
+
+∈
+[
+
+p
+
+]
+
+
+{\displaystyle \mathbf {p} \in [\mathbf {p} ]}
+
+ and unknown 
+
+
+
+
+x
+
+
+
+{\displaystyle \mathbf {x} }
+
+ then the set of possible solutions
+can be found by interval methods. This provides an alternative to traditional propagation of error analysis. Unlike point methods, such as Monte Carlo simulation, interval arithmetic methodology ensures that no part of the solution area can be overlooked. However, the result is always a worst case analysis for the distribution of error, as other probability-based distributions are not considered.
+Interval arithmetic can also be used with affiliation functions for fuzzy quantities as they are used in fuzzy logic. Apart from the strict statements 
+
+
+
+x
+∈
+[
+x
+]
+
+
+{\displaystyle x\in [x]}
+
+ and 
+
+
+
+x
+∉
+[
+x
+]
+
+
+{\displaystyle x\not \in [x]}
+
+, intermediate values are also possible, to which real numbers 
+
+
+
+μ
+∈
+[
+0
+,
+1
+]
+
+
+{\displaystyle \mu \in [0,1]}
+
+ are assigned. 
+
+
+
+μ
+=
+1
+
+
+{\displaystyle \mu =1}
+
+ corresponds to definite membership while 
+
+
+
+μ
+=
+0
+
+
+{\displaystyle \mu =0}
+
+ is non-membership. A distribution function assigns uncertainty which can be understood as a further interval.
+For fuzzy arithmetic[8] only a finite number of discrete affiliation stages 
+
+
+
+
+μ
+
+i
+
+
+∈
+[
+0
+,
+1
+]
+
+
+{\displaystyle \mu _{i}\in [0,1]}
+
+ are considered. The form of such a distribution for an indistinct value can then represented by a sequence of intervals
+The appropriate distribution for a function 
+
+
+
+f
+(
+
+x
+
+1
+
+
+,
+⋯
+,
+
+x
+
+n
+
+
+)
+
+
+{\displaystyle f(x_{1},\cdots ,x_{n})}
+
+ concerning indistinct values 
+
+
+
+
+x
+
+1
+
+
+,
+⋯
+,
+
+x
+
+n
+
+
+
+
+{\displaystyle x_{1},\cdots ,x_{n}}
+
+ and the corresponding sequences 
+
+
+
+
+[
+
+x
+
+1
+
+
+(
+1
+)
+
+
+]
+
+⊃
+⋯
+⊃
+
+[
+
+x
+
+1
+
+
+(
+k
+)
+
+
+]
+
+,
+⋯
+,
+
+[
+
+x
+
+n
+
+
+(
+1
+)
+
+
+]
+
+⊃
+⋯
+⊃
+
+[
+
+x
+
+n
+
+
+(
+k
+)
+
+
+]
+
+
+
+{\displaystyle \left[x_{1}^{(1)}\right]\supset \cdots \supset \left[x_{1}^{(k)}\right],\cdots ,\left[x_{n}^{(1)}\right]\supset \cdots \supset \left[x_{n}^{(k)}\right]}
+
+ can be approximated by the sequence 
+
+
+
+
+[
+
+y
+
+(
+1
+)
+
+
+]
+
+⊃
+⋯
+⊃
+
+[
+
+y
+
+(
+k
+)
+
+
+]
+
+
+
+{\displaystyle \left[y^{(1)}\right]\supset \cdots \supset \left[y^{(k)}\right]}
+
+. The values 
+
+
+
+
+[
+
+y
+
+(
+i
+)
+
+
+]
+
+
+
+{\displaystyle \left[y^{(i)}\right]}
+
+ are given by 
+
+
+
+
+[
+
+y
+
+(
+i
+)
+
+
+]
+
+=
+f
+
+(
+
+[
+
+x
+
+1
+
+
+(
+i
+)
+
+
+]
+
+,
+⋯
+
+[
+
+x
+
+n
+
+
+(
+i
+)
+
+
+]
+
+)
+
+
+
+{\displaystyle \left[y^{(i)}\right]=f\left(\left[x_{1}^{(i)}\right],\cdots \left[x_{n}^{(i)}\right]\right)}
+
+ and can be calculated by interval methods. The value 
+
+
+
+
+[
+
+y
+
+(
+1
+)
+
+
+]
+
+
+
+{\displaystyle \left[y^{(1)}\right]}
+
+ corresponds to the result of an interval calculation.
+Interval arithmetic is not a completely new phenomenon in mathematics; it has appeared several times under different names in the course of history. For example, Archimedes calculated lower and upper bounds 223/71 < π < 22/7 in the 3rd century BC. Actual calculation with intervals has neither been as popular as other numerical techniques, nor been completely forgotten.
+Rules for calculating with intervals and other subsets of the real numbers were published in a 1931 work by Rosalind Cicely Young, a doctoral candidate at the University of Cambridge. Arithmetic work on range numbers to improve reliability of digital systems were then published in a 1951 textbook on linear algebra by Paul Dwyer (University of Michigan); intervals were used to measure rounding errors associated with floating-point numbers. A comprehensive paper on interval algebra in numerical analysis was published by Teruo Sunaga (1958).[9]
+The birth of modern interval arithmetic was marked by the appearance of the book Interval Analysis by Ramon E. Moore in 1966.[10][11] He had the idea in Spring 1958, and a year later he published an article about computer interval arithmetic.[12] Its merit was that starting with a simple principle, it provided a general method for automated error analysis, not just errors resulting from rounding.
+Independently in 1956, Mieczyslaw Warmus suggested formulae for calculations with intervals,[13] though Moore found the first non-trivial applications.
+In the following twenty years, German groups of researchers carried out pioneering work around Götz Alefeld (de)[14] and Ulrich Kulisch (de)[1][15] at the University of Karlsruhe and later also at the Bergische University of Wuppertal. For example, Karl Nickel (de) explored more effective implementations, while improved containment procedures for the solution set of systems of equations were due to Arnold Neumaier among others. In the 1960s, Eldon R. Hansen dealt with interval extensions for linear equations and then provided crucial contributions to global optimisation, including what is now known as Hansen's method, perhaps the most widely used interval algorithm.[6] Classical methods in this often have the problem of determining the largest (or smallest) global value, but could only find a local optimum and could not find better values; Helmut Ratschek and Jon George Rokne developed branch and bound methods, which until then had only applied to integer values, by using intervals to provide applications for continuous values.
+In 1988, Rudolf Lohner developed Fortran-based software for reliable solutions for initial value problems using ordinary differential equations.[16]
+The journal Reliable Computing (originally Interval Computations) has been published since the 1990s, dedicated to the reliability of computer-aided computations. As lead editor, R. Baker Kearfott, in addition to his work on global optimisation, has contributed significantly to the unification of notation and terminology used in interval arithmetic (Web: Kearfott).
+In recent years work has concentrated in particular on the estimation of preimages of parameterised functions and to robust control theory by the COPRIN working group of INRIA in Sophia Antipolis in France (Web: INRIA).
+There are many software packages that permit the development of numerical applications using interval arithmetic.[17] These are usually provided in the form of program libraries. There are also C++ and Fortran compilers that handle interval data types and suitable operations as a language extension, so interval arithmetic is supported directly.
+Since 1967, Extensions for Scientific Computation (XSC) have been developed in the University of Karlsruhe for various programming languages, such as C++, Fortran and Pascal.[18] The first platform was a Zuse Z 23, for which a new interval data type with appropriate elementary operators was made available. There followed in 1976 Pascal-SC, a Pascal variant on a Zilog Z80 which it made possible to create fast complicated routines for automated result verification. Then came the Fortran 77-based ACRITH-XSC for the System/370 architecture (FORTRAN-SC), which was later delivered by IBM. Starting from 1991 one could produce code for C compilers with Pascal-XSC; a year later the C++ class library supported C-XSC on many different computer systems. In 1997, all XSC variants were made available under the GNU General Public License. At the beginning of 2000 C-XSC 2.0 was released under the leadership of the working group for scientific computation at the Bergische University of Wuppertal, in order to correspond to the improved C++ standard.
+Another C++-class library was created in 1993 at the Hamburg University of Technology called Profil/BIAS (Programmer's Runtime Optimized Fast Interval Library, Basic Interval Arithmetic), which made the usual interval operations more user friendly. It emphasized the efficient use of hardware, portability and independence of a particular presentation of intervals.
+The Boost collection of C++ libraries contains a template class for intervals. Its authors are aiming to have interval arithmetic in the standard C++ language.[19]
+Gaol[20] is another C++ interval arithmetic library that is unique in that it offers the relational interval operators used in interval constraint programming.
+The Frink programming language has an implementation of interval arithmetic which can handle arbitrary-precision numbers. Programs written in Frink can use intervals without rewriting or recompilation.
+In addition computer algebra systems, such as Mathematica, Maple and MuPAD, can handle intervals. There is a Matlab extension Intlab which builds on BLAS routines, as well as the Toolbox b4m which makes a Profil/BIAS interface.[21] Moreover, the Software Euler Math Toolbox includes an interval arithmetic.
+A library for the functional language OCaml was written in assembly language and C.[22]
+A standard for interval arithmetic has been approved in June 2015.[23] There are two reference implementations freely available,[24] which have been developed by members of the standard's working group: The libieeep1788[25] library for C++, and the interval package[26] for GNU Octave.
+A minimalistic subset of the standard is currently under development, which shall be easier to implement and speed up production of implementations.[27]
+Several international conferences or workshop take place every year in the world. The main conference is probably SCAN (International Symposium on Scientific Computing, Computer Arithmetic, and Verified Numerical Computation), but there is also SWIM (Small Workshop on Interval Methods), PPAM (International Conference on Parallel Processing and Applied Mathematics), REC (International Workshop on Reliable Engineering Computing).

@@ -1,0 +1,8 @@
+{
+    "about": "In numerical analysis, continuous wavelets are functions used by the continuous wavelet transform. These functions are defined as analytical expressions, as functions either of time or of frequency. Most of the continuous wavelets are used for both wavelet decomposition and composition transforms. That is they are the continuous counterpart of orthogonal wavelets.", 
+    "name": "Continuous Wavelet", 
+    "classification": "Numerical Analysis", 
+    "full_text": "In numerical analysis, continuous wavelets are functions used by the continuous wavelet transform. These functions are defined as analytical expressions, as functions either of time or of frequency. Most of the continuous wavelets are used for both wavelet decomposition and composition transforms. That is they are the continuous counterpart of orthogonal wavelets.\nThe following continuous wavelets have been invented for various applications:", 
+    "dbpedia_url": "http://dbpedia.org/resource/Continuous_wavelet", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Continuous_wavelet\n"
+}

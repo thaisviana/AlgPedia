@@ -1,0 +1,122 @@
+ABOUT
+In computer science and discrete mathematics, an inversion is a pair of places of a sequence where the elements on these places are out of their natural order.
+FULL TEXT
+In computer science and discrete mathematics, an inversion is a pair of places of a sequence where the elements on these places are out of their natural order.
+
+
+Formally, let 
+
+
+
+(
+A
+(
+1
+)
+,
+…
+,
+A
+(
+n
+)
+)
+
+
+{\displaystyle (A(1),\ldots ,A(n))}
+
+ be a sequence of n distinct numbers. If 
+
+
+
+i
+<
+j
+
+
+{\displaystyle i<j}
+
+ and 
+
+
+
+A
+(
+i
+)
+>
+A
+(
+j
+)
+
+
+{\displaystyle A(i)>A(j)}
+
+, then the pair 
+
+
+
+(
+i
+,
+j
+)
+
+
+{\displaystyle (i,j)}
+
+ is called an inversion of 
+
+
+
+A
+
+
+{\displaystyle A}
+
+.[1][2]
+The inversion number of a sequence is one common measure of its sortedness.[3][2] Formally, the inversion number is defined to be the number of inversions, that is,
+Equivalently, it is the Kendall tau distance from the identity permutation. Other measures of (pre-)sortedness include the minimum number of elements that can be deleted from the sequence to yield a fully sorted sequence, the number and lengths of sorted "runs" within the sequence, the Spearman footrule (sum of distances of each element from its sorted position), and the smallest number of exchanges needed to sort the sequence.[4] Standard comparison sorting algorithms can be adapted to compute the inversion number in time O(n log n).
+The inversion vector V(i) of the sequence is defined for i = 2, ..., n as 
+
+
+
+V
+[
+i
+]
+=
+
+|
+{
+k
+∣
+k
+<
+i
+
+ and 
+
+A
+(
+k
+)
+>
+A
+(
+i
+)
+}
+|
+
+
+
+{\displaystyle V[i]=\left\vert \{k\mid k<i{\text{ and }}A(k)>A(i)\}\right\vert }
+
+. In other words, each element is the number of elements preceding the element in the original sequence that are greater than it. Note that the inversion vector of a sequence has one less element than the sequence, because of course the number of preceding elements that are greater than the first is always zero. Each permutation of a sequence has a unique inversion vector and it is possible to construct any given permutation of a (fully sorted) sequence from that sequence and the permutation's inversion vector.[5]
+The set of permutations on n items can be given the structure of a partial order, called the weak order of permutations, which forms a lattice.
+To define this order, consider the items being permuted to be the integers from 1 to n, and let Inv(u) denote the set of inversions of a permutation u for the natural ordering on these items. That is, Inv(u) is the set of ordered pairs (i, j) such that 1 ≤ i < j ≤ n and u(i) > u(j). Then, in the weak order, we define u ≤ v whenever Inv(u) ⊆ Inv(v).
+The edges of the Hasse diagram of the weak order are given by permutations u and v such that u < v and such that v is obtained from u by interchanging two consecutive values of u. These edges form a Cayley graph for the group of permutations that is isomorphic to the skeleton of a permutohedron.
+The identity permutation is the minimum element of the weak order, and the permutation formed by reversing the identity is the maximum element.
+Sequences in the OEIS:

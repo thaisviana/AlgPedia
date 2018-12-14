@@ -1,0 +1,6 @@
+ABOUT
+ISO 7064 define algorithms for calculating check digit characters.
+FULL TEXT
+ISO 7064 define algorithms for calculating check digit characters.
+It is referred to by other ISO standards:
+and by other systems:

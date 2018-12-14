@@ -1,0 +1,26 @@
+ABOUT
+In mathematics, a Liouvillian function is an elementary function or (recursively) the integral of a Liouvillian function.
+FULL TEXT
+In mathematics, a Liouvillian function is an elementary function or (recursively) the integral of a Liouvillian function.
+More explicitly, it is a function of one variable which is the composition of a finite number of arithmetic operations (+ – × ÷), exponentials, constants, solutions of algebraic equations (a generalization of nth roots), and antiderivatives. The logarithm function does not need to be explicitly included since it is the integral of 
+
+
+
+1
+
+/
+
+x
+
+
+{\displaystyle 1/x}
+
+.
+It follows directly from the definition that the set of Liouvillian functions is closed under arithmetic operations, composition, and integration. It is also closed under differentiation. It is not closed under limits and infinite sums.
+Liouvillian functions were introduced by Joseph Liouville in a series of papers from 1833 to 1841.
+
+
+All elementary functions are Liouvillian.
+Examples of well-known functions which are Liouvillian but not elementary are the nonelementary integrals, for example:
+All Liouvillian functions are solutions of algebraic differential equations, but not conversely. Examples of functions which are solutions of algebraic differential equations but not Liouvillian include:[1]
+Examples of functions which are not solutions of algebraic differential equations and thus not Liouvillian include all transcendentally transcendental functions, such as:

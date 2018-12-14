@@ -1,0 +1,424 @@
+ABOUT
+In theoretical computer science and coding theory, the long code is an error-correcting code that is locally decodable. Long codes have an extremely poor rate, but play a fundamental role in the theory of hardness of approximation.
+FULL TEXT
+In theoretical computer science and coding theory, the long code is an error-correcting code that is locally decodable. Long codes have an extremely poor rate, but play a fundamental role in the theory of hardness of approximation.
+Let 
+
+
+
+
+f
+
+1
+
+
+,
+…
+,
+
+f
+
+
+2
+
+n
+
+
+
+
+:
+{
+0
+,
+1
+
+}
+
+k
+
+
+→
+{
+0
+,
+1
+}
+
+
+{\displaystyle f_{1},\dots ,f_{2^{n}}:\{0,1\}^{k}\to \{0,1\}}
+
+ for 
+
+
+
+k
+=
+log
+⁡
+n
+
+
+{\displaystyle k=\log n}
+
+ be the list of all functions from 
+
+
+
+{
+0
+,
+1
+
+}
+
+k
+
+
+→
+{
+0
+,
+1
+}
+
+
+{\displaystyle \{0,1\}^{k}\to \{0,1\}}
+
+. Then the long code encoding of a message 
+
+
+
+x
+∈
+{
+0
+,
+1
+
+}
+
+k
+
+
+
+
+{\displaystyle x\in \{0,1\}^{k}}
+
+ is the string 
+
+
+
+
+f
+
+1
+
+
+(
+x
+)
+∘
+
+f
+
+2
+
+
+(
+x
+)
+∘
+⋯
+∘
+
+f
+
+
+2
+
+n
+
+
+
+
+(
+x
+)
+
+
+{\displaystyle f_{1}(x)\circ f_{2}(x)\circ \dots \circ f_{2^{n}}(x)}
+
+ where 
+
+
+
+∘
+
+
+{\displaystyle \circ }
+
+ denotes concatenation of strings. This string has length 
+
+
+
+
+2
+
+n
+
+
+=
+
+2
+
+
+2
+
+k
+
+
+
+
+
+
+{\displaystyle 2^{n}=2^{2^{k}}}
+
+.
+The Walsh-Hadamard code is a subcode of the long code, and can be obtained by only using functions 
+
+
+
+
+f
+
+i
+
+
+
+
+{\displaystyle f_{i}}
+
+ that are linear functions when interpreted as functions 
+
+
+
+
+
+F
+
+
+2
+
+
+k
+
+
+→
+
+
+F
+
+
+2
+
+
+
+
+{\displaystyle \mathbb {F} _{2}^{k}\to \mathbb {F} _{2}}
+
+ on the finite field with two elements. Since there are only 
+
+
+
+
+2
+
+k
+
+
+
+
+{\displaystyle 2^{k}}
+
+ such functions, the block length of the Walsh-Hadamard code is 
+
+
+
+
+2
+
+k
+
+
+
+
+{\displaystyle 2^{k}}
+
+.
+An equivalent definition of the long code is as follows: The Long code encoding of 
+
+
+
+j
+∈
+[
+n
+]
+
+
+{\displaystyle j\in [n]}
+
+ is defined to be the truth table of the Boolean dictatorship function on the 
+
+
+
+j
+
+
+{\displaystyle j}
+
+th coordinate, i.e., the truth table of 
+
+
+
+f
+:
+{
+0
+,
+1
+
+}
+
+n
+
+
+→
+{
+0
+,
+1
+}
+
+
+{\displaystyle f:\{0,1\}^{n}\to \{0,1\}}
+
+ with 
+
+
+
+f
+(
+
+x
+
+1
+
+
+,
+…
+,
+
+x
+
+n
+
+
+)
+=
+
+x
+
+i
+
+
+
+
+{\displaystyle f(x_{1},\dots ,x_{n})=x_{i}}
+
+.[1] Thus, the Long code encodes a 
+
+
+
+(
+log
+⁡
+n
+)
+
+
+{\displaystyle (\log n)}
+
+-bit string as a 
+
+
+
+
+2
+
+n
+
+
+
+
+{\displaystyle 2^{n}}
+
+-bit string.
+The long code does not contain repetitions, in the sense that the function 
+
+
+
+
+f
+
+i
+
+
+
+
+{\displaystyle f_{i}}
+
+ computing the 
+
+
+
+i
+
+
+{\displaystyle i}
+
+th bit of the output is different from any function 
+
+
+
+
+f
+
+j
+
+
+
+
+{\displaystyle f_{j}}
+
+ computing the 
+
+
+
+j
+
+
+{\displaystyle j}
+
+th bit of the output for 
+
+
+
+j
+≠
+i
+
+
+{\displaystyle j\neq i}
+
+. Among all codes that do not contain repetitions, the long code has the longest possible output. Moreover, it contains all non-repeating codes as a subcode.

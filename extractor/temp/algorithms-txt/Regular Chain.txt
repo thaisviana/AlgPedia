@@ -1,0 +1,84 @@
+ABOUT
+In computer algebra, a regular chain is a particular kind of triangular set in a multivariate polynomial ring over a field. It enhances the notion of characteristic set.
+FULL TEXT
+In computer algebra, a regular chain is a particular kind of triangular set in a multivariate polynomial ring over a field. It enhances the notion of characteristic set.
+
+
+Given a linear system, one can convert it to a triangular system via Gaussian elimination. For the non-linear case, given a polynomial system F over a field, one can convert (decompose or triangularize) it to a finite set of triangular sets, in the sense that the algebraic variety V(F) is described by these triangular sets.
+A triangular set may merely describe the empty set. To fix this degenerated case, the notion of regular chain was introduced, independently by Kalkbrener (1993), Yang and Zhang (1994). Regular chains also appear in Chou and Gao (1992). Regular chains are special triangular sets which are used in different algorithms for computing unmixed-dimensional decompositions of algebraic varieties. Without using factorization, these decompositions have better properties that the ones produced by Wu's algorithm. Kalkbrener's original definition was based on the following observation: every irreducible variety is uniquely determined by one of its generic points and varieties can be represented by describing the generic points of their irreducible components. These generic points are given by regular chains.
+Denote Q the rational number field. In Q[x1, x2, x3] with variable ordering x1 < x2 < x3,
+is a triangular set and also a regular chain. Two generic points given by T are (a, a, a) and (a, -a, a) where a is transcendental over Q. Thus there are two irreducible components, given by { x2 - x1, x3 - x1 } and { x2 + x1, x3 - x1 }, respectively. Note that: (1) the content of the second polynomial is x2, which does not contribute to the generic points represented and thus can be removed; (2) the dimension of each component is 1, the number of free variables in the regular chain.
+The variables in the polynomial ring
+are always sorted as x1 < ... < xn. A non-constant polynomial f in 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ can be seen as a univariate polynomial in its greatest variable. The greatest variable in f is called its main variable, denoted by mvar(f). Let u be the main variable of f and write it as
+where e is the degree of f w.r.t. u and 
+
+
+
+
+a
+
+e
+
+
+
+
+{\displaystyle a_{e}}
+
+ is the leading coefficient of f w.r.t. u. Then the initial of f is 
+
+
+
+
+a
+
+e
+
+
+
+
+{\displaystyle a_{e}}
+
+ and e is its main degree.
+A non-empty subset T of 
+
+
+
+R
+
+
+{\displaystyle R}
+
+ is a triangular set, if the polynomials in T are non-constant and have distinct main variables. Hence, a triangular set is finite, and has cardinality at most n.
+Let T = {t1, ..., ts} be a triangular set such that mvar(t1) < ... < mvar(ts), 
+
+
+
+
+h
+
+i
+
+
+
+
+{\displaystyle h_{i}}
+
+ be the initial of ti and h be the product of hi's. Then T is a regular chain if
+where each resultant is computed with respect to the main variable of ti, respectively. This definition is from Yang and Zhang, which is of much algorithmic flavor.
+The quasi-component W(T) described by the regular chain T is
+the set difference of the varieties V(T) and V(h). The attached algebraic object of a regular chain is its saturated ideal
+A classic result is that the Zariski closure of W(T) equals the variety defined by sat(T), that is,
+and its dimension is n - |T|, the difference of the number of variables and the number of polynomials in T.
+In general, there are two ways to decompose a polynomial system F. The first one is to decompose lazily, that is, only to represent its generic points in the (Kalkbrener) sense,
+The second is to describe all zeroes in the Lazard sense,
+There are various algorithms available for triangular decompositions in either sense.
+Let T be a regular chain in the polynomial ring R.

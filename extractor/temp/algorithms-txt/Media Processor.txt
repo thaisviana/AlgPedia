@@ -1,0 +1,12 @@
+ABOUT
+A media processor, mostly used as an image / video processor, is a microprocessor-based system-on-a-chip which is designed to deal with digital streaming data in real-time (e.g. display refresh) rates. These devices can also be considered a class of digital signal processors (DSPs).
+FULL TEXT
+A media processor, mostly used as an image / video processor, is a microprocessor-based system-on-a-chip which is designed to deal with digital streaming data in real-time (e.g. display refresh) rates. These devices can also be considered a class of digital signal processors (DSPs).
+Unlike graphics processing units (GPUs), which are used for computer displays, media processors are targeted at digital televisions and set-top boxes.
+The streaming digital media classes include:
+Such SOCs are composed of:
+The microprocessor might have these optimizations:
+Previous to media processors, these streaming media datatypes were processed using fixed-function, hardwired ASICs, which could not be updated in the field. This was a big disadvantage when any of the media standards were changed. Since media processors are software programmed devices, the processing done on them could be updated with new software releases. This allowed new generations of systems to be created without hardware redesign. For set-top boxes this even allows for the possibility of in-the-field upgrade by downloading of new software through cable or satellite networks.
+Companies that pioneered the idea of media processors (and created the marketing term of media processor) included:
+Consumer electronics companies have successfully dominated this market by designing their own media processors and integrating them into their video products. Companies such as Philips, Samsung, Matsushita, Fujitsu, Mitsubishi have their own in-house media processor devices.
+Newer generations of such devices now use various forms of multiprocessing—multiple CPUs or DSPs, in order to deal with the vastly increased computational needs when dealing with high definition television signals.

@@ -1,0 +1,69 @@
+ABOUT
+In single-variable calculus, the difference quotient is usually the name for the expression
+FULL TEXT
+In single-variable calculus, the difference quotient is usually the name for the expression
+which taken to the limit when h approaches 0, gives the derivative of the function f.[1][2][3][4] The name of the expression stems from the fact that it is the quotient of the difference of values of the function by the difference of the corresponding values of its argument (the latter is (x+h)-x=h in this case).[5][6] The difference quotient is a measure of the average rate of change of the function over an interval (in this case, an interval of length h).[7][8]:237[9] The limit of the difference quotient (i.e., the derivative) is thus the instantaneous rate of change.[9]
+By a slight change in notation (and viewpoint), for an interval [a, b], the difference quotient
+is called the mean (or average) value of the derivative of f over the interval [a, b]. This name is justified by the mean value theorem, which states that for a differentiable function f, its derivative f′ reaches its mean value at some point in the interval.[5] Geometrically, this difference quotient measures the slope of the secant line passing through the points with coordinates (a, f(a)) and (b, f(b)).[10]
+The difference quotient is sometimes also called the Newton quotient.[10][11][12][13]
+Difference quotients are used as approximations in numerical differentiation,[8] but they have also been subject of criticism in this application.[14]
+The typical notion of the difference quotient discussed above is a particular case of a more general concept. The primary vehicle of calculus and other higher mathematics is the function. Its "input value" is its argument, usually a point ("P") expressible on a graph. The difference between two points, themselves, is known as their Delta (ΔP), as is the difference in their function result, the particular notation being determined by the direction of formation:
+The general preference is the forward orientation, as F(P) is the base, to which differences (i.e., "ΔP"s) are added to it. Furthermore,
+The function difference divided by the point difference is known as the difference quotient (attributed to Isaac Newton,[citation needed] it is also known as Newton's quotient):
+If ΔP is infinitesimal, then the difference quotient is a derivative, otherwise it is a divided difference:
+
+
+Regardless if ΔP is infinitesimal or finite, there is (at least—in the case of the derivative—theoretically) a point range, where the boundaries are P ± (0.5) ΔP (depending on the orientation—ΔF(P), δF(P) or ∇F(P)):
+Derivatives can be regarded as functions themselves, harboring their own derivatives. Thus each function is home to sequential degrees ("higher orders") of derivation, or differentiation. This property can be generalized to all difference quotients.
+As this sequencing requires a corresponding boundary splintering, it is practical to break up the point range into smaller, equi-sized sections, with each section being marked by an intermediary point (Pi), where LB = P0 and UB = Pń, the nth point, equaling the degree/order:
+There are other derivative notations, but these are the most recognized, standard designations.
+The quintessential application of the divided difference is in the presentation of the definite integral, which is nothing more than a finite difference:
+Given that the mean value, derivative expression form provides all of the same information as the classical integral notation, the mean value form may be the preferable expression, such as in writing venues that only support/accept standard ASCII text, or in cases that only require the average derivative (such as when finding the average radius in an elliptic integral). This is especially true for definite integrals that technically have (e.g.) 0 and either 
+
+
+
+π
+
+
+
+
+{\displaystyle \pi \,\!}
+
+ or 
+
+
+
+2
+π
+
+
+
+
+{\displaystyle 2\pi \,\!}
+
+ as boundaries, with the same divided difference found as that with boundaries of 0 and 
+
+
+
+
+
+
+
+
+
+π
+2
+
+
+
+
+
+
+
+
+{\displaystyle {\begin{matrix}{\frac {\pi }{2}}\end{matrix}}}
+
+ (thus requiring less averaging effort):
+This also becomes particularly useful when dealing with iterated and multiple integrals (ΔA = AU − AL, ΔB = BU − BL, ΔC = CU − CL):
+Hence,
+and

@@ -1,0 +1,103 @@
+ABOUT
+A canonical cover 
+
+
+
+
+F
+
+c
+
+
+
+
+{\displaystyle F_{c}}
+
+ for F (a set of functional dependencies on a relation scheme) is a set of dependencies such that F logically implies all dependencies in 
+
+
+
+
+F
+
+c
+
+
+
+
+{\displaystyle F_{c}}
+
+, and 
+
+
+
+
+F
+
+c
+
+
+
+
+{\displaystyle F_{c}}
+
+ logically implies all dependencies in F.
+FULL TEXT
+A canonical cover 
+
+
+
+
+F
+
+c
+
+
+
+
+{\displaystyle F_{c}}
+
+ for F (a set of functional dependencies on a relation scheme) is a set of dependencies such that F logically implies all dependencies in 
+
+
+
+
+F
+
+c
+
+
+
+
+{\displaystyle F_{c}}
+
+, and 
+
+
+
+
+F
+
+c
+
+
+
+
+{\displaystyle F_{c}}
+
+ logically implies all dependencies in F.
+The set 
+
+
+
+
+F
+
+c
+
+
+
+
+{\displaystyle F_{c}}
+
+ has two important properties:

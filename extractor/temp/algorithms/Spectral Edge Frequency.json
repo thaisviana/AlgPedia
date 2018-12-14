@@ -1,0 +1,8 @@
+{
+    "about": "The spectral edge frequency or SEF is a measure used in signal processing. It is usually expressed as \"SEF x\", which stands for the frequency below which x percent of the total power of a given signal are located. (typically x is in the range 75 to 95.)", 
+    "name": "Spectral Edge Frequency", 
+    "classification": "Signal Processing", 
+    "full_text": "The spectral edge frequency or SEF is a measure used in signal processing. It is usually expressed as \"SEF x\", which stands for the frequency below which x percent of the total power of a given signal are located. (typically x is in the range 75 to 95.)\nIt is more particularly a popular measure used in EEG monitoring, in which case SEF has variously been used to estimate the depth of anesthesia.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Spectral_edge_frequency", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Spectral_edge_frequency\n"
+}

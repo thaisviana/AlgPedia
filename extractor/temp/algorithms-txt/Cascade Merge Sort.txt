@@ -1,0 +1,4 @@
+ABOUT
+Cascade merge sort is similar to the polyphase merge sort but uses a simpler distribution. The merge is slower than a polyphase merge when there are fewer than six files, but faster when there are more than six.[1]
+FULL TEXT
+Cascade merge sort is similar to the polyphase merge sort but uses a simpler distribution. The merge is slower than a polyphase merge when there are fewer than six files, but faster when there are more than six.[1]

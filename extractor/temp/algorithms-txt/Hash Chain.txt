@@ -1,0 +1,237 @@
+ABOUT
+A hash chain is the successive application of a cryptographic hash function to a piece of data. In computer security, a hash chain is a method to produce many one-time keys from a single key or password. For non-repudiation a hash function can be applied successively to additional pieces of data in order to record the chronology of data's existence.
+FULL TEXT
+A hash chain is the successive application of a cryptographic hash function to a piece of data. In computer security, a hash chain is a method to produce many one-time keys from a single key or password. For non-repudiation a hash function can be applied successively to additional pieces of data in order to record the chronology of data's existence.
+
+
+A hash chain is a successive application of a cryptographic hash function 
+
+
+
+h
+(
+x
+)
+
+
+{\displaystyle h(x)}
+
+ to a string 
+
+
+
+x
+
+
+{\displaystyle x}
+
+.
+For example,
+
+
+
+
+h
+(
+h
+(
+h
+(
+h
+(
+x
+)
+)
+)
+)
+
+
+{\displaystyle h(h(h(h(x))))}
+
+ gives a hash chain of length 4, often denoted 
+
+
+
+
+h
+
+4
+
+
+(
+x
+)
+
+
+{\displaystyle h^{4}(x)}
+
+
+Lamport[1] suggested the use of hash chains as a password protection scheme in an insecure environment. A server which needs to provide authentication may store a hash chain rather than a plain text password and prevent theft of the password in transmission or theft from the server. For example, a server begins by storing 
+
+
+
+
+h
+
+1000
+
+
+(
+p
+a
+s
+s
+w
+o
+r
+d
+)
+
+
+{\displaystyle h^{1000}(password)}
+
+ which is provided by the user. When the user wishes to authenticate, he supplies 
+
+
+
+
+h
+
+999
+
+
+(
+p
+a
+s
+s
+w
+o
+r
+d
+)
+
+
+{\displaystyle h^{999}(password)}
+
+ to the server. The server computes 
+
+
+
+h
+(
+
+h
+
+999
+
+
+(
+p
+a
+s
+s
+w
+o
+r
+d
+)
+)
+=
+
+h
+
+1000
+
+
+(
+p
+a
+s
+s
+w
+o
+r
+d
+)
+
+
+{\displaystyle h(h^{999}(password))=h^{1000}(password)}
+
+ and verifies this matches the hash chain it has stored. It then stores 
+
+
+
+
+h
+
+999
+
+
+(
+p
+a
+s
+s
+w
+o
+r
+d
+)
+
+
+{\displaystyle h^{999}(password)}
+
+ for the next time the user wishes to authenticate.
+An eavesdropper seeing 
+
+
+
+
+h
+
+999
+
+
+(
+p
+a
+s
+s
+w
+o
+r
+d
+)
+
+
+{\displaystyle h^{999}(password)}
+
+ communicated to the server will be unable to re-transmit the same hash chain to the server for authentication since the server now expects 
+
+
+
+
+h
+
+998
+
+
+(
+p
+a
+s
+s
+w
+o
+r
+d
+)
+
+
+{\displaystyle h^{998}(password)}
+
+. Due to the one-way property of cryptographically secure hash functions, it is infeasible for the eavesdropper to reverse the hash function and obtain an earlier piece of the hash chain. In this example, the user could authenticate 1000 times before the hash chain is exhausted. Each time the hash value is different, and thus cannot be duplicated by an attacker.
+Binary hash chains are commonly used in association with a hash tree. A Binary hash chain takes two hash values as inputs, concatenates them and applies a hash function to the result, thereby producing a third hash value.
+
+The above diagram shows a hash tree consisting of eight leaf nodes and the hash chain for the third leaf node. In addition to the hash values themselves the order of concatenation (right or left 1,0) or “order bits” are necessary to complete the hash chain.

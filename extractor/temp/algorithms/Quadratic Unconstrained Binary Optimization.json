@@ -1,0 +1,8 @@
+{
+    "about": "Quadratic unconstrained binary optimization (QUBO) is a pattern matching technique, common in machine learning applications. QUBO is an NP hard problem.", 
+    "name": "Quadratic Unconstrained Binary Optimization", 
+    "classification": "Machine Learning Algorithms", 
+    "full_text": "Quadratic unconstrained binary optimization (QUBO) is a pattern matching technique, common in machine learning applications. QUBO is an NP hard problem.\nQUBO problems may sometimes be well-suited to algorithms aided by quantum annealing.[1]\nQUBO is given by the formula: \n\n\n\nE\n(\n\nX\n\n1\n\n\n,\n\nX\n\n2\n\n\n,\n.\n.\n.\n,\n\nX\n\nN\n\n\n)\n=\n\n\u2211\n\ni\n<\nj\n=\n1\n\n\nN\n\n\n\nQ\n\ni\nj\n\n\n\u00d7\n\nX\n\ni\n\n\n\u00d7\n\nX\n\nj\n\n\n\n\n{\\displaystyle E(X_{1},X_{2},...,X_{N})=\\sum _{i<j=1}^{N}Q_{ij}\\times X_{i}\\times X_{j}}\n\n\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Quadratic_unconstrained_binary_optimization", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Quadratic_unconstrained_binary_optimization\n"
+}

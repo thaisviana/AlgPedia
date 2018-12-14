@@ -1,0 +1,6 @@
+ABOUT
+eXpressDSP is a software package produced by Texas Instruments. This software package is a suite of tools used to develop applications on Texas Instruments Digital Signal Processing line of chips.
+FULL TEXT
+eXpressDSP is a software package produced by Texas Instruments. This software package is a suite of tools used to develop applications on Texas Instruments Digital Signal Processing line of chips.
+It consists of:
+TI publishes an eXpressDSP Algorithm Interface Standard (XDAIS), an Application Programming Interface (API) designed to enable interoperability of real-time DSP algorithms.

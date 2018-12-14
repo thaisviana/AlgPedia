@@ -1,0 +1,163 @@
+ABOUT
+The List Update or the List Access problem is a simple model used in the study of competitive analysis of online algorithms. Given a set of items in a list where the cost of accessing an item is proportional to its distance from the head of the list, e.g. a Linked List, and a request sequence of accesses, the problem is to come up with a strategy of reordering the list so that the total cost of accesses is minimized. The reordering can be done at any time but incurs a cost. The standard model includes two reordering actions:
+FULL TEXT
+The List Update or the List Access problem is a simple model used in the study of competitive analysis of online algorithms. Given a set of items in a list where the cost of accessing an item is proportional to its distance from the head of the list, e.g. a Linked List, and a request sequence of accesses, the problem is to come up with a strategy of reordering the list so that the total cost of accesses is minimized. The reordering can be done at any time but incurs a cost. The standard model includes two reordering actions:
+An online algorithm for this problem has to reorder the elements and serve requests based only on the knowledge of previously requested items and hence its strategy may not have the optimum cost as compared to an offline algorithm that gets to see the entire request sequence and devise a complete strategy before serving the first request.
+Along with its original uses, this problem has been suggested to have a strong similarity to problems of improving global context and compressibility following a Burrows-Wheeler Transform. Following this transform, files tend to have large regions with locally high frequencies, and compression efficiency is greatly improved by techniques that tend to move frequently-occurring characters toward zero, or the front of the "list". Due to this, methods and variants of Move-to-Front and frequency counts often follow the BWT algorithm to improve compressibility.
+
+
+An adversary is an entity that gets to choose the request sequence 
+
+
+
+σ
+
+
+{\displaystyle \sigma }
+
+ for an algorithm ALG. Depending of whether 
+
+
+
+σ
+
+
+{\displaystyle \sigma }
+
+ can be changed based on the strategy of ALG, adversaries are given various powers, and the performance of ALG is measured against these adversaries.
+An oblivious adversary has to construct the entire request sequence 
+
+
+
+σ
+
+
+{\displaystyle \sigma }
+
+ before running ALG, and pays the optimal offline price, 
+
+
+
+O
+P
+T
+(
+σ
+)
+
+
+{\displaystyle OPT(\sigma )}
+
+ which is compared against 
+
+
+
+A
+L
+G
+(
+σ
+)
+
+
+{\displaystyle ALG(\sigma )}
+
+
+An adaptive online adversary gets to make the next request based on the previous results of the online algorithm, but pays for the request optimally and online.
+An adaptive offline adversary gets to make the next request based on the previous results of the online algorithm, but pays the optimal offline cost.
+Competitive analysis for many list update problems were carried out without any specific knowledge of the exact nature of the optimum offline algorithm (OPT). The best known algorithm runs in O(n2l(l-1)!) time and O(l!) space where n is the length of the request sequence and l is the length of the list.[1]
+It is interesting to note that paid transpositions are in general necessary for optimum algorithms. Consider a list (a,b,c) where a is at the head of the list, and a request sequence c,b,c,b. An optimal offline algorithm using only free exchanges would cost 9 (3+3+2+1), whereas an optimal offline algorithm using only paid exchanges would cost 8. So, we cannot get away with just using free transpositions for the optimum offline algorithm.
+The optimum list update problem was proven to be NP-hard by (Ambühl 2000).
+An online algorithm ALG has a competitive ratio c if for any input it performs at least as good as c times worse than OPT. i.e. if there exists an 
+
+
+
+α
+≥
+0
+
+
+{\displaystyle \alpha \geq 0}
+
+ such that for all finite length request sequences 
+
+
+
+σ
+
+
+{\displaystyle \sigma }
+
+, 
+
+
+
+A
+L
+G
+(
+σ
+)
+−
+c
+.
+O
+P
+T
+(
+σ
+)
+≤
+α
+
+
+{\displaystyle ALG(\sigma )-c.OPT(\sigma )\leq \alpha }
+
+. Online algorithms can either be deterministic or randomized and it turns out that randomization in this case can truly help against oblivious adversaries.
+Most deterministic algorithms are variants of these three algorithms :
+Observe that all these use just free transpositions. It turns out that both TRANS and FC are not competitive. In a classic result using Potential method analysis (Sleator & Tarjan 1985) proved that MTF is 2-competitive. The proof does not require the explicit knowledge of OPT but instead counts the number of inversions i.e. elements occurring in opposite order in the lists of MTF and OPT.
+Any deterministic algorithm has a lower bound of 
+
+
+
+2
+−
+
+
+2
+
+l
++
+1
+
+
+
+
+
+{\displaystyle 2-{\frac {2}{l+1}}}
+
+ for a list of length l, and MTF is actually the optimum deterministic list update algorithm. The type of adversary doesn't matter in the case of deterministic algorithms, because the adversary can run a copy of the deterministic algorithm on his own to precompute the most disastrous sequence.
+Consider the following simple randomized algorithm :
+This algorithm is barely random - it makes all its random choices in the beginning and not during the run. It turns out that BIT breaks the deterministic bound - it is better than MTF against oblivious adversaries. It is 7/4-competitive. There are other randomized algorithms, like COMB, that perform better than BIT. Boris Teia proved a lower bound of 1.5 for any randomized list update algorithm.[2]
+The list update problem where elements maybe inserted and deleted is called the dynamic list update problem, as opposed to the static list update problem where only accessing list elements are allowed. The upper bound of 
+
+
+
+2
+−
+
+
+2
+
+l
++
+1
+
+
+
+
+
+{\displaystyle 2-{\frac {2}{l+1}}}
+
+ holds for the dynamic model as well.
+There are different cost models as well. In the usual full cost model, an access to an element located at a position i costs i, but the last comparison is inevitable for any algorithm, i.e. there are i-1 elements standing in the way of i. In the partial cost model, these final comparison costs totaling to the number of elements in the request sequence are ignored. For the costs of paid transpositions other than unity, Pd models are used.

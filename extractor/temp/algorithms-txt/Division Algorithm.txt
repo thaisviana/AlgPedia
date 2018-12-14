@@ -1,0 +1,945 @@
+ABOUT
+A division algorithm is an algorithm which, given two integers N and D, computes their quotient and/or remainder, the result of division. Some are applied by hand, while others are employed by digital circuit designs and software.
+FULL TEXT
+A division algorithm is an algorithm which, given two integers N and D, computes their quotient and/or remainder, the result of division. Some are applied by hand, while others are employed by digital circuit designs and software.
+Division algorithms fall into two main categories: slow division and fast division. Slow division algorithms produce one digit of the final quotient per iteration. Examples of slow division include restoring, non-performing restoring, non-restoring, and SRT division. Fast division methods start with a close approximation to the final quotient and produce twice as many digits of the final quotient on each iteration. Newton–Raphson and Goldschmidt fall into this category.
+Discussion will refer to the form 
+
+
+
+N
+
+/
+
+D
+=
+(
+Q
+,
+R
+)
+
+
+{\displaystyle N/D=(Q,R)}
+
+, where
+is the input, and
+is the output.
+
+
+The simplest division algorithm, historically incorporated into a greatest common divisor algorithm presented in Euclid's Elements, Book VII, Proposition 1, finds the remainder given two positive integers using only subtractions and comparisons:
+The proof that the quotient and remainder exist and are unique, ascertained by Euclidean division, gives rise to a complete division algorithm using additions, subtractions, and comparisons:
+This procedure always produces R ≥ 0. Although very simple, it takes Ω(Q) steps, and so is exponentially slower than even slow division algorithms like long division. It is useful if Q is known to be small (being an output-sensitive algorithm), and can serve as an executable specification.
+Long division is the standard algorithm used for pen-and-paper division of multidigit numbers expressed in decimal notation. It shifts gradually from the left to the right end of the dividend, subtracting the largest possible multiple of the divisor at each stage; the multiples become the digits of the quotient, and the final difference is the remainder. When used with a binary radix, it forms the basis for the integer division (unsigned) with remainder algorithm below. Short division is an abbreviated form of long division suitable for one-digit divisors. Chunking (also known as the partial quotients method or the hangman method) is a less-efficient form of long division which may be easier to understand.
+The following algorithm, the binary version of the famous long division, will divide N by D, placing the quotient in Q and the remainder in R. All values are treated as unsigned integers.[citation needed]
+If we take N=11002 (1210) and D=1002 (410)
+Step 1: Set R=0 and Q=0
+Step 2: Take i=3 (one less than the number of bits in N)
+Step 3: R=00 (left shifted by 1)
+Step 4: R=01 (setting R(0) to N(i))
+Step 5: R<D, so skip statement
+Step 2: Set i=2
+Step 3: R=010
+Step 4: R=011
+Step 5: R<D, statement skipped
+Step 2: Set i=1
+Step 3: R=0110
+Step 4: R=0110
+Step 5: R>=D, statement entered
+Step 5b: R=10 (R−D)
+Step 5c: Q=10 (setting Q(i) to 1)
+Step 2: Set i=0
+Step 3: R=100
+Step 4: R=100
+Step 5: R>=D, statement entered
+Step 5b: R=0 (R−D)
+Step 5c: Q=11 (setting Q(i) to 1)
+end
+Q=112 (310) and R=0.
+Slow division methods are all based on a standard recurrence equation
+where:
+Restoring division operates on fixed-point fractional numbers and depends on the following assumptions:[citation needed]
+The quotient digits q are formed from the digit set {0,1}.
+The basic algorithm for binary (radix 2) restoring division is:
+The above restoring division algorithm can avoid the restoring step by saving the shifted value 2P before the subtraction in an additional register T (i.e., T = P << 1) and copying register T to P when the result of the subtraction 2P − D is negative.
+Non-performing restoring division is similar to restoring division except that the value of 2*P[i] is saved, so D does not need to be added back in for the case of TP[i] ≤ 0.
+Non-restoring division uses the digit set {−1,1} for the quotient digits instead of {0,1}. The basic algorithm for binary (radix 2) non-restoring division of non-negative numbers is:
+Following this algorithm, the quotient is in a non-standard form consisting of digits of −1 and +1. This form needs to be converted to binary to form the final quotient. Example:
+If the −1 digits of 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ are stored as zeros (0) as is common, then 
+
+
+
+P
+
+
+{\displaystyle P}
+
+ is 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+ and computing 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ is trivial: perform a bit-complement on the original 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+.
+Finally, quotients computed by this algorithm are always odd: 5 / 2 = 3 R −1. To correct this add the following after Q is converted from non-standard form to standard form:
+The actual remainder is P >> n.
+Named for its creators (Sweeney, Robertson, and Tocher), SRT division is a popular method for division in many microprocessor implementations. SRT division is similar to non-restoring division, but it uses a lookup table based on the dividend and the divisor to determine each quotient digit. The Intel Pentium processor's infamous floating-point division bug was caused by an incorrectly coded lookup table. Five of the 1066 entries had been mistakenly omitted.[1]
+Newton–Raphson uses Newton's method to find the reciprocal of 
+
+
+
+D
+
+
+{\displaystyle D}
+
+ and multiply that reciprocal by 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ to find the final quotient 
+
+
+
+Q
+
+
+{\displaystyle Q}
+
+.
+The steps of Newton–Raphson division are:
+In order to apply Newton's method to find the reciprocal of 
+
+
+
+D
+
+
+{\displaystyle D}
+
+, it is necessary to find a function 
+
+
+
+f
+(
+X
+)
+
+
+{\displaystyle f(X)}
+
+ that has a zero at 
+
+
+
+X
+=
+1
+
+/
+
+D
+
+
+{\displaystyle X=1/D}
+
+. The obvious such function is 
+
+
+
+f
+(
+X
+)
+=
+D
+X
+−
+1
+
+
+{\displaystyle f(X)=DX-1}
+
+, but the Newton–Raphson iteration for this is unhelpful, since it cannot be computed without already knowing the reciprocal of 
+
+
+
+D
+
+
+{\displaystyle D}
+
+. Moreover, multiple iterations for refining reciprocal are not possible, since higher-order derivatives do not exist for 
+
+
+
+f
+(
+X
+)
+
+
+{\displaystyle f(X)}
+
+. A function that does work is 
+
+
+
+f
+(
+X
+)
+=
+(
+1
+
+/
+
+X
+)
+−
+D
+
+
+{\displaystyle f(X)=(1/X)-D}
+
+, for which the Newton–Raphson iteration gives
+which can be calculated from 
+
+
+
+
+X
+
+i
+
+
+
+
+{\displaystyle X_{i}}
+
+ using only multiplication and subtraction, or using two fused multiply–adds.
+From a computation point of view, the expressions 
+
+
+
+
+X
+
+i
++
+1
+
+
+=
+
+X
+
+i
+
+
++
+
+X
+
+i
+
+
+(
+1
+−
+D
+
+X
+
+i
+
+
+)
+
+
+{\displaystyle X_{i+1}=X_{i}+X_{i}(1-DX_{i})}
+
+ and 
+
+
+
+
+X
+
+i
++
+1
+
+
+=
+
+X
+
+i
+
+
+(
+2
+−
+D
+
+X
+
+i
+
+
+)
+
+
+{\displaystyle X_{i+1}=X_{i}(2-DX_{i})}
+
+ are not equivalent. To obtain a result with a precision of n bits while making use of the second expression, one must compute the product between 
+
+
+
+
+X
+
+i
+
+
+
+
+{\displaystyle X_{i}}
+
+ and 
+
+
+
+(
+2
+−
+D
+
+X
+
+i
+
+
+)
+
+
+{\displaystyle (2-DX_{i})}
+
+ with double the required precision (2n bits).[citation needed] In contrast, the product between 
+
+
+
+
+X
+
+i
+
+
+
+
+{\displaystyle X_{i}}
+
+ and 
+
+
+
+(
+1
+−
+D
+
+X
+
+i
+
+
+)
+
+
+{\displaystyle (1-DX_{i})}
+
+ need only be computed with a precision of n bits.[why?]
+If the error is defined as 
+
+
+
+
+ϵ
+
+i
+
+
+=
+D
+
+X
+
+i
+
+
+−
+1
+
+
+{\displaystyle \epsilon _{i}=DX_{i}-1}
+
+, then:
+This squaring of the error at each iteration step — the so-called quadratic convergence of Newton–Raphson's method — has the effect that the number of correct digits in the result roughly doubles for every iteration, a property that becomes extremely valuable when the numbers involved have many digits (e.g. in the large integer domain). But it also means that the initial convergence of the method can be comparatively slow, especially if the initial estimate 
+
+
+
+
+X
+
+0
+
+
+
+
+{\displaystyle X_{0}}
+
+ is poorly chosen.
+Apply a bit-shift to the divisor D to scale it so that 0.5 ≤ D ≤ 1. The same bit-shift should be applied to the numerator N so that the quotient does not change. Then one could use a linear approximation in the form
+to initialize Newton–Raphson. To minimize the maximum of the relative error of this approximation on interval 
+
+
+
+[
+0.5
+,
+1
+]
+
+
+{\displaystyle [0.5,1]}
+
+, one should use
+The coefficients of the linear approximation are determined as follows. The relative error is 
+
+
+
+
+|
+
+(
+
+T
+
+1
+
+
++
+
+T
+
+2
+
+
+D
+−
+1
+
+/
+
+D
+)
+
+/
+
+(
+1
+
+/
+
+D
+)
+
+|
+
+=
+
+|
+
+D
+(
+
+T
+
+1
+
+
++
+
+T
+
+2
+
+
+D
+)
+−
+1
+
+|
+
+
+
+{\displaystyle |(T_{1}+T_{2}D-1/D)/(1/D)|=|D(T_{1}+T_{2}D)-1|}
+
+. The minimum of the maximum relative error is determined by the Chebyshev equioscillation theorem applied to 
+
+
+
+F
+(
+D
+)
+=
+D
+(
+
+T
+
+1
+
+
++
+
+T
+
+2
+
+
+D
+)
+−
+1
+
+
+{\displaystyle F(D)=D(T_{1}+T_{2}D)-1}
+
+. The local extremum of 
+
+
+
+F
+(
+D
+)
+
+
+{\displaystyle F(D)}
+
+ occurs when 
+
+
+
+
+F
+′
+
+(
+D
+)
+=
+0
+
+
+{\displaystyle F'(D)=0}
+
+, which has solution 
+
+
+
+D
+=
+−
+
+T
+
+1
+
+
+
+/
+
+(
+2
+
+T
+
+2
+
+
+)
+
+
+{\displaystyle D=-T_{1}/(2T_{2})}
+
+. The function at the extremum must be of opposite sign as the function at the endpoints, namely, 
+
+
+
+F
+(
+1
+
+/
+
+2
+)
+=
+F
+(
+1
+)
+=
+−
+F
+(
+−
+
+T
+
+1
+
+
+
+/
+
+(
+2
+
+T
+
+2
+
+
+)
+)
+
+
+{\displaystyle F(1/2)=F(1)=-F(-T_{1}/(2T_{2}))}
+
+. The two equations in the two unknowns have solution 
+
+
+
+
+T
+
+1
+
+
+=
+48
+
+/
+
+17
+
+
+{\displaystyle T_{1}=48/17}
+
+ and 
+
+
+
+
+T
+
+2
+
+
+=
+−
+32
+
+/
+
+17
+
+
+{\displaystyle T_{2}=-32/17}
+
+, and the maximum relative error is 
+
+
+
+F
+(
+1
+)
+=
+1
+
+/
+
+17
+
+
+{\displaystyle F(1)=1/17}
+
+. Using this approximation, the relative error of the initial value is less than
+It is possible to generate a polynomial fit of degree larger than 1, computing the coefficients using the Remez algorithm. The trade-off is that the initial guess requires more computational cycles but hopefully in exchange for fewer iterations of Newton–Raphson.
+Since for this method the convergence is exactly quadratic, it follows that
+steps are enough to calculate the value up to 
+
+
+
+P
+
+
+
+{\displaystyle P\,}
+
+ binary places. This evaluates to 3 for IEEE single precision and 4 for both double precision and double extended formats.
+The following computes the quotient of N and D with a precision of P binary places:
+For example, for a double-precision floating-point division, this method uses 10 multiplies, 9 adds, and 2 shifts.
+Goldschmidt (after Robert Elliott Goldschmidt)[2] division uses an iterative process of repeatedly multiplying both the dividend and divisor by a common factor Fi, chosen such that the divisor converges to 1. This causes the dividend to converge to the sought quotient Q:
+The steps for Goldschmidt division are:
+Assuming N/D has been scaled so that 0 < D < 1, each Fi is based on D:
+Multiplying the dividend and divisor by the factor yields:
+After a sufficient number k of iterations 
+
+
+
+Q
+=
+
+N
+
+k
+
+
+
+
+{\displaystyle Q=N_{k}}
+
+.
+The Goldschmidt method is used in AMD Athlon CPUs and later models.[3][4]
+The Goldschmidt method can be used with factors that allow simplifications by the binomial theorem. Assuming N/D has been scaled by a power of two such that 
+
+
+
+D
+∈
+(
+
+
+
+1
+2
+
+
+
+,
+1
+]
+
+
+{\displaystyle D\in ({\tfrac {1}{2}},1]}
+
+. We choose 
+
+
+
+D
+=
+1
+−
+x
+
+
+{\displaystyle D=1-x}
+
+ and 
+
+
+
+
+F
+
+i
+
+
+=
+1
++
+
+x
+
+
+2
+
+i
+
+
+
+
+
+
+{\displaystyle F_{i}=1+x^{2^{i}}}
+
+. This yields
+After 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ steps 
+
+
+
+(
+x
+∈
+[
+0
+,
+
+
+
+1
+2
+
+
+
+)
+)
+
+
+{\displaystyle (x\in [0,{\tfrac {1}{2}}))}
+
+, the denominator 
+
+
+
+1
+−
+
+x
+
+
+2
+
+n
+
+
+
+
+
+
+{\displaystyle 1-x^{2^{n}}}
+
+ can be rounded to 
+
+
+
+1
+
+
+{\displaystyle 1}
+
+ with a relative error
+which is maximum at 
+
+
+
+
+2
+
+−
+
+2
+
+n
+
+
+
+
+
+
+{\displaystyle 2^{-2^{n}}}
+
+ when 
+
+
+
+x
+=
+
+
+1
+2
+
+
+
+
+{\displaystyle x={1 \over 2}}
+
+, thus providing a minimum precision of 
+
+
+
+
+2
+
+n
+
+
+
+
+{\displaystyle 2^{n}}
+
+ binary digits.
+Methods designed for hardware implementation generally do not scale to integers with thousands or millions of decimal digits; these frequently occur, for example, in modular reductions in cryptography. For these large integers, more efficient division algorithms transform the problem to use a small number of multiplications, which can then be done using an asymptotically efficient multiplication algorithm such as the Karatsuba algorithm, Toom–Cook multiplication or the Schönhage–Strassen algorithm. It results that the computational complexity of the division is of the same order (up to a multiplicative constant) as that of the multiplication. Examples include reduction to multiplication by Newton's method as described above,[5] as well as the slightly faster Barrett reduction algorithm.[6][verification needed] Newton's method is particularly efficient in scenarios where one must divide by the same divisor many times, since after the initial Newton inversion only one (truncated) multiplication is needed for each division.
+The division by a constant D is equivalent to the multiplication by its reciprocal. Since the denominator is constant, so is its reciprocal (1/D). Thus it is possible to compute the value of (1/D) once at compile time, and at run time perform the multiplication N·(1/D) rather than the division N/D. In floating-point arithmetic the use of (1/D) presents little problem, but in integer arithmetic the reciprocal will always evaluate to zero (assuming |D| > 1).
+It is not necessary to use specifically (1/D); any value (X/Y) that reduces to (1/D) may be used. For example, for division by 3, the factors 1/3, 2/6, 3/9, or 194/582 could be used. Consequently, if Y were a power of two so the division step reduces to a fast right bit shift. The effect of calculating N/D as (N·X)/Y replaces a division with a multiply and a shift. Note that the parentheses are important, as N·(X/Y) will evaluate to zero.
+However, unless D itself is a power of two, there is no X and Y that satisfies the conditions above. Fortunately, (N·X)/Y gives exactly the same result as N/D in integer arithmetic even when (X/Y) is not exactly equal to 1/D, but "close enough" that the error introduced by the approximation is in the bits that are discarded by the shift operation.[7][8][9]
+As a concrete example, for 32-bit unsigned integers, division by 3 can be replaced with a multiply by 2863311531 ⁄ 233, a multiplication by 2863311531 (hexadecimal 0xAAAAAAAB) followed by a 33 right bit shift. The value of 2863311531 is calculated as 233 ⁄ 3, then rounded up.
+Likewise, division by 10 can be expressed as a multiplication by 3435973837 (0xCCCCCCCD) followed by division by 235.
+In some cases, division by a constant can be accomplished in even less time by converting the "multiply by a constant" into a series of shifts and adds or subtracts.[10] Of particular interest is division by 10, for which the exact quotient is obtained, with remainder if required.[11]
+Round-off error can be introduced by division operations due to limited precision.

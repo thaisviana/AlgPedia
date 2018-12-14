@@ -1,0 +1,224 @@
+ABOUT
+Blum Blum Shub (B.B.S.) is a pseudorandom number generator proposed in 1986 by Lenore Blum, Manuel Blum and Michael Shub[1] that is derived from Michael O. Rabin's oblivious transfer mapping.
+FULL TEXT
+Blum Blum Shub (B.B.S.) is a pseudorandom number generator proposed in 1986 by Lenore Blum, Manuel Blum and Michael Shub[1] that is derived from Michael O. Rabin's oblivious transfer mapping.
+Blum Blum Shub takes the form
+where M = pq is the product of two large primes p and q. At each step of the algorithm, some output is derived from xn+1; the output is commonly either the bit parity of xn+1 or one or more of the least significant bits of xn+1.
+The seed x0 should be an integer that is co-prime to M (i.e. p and q are not factors of x0) and not 1 or 0.
+The two primes, p and q, should both be congruent to 3 (mod 4) (this guarantees that each quadratic residue has one square root which is also a quadratic residue) and gcd(φ(p − 1), φ(q − 1)) should be small (this makes the cycle length large).
+An interesting characteristic of the Blum Blum Shub generator is the possibility to calculate any xi value directly (via Euler's theorem):
+where 
+
+
+
+λ
+
+
+{\displaystyle \lambda }
+
+ is the Carmichael function. (Here we have 
+
+
+
+λ
+(
+M
+)
+=
+λ
+(
+p
+⋅
+q
+)
+=
+lcm
+⁡
+(
+p
+−
+1
+,
+q
+−
+1
+)
+
+
+{\displaystyle \lambda (M)=\lambda (p\cdot q)=\operatorname {lcm} (p-1,q-1)}
+
+).
+
+
+There is a proof reducing its security to the computational difficulty of solving the quadratic residuosity problem.[1] When the primes are chosen appropriately, and O(log log M) lower-order bits of each xn are output, then in the limit as M grows large, distinguishing the output bits from random should be at least as difficult as solving the Quadratic residuosity problem modulo M.
+Let 
+
+
+
+p
+=
+11
+
+
+{\displaystyle p=11}
+
+, 
+
+
+
+q
+=
+19
+
+
+{\displaystyle q=19}
+
+ and 
+
+
+
+s
+=
+3
+
+
+{\displaystyle s=3}
+
+ (where 
+
+
+
+s
+
+
+{\displaystyle s}
+
+ is the seed). We can expect to get a large cycle length for those small numbers, because 
+
+
+
+
+
+g
+c
+d
+
+
+(
+φ
+(
+p
+−
+1
+)
+,
+φ
+(
+q
+−
+1
+)
+)
+=
+2
+
+
+{\displaystyle {\rm {gcd}}(\varphi (p-1),\varphi (q-1))=2}
+
+. The generator starts to evaluate 
+
+
+
+
+x
+
+0
+
+
+
+
+{\displaystyle x_{0}}
+
+ by using 
+
+
+
+
+x
+
+−
+1
+
+
+=
+s
+
+
+{\displaystyle x_{-1}=s}
+
+ and creates the sequence 
+
+
+
+
+x
+
+0
+
+
+
+
+{\displaystyle x_{0}}
+
+, 
+
+
+
+
+x
+
+1
+
+
+
+
+{\displaystyle x_{1}}
+
+, 
+
+
+
+
+x
+
+2
+
+
+
+
+{\displaystyle x_{2}}
+
+, 
+
+
+
+…
+
+
+{\displaystyle \ldots }
+
+ 
+
+
+
+
+x
+
+5
+
+
+
+
+{\displaystyle x_{5}}
+
+ = 9, 81, 82, 36, 42, 92. The following table shows the output (in bits) for the different bit selection methods used to determine the output.

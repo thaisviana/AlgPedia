@@ -1,0 +1,37 @@
+ABOUT
+MDD is a greedy heuristic used to solve the SMTWTP.
+FULL TEXT
+MDD is a greedy heuristic used to solve the SMTWTP.
+
+
+The modified due date scheduling is a scheduling heuristic created in 1982 by Baker and Bertrand [1] used to solve the NP-hard single machine total-weighted tardiness problem. This problem is centered around reducing the global tardiness of a list of tasks which are characterised by their processing time, due date and weight by re-ordering them.
+This heuristic works the same way as other greedy algorithm. At each iteration, it finds the next job to schedule and add it to the list, this operation is repeated until no jobs are left unscheduled.
+It have a lot in common with EDD except that it takes into account the partial sequence of job that have been already constructed where EDD only looks at the jobs due dates.
+Here is an implementation of the MDD algorithm in pseudo-code.
+It takes in an unsorted list of tasks and return the list sorted by increasing modified due date:
+In this example we will schedule flight departures.
+Each flight is characterized by:
+We need to find an order for the flight to take off that will result in the smallest total weighted tardiness.
+For this example we will use the following values:
+In the default order, the total weighted tardiness is 136. The first step is to compute the modified due date for each flight. Since the current time is 0 and, in our example, we don’t have any flight whose due date is smaller than its processing time, the mdd of each flight is equal to its due date:
+The flight with the smallest MDD (Flight n° 3) is then processed, and the new modified due date is computed.
+The current time is now 5.
+The operation is repeated until no more flights are left unscheduled.
+We obtain the following results:
+In this order, the total weighted tardiness is 92
+This example can be generalized to schedule any list of job characterized by a due date and a processing time.
+Applying this heuristic will result in a sorted list of tasks which tardiness cannot be reduced by adjacent pair-wise interchange.[2]
+MDD’s complexity is 
+
+
+
+O
+(
+n
+)
+
+
+{\displaystyle O(n)}
+
+.
+There is a version of MDD called WMDD (weighted modified due date) [3] which takes into account the weights. In such a case, the evaluation function is replaced by:

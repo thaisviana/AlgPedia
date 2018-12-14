@@ -1,0 +1,638 @@
+ABOUT
+Quadrature-based moment methods (QBMM) are a class of computational fluid dynamics (CFD) methods for solving Kinetic theory and is optimal for simulating phases such as rarefied gases or dispersed phases of a multiphase flow. The smallest "particle" entities which are tracked may be molecules of a single phase or granular "particles" such as aerosols, droplets, bubbles, precipitates, powders, dust, soot, etc. Moments of the Boltzmann equation are solved to predict the phase behavior as a continuous (Eulerian) medium, and is applicable for arbitrary Knudsen number 
+
+
+
+(
+K
+n
+)
+
+
+{\displaystyle (Kn)}
+
+ and arbitrary Stokes number 
+
+
+
+(
+S
+t
+)
+
+
+{\displaystyle (St)}
+
+. Source terms for collision models such as Bhatnagar-Gross-Krook (BGK) and models for evaporation, coalescence, breakage, and aggregation are also available. By retaining a quadrature approximation of a probability density function (PDF), a set of abscissas and weights retain the physical solution and allow for the construction of moments that generate a set of partial differential equations (PDE's). QBMM has shown promising preliminary results for modeling granular gases or dispersed phases within carrier fluids and offers an alternative to Lagrangian methods such as Discrete Particle Simulation (DPS). The Lattice Boltzmann Method (LBM) shares some strong similarities in concept, but it relies on fixed abscissas whereas quadrature-based methods are more adaptive. Additionally, the Navier–Stokes equations(N-S) can be derived from the moment method approach.
+FULL TEXT
+Quadrature-based moment methods (QBMM) are a class of computational fluid dynamics (CFD) methods for solving Kinetic theory and is optimal for simulating phases such as rarefied gases or dispersed phases of a multiphase flow. The smallest "particle" entities which are tracked may be molecules of a single phase or granular "particles" such as aerosols, droplets, bubbles, precipitates, powders, dust, soot, etc. Moments of the Boltzmann equation are solved to predict the phase behavior as a continuous (Eulerian) medium, and is applicable for arbitrary Knudsen number 
+
+
+
+(
+K
+n
+)
+
+
+{\displaystyle (Kn)}
+
+ and arbitrary Stokes number 
+
+
+
+(
+S
+t
+)
+
+
+{\displaystyle (St)}
+
+. Source terms for collision models such as Bhatnagar-Gross-Krook (BGK) and models for evaporation, coalescence, breakage, and aggregation are also available. By retaining a quadrature approximation of a probability density function (PDF), a set of abscissas and weights retain the physical solution and allow for the construction of moments that generate a set of partial differential equations (PDE's). QBMM has shown promising preliminary results for modeling granular gases or dispersed phases within carrier fluids and offers an alternative to Lagrangian methods such as Discrete Particle Simulation (DPS). The Lattice Boltzmann Method (LBM) shares some strong similarities in concept, but it relies on fixed abscissas whereas quadrature-based methods are more adaptive. Additionally, the Navier–Stokes equations(N-S) can be derived from the moment method approach.
+
+
+QBMM is a relatively new simulation technique for granular systems and has attracted interest from researchers in computational physics, chemistry, and engineering. QBMM is similar to traditional CFD methods, which solve the conservation equations of macroscopic properties (i.e., mass, momentum, and energy) numerically, but QBMM accomplishes this by modeling the fluid as consisting of fictive particles, or nodes, that constitute a discretized PDF. A node consists of an abscissa/weight pair and the weight defines the probability of finding a particle that has the value of its abscissa. This quadrature approximation may also be adaptive, meaning that the number of nodes can increase/decrease to accommodate appropriately complex/simple PDF's. Due to its statistical nature, QBMM has several advantages over other conventional Lagrangian methods, especially in dealing with complex boundaries, incorporating microscopic interactions (such as collisions), parallelization of the algorithm, and computational costs being largely independent of particle population. The numerical methods for solving the system of partial differential equations can be interpreted as the propagation (with a flux term) and interactions (source terms) of fictitious particle probabilities in an Eulerian framework.
+QBMM is a family of methods encompassing a variety of models, some of which are designed specifically to handle PDF's of passive variables, and others more complex, capable of multidimensional PDF's of active variables (such as velocity). Note that the full representation of the PDF is 
+
+
+
+f
+(
+t
+,
+
+
+x
+
+
+;
+
+
+ξ
+
+
+)
+
+
+{\displaystyle f(t,{\mathbf {x}};{\mathbf {\xi }})}
+
+, where the parameters 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ and 
+
+
+
+
+
+x
+
+
+
+
+{\displaystyle {\mathbf {x}}}
+
+ represent the external coordinates of time and space respectively, while the internal coordinate vector, 
+
+
+
+
+
+ξ
+
+
+
+
+{\displaystyle {\mathbf {\xi }}}
+
+, may contain any additional desired degrees of freedom to represent the particles, e.g., temperature 
+
+
+
+(
+T
+)
+
+
+{\displaystyle (T)}
+
+, diameter 
+
+
+
+(
+
+L
+
+p
+
+
+)
+
+
+{\displaystyle (L_{p})}
+
+, velocity 
+
+
+
+(
+
+
+v
+
+
+)
+
+
+{\displaystyle ({\mathbf {v}})}
+
+, angular velocity, etc.
+The applicability of these methods depends upon which particle parameters are important (velocity, diameter, temperature, etc.), and importantly upon two values of the phase: 
+
+
+
+(
+K
+n
+)
+
+
+{\displaystyle (Kn)}
+
+ and 
+
+
+
+(
+S
+t
+)
+
+
+{\displaystyle (St)}
+
+. For example, a monokinetic fluid will have a single velocity vector at each point in space, 
+
+
+
+
+
+v
+
+
+(
+t
+,
+
+
+x
+
+
+)
+
+
+{\displaystyle {\mathbf {v}}(t,{\mathbf {x}})}
+
+; therefore, its corresponding PDF, 
+
+
+
+f
+(
+
+
+v
+
+
+)
+
+
+{\displaystyle f({\mathbf {v}})}
+
+, is a Dirac Delta function at every point in space. Similarly, a monodisperse phase has a constant diameter for all particles so that 
+
+
+
+f
+(
+
+L
+
+p
+
+
+)
+
+
+{\displaystyle f(L_{p})}
+
+ is also a Delta function at every point in space. In those cases a PDF is superfluous and can instead be modeled by just tracking a single value corresponding to the abscissa of the Delta function, and the Navier-Stokes equations may be far more optimal to implement.
+One of the earliest applications of QBMM was the Quadrature Method of Moments (QMOM) by McGraw[1] in 1997. This method was used mainly for aerosol sprays and droplets by tracking their diameters through phenomenon such as breakage, coalescence, evaporation, etc.
+Direct QMOM (DQMOM) is a mathematical simplification of QMOM that works best for dispersed phases with low Stokes numbers. DQMOM is a very efficient model because the weights and abscissas appear directly in the transport equations alleviating any need for moment construction and inversion. When dealing with low inertia particles where tracking few passive variables is of concern, DQMOM is very advantageous; however, because a large set of unknowns (abscissas and weights) is solved simultaneously, the matrix inversions cannot guaranteed realizable results in some circumstances, even with expensive iterative processes.
+In 2011 the Conditional QMOM (CQMOM) method was published by Yuan and Fox[2] and this comprehensive method is applicable to modeling very general problems by tracking moments of the PDF, 
+
+
+
+f
+(
+t
+,
+
+
+x
+
+
+;
+
+
+ξ
+
+
+)
+
+
+{\displaystyle f(t,{\mathbf {x}};{\mathbf {\xi }})}
+
+, with an arbitrary number of internal parameters. This requires a moment construction and inversion process that converts the set of moments into nodes, and vice versa. The inversion process is the main source of computational costs, but overall CQMOM offers realizable results that DQMOM cannot guarantee.
+CQMOM has the ability to model a fully 3D velocity PDF, known as a polykinetic approach where 
+
+
+
+f
+(
+
+
+v
+
+
+)
+
+
+{\displaystyle f({\mathbf {v}})}
+
+ is not assumed to be a single Delta function. The method is computationally expensive, but very cost-effective when collisions are considered or in dense particle regimes, 
+
+
+
+K
+n
+≈
+O
+(
+1
+)
+
+
+{\displaystyle Kn\approx O(1)}
+
+, which cannot be modeled using N-S and where DPS is computationally restrictive. CQMOM is also applicable for a dispersed phase where 
+
+
+
+S
+t
+>
+1
+
+
+{\displaystyle St>1}
+
+.
+The specialized Boltzmann Equation for 
+
+
+
+f
+(
+t
+,
+
+
+x
+
+
+;
+
+
+v
+
+
+)
+
+
+{\displaystyle f(t,{\mathbf {x}};{\mathbf {v}})}
+
+ is
+where 
+
+
+
+
+
+
+
+v
+˙
+
+
+
+
+=
+
+
+
+∂
+
+
+v
+
+
+
+
+∂
+t
+
+
+
+
+
+{\displaystyle {\mathbf {\dot {v}}}={\frac {\partial {\mathbf {v}}}{\partial t}}}
+
+ is the acceleration source term (drag, gravity, etc.) and 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ is the collision source term. The velocity moment of 
+
+
+
+f
+(
+t
+,
+
+
+x
+
+
+;
+
+
+v
+
+
+)
+
+
+{\displaystyle f(t,{\mathbf {x}};{\mathbf {v}})}
+
+ in 3D space is defined as
+where 
+
+
+
+
+v
+
+d
+
+
+
+
+{\displaystyle v_{d}}
+
+ is the velocity in the d'th dimension, 
+
+
+
+i
+,
+j
+,
+k
+≥
+0
+
+
+{\displaystyle i,j,k\geq 0}
+
+ are the multiplicities (arbitrary integer exponents) used to "weight" the PDF integration, and 
+
+
+
+γ
+≡
+i
++
+j
++
+k
+
+
+{\displaystyle \gamma \equiv i+j+k}
+
+ is the order of the moment 
+
+
+
+M
+
+
+{\displaystyle M}
+
+. Similarly, by taking moments of the entire Boltzmann equation, any number of arbitrary integro-differential equations may be generated,
+where 
+
+
+
+
+
+i
+
+
+≡
+{
+i
+,
+j
+,
+k
+}
+
+
+{\displaystyle {\mathbf {i}}\equiv \{i,j,k\}}
+
+ is a vector of the arbitrary integer indices and 
+
+
+
+
+
+i
+
+
+
+
+
+
+v
+
+˙
+
+
+
+≡
+{
+i
+
+
+
+
+v
+˙
+
+
+
+
+1
+
+
+,
+j
+
+
+
+
+v
+˙
+
+
+
+
+2
+
+
+,
+k
+
+
+
+
+v
+˙
+
+
+
+
+3
+
+
+}
+
+
+{\displaystyle {\mathbf {i}}{\dot {\mathbf {v}}}\equiv \{i{\dot {v}}_{1},j{\dot {v}}_{2},k{\dot {v}}_{3}\}}
+
+ is the element-wise scalar multiplication of the vectors. The convective term includes moments of order 
+
+
+
+γ
++
+1
+
+
+{\displaystyle \gamma +1}
+
+ and requires closure. Moment closure is achieved using the quadrature approximation of the moments,
+where 
+
+
+
+U
+,
+V
+,
+W
+
+
+{\displaystyle U,V,W}
+
+ are the velocity abscissas, 
+
+
+
+ϕ
+
+
+{\displaystyle \phi }
+
+ the weight for the 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+'th node, and 
+
+
+
+β
+
+
+{\displaystyle \beta }
+
+ the total number of nodes in the quadrature approximation.
+Extended QMOM (EQMOM) gives the quadrature representation of the PDF more flexibility. Instead of relying solely on Dirac delta functions as the basis functions, it uses a Gaussian distribution, thus allowing more complex PDF's to be represented with fewer quadrature nodes.
+Despite the increasing popularity of QBMM in solving the kinetic equations of granular gases, this novel approach has some limitations. At present, CQMOM's computational costs are significantly higher than that of the N-S Equations when 
+
+
+
+K
+n
+<
+0.1
+
+
+{\displaystyle Kn<0.1}
+
+ or the DPS costs when 
+
+
+
+K
+n
+>>
+1
+
+
+{\displaystyle Kn>>1}
+
+ or 
+
+
+
+S
+t
+<
+0.1
+
+
+{\displaystyle St<0.1}
+
+. Additionally, the finite-volume flux methods introduce errors that can lead to instabilities in the moment-inversion process. Nevertheless, the wide applications of this method show its potential in computational physics, including microfluidics. QBMM demonstrates promising results in the area of high Knudsen number and high Stokes number flows.

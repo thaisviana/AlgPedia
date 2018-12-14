@@ -1,0 +1,53 @@
+ABOUT
+State space search is a process used in the field of computer science, including artificial intelligence (AI), in which successive configurations or states of an instance are considered, with the goal of finding a goal state with a desired property.
+FULL TEXT
+State space search is a process used in the field of computer science, including artificial intelligence (AI), in which successive configurations or states of an instance are considered, with the goal of finding a goal state with a desired property.
+Problems are often modelled as a state space, a set of states that a problem can be in. The set of states forms a graph where two states are connected if there is an operation that can be performed to transform the first state into the second.
+State space search often differs from traditional computer science search methods because the state space is implicit: the typical state space graph is much too large to generate and store in memory. Instead, nodes are generated as they are explored, and typically discarded thereafter. A solution to a combinatorial search instance may consist of the goal state itself, or of a path from some initial state to the goal state.
+In state space search a state space is formally represented as a tuple 
+
+
+
+S
+:<
+S
+,
+A
+,
+A
+c
+t
+i
+o
+n
+(
+s
+)
+,
+R
+e
+s
+u
+l
+t
+(
+s
+,
+a
+)
+,
+C
+o
+s
+t
+(
+s
+,
+a
+)
+>
+
+
+{\displaystyle S:<S,A,Action(s),Result(s,a),Cost(s,a)>}
+
+, in which:

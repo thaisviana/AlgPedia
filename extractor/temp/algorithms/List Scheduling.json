@@ -1,0 +1,8 @@
+{
+    "about": "The basic idea of list scheduling is to make an ordered list of processes by assigning them some priorities, and then repeatedly execute the following two steps until a valid schedule is obtained\u00a0:", 
+    "name": "List Scheduling", 
+    "classification": "Scheduling Algorithms", 
+    "full_text": "The basic idea of list scheduling is to make an ordered list of processes by assigning them some priorities, and then repeatedly execute the following two steps until a valid schedule is obtained\u00a0:\nThe priorities are determined statically before scheduling process begins. The first step chooses the process with the highest priority, the second step selects the best possible resource. Some known list scheduling strategies are\u00a0:\n[1]", 
+    "dbpedia_url": "http://dbpedia.org/resource/List_scheduling", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/List_scheduling\n"
+}

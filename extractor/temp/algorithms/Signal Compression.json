@@ -1,0 +1,8 @@
+{
+    "about": "Signal compression is the use of various techniques to reduce the amount of data that must be transmitted from one point to another in order to convey information.", 
+    "name": "Signal Compression", 
+    "classification": "Signal Processing", 
+    "full_text": "Signal compression is the use of various techniques to reduce the amount of data that must be transmitted from one point to another in order to convey information.\nTypes of signal compression include:", 
+    "dbpedia_url": "http://dbpedia.org/resource/Signal_compression", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Signal_compression\n"
+}

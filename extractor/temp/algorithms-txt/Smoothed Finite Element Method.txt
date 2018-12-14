@@ -1,0 +1,19 @@
+ABOUT
+Smoothed Finite Element methods (S-FEM) [1] are a particular class of numerical simulation algorithms for the simulation of physical phenomena. It was developed by combining meshfree methods [2] with the finite element method. S-FEM are applicable to solid mechanics as well as fluid dynamics problems, although so far they have mainly been applied to the former.
+FULL TEXT
+Smoothed Finite Element methods (S-FEM) [1] are a particular class of numerical simulation algorithms for the simulation of physical phenomena. It was developed by combining meshfree methods [2] with the finite element method. S-FEM are applicable to solid mechanics as well as fluid dynamics problems, although so far they have mainly been applied to the former.
+
+
+The essential idea in the S-FEM is to use a finite element mesh (in particular triangular mesh) to construct numerical models of good performance. This is achieved by modifying the compatible strain field, or construct a strain field using only the displacements, hoping a Galerkin model using the modified/constructed strain field can deliver some good properties. Such a modification/construction can be performed within elements but more often beyond the elements (meshfree concepts): bring in the information from the neighboring elements. Naturally, the strain field has to satisfy certain conditions, and the standard Galerkin weak form needs to be modified accordingly to ensure the stability and convergence. A comprehensive review of S-FEM in both methodology and applications can be found in [3] ("Smoothed Finite Element Methods (S-FEM): An Overview and Recent Developments").
+The development of S-FEM started from the works on meshfree methods, where the so-called weakened weak (W2) formulation based on the G space theory [4] were developed. The W2 formulation offers possibilities for formulate various (uniformly) "soft" models that works well with triangular meshes. Because triangular mesh can be generated automatically, it becomes much easier in re-meshing and hence automation in modeling and simulation. In addition, W2 models can be made soft enough (in uniform fashion) to produce upper bound solutions (for force-driving problems). Together with stiff models (such as the fully compatible FEM models), one can conveniently bound the solution from both sides. This allows easy error estimation for generally complicated problems, as long as a triangular mesh can be generated. Typical W2 models are the Smoothed Point Interpolation Methods (or S-PIM) [5]. The S-PIM can be node-based (known as NS-PIM or LC-PIM) [6], edge-based (ES-PIM) [7], and cell-based (CS-PIM) [8]. The NS-PIM was developed using the so-called SCNI technique [9]. It was then discovered that NS-PIM is capable of producing upper bound solution and volumetric locking free [10]. The ES-PIM is found superior in accuracy, and CS-PIM behaves in between the NS-PIM and ES-PIM. Moreover, W2 formulations allow the use of polynomial and radial basis functions in the creation of shape functions (it accommodates the discontinuous displacement functions, as long as it is in G1 space), which opens further rooms for future developments.
+The S-FEM is largely the linear version of S-PIM, but with most of the properties of the S-PIM and much simpler. It has also variations of NS-FEM, ES-FEM and CS-FEM. The major property of S-PIM can be found also in S-FEM [11].
+S-FEM has been applied to solve the following physical problems:
+1) Mechanics for solid structures and piezoelectrics;[24][25]
+2) Fracture mechanics and crack propagation;[26][27][28][29]
+3) Nonlinear and contact problems;[30][31]
+4) Stochastic analysis;[32]
+5) Heat transfer;[33][34]
+6) Structural acoustics;[35][36][37]
+7) Adaptive analysis;[38][39]
+8) Limited analysis;[40]
+9) Crystal plasticity modeling.[41]

@@ -1,0 +1,6 @@
+ABOUT
+The basic idea of list scheduling is to make an ordered list of processes by assigning them some priorities, and then repeatedly execute the following two steps until a valid schedule is obtained :
+FULL TEXT
+The basic idea of list scheduling is to make an ordered list of processes by assigning them some priorities, and then repeatedly execute the following two steps until a valid schedule is obtained :
+The priorities are determined statically before scheduling process begins. The first step chooses the process with the highest priority, the second step selects the best possible resource. Some known list scheduling strategies are :
+[1]

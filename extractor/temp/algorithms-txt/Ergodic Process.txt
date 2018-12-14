@@ -1,0 +1,200 @@
+ABOUT
+In econometrics and signal processing, a stochastic process is said to be ergodic if its statistical properties can be deduced from a single, sufficiently long, random sample of the process. The reasoning is that any collection of random samples from a process must represent the average statistical properties of the entire process. In other words, regardless of what the individual samples are, a birds-eye view of the collection of samples must represent the whole process. Conversely, a process that is not ergodic is a process that changes erratically at an inconsistent rate.[1]
+FULL TEXT
+In econometrics and signal processing, a stochastic process is said to be ergodic if its statistical properties can be deduced from a single, sufficiently long, random sample of the process. The reasoning is that any collection of random samples from a process must represent the average statistical properties of the entire process. In other words, regardless of what the individual samples are, a birds-eye view of the collection of samples must represent the whole process. Conversely, a process that is not ergodic is a process that changes erratically at an inconsistent rate.[1]
+
+
+One can discuss the ergodicity of various statistics of a stochastic process. For example, a wide-sense stationary process 
+
+
+
+X
+(
+t
+)
+
+
+{\displaystyle X(t)}
+
+ has constant mean
+and autocovariance
+that depends only on the lag 
+
+
+
+τ
+
+
+{\displaystyle \tau }
+
+ and not on time 
+
+
+
+t
+
+
+{\displaystyle t}
+
+. The properties 
+
+
+
+
+μ
+
+X
+
+
+
+
+{\displaystyle \mu _{X}}
+
+ and 
+
+
+
+
+r
+
+X
+
+
+(
+τ
+)
+
+
+{\displaystyle r_{X}(\tau )}
+
+ are ensemble averages not time averages.
+The process 
+
+
+
+X
+(
+t
+)
+
+
+{\displaystyle X(t)}
+
+ is said to be mean-ergodic[2] or mean-square ergodic in the first moment[3] if the time average estimate
+converges in squared mean to the ensemble average 
+
+
+
+
+μ
+
+X
+
+
+
+
+{\displaystyle \mu _{X}}
+
+ as 
+
+
+
+T
+→
+∞
+
+
+{\displaystyle T\rightarrow \infty }
+
+.
+Likewise, the process is said to be autocovariance-ergodic or mean-square ergodic in the second moment[3] if the time average estimate
+converges in squared mean to the ensemble average 
+
+
+
+
+r
+
+X
+
+
+(
+τ
+)
+
+
+{\displaystyle r_{X}(\tau )}
+
+, as 
+
+
+
+T
+→
+∞
+
+
+{\displaystyle T\rightarrow \infty }
+
+. A process which is ergodic in the mean and autocovariance is sometimes called ergodic in the wide sense.[3]
+An important example of an ergodic processes is the stationary Gaussian process with continuous spectrum.
+The notion of ergodicity also applies to discrete-time random processes 
+
+
+
+X
+[
+n
+]
+
+
+{\displaystyle X[n]}
+
+ for integer 
+
+
+
+n
+
+
+{\displaystyle n}
+
+.
+A discrete-time random process 
+
+
+
+X
+[
+n
+]
+
+
+{\displaystyle X[n]}
+
+ is ergodic in mean if
+converges in squared mean to the ensemble average 
+
+
+
+E
+[
+X
+]
+
+
+{\displaystyle E[X]}
+
+, as 
+
+
+
+N
+→
+∞
+
+
+{\displaystyle N\rightarrow \infty }
+
+.
+Suppose that we have two coins: one coin is fair and the other has two heads. We choose (at random) one of the coins, and then perform a sequence of independent tosses of our selected coin. Let X[n] denote the outcome of the nth toss, with 1 for heads and 0 for tails. Then the ensemble average is ½  (½ +  1) = ¾; yet the long-term average is ½ for the fair coin and 1 for the two-headed coin. Hence, this random process is not ergodic in mean.

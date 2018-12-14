@@ -1,194 +1,202 @@
+'''
+Created on 01/03/2013
 
+@author: Pericolo
+'''
 
 import os
 from extractor.FileWriters import TXTWriter
 from extractor.Extractor import CSVColumnExtractor
 from extractor.DBPediaQueryFetcher import QueryFetcher
+from algorithm.models import Classification
 from algorithm.controllers import *
 
 from extractor.WikiPediaExtractors import WikiPediaAbstractExtractor
 
 class Bootstrapper():
-	def __init__(self):
-		pass
+    def __init__(self):
+        pass
 
-	def doDatabaseImporting(self):
-		query_fetcher = QueryFetcher('csv')
-		dbpedia_master_query = '''select * where{
-			?classification skos:broader <http://dbpedia.org/resource/Category:Algorithms>.
-			?algorithm dcterms:subject ?classification.
-			?algorithm foaf:isPrimaryTopicOf ?wikipedia
-			}'''
+    def doDatabaseImporting(self):
+        query_fetcher = QueryFetcher('csv')
+        dbpedia_master_query = '''select * where{
+            ?classification skos:broader <http://dbpedia.org/resource/Category:Algorithms>.
+            ?algorithm dcterms:subject ?classification.
+            ?algorithm foaf:isPrimaryTopicOf ?wikipedia
+            }'''
 
-		filename = query_fetcher.fetchResult(dbpedia_master_query)
+        filename = query_fetcher.fetchResult(dbpedia_master_query)
 
-		# always 0-based, baby
-		self.insertClassifications(filename, 0)
+        # always 0-based, baby
+        self.insertClassifications(filename, 0)
 
-		# second parameter is a list of columns that will be used create the classification object
-		#self.insert_classifications(filename, [0])
-		self.populate_database(filename, [0,1,2])
+        # second parameter is a list of columns that will be used create the classification object
+        #self.insert_classifications(filename, [0])
+        self.populate_database(filename, [0,1,2])
 
-	# second parameter is a list of columns that will be used to populate the database
-	def populate_database(self, filename, cols):
-		col_extractor = CSVColumnExtractor(filename)
+    # second parameter is a list of columns that will be used to populate the database
+    def populate_database(self, filename, cols):
+        col_extractor = CSVColumnExtractor(filename)
 
-		class_alg_mapping = zip(col_extractor.extract_column(cols[0]), col_extractor.extract_column(cols[1]), col_extractor.extract_column(cols[2]))
+        class_alg_mapping = zip(col_extractor.extract_column(cols[0]), col_extractor.extract_column(cols[1]), col_extractor.extract_column(cols[2]))
 
-		for mapping in class_alg_mapping:
-			#print mapping[0]
-			#if mapping[0].split(':')[-1] == 'Sorting_algorithms':
-			classif = self.insert_classification(mapping[0])
-			#alg = self.insert_algorithm(mapping[1], classif)
-			alg = self.insert_algorithm_conditional(mapping[2], mapping[1], classif)
+        for mapping in class_alg_mapping:
+            #print mapping[0]
+            #if mapping[0].split(':')[-1] == 'Sorting_algorithms':
+            classif = self.insert_classification(mapping[0])
+            #alg = self.insert_algorithm(mapping[1], classif)
+            alg = self.insert_algorithm_conditional(mapping[2], mapping[1], classif)
 
-	def insert_classification(self, classif_url):
-		(name, uri) = self.extract_name_uri(classif_url)
+    def insert_classification(self, classif_url):
+        (name, uri) = self.extract_name_uri(classif_url)
+        print(name + ': ' + uri)
 
-		classif = insert_classification_db(name, uri)
+        classif = insert_classification_db(name, uri)
 
-		return classif
+        return classif
 
-	def insert_algorithm_conditional(self, alg_url, alg_uri, classif):
-		try:
-			wiki_alg_extractor = WikiPediaAbstractExtractor()
+    def insert_algorithm_conditional(self, alg_url, alg_uri, classif):
+        try:
+            wiki_alg_extractor = WikiPediaAbstractExtractor()
 
-			wiki_alg_extractor.search_page(alg_url)
+            wiki_alg_extractor.search_page(alg_url)
 
-			about = wiki_alg_extractor.get_alg_about()
+            about = wiki_alg_extractor.get_alg_about()
 
-			name = wiki_alg_extractor.get_alg_name()
+            name = wiki_alg_extractor.get_alg_name()
 
-			# returns a tuple (language, implementation_source)
-			en_implementations = wiki_alg_extractor.get_alg_pseudo_code()
+            # returns a tuple (language, implementation_source)
+            en_implementations = wiki_alg_extractor.get_alg_pseudo_code()
 
-			# returns a tuple (language, implementation_source)
-			implementations = wiki_alg_extractor.get_alg_implementations()
+            # returns a tuple (language, implementation_source)
+            implementations = wiki_alg_extractor.get_alg_implementations()
 
-			if not en_implementations and not implementations:
-				# this covers having neither a PT page nor a pseudocode
-				return None
+            if not en_implementations and not implementations:
+                # this covers having neither a PT page nor a pseudocode
+                print("No implementation or pseudo for this algorithm.\n")
+                return None
 
-			alg = insert_algorithm_db(name, about, classif, alg_uri, True)
+            alg = insert_algorithm_db(name, about, classif, alg_uri, True)
 
-			if en_implementations:
-				for en_implementation in en_implementations:
-					implementation = insert_implementation_db(alg, en_implementation[0], en_implementation[1],True)
+            if en_implementations:
+                for en_implementation in en_implementations:
+                    implementation = insert_implementation_db(alg, en_implementation[0], en_implementation[1],True)
 
-			if implementations:
-				for implementation in implementations:
-					implementation = insert_implementation_db(alg,  implementation[0], implementation[1],True)
+            if implementations:
+                for implementation in implementations:
+                    implementation = insert_implementation_db(alg,  implementation[0], implementation[1],True)
 
-			#will never be returned
-			return None
-		except:
-			return None
+            #will never be returned
+            return None
 
-	def insert_algorithm(self, alg_url, classif):
-		try:
-			wiki_alg_extractor = WikiPediaAbstractExtractor()
+        except Exception:
+            raise
 
-			wiki_alg_extractor.search_page(alg_url)
+    def insert_algorithm(self, alg_url, classif):
+        try:
+            wiki_alg_extractor = WikiPediaAbstractExtractor()
 
-			about = wiki_alg_extractor.get_alg_about()
+            wiki_alg_extractor.search_page(alg_url)
 
-			name = wiki_alg_extractor.get_alg_name()
+            about = wiki_alg_extractor.get_alg_about()
 
-			alg = insert_algorithm_db(name, about, classif, True)
+            name = wiki_alg_extractor.get_alg_name()
 
-			# returns a tuple (language, implementation_source)
-			pseudos = wiki_alg_extractor.get_pseudo_code()
+            alg = insert_algorithm_db(name, about, classif, True)
 
-			# returns a tuple (language, implementation_source)
-			implementations = wiki_alg_extractor.get_alg_implementations()
+            # returns a tuple (language, implementation_source)
+            pseudos = wiki_alg_extractor.get_pseudo_code()
 
-			# deletes the added alg if it
-			if not pseudos and not implementations:
-				# this covers having neither a PT page nor a pseudocode
-				delete_algorithm_db(alg)
-				return None
+            # returns a tuple (language, implementation_source)
+            implementations = wiki_alg_extractor.get_alg_implementations()
 
-			if pseudo:
-				for pseudo in pseudos:
-					implementation = insert_implementation_db(alg, pseudo[0], pseudo[1], True)
+            # deletes the added alg if it
+            if not pseudos and not implementations:
+                # this covers having neither a PT page nor a pseudocode
+                delete_algorithm_db(alg)
+                return None
 
-			if implementations:
-				for implementation in implementations:
-					implementation = insert_implementation_db(alg,  implementation[0], implementation[1], True)
+            # if pseudo:
+            #     for pseudo in pseudos:
+            #         implementation = insert_implementation_db(alg, pseudo[0], pseudo[1], True)
 
-			#will never be returned
-			return None
-		except:
-			return None
+            if implementations:
+                for implementation in implementations:
+                    implementation = insert_implementation_db(alg,  implementation[0], implementation[1], True)
 
-	def extract_name_uri(self, classif_uri):
-		name = classif_uri.split(':')[-1]
-		name = name.replace('_',' ')
-		name = name.title()
+            #will never be returned
+            return None
+        except Exception:
+            raise
 
-		return (name, classif_uri)
+    def extract_name_uri(self, classif_uri):
+        name = classif_uri.split(':')[-1]
+        name = name.replace('_',' ')
+        name = name.title()
 
-	def insert_classifications(self, filename, cols):
-		col_extractor = ColumnExtractor(filename)
+        return (name, classif_uri)
 
-		col_classification = col_extractor.extractColumn(cols[0])
+    def insert_classifications(self, filename, cols):
+        col_extractor = ColumnExtractor(filename)
 
-		(names, uris) = self.extract_names(col_classification)
+        col_classification = col_extractor.extractColumn(cols[0])
 
-		names, uris = (list(t) for t in zip(*sorted(zip(names,uris))))
+        (names, uris) = self.extract_names(col_classification)
 
-		classifications = [{'name' : t[0], 'uris' : t[1]} for t in zip(names, uris)]
+        names, uris = (list(t) for t in zip(*sorted(zip(names,uris))))
 
-		for classification in classifications:
-			aux_classification = classification(name=classification['name'], uri=classification['uris'])
-			aux_classification.save()
+        classifications = [{'name' : t[0], 'uris' : t[1]} for t in zip(names, uris)]
 
-	def extract_names(self, classif_list):
+        for classification in classifications:
+            aux_classification = Classification(name=classification['name'], uri=classification['uris'])
+            aux_classification.save()
 
-		beautiful_names = dict()
+    def extract_names(self, classif_list):
 
-		names = map(lambda x: x.split(':')[-1], classif_list)
-		names = map(lambda x: x.replace('_', ' ').title(), names)
+        beautiful_names = dict()
 
-		for i in range(0, len(names)):
-			#print "Key: " + str(names[i]) + " Value: " + classif_list[i]
+        names = map(lambda x: x.split(':')[-1], classif_list)
+        names = map(lambda x: x.replace('_', ' ').title(), names)
 
-			if(names[i] not in beautiful_names):
-				beautiful_names[names[i]] = classif_list[i]
-		return (beautiful_names.keys(), beautiful_names.values())
+        for i in range(0, len(names)):
+            #print "Key: " + str(names[i]) + " Value: " + classif_list[i]
 
-	# deprecated!!
-	def insertClassifications(self, filename, col_number):
+            if(names[i] not in beautiful_names):
+                beautiful_names[names[i]] = classif_list[i]
+        return (beautiful_names.keys(), beautiful_names.values())
 
-		col_extractor = ColumnExtractor(filename)
+    # deprecated!!
+    def insertClassifications(self, filename, col_number):
 
-		col_classification = col_extractor.extractColumn(col_number)
+        col_extractor = ColumnExtractor(filename)
 
-		classif_names = self.extractNames(col_classification)
+        col_classification = col_extractor.extractColumn(col_number)
 
-		txt_Writer = TXTWriter()
+        classif_names = self.extractNames(col_classification)
 
-		file_name = txt_Writer.writeDictKeysToFile(classif_names, 'classifications')
+        txt_Writer = TXTWriter()
 
-		for key, val in classif_names.iteritems():
-			#print str(key) + ': ' + str(val)
-			aux_classification = classification(name=key, uri=val)
-			aux_classification.save()
+        file_name = txt_Writer.writeDictKeysToFile(classif_names, 'classifications')
 
-	# deprecated!!
-	# returns a list of beautiful names.
-	# each name only appears once in this list.
-	def extractNames(self, classif_list):
+        for key, val in classif_names.iteritems():
+            #print str(key) + ': ' + str(val)
+            aux_classification = Classification(name=key, uri=val)
+            aux_classification.save()
 
-		beautiful_names = dict()
+    # deprecated!!
+    # returns a list of beautiful names.
+    # each name only appears once in this list.
+    def extractNames(self, classif_list):
 
-		names = map(lambda x: x.split(':')[-1], classif_list)
-		names = map(lambda x: x.replace('_', ' ').title(), names)
+        beautiful_names = dict()
 
-		for i in range(0, len(names)):
-			#print "Key: " + str(names[i]) + " Value: " + classif_list[i]
+        names = map(lambda x: x.split(':')[-1], classif_list)
+        names = map(lambda x: x.replace('_', ' ').title(), names)
 
-			if(names[i] not in beautiful_names):
-				beautiful_names[names[i]] = classif_list[i]
-		return beautiful_names
-		#return (beautiful_names.keys(), beautiful_names.values())
+        for i in range(0, len(names)):
+            #print "Key: " + str(names[i]) + " Value: " + classif_list[i]
+
+            if(names[i] not in beautiful_names):
+                beautiful_names[names[i]] = classif_list[i]
+        return beautiful_names
+        #return (beautiful_names.keys(), beautiful_names.values())

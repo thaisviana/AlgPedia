@@ -1,0 +1,1154 @@
+ABOUT
+Least mean squares (LMS) algorithms are a class of adaptive filter used to mimic a desired filter by finding the filter coefficients that relate to producing the least mean square of the error signal (difference between the desired and the actual signal). It is a stochastic gradient descent method in that the filter is only adapted based on the error at the current time. It was invented in 1960 by Stanford University professor Bernard Widrow and his first Ph.D. student, Ted Hoff.
+FULL TEXT
+Least mean squares (LMS) algorithms are a class of adaptive filter used to mimic a desired filter by finding the filter coefficients that relate to producing the least mean square of the error signal (difference between the desired and the actual signal). It is a stochastic gradient descent method in that the filter is only adapted based on the error at the current time. It was invented in 1960 by Stanford University professor Bernard Widrow and his first Ph.D. student, Ted Hoff.
+
+
+
+The realization of the causal Wiener filter looks a lot like the solution to the least squares estimate, except in the signal processing domain. The least squares solution, for input matrix 
+
+
+
+
+
+X
+
+
+
+
+{\displaystyle \scriptstyle \mathbf {X} }
+
+ and output vector 
+
+
+
+
+
+y
+
+
+
+
+{\displaystyle \scriptstyle \mathbf {y} }
+
+ is
+
+
+
+
+
+
+
+β
+^
+
+
+
+=
+(
+
+
+X
+
+
+
+T
+
+
+
+
+X
+
+
+)
+
+−
+1
+
+
+
+
+X
+
+
+
+T
+
+
+
+
+y
+
+.
+
+
+{\displaystyle {\boldsymbol {\hat {\beta }}}=(\mathbf {X} ^{\mathbf {T} }\mathbf {X} )^{-1}\mathbf {X} ^{\mathbf {T} }{\boldsymbol {y}}.}
+
+
+The FIR least mean squares filter is related to the Wiener filter, but minimizing the error criterion of the former does not rely on cross-correlations or auto-correlations. Its solution converges to the Wiener filter solution. Most linear adaptive filtering problems can be formulated using the block diagram above. That is, an unknown system 
+
+
+
+
+h
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {h} (n)}
+
+ is to be identified and the adaptive filter attempts to adapt the filter 
+
+
+
+
+
+
+
+h
+
+^
+
+
+
+(
+n
+)
+
+
+{\displaystyle {\hat {\mathbf {h} }}(n)}
+
+ to make it as close as possible to 
+
+
+
+
+h
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {h} (n)}
+
+, while using only observable signals 
+
+
+
+x
+(
+n
+)
+
+
+{\displaystyle x(n)}
+
+, 
+
+
+
+d
+(
+n
+)
+
+
+{\displaystyle d(n)}
+
+ and 
+
+
+
+e
+(
+n
+)
+
+
+{\displaystyle e(n)}
+
+; but 
+
+
+
+y
+(
+n
+)
+
+
+{\displaystyle y(n)}
+
+, 
+
+
+
+v
+(
+n
+)
+
+
+{\displaystyle v(n)}
+
+ and 
+
+
+
+h
+(
+n
+)
+
+
+{\displaystyle h(n)}
+
+ are not directly observable. Its solution is closely related to the Wiener filter.
+The basic idea behind LMS filter is to approach the optimum filter weights 
+
+
+
+(
+
+R
+
+−
+1
+
+
+P
+)
+
+
+{\displaystyle (R^{-1}P)}
+
+, by updating the filter weights in a manner to converge to the optimum filter weight. The algorithm starts by assuming small weights (zero in most cases) and, at each step, by finding the gradient of the mean square error, the weights are updated. That is, if the MSE-gradient is positive, it implies, the error would keep increasing positively, if the same weight is used for further iterations, which means we need to reduce the weights. In the same way, if the gradient is negative, we need to increase the weights. So, the basic weight update equation is :
+
+
+
+
+
+W
+
+n
++
+1
+
+
+=
+
+W
+
+n
+
+
+−
+μ
+∇
+ε
+[
+n
+]
+
+
+{\displaystyle W_{n+1}=W_{n}-\mu \nabla \varepsilon [n]}
+
+,
+where 
+
+
+
+ε
+
+
+{\displaystyle \varepsilon }
+
+ represents the mean-square error. The negative sign indicates that, we need to change the weights in a direction opposite to that of the gradient slope.
+The mean-square error, as a function of filter weights is a quadratic function which means it has only one extremum, that minimises the mean-square error, which is the optimal weight. The LMS thus, approaches towards this optimal weights by ascending/descending down the mean-square-error vs filter weight curve.
+The idea behind LMS filters is to use steepest descent to find filter weights 
+
+
+
+
+h
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {h} (n)}
+
+ which minimize a cost function. We start by defining the cost function as
+where 
+
+
+
+e
+(
+n
+)
+
+
+{\displaystyle e(n)}
+
+ is the error at the current sample n and 
+
+
+
+E
+{
+⋅
+}
+
+
+{\displaystyle E\{\cdot \}}
+
+ denotes the expected value.
+This cost function (
+
+
+
+C
+(
+n
+)
+
+
+{\displaystyle C(n)}
+
+) is the mean square error, and it is minimized by the LMS. This is where the LMS gets its name. Applying steepest descent means to take the partial derivatives with respect to the individual entries of the filter coefficient (weight) vector
+where 
+
+
+
+∇
+
+
+{\displaystyle \nabla }
+
+ is the gradient operator
+Now, 
+
+
+
+∇
+C
+(
+n
+)
+
+
+{\displaystyle \nabla C(n)}
+
+ is a vector which points towards the steepest ascent of the cost function. To find the minimum of the cost function we need to take a step in the opposite direction of 
+
+
+
+∇
+C
+(
+n
+)
+
+
+{\displaystyle \nabla C(n)}
+
+. To express that in mathematical terms
+where 
+
+
+
+
+
+μ
+2
+
+
+
+
+{\displaystyle {\frac {\mu }{2}}}
+
+ is the step size(adaptation constant). That means we have found a sequential update algorithm which minimizes the cost function. Unfortunately, this algorithm is not realizable until we know 
+
+
+
+E
+
+{
+
+x
+
+(
+n
+)
+
+
+e
+
+∗
+
+
+(
+n
+)
+}
+
+
+
+{\displaystyle E\left\{\mathbf {x} (n)\,e^{*}(n)\right\}}
+
+.
+Generally, the expectation above is not computed. Instead, to run the LMS in an online (updating after each new sample is received) environment, we use an instantaneous estimate of that expectation. See below.
+For most systems the expectation function 
+
+
+
+
+E
+
+
+{
+
+x
+
+(
+n
+)
+
+
+e
+
+∗
+
+
+(
+n
+)
+}
+
+
+
+{\displaystyle {E}\left\{\mathbf {x} (n)\,e^{*}(n)\right\}}
+
+ must be approximated. This can be done with the following unbiased estimator
+where 
+
+
+
+N
+
+
+{\displaystyle N}
+
+ indicates the number of samples we use for that estimate. The simplest case is 
+
+
+
+N
+=
+1
+
+
+{\displaystyle N=1}
+
+
+For that simple case the update algorithm follows as
+Indeed this constitutes the update algorithm for the LMS filter.
+The LMS algorithm for a 
+
+
+
+p
+
+
+{\displaystyle p}
+
+th order algorithm can be summarized as
+
+
+
+
+
+x
+
+(
+n
+)
+=
+
+
+[
+x
+(
+n
+)
+,
+x
+(
+n
+−
+1
+)
+,
+…
+,
+x
+(
+n
+−
+p
++
+1
+)
+]
+
+
+T
+
+
+
+
+{\displaystyle \mathbf {x} (n)=\left[x(n),x(n-1),\dots ,x(n-p+1)\right]^{T}}
+
+
+As the LMS algorithm does not use the exact values of the expectations, the weights would never reach the optimal weights in the absolute sense, but a convergence is possible in mean. That is, even though the weights may change by small amounts, it changes about the optimal weights. However, if the variance with which the weights change, is large, convergence in mean would be misleading. This problem may occur, if the value of step-size 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ is not chosen properly.
+If 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ is chosen to be large, the amount with which the weights change depends heavily on the gradient estimate, and so the weights may change by a large value so that gradient which was negative at the first instant may now become positive. And at the second instant, the weight may change in the opposite direction by a large amount because of the negative gradient and would thus keep oscillating with a large variance about the optimal weights. On the other hand if 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ is chosen to be too small, time to converge to the optimal weights will be too large.
+Thus, an upper bound on 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ is needed which is given as 
+
+
+
+0
+<
+μ
+<
+
+
+2
+
+λ
+
+
+m
+a
+x
+
+
+
+
+
+
+
+{\displaystyle 0<\mu <{\frac {2}{\lambda _{\mathrm {max} }}}}
+
+
+where 
+
+
+
+
+λ
+
+max
+
+
+
+
+{\displaystyle \lambda _{\max }}
+
+ is the greatest eigenvalue of the autocorrelation matrix 
+
+
+
+
+
+R
+
+
+=
+E
+{
+
+
+x
+
+
+(
+n
+)
+
+
+
+x
+
+
+H
+
+
+
+(
+n
+)
+}
+
+
+{\displaystyle {\mathbf {R} }=E\{{\mathbf {x} }(n){\mathbf {x} ^{H}}(n)\}}
+
+. If this condition is not fulfilled, the algorithm becomes unstable and 
+
+
+
+
+
+
+h
+^
+
+
+
+(
+n
+)
+
+
+{\displaystyle {\hat {h}}(n)}
+
+ diverges.
+Maximum convergence speed is achieved when
+where 
+
+
+
+
+λ
+
+min
+
+
+
+
+{\displaystyle \lambda _{\min }}
+
+ is the smallest eigenvalue of R. Given that 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ is less than or equal to this optimum, the convergence speed is determined by 
+
+
+
+
+λ
+
+min
+
+
+
+
+{\displaystyle \lambda _{\min }}
+
+, with a larger value yielding faster convergence. This means that faster convergence can be achieved when 
+
+
+
+
+λ
+
+max
+
+
+
+
+{\displaystyle \lambda _{\max }}
+
+ is close to 
+
+
+
+
+λ
+
+min
+
+
+
+
+{\displaystyle \lambda _{\min }}
+
+, that is, the maximum achievable convergence speed depends on the eigenvalue spread of 
+
+
+
+
+
+R
+
+
+
+
+{\displaystyle {\mathbf {R} }}
+
+.
+A white noise signal has autocorrelation matrix 
+
+
+
+
+
+R
+
+
+=
+
+σ
+
+2
+
+
+
+
+I
+
+
+
+
+{\displaystyle {\mathbf {R} }=\sigma ^{2}{\mathbf {I} }}
+
+ where 
+
+
+
+
+σ
+
+2
+
+
+
+
+{\displaystyle \sigma ^{2}}
+
+ is the variance of the signal. In this case all eigenvalues are equal, and the eigenvalue spread is the minimum over all possible matrices. The common interpretation of this result is therefore that the LMS converges quickly for white input signals, and slowly for colored input signals, such as processes with low-pass or high-pass characteristics.
+It is important to note that the above upperbound on 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ only enforces stability in the mean, but the coefficients of 
+
+
+
+
+
+
+h
+^
+
+
+
+(
+n
+)
+
+
+{\displaystyle {\hat {h}}(n)}
+
+ can still grow infinitely large, i.e. divergence of the coefficients is still possible. A more practical bound is
+where 
+
+
+
+
+t
+r
+
+[
+
+
+R
+
+
+]
+
+
+{\displaystyle \mathrm {tr} [{\mathbf {R} }]}
+
+ denotes the trace of 
+
+
+
+
+
+R
+
+
+
+
+{\displaystyle {\mathbf {R} }}
+
+. This bound guarantees that the coefficients of 
+
+
+
+
+
+
+h
+^
+
+
+
+(
+n
+)
+
+
+{\displaystyle {\hat {h}}(n)}
+
+ do not diverge (in practice, the value of 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ should not be chosen close to this upper bound, since it is somewhat optimistic due to approximations and assumptions made in the derivation of the bound).
+The main drawback of the "pure" LMS algorithm is that it is sensitive to the scaling of its input 
+
+
+
+x
+(
+n
+)
+
+
+{\displaystyle x(n)}
+
+. This makes it very hard (if not impossible) to choose a learning rate 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ that guarantees stability of the algorithm (Haykin 2002). The Normalised least mean squares filter (NLMS) is a variant of the LMS algorithm that solves this problem by normalising with the power of the input. The NLMS algorithm can be summarised as:
+
+
+
+
+
+x
+
+(
+n
+)
+=
+
+
+[
+x
+(
+n
+)
+,
+x
+(
+n
+−
+1
+)
+,
+…
+,
+x
+(
+n
+−
+p
++
+1
+)
+]
+
+
+T
+
+
+
+
+{\displaystyle \mathbf {x} (n)=\left[x(n),x(n-1),\dots ,x(n-p+1)\right]^{T}}
+
+
+It can be shown that if there is no interference (
+
+
+
+v
+(
+n
+)
+=
+0
+
+
+{\displaystyle v(n)=0}
+
+), then the optimal learning rate for the NLMS algorithm is
+and is independent of the input 
+
+
+
+x
+(
+n
+)
+
+
+{\displaystyle x(n)}
+
+ and the real (unknown) impulse response 
+
+
+
+
+h
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {h} (n)}
+
+. In the general case with interference (
+
+
+
+v
+(
+n
+)
+≠
+0
+
+
+{\displaystyle v(n)\neq 0}
+
+), the optimal learning rate is
+The results above assume that the signals 
+
+
+
+v
+(
+n
+)
+
+
+{\displaystyle v(n)}
+
+ and 
+
+
+
+x
+(
+n
+)
+
+
+{\displaystyle x(n)}
+
+ are uncorrelated to each other, which is generally the case in practice.
+Let the filter misalignment be defined as 
+
+
+
+Λ
+(
+n
+)
+=
+
+
+|
+
+h
+
+(
+n
+)
+−
+
+
+
+
+h
+
+^
+
+
+
+(
+n
+)
+|
+
+
+2
+
+
+
+
+{\displaystyle \Lambda (n)=\left|\mathbf {h} (n)-{\hat {\mathbf {h} }}(n)\right|^{2}}
+
+, we can derive the expected misalignment for the next sample as:
+Let 
+
+
+
+
+δ
+
+=
+
+
+
+
+h
+
+^
+
+
+
+(
+n
+)
+−
+
+h
+
+(
+n
+)
+
+
+{\displaystyle \mathbf {\delta } ={\hat {\mathbf {h} }}(n)-\mathbf {h} (n)}
+
+ and 
+
+
+
+r
+(
+n
+)
+=
+
+
+
+y
+^
+
+
+
+(
+n
+)
+−
+y
+(
+n
+)
+
+
+{\displaystyle r(n)={\hat {y}}(n)-y(n)}
+
+
+Assuming independence, we have:
+The optimal learning rate is found at 
+
+
+
+
+
+
+d
+E
+
+[
+Λ
+(
+n
++
+1
+)
+]
+
+
+
+d
+μ
+
+
+
+=
+0
+
+
+{\displaystyle {\frac {dE\left[\Lambda (n+1)\right]}{d\mu }}=0}
+
+, which leads to:

@@ -1,0 +1,112 @@
+ABOUT
+A Viterbi decoder uses the Viterbi algorithm for decoding a bitstream that has been encoded using convolutional code or trellis code.
+FULL TEXT
+A Viterbi decoder uses the Viterbi algorithm for decoding a bitstream that has been encoded using convolutional code or trellis code.
+There are other algorithms for decoding a convolutionally encoded stream (for example, the Fano algorithm). The Viterbi algorithm is the most resource-consuming, but it does the maximum likelihood decoding. It is most often used for decoding convolutional codes with constraint lengths k<=10, but values up to k=15 are used in practice.
+Viterbi decoding was developed by Andrew J. Viterbi and published in the paper "Error Bounds for Convolutional Codes and an Asymptotically Optimum Decoding Algorithm", IEEE Transactions on Information Theory, Volume IT-13, pages 260-269, in April, 1967.
+There are both hardware (in modems) and software implementations of a Viterbi decoder.
+
+
+A hardware Viterbi decoder for basic (not punctured) code usually consists of the following major blocks:
+A branch metric unit's function is to calculate branch metrics, which are normed distances between every possible symbol in the code alphabet, and the received symbol.
+There are hard decision and soft decision Viterbi decoders. A hard decision Viterbi decoder receives a simple bitstream on its input, and a Hamming distance is used as a metric. A soft decision Viterbi decoder receives a bitstream containing information about the reliability of each received symbol. For instance, in a 3-bit encoding, this reliability information can be encoded as follows:
+Of course, it is not the only way to encode reliability data.
+The squared Euclidean distance is used as a metric for soft decision decoders.
+A path metric unit summarizes branch metrics to get metrics for 
+
+
+
+
+2
+
+K
+−
+1
+
+
+
+
+{\displaystyle 2^{K-1}}
+
+ paths, where K is the constraint length of the code, one of which can eventually be chosen as optimal. Every clock it makes 
+
+
+
+
+2
+
+K
+−
+1
+
+
+
+
+{\displaystyle 2^{K-1}}
+
+ decisions, throwing off wittingly nonoptimal paths. The results of these decisions are written to the memory of a traceback unit.
+The core elements of a PMU are ACS (Add-Compare-Select) units. The way in which they are connected between themselves is defined by a specific code's trellis diagram.
+Since branch metrics are always 
+
+
+
+≥
+0
+
+
+{\displaystyle \geq 0}
+
+, there must be an additional circuit preventing metric counters from overflow (it isn't shown on the image). An alternate method that eliminates the need to monitor the path metric growth is to allow the path metrics to "roll over", to use this method it is necessary to make sure the path metric accumulators contain enough bits to prevent the "best" and "worst" values from coming within 2(n-1) of each other. The compare circuit is essentially unchanged.
+It is possible to monitor the noise level on the incoming bit stream by monitoring the rate of growth of the "best" path metric. A simpler way to do this is to monitor a single location or "state" and watch it pass "upward" through say four discrete levels within the range of the accumulator. As it passes upward through each of these thresholds, a counter is incremented that reflects the "noise" present on the incoming signal.
+Back-trace unit restores an (almost) maximum-likelihood path from the decisions made by PMU. Since it does it in inverse direction, a viterbi decoder comprises a FILO (first-in-last-out) buffer to reconstruct a correct order.
+Note that the implementation shown on the image requires double frequency. There are some tricks that eliminate this requirement.
+In order to fully exploit benefits of soft decision decoding, one needs to quantize the input signal properly. The optimal quantization zone width is defined by the following formula:
+where 
+
+
+
+
+N
+
+0
+
+
+
+
+{\displaystyle N_{0}}
+
+ is a noise power spectral density, and k is a number of bits for soft decision.
+The squared norm (
+
+
+
+
+ℓ
+
+2
+
+
+
+
+{\displaystyle \ell _{2}}
+
+) distance between the received and the actual symbols in the code alphabet may be further simplified into a linear sum/difference form, which makes it less computationally intensive.
+Consider a 1/2 convolutional coder, which generates 2 bits (00, 01, 10 or 11) for every input bit (1 or 0). These Return-to-Zero signals are translated into a Non-Return-to-Zero form shown alongside.
+Each received symbol may be represented in vector form as vr = {r0, r1}, where r0 and r1 are soft decision values, whose magnitudes signify the joint reliability of the received vector, vr.
+Every symbol in the code alphabet may, likewise, be represented by the vector vi = {±1, ±1}.
+The actual computation of the Euclidean distance metric is:
+Each square term is a normed distance, depicting the energy of the symbol. For ex., the energy of the symbol vi = {±1, ±1} may be computed as
+Thus, the energy term of all symbols in the code alphabet is constant (at (normalized) value 2).
+The Add-Compare-Select (ACS) operation compares the metric distance between the received symbol ||vr|| and any 2 symbols in the code alphabet whose paths merge at a node in the corresponding trellis, ||vi(0)|| and ||vi(1)||. This is equivalent to comparing
+and
+But, from above we know that the energy of vi is constant (equal to (normalized) value of 2), and the energy of vr is the same in both cases. This reduces the comparison to a minima function between the 2 (middle) dot product terms,
+since a min operation on negative numbers may be interpreted as an equivalent max operation on positive quantities.
+Each dot product term may be expanded as
+where, the signs of each term depend on symbols, vi(0) and vi(1), being compared. Thus, the squared Euclidean metric distance calculation to compute the branch metric may be performed with a simple add/subtract operation.
+The general approach to traceback is to accumulate path metrics for up to five times the constraint length (5 (K - 1)), find the node with the largest accumulated cost, and begin traceback from this node.
+However, computing the node which has accumulated the largest cost (either the largest or smallest integral path metric) involves finding the maxima or minima of several (usually 2K-1) numbers, which may be time consuming when implemented on embedded hardware systems.
+Most communication systems employ Viterbi decoding involving data packets of fixed sizes, with a fixed bit/byte pattern either at the beginning or/and at the end of the data packet. By using the known bit/byte pattern as reference, the start node may be set to a fixed value, thereby obtaining a perfect Maximum Likelihood Path during traceback.
+A physical implementation of a viterbi decoder will not yield an exact maximum-likelihood stream due to quantization of the input signal, branch and path metrics, and finite traceback length. Practical implementations do approach within 1dB of the ideal.
+A hardware viterbi decoder of punctured codes is commonly implemented in such a way:
+One of the most time-consuming operations is an ACS butterfly, which is usually implemented using an assembly language and appropriate instruction set extensions (such as SSE2) to speed up the decoding time.
+The Viterbi decoding algorithm is widely used in the following areas:

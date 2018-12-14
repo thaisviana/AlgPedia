@@ -1,0 +1,27 @@
+ABOUT
+Weakened weak form (or W2 form) [1] is used in the formulation of general numerical methods based on meshfree methods and/or finite element method settings. These numerical methods are applicable to solid mechanics as well as fluid dynamics problems.
+FULL TEXT
+Weakened weak form (or W2 form) [1] is used in the formulation of general numerical methods based on meshfree methods and/or finite element method settings. These numerical methods are applicable to solid mechanics as well as fluid dynamics problems.
+
+
+For simplicity we choose elasticity problems (2nd order PDE) for our discussion.[2] Our discussion is also most convenient in reference to the well-known weak and strong form. In a strong formulation for an approximate solution, we need to assume displacement functions that are 2nd order differentiable. In a weak formulation, we create linear and bilinear forms and then search for a particular function (an approximate solution) that satisfy the weak statement. The bilinear form uses gradient of the functions that has only 1st order differentiation. Therefore, the requirement on the continuity of assumed displacement functions is weaker than in the strong formulation. In a discrete form (such as the Finite element method, or FEM), a sufficient requirement for an assumed displacement function is piecewise continuous over the entire problems domain. This allows us to construct the function using elements (but making sure it is continuous a long all element interfaces), leading to the powerful FEM.
+Now, in a weakened weak (W2) formulation, we further reduce the requirement. We form a bilinear form using only the assumed function (not even the gradient). This is done by using the so-called generalized gradient smoothing technique,[3] with which one can approximate the gradient of displacement functions for certain class of discontinuous functions, as long as they are in a proper G space.[4] Since we do not have to actually perform even the 1st differentiation to the assumed displacement functions, the requirement on the consistence of the functions are further reduced, and hence the weakened weak or W2 formulation.
+The development of systematic theory of the weakened weak form started from the works on meshfree methods.[5] It is relatively new, but had very rapid development in the past few years.[when?]
+1) The W2 formulation offers possibilities for formulate various (uniformly) "soft" models that works well with triangular meshes. Because triangular mesh can be generated automatically, it becomes much easier in re-meshing and hence automation in modeling and simulation. This is very important for our long-term goal of development of fully automated computational methods.
+2) In addition, W2 models can be made soft enough (in uniform fashion) to produce upper bound solutions (for force-driving problems). Together with stiff models (such as the fully compatible FEM models), one can conveniently bound the solution from both sides. This allows easy error estimation for generally complicated problems, as long as a triangular mesh can be generated. This is important for producing so-called certified solutions.
+3) W2 models can be built free from volumetric locking, and possibly free from other types of locking phenomena.
+4) W2 models provide the freedom to assume separately the displacement gradient of the displacement functions, offering opportunities for ultra-accurate and super-convergent models. It may be possible to construct linear models with energy convergence rate of 2.
+5) W2 models are often found less sensitive to mesh distortion.
+6) W2 models are found effective for low order methods
+Typical W2 models are the Smoothed Point Interpolation Methods (or S-PIM).[6] The S-PIM can be node-based (known as NS-PIM or LC-PIM),[7] edge-based (ES-PIM),[8] and cell-based (CS-PIM).[9] The NS-PIM was developed using the so-called SCNI technique.[10] It was then discovered that NS-PIM is capable of producing upper bound solution and volumetric locking free.[11] The ES-PIM is found superior in accuracy, and CS-PIM behaves in between the NS-PIM and ES-PIM. Moreover, W2 formulations allow the use of polynomial and radial basis functions in the creation of shape functions (it accommodates the discontinuous displacement functions, as long as it is in G1 space), which opens further rooms for future developments. The S-FEM is largely the linear version of S-PIM, but with most of the properties of the S-PIM and much simpler. It has also variations of NS-FEM, ES-FEM and CS-FEM. The major property of S-PIM can be found also in S-FEM.[12] The S-FEM models are:
+Some of the applications of W2 models are:
+1) Mechanics for solids, structures and piezoelectrics;[23][24]
+2) Fracture mechanics and crack propagation;[25][26][27][28]
+3) Heat transfer;[29][30]
+4) Structural acoustics;[31][32][33]
+5) Nonlinear and contact problems;[34][35]
+6) Stochastic analysis;[36]
+7) Adaptive Analysis;[37][38]
+8) Phase change problem;[39]
+9) Crystal plasticity modeling.[40]
+10) Limited analysis.[41]

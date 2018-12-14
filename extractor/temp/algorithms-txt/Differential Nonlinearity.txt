@@ -1,0 +1,52 @@
+ABOUT
+Differential nonlinearity (acronym DNL) is a term describing the deviation between two analog values corresponding to adjacent input digital values. It is an important specification for measuring error in a digital-to-analog converter (DAC); the accuracy of a DAC is mainly determined by this specification. Ideally, any two adjacent digital codes correspond to output analog voltages that are exactly one Least Significant Bit (LSB) apart. Differential non-linearity is a measure of the worst case deviation from the ideal 1 LSB step. For example, a DAC with a 1.5 LSB output change for a 1 LSB digital code change exhibits 1⁄2 LSB differential non-linearity. Differential non-linearity may be expressed in fractional bits or as a percentage of full scale. A differential non-linearity greater than 1 LSB may lead to a non-monotonic transfer function in a DAC.[1] It is also known as a missing code.
+FULL TEXT
+Differential nonlinearity (acronym DNL) is a term describing the deviation between two analog values corresponding to adjacent input digital values. It is an important specification for measuring error in a digital-to-analog converter (DAC); the accuracy of a DAC is mainly determined by this specification. Ideally, any two adjacent digital codes correspond to output analog voltages that are exactly one Least Significant Bit (LSB) apart. Differential non-linearity is a measure of the worst case deviation from the ideal 1 LSB step. For example, a DAC with a 1.5 LSB output change for a 1 LSB digital code change exhibits 1⁄2 LSB differential non-linearity. Differential non-linearity may be expressed in fractional bits or as a percentage of full scale. A differential non-linearity greater than 1 LSB may lead to a non-monotonic transfer function in a DAC.[1] It is also known as a missing code.
+Differential linearity refers to a constant relation between the change in the output and input. For transducers if a change in the input produces a uniform step change in the output the tranducer possess differential linearity. Differential linearity is desirable and is inherent to a system such as a single-slope analog-to-digital converter used in nuclear instrumentation.
+
+
+
+
+
+
+
+DNL(i)
+
+=
+
+
+
+
+V
+
+out
+
+
+(
+i
++
+1
+)
+−
+
+V
+
+out
+
+
+(
+i
+)
+
+
+ideal LSB step width
+
+
+
+−
+1
+
+
+{\displaystyle {\text{DNL(i)}}={{V_{\text{out}}(i+1)-V_{\text{out}}(i)} \over {\text{ideal LSB step width}}}-1}
+
+

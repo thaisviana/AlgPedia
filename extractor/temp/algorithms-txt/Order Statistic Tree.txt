@@ -1,0 +1,12 @@
+ABOUT
+In computer science, an order statistic tree is a variant of the binary search tree (or more generally, a B-tree[1]) that supports two additional operations beyond insertion, lookup and deletion:
+FULL TEXT
+In computer science, an order statistic tree is a variant of the binary search tree (or more generally, a B-tree[1]) that supports two additional operations beyond insertion, lookup and deletion:
+Both operations can be performed in O(log n) worst case time when a self-balancing tree is used as the base data structure.
+
+
+To turn a regular search tree into an order statistic tree, the nodes of the tree need to store one additional value, which is the size of the subtree rooted at that node (i.e., the number of nodes below it). All operations that modify the tree must adjust this information to preserve the invariant that
+where size[nil] = 0 by definition. Select can then be implemented as[2]:342
+Rank can be implemented as[3]:342
+Order-statistic trees can be further amended with bookkeeping information to maintain balance (e.g., tree height can be added to get an order statistic AVL tree, or a color bit to get a red-black order statistic tree). Alternatively, the size field can be used in conjunction with a weight-balancing scheme at no additional storage cost.[4]
+Another way to implement an order statistic tree is an implicit data structure derived from the min-max heap.[5]

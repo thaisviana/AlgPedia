@@ -1,0 +1,5 @@
+ABOUT
+DATADVANCE Is a joint venture company between AIRBUS Group and private Groups Spin-off Academics Russia, evolved out of a collaborative research program between AIRBUS Group and Institute for Information Transmission Problems [1] of the Russian Academy of Sciences (IITP RAS).
+FULL TEXT
+DATADVANCE Is a joint venture company between AIRBUS Group and private Groups Spin-off Academics Russia, evolved out of a collaborative research program between AIRBUS Group and Institute for Information Transmission Problems [1] of the Russian Academy of Sciences (IITP RAS).
+MACROS algorithmic core, embedded in pSeven,[2] provides unique proprietary and state-of-the-art algorithms for dimension reduction, design of experiments, sensitivity analysis, meta-modeling, uncertainty quantification as well as modern single, multi-objective and robust optimization strategies.

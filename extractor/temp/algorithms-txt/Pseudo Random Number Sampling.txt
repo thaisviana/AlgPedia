@@ -1,0 +1,17 @@
+ABOUT
+Pseudo-random number sampling or non-uniform pseudo-random variate generation is the numerical practice of generating pseudo-random numbers that are distributed according to a given probability distribution.
+FULL TEXT
+Pseudo-random number sampling or non-uniform pseudo-random variate generation is the numerical practice of generating pseudo-random numbers that are distributed according to a given probability distribution.
+Methods of sampling a non-uniform distribution are typically based on the availability of a pseudo-random number generator producing numbers X that are uniformly distributed. Computational algorithms are then used to manipulate a single random variate, X, or often several such variates, into a new random variate Y such that these values have the required distribution.
+Historically, basic methods of pseudo-random number sampling were developed for Monte-Carlo simulations in the Manhattan project;[citation needed] they were first published by John von Neumann in the early 1950s.[citation needed]
+
+
+For a discrete probability distribution with a finite number n of indices at which the probability mass function f takes non-zero values, the basic sampling algorithm is straightforward. The interval [0, 1) is divided in n intervals [0, f(1)), [f(1), f(1) + f(2)), ... The width of interval i equals the probability f(i). One draws a uniformly distributed pseudo-random number X, and searches for the index i of the corresponding interval. The so determined i will have the distribution f(i).
+Formalizing this idea becomes easier by using the cumulative distribution function
+It is convenient to set F(0) = 0. The n intervals are then simply [F(0), F(1)), [F(1), F(2)), ..., [F(n − 1), F(n)). The main computational task is then to determine i for which F(i − 1) ≤ X < F(i).
+This can be done by different algorithms:
+Generic methods for generating independent samples:
+Generic methods for generating correlated samples (often necessary for unusually-shaped or high-dimensional distributions):
+For generating a normal distribution:
+For generating a Poisson distribution:
+GNU Scientific Library has a section entitled "Random Number Distributions" with routines for sampling under more than twenty different distributions.

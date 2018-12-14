@@ -1,0 +1,102 @@
+ABOUT
+In communications, the Nyquist ISI criterion describes the conditions which, when satisfied by a communication channel (including responses of transmit and receive filters), result in no intersymbol interference or ISI. It provides a method for constructing band-limited functions to overcome the effects of intersymbol interference.
+FULL TEXT
+In communications, the Nyquist ISI criterion describes the conditions which, when satisfied by a communication channel (including responses of transmit and receive filters), result in no intersymbol interference or ISI. It provides a method for constructing band-limited functions to overcome the effects of intersymbol interference.
+When consecutive symbols are transmitted over a channel by a linear modulation (such as ASK, QAM, etc.), the impulse response (or equivalently the frequency response) of the channel causes a transmitted symbol to be spread in the time domain. This causes intersymbol interference because the previously transmitted symbols affect the currently received symbol, thus reducing tolerance for noise. The Nyquist theorem relates this time-domain condition to an equivalent frequency-domain condition.
+The Nyquist criterion is closely related to the Nyquist-Shannon sampling theorem, with only a differing point of view.
+
+
+If we denote the channel impulse response as 
+
+
+
+h
+(
+t
+)
+
+
+{\displaystyle h(t)}
+
+, then the condition for an ISI-free response can be expressed as:
+for all integers 
+
+
+
+n
+
+
+{\displaystyle n}
+
+, where 
+
+
+
+
+T
+
+s
+
+
+
+
+{\displaystyle T_{s}}
+
+ is the symbol period. The Nyquist theorem says that this is equivalent to:
+where 
+
+
+
+H
+(
+f
+)
+
+
+{\displaystyle H(f)}
+
+ is the Fourier transform of 
+
+
+
+h
+(
+t
+)
+
+
+{\displaystyle h(t)}
+
+. This is the Nyquist ISI criterion.
+This criterion can be intuitively understood in the following way: frequency-shifted replicas of H(f) must add up to a constant value.
+In practice this criterion is applied to baseband filtering by regarding the symbol sequence as weighted impulses (Dirac delta function). When the baseband filters in the communication system satisfy the Nyquist criterion, symbols can be transmitted over a channel with flat response within a limited frequency band, without ISI. Examples of such baseband filters are the raised-cosine filter, or the sinc filter as the ideal case.
+To derive the criterion, we first express the received signal in terms of the transmitted symbol and the channel response. Let the function h(t) be the channel impulse response, x[n] the symbols to be sent, with a symbol period of Ts; the received signal y(t) will be in the form (where noise has been ignored for simplicity):
+Sampling this signal at intervals of Ts, we can express y(t) as a discrete-time equation:
+If we write the h[0] term of the sum separately, we can express this as:
+and from this we can conclude that if a response h[n] satisfies
+only one transmitted symbol has an effect on the received y[k] at sampling instants, thus removing any ISI. This is the time-domain condition for an ISI-free channel. Now we find a frequency-domain equivalent for it. We start by expressing this condition in continuous time:
+for all integer 
+
+
+
+n
+
+
+{\displaystyle n}
+
+. We multiply such a h(t) by a sum of Dirac delta function (impulses) 
+
+
+
+δ
+(
+t
+)
+
+
+{\displaystyle \delta (t)}
+
+ separated by intervals Ts This is equivalent of sampling the response as above but using a continuous time expression. The right side of the condition can then be expressed as one impulse in the origin:
+Fourier transforming both members of this relationship we obtain:
+and
+This is the Nyquist ISI criterion and, if a channel response satisfies it, then there is no ISI between the different samples.

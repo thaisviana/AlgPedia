@@ -1,0 +1,8 @@
+{
+    "about": "In numerical analysis, an iterative method is called locally convergent if the successive approximations produced by the method are guaranteed to converge to a solution when the initial approximation is already close enough to the solution. Iterative methods for nonlinear equations and their systems, such as Newton's method are usually only locally convergent.", 
+    "name": "Local Convergence", 
+    "classification": "Numerical Analysis", 
+    "full_text": "In numerical analysis, an iterative method is called locally convergent if the successive approximations produced by the method are guaranteed to converge to a solution when the initial approximation is already close enough to the solution. Iterative methods for nonlinear equations and their systems, such as Newton's method are usually only locally convergent.\nAn iterative method that converges for an arbitrary initial approximation is called globally convergent. Iterative methods for systems of linear equations are usually globally convergence.\n", 
+    "dbpedia_url": "http://dbpedia.org/resource/Local_convergence", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Local_convergence\n"
+}

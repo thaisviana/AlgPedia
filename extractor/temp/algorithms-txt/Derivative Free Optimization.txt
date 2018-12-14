@@ -1,0 +1,5 @@
+ABOUT
+Derivative free optimization (or derivative-free optimization) is a subject of mathematical optimization. It may refer to problems for which derivative information is unavailable, unreliable or impractical to obtain (derivative-free optimization problems), or methods that do not use derivatives (derivative-free optimization methods).[1]
+FULL TEXT
+Derivative free optimization (or derivative-free optimization) is a subject of mathematical optimization. It may refer to problems for which derivative information is unavailable, unreliable or impractical to obtain (derivative-free optimization problems), or methods that do not use derivatives (derivative-free optimization methods).[1]
+

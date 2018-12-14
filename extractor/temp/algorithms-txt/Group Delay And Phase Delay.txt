@@ -1,0 +1,461 @@
+ABOUT
+In signal processing, group delay is the time delay of the amplitude envelopes of the various sinusoidal components of a signal through a device under test, and is a function of frequency for each component. Phase delay, in contrast, is the time delay of the phase as opposed to the time delay of the amplitude envelope.
+FULL TEXT
+In signal processing, group delay is the time delay of the amplitude envelopes of the various sinusoidal components of a signal through a device under test, and is a function of frequency for each component. Phase delay, in contrast, is the time delay of the phase as opposed to the time delay of the amplitude envelope.
+All frequency components of a signal are delayed when passed through a device such as an amplifier, a loudspeaker, or propagating through space or a medium, such as air. This signal delay will be different for the various frequencies unless the device has the property of being linear phase. (Linear phase and minimum phase are often confused. They are quite different.) The delay variation means that signals consisting of multiple frequency components will suffer distortion because these components are not delayed by the same amount of time at the output of the device. This changes the shape of the signal in addition to any constant delay or scale change. A sufficiently large delay variation can cause problems such as poor fidelity in audio or intersymbol interference (ISI) in the demodulation of digital information from an analog carrier signal. High speed modems use adaptive equalizers to compensate for non-constant group delay.
+
+
+Group delay is a useful measure of time distortion, and is calculated by differentiating, with respect to frequency, the phase response of the device under test (DUT): the group delay is a measure of the slope of the phase response at any given frequency. Variations in group delay cause signal distortion, just as deviations from linear phase cause distortion.
+In linear time-invariant (LTI) system theory, control theory, and in digital or analog signal processing, the relationship between the input signal, 
+
+
+
+
+x
+(
+t
+)
+
+
+
+{\displaystyle \displaystyle x(t)}
+
+, to output signal, 
+
+
+
+
+y
+(
+t
+)
+
+
+
+{\displaystyle \displaystyle y(t)}
+
+, of an LTI system is governed by a convolution operation:
+Or, in the frequency domain,
+where
+and
+Here 
+
+
+
+
+h
+(
+t
+)
+
+
+
+{\displaystyle \displaystyle h(t)}
+
+ is the time-domain impulse response of the LTI system and 
+
+
+
+
+X
+(
+s
+)
+
+
+
+{\displaystyle \displaystyle X(s)}
+
+, 
+
+
+
+
+Y
+(
+s
+)
+
+
+
+{\displaystyle \displaystyle Y(s)}
+
+, 
+
+
+
+
+H
+(
+s
+)
+
+
+
+{\displaystyle \displaystyle H(s)}
+
+, are the Laplace transforms of the input 
+
+
+
+
+x
+(
+t
+)
+
+
+
+{\displaystyle \displaystyle x(t)}
+
+, output 
+
+
+
+
+y
+(
+t
+)
+
+
+
+{\displaystyle \displaystyle y(t)}
+
+, and impulse response 
+
+
+
+
+h
+(
+t
+)
+
+
+
+{\displaystyle \displaystyle h(t)}
+
+, respectively. 
+
+
+
+
+H
+(
+s
+)
+
+
+
+{\displaystyle \displaystyle H(s)}
+
+ is called the transfer function of the LTI system and, like the impulse response 
+
+
+
+
+h
+(
+t
+)
+
+
+
+{\displaystyle \displaystyle h(t)}
+
+, fully defines the input-output characteristics of the LTI system.
+Suppose that such a system is driven by a quasi-sinusoidal signal, that is, a sinusoid whose amplitude envelope 
+
+
+
+
+a
+(
+t
+)
+
+
+
+{\displaystyle \displaystyle a(t)}
+
+ is slowly-changing relative to the frequency 
+
+
+
+
+ω
+
+
+
+{\displaystyle \displaystyle \omega }
+
+ of the sinusoid. Mathematically, this means that the driving signal has the form
+subject to the assumption
+Then the output of such an LTI system is very well approximated as
+Here 
+
+
+
+
+
+τ
+
+g
+
+
+
+
+
+{\displaystyle \displaystyle \tau _{g}}
+
+ and 
+
+
+
+
+
+τ
+
+ϕ
+
+
+
+
+
+{\displaystyle \displaystyle \tau _{\phi }}
+
+, the group delay and phase delay respectively, are given by the expressions below (and potentially are functions of the angular frequency 
+
+
+
+
+ω
+
+
+
+{\displaystyle \displaystyle \omega }
+
+).
+In a linear phase system (with non-inverting gain), both 
+
+
+
+
+
+τ
+
+g
+
+
+
+
+
+{\displaystyle \displaystyle \tau _{g}}
+
+ and 
+
+
+
+
+
+τ
+
+ϕ
+
+
+
+
+
+{\displaystyle \displaystyle \tau _{\phi }}
+
+ are constant (i.e. independent of 
+
+
+
+
+ω
+
+
+
+{\displaystyle \displaystyle \omega }
+
+) and equal, and their common value equals the overall delay of the system; and the unwrapped phase shift of the system (namely 
+
+
+
+
+−
+ω
+
+τ
+
+ϕ
+
+
+
+
+
+{\displaystyle \displaystyle -\omega \tau _{\phi }}
+
+) is negative, with magnitude increasing linearly with frequency 
+
+
+
+
+ω
+
+
+
+{\displaystyle \displaystyle \omega }
+
+.
+More generally, it can be shown that for an LTI system with transfer function 
+
+
+
+
+H
+(
+s
+)
+
+
+
+{\displaystyle \displaystyle H(s)}
+
+ driven by a complex sinusoid of unit amplitude,
+the output is
+where the phase shift 
+
+
+
+
+ϕ
+
+
+
+{\displaystyle \displaystyle \phi }
+
+ is
+Additionally, it can be shown that the group delay, 
+
+
+
+
+
+τ
+
+g
+
+
+
+
+
+{\displaystyle \displaystyle \tau _{g}}
+
+, and phase delay, 
+
+
+
+
+
+τ
+
+ϕ
+
+
+
+
+
+{\displaystyle \displaystyle \tau _{\phi }}
+
+, are frequency-dependent, and they can be computed from the phase shift 
+
+
+
+
+ϕ
+
+
+
+{\displaystyle \displaystyle \phi }
+
+ by
+In physics, and in particular in optics, the term group delay has the following meanings:
+It is often desirable for the group delay to be constant across all frequencies; otherwise there is temporal smearing of the signal. Because group delay is 
+
+
+
+
+τ
+
+g
+
+
+(
+ω
+)
+=
+−
+
+
+
+d
+ϕ
+
+
+d
+ω
+
+
+
+
+
+{\displaystyle \tau _{g}(\omega )=-{\frac {d\phi }{d\omega }}}
+
+, as defined in (1), it therefore follows that a constant group delay can be achieved if the transfer function of the device or medium has a linear phase response (i.e., 
+
+
+
+ϕ
+(
+ω
+)
+=
+ϕ
+(
+0
+)
+−
+
+τ
+
+g
+
+
+ω
+ 
+
+
+{\displaystyle \phi (\omega )=\phi (0)-\tau _{g}\omega \ }
+
+ where the group delay 
+
+
+
+
+τ
+
+g
+
+
+ 
+
+
+{\displaystyle \tau _{g}\ }
+
+ is a constant). The degree of nonlinearity of the phase indicates the deviation of the group delay from a constant.
+Group delay has some importance in the audio field and especially in the sound reproduction field. Many components of an audio reproduction chain, notably loudspeakers and multiway loudspeaker crossover networks, introduce group delay in the audio signal. It is therefore important to know the threshold of audibility of group delay with respect to frequency, especially if the audio chain is supposed to provide high fidelity reproduction. The best thresholds of audibility table has been provided by Blauert & Laws (1978).
+Flanagan, Moore and Stone conclude that at 1, 2 and 4 kHz, a group delay of about 1.6 ms is audible with headphones in a non-reverberant condition.[1]
+ This article incorporates public domain material from the General Services Administration document "Federal Standard 1037C".

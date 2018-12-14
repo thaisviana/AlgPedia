@@ -1,0 +1,67 @@
+ABOUT
+In linear algebra, the coherence[1] or mutual coherence[2] of a matrix A is defined as the maximum absolute value of the cross-correlations between the columns of A.
+FULL TEXT
+In linear algebra, the coherence[1] or mutual coherence[2] of a matrix A is defined as the maximum absolute value of the cross-correlations between the columns of A.
+Formally, let 
+
+
+
+
+a
+
+1
+
+
+,
+…
+,
+
+a
+
+m
+
+
+∈
+
+
+
+C
+
+
+
+d
+
+
+
+
+{\displaystyle a_{1},\ldots ,a_{m}\in {\mathbb {C} }^{d}}
+
+ be the columns of the matrix A, which are assumed to be normalized such that 
+
+
+
+
+a
+
+i
+
+
+H
+
+
+
+a
+
+i
+
+
+=
+1.
+
+
+{\displaystyle a_{i}^{H}a_{i}=1.}
+
+ The mutual coherence of A is then defined as[1][2]
+A lower bound is [3]
+A deterministic matrix with the mutual coherence almost meeting the lower bound can be constructed by Weil's theorem.[4]
+The concept was introduced in a slightly less general framework by David Donoho and Xiaoming Huo,[5] and has since been used extensively in the field of sparse representations of signals. In particular, it is used as a measure of the ability of suboptimal algorithms such as matching pursuit and basis pursuit to correctly identify the true representation of a sparse signal.[1][2][6]

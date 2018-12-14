@@ -1,0 +1,9 @@
+ABOUT
+In mathematics a partial differential algebraic equation (PDAE) set is an incomplete system of partial differential equations that is closed with a set of algebraic equations.
+FULL TEXT
+In mathematics a partial differential algebraic equation (PDAE) set is an incomplete system of partial differential equations that is closed with a set of algebraic equations.
+A general PDAE is defined as:
+where:
+The relationship between a PDAE and a partial differential equation (PDE) is analogous to the relationship between an ordinary differential equation (ODE) and a differential algebraic equation (DAE).
+PDAEs of this general form are challenging to solve. Simplified forms are studied in more detail in the literature.[1][2][3] Even as recently as 2000, the term "PDAE" has been handled as unfamiliar by those in related fields.[4]
+Semi-discretization is a common method for solving PDAEs whose independent variables are those of time and space, and has been used for decades.[5][6] This method involves removing the spatial variables using a discretization method, such as the finite volume method, and incorporating the resulting linear equations as part of the algebraic relations. This reduces the system to a DAE, for which conventional solution methods can be employed.

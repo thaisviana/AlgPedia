@@ -1,0 +1,8 @@
+{
+    "about": "RASTA-filtering and Mean Subtraction was introduced to support Perceptual Linear Prediction (PLP) preprocessing. It uses bandpass filtering in the log spectral domain. Rasta filtering then removes slow channel variations. It has also been applied to cepstrum feature-based preprocessing with both log spectral and cepstral domain filtering.", 
+    "name": "Rasta Filtering", 
+    "classification": "Signal Processing", 
+    "full_text": "RASTA-filtering and Mean Subtraction was introduced to support Perceptual Linear Prediction (PLP) preprocessing. It uses bandpass filtering in the log spectral domain. Rasta filtering then removes slow channel variations. It has also been applied to cepstrum feature-based preprocessing with both log spectral and cepstral domain filtering.\nIn general a RASTA filter is defined by\n\n\n\n\nT\n(\nz\n)\n=\n(\nk\n\u2217\n\u2211\n(\nn\n\u2212\n(\nN\n\u2212\n1\n)\n\n/\n\n2\n)\n\u2217\n\nz\n\n\u2212\nn\n\n\n)\n\n/\n\n(\n1\n\u2212\n\u03c1\n\n/\n\nx\n)\n\n\n\n\n{\\displaystyle T(z)=(k*\\sum (n-(N-1)/2)*z^{-n})/(1-\\rho /x)\\,\\!}\n\n\nThe numerator is a regression filter with N being the order (must be odd) and the denominator is an integrator with time decay. The pole controls the lower limit of frequency and is normally around 0.9. RASTA-filtering can be changed to use mean subtraction, implementing a moving average filter. Filtering is normally performed in the cepstral domain. The mean becomes the long term cepstrum and is typically computed on the speech part for each separate utterance. A silence is necessary to detect each utterance.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Rasta_filtering", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Rasta_filtering\n"
+}

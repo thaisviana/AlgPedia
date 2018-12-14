@@ -1,0 +1,8 @@
+{
+    "about": "A canonical cover \n\n\n\n\nF\n\nc\n\n\n\n\n{\\displaystyle F_{c}}\n\n for F (a set of functional dependencies on a relation scheme) is a set of dependencies such that F logically implies all dependencies in \n\n\n\n\nF\n\nc\n\n\n\n\n{\\displaystyle F_{c}}\n\n, and \n\n\n\n\nF\n\nc\n\n\n\n\n{\\displaystyle F_{c}}\n\n logically implies all dependencies in F.", 
+    "name": "Canonical Cover", 
+    "classification": "Database Algorithms", 
+    "full_text": "A canonical cover \n\n\n\n\nF\n\nc\n\n\n\n\n{\\displaystyle F_{c}}\n\n for F (a set of functional dependencies on a relation scheme) is a set of dependencies such that F logically implies all dependencies in \n\n\n\n\nF\n\nc\n\n\n\n\n{\\displaystyle F_{c}}\n\n, and \n\n\n\n\nF\n\nc\n\n\n\n\n{\\displaystyle F_{c}}\n\n logically implies all dependencies in F.\nThe set \n\n\n\n\nF\n\nc\n\n\n\n\n{\\displaystyle F_{c}}\n\n has two important properties:", 
+    "dbpedia_url": "http://dbpedia.org/resource/Canonical_cover", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Canonical_cover\n"
+}

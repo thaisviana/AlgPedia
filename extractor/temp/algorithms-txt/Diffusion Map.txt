@@ -1,0 +1,711 @@
+ABOUT
+Diffusion maps is a dimensionality reduction or feature extraction algorithm introduced by R. R. Coifman and S. Lafon.[1][2][3][4] It computes a family of embeddings of a data set into Euclidean space (often low-dimensional) whose coordinates can be computed from the eigenvectors and eigenvalues of a diffusion operator on the data. The Euclidean distance between points in the embedded space is equal to the "diffusion distance" between probability distributions centered at those points. Different from linear dimensionality reduction methods such as principal component analysis (PCA) and multi-dimensional scaling (MDS), diffusion maps is part of the family of nonlinear dimensionality reduction methods which focus on discovering the underlying manifold that the data has been sampled from. By integrating local similarities at different scales, diffusion maps gives a global description of the data-set. Compared with other methods, the diffusion maps algorithm is robust to noise perturbation and is computationally inexpensive.
+FULL TEXT
+Diffusion maps is a dimensionality reduction or feature extraction algorithm introduced by R. R. Coifman and S. Lafon.[1][2][3][4] It computes a family of embeddings of a data set into Euclidean space (often low-dimensional) whose coordinates can be computed from the eigenvectors and eigenvalues of a diffusion operator on the data. The Euclidean distance between points in the embedded space is equal to the "diffusion distance" between probability distributions centered at those points. Different from linear dimensionality reduction methods such as principal component analysis (PCA) and multi-dimensional scaling (MDS), diffusion maps is part of the family of nonlinear dimensionality reduction methods which focus on discovering the underlying manifold that the data has been sampled from. By integrating local similarities at different scales, diffusion maps gives a global description of the data-set. Compared with other methods, the diffusion maps algorithm is robust to noise perturbation and is computationally inexpensive.
+
+
+Following [3] and,[5] diffusion maps can be defined in four steps.
+Diffusion maps exploit the relationship between heat diffusion and random walk Markov chain. The basic observation is that if we take a random walk on the data, walking to a nearby data-point is more likely than walking to another that is far away. Let 
+
+
+
+(
+X
+,
+
+
+A
+
+
+,
+μ
+)
+
+
+{\displaystyle (X,{\mathcal {A}},\mu )}
+
+ be a measure space, where 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ is the data set and 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+ represents the distribution on the points on 
+
+
+
+X
+
+
+{\displaystyle X}
+
+.
+Based on this, the connectivity 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ between two data points, 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ and 
+
+
+
+y
+
+
+{\displaystyle y}
+
+, can be defined as the probability of walking from 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ to 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ in one step of the random walk. Usually, this probability is specified in terms of kernel function on the two points: 
+
+
+
+k
+:
+X
+×
+X
+→
+
+R
+
+
+
+{\displaystyle k:X\times X\rightarrow \mathbb {R} }
+
+. For example, the popular Gaussian kernel:
+More generally, the kernel function has the following properties
+(
+
+
+
+k
+
+
+{\displaystyle k}
+
+ is symmetric)
+(
+
+
+
+k
+
+
+{\displaystyle k}
+
+ is positivity preserving).
+The kernel constitutes the prior definition of the local geometry of data-set. Since a given kernel will capture a specific feature of the data set, its choice should be guided by the application that one has in mind. This is a major difference with methods such as principal component analysis, where correlations between all data points are taken into account at once.
+Given 
+
+
+
+(
+X
+,
+k
+)
+
+
+{\displaystyle (X,k)}
+
+, we can then construct a reversible Markov chain on 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ (a process known as the normalized graph Laplacian construction):
+and define:
+Although the new normalized kernel does not inherit the symmetric property, it does inherit the positivity-preserving property and gains a conservation property:
+From 
+
+
+
+p
+(
+x
+,
+y
+)
+
+
+{\displaystyle p(x,y)}
+
+ we can construct a transition matrix of a Markov chain (
+
+
+
+M
+
+
+{\displaystyle M}
+
+) on 
+
+
+
+X
+
+
+{\displaystyle X}
+
+. In other words, 
+
+
+
+p
+(
+x
+,
+y
+)
+
+
+{\displaystyle p(x,y)}
+
+ represents the one-step transition probability from 
+
+
+
+x
+
+
+{\displaystyle x}
+
+ to 
+
+
+
+y
+
+
+{\displaystyle y}
+
+, and 
+
+
+
+
+M
+
+t
+
+
+
+
+{\displaystyle M^{t}}
+
+ gives the t-step transition matrix.
+We define the diffusion matrix 
+
+
+
+L
+
+
+{\displaystyle L}
+
+ (it is also a version of graph Laplacian matrix)
+We then define the new kernel
+or equivalently,
+where D is a diagonal matrix and 
+
+
+
+
+D
+
+i
+,
+i
+
+
+=
+
+∑
+
+j
+
+
+
+L
+
+i
+,
+j
+
+
+.
+
+
+{\displaystyle D_{i,i}=\sum _{j}L_{i,j}.}
+
+
+We apply the graph Laplacian normalization to this new kernel:
+where 
+
+
+
+
+D
+
+(
+α
+)
+
+
+
+
+{\displaystyle D^{(\alpha )}}
+
+ is a diagonal matrix and 
+
+
+
+
+
+D
+
+
+i
+,
+i
+
+
+(
+α
+)
+
+
+=
+
+∑
+
+j
+
+
+
+L
+
+i
+,
+j
+
+
+(
+α
+)
+
+
+.
+
+
+{\displaystyle {D}_{i,i}^{(\alpha )}=\sum _{j}L_{i,j}^{(\alpha )}.}
+
+
+One of the main ideas of diffusion framework is that running the chain forward in time (taking larger and larger powers of 
+
+
+
+M
+
+
+{\displaystyle M}
+
+) reveals the geometric structure of 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ at larger and larger scales (the diffusion process). Specifically, the notion of a cluster in the data set is quantified as a region in which the probability of escaping this region is low (within a certain time t). Therefore, t not only serves as a time parameter, but also has the dual role of scale parameter.
+The eigendecomposition of the matrix 
+
+
+
+
+M
+
+t
+
+
+
+
+{\displaystyle M^{t}}
+
+ yields
+where 
+
+
+
+{
+
+λ
+
+l
+
+
+}
+
+
+{\displaystyle \{\lambda _{l}\}}
+
+ is the sequence of eigenvalues of 
+
+
+
+
+M
+
+t
+
+
+
+
+{\displaystyle M^{t}}
+
+ and 
+
+
+
+{
+
+ψ
+
+l
+
+
+}
+
+
+{\displaystyle \{\psi _{l}\}}
+
+ and 
+
+
+
+{
+
+ϕ
+
+l
+
+
+}
+
+
+{\displaystyle \{\phi _{l}\}}
+
+ are the biorthogonal right and left eigenvectors respectively. Due to the spectrum decay of the eigenvalues, only a few terms are necessary to achieve a given relative accuracy in this sum.
+The reason to introduce the normalization step involving 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ is to tune the influence of the data point density on the infinitesimal transition of the diffusion. In some applications, the sampling of the data is generally not related to the geometry of the manifold we are interested in describing. In this case, we can set 
+
+
+
+α
+=
+1
+
+
+{\displaystyle \alpha =1}
+
+ and the diffusion operator approximates the Laplace–Beltrami operator. We then recover the Riemannian geometry of the data set regardless of the distribution of the points. To describe the long-term behavior of the point distribution of a system of stochastic differential equations, we can use 
+
+
+
+α
+=
+0.5
+
+
+{\displaystyle \alpha =0.5}
+
+ and the resulting Markov chain approximates the Fokker-Planck diffusion. With 
+
+
+
+α
+=
+0
+
+
+{\displaystyle \alpha =0}
+
+, it reduces to the classical graph Laplacian normalization.
+The diffusion distance at time 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ between two points can be measured as the similarity of two points in the observation space with the connectivity between them. It is given by
+where 
+
+
+
+
+ϕ
+
+0
+
+
+(
+y
+)
+
+
+{\displaystyle \phi _{0}(y)}
+
+ is the stationary distribution of the Markov chain, given by the first left eigenvector of 
+
+
+
+M
+
+
+{\displaystyle M}
+
+. Explicitly:
+Intuitively, 
+
+
+
+
+D
+
+t
+
+
+(
+
+x
+
+i
+
+
+,
+
+x
+
+j
+
+
+)
+
+
+{\displaystyle D_{t}(x_{i},x_{j})}
+
+ is small if there is a large number of short paths connecting 
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+ and 
+
+
+
+
+x
+
+j
+
+
+
+
+{\displaystyle x_{j}}
+
+. There are several interesting features associated with the diffusion distance, based on our previous discussion that 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ also serves as a scale parameter:
+The diffusion distance can be calculated using the eigenvectors by
+So the eigenvectors can be used as a new set of coordinates for the data. The diffusion map is defined as:
+Because of the spectrum decay, it is sufficient to use only the first k eigenvectors and eigenvalues. Thus we get the diffusion map from the original data to a k-dimensional space which is embedded in the original space.
+In,[6] it is proved that
+so the Euclidean distance in the diffusion coordinates approximates the diffusion distance.
+The basic algorithm framework of diffusion map is as:
+Step 1. Given the similarity matrix L
+Step 2. Normalize the matrix according to parameter 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+: 
+
+
+
+
+L
+
+(
+α
+)
+
+
+=
+
+D
+
+−
+α
+
+
+L
+
+D
+
+−
+α
+
+
+
+
+{\displaystyle L^{(\alpha )}=D^{-\alpha }LD^{-\alpha }}
+
+
+Step 3. Form the normalized matrix 
+
+
+
+M
+=
+(
+
+
+D
+
+
+(
+α
+)
+
+
+
+)
+
+−
+1
+
+
+
+L
+
+(
+α
+)
+
+
+
+
+{\displaystyle M=({D}^{(\alpha )})^{-1}L^{(\alpha )}}
+
+
+Step 4. Compute the k largest eigenvalues of 
+
+
+
+
+M
+
+t
+
+
+
+
+{\displaystyle M^{t}}
+
+ and the corresponding eigenvectors
+Step 5. Use diffusion map to get the embedding 
+
+
+
+
+Ψ
+
+t
+
+
+
+
+{\displaystyle \Psi _{t}}
+
+
+In the paper,[6] they showed how to design a kernel that reproduces the diffusion induced by a Fokker-Planck equation. Also, they explained that when the data approximate a manifold, then one can recover the geometry of this manifold by computing an approximation of the Laplace-Beltrami operator. This computation is completely insensitive to the distribution of the points and therefore provides a separation of the statistics and the geometry of the data. Since Diffusion map gives a global description of the data-set, it can measure the distances between pair of sample points in the manifold the data is embedded. Based on diffusion map, there are many applications, such as face recognition,[7] spectral clustering, low dimensional representation of images, image segmentation,[8] 3D model segmentation,[9] speaker verification[10] and identification,[11] sampling on manifolds,anomaly detection,[12] image inpainting,[13] and so on.

@@ -1,0 +1,2311 @@
+ABOUT
+In statistics and mathematics, linear least squares is an approach fitting a mathematical or statistical model to data in cases where the idealized value provided by the model for any data point is expressed linearly in terms of the unknown parameters of the model. The resulting fitted model can be used to summarize the data, to predict unobserved values from the same system, and to understand the mechanisms that may underlie the system.
+FULL TEXT
+In statistics and mathematics, linear least squares is an approach fitting a mathematical or statistical model to data in cases where the idealized value provided by the model for any data point is expressed linearly in terms of the unknown parameters of the model. The resulting fitted model can be used to summarize the data, to predict unobserved values from the same system, and to understand the mechanisms that may underlie the system.
+Mathematically, linear least squares is the problem of approximately solving an overdetermined system of linear equations, where the best approximation is defined as that which minimizes the sum of squared differences between the data values and their corresponding modeled values. The approach is called linear least squares since the assumed function is linear in the parameters to be estimated. Linear least squares problems are convex and have a closed-form solution that is unique, provided that the number of data points used for fitting equals or exceeds the number of unknown parameters, except in special degenerate situations. In contrast, non-linear least squares problems generally must be solved by an iterative procedure, and the problems can be non-convex with multiple optima for the objective function. If prior distributions are available, then even an underdetermined system can be solved using the Bayesian MMSE estimator.
+In statistics, linear least squares problems correspond to a particularly important type of statistical model called linear regression which arises as a particular form of regression analysis. One basic form of such a model is an ordinary least squares model. The present article concentrates on the mathematical aspects of linear least squares problems, with discussion of the formulation and interpretation of statistical regression models and statistical inferences related to these being dealt with in the articles just mentioned. See outline of regression analysis for an outline of the topic.
+
+
+As a result of an experiment, four 
+
+
+
+(
+x
+,
+y
+)
+
+
+{\displaystyle (x,y)}
+
+ data points were obtained, 
+
+
+
+(
+1
+,
+6
+)
+,
+
+
+{\displaystyle (1,6),}
+
+ 
+
+
+
+(
+2
+,
+5
+)
+,
+
+
+{\displaystyle (2,5),}
+
+ 
+
+
+
+(
+3
+,
+7
+)
+,
+
+
+{\displaystyle (3,7),}
+
+ and 
+
+
+
+(
+4
+,
+10
+)
+
+
+{\displaystyle (4,10)}
+
+ (shown in red in the picture on the right). We hope to find a line 
+
+
+
+y
+=
+
+β
+
+1
+
+
++
+
+β
+
+2
+
+
+x
+
+
+{\displaystyle y=\beta _{1}+\beta _{2}x}
+
+ that best fits these four points. In other words, we would like to find the numbers 
+
+
+
+
+β
+
+1
+
+
+
+
+{\displaystyle \beta _{1}}
+
+ and 
+
+
+
+
+β
+
+2
+
+
+
+
+{\displaystyle \beta _{2}}
+
+ that approximately solve the overdetermined linear system
+of four equations in two unknowns in some "best" sense.
+The "error", at each point, between the curve fit and the data is the difference between the right- and left-hand sides of the equations above. The least squares approach to solving this problem is to try to make the sum of the squares of these errors as small as possible; that is, to find the minimum of the function
+The minimum is determined by calculating the partial derivatives of 
+
+
+
+S
+(
+
+β
+
+1
+
+
+,
+
+β
+
+2
+
+
+)
+
+
+{\displaystyle S(\beta _{1},\beta _{2})}
+
+ with respect to 
+
+
+
+
+β
+
+1
+
+
+
+
+{\displaystyle \beta _{1}}
+
+ and 
+
+
+
+
+β
+
+2
+
+
+
+
+{\displaystyle \beta _{2}}
+
+ and setting them to zero
+This results in a system of two equations in two unknowns, called the normal equations, which give, when solved
+and the equation 
+
+
+
+y
+=
+3.5
++
+1.4
+x
+
+
+{\displaystyle y=3.5+1.4x}
+
+ of the line of best fit. The residuals, that is, the discrepancies between the 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ values from the experiment and the 
+
+
+
+y
+
+
+{\displaystyle y}
+
+ values calculated using the line of best fit are then found to be 
+
+
+
+1.1
+,
+
+
+{\displaystyle 1.1,}
+
+ 
+
+
+
+−
+1.3
+,
+
+
+{\displaystyle -1.3,}
+
+ 
+
+
+
+−
+0.7
+,
+
+
+{\displaystyle -0.7,}
+
+ and 
+
+
+
+0.9
+
+
+{\displaystyle 0.9}
+
+ (see the picture on the right). The minimum value of the sum of squares of the residuals is 
+
+
+
+S
+(
+3.5
+,
+1.4
+)
+=
+
+1.1
+
+2
+
+
++
+(
+−
+1.3
+
+)
+
+2
+
+
++
+(
+−
+0.7
+
+)
+
+2
+
+
++
+
+0.9
+
+2
+
+
+=
+4.2.
+
+
+{\displaystyle S(3.5,1.4)=1.1^{2}+(-1.3)^{2}+(-0.7)^{2}+0.9^{2}=4.2.}
+
+
+More generally, one can have 
+
+
+
+n
+
+
+{\displaystyle n}
+
+ regressors 
+
+
+
+
+x
+
+j
+
+
+
+
+{\displaystyle x_{j}}
+
+, and a linear model
+Importantly, in "linear least squares", we are not restricted to using a line as the model as in the above example. For instance, we could have chosen the restricted quadratic model 
+
+
+
+y
+=
+
+β
+
+1
+
+
+
+x
+
+2
+
+
+
+
+{\displaystyle y=\beta _{1}x^{2}}
+
+. This model is still linear in the 
+
+
+
+
+β
+
+1
+
+
+
+
+{\displaystyle \beta _{1}}
+
+ parameter, so we can still perform the same analysis, constructing a system of equations from the data points:
+The partial derivatives with respect to the parameters (this time there is only one) are again computed and set to 0:
+
+
+
+
+
+
+
+∂
+S
+
+
+∂
+
+β
+
+1
+
+
+
+
+
+=
+0
+=
+708
+
+β
+
+1
+
+
+−
+498
+
+
+{\displaystyle {\frac {\partial S}{\partial \beta _{1}}}=0=708\beta _{1}-498}
+
+
+and solved
+
+
+
+
+
+β
+
+1
+
+
+=
+0.703
+
+
+{\displaystyle \beta _{1}=0.703}
+
+
+leading to the resulting best fit model 
+
+
+
+y
+=
+0.703
+
+x
+
+2
+
+
+
+
+{\displaystyle y=0.703x^{2}}
+
+
+Consider an overdetermined system
+of m linear equations in n unknown coefficients, β1,β2,…,βn, with m > n. (Note: for a linear model as above, not all of 
+
+
+
+X
+
+
+{\displaystyle X}
+
+ contains information on the data points. The first column is populated with ones, 
+
+
+
+
+X
+
+i
+1
+
+
+=
+1
+
+
+{\displaystyle X_{i1}=1}
+
+, only the other columns contain actual data, and n = number of regressors + 1). This can be written in matrix form as
+where
+Such a system usually has no solution, so the goal is instead to find the coefficients 
+
+
+
+
+β
+
+
+
+{\displaystyle {\boldsymbol {\beta }}}
+
+ which fit the equations "best," in the sense of solving the quadratic minimization problem
+where the objective function S is given by
+A justification for choosing this criterion is given in properties below. This minimization problem has a unique solution, provided that the n columns of the matrix 
+
+
+
+
+X
+
+
+
+{\displaystyle \mathbf {X} }
+
+ are linearly independent, given by solving the normal equations
+The matrix 
+
+
+
+
+
+X
+
+
+
+T
+
+
+
+
+X
+
+
+
+{\displaystyle \mathbf {X} ^{\rm {T}}\mathbf {X} }
+
+ is known as the Gramian matrix of 
+
+
+
+
+X
+
+
+
+{\displaystyle \mathbf {X} }
+
+, which possesses several nice properties such as being a positive semi-definite matrix, and the matrix 
+
+
+
+
+
+X
+
+
+
+T
+
+
+
+
+y
+
+
+
+{\displaystyle \mathbf {X} ^{\rm {T}}\mathbf {y} }
+
+ is known as the moment matrix of regressand by regressors.[1] Finally, 
+
+
+
+
+
+
+β
+^
+
+
+
+
+
+{\displaystyle {\hat {\boldsymbol {\beta }}}}
+
+ is the coefficient vector of the least-squares hyperplane, expressed as
+The following MATLAB code shows implementation of this approach on the data used in the first example above.
+Python code using the same variable naming as the MATLAB code above:
+Define the 
+
+
+
+i
+
+
+{\displaystyle i}
+
+th residual to be
+Then 
+
+
+
+S
+
+
+{\displaystyle S}
+
+ can be rewritten
+Given that S is convex, it is minimized when its gradient vector is zero (This follows by definition: if the gradient vector is not zero, there is a direction in which we can move to minimize it further - see maxima and minima.) The elements of the gradient vector are the partial derivatives of S with respect to the parameters:
+The derivatives are
+Substitution of the expressions for the residuals and the derivatives into the gradient equations gives
+Thus if 
+
+
+
+
+
+
+β
+^
+
+
+
+
+
+{\displaystyle {\hat {\beta }}}
+
+ minimizes S, we have
+Upon rearrangement, we obtain the normal equations:
+The normal equations are written in matrix notation as
+The solution of the normal equations yields the vector 
+
+
+
+
+
+
+β
+^
+
+
+
+
+
+{\displaystyle {\hat {\boldsymbol {\beta }}}}
+
+ of the optimal parameter values.
+The normal equations can be derived directly from a matrix representation of the problem as follows. The objective is to minimize
+Note that  :
+
+
+
+(
+
+
+β
+
+
+
+T
+
+
+
+
+
+X
+
+
+
+T
+
+
+
+
+y
+
+
+)
+
+
+T
+
+
+
+=
+
+
+y
+
+
+
+T
+
+
+
+
+X
+
+
+β
+
+
+
+{\displaystyle ({\boldsymbol {\beta }}^{\rm {T}}\mathbf {X} ^{\rm {T}}\mathbf {y} )^{\rm {T}}=\mathbf {y} ^{\rm {T}}\mathbf {X} {\boldsymbol {\beta }}}
+
+ has the dimension 1x1 (the number of columns of 
+
+
+
+
+y
+
+
+
+{\displaystyle \mathbf {y} }
+
+), so it is a scalar and equal to its own transpose, hence 
+
+
+
+
+
+β
+
+
+
+T
+
+
+
+
+
+X
+
+
+
+T
+
+
+
+
+y
+
+=
+
+
+y
+
+
+
+T
+
+
+
+
+X
+
+
+β
+
+
+
+{\displaystyle {\boldsymbol {\beta }}^{\rm {T}}\mathbf {X} ^{\rm {T}}\mathbf {y} =\mathbf {y} ^{\rm {T}}\mathbf {X} {\boldsymbol {\beta }}}
+
+ and the quantity to minimize becomes
+
+Differentiating this with respect to 
+
+
+
+
+β
+
+
+
+{\displaystyle {\boldsymbol {\beta }}}
+
+ and equating to zero to satisfy the first-order conditions gives
+which is equivalent to the above-given normal equations. A sufficient condition for satisfaction of the second-order conditions for a minimum is that 
+
+
+
+
+X
+
+
+
+{\displaystyle \mathbf {X} }
+
+ have full column rank, in which case 
+
+
+
+
+
+X
+
+
+
+T
+
+
+
+
+X
+
+
+
+{\displaystyle \mathbf {X} ^{\rm {T}}\mathbf {X} }
+
+ is positive definite.
+When 
+
+
+
+
+
+X
+
+
+
+T
+
+
+
+
+X
+
+
+
+{\displaystyle \mathbf {X} ^{\rm {T}}\mathbf {X} }
+
+ is positive definite, the formula for the minimizing value of 
+
+
+
+
+β
+
+
+
+{\displaystyle {\boldsymbol {\beta }}}
+
+ can be derived without the use of derivatives. The quantity
+can be written as
+where 
+
+
+
+C
+
+
+{\displaystyle C}
+
+ depends only on 
+
+
+
+
+y
+
+
+
+{\displaystyle \mathbf {y} }
+
+ and 
+
+
+
+
+X
+
+
+
+{\displaystyle \mathbf {X} }
+
+, and 
+
+
+
+⟨
+⋅
+,
+⋅
+⟩
+
+
+{\displaystyle \langle \cdot ,\cdot \rangle }
+
+ is the inner product defined by
+It follows that 
+
+
+
+S
+(
+
+β
+
+)
+
+
+{\displaystyle S({\boldsymbol {\beta }})}
+
+ is equal to
+and therefore minimized exactly when
+In general, the coefficients of the matrices 
+
+
+
+
+
+
+X
+
+
+
+,
+
+
+
+β
+
+
+
+
+
+{\displaystyle {\displaystyle \mathbf {X} },{\displaystyle {\boldsymbol {\beta }}}}
+
+ and 
+
+
+
+
+
+
+y
+
+
+
+
+
+{\displaystyle {\displaystyle \mathbf {y} }}
+
+ can be complex. By using a Hermitian transpose instead of a simple transpose, it is possible to find a vector 
+
+
+
+
+
+
+
+
+β
+^
+
+
+
+
+
+
+
+{\displaystyle {\displaystyle {\boldsymbol {\hat {\beta }}}}}
+
+ which minimize 
+
+
+
+
+
+S
+(
+
+β
+
+)
+
+
+
+
+{\displaystyle {\displaystyle S({\boldsymbol {\beta }})}}
+
+ , just as for the real matrices. In order to get the normal equations we follow a similar path as in previous derivations:
+where 
+
+
+
+
+
+†
+
+
+
+
+{\displaystyle {\displaystyle \dagger }}
+
+ stands for Hermitian transpose.
+We should now take derivatives of 
+
+
+
+
+
+S
+(
+
+β
+
+)
+
+
+
+
+{\displaystyle {\displaystyle S({\boldsymbol {\beta }})}}
+
+ with respect to each of the coefficient 
+
+
+
+
+
+
+β
+
+j
+
+
+
+
+
+
+{\displaystyle {\displaystyle \beta _{j}}}
+
+, but first we separate real and imaginary part to deal with the conjugate factors in above expression. For the 
+
+
+
+
+
+
+β
+
+j
+
+
+
+
+
+
+{\displaystyle {\displaystyle \beta _{j}}}
+
+ we have
+and the derivatives changes into
+After rewriting 
+
+
+
+
+
+S
+(
+
+β
+
+)
+
+
+
+
+{\displaystyle {\displaystyle S({\boldsymbol {\beta }})}}
+
+ in the summation form and writing 
+
+
+
+
+
+
+β
+
+j
+
+
+
+
+
+
+{\displaystyle {\displaystyle \beta _{j}}}
+
+ explicite, we can calculate both partial derivatives with result:
+which, after adding it together and comparing to zero ( minimalization condition for 
+
+
+
+
+
+
+
+
+β
+^
+
+
+
+
+
+
+
+{\displaystyle {\displaystyle {\boldsymbol {\hat {\beta }}}}}
+
+) yields
+In matrix form:
+A general approach to the least squares problem 
+
+
+
+
+
+m
+i
+n
+
+
+
+
+∥
+
+
+
+y
+
+−
+X
+
+β
+
+
+
+
+∥
+
+
+
+2
+
+
+
+
+{\displaystyle \operatorname {\,min} \,{\big \|}\mathbf {y} -X{\boldsymbol {\beta }}{\big \|}^{2}}
+
+ can be described as follows. Suppose that we can find an n by m matrix S such that XS is an orthogonal projection onto the image of X. Then a solution to our minimization problem is given by
+simply because
+is exactly a sought for orthogonal projection of 
+
+
+
+
+y
+
+
+
+{\displaystyle \mathbf {y} }
+
+ onto an image of X (see the picture below and note that as explained in the next section the image of X is just a subspace generated by column vectors of X). A few popular ways to find such a matrix S are described below.
+The algebraic solution of the normal equations can be written as
+where X + is the Moore–Penrose pseudoinverse of X. Although this equation is correct, and can work in many applications, it is not computationally efficient to invert the normal equations matrix (the Gramian matrix). An exception occurs in numerical smoothing and differentiation where an analytical expression is required.
+If the matrix XTX is well-conditioned and positive definite, implying that it has full rank, the normal equations can be solved directly by using the Cholesky decomposition RTR, where R is an upper triangular matrix, giving:
+The solution is obtained in two stages, a forward substitution step, solving for z:
+followed by a backward substitution, solving for 
+
+
+
+
+
+
+β
+^
+
+
+
+
+
+{\displaystyle {\hat {\boldsymbol {\beta }}}}
+
+
+Both substitutions are facilitated by the triangular nature of R.
+See example of linear regression for a worked-out numerical example with three parameters.
+Orthogonal decomposition methods of solving the least squares problem are slower than the normal equations method but are more numerically stable because they avoid forming the product XTX.
+The residuals are written in matrix notation as
+The matrix X is subjected to an orthogonal decomposition, e.g., the QR decomposition as follows.
+where Q is an m×m orthogonal matrix (QTQ=I) and R is an n×n upper triangular matrix with 
+
+
+
+
+r
+
+i
+i
+
+
+>
+0
+
+
+{\displaystyle r_{ii}>0}
+
+.
+The residual vector is left-multiplied by QT.
+Because Q is orthogonal, the sum of squares of the residuals, s, may be written as:
+Since v doesn't depend on β, the minimum value of s is attained when the upper block, u, is zero. Therefore the parameters are found by solving:
+These equations are easily solved as R is upper triangular.
+An alternative decomposition of X is the singular value decomposition (SVD)[2]
+where U is m by m orthogonal matrix, V is n by n orthogonal matrix and 
+
+
+
+Σ
+
+
+{\displaystyle \Sigma }
+
+ is an m by n matrix with all its elements outside of the main diagonal equal to 0. The pseudoinverse of 
+
+
+
+Σ
+
+
+{\displaystyle \Sigma }
+
+ is easily obtained by inverting its non-zero diagonal elements and transposing. Hence,
+where P is obtained from 
+
+
+
+Σ
+
+
+{\displaystyle \Sigma }
+
+ by replacing its non-zero diagonal elements with ones. Since 
+
+
+
+(
+
+X
+
+
+
+X
+
+
++
+
+
+
+)
+
+∗
+
+
+=
+
+X
+
+
+
+X
+
+
++
+
+
+
+
+{\displaystyle (\mathbf {X} \mathbf {X} ^{+})^{*}=\mathbf {X} \mathbf {X} ^{+}}
+
+ (the property of pseudoinverse), the matrix 
+
+
+
+U
+P
+
+U
+
+
+T
+
+
+
+
+
+{\displaystyle UPU^{\rm {T}}}
+
+ is an orthogonal projection onto the image (column-space) of X. In accordance with a general approach described in the introduction above (find XS which is an orthogonal projection),
+and thus,
+is a solution of a least squares problem. This method is the most computationally intensive, but is particularly useful if the normal equations matrix, XTX, is very ill-conditioned (i.e. if its condition number multiplied by the machine's relative round-off error is appreciably large). In that case, including the smallest singular values in the inversion merely adds numerical noise to the solution. This can be cured with the truncated SVD approach, giving a more stable and exact answer, by explicitly setting to zero all singular values below a certain threshold and so ignoring them, a process closely related to factor analysis.
+The gradient equations at the minimum can be written as
+A geometrical interpretation of these equations is that the vector of residuals, 
+
+
+
+
+y
+
+−
+X
+
+
+
+β
+^
+
+
+
+
+
+{\displaystyle \mathbf {y} -X{\hat {\boldsymbol {\beta }}}}
+
+ is orthogonal to the column space of X, since the dot product 
+
+
+
+(
+
+y
+
+−
+X
+
+
+
+β
+^
+
+
+
+)
+⋅
+X
+
+v
+
+
+
+{\displaystyle (\mathbf {y} -X{\hat {\boldsymbol {\beta }}})\cdot X\mathbf {v} }
+
+ is equal to zero for any conformal vector, v. This means that 
+
+
+
+
+y
+
+−
+X
+
+
+
+β
+^
+
+
+
+
+
+{\displaystyle \mathbf {y} -X{\boldsymbol {\hat {\beta }}}}
+
+ is the shortest of all possible vectors 
+
+
+
+
+y
+
+−
+X
+
+β
+
+
+
+{\displaystyle \mathbf {y} -X{\boldsymbol {\beta }}}
+
+, that is, the variance of the residuals is the minimum possible. This is illustrated at the right.
+Introducing 
+
+
+
+
+
+
+γ
+^
+
+
+
+
+
+{\displaystyle {\hat {\boldsymbol {\gamma }}}}
+
+ and a matrix K with the assumption that a matrix 
+
+
+
+[
+X
+ 
+K
+]
+
+
+{\displaystyle [X\ K]}
+
+ is non-singular and KT X = 0 (cf. Orthogonal projections), the residual vector should satisfy the following equation:
+The equation and solution of linear least squares are thus described as follows:
+If the experimental errors, 
+
+
+
+ϵ
+
+
+
+{\displaystyle \epsilon \,}
+
+, are uncorrelated, have a mean of zero and a constant variance, 
+
+
+
+σ
+
+
+{\displaystyle \sigma }
+
+, the Gauss-Markov theorem states that the least-squares estimator, 
+
+
+
+
+
+
+β
+^
+
+
+
+
+
+{\displaystyle {\hat {\boldsymbol {\beta }}}}
+
+, has the minimum variance of all estimators that are linear combinations of the observations. In this sense it is the best, or optimal, estimator of the parameters. Note particularly that this property is independent of the statistical distribution function of the errors. In other words, the distribution function of the errors need not be a normal distribution. However, for some probability distributions, there is no guarantee that the least-squares solution is even possible given the observations; still, in such cases it is the best estimator that is both linear and unbiased.
+For example, it is easy to show that the arithmetic mean of a set of measurements of a quantity is the least-squares estimator of the value of that quantity. If the conditions of the Gauss-Markov theorem apply, the arithmetic mean is optimal, whatever the distribution of errors of the measurements might be.
+However, in the case that the experimental errors do belong to a normal distribution, the least-squares estimator is also a maximum likelihood estimator.[3]
+These properties underpin the use of the method of least squares for all types of data fitting, even when the assumptions are not strictly valid.
+An assumption underlying the treatment given above is that the independent variable, x, is free of error. In practice, the errors on the measurements of the independent variable are usually much smaller than the errors on the dependent variable and can therefore be ignored. When this is not the case, total least squares or more generally errors-in-variables models, or rigorous least squares, should be used. This can be done by adjusting the weighting scheme to take into account errors on both the dependent and independent variables and then following the standard procedure.[4][5]
+In some cases the (weighted) normal equations matrix XTX is ill-conditioned. When fitting polynomials the normal equations matrix is a Vandermonde matrix. Vandermonde matrices become increasingly ill-conditioned as the order of the matrix increases.[citation needed] In these cases, the least squares estimate amplifies the measurement noise and may be grossly inaccurate.[citation needed] Various regularization techniques can be applied in such cases, the most common of which is called ridge regression. If further information about the parameters is known, for example, a range of possible values of 
+
+
+
+
+
+
+β
+^
+
+
+
+
+
+{\displaystyle \mathbf {\hat {\boldsymbol {\beta }}} }
+
+, then various techniques can be used to increase the stability of the solution. For example, see constrained least squares.
+Another drawback of the least squares estimator is the fact that the norm of the residuals, 
+
+
+
+∥
+
+y
+
+−
+X
+
+
+
+β
+^
+
+
+
+∥
+
+
+{\displaystyle \|\mathbf {y} -X{\hat {\boldsymbol {\beta }}}\|}
+
+ is minimized, whereas in some cases one is truly interested in obtaining small error in the parameter 
+
+
+
+
+
+
+β
+^
+
+
+
+
+
+{\displaystyle \mathbf {\hat {\boldsymbol {\beta }}} }
+
+, e.g., a small value of 
+
+
+
+∥
+
+β
+
+−
+
+
+
+β
+^
+
+
+
+∥
+
+
+{\displaystyle \|{\boldsymbol {\beta }}-{\hat {\boldsymbol {\beta }}}\|}
+
+.[citation needed] However, since the true parameter 
+
+
+
+
+β
+
+
+
+{\displaystyle {\boldsymbol {\beta }}}
+
+ is necessarily unknown, this quantity cannot be directly minimized. If a prior probability on 
+
+
+
+
+
+
+β
+^
+
+
+
+
+
+{\displaystyle {\hat {\boldsymbol {\beta }}}}
+
+ is known, then a Bayes estimator can be used to minimize the mean squared error, 
+
+
+
+E
+
+{
+∥
+
+β
+
+−
+
+
+
+β
+^
+
+
+
+
+∥
+
+2
+
+
+}
+
+
+
+{\displaystyle E\left\{\|{\boldsymbol {\beta }}-{\hat {\boldsymbol {\beta }}}\|^{2}\right\}}
+
+. The least squares method is often applied when no prior is known. Surprisingly, when several parameters are being estimated jointly, better estimators can be constructed, an effect known as Stein's phenomenon. For example, if the measurement error is Gaussian, several estimators are known which dominate, or outperform, the least squares technique; the best known of these is the James–Stein estimator. This is an example of more general shrinkage estimators that have been applied to regression problems.
+In some cases the observations may be weighted—for example, they may not be equally reliable. In this case, one can minimize the weighted sum of squares:
+where wi > 0 is the weight of the ith observation, and W is the diagonal matrix of such weights.
+The weights should, ideally, be equal to the reciprocal of the variance of the measurement.[6] [7] The normal equations are then:
+This method is used in iteratively reweighted least squares.
+The estimated parameter values are linear combinations of the observed values
+Therefore an expression for the residuals (i.e., the estimated errors in the parameters) can be obtained by error propagation from the errors in the observations. Let the variance-covariance matrix for the observations be denoted by M and that of the parameters by Mβ. Then,
+When W = M −1 this simplifies to
+When unit weights are used (W = I, the identity matrix) it is implied that the experimental errors are uncorrelated and all equal: M = σ2I, where σ2 is the a priori variance of an observation. In any case, σ2 is approximated by the reduced chi-squared 
+
+
+
+
+χ
+
+ν
+
+
+2
+
+
+
+
+{\displaystyle \chi _{\nu }^{2}}
+
+:
+where S is the minimum value of the (weighted) objective function:
+The denominator, 
+
+
+
+ν
+=
+m
+−
+n
+
+
+{\displaystyle \nu =m-n}
+
+ is the number of degrees of freedom; see effective degrees of freedom for generalizations for the case of correlated observations.
+In all cases, the variance of the parameter 
+
+
+
+
+β
+
+i
+
+
+
+
+{\displaystyle \beta _{i}}
+
+ is given by 
+
+
+
+
+M
+
+i
+i
+
+
+β
+
+
+
+
+{\displaystyle M_{ii}^{\beta }}
+
+ and the covariance between parameters 
+
+
+
+
+β
+
+i
+
+
+
+
+{\displaystyle \beta _{i}}
+
+ and 
+
+
+
+
+β
+
+j
+
+
+
+
+{\displaystyle \beta _{j}}
+
+ is given by 
+
+
+
+
+M
+
+i
+j
+
+
+β
+
+
+
+
+{\displaystyle M_{ij}^{\beta }}
+
+. Standard deviation is the square root of variance, and the correlation coefficient is given by 
+
+
+
+
+ρ
+
+i
+j
+
+
+=
+
+M
+
+i
+j
+
+
+β
+
+
+
+/
+
+(
+
+σ
+
+i
+
+
+
+σ
+
+j
+
+
+)
+
+
+{\displaystyle \rho _{ij}=M_{ij}^{\beta }/(\sigma _{i}\sigma _{j})}
+
+. These error estimates reflect only random errors in the measurements. The true uncertainty in the parameters is larger due to the presence of systematic errors which, by definition, cannot be quantified. Note that even though the observations may be un-correlated, the parameters are typically correlated.
+It is often assumed, for want of any concrete evidence but often appealing to the central limit theorem -- see Normal distribution#Occurrence -- that the error on each observation belongs to a normal distribution with a mean of zero and standard deviation 
+
+
+
+σ
+
+
+{\displaystyle \sigma }
+
+. Under that assumption the following probabilities can be derived for a single scalar parameter estimate in terms of its estimated standard error 
+
+
+
+s
+
+e
+
+β
+
+
+
+
+{\displaystyle se_{\beta }}
+
+ (given here):
+The assumption is not unreasonable when m >> n. If the experimental errors are normally distributed the parameters will belong to a Student's t-distribution with m − n degrees of freedom. When m >> n Student's t-distribution approximates a normal distribution. Note, however, that these confidence limits cannot take systematic error into account. Also, parameter errors should be quoted to one significant figure only, as they are subject to sampling error.[8]
+When the number of observations is relatively small, Chebychev's inequality can be used for an upper bound on probabilities, regardless of any assumptions about the distribution of experimental errors: the maximum probabilities that a parameter will be more than 1, 2 or 3 standard deviations away from its expectation value are 100%, 25% and 11% respectively.
+The residuals are related to the observations by
+where H is the idempotent matrix known as the hat matrix:
+and I is the identity matrix. The variance-covariance matrix of the residuals, Mr is given by
+Thus the residuals are correlated, even if the observations are not.
+When 
+
+
+
+W
+=
+
+M
+
+−
+1
+
+
+
+
+{\displaystyle W=M^{-1}}
+
+,
+The sum of residual values is equal to zero whenever the model function contains a constant term. Left-multiply the expression for the residuals by XT:
+Say, for example, that the first term of the model is a constant, so that 
+
+
+
+
+X
+
+i
+1
+
+
+=
+1
+
+
+{\displaystyle X_{i1}=1}
+
+ for all i. In that case it follows that
+Thus, in the motivational example, above, the fact that the sum of residual values is equal to zero it is not accidental but is a consequence of the presence of the constant term, α, in the model.
+If experimental error follows a normal distribution, then, because of the linear relationship between residuals and observations, so should residuals,[9] but since the observations are only a sample of the population of all possible observations, the residuals should belong to a Student's t-distribution. Studentized residuals are useful in making a statistical test for an outlier when a particular residual appears to be excessively large.
+The optimal value of the objective function, found by substituting in the optimal expression for the coefficient vector, can be written as (assuming unweighted observations)
+the latter equality holding since (I – H) is symmetric and idempotent. It can be shown from this[10] that under an appropriate assignment of weights the expected value of S is m-n. If instead unit weights are assumed, the expected value of S is 
+
+
+
+(
+m
+−
+n
+)
+
+σ
+
+2
+
+
+
+
+{\displaystyle (m-n)\sigma ^{2}}
+
+, where 
+
+
+
+
+σ
+
+2
+
+
+
+
+{\displaystyle \sigma ^{2}}
+
+ is the variance of each observation.
+If it is assumed that the residuals belong to a normal distribution, the objective function, being a sum of weighted squared residuals, will belong to a chi-squared (
+
+
+
+
+χ
+
+2
+
+
+
+
+{\displaystyle \chi ^{2}}
+
+) distribution with m-n degrees of freedom. Some illustrative percentile values of 
+
+
+
+
+χ
+
+2
+
+
+
+
+{\displaystyle \chi ^{2}}
+
+ are given in the following table.[11]
+These values can be used for a statistical criterion as to the goodness-of-fit. When unit weights are used, the numbers should be divided by the variance of an observation.
+Often it is of interest to solve a linear least squares problem with an additional constraint on the solution. With constrained linear least squares, the original equation
+must be fit as closely as possible (in the least squares sense) while ensuring that some other property of 
+
+
+
+
+β
+
+
+
+{\displaystyle {\boldsymbol {\beta }}}
+
+ is maintained. There are often special purpose algorithms for solving such problems efficiently. Some examples of constraints are given below:
+When the constraint only applies to some of the variables, the mixed problem may be solved using separable least squares by letting 
+
+
+
+
+X
+
+=
+[
+
+
+X
+
+1
+
+
+
+
+
+X
+
+2
+
+
+
+]
+
+
+{\displaystyle \mathbf {X} =[\mathbf {X_{1}} \mathbf {X_{2}} ]}
+
+ and 
+
+
+
+
+
+β
+
+
+
+T
+
+
+
+=
+[
+
+
+
+β
+
+1
+
+
+
+
+
+T
+
+
+
+
+
+
+β
+
+2
+
+
+
+
+
+T
+
+
+
+]
+
+
+{\displaystyle \mathbf {\beta } ^{\rm {T}}=[\mathbf {\beta _{1}} ^{\rm {T}}\mathbf {\beta _{2}} ^{\rm {T}}]}
+
+ represent the unconstrained (1) and constrained (2) components. Then substituting the least squares solution for 
+
+
+
+
+
+β
+
+1
+
+
+
+
+
+{\displaystyle \mathbf {\beta _{1}} }
+
+, i.e.
+back into the original expression gives (following some rearrangement) an equation that can be solved as a purely constrained problem in 
+
+
+
+
+
+β
+
+2
+
+
+
+
+
+{\displaystyle \mathbf {\beta _{2}} }
+
+.
+where 
+
+
+
+
+P
+
+:=
+
+I
+
+−
+
+
+X
+
+1
+
+
+
+
+
+
+X
+
+1
+
+
+
+
++
+
+
+
+
+{\displaystyle \mathbf {P} :=\mathbf {I} -\mathbf {X_{1}} \mathbf {X_{1}} ^{+}}
+
+ is a projection matrix. Following the constrained estimation of 
+
+
+
+
+
+
+
+β
+
+2
+
+
+^
+
+
+
+
+
+{\displaystyle {\hat {\boldsymbol {\beta _{2}}}}}
+
+ the vector 
+
+
+
+
+
+
+
+β
+
+1
+
+
+^
+
+
+
+
+
+{\displaystyle {\hat {\boldsymbol {\beta _{1}}}}}
+
+ is obtained from the expression above.
+The primary application of linear least squares is in data fitting. Given a set of m data points 
+
+
+
+
+y
+
+1
+
+
+,
+
+y
+
+2
+
+
+,
+…
+,
+
+y
+
+m
+
+
+,
+
+
+{\displaystyle y_{1},y_{2},\dots ,y_{m},}
+
+ consisting of experimentally measured values taken at m values 
+
+
+
+
+x
+
+1
+
+
+,
+
+x
+
+2
+
+
+,
+…
+,
+
+x
+
+m
+
+
+
+
+{\displaystyle x_{1},x_{2},\dots ,x_{m}}
+
+ of an independent variable (
+
+
+
+
+x
+
+i
+
+
+
+
+{\displaystyle x_{i}}
+
+ may be scalar or vector quantities), and given a model function 
+
+
+
+y
+=
+f
+(
+x
+,
+
+β
+
+)
+,
+
+
+{\displaystyle y=f(x,{\boldsymbol {\beta }}),}
+
+ with 
+
+
+
+
+β
+
+=
+(
+
+β
+
+1
+
+
+,
+
+β
+
+2
+
+
+,
+…
+,
+
+β
+
+n
+
+
+)
+,
+
+
+{\displaystyle {\boldsymbol {\beta }}=(\beta _{1},\beta _{2},\dots ,\beta _{n}),}
+
+ it is desired to find the parameters 
+
+
+
+
+β
+
+j
+
+
+
+
+{\displaystyle \beta _{j}}
+
+ such that the model function "best" fits the data. In linear least squares, linearity is meant to be with respect to parameters 
+
+
+
+
+β
+
+j
+
+
+,
+
+
+{\displaystyle \beta _{j},}
+
+ so
+Here, the functions 
+
+
+
+
+ϕ
+
+j
+
+
+
+
+{\displaystyle \phi _{j}}
+
+ may be nonlinear with respect to the variable x.
+Ideally, the model function fits the data exactly, so
+for all 
+
+
+
+i
+=
+1
+,
+2
+,
+…
+,
+m
+.
+
+
+{\displaystyle i=1,2,\dots ,m.}
+
+ This is usually not possible in practice, as there are more data points than there are parameters to be determined. The approach chosen then is to find the minimal possible value of the sum of squares of the residuals
+so to minimize the function
+After substituting for 
+
+
+
+
+r
+
+i
+
+
+
+
+{\displaystyle r_{i}}
+
+ and then for 
+
+
+
+f
+
+
+{\displaystyle f}
+
+, this minimization problem becomes the quadratic minimization problem above with
+and the best fit can be found by solving the normal equations.
+The numerical methods for linear least squares are important because linear regression models are among the most important types of model, both as formal statistical models and for exploration of data-sets. The majority of statistical computer packages contain facilities for regression analysis that make use of linear least squares computations. Hence it is appropriate that considerable effort has been devoted to the task of ensuring that these computations are undertaken efficiently and with due regard to round-off error.
+Individual statistical analyses are seldom undertaken in isolation, but rather are part of a sequence of investigatory steps. Some of the topics involved in considering numerical methods for linear least squares relate to this point. Thus important topics can be
+Fitting of linear models by least squares often, but not always, arise in the context of statistical analysis. It can therefore be important that considerations of computation efficiency for such problems extend to all of the auxiliary quantities required for such analyses, and are not restricted to the formal solution of the linear least squares problem.
+Matrix calculations, like any other, are affected by rounding errors. An early summary of these effects, regarding the choice of computation methods for matrix inversion, was provided by Wilkinson.[14]

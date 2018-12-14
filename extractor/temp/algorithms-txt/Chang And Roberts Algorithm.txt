@@ -1,0 +1,12 @@
+ABOUT
+The Chang and Roberts algorithm[1] is a ring-based coordinator election algorithm, employed in distributed computing.
+FULL TEXT
+The Chang and Roberts algorithm[1] is a ring-based coordinator election algorithm, employed in distributed computing.
+
+
+The algorithm assumes that each process has a Unique Identification (UID) and that the processes can arrange themselves in a unidirectional ring with a communication channel going from each process to the clockwise neighbour. The two part algorithm can be described as follows:
+When a process starts acting as the leader, it begins the second stage of the algorithm.
+Assuming there are no failures this algorithm will finish. The algorithm works for any number of processes N, and does not require any process to know how many processes are in the ring.
+The algorithm respects safety: a process will receive an elected message with its own UID only if his UID is greater than others', and only when all processes agree on the same UID. The algorithm also respects liveness. "Participant" and "not participant" states are used so that when multiple processes start an election at roughly the same time, only a single winner will be announced.
+When there's a single process starting the election, the algorithm requires 3N-1 sequentially messages, in the worst case. Worst case is when the process starting the election is the immediate following to the one with greatest UID: it takes N-1 messages for the election message to reach it, then N messages for it to get back its own UID, then other N messages to send everyone in the ring the elected message.
+This algorithm is not very fault tolerant. Fault tolerance can be increased If every process knows the whole topology, by introducing ACK messages and skipping faulty nodes on sending messages.

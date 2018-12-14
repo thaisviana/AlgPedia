@@ -1,0 +1,4 @@
+ABOUT
+Error-driven learning is a sub-area of machine learning concerned with how an agent ought to take actions in an environment so as to minimize some error feedback. It is a type of reinforcement learning.
+FULL TEXT
+Error-driven learning is a sub-area of machine learning concerned with how an agent ought to take actions in an environment so as to minimize some error feedback. It is a type of reinforcement learning.

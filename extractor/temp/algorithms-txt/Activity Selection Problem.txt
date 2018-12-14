@@ -1,0 +1,505 @@
+ABOUT
+The activity selection problem is a combinatorial optimization problem concerning the selection of non-conflicting activities to perform within a given time frame, given a set of activities each marked by a start time (si) and finish time (fi). The problem is to select the maximum number of activities that can be performed by a single person or machine, assuming that a person can only work on a single activity at a time.
+FULL TEXT
+The activity selection problem is a combinatorial optimization problem concerning the selection of non-conflicting activities to perform within a given time frame, given a set of activities each marked by a start time (si) and finish time (fi). The problem is to select the maximum number of activities that can be performed by a single person or machine, assuming that a person can only work on a single activity at a time.
+A classic application of this problem is in scheduling a room for multiple competing events, each having its own time requirements (start and end time), and many more arise within the framework of operations research.
+
+
+Assume there exist n activities with each of them being represented by a start time si and finish time fi. Two activities i and j are said to be non-conflicting if si ≥ fj or sj ≥ fi. The activity selection problem consists in finding the maximal solution set (S) of non-conflicting activities, or more precisely there must exist no solution set S' such that |S'| > |S| in the case that multiple maximal solutions have equal sizes.
+The activity selection problem is notable in that using a greedy algorithm to find a solution will always result in an optimal solution. A pseudocode sketch of the iterative version of the algorithm and a proof of the optimality of its result are included below.
+Line 1: This algorithm is called Greedy-Iterative-Activity-Selector, because it is first of all a greedy algorithm, and then it is iterative. There's also a recursive version of this greedy algorithm.
+Note that these arrays are indexed starting from 1 up to the length of the corresponding array.
+Line 3: Sorts in increasing order of finish times the array of activities 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ by using the finish times stored in the array 
+
+
+
+f
+
+
+{\displaystyle f}
+
+. This operation can be done in 
+
+
+
+O
+(
+n
+⋅
+
+log
+
+2
+
+
+⁡
+n
+)
+
+
+{\displaystyle O(n\cdot \log _{2}n)}
+
+ time, using for example merge sort, heap sort, or quick sort algorithms.
+Line 5: Creates a set 
+
+
+
+S
+
+
+{\displaystyle S}
+
+ to store the selected activities, and initialises it with the first activity 
+
+
+
+A
+[
+1
+]
+
+
+{\displaystyle A[1]}
+
+. Note that, since the 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ has already been sorted according to the finish times in 
+
+
+
+f
+
+
+{\displaystyle f}
+
+, 
+
+
+
+A
+[
+1
+]
+
+
+{\displaystyle A[1]}
+
+ is the activity with the smallest finish time.
+Line 6: Creates a variable 
+
+
+
+k
+
+
+{\displaystyle k}
+
+ that keeps track of the index of the last selected activity.
+Line 10: Starts iterating from the second element of that array 
+
+
+
+A
+
+
+{\displaystyle A}
+
+ up to its last element.
+Line 11: If the start time 
+
+
+
+s
+[
+i
+]
+
+
+{\displaystyle s[i]}
+
+ of the 
+
+
+
+i
+t
+h
+
+
+{\displaystyle ith}
+
+ activity (
+
+
+
+A
+[
+i
+]
+
+
+{\displaystyle A[i]}
+
+) is greater or equal to the finish time 
+
+
+
+f
+[
+k
+]
+
+
+{\displaystyle f[k]}
+
+ of the last selected activity (
+
+
+
+A
+[
+k
+]
+
+
+{\displaystyle A[k]}
+
+), then 
+
+
+
+A
+[
+i
+]
+
+
+{\displaystyle A[i]}
+
+ is compatible to the selected activities in the set 
+
+
+
+S
+
+
+{\displaystyle S}
+
+, and thus it can be added to 
+
+
+
+S
+
+
+{\displaystyle S}
+
+; this is what is done in line 12.
+Line 13: The index of the last selected activity is updated to the just added activity 
+
+
+
+A
+[
+i
+]
+
+
+{\displaystyle A[i]}
+
+.
+Let 
+
+
+
+S
+=
+{
+1
+,
+2
+,
+…
+,
+n
+}
+
+
+{\displaystyle S=\{1,2,\ldots ,n\}}
+
+ be the set of activities ordered by finish time. Thus activity 1 has the earliest finish time.
+Suppose A is a subset of S and is an optimal solution, and let activities in A be ordered by finish time. Suppose that the first activity in A is k ≠ 1, that is, this optimal solution does not start with the "greedy choice." We want to show that there is another solution B that begins with the greedy choice, activity 1.
+Let 
+
+
+
+B
+=
+(
+A
+∖
+{
+k
+}
+)
+∪
+{
+1
+}
+
+
+{\displaystyle B=(A\setminus \{k\})\cup \{1\}}
+
+. Because 
+
+
+
+
+f
+
+1
+
+
+≤
+
+f
+
+k
+
+
+
+
+{\displaystyle f_{1}\leq f_{k}}
+
+, the activities in B are disjoint and since B has same number of activities as A, i.e., |A| = |B|, B is also optimal.
+Once the greedy choice is made, the problem reduces to finding an optimal solution for the subproblem. If A is an optimal solution to the original problem S, then 
+
+
+
+
+A
+
+′
+
+
+=
+A
+∖
+{
+1
+}
+
+
+{\displaystyle A^{\prime }=A\setminus \{1\}}
+
+ is an optimal solution to the activity-selection problem 
+
+
+
+
+S
+′
+
+=
+{
+i
+∈
+S
+:
+
+s
+
+i
+
+
+≥
+
+f
+
+1
+
+
+}
+
+
+{\displaystyle S'=\{i\in S:s_{i}\geq f_{1}\}}
+
+.
+Why? If we could find a solution B′ to S′ with more activities then A′, adding 1 to B′ would yield a solution B to S with more activities than A, contradicting the optimality.
+The generalized version of the activity selection problem involves selecting an optimal set of non-overlapping activities such that the total weight is maximized. Unlike the unweighted version, there is no greedy solution to the weighted activity selection problem. However, a dynamic programming solution can readily be formed using the following approach:[1]
+Consider an optimal solution containing activity 
+
+
+
+k
+
+
+{\displaystyle k}
+
+. We now have non-overlapping activities on the left and right of 
+
+
+
+k
+
+
+{\displaystyle k}
+
+. We can recursively find solutions for these two sets because of optimal sub-structure. As we don't know 
+
+
+
+k
+
+
+{\displaystyle k}
+
+, we can try each of the activities. This approach leads to an 
+
+
+
+O
+(
+
+n
+
+3
+
+
+)
+
+
+{\displaystyle O(n^{3})}
+
+ solution. This can be optimized further considering that for each set of activities in 
+
+
+
+(
+i
+,
+j
+)
+
+
+{\displaystyle (i,j)}
+
+, we can find the optimal solution if we had known the solution for 
+
+
+
+(
+i
+,
+t
+)
+
+
+{\displaystyle (i,t)}
+
+, where 
+
+
+
+t
+
+
+{\displaystyle t}
+
+ is the last non-overlapping interval with 
+
+
+
+j
+
+
+{\displaystyle j}
+
+ in 
+
+
+
+(
+i
+,
+j
+)
+
+
+{\displaystyle (i,j)}
+
+. This yields an 
+
+
+
+O
+(
+
+n
+
+2
+
+
+)
+
+
+{\displaystyle O(n^{2})}
+
+ solution. This can be further optimized considering the fact that we do not need to consider all ranges 
+
+
+
+(
+i
+,
+j
+)
+
+
+{\displaystyle (i,j)}
+
+ but instead just 
+
+
+
+(
+1
+,
+j
+)
+
+
+{\displaystyle (1,j)}
+
+. The following algorithm thus yields an 
+
+
+
+O
+(
+n
+log
+⁡
+n
+)
+
+
+{\displaystyle O(n\log n)}
+
+ solution:

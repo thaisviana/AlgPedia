@@ -1,0 +1,590 @@
+ABOUT
+In mathematics, a low-discrepancy sequence is a sequence with the property that for all values of N, its subsequence x1, ..., xN has a low discrepancy.
+FULL TEXT
+In mathematics, a low-discrepancy sequence is a sequence with the property that for all values of N, its subsequence x1, ..., xN has a low discrepancy.
+Roughly speaking, the discrepancy of a sequence is low if the proportion of points in the sequence falling into an arbitrary set B is close to proportional to the measure of B, as would happen on average (but not for particular samples) in the case of an equidistributed sequence. Specific definitions of discrepancy differ regarding the choice of B (hyperspheres, hypercubes, etc.) and how the discrepancy for every B is computed (usually normalized) and combined (usually by taking the worst value).
+Low-discrepancy sequences are also called quasi-random or sub-random sequences, due to their common use as a replacement of uniformly distributed random numbers. The "quasi" modifier is used to denote more clearly that the values of a low-discrepancy sequence are neither random nor pseudorandom, but such sequences share some properties of random variables and in certain applications such as the quasi-Monte Carlo method their lower discrepancy is an important advantage.
+
+
+Subrandom numbers have an advantage over pure random numbers in that they cover the domain of interest quickly and evenly. They have an advantage over purely deterministic methods in that deterministic methods only give high accuracy when the number of datapoints is pre-set whereas in using subrandom sequences the accuracy typically improves continually as more datapoints are added, with full reuse of the existing points. On the other hand, subrandom sets can have a significant lower discrepancy for a given number of points than subrandom sequences.
+Two useful applications are in finding the characteristic function of a probability density function, and in finding the derivative function of a deterministic function with a small amount of noise. Subrandom numbers allow higher-order moments to be calculated to high accuracy very quickly.
+Applications that don't involve sorting would be in finding the mean, standard deviation, skewness and kurtosis of a statistical distribution, and in finding the integral and global maxima and minima of difficult deterministic functions. Subrandom numbers can also be used for providing starting points for deterministic algorithms that only work locally, such as Newton–Raphson iteration.
+Subrandom numbers can also be combined with search algorithms. A binary tree Quicksort-style algorithm ought to work exceptionally well because subrandom numbers flatten the tree far better than random numbers, and the flatter the tree the faster the sorting. With a search algorithm, subrandom numbers can be used to find the mode, median, confidence intervals and cumulative distribution of a statistical distribution, and all local minima and all solutions of deterministic functions.
+At least three methods of numerical integration can be phrased as follows. Given a set {x1, ..., xN} in the interval [0,1], approximate the integral of a function f as the average of the function evaluated at those points:
+If the points are chosen as xi = i/N, this is the rectangle rule. If the points are chosen to be randomly (or pseudorandomly) distributed, this is the Monte Carlo method. If the points are chosen as elements of a low-discrepancy sequence, this is the quasi-Monte Carlo method. A remarkable result, the Koksma–Hlawka inequality (stated below), shows that the error of such a method can be bounded by the product of two terms, one of which depends only on f, and the other one is the discrepancy of the set {x1, ..., xN}.
+It is convenient to construct the set {x1, ..., xN} in such a way that if a set with N+1 elements is constructed, the previous N elements need not be recomputed. The rectangle rule uses points set which have low discrepancy, but in general the elements must be recomputed if N is increased. Elements need not be recomputed in the random Monte Carlo method if N is increased, but the point sets do not have minimal discrepancy. By using low-discrepancy sequences we aim for low discrepancy and no need for recomputations, but actually LDS can only be incrementally good on discrepancy if we allow no recomputation.
+The discrepancy of a set P = {x1, ..., xN} is defined, using Niederreiter's notation, as
+where λs is the s-dimensional Lebesgue measure, A(B;P) is the number of points in P that fall into B, and J is the set of s-dimensional intervals or boxes of the form
+where 
+
+
+
+0
+≤
+
+a
+
+i
+
+
+<
+
+b
+
+i
+
+
+≤
+1
+
+
+{\displaystyle 0\leq a_{i}<b_{i}\leq 1}
+
+.
+The star-discrepancy D*N(P) is defined similarly, except that the supremum is taken over the set J* of rectangular boxes of the form
+where ui is in the half-open interval [0, 1).
+The two are related by
+Let Īs be the s-dimensional unit cube, Īs = [0, 1] × ... × [0, 1]. Let f have bounded variation V(f) on Īs in the sense of Hardy and Krause. Then for any x1, ..., xN in Is = [0, 1) × ... × [0, 1),
+The Koksma–Hlawka inequality is sharp in the following sense: For any point set {x1,...,xN} in Is and any 
+
+
+
+ε
+>
+0
+
+
+{\displaystyle \varepsilon >0}
+
+, there is a function f with bounded variation and V(f) = 1 such that
+Therefore, the quality of a numerical integration rule depends only on the discrepancy D*N(x1,...,xN).
+Let 
+
+
+
+D
+=
+{
+1
+,
+2
+,
+…
+,
+d
+}
+
+
+{\displaystyle D=\{1,2,\ldots ,d\}}
+
+. For 
+
+
+
+∅
+≠
+u
+⊆
+D
+
+
+{\displaystyle \emptyset \neq u\subseteq D}
+
+ we write
+and denote by 
+
+
+
+(
+
+x
+
+u
+
+
+,
+1
+)
+
+
+{\displaystyle (x_{u},1)}
+
+ the point obtained from x by replacing the coordinates not in u by 
+
+
+
+1
+
+
+{\displaystyle 1}
+
+. Then
+where 
+
+
+
+disc
+⁡
+(
+z
+)
+=
+
+
+1
+N
+
+
+
+∑
+
+i
+=
+1
+
+
+N
+
+
+
+∏
+
+j
+=
+1
+
+
+d
+
+
+
+1
+
+[
+0
+,
+
+z
+
+j
+
+
+)
+
+
+(
+
+x
+
+i
+,
+j
+
+
+)
+−
+
+∏
+
+j
+=
+1
+
+
+d
+
+
+
+z
+
+i
+
+
+
+
+{\displaystyle \operatorname {disc} (z)={\frac {1}{N}}\sum _{i=1}^{N}\prod _{j=1}^{d}1_{[0,z_{j})}(x_{i,j})-\prod _{j=1}^{d}z_{i}}
+
+ is the discrepancy function.
+Applying the Cauchy–Schwarz inequality for integrals and sums to the Hlawka–Zaremba identity, we obtain an 
+
+
+
+
+L
+
+2
+
+
+
+
+{\displaystyle L^{2}}
+
+ version of the Koksma–Hlawka inequality:
+where
+and
+It is computationally hard to find the exact value of the discrepancy of large point sets. The Erdős–Turán–Koksma inequality provides an upper bound.
+Let x1,...,xN be points in Is and H be an arbitrary positive integer. Then
+where
+Conjecture 1. There is a constant cs depending only on the dimension s, such that
+for any finite point set {x1,...,xN}.
+Conjecture 2. There is a constant c's depending only on s, such that
+for at least one N for any infinite sequence x1,x2,x3,....
+These conjectures are equivalent. They have been proved for s ≤ 2 by W. M. Schmidt. In higher dimensions, the corresponding problem is still open. The best-known lower bounds are due to K. F. Roth.
+Let s = 1. Then
+for any finite point set {x1, ..., xN}.
+Let s = 2. W. M. Schmidt proved that for any finite point set {x1, ..., xN},
+where
+For arbitrary dimensions s > 1, K.F. Roth proved that
+for any finite point set {x1, ..., xN}. This bound is the best known for s > 3.
+Because any distribution of random numbers can be mapped onto a uniform distribution, and subrandom numbers are mapped in the same way, this article only concerns generation of subrandom numbers on a multidimensional uniform distribution.
+There are constructions of sequences known such that
+where C is a certain constant, depending on the sequence. After Conjecture 2, these sequences are believed to have the best possible order of convergence. Examples below are the van der Corput sequence, the Halton sequences, and the Sobol sequences.
+Sequences of subrandom numbers can be generated from random numbers by imposing a negative correlation on those random numbers. One way to do this is to start with a set of random numbers 
+
+
+
+
+r
+
+i
+
+
+
+
+{\displaystyle r_{i}}
+
+ on 
+
+
+
+[
+0
+,
+0.5
+)
+
+
+{\displaystyle [0,0.5)}
+
+ and construct subrandom numbers 
+
+
+
+
+s
+
+i
+
+
+
+
+{\displaystyle s_{i}}
+
+ which are uniform on 
+
+
+
+[
+0
+,
+1
+)
+
+
+{\displaystyle [0,1)}
+
+ using:
+
+
+
+
+
+s
+
+i
+
+
+=
+
+r
+
+i
+
+
+
+
+{\displaystyle s_{i}=r_{i}}
+
+ for 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ odd and 
+
+
+
+
+s
+
+i
+
+
+=
+0.5
++
+
+r
+
+i
+
+
+
+
+{\displaystyle s_{i}=0.5+r_{i}}
+
+ for 
+
+
+
+i
+
+
+{\displaystyle i}
+
+ even.
+A second way to do it with the starting random numbers is to construct a random walk with offset 0.5 as in:
+That is, take the previous subrandom number, add 0.5 and the random number, and take the result modulo 1.
+For more than one dimension, Latin squares of the appropriate dimension can be used to provide offsets to ensure that the whole domain is covered evenly.
+For any irrational 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+, the sequence
+has discrepancy tending to 0. (Note the sequence can be defined recursively by 
+
+
+
+
+s
+
+n
++
+1
+
+
+=
+(
+
+s
+
+n
+
+
++
+α
+)
+
+mod
+
+
+
+
+1
+
+
+{\displaystyle s_{n+1}=(s_{n}+\alpha ){\bmod {\,}}1}
+
+.) A good value of 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+ gives lower discrepancy than a sequence of independent uniform random numbers.
+The discrepancy can be bounded by the approximation exponent of 
+
+
+
+α
+
+
+{\displaystyle \alpha }
+
+. If the approximation exponent is 
+
+
+
+μ
+
+
+{\displaystyle \mu }
+
+, then for any 
+
+
+
+ε
+>
+0
+
+
+{\displaystyle \varepsilon >0}
+
+, the following bound holds:[1]
+By the Thue–Siegel–Roth theorem, the approximation exponent of any irrational algebraic number is 2, giving a bound of 
+
+
+
+
+N
+
+−
+1
++
+ε
+
+
+
+
+{\displaystyle N^{-1+\varepsilon }}
+
+ above.
+The value of 
+
+
+
+c
+
+
+{\displaystyle c}
+
+ with lowest discrepancy is [2]
+Another value that is nearly as good is:
+In more than one dimension, separate subrandom numbers are needed for each dimension. In higher dimensions, one set of values that can be used is the square roots of primes from two up, all taken modulo 1:
+The recurrence relation above is similar to the recurrence relation used by a Linear congruential generator, a poor-quality pseudorandom number generator:[3]
+For the low discrepancy additive recurrence above, a and m are chosen to be 1. Note, however, that this will not generate independent random numbers, so should not be used for purposes requiring independence. The list of pseudorandom number generators lists methods for generating independent pseudorandom numbers.
+Let
+be the b-ary representation of the positive integer n ≥ 1, i.e. 0 ≤ dk(n) < b. Set
+Then there is a constant C depending only on b such that (gb(n))n ≥ 1satisfies
+where D*N is the star discrepancy.
+The Halton sequence is a natural generalization of the van der Corput sequence to higher dimensions. Let s be an arbitrary dimension and b1, ..., bs be arbitrary coprime integers greater than 1. Define
+Then there is a constant C depending only on b1, ..., bs, such that sequence {x(n)}n≥1 is a s-dimensional sequence with
+Let b1,...,bs-1 be coprime positive integers greater than 1. For given s and N, the s-dimensional Hammersley set of size N is defined by[4]
+for n = 1, ..., N. Then
+where C is a constant depending only on b1, ..., bs−1.
+The Antonov–Saleev variant of the Sobol sequence generates numbers between zero and one directly as binary fractions of length 
+
+
+
+w
+
+
+{\displaystyle w}
+
+, from a set of 
+
+
+
+w
+
+
+{\displaystyle w}
+
+ special binary fractions, 
+
+
+
+
+V
+
+i
+
+
+,
+i
+=
+1
+,
+2
+,
+…
+,
+w
+
+
+{\displaystyle V_{i},i=1,2,\dots ,w}
+
+ called direction numbers. The bits of the Gray code of 
+
+
+
+i
+
+
+{\displaystyle i}
+
+, 
+
+
+
+G
+(
+i
+)
+
+
+{\displaystyle G(i)}
+
+, are used to select direction numbers. To get the Sobol sequence value 
+
+
+
+
+s
+
+i
+
+
+
+
+{\displaystyle s_{i}}
+
+ take the exclusive or of the binary value of the Gray code of
+
+
+
+i
+
+
+{\displaystyle i}
+
+ with the appropriate direction number. The number of dimensions required affects the choice of 
+
+
+
+
+V
+
+i
+
+
+
+
+{\displaystyle V_{i}}
+
+.
+Poisson disk sampling is popular in video games to rapidly placing objects in a way that appears random-looking but guarantees that every two points are separated by at least the specified minimum distance.[5]
+The points plotted below are the first 100, 1000, and 10000 elements in a sequence of the Sobol' type. For comparison, 10000 elements of a sequence of pseudorandom points are also shown. The low-discrepancy sequence was generated by TOMS algorithm 659.[6] An implementation of the algorithm in Fortran is available from Netlib.

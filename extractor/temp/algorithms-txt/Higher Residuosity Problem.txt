@@ -1,0 +1,284 @@
+ABOUT
+In cryptography, most public key cryptosystems are founded on problems that are believed to be intractable. The higher residuosity problem (also called the n th-residuosity problem[1]) is one such problem. This problem is easier to solve than integer factorization, so the assumption that this problem is hard to solve is stronger than the assumption that integer factorization is hard.
+FULL TEXT
+In cryptography, most public key cryptosystems are founded on problems that are believed to be intractable. The higher residuosity problem (also called the n th-residuosity problem[1]) is one such problem. This problem is easier to solve than integer factorization, so the assumption that this problem is hard to solve is stronger than the assumption that integer factorization is hard.
+
+
+If n is an integer, then the integers modulo n form a ring. If n=pq where p and q are primes, then the Chinese remainder theorem tells us that
+The group of units of any ring form a group, and the group of units in 
+
+
+
+
+Z
+
+
+/
+
+n
+
+Z
+
+
+
+{\displaystyle \mathbb {Z} /n\mathbb {Z} }
+
+ is traditionally denoted 
+
+
+
+(
+
+Z
+
+
+/
+
+n
+
+Z
+
+
+)
+
+∗
+
+
+
+
+{\displaystyle (\mathbb {Z} /n\mathbb {Z} )^{*}}
+
+.
+From the isomorphism above, we have
+as an isomorphism of groups. Since p and q were assumed to be prime, the groups 
+
+
+
+(
+
+Z
+
+
+/
+
+p
+
+Z
+
+
+)
+
+∗
+
+
+
+
+{\displaystyle (\mathbb {Z} /p\mathbb {Z} )^{*}}
+
+ and 
+
+
+
+(
+
+Z
+
+
+/
+
+q
+
+Z
+
+
+)
+
+∗
+
+
+
+
+{\displaystyle (\mathbb {Z} /q\mathbb {Z} )^{*}}
+
+ are cyclic of orders p-1 and q-1 respectively. If d is a divisor of p-1, then the set of dth powers in 
+
+
+
+(
+
+Z
+
+
+/
+
+p
+
+Z
+
+
+)
+
+∗
+
+
+
+
+{\displaystyle (\mathbb {Z} /p\mathbb {Z} )^{*}}
+
+ form a subgroup of index d. If gcd(d,q-1) = 1, then every element in 
+
+
+
+(
+
+Z
+
+
+/
+
+q
+
+Z
+
+
+)
+
+∗
+
+
+
+
+{\displaystyle (\mathbb {Z} /q\mathbb {Z} )^{*}}
+
+ is a dth power, so the set of dth powers in 
+
+
+
+(
+
+Z
+
+
+/
+
+n
+
+Z
+
+
+)
+
+∗
+
+
+
+
+{\displaystyle (\mathbb {Z} /n\mathbb {Z} )^{*}}
+
+ is also a subgroup of index d. In general, if gcd(d,q-1) = g, then there are (q-1)/(g) dth powers in 
+
+
+
+(
+
+Z
+
+
+/
+
+q
+
+Z
+
+
+)
+
+∗
+
+
+
+
+{\displaystyle (\mathbb {Z} /q\mathbb {Z} )^{*}}
+
+, so the set of dth powers in 
+
+
+
+(
+
+Z
+
+
+/
+
+n
+
+Z
+
+
+)
+
+∗
+
+
+
+
+{\displaystyle (\mathbb {Z} /n\mathbb {Z} )^{*}}
+
+ has index dg. This is most commonly seen when d=2, and we are considering the subgroup of quadratic residues, it is well known that exactly one quarter of the elements in 
+
+
+
+(
+
+Z
+
+
+/
+
+n
+
+Z
+
+
+)
+
+∗
+
+
+
+
+{\displaystyle (\mathbb {Z} /n\mathbb {Z} )^{*}}
+
+ are quadratic residues (when n is the product of exactly two primes, as it is here).
+The important point is that for any divisor d of p-1 (or q-1) the set of dth powers forms a subgroup of 
+
+
+
+(
+
+Z
+
+
+/
+
+n
+
+Z
+
+
+)
+
+∗
+
+
+.
+
+
+{\displaystyle (\mathbb {Z} /n\mathbb {Z} )^{*}.}
+
+
+Given an integer n = pq where p and q are unknown, an integer d such that d divides p-1, and an integer x < n, it is infeasible to determine whether x is a dth power (equivalently dth residue) modulo n.
+Notice that if p and q are known it is easy to determine whether x is a dth residue modulo n because x will be a dth residue modulo p if and only if
+When d=2, this is called the quadratic residuosity problem.
+The semantic security of the Benaloh cryptosystem and the Naccache-Stern cryptosystem rests on the intractability of this problem.

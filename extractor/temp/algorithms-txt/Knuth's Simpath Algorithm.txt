@@ -1,0 +1,5 @@
+ABOUT
+Simpath is an algorithm introduced by Donald Knuth that constructs a zero-suppressed decision diagram (ZDD) representing all simple paths between two vertices in a given graph.[1][2]
+FULL TEXT
+Simpath is an algorithm introduced by Donald Knuth that constructs a zero-suppressed decision diagram (ZDD) representing all simple paths between two vertices in a given graph.[1][2]
+

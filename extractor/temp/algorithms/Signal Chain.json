@@ -1,0 +1,8 @@
+{
+    "about": "Signal chain, or signal-processing chain is a term used in signal processing[1] and mixed-signal[2] system design to describe a series of signal-conditioning electronic components that receive input (data acquired from sampling either real-time phenomena or from stored data) in tandem, with the output of one portion of the chain supplying input to the next. Signal chains are often used in signal processing applications to gather and process data or to apply system controls based on analysis of real-time phenomena.", 
+    "name": "Signal Chain", 
+    "classification": "Signal Processing", 
+    "full_text": "Signal chain, or signal-processing chain is a term used in signal processing[1] and mixed-signal[2] system design to describe a series of signal-conditioning electronic components that receive input (data acquired from sampling either real-time phenomena or from stored data) in tandem, with the output of one portion of the chain supplying input to the next. Signal chains are often used in signal processing applications to gather and process data or to apply system controls based on analysis of real-time phenomena.\n\n\nThis definition comes from common usage in the electronics industry and can be derived from definitions of its parts:[3]\nThe concept of a signal chain is familiar to electrical engineers, but the term has many synonyms such as circuit topology.[4] The goal of any signal chain is to process a variety of signals[5] to monitor or control an analog-, digital-, or analog-digital system.", 
+    "dbpedia_url": "http://dbpedia.org/resource/Signal_chain", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Signal_chain\n"
+}

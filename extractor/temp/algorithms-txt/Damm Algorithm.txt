@@ -1,0 +1,21 @@
+ABOUT
+In error detection, the Damm algorithm is a check digit algorithm that detects all single-digit errors and all adjacent transposition errors. It was presented by H. Michael Damm in 2004.[1]
+FULL TEXT
+In error detection, the Damm algorithm is a check digit algorithm that detects all single-digit errors and all adjacent transposition errors. It was presented by H. Michael Damm in 2004.[1]
+
+
+The Damm algorithm is similar to the Verhoeff algorithm. It too will detect all occurrences of the two most frequently appearing types of transcription errors, namely altering one single digit, and transposing two adjacent digits (including the transposition of the trailing check digit and the preceding digit).[1][2] But the Damm algorithm has the benefit that it makes do without the dedicatedly constructed permutations and its position specific powers being inherent in the Verhoeff scheme. Furthermore, a table of inverses can be dispensed with provided all main diagonal entries of the operation table are zero.
+The Damm algorithm does not suffer from exceeding the number of 10 possible values, resulting in the need for using a non-digit character (as the X in the 10-digit ISBN check digit scheme).
+Prepending leading zeros does not affect the check digit.[1]
+There are totally anti-symmetric quasigroups that detect all phonetic errors associated with the English language (13 ↔ 30, 14 ↔ 40, ..., 19 ↔ 90). The table used in the illustrating example is based on an instance of such kind.
+Despite its desirable properties in typical contexts where similar algorithms are used, the Damm algorithm is largely unknown and scarcely used in practice.
+Its essential part is a quasigroup of order 10 (i.e. having a 10 × 10 Latin square as the body of its operation table) with the special feature of being weakly totally anti-symmetric.[3][4][i][ii][iii] Damm revealed several methods to create totally anti-symmetric quasigroups of order 10 and gave some examples in his doctoral dissertation.[3][i] With this, Damm also disproved an old conjecture that totally anti-symmetric quasigroups of order 10 do not exist.[5]
+A quasigroup (Q, ∗) is called totally anti-symmetric if for all c, x, y ∈ Q, the following implications hold:[4]
+and it is called weak totally anti-symmetric if only the first implication holds. Damm proved that the existence of a totally anti-symmetric quasigroup of order n is equivalent to the existence of a weak totally anti-symmetric quasigroup of order n. For the Damm algorithm with the check equation (…((0 ∗ xm) ∗ xm−1) ∗ …) ∗ x0 = 0 a weak totally anti-symmetric quasigroup with the property x ∗ x = 0 is needed. Such a quasigroup can be constructed from any totally anti-symmetric quasigroup by rearranging the columns in such a way that all zeros lay on the diagonal. And, on the other hand, from any weak totally anti-symmetric quasigroup a totally anti-symmetric quasigroup can be constructed by rearranging the columns in such a way that the first row is in natural order.[3]
+The validity of a digit sequence containing a check digit is defined over a quasigroup. A quasigroup table ready for use can be taken from Damm's dissertation (pages 98, 106, 111).[3] It is useful if each main diagonal entry is 0,[1] because it simplifies the check digit calculation.
+Prerequisite: The main diagonal entries of the table are 0.
+The following operation table will be used.[1] It may be obtained from the totally anti-symmetric quasigroup in Damm's doctoral dissertation page 111[3] by rearranging the rows and changing the entries correspondingly.
+Suppose we choose the number (digit sequence) 572.
+The resulting interim digit is 4. This is the calculated check digit. We append it to the number and obtain 5724.
+The resulting interim digit is 0, hence the number is valid.
+This is the above example showing the detail of the algorithm generating the check digit (broken blue arrow) and verifying the number 572 with the check digit.

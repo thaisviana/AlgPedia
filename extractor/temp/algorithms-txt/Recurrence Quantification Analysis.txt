@@ -1,0 +1,250 @@
+ABOUT
+Recurrence quantification analysis (RQA) is a method of nonlinear data analysis (cf. chaos theory) for the investigation of dynamical systems. It quantifies the number and duration of recurrences of a dynamical system presented by its phase space trajectory.
+FULL TEXT
+Recurrence quantification analysis (RQA) is a method of nonlinear data analysis (cf. chaos theory) for the investigation of dynamical systems. It quantifies the number and duration of recurrences of a dynamical system presented by its phase space trajectory.
+
+
+The recurrence quantification analysis was developed in order to quantify differently appearing recurrence plots (RPs) based on the small-scale structures therein. Recurrence plots are tools which visualise the recurrence behaviour of the phase space trajectory of dynamical systems. They mostly contain single dots and lines which are parallel to the mean diagonal (line of identity, LOI) or which are vertical/horizontal. Lines parallel to the LOI are referred to as diagonal lines and the vertical structures as vertical lines. Because an RP is usually symmetric, horizontal and vertical lines correspond to each other, and, hence, only vertical lines are considered. The lines correspond to a typical behaviour of the phase space trajectory: whereas the diagonal lines represent such segments of the phase space trajectory which run parallel for some time, the vertical lines represent segments which remain in the same phase space region for some time.
+If only a time series is available, the phase space can be reconstructed by using a time delay embedding (see Takens' theorem):
+where 
+
+
+
+u
+(
+i
+)
+
+
+{\displaystyle u(i)}
+
+ is the time series, 
+
+
+
+m
+
+
+{\displaystyle m}
+
+ the embedding dimension and 
+
+
+
+τ
+
+
+{\displaystyle \tau }
+
+ the time delay.
+The RQA quantifies the small-scale structures of recurrence plots, which present the number and duration of the recurrences of a dynamical system. The measures introduced for the RQA were developed heuristically between 1992 and 2002 (Zbilut & Webber 1992; Webber & Zbilut 1994; Marwan et al. 2002). They are actually measures of complexity. The main advantage of the recurrence quantification analysis is that it can provide useful information even for short and non-stationary data, where other methods fail.
+RQA can be applied to almost every kind of data. It is widely used in physiology, but was also successfully applied on problems from engineering, chemistry, Earth sciences etc.
+The simplest measure is the recurrence rate, which is the density of recurrence points in a recurrence plot:
+The recurrence rate corresponds with the probability that a specific state will recur. It is almost equal with the definition of the correlation sum, where the LOI is excluded from the computation.
+The next measure is the percentage of recurrence points which form diagonal lines in the recurrence plot of minimal length 
+
+
+
+
+ℓ
+
+min
+
+
+
+
+{\displaystyle \ell _{\min }}
+
+:
+where 
+
+
+
+P
+(
+ℓ
+)
+
+
+{\displaystyle P(\ell )}
+
+ is the frequency distribution of the lengths 
+
+
+
+ℓ
+
+
+{\displaystyle \ell }
+
+ of the diagonal lines. This measure is called determinism and is related with the predictability of the dynamical system, because white noise has a recurrence plot with almost only single dots and very few diagonal lines, whereas a deterministic process has a recurrence plot with very few single dots but many long diagonal lines.
+The amount of recurrence points which form vertical lines can be quantified in the same way:
+where 
+
+
+
+P
+(
+v
+)
+
+
+{\displaystyle P(v)}
+
+ is the frequency distribution of the lengths 
+
+
+
+v
+
+
+{\displaystyle v}
+
+ of the vertical lines, which have at least a length of 
+
+
+
+
+v
+
+min
+
+
+
+
+{\displaystyle v_{\min }}
+
+. This measure is called laminarity and is related with the amount of laminar phases in the system (intermittency).
+The lengths of the diagonal and vertical lines can be measured as well. The averaged diagonal line length
+is related with the predictability time of the dynamical system and the trapping time, measuring the average length of the vertical lines,
+is related with the laminarity time of the dynamical system, i.e. how long the system remains in a specific state.
+Because the length of the diagonal lines is related on the time how long segments of the phase space trajectory run parallel, i.e. on the divergence behaviour of the trajectories, it was sometimes stated that the reciprocal of the maximal length of the diagonal lines (without LOI) would be an estimator for the positive maximal Lyapunov exponent of the dynamical system. Therefore, the maximal diagonal line length 
+
+
+
+
+L
+
+max
+
+
+
+
+{\displaystyle L_{\max }}
+
+ or the divergence
+are also measures of the RQA. However, the relationship between these measures with the positive maximal Lyapunov exponent is not as easy as stated, but even more complex (to calculate the Lyapunov exponent from an RP, the whole frequency distribution of the diagonal lines has to be considered). The divergence can have the trend of the positive maximal Lyapunov exponent, but not more. Moreover, also RPs of white noise processes can have a really long diagonal line, although very seldom, just by a finite probability. It is obvious that therefore the divergence cannot reflect the maximal Lyapunov exponent.
+The probability 
+
+
+
+p
+(
+ℓ
+)
+
+
+{\displaystyle p(\ell )}
+
+ that a diagonal line has exactly length 
+
+
+
+ℓ
+
+
+{\displaystyle \ell }
+
+ can be estimated from the frequency distribution 
+
+
+
+P
+(
+ℓ
+)
+
+
+{\displaystyle P(\ell )}
+
+ with 
+
+
+
+p
+(
+ℓ
+)
+=
+
+
+
+P
+(
+ℓ
+)
+
+
+
+∑
+
+ℓ
+=
+
+l
+
+min
+
+
+
+
+N
+
+
+P
+(
+ℓ
+)
+
+
+
+
+
+{\displaystyle p(\ell )={\frac {P(\ell )}{\sum _{\ell =l_{\min }}^{N}P(\ell )}}}
+
+. The Shannon entropy of this probability,
+reflects the complexity of the deterministic structure in the system. However, this entropy depends sensitively on the bin number and, thus, may differ for different realisations of the same process, as well as for different data preparations.
+The last measure of the RQA quantifies the thinning-out of the recurrence plot. The trend is the regression coefficient of a linear relationship between the density of recurrence points in a line parallel to the LOI and its distance to the LOI. More exactly, let us consider the recurrence rate in a diagonal line parallel to LOI of distance k (diagonal-wise recurrence rate):
+then the trend is defined by
+with 
+
+
+
+⟨
+⋅
+⟩
+
+
+{\displaystyle \langle \cdot \rangle }
+
+ as the average value and 
+
+
+
+
+
+
+N
+~
+
+
+
+<
+N
+
+
+{\displaystyle {\tilde {N}}<N}
+
+. This latter relation should ensure to avoid the edge effects of too low recurrence point densities in the edges of the recurrence plot. The measure trend provides information about the stationarity of the system.
+Similar to the diagonal-wise defined recurrence rate, the other measures based on the diagonal lines (DET, L, ENTR) can be defined diagonal-wise. These definitions are useful to study interrelations or synchronisation between different systems (using recurrence plots or cross recurrence plots).
+Instead of computing the RQA measures of the entire recurrence plot, they can be computed in small windows moving over the recurrence plot along the LOI. This provides time-dependent RQA measures which allow detecting, e.g., chaos-chaos transitions (Marwan et al. 2002). Note: the choice of the size of the window can strongly influence the measure trend.

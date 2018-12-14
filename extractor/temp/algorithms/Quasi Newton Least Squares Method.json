@@ -1,0 +1,7 @@
+{
+    "about": "In numerical analysis, The Quasi-Newton Least Squares Method is a quasi-Newton method for finding roots in n variables. It was originally described by Rob Haelterman et al. in 2009.[1]", 
+    "classification": "Optimization Algorithms And Methods", 
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Quasi-Newton_Least_Squares_Method\n", 
+    "full_text": "In numerical analysis, The Quasi-Newton Least Squares Method is a quasi-Newton method for finding roots in n variables. It was originally described by Rob Haelterman et al. in 2009.[1]\nNewton's method for solving f(x) = 0 uses the Jacobian matrix, J, at every iteration. However, computing this Jacobian is a difficult (sometimes even impossible) and expensive operation. The idea behind the Quasi-Newton Least Squares Method is to build up an approximate Jacobian based on known input-output pairs of the function f.\nHaelterman et al. also showed that when the Quasi-Newton Least Squares Method is applied to a linear system of size n \u00d7 n, it converges in at most n +1 steps although like all quasi-Newton methods, it may not converge for nonlinear systems.\nThe method is closely related to the Quasi-Newton Inverse Least Squares Method.\n", 
+    "name": "Quasi Newton Least Squares Method"
+}
