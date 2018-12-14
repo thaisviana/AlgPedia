@@ -85,7 +85,7 @@ class Migration(migrations.Migration):
                 ('date', models.DateField(default=datetime.datetime(2017, 7, 18, 0, 30, 0, 948484))),
                 ('reputation', models.FloatField(default=0)),
                 ('accumulated_weight', models.FloatField(default=0)),
-                ('algorithm', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='implementation_set', to='algorithm.models.algorithm')),
+                ('algorithm', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='implementation_set', to='algorithm.Algorithm')),
             ],
         ),
         migrations.CreateModel(
@@ -101,7 +101,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('date', models.DateField(default=datetime.datetime(2017, 7, 18, 0, 30, 0, 949106))),
-                ('classification', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='algorithm.models.classification')),
+                ('classification', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='algorithm.Classification')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
@@ -168,7 +168,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('date', models.DateField(default=datetime.datetime(2017, 7, 18, 0, 30, 0, 952112))),
-                ('question_option', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='algorithm.models.questionOption')),
+                ('question_option', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='algorithm.QuestionOption')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
@@ -177,7 +177,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('reputation', models.FloatField(default=0)),
-                ('university', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='algorithm.models.universityRank')),
+                ('university', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='algorithm.UniversityRank')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
@@ -185,14 +185,14 @@ class Migration(migrations.Migration):
             name='ClassificationProeficiencyScale',
             fields=[
                 ('proeficiencyscale_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='algorithm.ProeficiencyScale')),
-                ('classification', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='algorithm.models.classification')),
+                ('classification', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='algorithm.Classification')),
             ],
             bases=('algorithm.proeficiencyscale',),
         ),
         migrations.CreateModel(
             name='ImplementationQuestion',
             fields=[
-                ('question_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='algorithm.models.question')),
+                ('question_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='algorithm.Question')),
             ],
             bases=('algorithm.question',),
         ),
@@ -207,14 +207,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserQuestion',
             fields=[
-                ('question_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='algorithm.models.question')),
+                ('question_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='algorithm.Question')),
             ],
             bases=('algorithm.question',),
         ),
         migrations.AddField(
             model_name='questionoption',
             name='question',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='questionoption_set', to='algorithm.models.question'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='questionoption_set', to='algorithm.Question'),
         ),
         migrations.AddField(
             model_name='proeficiencyscale',
@@ -224,7 +224,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='implementationquestionanswer',
             name='question_option',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='algorithm.models.questionOption'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='algorithm.QuestionOption'),
         ),
         migrations.AddField(
             model_name='implementationquestionanswer',
@@ -244,12 +244,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='algorithm',
             name='classification',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='algorithm.models.classification'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='algorithm.Classification'),
         ),
         migrations.AddField(
             model_name='algorithm',
             name='tags',
-            field=models.ManyToManyField(blank=True, null=True, to='algorithm.models.tag'),
+            field=models.ManyToManyField(blank=True, null=True, to='algorithm.Tag'),
         ),
         migrations.AddField(
             model_name='algorithm',

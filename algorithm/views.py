@@ -2,6 +2,7 @@
 from algorithm.ContactForm import ContactForm
 from algorithm.UserCreateForm import UserCreateForm
 from algorithm.controllers import *
+from algorithm.algorithmForm import AlgorithmForm
 from algorithm.forms import FiltersAlgorithm, FiltersClassification
 from algorithm.models import Paradigm, Implementation
 from django.contrib import auth
@@ -371,21 +372,19 @@ def show_classification_by_id(request, id):
 def insert_algorithm(request, id=None):
     c = {}
     if request.method == 'POST':
-        # instance = Algorithm(visible=False, user=request.user)
-        # form = AlgorithmForm(request.POST, instance=instance)
-        # if form.is_valid():
-        #     algorithm = form.save()
-        #     add_user_point(request.user.username)
-        # else:
-        #     c['form'] = form
-        #     return render(request, "add_algorithm.html", c)
-        #
-        # return HttpResponseRedirect(algorithm.get_show_url())
-        pass
+        instance = Algorithm(visible=False, user=request.user)
+        form = AlgorithmForm(request.POST, instance=instance)
+        if form.is_valid():
+            algorithm = form.save()
+            add_user_point(request.user.username)
+        else:
+            c['form'] = form
+            return render(request, "add_algorithm.html", c)
+
+        return HttpResponseRedirect(algorithm.get_show_url())
     else:
         c = {
-            # 'form' : AlgorithmForm(initial={'classification': id}),
-            'form' : None,
+            'form' : AlgorithmForm(initial={'classification': id}),
             'programming_languages' : get_all_programming_languages(),
             'logged':  request.user.is_authenticated()
         }

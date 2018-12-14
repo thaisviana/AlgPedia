@@ -4,6 +4,7 @@ from .classification import Classification
 from .tag import Tag
 from .algorithm import Algorithm
 from .classificationProeficiencyScale import ClassificationProeficiencyScale
+from .ProgrammingLanguageProeficiencyScale import ProgrammingLanguageProeficiencyScale
 from .Implementation import Implementation
 from .ImplementationQuestion import ImplementationQuestion
 from .ImplementationQuestionAnswer import ImplementationQuestionAnswer

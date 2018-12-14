@@ -39,9 +39,9 @@ $(function() {
 		$(this).mouseout(function () {
 			return nd();
 		});
-		var star_0 = "<img src='/algorithm/static/images/glyphicons/starOff.png' alt='"+$rep+"'  width='22px' height='22px'/>";
-		var star_1 = "<img src='/algorithm/static/images/glyphicons/star.png' alt='"+$rep+"' width='22px' height='22px' />";
 
+		var star_0 = ""
+		var star_1 = ""
 
 		var img;
 		$rep = parseFloat($rep);

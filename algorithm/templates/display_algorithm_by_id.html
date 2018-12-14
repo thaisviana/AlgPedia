@@ -48,8 +48,8 @@
 							</div>
 							<div class="add_evaluation-container">
 								<a class="add_evaluation" id="evaluate-{{implementation.id}}">
-{#									<img src="{% static "images/glyphicons/glyphicons_150_edit.png" %}" height="100%" alt="" />#}
-								</a>x
+                                    <img src="{% static "images/glyphicons/glyphicons_190_circle_plus.png" %}" height="24px" width="24px" alt="Add" />
+								</a>
 							</div>
 						</div>
 
@@ -62,7 +62,7 @@
 							{% if not implementation.user %}
 							<span style="float: right;">
 								<small>Fonte:</small>
-								<img src="{% static "images/wikipedia.png" alt="Fonte: Wikipedia" title="Wikipedia" style="float: right;" />
+								<img src="{% static "images/wikipedia.png" %}" alt="Fonte: Wikipedia" title="Wikipedia" style="float: right;" />
 							</span>
 							{% endif %}
 						</div>

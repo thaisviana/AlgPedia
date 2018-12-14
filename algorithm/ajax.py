@@ -1,4 +1,4 @@
-# from algorithm.forms import TagForm
+from algorithm.forms import TagForm
 from algorithm.models import Implementation, algorithm, classification
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import Group
@@ -29,19 +29,19 @@ def moderator_action(request):
 		implementation.delete()
 
 	return json.dumps({'success': True})
-#
-# @login_required
-# def tag_add(request):
-# 	ctx = {'success': True}
-# 	form = TagForm(request.POST)
-# 	if form.is_valid():
-# 		tag = form.save()
-# 		ctx['tag'] = {'id': tag.id, 'name': tag.name}
-# 	else:
-# 		ctx['success'] = False
-# 		ctx['errors'] = form.errors
-#
-# 	return json.dumps(ctx)
+
+@login_required
+def tag_add(request):
+	ctx = {'success': True}
+	form = TagForm(request.POST)
+	if form.is_valid():
+		tag = form.save()
+		ctx['tag'] = {'id': tag.id, 'name': tag.name}
+	else:
+		ctx['success'] = False
+		ctx['errors'] = form.errors
+
+	return json.dumps(ctx)
 
 def global_search_autocomplete(request):
 	data = []
