@@ -115,10 +115,11 @@ def profile(request):
 
 
     if request.method == "POST":
-        u = float(request.POST["universities"])
-        reputation= 190 - u
-        u_university = get_university_by_position(request.POST["universities"])
-        save_university(username, u_university)
+        if request.POST["universities"]:
+            u = float(request.POST["universities"])
+            reputation= 190 - u
+            u_university = get_university_by_position(request.POST["universities"])
+            save_university(username, u_university)
         # Insere as respostas para as perguntas
         for q in user_questions:
             q_data = request.POST["profile_" + str(q.id)]

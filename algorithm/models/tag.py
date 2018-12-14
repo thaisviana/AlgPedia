@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.contrib import admin
 
 
 class Tag(models.Model):
@@ -7,8 +8,15 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
-    #
-    # class Meta:
-    #     abstract = False
-    #     verbose_name_plural = "Tags"
-    #     verbose_name = "Tag"
+
+    @classmethod
+    def register_admin(cls):
+         admin.site.register(cls, Admin)
+
+    class Meta:
+        abstract = False
+
+
+class Admin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)

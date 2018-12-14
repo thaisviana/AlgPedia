@@ -434,7 +434,7 @@ def insert_classifications_proeficiencies(username, classifications_ids):
     user = User.objects.get(username=username)
 
     for classification_id in classifications_ids:
-        classification = classification.objects.get(id=classification_id)
+        classification = Classification.objects.get(id=classification_id)
         ClassificationProeficiencyScale.objects.get_or_create(user=user, classification=classification, value=1)
 
 def update_classifications_interests(username, classifications_ids):
@@ -455,7 +455,7 @@ def insert_classifications_interests(username, classifications_ids):
     user = User.objects.get(username=username)
 
     for classification_id in classifications_ids:
-        classification = classification.objects.get(id=classification_id)
+        classification = Classification.objects.get(id=classification_id)
         Interest.objects.get_or_create(user=user, classification=classification)
 
 def get_all_implementationquestions():
