@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django import forms
 from django.utils.translation import ugettext, ugettext_lazy as _
-from django.contrib.auth.models import User
+from algorithm.models import User
 
 class UserCreateForm(forms.ModelForm):
 	email = forms.EmailField(required=True)

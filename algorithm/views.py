@@ -61,11 +61,11 @@ def signin(request):
             return redirect(profile)
         else:
             c = {'logged':  request.user.is_authenticated(), 'form' : form}
-            c.update(request)
+            #c.update(request)
             return render(request, 'accounts/signin.html', c)
     else:
         c = {'logged':  request.user.is_authenticated(), 'form' : UserCreateForm()}
-        c.update(request)
+        #c.update(request)
         return render(request, "accounts/signin.html", c)
 
 def logout(request):
