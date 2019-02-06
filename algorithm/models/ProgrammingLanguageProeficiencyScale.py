@@ -4,4 +4,4 @@ from ..models.proeficiencyScale import ProeficiencyScale
 
 
 class ProgrammingLanguageProeficiencyScale(ProeficiencyScale):
-	programming_language = models.ForeignKey('ProgrammingLanguage')
+	programming_language = models.ForeignKey('ProgrammingLanguage', on_delete=models.CASCADE)

@@ -5,10 +5,10 @@ from django.db.models.aggregates import Max
 
 # Resposta de um usuario a uma determinada pergunta sobre uma determinada implementacao
 class ImplementationQuestionAnswer(models.Model):
-	user = models.ForeignKey('User')
-	implementation = models.ForeignKey('Implementation')
-	implementation_question = models.ForeignKey('ImplementationQuestion')
-	question_option = models.ForeignKey('QuestionOption')
+	user = models.ForeignKey('User', on_delete=models.CASCADE)
+	implementation = models.ForeignKey('Implementation', on_delete=models.CASCADE)
+	implementation_question = models.ForeignKey('ImplementationQuestion', on_delete=models.CASCADE)
+	question_option = models.ForeignKey('QuestionOption', on_delete=models.CASCADE)
 	date = models.DateField(blank=False, auto_created=True, auto_now_add=True)
 	def save(self, *args, **kwargs):
 		super(ImplementationQuestionAnswer, self).save(*args, **kwargs)

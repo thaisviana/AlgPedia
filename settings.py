@@ -72,13 +72,13 @@ WSGI_APPLICATION = 'AlgPedia.wsgi.application'
 # Database
 #DATABASES = {'default': dj_database_url.config()}
 
-DATABASE_URL='postgresql://postgres:96217156@localhost/algpedia'
+DATABASE_URL='postgresql://postgres:!Algpedia.123@localhost/algpedia'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'algpedia',
-        'USER': 'postgres',
-        'PASSWORD': '96217156',
+        'USER': 'algpedia',
+        'PASSWORD': '!Algpedia.123',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -113,4 +113,4 @@ STATICFILES_FINDERS = (
 )
 
 # Static server for django in production
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

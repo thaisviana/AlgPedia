@@ -7,7 +7,7 @@ from django.db.models.aggregates import Avg
 class Algorithm(models.Model):
 	name = models.CharField(max_length=80)
 	description = models.TextField()
-	classification = models.ForeignKey('Classification', null=True, blank=True)
+	classification = models.ForeignKey('Classification', on_delete=models.CASCADE, null=True, blank=True)
 	uri = models.URLField()
 	visible = models.BooleanField()
 	reputation = models.FloatField(default=0)
@@ -15,7 +15,7 @@ class Algorithm(models.Model):
 
 	tags = models.ManyToManyField('Tag', blank=True, null=True)
 
-	user = models.ForeignKey('User', null=True, blank=True, verbose_name=u"Creator")
+	user = models.ForeignKey('User', on_delete=models.CASCADE, null=True, blank=True, verbose_name=u"Creator")
 
 	def get_show_url(self):
 		return "/show/alg/id/%i" % self.id

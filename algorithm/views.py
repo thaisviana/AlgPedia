@@ -18,7 +18,7 @@ import re
 # get_all_classifications_name_link, wipe_database, is_database_empty, get_classification_by_id
 
 def show_main_page(request):
-    ctx = {'logged':  request.user.is_authenticated(),
+    ctx = {'logged':  request.user.is_authenticated,
            'message' : 'Welcome to AlgPedia - the free encyclopedia that anyone can edit.',
            'top5_algorithms' : get_top5_algorithms(),
            'top5_users' : get_top5_users()}
@@ -57,35 +57,35 @@ def signin(request):
         form = UserCreateForm(request.POST)
         if form.is_valid():
             new_user = form.save()
-            ctx = {'logged':  request.user.is_authenticated()}
+            ctx = {'logged':  request.user.is_authenticated}
             return redirect(profile)
         else:
-            c = {'logged':  request.user.is_authenticated(), 'form' : form}
+            c = {'logged':  request.user.is_authenticated, 'form' : form}
             #c.update(request)
             return render(request, 'accounts/signin.html', c)
     else:
-        c = {'logged':  request.user.is_authenticated(), 'form' : UserCreateForm()}
+        c = {'logged':  request.user.is_authenticated, 'form' : UserCreateForm()}
         #c.update(request)
         return render(request, "accounts/signin.html", c)
 
 def logout(request):
     auth.logout(request)
-    ctx = {'logged':  request.user.is_authenticated(), 'logout': True}
+    ctx = {'logged':  request.user.is_authenticated, 'logout': True}
     return render(request, 'default_debug.html', ctx)
 
 def about(request):
-    ctx = {'logged':  request.user.is_authenticated()}
+    ctx = {'logged':  request.user.is_authenticated}
     return render(request, 'about.html', ctx)
 
 
 def advanced_search(request):
-    ctx = {'logged': request.user.is_authenticated()}
+    ctx = {'logged': request.user.is_authenticated}
     if request.method == 'POST':
         searchwords = (request.POST['ad_search_input'])
     return render(request, 'search.html', ctx)
 
 def ontoviz(request):
-    ctx = {'logged':  request.user.is_authenticated()}
+    ctx = {'logged':  request.user.is_authenticated}
     return render(request, 'ontoviz.html', ctx)
 
 def contact(request):
@@ -94,10 +94,10 @@ def contact(request):
         # try:
         # 	send_mail(request.POST['subject'], request.POST['message'], request.POST['sender'], recipients, fail_silently=False)
         # except BadHeaderError:
-        # 	return render(request, 'about.html', {'logged':  request.user.is_authenticated()})
-        return render(request, 'default_debug.html', {'logged':  request.user.is_authenticated()})
+        # 	return render(request, 'about.html', {'logged':  request.user.is_authenticated})
+        return render(request, 'default_debug.html', {'logged':  request.user.is_authenticated})
     else:
-        c = {'logged':  request.user.is_authenticated(), 'form' : ContactForm()}
+        c = {'logged':  request.user.is_authenticated, 'form' : ContactForm()}
         c.update(request)
         return render(request, "contact.html", c)
 
@@ -176,7 +176,7 @@ def profile(request):
     u_c_i = get_user_classifications_interests_ids(username)
 
     c = {
-        'logged':  request.user.is_authenticated(),
+        'logged':  request.user.is_authenticated,
         'name': request.user.username,
         'question_answers':  question_answers,
         'classifications': classifications,
@@ -194,14 +194,14 @@ def profile(request):
     return render(request, 'accounts/profile.html', c)
 
 def rules(request):
-    ctx = {'logged':  request.user.is_authenticated()}
+    ctx = {'logged':  request.user.is_authenticated}
     return render(request, 'rules.html', ctx)
 
 def show_all_classifications(request):
 
     search = request.GET.get('search', None)
 
-    username = str(request.user) if request.user.is_authenticated() else None
+    username = str(request.user) if request.user.is_authenticated else None
     ordered_classifications = get_all_classifications_ordered_name_link(username, search)
     user_interested_classifications = get_user_interested_classifications(username)
 
@@ -209,7 +209,7 @@ def show_all_classifications(request):
 
     ctx = {
         'classifications' : ordered_classifications,  # get_all_classifications_name_link(),
-        'logged':  request.user.is_authenticated(),
+        'logged':  request.user.is_authenticated,
         'user_interested_classifications': user_interested_classifications,
         'filters': FiltersClassification(request.GET)
     }
@@ -227,7 +227,7 @@ def show_all_algorithms(request):
     algs = [ (alg.get_show_url(), alg.name, alg.reputation) for alg in algorithms]
     algorithms = [{'link' : a[0], 'name' : a[1], 'reputation': a[2]} for a in algs]
     ctx_variables['algorithms'] = algorithms
-    ctx_variables['logged'] = request.user.is_authenticated()
+    ctx_variables['logged'] = request.user.is_authenticated
     ctx_variables['filters'] = FiltersAlgorithm(request.GET)
     return render(request, 'display_all_algorithms.html', ctx_variables)
 
@@ -239,7 +239,7 @@ def show_all_paradigms(request):
     paras = [ (p.label, p.get_show_url()) for p in ps]
     paradigms = [{'label' : a[0], 'link' : a[1]} for a in paras]
     ctx_variables['paradigms'] = paradigms
-    ctx_variables['logged'] = request.user.is_authenticated()
+    ctx_variables['logged'] = request.user.is_authenticated
     return render(request, 'display_all_paradigms.html', ctx_variables)
 
 
@@ -248,7 +248,7 @@ def show_paradigm_by_id(request, id):
     ctx = {
         'paradigm' : paradigm,
         'programming_languages' : get_all_programming_languages(),
-        'logged':  request.user.is_authenticated()
+        'logged':  request.user.is_authenticated
     }
     return render(request, 'display_paradigm.html', ctx)
 
@@ -320,7 +320,7 @@ def show_algorithm_by_id(request, id):
     ctx_variables['classification_dbp_url'] = classification.uri
     ctx_variables['rdf_path'] = rdf_path
     ctx_variables['implementations'] = imps
-    ctx_variables['logged'] = request.user.is_authenticated()
+    ctx_variables['logged'] = request.user.is_authenticated
     ctx_variables['impl_question_answers'] = impl_question_answers
     ctx_variables['user_votes'] = user_votes
 
@@ -338,7 +338,7 @@ def insert_implementation(request, id):
         add_user_point(request.user.username)
         return HttpResponseRedirect(algorithm.get_show_url())
     else:
-        c = {'logged':  request.user.is_authenticated(), 'programming_languages' : get_all_programming_languages(), 'algorithm' : get_algorithm_by_id(int(id))}
+        c = {'logged':  request.user.is_authenticated, 'programming_languages' : get_all_programming_languages(), 'algorithm' : get_algorithm_by_id(int(id))}
         c.update(request)
         return render(request, "add_algorithm_implementation.html", c)
 
@@ -364,7 +364,7 @@ def show_classification_by_id(request, id):
         'top5_algorithms' : top5_algs,
         # 'algorithms' : algs,
         'algorithms' : dict_diff(algs, top5_algs),
-        'logged':  request.user.is_authenticated()
+        'logged':  request.user.is_authenticated
     }
     return render(request, 'display_classification.html', ctx)
 
@@ -387,7 +387,7 @@ def insert_algorithm(request, id=None):
         c = {
             'form' : AlgorithmForm(initial={'classification': id}),
             'programming_languages' : get_all_programming_languages(),
-            'logged':  request.user.is_authenticated()
+            'logged':  request.user.is_authenticated
         }
         c.update(request)
 
@@ -411,5 +411,5 @@ def moderator_dashboard(request):
             classifications[implementation.algorithm.classification.name].append(implementation)
 
     ctx['classifications'] = classifications
-    ctx['logged'] = request.user.is_authenticated()
+    ctx['logged'] = request.user.is_authenticated
     return render(request, 'moderator_dashboard.html', ctx)
