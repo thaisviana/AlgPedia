@@ -2,7 +2,7 @@ from algorithm.forms import TagForm
 from algorithm.models import Implementation, algorithm, classification
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import Group
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.shortcuts import get_object_or_404
 from .tf_idf_query import query
 import json

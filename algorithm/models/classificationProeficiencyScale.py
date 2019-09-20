@@ -4,4 +4,4 @@ from algorithm.models.proeficiencyScale import ProeficiencyScale
 
 
 class ClassificationProeficiencyScale(ProeficiencyScale):
-	classification = models.ForeignKey('Classification')
+	classification = models.ForeignKey('Classification', on_delete=models.CASCADE)

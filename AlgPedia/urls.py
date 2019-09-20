@@ -1,5 +1,6 @@
 from algorithm.ajax import *
 import algorithm.views
+import django
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
@@ -17,8 +18,8 @@ urlpatterns = [
     url(r'^clearDB/$', algorithm.views.clear_database),
     url(r'^accounts/profile/$', algorithm.views.profile),
     url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^accounts/login/$', auth_views.login, name='login'),
-    url(r'^accounts/logout/$', auth_views.logout, name='logout'),
+    url(r'^accounts/login/$', auth_views.LoginView.as_view(), name='login'),
+    url(r'^accounts/logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^ontoviz/$', algorithm.views.ontoviz),
     url(r'^signin/$', algorithm.views.signin),
     url(r'^contact/$', algorithm.views.contact),
@@ -48,7 +49,7 @@ urlpatterns = [
     # serving static files in development
     # (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root' : './algorithm/static/'}),
 
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
 ]
 
 # STATICS
